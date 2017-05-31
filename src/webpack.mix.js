@@ -14,6 +14,14 @@ const { mix } = require('laravel-mix');
 mix.js('resources/assets/js/app.js', 'public/js')
    .sass('resources/assets/sass/app.scss', 'public/css');
 */
+
+/**
+* STYLESHEETS FRONTEND
+*/
+mix.combine([
+    'node_modules/w3-css/w3.css',
+    'resources/stylesheets/frontend/frontend.styles.css'
+], 'public/stylesheets/frontend.css');
 /**
 * JAVASCRIPTS FRONTEND
 */
