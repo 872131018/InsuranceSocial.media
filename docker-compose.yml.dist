@@ -1,0 +1,49 @@
+version: "2"
+services:
+    nginx:
+        container_name: nginx
+        build:
+            context: ./nginx
+        ports:
+            - 80:80
+        links:
+            - fpm
+        volumes:
+            - ./src/public:/var/www/html/public
+    fpm:
+        container_name: fpm
+        build:
+            context: ./fpm
+        links:
+            - db
+            - redis
+        volumes:
+            - ./src:/var/www/html
+        environment:
+            - DB_HOST=db
+            - DB_USERNAME=
+            - DB_PASSWORD=
+            - REDIS_HOST=redis
+    supervisor:
+        container_name: supervisor
+        build:
+            context: ./supervisor
+        links:
+            - db
+            - redis
+        volumes:
+            - ./src:/var/www/html
+        environment:
+            - DB_HOST=db
+            - DB_USERNAME=
+            - DB_PASSWORD=
+            - REDIS_HOST=redis
+    db:
+        container_name: db
+        image: mariadb:latest
+        environment:
+            - MYSQL_ROOT_PASSWORD=
+            - MYSQL_DATABASE=InsuranceSocialMedia
+    redis:
+        container_name: redis
+        image: redis:latest
