@@ -7,23 +7,23 @@
 .header-logo {
     background-image: url('../images/talk-bubble.png');
     background-repeat: no-repeat;
-    background-size: 200px;
+    background-size: 160px;
     background-position-x: 150px;
 }
 .footer-logo {
     background-image: url('../images/talk-bubble-color.png');
     background-repeat: no-repeat;
-    background-size: 160px;
-    background-position: calc(100% - 230px);
+    background-size: 140px;
+    background-position: calc(100% - 250px);
 }
 .bgimg {
     background-position: center;
     background-size: cover;
     background-image: url("../images/hero.jpg");
-    height: 1080px;
+    height: 100vh;
 }
 .login-form {
     float: right;
-    position: relative;
-    top: 25%;
+    height: 100%;
+
 }

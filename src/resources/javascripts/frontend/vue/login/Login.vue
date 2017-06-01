@@ -1,9 +1,9 @@
 <template>
     <div class="bgimg">
-        <form class="w3-container w3-card-4 w3-light-grey login-form">
+        <form class="w3-container w3-quarter w3-margin w3-card-2 w3-white login-form">
             <p>
                 <input class="w3-input" type="text" style="width:90%" required>
-                <label>Name</label>
+                <label>Email</label>
             </p>
             <p>
                 <input class="w3-input" type="password" style="width:90%" required>

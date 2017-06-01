@@ -13859,7 +13859,7 @@ var Component = __webpack_require__(1)(
   /* cssModules */
   null
 )
-Component.options.__file = "/home/johnhuffman/InsuranceSocial.media/src/resources/javascripts/frontend/vue/App.vue"
+Component.options.__file = "/Users/johnhuffman/InsuranceSocial.media/src/resources/javascripts/frontend/vue/App.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] App.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -13893,7 +13893,7 @@ var Component = __webpack_require__(1)(
   /* cssModules */
   null
 )
-Component.options.__file = "/home/johnhuffman/InsuranceSocial.media/src/resources/javascripts/frontend/vue/foot/Foot.vue"
+Component.options.__file = "/Users/johnhuffman/InsuranceSocial.media/src/resources/javascripts/frontend/vue/foot/Foot.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Foot.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -13927,7 +13927,7 @@ var Component = __webpack_require__(1)(
   /* cssModules */
   null
 )
-Component.options.__file = "/home/johnhuffman/InsuranceSocial.media/src/resources/javascripts/frontend/vue/login/Login.vue"
+Component.options.__file = "/Users/johnhuffman/InsuranceSocial.media/src/resources/javascripts/frontend/vue/login/Login.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Login.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -13961,7 +13961,7 @@ var Component = __webpack_require__(1)(
   /* cssModules */
   null
 )
-Component.options.__file = "/home/johnhuffman/InsuranceSocial.media/src/resources/javascripts/frontend/vue/navigation/Desktop.vue"
+Component.options.__file = "/Users/johnhuffman/InsuranceSocial.media/src/resources/javascripts/frontend/vue/navigation/Desktop.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Desktop.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -13995,7 +13995,7 @@ var Component = __webpack_require__(1)(
   /* cssModules */
   null
 )
-Component.options.__file = "/home/johnhuffman/InsuranceSocial.media/src/resources/javascripts/frontend/vue/navigation/Mobile.vue"
+Component.options.__file = "/Users/johnhuffman/InsuranceSocial.media/src/resources/javascripts/frontend/vue/navigation/Mobile.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Mobile.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -14029,7 +14029,7 @@ var Component = __webpack_require__(1)(
   /* cssModules */
   null
 )
-Component.options.__file = "/home/johnhuffman/InsuranceSocial.media/src/resources/javascripts/frontend/vue/navigation/Navigation.vue"
+Component.options.__file = "/Users/johnhuffman/InsuranceSocial.media/src/resources/javascripts/frontend/vue/navigation/Navigation.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Navigation.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -14063,7 +14063,7 @@ var Component = __webpack_require__(1)(
   /* cssModules */
   null
 )
-Component.options.__file = "/home/johnhuffman/InsuranceSocial.media/src/resources/javascripts/frontend/vue/navigation/Toggle.vue"
+Component.options.__file = "/Users/johnhuffman/InsuranceSocial.media/src/resources/javascripts/frontend/vue/navigation/Toggle.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Toggle.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -14091,15 +14091,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   return _vm._m(0)
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('footer', {
-    staticClass: "w3-container w3-bar w3-medium w3-text-white secondary footer-logo"
-  }, [_c('div', {
-    staticClass: "w3-padding-32 w3-left"
-  }, [_c('a', {
+    staticClass: "w3-container w3-bar w3-medium w3-text-white w3-padding-16 secondary footer-logo"
+  }, [_vm._v("\">\n        "), _c('a', {
     staticClass: "w3-bar-item w3-button w3-hover-white"
   }, [_vm._v("Link 1")]), _vm._v(" "), _c('a', {
     staticClass: "w3-bar-item w3-button w3-hover-white"
-  }, [_vm._v("Link 2")])]), _vm._v(" "), _c('div', {
-    staticClass: "w3-padding-32 w3-right"
+  }, [_vm._v("Link 2")]), _vm._v(" "), _c('div', {
+    staticClass: "w3-right"
   }, [_c('a', {
     staticClass: "w3-button w3-circle w3-large w3-hover-white primary"
   }, [_c('i', {
@@ -14186,7 +14184,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   return _c('div', {
     staticClass: "bgimg"
   }, [_c('form', {
-    staticClass: "w3-container w3-card-4 w3-light-grey login-form"
+    staticClass: "w3-container w3-quarter w3-margin w3-card-2 w3-white login-form"
   }, [_c('p', [_c('input', {
     staticClass: "w3-input",
     staticStyle: {
@@ -14196,7 +14194,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "type": "text",
       "required": ""
     }
-  }), _vm._v(" "), _c('label', [_vm._v("Name")])]), _vm._v(" "), _c('p', [_c('input', {
+  }), _vm._v(" "), _c('label', [_vm._v("Email")])]), _vm._v(" "), _c('p', [_c('input', {
     staticClass: "w3-input",
     staticStyle: {
       "width": "90%"
@@ -14230,7 +14228,7 @@ if (false) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('nav', {
-    staticClass: "w3-container w3-bar w3-card-2 w3-xlarge w3-text-white w3-padding-32 primary header-logo"
+    staticClass: "w3-container w3-bar w3-card-2 w3-xlarge w3-text-white w3-padding-16 primary header-logo"
   }, [_c('div', {
     staticClass: "w3-hide-small"
   }, [_c('Desktop')], 1), _vm._v(" "), _c('div', {
