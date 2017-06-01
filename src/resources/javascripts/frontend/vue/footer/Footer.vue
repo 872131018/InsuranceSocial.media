@@ -1,21 +1,30 @@
 <template>
-    <footer class="w3-container w3-center secondary">
-        <div class="w3-xlarge w3-padding-32">
-            <i class="fa fa-facebook-official w3-hover-opacity"></i>
-            <i class="fa fa-instagram w3-hover-opacity"></i>
-            <i class="fa fa-snapchat w3-hover-opacity"></i>
-            <i class="fa fa-pinterest-p w3-hover-opacity"></i>
-            <i class="fa fa-twitter w3-hover-opacity"></i>
-            <i class="fa fa-linkedin w3-hover-opacity"></i>
+    <footer class="w3-container w3-bar w3-text-white secondary footer-logo">
+        <div class="w3-padding-32 w3-left">
+            <a class="w3-bar-item w3-button w3-hover-white">Link 1</a>
+            <a class="w3-bar-item w3-button w3-hover-white">Link 2</a>
         </div>
-        <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
+        <div class="w3-xlarge w3-padding-32 w3-right">
+            <a class="w3-button w3-circle w3-large primary">
+                <i class="fa fa-twitter"></i>
+            </a>
+            <a class="w3-button w3-circle w3-large primary">
+                <i class="fa fa-facebook"></i>
+            </a>
+            <a class="w3-button w3-circle w3-large primary">
+                <i class="fa fa-instagram"></i>
+            </a>
+            <a class="w3-button w3-circle w3-large primary">
+                <i class="fa fa-linkedin"></i>
+            </a>
+        </div>
     </footer>
 </template>
 
 <script>
     export default {
         components: {
-
+            //
         }
     }
 </script>

@@ -214,8 +214,15 @@ hr{border:0;border-top:1px solid #eee;margin:20px 0}
 .secondary {
     background: #a5be2c;
 }
-.logo {
-    height: 50px;
-    position: relative;
-    left: 20px;
+.header-logo {
+    background-image: url('../images/talk-bubble.png');
+    background-repeat: no-repeat;
+    background-size: 200px;
+    background-position-x: 150px;
+}
+.footer-logo {
+    background-image: url('../images/talk-bubble-color.png');
+    background-repeat: no-repeat;
+    background-size: 140px;
+    background-position: 75%;
 }

@@ -1,7 +1,6 @@
 <template>
     <div>
-        <a class="w3-bar-item w3-button">Home</a>
-        <img class="logo" src="images/talk-bubble.png"></img>
+        <a class="w3-bar-item w3-button w3-hover-white">Home</a>
         <div class="w3-right">
             <a class="w3-bar-item w3-button w3-hover-white">Link 1</a>
             <a class="w3-bar-item w3-button w3-hover-white">Link 2</a>

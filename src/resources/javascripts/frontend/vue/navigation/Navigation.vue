@@ -1,5 +1,5 @@
 <template>
-    <div class="w3-top w3-bar w3-card-2 w3-xlarge w3-text-white primary">
+    <div class="w3-container w3-bar w3-card-2 w3-xlarge w3-text-white w3-padding-32 primary header-logo">
         <div class="w3-hide-small">
             <Desktop></Desktop>
         </div>
