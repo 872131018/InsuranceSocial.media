@@ -1,6 +1,9 @@
 .primary {
     background-color: #007cbb;
 }
+.secondary {
+    background: #a5be2c;
+}
 .logo {
     height: 50px;
     position: relative;
