@@ -14098,19 +14098,19 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_vm._v("Link 2")])]), _vm._v(" "), _c('div', {
     staticClass: "w3-padding-32 w3-right"
   }, [_c('a', {
-    staticClass: "w3-button w3-circle primary"
+    staticClass: "w3-button w3-circle w3-large w3-hover-white primary"
   }, [_c('i', {
     staticClass: "fa fa-twitter"
   })]), _vm._v(" "), _c('a', {
-    staticClass: "w3-button w3-circle primary"
+    staticClass: "w3-button w3-circle w3-large w3-hover-white primary"
   }, [_c('i', {
     staticClass: "fa fa-facebook"
   })]), _vm._v(" "), _c('a', {
-    staticClass: "w3-button w3-circle primary"
+    staticClass: "w3-button w3-circle w3-large w3-hover-white primary"
   }, [_c('i', {
     staticClass: "fa fa-instagram"
   })]), _vm._v(" "), _c('a', {
-    staticClass: "w3-button w3-circle primary"
+    staticClass: "w3-button w3-circle w3-large w3-hover-white primary"
   }, [_c('i', {
     staticClass: "fa fa-linkedin"
   })])])])

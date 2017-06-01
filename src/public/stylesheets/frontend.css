@@ -223,6 +223,6 @@ hr{border:0;border-top:1px solid #eee;margin:20px 0}
 .footer-logo {
     background-image: url('../images/talk-bubble-color.png');
     background-repeat: no-repeat;
-    background-size: 100px;
-    background-position: calc(100% - 250px);
+    background-size: 160px;
+    background-position: calc(100% - 230px);
 }

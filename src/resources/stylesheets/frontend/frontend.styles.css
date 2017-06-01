@@ -13,6 +13,6 @@
 .footer-logo {
     background-image: url('../images/talk-bubble-color.png');
     background-repeat: no-repeat;
-    background-size: 100px;
-    background-position: calc(100% - 250px);
+    background-size: 160px;
+    background-position: calc(100% - 230px);
 }

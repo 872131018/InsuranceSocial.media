@@ -5,16 +5,16 @@
             <a class="w3-bar-item w3-button w3-hover-white">Link 2</a>
         </div>
         <div class="w3-padding-32 w3-right">
-            <a class="w3-button w3-circle primary">
+            <a class="w3-button w3-circle w3-large w3-hover-white primary">
                 <i class="fa fa-twitter"></i>
             </a>
-            <a class="w3-button w3-circle primary">
+            <a class="w3-button w3-circle w3-large w3-hover-white primary">
                 <i class="fa fa-facebook"></i>
             </a>
-            <a class="w3-button w3-circle primary">
+            <a class="w3-button w3-circle w3-large w3-hover-white primary">
                 <i class="fa fa-instagram"></i>
             </a>
-            <a class="w3-button w3-circle primary">
+            <a class="w3-button w3-circle w3-large w3-hover-white primary">
                 <i class="fa fa-linkedin"></i>
             </a>
         </div>
