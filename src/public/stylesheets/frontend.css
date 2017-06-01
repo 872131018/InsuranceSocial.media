@@ -226,3 +226,14 @@ hr{border:0;border-top:1px solid #eee;margin:20px 0}
     background-size: 160px;
     background-position: calc(100% - 230px);
 }
+.bgimg {
+    background-position: center;
+    background-size: cover;
+    background-image: url("../images/hero.jpg");
+    height: 1080px;
+}
+.login-form {
+    float: right;
+    position: relative;
+    top: 25%;
+}

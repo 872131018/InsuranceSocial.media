@@ -1,13 +1,15 @@
 <template>
     <div>
         <Navigation></Navigation>
-        <Footer></Footer>
+        <Login></Login>
+        <Foot></Foot>
     </div>
 </template>
 
 <script>
     import Navigation from './navigation/Navigation';
-    import Footer from './footer/Footer';
+    import Login from './login/Login';
+    import Foot from './foot/Foot';
 
     export default {
         mounted() {
@@ -15,7 +17,8 @@
         },
         components: {
             Navigation,
-            Footer
+            Login,
+            Foot
         }
     }
 </script>
