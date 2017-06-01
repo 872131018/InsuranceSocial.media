@@ -14088,7 +14088,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   return _vm._m(0)
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('footer', {
-    staticClass: "w3-container w3-bar w3-text-white secondary footer-logo"
+    staticClass: "w3-container w3-bar w3-medium w3-text-white secondary footer-logo"
   }, [_c('div', {
     staticClass: "w3-padding-32 w3-left"
   }, [_c('a', {
@@ -14096,21 +14096,21 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_vm._v("Link 1")]), _vm._v(" "), _c('a', {
     staticClass: "w3-bar-item w3-button w3-hover-white"
   }, [_vm._v("Link 2")])]), _vm._v(" "), _c('div', {
-    staticClass: "w3-xlarge w3-padding-32 w3-right"
+    staticClass: "w3-padding-32 w3-right"
   }, [_c('a', {
-    staticClass: "w3-button w3-circle w3-large primary"
+    staticClass: "w3-button w3-circle primary"
   }, [_c('i', {
     staticClass: "fa fa-twitter"
   })]), _vm._v(" "), _c('a', {
-    staticClass: "w3-button w3-circle w3-large primary"
+    staticClass: "w3-button w3-circle primary"
   }, [_c('i', {
     staticClass: "fa fa-facebook"
   })]), _vm._v(" "), _c('a', {
-    staticClass: "w3-button w3-circle w3-large primary"
+    staticClass: "w3-button w3-circle primary"
   }, [_c('i', {
     staticClass: "fa fa-instagram"
   })]), _vm._v(" "), _c('a', {
-    staticClass: "w3-button w3-circle w3-large primary"
+    staticClass: "w3-button w3-circle primary"
   }, [_c('i', {
     staticClass: "fa fa-linkedin"
   })])])])
