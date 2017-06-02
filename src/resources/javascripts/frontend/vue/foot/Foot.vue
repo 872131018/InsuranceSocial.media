@@ -1,6 +1,6 @@
 <template>
     <footer class="w3-container w3-bar w3-medium w3-text-white w3-padding-16 secondary footer-logo">
-        <div w3-left">
+        <div class="w3-left">
             <a class="w3-bar-item w3-button w3-hover-white">Link 1</a>
             <a class="w3-bar-item w3-button w3-hover-white">Link 2</a>
         </div>

@@ -230,10 +230,16 @@ hr{border:0;border-top:1px solid #eee;margin:20px 0}
     background-position: center;
     background-size: cover;
     background-image: url("../images/hero.jpg");
-    height: 100vh;
+    height: 900px;
 }
 .login-form {
     float: right;
-    height: 100%;
+    position: relative;
+    top: 10%;
+    height: 75%;
+    background: rgba(241, 241, 241, 0.8);
 
+}
+.login-logo {
+    height: 50px;
 }
