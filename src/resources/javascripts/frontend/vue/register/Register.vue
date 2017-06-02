@@ -26,9 +26,8 @@
             </form>
             <div class="w3-container w3-padding-32">
                 <p class="w3-large">Don't have a login?</p>
-                <router-link class="w3-button w3-text-white secondary"
-                   v-bind:to="{ name: 'Register' }">Register
-               </router-link>
+                <button class="w3-button w3-text-white secondary"
+                    v-on:click="register()">Register</button>
             </div>
         </div>
     </div>
