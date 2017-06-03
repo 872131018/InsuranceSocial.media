@@ -11,10 +11,22 @@
 |
 */
 
-Route::get('/', function () {
+Auth::routes();
+Route::get('/home', 'HomeController@index')->name('home');
+
+/**
+ * Deliver the homepage
+ *
+ * @return \Illuminate\Http\Response
+ */
+ Route::get('/', function () {
+     return view('layouts.frontend.app');
+ });
+/**
+ * Overwrite the default functionality to deliver the SPA
+ *
+ * @return \Illuminate\Http\Response
+ */
+Route::get('/register', function () {
     return view('layouts.frontend.app');
 });
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');

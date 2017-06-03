@@ -14452,13 +14452,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   return _c('div', {
     staticClass: "bgimg"
   }, [_c('div', {
-    staticClass: "w3-container w3-margin w3-padding-32 w3-card-2 w3-row l4 m6 s12 login-form"
-  }, [_vm._m(0), _vm._v(" "), _c('form', {
-    staticClass: "w3-container w3-padding-32",
-    attrs: {
-      "action": _vm.getUrl(),
-      "method": "POST"
-    }
+    staticClass: "w3-container w3-padding-32 w3-card-2 register-form"
+  }, [_vm._m(0), _vm._v(" "), _c('div', {
+    staticClass: "w3-container w3-padding-32"
   }, [_vm._m(1), _vm._v(" "), _vm._m(2), _vm._v(" "), _vm._m(3), _vm._v(" "), _c('div', {
     staticClass: "w3-section"
   }, [_c('input', {
@@ -14475,17 +14471,17 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "w3-container w3-padding-32"
   }, [_c('p', {
     staticClass: "w3-large"
-  }, [_vm._v("Don't have a login?")]), _vm._v(" "), _c('button', {
+  }, [_vm._v("Don't have a login?")]), _vm._v(" "), _c('router-link', {
     staticClass: "w3-button w3-text-white secondary",
-    on: {
-      "click": function($event) {
-        _vm.register()
+    attrs: {
+      "to": {
+        name: 'Register'
       }
     }
-  }, [_vm._v("Register")])])])])
+  }, [_vm._v("Register\n           ")])], 1)])])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
-    staticClass: "w3-container w3-padding-32"
+    staticClass: "w3-container w3-padding-32 w3-center"
   }, [_c('img', {
     staticClass: "w3-margin-right login-logo",
     attrs: {
