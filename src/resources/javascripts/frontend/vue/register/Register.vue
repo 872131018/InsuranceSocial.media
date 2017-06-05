@@ -1,53 +1,82 @@
 <template>
-    <div class="bgimg">
-        <div class="w3-container w3-padding-32 w3-card-2 register-form">
-            <div class="w3-container w3-padding-32 w3-center">
+    <div class="w3-container w3-light-grey w3-padding-32">
+        <div class="w3-container w3-card-2 register-form">
+            <div class="w3-container w3-padding-32 w3-left">
                 <img class="w3-margin-right login-logo" src="/images/talk-bubble-color.png">
-                <span class="w3-large">Insurance Social Media</span>
+                <span class="w3-xlarge">Insurance Social Media</span>
             </div>
             <div class="w3-container w3-padding-32">
-                <div class="w3-section">
-                    <input class="w3-input" type="text" style="width:90%" required>
-                    <label>Email</label>
-                </div>
-                <div class="w3-section">
-                    <input class="w3-input" type="password" style="width:90%" required>
-                    <label>Password</label>
-                </div>
-                <div class="w3-section">
-                    <input class="w3-check" type="checkbox" checked="checked">
-                    <label>Stay logged in</label>
-                </div>
-                <div class="w3-section">
-                    <input type="hidden" name="_token" v-bind:value="getToken()">
-                    <button class="w3-button w3-text-white primary">Log in</button>
-                </div>
-            </div>
-            <div class="w3-container w3-padding-32">
-                <p class="w3-large">Don't have a login?</p>
-                <router-link class="w3-button w3-text-white secondary"
-                   v-bind:to="{ name: 'Register' }">Register
-               </router-link>
+                <h3>Create a New Account</h3>
+                <Name v-bind:label="'Full Name'"
+                    v-on:setName="setName($event)">
+                </Name>
+                <Email v-bind:label="'Email'"
+                    v-on:setEmail="setEmail($event)">
+                </Email>
+                <Email v-bind:label="'Confirm Email'"
+                    v-on:setEmail="confirmEmail($event)">
+                </Email>
+                <Password v-bind:label="'Password'"
+                    v-on:setPassword="setPassword($event)">
+                </Password>
+                <Password v-bind:label="'Confirm Password'"
+                    v-on:setPassword="confirmPassword($event)">
+                </Password>
+                <Discount v-bind:label="'Discount Code'"
+                    v-on:setDiscount="setDiscount($event)">
+                </Discount>
+                <Terms></Terms>
+                <button class="w3-button w3-text-white primary">Register</button>
             </div>
         </div>
     </div>
 </template>
 
 <script>
+    import Name from './Name';
+    import Email from './Email';
+    import Password from './Password';
+    import Discount from './Discount';
+    import Terms from './Terms';
+
     export default {
-        components: {
-            //
+        data() {
+            return {
+                name: '',
+                email: '',
+                confirmEmail: '',
+                password: '',
+                confirmPassword: '',
+                discount: '',
+                agreeToTerms: ''
+            }
         },
         methods: {
-            getUrl() {
-                return window.location + '/login';
+            setName(name) {
+                this.name = name;
             },
-            getToken() {
-                return document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+            setEmail(email) {
+                this.email = email;
             },
-            register() {
-                window.location = window.base_url + '/register';
+            confirmEmail(email) {
+                this.confirmEmail = email;
+            },
+            setPassword(password) {
+                this.password = password;
+            },
+            confirmPassword(password) {
+                this.confirmPassword = password;
+            },
+            setDiscount(discount) {
+                this.discount = discount;
             }
-        }
+        },
+        components: {
+            Name,
+            Email,
+            Password,
+            Discount,
+            Terms
+        },
     }
 </script>

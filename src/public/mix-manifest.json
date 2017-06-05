@@ -1,5 +1,6 @@
 {
   "/js/app.js": "/js/app.js",
   "/javascripts/frontend.index.js": "/javascripts/frontend.index.js",
-  "/stylesheets/frontend.css": "/stylesheets/frontend.css"
+  "/stylesheets/frontend.css": "/stylesheets/frontend.css",
+  "/mix.js": "/mix.js"
 }

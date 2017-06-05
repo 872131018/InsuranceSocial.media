@@ -4,6 +4,9 @@
 .secondary {
     background: #a5be2c;
 }
+.v-align {
+    vertical-align: middle;
+}
 .header-logo {
     background-image: url('../images/talk-bubble.png');
     background-repeat: no-repeat;
@@ -35,9 +38,6 @@
 }
 .register-form {
     margin: auto;
-    position: relative;
-    top: 10%;
-    height: 75%;
     width: 50%;
     min-width: 350px;
     background: rgba(241, 241, 241, 0.8);
