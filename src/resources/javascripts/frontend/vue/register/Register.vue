@@ -25,8 +25,15 @@
                 <Discount v-bind:label="'Discount Code'"
                     v-on:setDiscount="setDiscount($event)">
                 </Discount>
-                <Terms></Terms>
-                <button class="w3-button w3-text-white primary">Register</button>
+                <Terms v-on:setTerms="setTerms($event)"></Terms>
+                <ul class="w3-ul"
+                    v-if="errors.length">
+                    <li class="w3-text-red"
+                        v-for="error in errors">{{ error }}</li>
+                </ul>
+                <button class="w3-button w3-text-white primary"
+                    v-on:click="submit()">Register
+                </button>
             </div>
         </div>
     </div>
@@ -48,7 +55,8 @@
                 password: '',
                 confirmPassword: '',
                 discount: '',
-                agreeToTerms: ''
+                terms: false,
+                errors: []
             }
         },
         methods: {
@@ -69,6 +77,30 @@
             },
             setDiscount(discount) {
                 this.discount = discount;
+            },
+            setTerms(terms) {
+                this.terms = terms;
+            },
+            submit() {
+                this.errors = [];
+                if(this.email == '' || this.confirmEmail == '') {
+                    this.errors.push('You must enter and confirm an email.')
+                }
+                if(this.email != this.confirmEmail) {
+                    this.errors.push('Emails do not match.');
+                }
+                if(this.password == '' || this.confirmPassword == '') {
+                    this.errors.push('You must enter and confirm a password');
+                }
+                if(this.password != this.confirmPassword) {
+                    this.errors.push('Passwords do not match.');
+                }
+                if(!this.terms) {
+                    this.errors.push('You must accept the Terms of Service.');
+                }
+                if(this.errors.length == 0) {
+                    console.log("SUCCESS!!!")
+                }
             }
         },
         components: {
@@ -77,6 +109,6 @@
             Password,
             Discount,
             Terms
-        },
+        }
     }
 </script>

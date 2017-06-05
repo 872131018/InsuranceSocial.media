@@ -12071,6 +12071,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -12087,7 +12094,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             password: '',
             confirmPassword: '',
             discount: '',
-            agreeToTerms: ''
+            terms: false,
+            errors: []
         };
     },
 
@@ -12109,6 +12117,30 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         setDiscount: function setDiscount(discount) {
             this.discount = discount;
+        },
+        setTerms: function setTerms(terms) {
+            this.terms = terms;
+        },
+        submit: function submit() {
+            this.errors = [];
+            if (this.email == '' || this.confirmEmail == '') {
+                this.errors.push('You must enter and confirm an email.');
+            }
+            if (this.email != this.confirmEmail) {
+                this.errors.push('Emails do not match.');
+            }
+            if (this.password == '' || this.confirmPassword == '') {
+                this.errors.push('You must enter and confirm a password');
+            }
+            if (this.password != this.confirmPassword) {
+                this.errors.push('Passwords do not match.');
+            }
+            if (!this.terms) {
+                this.errors.push('You must accept the Terms of Service.');
+            }
+            if (this.errors.length == 0) {
+                console.log("SUCCESS!!!");
+            }
         }
     },
     components: {
@@ -12134,17 +12166,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
-            checked: false,
-            copy: 'I Don\'t Agree'
+            checked: false
         };
-    },
-
-    methods: {
-        //
     }
 });
 
@@ -15258,9 +15287,26 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.setDiscount($event)
       }
     }
-  }), _vm._v(" "), _c('Terms'), _vm._v(" "), _c('button', {
-    staticClass: "w3-button w3-text-white primary"
-  }, [_vm._v("Register")])], 1)])])
+  }), _vm._v(" "), _c('Terms', {
+    on: {
+      "setTerms": function($event) {
+        _vm.setTerms($event)
+      }
+    }
+  }), _vm._v(" "), (_vm.errors.length) ? _c('ul', {
+    staticClass: "w3-ul"
+  }, _vm._l((_vm.errors), function(error) {
+    return _c('li', {
+      staticClass: "w3-text-red"
+    }, [_vm._v(_vm._s(error))])
+  })) : _vm._e(), _vm._v(" "), _c('button', {
+    staticClass: "w3-button w3-text-white primary",
+    on: {
+      "click": function($event) {
+        _vm.submit()
+      }
+    }
+  }, [_vm._v("Register\n            ")])], 1)])])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "w3-container w3-padding-32 w3-left"
@@ -15304,6 +15350,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "checked": Array.isArray(_vm.checked) ? _vm._i(_vm.checked, null) > -1 : (_vm.checked)
     },
     on: {
+      "click": function($event) {
+        _vm.$emit('setTerms', _vm.checked)
+      },
       "__c": function($event) {
         var $$a = _vm.checked,
           $$el = $event.target,
