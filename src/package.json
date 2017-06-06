@@ -13,7 +13,7 @@
     "axios": "latest",
     "laravel-mix": "latest",
     "vue": "latest",
-    "vue-router": "^2.5.3",
+    "vue-router": "latest",
     "w3-css": "latest"
   }
 }
