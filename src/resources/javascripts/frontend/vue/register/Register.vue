@@ -23,6 +23,7 @@
                     v-on:setPassword="confirmPassword($event)">
                 </Password>
                 <Discount v-bind:label="'Discount Code'"
+                    v-bind:code="properties.discount"
                     v-on:setDiscount="setDiscount($event)">
                 </Discount>
                 <Terms v-on:setTerms="setTerms($event)"></Terms>
@@ -49,57 +50,64 @@
     export default {
         data() {
             return {
-                name: '',
-                email: '',
-                confirmEmail: '',
-                password: '',
-                confirmPassword: '',
-                discount: '',
-                terms: false,
+                properties: {
+                    name: '',
+                    email: '',
+                    email_confirmation: '',
+                    password: '',
+                    password_confirmation: '',
+                    discount: this.$route.params.code,
+                    terms: false,
+                },
                 errors: []
             }
         },
         methods: {
             setName(name) {
-                this.name = name;
+                this.properties.name = name;
             },
             setEmail(email) {
-                this.email = email;
+                this.properties.email = email;
             },
             confirmEmail(email) {
-                this.confirmEmail = email;
+                this.properties.email_confirmation = email;
             },
             setPassword(password) {
-                this.password = password;
+                this.properties.password = password;
             },
             confirmPassword(password) {
-                this.confirmPassword = password;
+                this.properties.password_confirmation = password;
             },
             setDiscount(discount) {
-                this.discount = discount;
+                this.properties.discount = discount;
             },
             setTerms(terms) {
-                this.terms = terms;
+                this.properties.terms = terms;
             },
             submit() {
                 this.errors = [];
-                if(this.email == '' || this.confirmEmail == '') {
-                    this.errors.push('You must enter and confirm an email.')
+                if(this.properties.name == '') {
+                    this.errors.push('You must enter your full name.');
                 }
-                if(this.email != this.confirmEmail) {
+                if(this.properties.email == '' || this.properties.email_confirmation == '') {
+                    this.errors.push('You must enter and confirm an email.');
+                }
+                if(this.properties.email != this.properties.email_confirmation) {
                     this.errors.push('Emails do not match.');
                 }
-                if(this.password == '' || this.confirmPassword == '') {
+                if(this.properties.password == '' || this.properties.password_confirmation == '') {
                     this.errors.push('You must enter and confirm a password');
                 }
-                if(this.password != this.confirmPassword) {
+                if(this.properties.password != this.properties.password_confirmation) {
                     this.errors.push('Passwords do not match.');
                 }
-                if(!this.terms) {
+                if(!this.properties.terms) {
                     this.errors.push('You must accept the Terms of Service.');
                 }
                 if(this.errors.length == 0) {
-                    console.log("SUCCESS!!!")
+                    axios.post(window.base_url + '/register', this.properties).then(response => {
+                        console.log(response)
+                    });
                 }
             }
         },

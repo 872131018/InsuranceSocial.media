@@ -27,6 +27,9 @@ Route::get('/home', 'HomeController@index')->name('home');
  *
  * @return \Illuminate\Http\Response
  */
-Route::get('/register', function () {
+ Route::get('/register', function () {
+     return view('layouts.frontend.app');
+ });
+Route::get('/register/{code?}', function ($code = '') {
     return view('layouts.frontend.app');
 });

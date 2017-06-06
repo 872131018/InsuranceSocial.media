@@ -11832,13 +11832,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: {
+        code: {
+            type: String
+        },
         label: {
             type: String
         }
     },
     data: function data() {
         return {
-            discount: '',
+            discount: this.code,
             isValid: false
         };
     },
@@ -11988,6 +11991,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 
@@ -12078,6 +12082,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 
@@ -12088,58 +12093,65 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
-            name: '',
-            email: '',
-            confirmEmail: '',
-            password: '',
-            confirmPassword: '',
-            discount: '',
-            terms: false,
+            properties: {
+                name: '',
+                email: '',
+                email_confirmation: '',
+                password: '',
+                password_confirmation: '',
+                discount: this.$route.params.code,
+                terms: false
+            },
             errors: []
         };
     },
 
     methods: {
         setName: function setName(name) {
-            this.name = name;
+            this.properties.name = name;
         },
         setEmail: function setEmail(email) {
-            this.email = email;
+            this.properties.email = email;
         },
         confirmEmail: function confirmEmail(email) {
-            this.confirmEmail = email;
+            this.properties.email_confirmation = email;
         },
         setPassword: function setPassword(password) {
-            this.password = password;
+            this.properties.password = password;
         },
         confirmPassword: function confirmPassword(password) {
-            this.confirmPassword = password;
+            this.properties.password_confirmation = password;
         },
         setDiscount: function setDiscount(discount) {
-            this.discount = discount;
+            this.properties.discount = discount;
         },
         setTerms: function setTerms(terms) {
-            this.terms = terms;
+            this.properties.terms = terms;
         },
         submit: function submit() {
             this.errors = [];
-            if (this.email == '' || this.confirmEmail == '') {
+            if (this.properties.name == '') {
+                this.errors.push('You must enter your full name.');
+            }
+            if (this.properties.email == '' || this.properties.email_confirmation == '') {
                 this.errors.push('You must enter and confirm an email.');
             }
-            if (this.email != this.confirmEmail) {
+            if (this.properties.email != this.properties.email_confirmation) {
                 this.errors.push('Emails do not match.');
             }
-            if (this.password == '' || this.confirmPassword == '') {
+            if (this.properties.password == '' || this.properties.password_confirmation == '') {
                 this.errors.push('You must enter and confirm a password');
             }
-            if (this.password != this.confirmPassword) {
+            if (this.properties.password != this.properties.password_confirmation) {
                 this.errors.push('Passwords do not match.');
             }
-            if (!this.terms) {
+            if (!this.properties.terms) {
                 this.errors.push('You must accept the Terms of Service.');
             }
             if (this.errors.length == 0) {
-                console.log("SUCCESS!!!");
+                axios.post(window.base_url + '/register', this.properties).then(function (response) {
+                    console.log(response);
+                });
             }
         }
     },
@@ -12196,6 +12208,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 }, {
     path: '/register',
     name: 'Register',
+    component: __WEBPACK_IMPORTED_MODULE_1__vue_register_Register___default.a
+}, {
+    path: '/register/:code',
+    name: 'RegisterWithCode',
     component: __WEBPACK_IMPORTED_MODULE_1__vue_register_Register___default.a
 }]);
 
@@ -14954,7 +14970,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }), _vm._v(" "), (_vm.isValid) ? _c('Check') : _c('Cross'), _vm._v(" "), _c('label', {
     staticClass: "w3-show-block"
-  }, [_vm._v(_vm._s(_vm.label))])], 1)
+  }, [_vm._v(_vm._s(_vm.label))]), _vm._v(" "), _c('span', {
+    staticClass: "w3-small"
+  }, [_vm._v("Must contain min 8 characters, 1 capital letter, 1 special character")])], 1)
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
@@ -15280,7 +15298,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }), _vm._v(" "), _c('Discount', {
     attrs: {
-      "label": 'Discount Code'
+      "label": 'Discount Code',
+      "code": _vm.properties.discount
     },
     on: {
       "setDiscount": function($event) {
@@ -15342,6 +15361,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       expression: "checked",
       arg: "checked"
     }],
+    staticClass: "v-align",
     attrs: {
       "type": "checkbox",
       "id": "terms"
@@ -15350,7 +15370,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "checked": Array.isArray(_vm.checked) ? _vm._i(_vm.checked, null) > -1 : (_vm.checked)
     },
     on: {
-      "click": function($event) {
+      "change": function($event) {
         _vm.$emit('setTerms', _vm.checked)
       },
       "__c": function($event) {
@@ -15371,7 +15391,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }
     }
   }), _vm._v(" "), _c('label', {
-    staticClass: "check-box",
+    staticClass: "v-align check-box",
     attrs: {
       "for": "terms"
     }

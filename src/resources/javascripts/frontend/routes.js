@@ -11,5 +11,10 @@ export default [
         path: '/register',
         name: 'Register',
         component: Register
+    },
+    {
+        path: '/register/:code',
+        name: 'RegisterWithCode',
+        component: Register
     }
 ];

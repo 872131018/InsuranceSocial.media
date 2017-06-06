@@ -1,9 +1,9 @@
 <template>
     <div class="w3-section">
-        <input type="checkbox" id="terms"
+        <input class="v-align" type="checkbox" id="terms"
             v-model:checked="checked"
-            v-on:click="$emit('setTerms', checked)">
-        <label for="terms" class="check-box"></label>
+            v-on:change="$emit('setTerms', checked)">
+        <label class="v-align check-box" for="terms"></label>
         <span class="w3-large w3-margin-left">Terms of Service</span>
     </div>
 </template>

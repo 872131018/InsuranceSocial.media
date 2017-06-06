@@ -15,13 +15,16 @@
 
     export default {
         props: {
+            code: {
+                type: String
+            },
             label: {
                 type: String
             }
         },
         data() {
             return {
-                discount: '',
+                discount: this.code,
                 isValid: false
             }
         },

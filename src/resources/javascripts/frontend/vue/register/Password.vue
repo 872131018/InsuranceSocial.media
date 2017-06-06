@@ -6,6 +6,7 @@
             <Check v-if="isValid"></Check>
             <Cross v-else></Cross>
         <label class="w3-show-block">{{ label }}</label>
+        <span class="w3-small">Must contain min 8 characters, 1 capital letter, 1 special character</span>
     </div>
 </template>
 
