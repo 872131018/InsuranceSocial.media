@@ -13,6 +13,11 @@
     <script>
         window.base_url = "{{ url('/') }}"
     </script>
+    @if (isset($data))
+        <script>
+            window.data = {!! $data !!}
+        </script>
+    @endif
 </head>
 <body>
     <div id="app">

@@ -256,6 +256,16 @@ hr{border:0;border-top:1px solid #eee;margin:20px 0}
 .register-logo {
     height: 50px;
 }
+.corporate {
+    margin: auto;
+    width: 50%;
+    min-width: 350px;
+    background: rgba(241, 241, 241, 0.8);
+
+}
+.corporate-logo {
+    height: 250px;
+}
 
 /* Checkmark style starts */
 @-moz-keyframes dothabottomcheck {

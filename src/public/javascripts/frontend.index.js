@@ -12194,6 +12194,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__vue_login_Login___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__vue_login_Login__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__vue_register_Register__ = __webpack_require__(63);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__vue_register_Register___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__vue_register_Register__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__vue_corporate_Corporate__ = __webpack_require__(84);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__vue_corporate_Corporate___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__vue_corporate_Corporate__);
+
 
 
 
@@ -12209,6 +12212,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     path: '/register/:code',
     name: 'RegisterWithCode',
     component: __WEBPACK_IMPORTED_MODULE_1__vue_register_Register___default.a
+}, {
+    path: '/corporate/:code',
+    name: 'Corporate',
+    component: __WEBPACK_IMPORTED_MODULE_2__vue_corporate_Corporate___default.a
 }]);
 
 /***/ }),
@@ -13333,7 +13340,7 @@ if (false) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
-    staticClass: "w3-section"
+    staticClass: "w3-section w3-padding-32"
   }, [_c('input', {
     directives: [{
       name: "model",
@@ -15962,6 +15969,143 @@ function isSlowBuffer (obj) {
   return typeof obj.readFloatLE === 'function' && typeof obj.slice === 'function' && isBuffer(obj.slice(0, 0))
 }
 
+
+/***/ }),
+/* 83 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            logo: window.data.logo,
+            company: window.data.company,
+            features: window.data.features
+        };
+    },
+
+    methods: {
+        //
+    },
+    components: {
+        //
+    }
+});
+
+/***/ }),
+/* 84 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Component = __webpack_require__(0)(
+  /* script */
+  __webpack_require__(83),
+  /* template */
+  __webpack_require__(85),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+Component.options.__file = "/home/johnhuffman/InsuranceSocial.media/src/resources/javascripts/frontend/vue/corporate/Corporate.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] Corporate.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-476ee9be", Component.options)
+  } else {
+    hotAPI.reload("data-v-476ee9be", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 85 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "w3-container w3-light-grey w3-padding-32"
+  }, [_c('div', {
+    staticClass: "w3-container w3-card-2 corporate"
+  }, [_c('div', {
+    staticClass: "w3-container w3-padding-32 w3-row"
+  }, [_c('img', {
+    staticClass: "w3-col l6 m12 s12",
+    attrs: {
+      "src": _vm.logo
+    }
+  }), _vm._v(" "), _c('h3', {
+    staticClass: "w3-col l6 m12 s12 w3-padding-32 w3-center"
+  }, [_vm._v("Insurance Social Media is proud to work with you and your team at " + _vm._s(_vm.company))])]), _vm._v(" "), _c('div', {
+    staticClass: "w3-container w3-padding-32"
+  }, [_c('h3', [_vm._v("Plan Description")]), _vm._v(" "), _c('p', [_vm._v("As part of your company package, your plan includes:")]), _vm._v(" "), _c('ul', {
+    staticClass: "w3-ul w3-border"
+  }, _vm._l((_vm.features), function(feature) {
+    return _c('li', {
+      staticClass: "w3-padding-16"
+    }, [_c('i', {
+      staticClass: "fa fa-check w3-margin-right w3-text-green"
+    }), _vm._v(_vm._s(feature) + "\n                ")])
+  }))]), _vm._v(" "), _c('div', {
+    staticClass: "w3-container w3-padding-32"
+  }, [_c('p', {
+    staticClass: "w3-large"
+  }, [_vm._v("We look forward to working with you. Please click register to finish registration.")]), _vm._v(" "), _c('router-link', {
+    staticClass: "w3-button w3-text-white secondary",
+    attrs: {
+      "to": {
+        name: 'RegisterWithCode',
+        params: {
+          code: _vm.$route.params.code
+        }
+      }
+    }
+  }, [_vm._v("Register\n           ")])], 1)])])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-476ee9be", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

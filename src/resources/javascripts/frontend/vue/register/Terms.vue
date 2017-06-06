@@ -1,5 +1,5 @@
 <template>
-    <div class="w3-section">
+    <div class="w3-section w3-padding-32">
         <input class="v-align" type="checkbox" id="terms"
             v-model:checked="checked"
             v-on:change="$emit('setTerms', checked)">
