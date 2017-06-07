@@ -1,14 +1,17 @@
 <template>
     <div>
         <Navigation></Navigation>
-        <router-view></router-view>
+        <div class="w3-container w3-light-grey w3-padding-32">
+            <Branding></Branding>
+            <router-view></router-view>
+        </div>
         <Foot></Foot>
     </div>
 </template>
 
 <script>
     import Navigation from './navigation/Navigation';
-    import Login from './login/Login';
+    import Branding from './Branding';
     import Foot from './foot/Foot';
 
     export default {
@@ -17,7 +20,7 @@
         },
         components: {
             Navigation,
-            Login,
+            Branding,
             Foot
         }
     }

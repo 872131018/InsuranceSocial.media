@@ -246,7 +246,7 @@ hr{border:0;border-top:1px solid #eee;margin:20px 0}
 .login-logo {
     height: 50px;
 }
-.register-form {
+.form {
     margin: auto;
     width: 50%;
     min-width: 400px;
@@ -255,13 +255,6 @@ hr{border:0;border-top:1px solid #eee;margin:20px 0}
 }
 .register-logo {
     height: 50px;
-}
-.corporate {
-    margin: auto;
-    width: 50%;
-    min-width: 400px;
-    background: rgba(241, 241, 241, 0.8);
-
 }
 .corporate-logo {
     height: 250px;

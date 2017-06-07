@@ -1,14 +1,12 @@
 <template>
-    <div class="w3-container w3-light-grey w3-padding-32">
-        <div class="w3-container w3-padding-32 w3-left">
-            <img class="w3-margin-right login-logo" src="/images/talk-bubble-color.png">
-            <span class="w3-xlarge">Insurance Social Media</span>
-        </div>
-        <div class="w3-container w3-card-2 corporate">
-            <div class="w3-container w3-padding-32 w3-row">
-                <img class="w3-col l6 m12 s12" v-bind:src="logo">
-                <h3 class="w3-col l6 m12 s12 w3-padding-32 w3-center">Insurance Social Media is proud to work with you and your team at {{ company }}</h3>
-            </div>
+    <div class="w3-container w3-card-2 form">
+        <h3>Add additional features to your plan</h3>
+        <div class="w3-container">
+            <input class="v-align" type="checkbox" id="terms"
+                v-model:checked="checked"
+                v-on:change="$emit('setTerms', checked)">
+            <label class="v-align check-box" for="terms"></label>
+            <span class="w3-large w3-margin-left">Terms of Service</span>
         </div>
     </div>
 </template>
@@ -17,9 +15,7 @@
     export default {
         data() {
             return {
-                logo: window.data.logo,
-                company: window.data.company,
-                features: window.data.features
+                checked: false
             }
         },
         methods: {

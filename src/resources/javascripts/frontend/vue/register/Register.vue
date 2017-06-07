@@ -1,38 +1,30 @@
 <template>
-    <div class="w3-container w3-light-grey w3-padding-32">
-        <div class="w3-container w3-card-2 register-form">
-            <div class="w3-container w3-padding-32 w3-left">
-                <img class="w3-margin-right login-logo" src="/images/talk-bubble-color.png">
-                <span class="w3-xlarge">Insurance Social Media</span>
-            </div>
-            <div class="w3-container w3-padding-32">
-                <h3>Create a New Account</h3>
-                <Name v-bind:label="'Full Name'"
-                    v-on:setName="setName($event)">
-                </Name>
-                <Email v-bind:label="'Email'"
-                    v-on:setEmail="setEmail($event)">
-                </Email>
-                <Email v-bind:label="'Confirm Email'"
-                    v-on:setEmail="confirmEmail($event)">
-                </Email>
-                <Password v-bind:label="'Password'"
-                    v-on:setPassword="setPassword($event)">
-                </Password>
-                <Password v-bind:label="'Confirm Password'"
-                    v-on:setPassword="confirmPassword($event)">
-                </Password>
-                <Discount v-bind:label="'Discount Code'"
-                    v-bind:code="properties.discount"
-                    v-on:setDiscount="setDiscount($event)">
-                </Discount>
-                <Terms v-on:setTerms="setTerms($event)"></Terms>
-                <Errors v-bind:errors="errors"></Errors>
-                <button class="w3-button w3-text-white primary"
-                    v-on:click="submit()">Register
-                </button>
-            </div>
-        </div>
+    <div class="w3-container w3-card-2 form">
+        <h3>Create a New Account</h3>
+        <Name v-bind:label="'Full Name'"
+            v-on:setName="setName($event)">
+        </Name>
+        <Email v-bind:label="'Email'"
+            v-on:setEmail="setEmail($event)">
+        </Email>
+        <Email v-bind:label="'Confirm Email'"
+            v-on:setEmail="confirmEmail($event)">
+        </Email>
+        <Password v-bind:label="'Password'"
+            v-on:setPassword="setPassword($event)">
+        </Password>
+        <Password v-bind:label="'Confirm Password'"
+            v-on:setPassword="confirmPassword($event)">
+        </Password>
+        <Discount v-bind:label="'Discount Code'"
+            v-bind:code="properties.discount"
+            v-on:setDiscount="setDiscount($event)">
+        </Discount>
+        <Terms v-on:setTerms="setTerms($event)"></Terms>
+        <Errors v-bind:errors="errors"></Errors>
+        <button class="w3-button w3-text-white primary"
+            v-on:click="submit()">Register
+        </button>
     </div>
 </template>
 
