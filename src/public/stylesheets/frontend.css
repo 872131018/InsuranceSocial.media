@@ -249,7 +249,7 @@ hr{border:0;border-top:1px solid #eee;margin:20px 0}
 .register-form {
     margin: auto;
     width: 50%;
-    min-width: 350px;
+    min-width: 400px;
     background: rgba(241, 241, 241, 0.8);
 
 }
@@ -259,7 +259,7 @@ hr{border:0;border-top:1px solid #eee;margin:20px 0}
 .corporate {
     margin: auto;
     width: 50%;
-    min-width: 350px;
+    min-width: 400px;
     background: rgba(241, 241, 241, 0.8);
 
 }
