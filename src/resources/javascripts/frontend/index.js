@@ -5,7 +5,11 @@ window.axios = require('axios');
 axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 axios.defaults.headers.common['X-CSRF-TOKEN'] = document.head.querySelector('meta[name="csrf-token"]').content;
 
-window.Vue = require('vue');
+/**
+* Store Logic
+*/
+import Store from './root.redux';
+window.store = Store;
 
 /**
 * Application Vue logic

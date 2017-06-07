@@ -27,11 +27,7 @@
                     v-on:setDiscount="setDiscount($event)">
                 </Discount>
                 <Terms v-on:setTerms="setTerms($event)"></Terms>
-                <ul class="w3-ul"
-                    v-if="errors.length">
-                    <li class="w3-text-red"
-                        v-for="error in errors">{{ error }}</li>
-                </ul>
+                <Errors v-bind:errors="errors"></Errors>
                 <button class="w3-button w3-text-white primary"
                     v-on:click="submit()">Register
                 </button>
@@ -46,6 +42,7 @@
     import Password from './Password';
     import Discount from './Discount';
     import Terms from './Terms';
+    import Errors from './Errors';
 
     export default {
         data() {
@@ -106,7 +103,14 @@
                 }
                 if(this.errors.length == 0) {
                     axios.post(window.base_url + '/register', this.properties).then(response => {
-                        console.log(response)
+                        let user = {
+                            id: response.data.id,
+                            name: response.data.name,
+                            email: response.data.email,
+                            api_token: response.data.api_token
+                        };
+                        store.dispatch({ type: 'SET_USER', data: user });
+                        this.$router.push('/add-features');
                     });
                 }
             }
@@ -116,7 +120,8 @@
             Email,
             Password,
             Discount,
-            Terms
+            Terms,
+            Errors
         }
     }
 </script>

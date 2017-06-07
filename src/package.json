@@ -12,6 +12,7 @@
   "dependencies": {
     "axios": "latest",
     "laravel-mix": "latest",
+    "redux": "^3.6.0",
     "vue": "latest",
     "vue-router": "latest",
     "w3-css": "latest"

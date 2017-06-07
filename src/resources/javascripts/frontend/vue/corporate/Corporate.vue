@@ -29,10 +29,17 @@
     export default {
         data() {
             return {
-                logo: window.data.logo,
-                company: window.data.company,
-                features: window.data.features
+                logo: '',
+                company: '',
+                features: []
             }
+        },
+        mounted() {
+            axios.get(window.base_url + '/corporate/' + this.$route.params.code).then(response => {
+                this.logo = response.data.logo;
+                this.company = response.data.company;
+                this.features = response.data.features;
+            });
         },
         methods: {
             //

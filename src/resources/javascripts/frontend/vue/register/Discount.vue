@@ -28,6 +28,9 @@
                 isValid: false
             }
         },
+        mounted() {
+                this.validate();
+        },
         methods: {
             validate() {
                 if(this.discount != '') {
