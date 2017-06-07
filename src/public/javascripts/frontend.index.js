@@ -2993,11 +2993,31 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
-            checked: false
+            selected: false,
+            features: ['1', '2', '3']
         };
     },
 
@@ -4701,48 +4721,82 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('input', {
     directives: [{
       name: "model",
-      rawName: "v-model:checked",
-      value: (_vm.checked),
-      expression: "checked",
-      arg: "checked"
+      rawName: "v-model",
+      value: (_vm.selected),
+      expression: "selected"
     }],
     staticClass: "v-align",
     attrs: {
-      "type": "checkbox",
-      "id": "terms"
+      "type": "radio",
+      "id": "plana"
     },
     domProps: {
-      "checked": Array.isArray(_vm.checked) ? _vm._i(_vm.checked, null) > -1 : (_vm.checked)
+      "value": 'plana',
+      "checked": _vm._q(_vm.selected, 'plana')
     },
     on: {
       "change": function($event) {
         _vm.$emit('setTerms', _vm.checked)
       },
       "__c": function($event) {
-        var $$a = _vm.checked,
-          $$el = $event.target,
-          $$c = $$el.checked ? (true) : (false);
-        if (Array.isArray($$a)) {
-          var $$v = null,
-            $$i = _vm._i($$a, $$v);
-          if ($$c) {
-            $$i < 0 && (_vm.checked = $$a.concat($$v))
-          } else {
-            $$i > -1 && (_vm.checked = $$a.slice(0, $$i).concat($$a.slice($$i + 1)))
-          }
-        } else {
-          _vm.checked = $$c
-        }
+        _vm.selected = 'plana'
       }
     }
   }), _vm._v(" "), _c('label', {
     staticClass: "v-align check-box",
     attrs: {
-      "for": "terms"
+      "for": "plana"
     }
   }), _vm._v(" "), _c('span', {
     staticClass: "w3-large w3-margin-left"
-  }, [_vm._v("Terms of Service")])])])
+  }, [_vm._v("Plan A")]), _vm._v(" "), _c('ul', {
+    staticClass: "w3-ul w3-border"
+  }, _vm._l((_vm.features), function(feature) {
+    return _c('li', {
+      staticClass: "w3-padding-16"
+    }, [_c('i', {
+      staticClass: "fa fa-check w3-margin-right w3-text-green"
+    }), _vm._v(_vm._s(feature) + "\n            ")])
+  })), _vm._v(" "), _c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.selected),
+      expression: "selected"
+    }],
+    staticClass: "v-align",
+    attrs: {
+      "type": "radio",
+      "id": "planb"
+    },
+    domProps: {
+      "value": 'planb',
+      "checked": _vm._q(_vm.selected, 'planb')
+    },
+    on: {
+      "change": function($event) {
+        _vm.$emit('setTerms', _vm.checked)
+      },
+      "__c": function($event) {
+        _vm.selected = 'planb'
+      }
+    }
+  }), _vm._v(" "), _c('label', {
+    staticClass: "v-align check-box",
+    attrs: {
+      "for": "planb"
+    }
+  }), _vm._v(" "), _c('span', {
+    staticClass: "w3-large w3-margin-left"
+  }, [_vm._v("Plan B")]), _vm._v(" "), _c('ul', {
+    staticClass: "w3-ul w3-border"
+  }, _vm._l((_vm.features), function(feature) {
+    return _c('li', {
+      staticClass: "w3-padding-16"
+    }, [_c('i', {
+      staticClass: "fa fa-check w3-margin-right w3-text-green"
+    }), _vm._v(_vm._s(feature) + "\n            ")])
+  }))])])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
@@ -5130,10 +5184,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('input', {
     directives: [{
       name: "model",
-      rawName: "v-model:checked",
+      rawName: "v-model",
       value: (_vm.checked),
-      expression: "checked",
-      arg: "checked"
+      expression: "checked"
     }],
     staticClass: "v-align",
     attrs: {
