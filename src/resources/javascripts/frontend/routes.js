@@ -1,7 +1,7 @@
 import Login from './vue/login/Login';
 import Register from './vue/register/Register';
 import Corporate from './vue/corporate/Corporate';
-import Upsell from './vue/upsell/Upsell';
+import Select from './vue/select/Select';
 import SocialMedia from './vue/social-media/SocialMedia';
 
 export default [
@@ -26,9 +26,9 @@ export default [
         component: Register
     },
     {
-        path: '/add-features',
-        name: 'Upsell',
-        component: Upsell
+        path: '/select',
+        name: 'Select',
+        component: Select
     },
     {
         path: '/social-media',

@@ -6,23 +6,21 @@
         </div>
         <div class="w3-container w3-margin">
             <input class="v-align" type="checkbox" id="facebook"
-                v-model="facebook"
-                v-on:change="$emit('setFacebook', facebook)">
+                v-model="properties.facebook">
             <label class="v-align check-box" for="facebook"></label>
             <span class="w3-large w3-margin-left">Facebook</span>
         </div>
         <div class="w3-container w3-margin">
             <input class="v-align" type="checkbox" id="twitter"
-                v-model="twitter"
-                v-on:change="$emit('setTwitter', twitter)">
+                v-model="properties.twitter">
             <label class="v-align check-box" for="twitter"></label>
             <span class="w3-large w3-margin-left">Twitter</span>
         </div>
         <div class="w3-container w3-margin">
             <h5 class="w3-large">We look forward to working with you. Please click register to finish setting up your account.</h5>
-            <router-link class="w3-button w3-text-white primary"
-               v-bind:to="{ name: 'Payment' }">Register
-           </router-link>
+            <button class="w3-button w3-text-white primary"
+                v-on:click="update()">Continue
+            </button>
         </div>
     </div>
 </template>
@@ -36,12 +34,17 @@
         },
         data() {
             return {
-                facebook: true,
-                twitter: true
+                properties: {
+                    facebook: true,
+                    twitter: true
+                }
             }
         },
         methods: {
-            //
+            update() {
+                store.dispatch({ type: 'SET_SOCIAL_MEDIA', data: this.properties });
+                this.$router.push('/payment');
+            }
         },
         components: {
             //

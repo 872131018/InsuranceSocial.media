@@ -27,7 +27,7 @@
             <Terms v-on:setTerms="setTerms($event)"></Terms>
             <Errors v-bind:errors="errors"></Errors>
             <button class="w3-button w3-text-white primary"
-                v-on:click="submit()">Register
+                v-on:click="update()">Continue
             </button>
         </div>
     </div>
@@ -83,7 +83,7 @@
             setTerms(terms) {
                 this.properties.terms = terms;
             },
-            submit() {
+            update() {
                 this.errors = [];
                 if(this.properties.name == '') {
                     this.errors.push('You must enter your full name.');
@@ -113,7 +113,7 @@
                         };
                         store.dispatch({ type: 'SET_USER', data: user });
                         store.dispatch({ type: 'SET_CODE', data: this.properties.code });
-                        this.$router.push('/add-features');
+                        this.$router.push('/select');
                     });
                 }
             }

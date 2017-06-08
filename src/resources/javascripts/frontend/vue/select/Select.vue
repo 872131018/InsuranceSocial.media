@@ -35,7 +35,7 @@
         },
         methods: {
             setPlan(plan) {
-                store.dispatch({ type: 'SET_PLAN', data: this.plan });
+                store.dispatch({ type: 'SET_PLAN', data: plan });
             }
         },
         components: {
