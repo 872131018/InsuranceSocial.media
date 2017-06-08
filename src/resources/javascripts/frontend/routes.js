@@ -2,6 +2,7 @@ import Login from './vue/login/Login';
 import Register from './vue/register/Register';
 import Corporate from './vue/corporate/Corporate';
 import Upsell from './vue/upsell/Upsell';
+import SocialMedia from './vue/social-media/SocialMedia';
 
 export default [
     {
@@ -28,5 +29,15 @@ export default [
         path: '/add-features',
         name: 'Upsell',
         component: Upsell
+    },
+    {
+        path: '/social-media',
+        name: 'SocialMedia',
+        component: SocialMedia
+    },
+    {
+        path: '/payment',
+        name: 'Payment',
+        component: Login
     }
 ];

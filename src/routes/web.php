@@ -128,3 +128,11 @@ Route::get('/register/{code?}', function ($code = '') {
         return view('layouts.frontend.app');
     }
   });
+/**
+ * Deliver the homepage
+ *
+ * @return \Illuminate\Http\Response
+ */
+Route::get('/social-media', function () {
+    return view('layouts.frontend.app');
+});

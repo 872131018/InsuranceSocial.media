@@ -20,10 +20,10 @@
             <Password v-bind:label="'Confirm Password'"
                 v-on:setPassword="confirmPassword($event)">
             </Password>
-            <Discount v-bind:label="'Discount Code'"
-                v-bind:code="properties.discount"
-                v-on:setDiscount="setDiscount($event)">
-            </Discount>
+            <Code v-bind:label="'Discount Code'"
+                v-bind:code="properties.code"
+                v-on:setCode="setCode($event)">
+            </Code>
             <Terms v-on:setTerms="setTerms($event)"></Terms>
             <Errors v-bind:errors="errors"></Errors>
             <button class="w3-button w3-text-white primary"
@@ -37,11 +37,16 @@
     import Name from './inputs/Name';
     import Email from './inputs/Email';
     import Password from './inputs/Password';
-    import Discount from './inputs/Discount';
+    import Code from './inputs/Code';
     import Terms from './inputs/Terms';
     import Errors from './Errors';
 
     export default {
+        mounted() {
+            if(this.$route.params.code) {
+                this.code = this.$route.params.code;
+            }
+        },
         data() {
             return {
                 properties: {
@@ -50,7 +55,7 @@
                     email_confirmation: '',
                     password: '',
                     password_confirmation: '',
-                    discount: this.$route.params.code,
+                    code: '',
                     terms: false,
                 },
                 errors: []
@@ -72,8 +77,8 @@
             confirmPassword(password) {
                 this.properties.password_confirmation = password;
             },
-            setDiscount(discount) {
-                this.properties.discount = discount;
+            setCode(code) {
+                this.properties.code = code;
             },
             setTerms(terms) {
                 this.properties.terms = terms;
@@ -104,9 +109,10 @@
                             id: response.data.id,
                             name: response.data.name,
                             email: response.data.email,
-                            api_token: response.data.api_token
+                            api_token: response.data.api_token,
                         };
                         store.dispatch({ type: 'SET_USER', data: user });
+                        store.dispatch({ type: 'SET_CODE', data: this.properties.code });
                         this.$router.push('/add-features');
                     });
                 }
@@ -116,7 +122,7 @@
             Name,
             Email,
             Password,
-            Discount,
+            Code,
             Terms,
             Errors
         }

@@ -12,8 +12,8 @@
         <div class="w3-container w3-margin">
             <h5 class="w3-large">Next you will select your social media preferences.</h5>
             <router-link class="w3-button w3-text-white primary"
-               v-bind:to="{ name: 'RegisterWithCode', params: { code: $route.params.code } }">Next
-           </router-link>
+                v-bind:to="{ name: 'SocialMedia' }">Next
+            </router-link>
         </div>
     </div>
 </template>
@@ -35,7 +35,7 @@
         },
         methods: {
             setPlan(plan) {
-                console.log(plan)
+                store.dispatch({ type: 'SET_PLAN', data: this.plan });
             }
         },
         components: {

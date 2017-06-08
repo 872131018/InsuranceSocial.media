@@ -24,18 +24,18 @@
         },
         data() {
             return {
-                discount: this.code,
+                discount: '',
                 isValid: false
             }
         },
         mounted() {
-                this.validate();
+            this.validate();
         },
         methods: {
             validate() {
                 if(this.discount != '') {
                     this.isValid = true;
-                    this.$emit('setDiscount', this.discount);
+                    this.$emit('setCode', this.discount);
                 } else {
                     this.isValid = false;
                 }
