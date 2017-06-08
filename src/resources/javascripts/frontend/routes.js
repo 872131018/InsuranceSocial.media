@@ -10,6 +10,11 @@ export default [
         component: Login
     },
     {
+        path: '/corporate/:code',
+        name: 'Corporate',
+        component: Corporate
+    },
+    {
         path: '/register',
         name: 'Register',
         component: Register
@@ -18,11 +23,6 @@ export default [
         path: '/register/:code',
         name: 'RegisterWithCode',
         component: Register
-    },
-    {
-        path: '/corporate/:code',
-        name: 'Corporate',
-        component: Corporate
     },
     {
         path: '/add-features',

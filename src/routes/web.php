@@ -88,6 +88,43 @@ Route::get('/register/{code?}', function ($code = '') {
   *
   * @return \Illuminate\Http\Response
   */
-  Route::get('/add-features', function () {
-     return view('layouts.frontend.app');
+  Route::get('/add-features', function (Request $request) {
+    if($request->wantsJson()) {
+        $data = [
+            'Trial Plan' => [
+                'Insert free plan specifics here.',
+                'Insert free plan specifics here.',
+                'Insert free plan specifics here.'
+            ],
+            'Essential Plan' => [
+                'Facebook and Twitter account set-up, if necessary',
+                '6 posts/week (3 each to Facebook and Twitter)',
+                'Personalized content, tailored to your community, interests, products and companies – edited for optimum engagement',
+                'Automatic notifications when friends or followers react to your posts',
+                '24/7 access to analytics on your social media reach and engagement'
+            ],
+            'Standard Plan' => [
+                'All the benefits of the Essential Plan',
+                '10 posts/week (5 each to Facebook and Twitter)',
+                'PLUS, 4 email campaigns per year to help grow your Facebook and Twitter audience',
+                'Up to 1,500 names per campaign'
+            ],
+            'Concierge Plan' => [
+                'Personal Account Concierge crafts unique posts and interacts with your friends and followers',
+                'Includes personal contact and consulting as we build your social media presence, relationships and engagement',
+                '4 email campaigns per year',
+                'Up to 5,000 names per campaign'
+            ],
+            'Ask about Enterprise Plans for agencies and marketing organizations' => [
+                'Special pricing for agent groups',
+                'Turnkey launch, onboarding and account set-up tools',
+                'Enterprise Dashboard provides detailed, per-agent analytics',
+                'Agent training and webinars'
+            ]
+        ];
+
+        return response()->json($data);
+    } else {
+        return view('layouts.frontend.app');
+    }
   });

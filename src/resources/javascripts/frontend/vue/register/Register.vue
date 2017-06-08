@@ -34,11 +34,11 @@
 </template>
 
 <script>
-    import Name from './Name';
-    import Email from './Email';
-    import Password from './Password';
-    import Discount from './Discount';
-    import Terms from './Terms';
+    import Name from './inputs/Name';
+    import Email from './inputs/Email';
+    import Password from './inputs/Password';
+    import Discount from './inputs/Discount';
+    import Terms from './inputs/Terms';
     import Errors from './Errors';
 
     export default {

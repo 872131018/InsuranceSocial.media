@@ -15,7 +15,7 @@
 </template>
 
 <script>
-    import Features from './Features';
+    import Features from '../Features';
 
     export default {
         data() {

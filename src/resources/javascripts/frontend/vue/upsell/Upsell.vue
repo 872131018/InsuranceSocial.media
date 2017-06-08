@@ -1,50 +1,45 @@
 <template>
     <div class="w3-container w3-card-2 form">
-        <h3>Add additional features to your plan</h3>
-        <div class="w3-container">
-            <input class="v-align" type="radio" id="plana"
-                v-bind:value="'plana'"
-                v-model="selected"
-                v-on:change="$emit('setTerms', checked)">
-            <label class="v-align check-box" for="plana"></label>
-            <span class="w3-large w3-margin-left">Plan A</span>
-            <ul class="w3-ul w3-border">
-                <li class="w3-padding-16"
-                    v-for="feature in features">
-                    <i class="fa fa-check w3-margin-right w3-text-green"></i>{{ feature }}
-                </li>
-            </ul>
-            <input class="v-align" type="radio" id="planb"
-                v-bind:value="'planb'"
-                v-model="selected"
-                v-on:change="$emit('setTerms', checked)">
-            <label class="v-align check-box" for="planb"></label>
-            <span class="w3-large w3-margin-left">Plan B</span>
-            <ul class="w3-ul w3-border">
-                <li class="w3-padding-16"
-                    v-for="feature in features">
-                    <i class="fa fa-check w3-margin-right w3-text-green"></i>{{ feature }}
-                </li>
-            </ul>
+        <div class="w3-container w3-margin">
+            <h3>Plan Selection</h3>
+            <h5>You may add additional features to your account.</h5>
+        </div>
+        <div class="w3-container w3-margin">
+            <Plans v-bind:plans="plans"
+                v-on:setPlan="setPlan($event)">
+            </Plans>
+        </div>
+        <div class="w3-container w3-margin">
+            <h5 class="w3-large">Next you will select your social media preferences.</h5>
+            <router-link class="w3-button w3-text-white primary"
+               v-bind:to="{ name: 'RegisterWithCode', params: { code: $route.params.code } }">Next
+           </router-link>
         </div>
     </div>
 </template>
 
 <script>
+    import Plans from './Plans';
+
     export default {
         data() {
             return {
-                selected: false,
-                features: [
-                    '1', '2', '3'
-                ]
+                plans: {}
             }
         },
+        mounted() {
+            //axios.get(window.base_url + '/add-features/' + this.$route.params.code).then(response => {
+            axios.get(window.base_url + '/add-features').then(response => {
+                this.plans = response.data;
+            });
+        },
         methods: {
-            //
+            setPlan(plan) {
+                console.log(plan)
+            }
         },
         components: {
-            //
+            Plans
         }
     }
 </script>
