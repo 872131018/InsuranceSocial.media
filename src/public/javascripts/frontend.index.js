@@ -2270,6 +2270,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Features__ = __webpack_require__(115);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Features___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Features__);
 //
 //
 //
@@ -2286,11 +2288,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
+
+
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -2310,11 +2309,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         });
     },
 
-    methods: {
-        //
-    },
     components: {
-        //
+        Features: __WEBPACK_IMPORTED_MODULE_0__Features___default.a
     }
 });
 
@@ -2827,6 +2823,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Terms___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__Terms__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__Errors__ = __webpack_require__(85);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__Errors___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__Errors__);
+//
+//
+//
+//
+//
 //
 //
 //
@@ -4539,7 +4540,7 @@ if (false) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', [_c('Navigation'), _vm._v(" "), _c('div', {
-    staticClass: "w3-container w3-light-grey w3-padding-32"
+    staticClass: "w3-container w3-padding-32 bgimg2"
   }, [_c('Branding'), _vm._v(" "), _c('router-view')], 1), _vm._v(" "), _c('Foot')], 1)
 },staticRenderFns: []}
 module.exports.render._withStripped = true
@@ -4581,9 +4582,7 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "w3-section"
-  }, [_c('input', {
+  return _c('div', [_c('input', {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -4629,21 +4628,17 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   return _c('div', {
     staticClass: "w3-container w3-card-2 form"
   }, [_c('div', {
-    staticClass: "w3-container w3-padding-32"
-  }, [_c('h3', [_vm._v("Plan Description")]), _vm._v(" "), _c('p', [_vm._v("As part of your company package, your plan includes:")]), _vm._v(" "), _c('ul', {
-    staticClass: "w3-ul w3-border"
-  }, _vm._l((_vm.features), function(feature) {
-    return _c('li', {
-      staticClass: "w3-padding-16"
-    }, [_c('i', {
-      staticClass: "fa fa-check w3-margin-right w3-text-green"
-    }), _vm._v(_vm._s(feature) + "\n            ")])
-  }))]), _vm._v(" "), _c('div', {
-    staticClass: "w3-container w3-padding-32"
-  }, [_c('p', {
+    staticClass: "w3-container w3-margin"
+  }, [_c('h3', [_vm._v("Plan Description")]), _vm._v(" "), _c('h5', [_vm._v("As part of your company package, your plan includes:")]), _vm._v(" "), _c('Features', {
+    attrs: {
+      "features": _vm.features
+    }
+  })], 1), _vm._v(" "), _c('div', {
+    staticClass: "w3-container w3-margin"
+  }, [_c('h5', {
     staticClass: "w3-large"
-  }, [_vm._v("We look forward to working with you. Please click register to finish registration.")]), _vm._v(" "), _c('router-link', {
-    staticClass: "w3-button w3-text-white secondary",
+  }, [_vm._v("We look forward to working with you. Please click register to finish setting up your account.")]), _vm._v(" "), _c('router-link', {
+    staticClass: "w3-button w3-text-white primary",
     attrs: {
       "to": {
         name: 'RegisterWithCode',
@@ -4667,9 +4662,7 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "w3-section"
-  }, [_c('input', {
+  return _c('div', [_c('input', {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -4828,9 +4821,7 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "w3-section"
-  }, [_c('input', {
+  return _c('div', [_c('input', {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -4909,7 +4900,7 @@ if (false) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return (_vm.errors.length) ? _c('ul', {
-    staticClass: "w3-section w3-ul"
+    staticClass: "w3-ul"
   }, _vm._l((_vm.errors), function(error) {
     return _c('li', {
       staticClass: "w3-text-red"
@@ -5024,9 +5015,7 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "w3-section"
-  }, [_c('input', {
+  return _c('div', [_c('input', {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -5092,7 +5081,9 @@ if (false) {
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "w3-container w3-card-2 form"
-  }, [_c('h3', [_vm._v("Create a New Account")]), _vm._v(" "), _c('Name', {
+  }, [_vm._m(0), _vm._v(" "), _c('div', {
+    staticClass: "w3-container w3-margin"
+  }, [_c('Name', {
     attrs: {
       "label": 'Full Name'
     },
@@ -5164,8 +5155,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.submit()
       }
     }
-  }, [_vm._v("Register\n    ")])], 1)
-},staticRenderFns: []}
+  }, [_vm._v("Register\n        ")])], 1)])
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "w3-container w3-margin"
+  }, [_c('h3', [_vm._v("Create an Account")]), _vm._v(" "), _c('h5', [_vm._v("Please complete required fields to complete registration.")])])
+}]}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
@@ -5180,7 +5175,7 @@ if (false) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
-    staticClass: "w3-section w3-padding"
+    staticClass: "w3-padding-32"
   }, [_c('input', {
     directives: [{
       name: "model",
@@ -17507,6 +17502,87 @@ module.exports = function(module) {
 
 module.exports = __webpack_require__(16);
 
+
+/***/ }),
+/* 114 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: {
+        features: {
+            type: Array
+        }
+    }
+});
+
+/***/ }),
+/* 115 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Component = __webpack_require__(0)(
+  /* script */
+  __webpack_require__(114),
+  /* template */
+  __webpack_require__(116),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+Component.options.__file = "/home/johnhuffman/InsuranceSocial.media/src/resources/javascripts/frontend/vue/corporate/Features.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] Features.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-38ae7d9e", Component.options)
+  } else {
+    hotAPI.reload("data-v-38ae7d9e", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 116 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('ul', {
+    staticClass: "w3-ul w3-border"
+  }, _vm._l((_vm.features), function(feature) {
+    return _c('li', {
+      staticClass: "w3-padding-16"
+    }, [_c('i', {
+      staticClass: "fa fa-check w3-margin-right w3-text-green"
+    }), _vm._v(_vm._s(feature) + "\n    ")])
+  }))
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-38ae7d9e", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

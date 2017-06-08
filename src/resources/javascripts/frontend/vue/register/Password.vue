@@ -1,5 +1,5 @@
 <template>
-    <div class="w3-section">
+    <div>
         <input class="w3-input w3-show-inline-block" type="password" style="width:80%"
             v-model="password"
             v-on:blur="validate()">

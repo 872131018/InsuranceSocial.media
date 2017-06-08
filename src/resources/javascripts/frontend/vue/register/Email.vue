@@ -1,5 +1,5 @@
 <template>
-    <div class="w3-section">
+    <div>
         <input class="w3-input w3-show-inline-block" type="text" style="width:80%"
             v-model="email"
             v-on:blur="validate()">

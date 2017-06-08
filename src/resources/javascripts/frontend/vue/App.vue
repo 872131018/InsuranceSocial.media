@@ -1,7 +1,7 @@
 <template>
     <div>
         <Navigation></Navigation>
-        <div class="w3-container w3-light-grey w3-padding-32">
+        <div class="w3-container w3-padding-32 bgimg2">
             <Branding></Branding>
             <router-view></router-view>
         </div>

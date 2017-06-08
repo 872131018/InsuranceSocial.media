@@ -1,18 +1,13 @@
 <template>
     <div class="w3-container w3-card-2 form">
-        <div class="w3-container w3-padding-32">
+        <div class="w3-container w3-margin">
             <h3>Plan Description</h3>
-            <p>As part of your company package, your plan includes:</p>
-            <ul class="w3-ul w3-border">
-                <li class="w3-padding-16"
-                    v-for="feature in features">
-                    <i class="fa fa-check w3-margin-right w3-text-green"></i>{{ feature }}
-                </li>
-            </ul>
+            <h5>As part of your company package, your plan includes:</h5>
+            <Features v-bind:features="features"></Features>
         </div>
-        <div class="w3-container w3-padding-32">
-            <p class="w3-large">We look forward to working with you. Please click register to finish registration.</p>
-            <router-link class="w3-button w3-text-white secondary"
+        <div class="w3-container w3-margin">
+            <h5 class="w3-large">We look forward to working with you. Please click register to finish setting up your account.</h5>
+            <router-link class="w3-button w3-text-white primary"
                v-bind:to="{ name: 'RegisterWithCode', params: { code: $route.params.code } }">Register
            </router-link>
         </div>
@@ -20,6 +15,8 @@
 </template>
 
 <script>
+    import Features from './Features';
+
     export default {
         data() {
             return {
@@ -35,11 +32,8 @@
                 this.features = response.data.features;
             });
         },
-        methods: {
-            //
-        },
         components: {
-            //
+            Features
         }
     }
 </script>
