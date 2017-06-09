@@ -88,7 +88,7 @@ Route::get('/register/{code?}', function ($code = '') {
   *
   * @return \Illuminate\Http\Response
   */
-  Route::get('/add-features', function (Request $request) {
+  Route::get('/select', function (Request $request) {
     if($request->wantsJson()) {
         $data = [
             'Trial Plan' => [
@@ -135,4 +135,24 @@ Route::get('/register/{code?}', function ($code = '') {
  */
 Route::get('/social-media', function () {
     return view('layouts.frontend.app');
+});
+/**
+ * Deliver the homepage
+ *
+ * @return \Illuminate\Http\Response
+ */
+Route::get('/payment', function (Request $request) {
+    if($request->wantsJson()) {
+        $data = [
+            'Trial Plan' => '0.00',
+            'Essential Plan' => '39.00',
+            'Standard Plan' => '59.00',
+            'Concierge Plan' => '399.00',
+            'Ask about Enterprise Plans for agencies and marketing organizations' => '1000.00'
+        ];
+
+        return response()->json($data);
+    } else {
+        return view('layouts.frontend.app');
+    }
 });

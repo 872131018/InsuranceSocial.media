@@ -1,10 +1,10 @@
 <template>
     <div>
         <input class="w3-input w3-show-inline-block" type="text" style="width:80%"
-            v-model="discount"
-            v-on:blur="validate()">
-            <Check v-if="isValid"></Check>
-            <Cross v-else></Cross>
+            v-model="code"
+            v-on:change="validate()">
+        <Check v-if="isValid"></Check>
+        <Cross v-else></Cross>
         <label class="w3-show-block">{{ label }}</label>
     </div>
 </template>
@@ -15,27 +15,27 @@
 
     export default {
         props: {
-            code: {
-                type: String
-            },
             label: {
                 type: String
             }
         },
         data() {
             return {
-                discount: '',
+                code: '',
                 isValid: false
             }
         },
         mounted() {
+            if(this.$route.params.code) {
+                this.code = this.$route.params.code;
+            }
             this.validate();
         },
         methods: {
             validate() {
-                if(this.discount != '') {
+                if(this.code != '') {
                     this.isValid = true;
-                    this.$emit('setCode', this.discount);
+                    this.$emit('setCode', this.code);
                 } else {
                     this.isValid = false;
                 }

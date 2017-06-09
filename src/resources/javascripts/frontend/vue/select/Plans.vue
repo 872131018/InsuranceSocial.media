@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="w3-section">
         <div v-for="(features, name) in plans">
             <input class="v-align" type="radio"
                 v-bind:id="getId(name)"
@@ -10,9 +10,7 @@
                 v-bind:for="getId(name)">
             </label>
             <span class="w3-large w3-margin-left">{{ name }}</span>
-            <div class="w3-container w3-padding">
-                <Features v-bind:features="features"></Features>
-            </div>
+            <Features v-bind:features="features"></Features>
         </div>
     </div>
 </template>

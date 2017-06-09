@@ -1,10 +1,10 @@
 <template>
     <div class="w3-container w3-card-2 form">
-        <div class="w3-container w3-margin">
+        <div class="w3-panel">
             <h3>Create an Account</h3>
             <h5>Please complete required fields to complete registration.</h5>
         </div>
-        <div class="w3-container w3-margin">
+        <div class="w3-panel">
             <Name v-bind:label="'Full Name'"
                 v-on:setName="setName($event)">
             </Name>
@@ -21,14 +21,17 @@
                 v-on:setPassword="confirmPassword($event)">
             </Password>
             <Code v-bind:label="'Discount Code'"
-                v-bind:code="properties.code"
                 v-on:setCode="setCode($event)">
             </Code>
             <Terms v-on:setTerms="setTerms($event)"></Terms>
             <Errors v-bind:errors="errors"></Errors>
+        </div>
+        <div class="w3-panel">
+            <h5>Next you will select the types of social media you wish to use.</h5>
             <button class="w3-button w3-text-white primary"
                 v-on:click="update()">Continue
             </button>
+        </div>
         </div>
     </div>
 </template>
@@ -42,11 +45,6 @@
     import Errors from './Errors';
 
     export default {
-        mounted() {
-            if(this.$route.params.code) {
-                this.code = this.$route.params.code;
-            }
-        },
         data() {
             return {
                 properties: {
@@ -110,10 +108,10 @@
                             name: response.data.name,
                             email: response.data.email,
                             api_token: response.data.api_token,
+                            code: this.properties.code
                         };
                         store.dispatch({ type: 'SET_USER', data: user });
-                        store.dispatch({ type: 'SET_CODE', data: this.properties.code });
-                        this.$router.push('/select');
+                        this.$router.push({ name: 'Select' });
                     });
                 }
             }

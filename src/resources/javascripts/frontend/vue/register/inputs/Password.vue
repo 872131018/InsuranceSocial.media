@@ -1,10 +1,10 @@
 <template>
-    <div>
+    <div class="w3-section">
         <input class="w3-input w3-show-inline-block" type="password" style="width:80%"
             v-model="password"
-            v-on:blur="validate()">
-            <Check v-if="isValid"></Check>
-            <Cross v-else></Cross>
+            v-on:change="validate()">
+        <Check v-if="isValid"></Check>
+        <Cross v-else></Cross>
         <label class="w3-show-block">{{ label }}</label>
         <span class="w3-small">Must contain min 8 characters, 1 capital letter, 1 special character</span>
     </div>

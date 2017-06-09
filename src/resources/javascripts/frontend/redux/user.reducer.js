@@ -4,7 +4,9 @@ const initialState = {
     email: '',
     api_token: '',
     code: '',
-    plan: ''
+    plan: '',
+    facebook: false,
+    twitter: false
 };
 
 module.exports = function(user = initialState, action) {
@@ -13,11 +15,12 @@ module.exports = function(user = initialState, action) {
             //Lockr.set('FrontendContents', action.data);
             user = action.data;
             break;
-        case 'SET_CODE':
-            user.code = action.data;
-            break;
         case 'SET_PLAN':
             user.plan = action.data;
+            break;
+        case 'SET_SOCIAL_MEDIA':
+            user.facebook = action.data.facebook;
+            user.twitter = action.data.twitter;
             break;
         default:
             /*
