@@ -4,7 +4,7 @@ const initialState = {
     email: '',
     api_token: '',
     code: '',
-    plan: '',
+    plan: {},
     facebook: false,
     twitter: false
 };

@@ -3,7 +3,9 @@
         <div class="w3-panel">
             <h3>Plan Description</h3>
             <h5>As part of your company package, your plan includes:</h5>
-            <Features v-bind:features="features"></Features>
+        </div>
+        <div class="w3-panel">
+            <Plan v-bind:plan="plan"></Plan>
         </div>
         <div class="w3-panel">
             <h5>We look forward to working with you. Please click register to finish setting up your account.</h5>
@@ -15,21 +17,22 @@
 </template>
 
 <script>
-    import Features from '../Features';
+    import Plan from './Plan';
 
     export default {
         data() {
             return {
                 logo: '',
                 company: '',
-                features: []
+                plan: {}
             }
         },
         mounted() {
             axios.get(window.location).then(response => {
                 this.logo = response.data.logo;
                 this.company = response.data.company;
-                this.features = response.data.features;
+                this.plan = response.data.plan;
+                store.dispatch({ type: 'SET_PLAN', data: response.data.plan });
             });
         },
         methods: {
@@ -38,7 +41,7 @@
             }
         },
         components: {
-            Features
+            Plan
         }
     }
 </script>

@@ -24,6 +24,9 @@
                 v-on:setCode="setCode($event)">
             </Code>
             <Terms v-on:setTerms="setTerms($event)"></Terms>
+        </div>
+        <div class="w3-panel"
+            v-if="errors.length">
             <Errors v-bind:errors="errors"></Errors>
         </div>
         <div class="w3-panel">

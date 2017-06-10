@@ -1,41 +1,36 @@
 <template>
     <div class="w3-section">
-        <div v-for="(features, name) in plans">
-            <input class="v-align" type="radio"
-                v-bind:id="getId(name)"
-                v-bind:value="name"
-                v-model="selected"
-                v-on:change="$emit('setPlan', name)">
-            <label class="v-align check-box"
-                v-bind:for="getId(name)">
-            </label>
-            <span class="w3-large w3-margin-left">{{ name }}</span>
-            <Features v-bind:features="features"></Features>
-        </div>
+        <Plan v-for="(plan, index) in plans"
+            v-bind:key="index"
+            v-bind:plan="plan"
+            v-bind:selected="selected == plan.name"
+            v-on:setPlan="setPlan($event)">
+        </Plan>
     </div>
 </template>
 
 <script>
-    import Features from '../Features';
+    import Plan from './Plan';
 
     export default {
         props: {
             plans: {
-                type: Object
+                type: Array
             }
         },
         data() {
             return {
-                selected: false
+                selected: ''
             }
         },
         methods: {
-            getId(name) {
-                return name.replace(' ', '');
+            setPlan(plan) {
+                this.selected = plan;
+                store.dispatch({ type: 'SET_PLAN', data: plan });
             }
         },
         components: {
-            Features
+            Plan
         }
     }
 </script>

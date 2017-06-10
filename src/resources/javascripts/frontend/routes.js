@@ -40,5 +40,10 @@ export default [
         path: '/payment',
         name: 'Payment',
         component: Payment
+    },
+    {
+        path: '/payment/:code',
+        name: 'PaymentWithCode',
+        component: Payment
     }
 ];

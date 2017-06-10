@@ -5,9 +5,7 @@
             <h5>You may add additional features to your account.</h5>
         </div>
         <div class="w3-panel">
-            <Plans v-bind:plans="plans"
-                v-on:setPlan="setPlan($event)">
-            </Plans>
+            <Plans v-bind:plans="plans"></Plans>
         </div>
         <div class="w3-panel">
             <h5>Next you will select your social media preferences.</h5>
@@ -24,19 +22,15 @@
     export default {
         data() {
             return {
-                plans: {}
+                plans: []
             }
         },
         mounted() {
-            //axios.get(window.base_url + '/add-features/' + this.$route.params.code).then(response => {
             axios.get(window.location).then(response => {
                 this.plans = response.data;
             });
         },
         methods: {
-            setPlan(plan) {
-                store.dispatch({ type: 'SET_PLAN', data: plan });
-            },
             update() {
                 this.$router.push({ name: 'SocialMedia' });
             }
