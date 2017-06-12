@@ -226,3 +226,21 @@ Route::get('/payment', function (Request $request, $code = '') {
         return view('layouts.frontend.app');
     }
 });
+/**
+ * Deliver the homepage
+ *
+ * @return \Illuminate\Http\Response
+ */
+Route::post('/payment', function (Request $request) {
+    if($request->wantsJson()) {
+        $code = $request->code;
+        if($code == 'asdf1234') {
+            $mock_discount = '10.00';
+            return response()->json($mock_discount);
+        } else {
+            return response()->json('Invalid Code', 400);
+        }
+    } else {
+        return response()->json('Error occured', 400);
+    }
+});

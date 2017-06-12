@@ -30,7 +30,7 @@
             <Errors v-bind:errors="errors"></Errors>
         </div>
         <div class="w3-panel">
-            <h5>Next you will select the types of social media you wish to use.</h5>
+            <h5>Continue to select the plan you wish to sign up for.</h5>
             <button class="w3-button w3-text-white primary"
                 v-on:click="update()">Continue
             </button>

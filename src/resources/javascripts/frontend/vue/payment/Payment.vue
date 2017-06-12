@@ -5,7 +5,8 @@
             <h5>Enter a payment method as the last step in registration</h5>
         </div>
         <div class="w3-panel">
-            <Cart v-bind:plan="plan"></Cart>
+            <Cart v-bind:plan="plan"
+                v-bind:discount="discount"></Cart>
         </div>
         <div class="w3-panel">
             <Code v-on:setCode="setCode($event)"></Code>
@@ -13,31 +14,20 @@
         <div class="w3-panel">
             <h3>Payment Information</h3>
             <h5>Visa, Mastercard, American Express</h5>
-            <input class="w3-input" type="text"
-                v-model="number">
-            <label>Card Number</label>
-            <select class="w3-select"
-                v-model="month">
-                <option value="" disabled selected>Month</option>
-                <option value="01">January</option>
-                <option value="02">February</option>
-                <option value="03">March</option>
-                <option value="04">April</option>
-                <option value="05">May</option>
-                <option value="06">June</option>
-                <option value="07">July</option>
-                <option value="08">August</option>
-                <option value="09">September</option>
-                <option value="10">October</option>
-                <option value="11">November</option>
-                <option value="12">December</option>
-            </select>
-            <input class="w3-input" type="text"
-                v-model="year">
-             <label>Year</label>
-             <input class="w3-input" type="text"
-                 v-model="name">
-              <label>Cardholder Name</label>
+            <Card v-bind:label="'Card Number'"
+                v-on:setCard="setCard($event)">
+            </Card>
+        </div>
+        <div class="w3-panel">
+            <Month v-on:setMonth="setMonth($event)"></Month>
+            <Year v-bind:label="'Expiration Year'"
+                v-on:setYear="setYear($event)">
+            </Year>
+        </div>
+        <div class="w3-panel">
+            <Name v-bind:label="'Card Holder Name'"
+                v-on:setCard="setCard($event)">
+            </Name>
         </div>
         <div class="w3-panel">
             <h5 class="w3-large">We look forward to working with you. Please click register to finish setting up your account.</h5>
@@ -51,35 +41,49 @@
 <script>
     import Code from './Code';
     import Cart from './Cart';
+    import Card from './inputs/Card';
+    import Month from './inputs/Month';
+    import Year from './inputs/Year';
+    import Name from './inputs/Name';
 
     export default {
         data() {
             return {
-                plan: '',
+                plan: store.getState().UserStore.plan,
                 code: '',
-                discount: '',
-                number: '',
+                discount: '0.00',
+                card: '',
                 month: '',
                 year: '',
                 name: ''
             }
         },
         mounted() {
-            axios.get(window.location).then(response => {
-                this.plan = store.getState().UserStore.plan;
-            });
+            this.plan = store.getState().UserStore.plan;
         },
         methods: {
             update() {
                 //
             },
             setCode(code) {
-                console.log(code)
+                axios.post(window.location, { code: code }).then(response => {
+                    this.discount = response.data;
+                });
+            },
+            setCard(card) {
+                this.card = card;
+            },
+            setMonth(month) {
+                this.month = month;
             }
         },
         components: {
             Code,
-            Cart
+            Cart,
+            Card,
+            Month,
+            Year,
+            Name
         }
     }
 </script>
