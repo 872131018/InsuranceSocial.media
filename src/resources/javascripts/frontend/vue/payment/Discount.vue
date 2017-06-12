@@ -1,11 +1,11 @@
 <template>
     <div class="w3-section">
         <input class="w3-input w3-show-inline-block" type="text" style="width:80%"
-            v-model="code">
+            v-model="discount">
         <button class="w3-button w3-text-white secondary"
-            v-on:click="discount()">Apply
+            v-on:click="setDiscount()">Apply
         </button>
-        <label class="w3-show-block">Enter discount code</label>
+        <label class="w3-show-block">Enter discount discount</label>
     </div>
 </template>
 
@@ -13,17 +13,17 @@
     export default {
         data() {
             return {
-                code: ''
+                discount: ''
             }
         },
         mounted() {
-            if(store.getState().UserStore.code) {
-                this.code = store.getState().UserStore.code;
+            if(store.getState().UserStore.discount) {
+                this.discount = store.getState().UserStore.discount;
             }
         },
         methods: {
-            discount() {
-                this.$emit('setCode', this.code);
+            setDiscount() {
+                this.$emit('setDiscount', this.discount);
             }
         },
         components: {

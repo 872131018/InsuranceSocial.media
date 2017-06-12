@@ -37,7 +37,7 @@
         },
         methods: {
             update() {
-                this.$router.push({ name: 'RegisterWithCode', params: { code: this.$route.params.code } });
+                this.$router.push({ name: 'RegisterWithDiscount', params: { discount: this.$route.params.discount } });
             }
         },
         components: {

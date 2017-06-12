@@ -3,7 +3,7 @@ const initialState = {
     name: '',
     email: '',
     api_token: '',
-    code: '',
+    discount: '',
     plan: {},
     facebook: false,
     twitter: false

@@ -20,14 +20,14 @@ Route::get('/home', 'HomeController@index')->name('home');
  *
  * @return \Illuminate\Http\Response
  */
- Route::get('/corporate/{code?}', function (Request $request, $code = '') {
+ Route::get('/corporate/{discount?}', function (Request $request, $discount = '') {
     if($request->wantsJson()) {
         $data = [];
         /**
-        * Mock code should be a call against a real code that returns carrier and plan details
+        * Mock discount should be a call against a real discount that returns carrier and plan details
         */
-        $mock_code = 'asdf1234';
-        if($code == $mock_code) {
+        $mock_discount = 'asdf1234';
+        if($discount == $mock_discount) {
             /**
             * Generate a mock plan
             */
@@ -85,7 +85,7 @@ Route::get('/register', function () {
  *
  * @return \Illuminate\Http\Response
  */
-Route::get('/register/{code?}', function ($code = '') {
+Route::get('/register/{discount?}', function ($discount = '') {
     return view('layouts.frontend.app');
 });
  /**
@@ -166,7 +166,7 @@ Route::get('/social-media', function () {
  *
  * @return \Illuminate\Http\Response
  */
-Route::get('/payment', function (Request $request, $code = '') {
+Route::get('/payment', function (Request $request, $discount = '') {
     if($request->wantsJson()) {
         $data = [
              [
@@ -233,12 +233,12 @@ Route::get('/payment', function (Request $request, $code = '') {
  */
 Route::post('/payment', function (Request $request) {
     if($request->wantsJson()) {
-        $code = $request->code;
-        if($code == 'asdf1234') {
+        $discount = $request->discount;
+        if($discount == 'asdf1234') {
             $mock_discount = '10.00';
             return response()->json($mock_discount);
         } else {
-            return response()->json('Invalid Code', 400);
+            return response()->json('Invalid Discount Code', 400);
         }
     } else {
         return response()->json('Error occured', 400);

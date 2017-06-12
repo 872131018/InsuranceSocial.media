@@ -20,9 +20,9 @@
             <Password v-bind:label="'Confirm Password'"
                 v-on:setPassword="confirmPassword($event)">
             </Password>
-            <Code v-bind:label="'Discount Code'"
-                v-on:setCode="setCode($event)">
-            </Code>
+            <Discount v-bind:label="'Discount Discount'"
+                v-on:setDiscount="setDiscount($event)">
+            </Discount>
             <Terms v-on:setTerms="setTerms($event)"></Terms>
         </div>
         <div class="w3-panel"
@@ -43,7 +43,7 @@
     import Name from './inputs/Name';
     import Email from './inputs/Email';
     import Password from './inputs/Password';
-    import Code from './inputs/Code';
+    import Discount from './inputs/Discount';
     import Terms from './inputs/Terms';
     import Errors from './Errors';
 
@@ -56,7 +56,7 @@
                     email_confirmation: '',
                     password: '',
                     password_confirmation: '',
-                    code: '',
+                    discount: '',
                     terms: false,
                 },
                 errors: []
@@ -78,8 +78,8 @@
             confirmPassword(password) {
                 this.properties.password_confirmation = password;
             },
-            setCode(code) {
-                this.properties.code = code;
+            setDiscount(discount) {
+                this.properties.discount = discount;
             },
             setTerms(terms) {
                 this.properties.terms = terms;
@@ -111,7 +111,7 @@
                             name: response.data.name,
                             email: response.data.email,
                             api_token: response.data.api_token,
-                            code: this.properties.code
+                            discount: this.properties.discount
                         };
                         store.dispatch({ type: 'SET_USER', data: user });
                         this.$router.push({ name: 'Select' });
@@ -123,7 +123,7 @@
             Name,
             Email,
             Password,
-            Code,
+            Discount,
             Terms,
             Errors
         }

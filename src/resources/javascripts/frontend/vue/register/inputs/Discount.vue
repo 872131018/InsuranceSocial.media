@@ -1,7 +1,7 @@
 <template>
     <div  class="w3-section">
         <input class="w3-input w3-show-inline-block" type="text" style="width:80%"
-            v-model="code"
+            v-model="discount"
             v-on:change="validate()">
         <Check v-if="isValid"></Check>
         <Cross v-else></Cross>
@@ -21,21 +21,21 @@
         },
         data() {
             return {
-                code: '',
+                discount: '',
                 isValid: false
             }
         },
         mounted() {
-            if(this.$route.params.code) {
-                this.code = this.$route.params.code;
+            if(this.$route.params.discount) {
+                this.discount = this.$route.params.discount;
             }
             this.validate();
         },
         methods: {
             validate() {
-                if(this.code != '') {
+                if(this.discount != '') {
                     this.isValid = true;
-                    this.$emit('setCode', this.code);
+                    this.$emit('setDiscount', this.discount);
                 } else {
                     this.isValid = false;
                 }

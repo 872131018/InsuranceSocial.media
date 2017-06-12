@@ -40,7 +40,7 @@
             }
         },
         mounted() {
-            if(this.$route.params.code) {
+            if(this.$route.params.discount) {
                 //
             }
         },

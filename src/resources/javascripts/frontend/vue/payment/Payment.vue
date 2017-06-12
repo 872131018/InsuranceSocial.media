@@ -9,7 +9,7 @@
                 v-bind:discount="discount"></Cart>
         </div>
         <div class="w3-panel">
-            <Code v-on:setCode="setCode($event)"></Code>
+            <Discount v-on:setDiscount="setDiscount($event)"></Discount>
         </div>
         <div class="w3-panel">
             <h3>Payment Information</h3>
@@ -26,20 +26,20 @@
         </div>
         <div class="w3-panel">
             <Name v-bind:label="'Card Holder Name'"
-                v-on:setCard="setCard($event)">
+                v-on:setName="setName($event)">
             </Name>
         </div>
         <div class="w3-panel">
             <h5 class="w3-large">We look forward to working with you. Please click register to finish setting up your account.</h5>
             <button class="w3-button w3-text-white primary"
-                v-on:click="update()">Complete
+                v-on:click="complete()">Complete
             </button>
         </div>
     </div>
 </template>
 
 <script>
-    import Code from './Code';
+    import Discount from './Discount';
     import Cart from './Cart';
     import Card from './inputs/Card';
     import Month from './inputs/Month';
@@ -50,7 +50,7 @@
         data() {
             return {
                 plan: store.getState().UserStore.plan,
-                code: '',
+                discount: '',
                 discount: '0.00',
                 card: '',
                 month: '',
@@ -62,11 +62,8 @@
             this.plan = store.getState().UserStore.plan;
         },
         methods: {
-            update() {
-                //
-            },
-            setCode(code) {
-                axios.post(window.location, { code: code }).then(response => {
+            setDiscount(discount) {
+                axios.post(window.location, { discount: discount }).then(response => {
                     this.discount = response.data;
                 });
             },
@@ -75,10 +72,20 @@
             },
             setMonth(month) {
                 this.month = month;
-            }
+            },
+            setYear(year) {
+                this.year = year;
+            },
+            setName(name) {
+                this.name = name;
+            },
+            complete() {
+                console.log("NEW CARD SUBMITTED")
+                console.log(`info is ${ this.card }, ${ this.month }, ${ this.year }, ${ this.name }`)
+            },
         },
         components: {
-            Code,
+            Discount,
             Cart,
             Card,
             Month,
