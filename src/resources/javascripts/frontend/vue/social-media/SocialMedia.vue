@@ -9,7 +9,8 @@
                 v-model="properties.facebook">
             <label class="v-align check-box" for="facebook"></label>
             <span class="w3-large w3-margin-left">
-                <i class="fa fa-facebook-official fa-2x w3-margin w3-text-blue v-align"></i>Facebook
+                Facebook
+                <i class="fa fa-facebook-official fa-2x w3-text-blue v-align"></i>
             </span>
         </div>
         <div class="w3-panel">
@@ -17,7 +18,8 @@
                 v-model="properties.twitter">
             <label class="v-align check-box" for="twitter"></label>
             <span class="w3-large w3-margin-left">
-                <i class="fa fa-twitter-square fa-2x w3-margin w3-text-blue v-align"></i>Twitter
+                Twitter
+                <i class="fa fa-twitter-square fa-2x w3-text-blue v-align"></i>
             </span>
         </div>
         <div class="w3-panel">

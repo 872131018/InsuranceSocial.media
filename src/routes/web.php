@@ -138,7 +138,7 @@ Route::get('/register/{discount?}', function ($discount = '') {
             ],
             [
                 'name' => 'Enterprise Plan',
-                'price' => '999.00',
+                'price' => 'Contact Us',
                 'features' => [
                     'Special pricing for agent groups',
                     'Turnkey launch, onboarding and account set-up tools',
@@ -211,7 +211,7 @@ Route::get('/payment', function (Request $request, $discount = '') {
             ],
             [
                 'name' => 'Enterprise Plan',
-                'price' => '999.00',
+                'price' => 'Contact Us',
                 'features' => [
                     'Special pricing for agent groups',
                     'Turnkey launch, onboarding and account set-up tools',
