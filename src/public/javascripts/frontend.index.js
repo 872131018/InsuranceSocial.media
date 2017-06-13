@@ -3076,15 +3076,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }
             if (this.errors.length == 0) {
                 axios.post(window.location, this.properties).then(function (response) {
-                    var user = {
-                        id: response.data.id,
-                        name: response.data.name,
-                        email: response.data.email,
-                        api_token: response.data.api_token,
-                        discount: _this.properties.discount
-                    };
-                    store.dispatch({ type: 'SET_USER', data: user });
-                    //this.$router.push({ name: 'Select' });
+                    store.dispatch({ type: 'SET_USER', data: response.data });
+                    if (response.data.discount != '0') {
+                        _this.$router.push({ name: 'Corporate', params: { discount: response.data.discount } });
+                    } else {
+                        _this.$router.push({ name: 'Select' });
+                    }
                 });
             }
         }
@@ -3762,7 +3759,13 @@ module.exports = function () {
     switch (action.type) {
         case 'SET_USER':
             //Lockr.set('FrontendContents', action.data);
-            user = action.data;
+            user = {
+                id: action.data.id,
+                name: action.data.name,
+                email: action.data.email,
+                api_token: action.data.api_token,
+                discount: action.data.discount
+            };
             break;
         case 'SET_PLAN':
             user.plan = action.data;

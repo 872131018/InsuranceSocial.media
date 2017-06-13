@@ -13,7 +13,13 @@ module.exports = function(user = initialState, action) {
     switch(action.type) {
         case 'SET_USER':
             //Lockr.set('FrontendContents', action.data);
-            user = action.data;
+            user = {
+                id: action.data.id,
+                name: action.data.name,
+                email: action.data.email,
+                api_token: action.data.api_token,
+                discount: action.data.discount
+            };
             break;
         case 'SET_PLAN':
             user.plan = action.data;

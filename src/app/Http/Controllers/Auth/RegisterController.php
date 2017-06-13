@@ -64,17 +64,12 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        echo '<pre>';
-        print_r($data);
-        die;
-        if($data['discount'] != '') {
-            die($data['discount']);
-        }
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
-            'api_token' => str_random(60)
+            'api_token' => str_random(60),
+            'discount' => $data['discount']
         ]);
     }
 }

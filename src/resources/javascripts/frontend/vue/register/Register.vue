@@ -94,6 +94,7 @@
                 }
                 if(this.properties.email != this.properties.email_confirmation) {
                     this.errors.push('Emails do not match.');
+
                 }
                 if(this.properties.password == '' || this.properties.password_confirmation == '') {
                     this.errors.push('You must enter and confirm a password');
@@ -106,15 +107,12 @@
                 }
                 if(this.errors.length == 0) {
                     axios.post(window.location, this.properties).then(response => {
-                        let user = {
-                            id: response.data.id,
-                            name: response.data.name,
-                            email: response.data.email,
-                            api_token: response.data.api_token,
-                            discount: this.properties.discount
-                        };
-                        store.dispatch({ type: 'SET_USER', data: user });
-                        //this.$router.push({ name: 'Select' });
+                        store.dispatch({ type: 'SET_USER', data: response.data });
+                        if(response.data.discount != '0') {
+                            this.$router.push({ name: 'Corporate', params: { discount: response.data.discount } });
+                        } else {
+                            this.$router.push({ name: 'Select' });
+                        }
                     });
                 }
             }
