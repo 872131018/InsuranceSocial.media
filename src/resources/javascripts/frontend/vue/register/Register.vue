@@ -105,7 +105,7 @@
                     this.errors.push('You must accept the Terms of Service.');
                 }
                 if(this.errors.length == 0) {
-                    axios.post(window.base_url + '/register', this.properties).then(response => {
+                    axios.post(window.location, this.properties).then(response => {
                         let user = {
                             id: response.data.id,
                             name: response.data.name,
@@ -114,7 +114,7 @@
                             discount: this.properties.discount
                         };
                         store.dispatch({ type: 'SET_USER', data: user });
-                        this.$router.push({ name: 'Select' });
+                        //this.$router.push({ name: 'Select' });
                     });
                 }
             }

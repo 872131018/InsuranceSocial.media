@@ -16,53 +16,24 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 /**
- * Deliver the homepage
+ * Overwrite the default functionality to deliver the SPA
  *
  * @return \Illuminate\Http\Response
  */
- Route::get('/corporate/{discount?}', function (Request $request, $discount = '') {
-    if($request->wantsJson()) {
-        $data = [];
-        /**
-        * Mock discount should be a call against a real discount that returns carrier and plan details
-        */
-        $mock_discount = 'asdf1234';
-        if($discount == $mock_discount) {
-            /**
-            * Generate a mock plan
-            */
-            $mock_logo = asset('images/office.jpg');
-            $mock_company = 'Dunder Mifflin Inc.';
-            $mock_plan = [
-                'name' => 'Essential Plan',
-                'price' => '39.00',
-                'features' => [
-                    'Facebook and Twitter account set-up, if necessary',
-                    '6 posts/week (3 each to Facebook and Twitter)',
-                    'Personalized content, tailored to your community, interests, products and companies – edited for optimum engagement',
-                    'Automatic notifications when friends or followers react to your posts',
-                    '24/7 access to analytics on your social media reach and engagement'
-                ]
-            ];
-            /**
-            * Build an object to output onto the view
-            */
-            $data = [
-                'logo' => $mock_logo,
-                'company' => $mock_company,
-                'plan' => $mock_plan
-            ];
-        } else {
-            /**
-            * Empty object, something else might need to get into the view from here
-            */
-            $data = [];
-        }
-        return response()->json($data);
-    } else {
-        return view('layouts.frontend.app');
-    }
- });
+Route::get('/corporate/{discount?}', 'CorporateController@index');
+
+/**
+ * Overwrite the default functionality to deliver the SPA
+ *
+ * @return \Illuminate\Http\Response
+ */
+Route::get('/register', 'RegisterController@index');
+/**
+ * Overwrite the default functionality to deliver the SPA
+ *
+ * @return \Illuminate\Http\Response
+ */
+Route::get('/register/{discount?}', 'RegisterController@index');
 
 /**
  * Deliver the homepage
@@ -72,22 +43,6 @@ Route::get('/home', 'HomeController@index')->name('home');
  Route::get('/', function () {
     return view('layouts.frontend.app');
  });
-/**
- * Overwrite the default functionality to deliver the SPA
- *
- * @return \Illuminate\Http\Response
- */
-Route::get('/register', function () {
-    return view('layouts.frontend.app');
-});
-/**
- * Overwrite the default functionality to deliver the SPA
- *
- * @return \Illuminate\Http\Response
- */
-Route::get('/register/{discount?}', function ($discount = '') {
-    return view('layouts.frontend.app');
-});
  /**
   * Deliver the homepage
   *

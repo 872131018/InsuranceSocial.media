@@ -1,6 +1,6 @@
 <template>
-    <div class="w3-section w3-half">
-        <input class="w3-input w3-show-inline-block" type="text"
+    <div class="w3-section w3-show-inline-block w3-margin-left">
+        <input class="w3-input" type="text"
             v-model="year"
             v-on:change="validate()">
         <label class="w3-show-block">{{ label }}</label>

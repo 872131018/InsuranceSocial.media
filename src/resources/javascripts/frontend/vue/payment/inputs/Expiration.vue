@@ -1,15 +1,16 @@
 <template>
-    <div class="w3-section">
-        <input class="w3-input w3-show-inline-block" type="text" style="width:80%"
-            v-model="discount">
-        <button class="w3-button w3-text-white secondary"
-            v-on:click="setDiscount()">Apply
-        </button>
-        <label class="w3-show-block">Enter discount discount</label>
+    <div class="w3-section eighty">
+        <Month v-on:setMonth="setMonth($event)"></Month>
+        <Year v-bind:label="'Expiration Year'"
+            v-on:setYear="setYear($event)">
+        </Year>
     </div>
 </template>
 
 <script>
+    import Month from './Month';
+    import Year from './Year';
+
     export default {
         data() {
             return {
@@ -27,7 +28,14 @@
             }
         },
         components: {
-            //
+            Month,
+            Year
         }
     }
 </script>
+
+<style>
+    .eighty {
+        width: 80%
+    }
+</style>

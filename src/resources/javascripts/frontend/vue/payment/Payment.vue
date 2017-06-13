@@ -19,10 +19,7 @@
             </Card>
         </div>
         <div class="w3-panel">
-            <Month v-on:setMonth="setMonth($event)"></Month>
-            <Year v-bind:label="'Expiration Year'"
-                v-on:setYear="setYear($event)">
-            </Year>
+            <Expiration></Expiration>
         </div>
         <div class="w3-panel">
             <Name v-bind:label="'Card Holder Name'"
@@ -39,11 +36,10 @@
 </template>
 
 <script>
-    import Discount from './Discount';
+    import Discount from './inputs/Discount';
     import Cart from './Cart';
     import Card from './inputs/Card';
-    import Month from './inputs/Month';
-    import Year from './inputs/Year';
+    import Expiration from './inputs/Expiration';
     import Name from './inputs/Name';
 
     export default {
@@ -88,8 +84,7 @@
             Discount,
             Cart,
             Card,
-            Month,
-            Year,
+            Expiration,
             Name
         }
     }

@@ -6,10 +6,10 @@
         <label class="v-align check-box" for="terms"></label>
         <span class="w3-large w3-margin-left">By clicking sign up below, you agree to the
             <b>Insurance Social Media</b>
-            <button class="w3-button w3-text-white secondary"
-                v-on:click="setModal()">Terms of Service
-            </button>
         </span>
+        <button class="w3-button w3-text-white secondary"
+            v-on:click="setModal()">Terms of Service
+        </button>
         <Modal v-if="modal"
             v-on:setModal="setModal()">
         </Modal>
