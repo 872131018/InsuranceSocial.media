@@ -11,7 +11,7 @@
             </tr>
             <tr>
                 <td>Discount</td>
-                <td>{{ discount }}</td>
+                <td>{{ reduction }}</td>
             </tr>
             <tr>
                 <td>Total:</td>
@@ -27,13 +27,13 @@
             plan: {
                 type: Object
             },
-            discount: {
+            reduction: {
                 type: String
             }
         },
         methods: {
             getTotal() {
-                let total = parseInt(this.plan.price) - parseInt(this.discount);
+                let total = parseInt(this.plan.price) - parseInt(this.reduction);
                 return total.toFixed(2).toString();
             }
         }

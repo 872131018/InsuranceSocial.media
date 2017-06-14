@@ -6,16 +6,19 @@
         </div>
         <div class="w3-panel">
             <Cart v-bind:plan="plan"
-                v-bind:discount="discount"></Cart>
+                v-bind:reduction="reduction">
+            </Cart>
         </div>
         <div class="w3-panel">
-            <Discount v-on:setDiscount="setDiscount($event)"></Discount>
+            <Discount v-bind:discount="discount"
+                v-on:setDiscount="setDiscount($event)">
+            </Discount>
         </div>
         <div class="w3-panel">
             <h3>Payment Information</h3>
             <h5>Visa, Mastercard, American Express</h5>
             <Card v-bind:label="'Card Number'"
-                v-on:setCard="setCard($event)">
+                v-on:setCard="(number) => { card = number }"
             </Card>
         </div>
         <div class="w3-panel">
@@ -23,7 +26,7 @@
         </div>
         <div class="w3-panel">
             <Name v-bind:label="'Card Holder Name'"
-                v-on:setName="setName($event)">
+                v-on:setName="(name) => { name = name }">
             </Name>
         </div>
         <div class="w3-panel">
@@ -45,9 +48,9 @@
     export default {
         data() {
             return {
-                plan: store.getState().UserStore.plan,
+                plan: {},
+                reduction: '0.00',
                 discount: '',
-                discount: '0.00',
                 card: '',
                 month: '',
                 year: '',
@@ -56,24 +59,22 @@
         },
         mounted() {
             this.plan = store.getState().UserStore.plan;
+            if(store.getState().UserStore.discount) {
+                setDiscount(store.getState().UserStore.discount);
+            }
         },
         methods: {
             setDiscount(discount) {
-                axios.post(window.location, { discount: discount }).then(response => {
-                    this.discount = response.data;
+                this.discount = discount;
+                axios.post(window.location, { discount: this.discount }).then(response => {
+                    this.reduction = response.data;
                 });
-            },
-            setCard(card) {
-                this.card = card;
             },
             setMonth(month) {
                 this.month = month;
             },
             setYear(year) {
                 this.year = year;
-            },
-            setName(name) {
-                this.name = name;
             },
             complete() {
                 console.log("NEW CARD SUBMITTED")

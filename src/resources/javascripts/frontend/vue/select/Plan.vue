@@ -3,8 +3,7 @@
         <div v-if="plan.name != 'Enterprise Plan'">
             <input class="v-align" type="radio"
                 v-bind:id="getId(plan.name)"
-                v-bind:checked="selected"
-                v-on:change="$emit('setPlan', plan)">
+                v-bind:checked="selected">
             <label class="v-align check-box"
                 v-bind:for="getId(plan.name)">
             </label>

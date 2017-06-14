@@ -5,7 +5,12 @@
             <h5>You may add additional features to your account.</h5>
         </div>
         <div class="w3-panel">
-            <Plans v-bind:plans="plans"></Plans>
+            <Plan v-for="(plan, index) in plans"
+                v-bind:key="index"
+                v-bind:plan="plan"
+                v-bind:selected="selected.name == plan.name"
+                v-on:click.native="setPlan(plan)">
+            </Plan>
         </div>
         <div class="w3-panel">
             <h5>Next you will select your social media preferences.</h5>
@@ -17,26 +22,34 @@
 </template>
 
 <script>
-    import Plans from './Plans';
+    import Plan from './Plan';
 
     export default {
         data() {
             return {
-                plans: []
+                plans: [],
+                selected: {}
             }
         },
         mounted() {
             axios.get(window.location).then(response => {
                 this.plans = response.data;
+                if(store.getState().UserStore.plan) {
+                    this.selected = store.getState().UserStore.plan;
+                }
             });
         },
         methods: {
+            setPlan(plan) {
+                this.selected = plan;
+                store.dispatch({ type: 'SET_PLAN', data: plan });
+            },
             update() {
                 this.$router.push({ name: 'SocialMedia' });
             }
         },
         components: {
-            Plans
+            Plan
         }
     }
 </script>
