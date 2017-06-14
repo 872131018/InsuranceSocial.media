@@ -3106,6 +3106,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 
 
@@ -3133,32 +3135,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
 
     methods: {
-        setName: function setName(name) {
-            this.properties.name = name;
-        },
-        setEmail: function setEmail(email) {
-            this.properties.email = email;
-        },
         confirmEmail: function confirmEmail(email) {
             this.properties.email_confirmation = email;
-            console.log(this.properties.email);
-            console.log(this.properties.email_confirmation);
-            console.log(this.properties.email_confirmed);
-            if (this.properties.email == this.properties.email_confirmation) {
-                this.properties.email_confirmed = true;
-            }
-        },
-        setPassword: function setPassword(password) {
-            this.properties.password = password;
+            this.properties.email_confirmed = this.properties.email == this.properties.email_confirmation;
         },
         confirmPassword: function confirmPassword(password) {
             this.properties.password_confirmation = password;
-        },
-        setDiscount: function setDiscount(discount) {
-            this.properties.discount = discount;
-        },
-        setTerms: function setTerms(terms) {
-            this.properties.terms = terms;
+            this.properties.password_confirmed = this.properties.password == this.properties.password_confirmation;
         },
         update: function update() {
             var _this = this;
@@ -3185,7 +3168,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             if (this.errors.length == 0) {
                 axios.post(window.location, this.properties).then(function (response) {
                     store.dispatch({ type: 'SET_USER', data: response.data });
-                    if (response.data.discount != '0') {
+                    if (response.data.discount) {
                         _this.$router.push({ name: 'Corporate', params: { discount: response.data.discount } });
                     } else {
                         _this.$router.push({ name: 'Select' });
@@ -3338,7 +3321,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     methods: {
         validate: function validate() {
             this.$emit('setEmail', this.email);
-            if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,9})+$/.test(this.email) && this.confirmed) {
+            if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,9})+$/.test(this.email)) {
                 this.isValid = true;
             } else {
                 this.isValid = false;
@@ -3435,6 +3418,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     props: {
         label: {
             type: String
+        },
+        confirmed: {
+            type: Boolean
         }
     },
     data: function data() {
@@ -6107,7 +6093,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "value": (_vm.password)
     },
     on: {
-      "change": function($event) {
+      "keyup": function($event) {
         _vm.validate()
       },
       "input": function($event) {
@@ -6115,7 +6101,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.password = $event.target.value
       }
     }
-  }), _vm._v(" "), (_vm.isValid) ? _c('Check') : _c('Cross'), _vm._v(" "), _c('label', {
+  }), _vm._v(" "), (_vm.isValid && _vm.confirmed) ? _c('Check') : _c('Cross'), _vm._v(" "), _c('label', {
     staticClass: "w3-show-block"
   }, [_vm._v(_vm._s(_vm.label))]), _vm._v(" "), _c('span', {
     staticClass: "w3-small"
@@ -6875,8 +6861,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "label": 'Full Name'
     },
     on: {
-      "setName": function($event) {
-        _vm.setName($event)
+      "setName": function (name) {
+        _vm.properties.name = name
       }
     }
   }), _vm._v(" "), _c('Email', {
@@ -6885,8 +6871,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "confirmed": true
     },
     on: {
-      "setEmail": function($event) {
-        _vm.setEmail($event)
+      "setEmail": function (email) {
+        _vm.properties.email = email
       }
     }
   }), _vm._v(" "), _c('Email', {
@@ -6901,16 +6887,18 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }), _vm._v(" "), _c('Password', {
     attrs: {
-      "label": 'Password'
+      "label": 'Password',
+      "confirmed": true
     },
     on: {
-      "setPassword": function($event) {
-        _vm.setPassword($event)
+      "setPassword": function (password) {
+        _vm.properties.password = password
       }
     }
   }), _vm._v(" "), _c('Password', {
     attrs: {
-      "label": 'Confirm Password'
+      "label": 'Confirm Password',
+      "confirmed": _vm.properties.password_confirmed
     },
     on: {
       "setPassword": function($event) {
@@ -6922,16 +6910,16 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "label": 'Discount Discount'
     },
     on: {
-      "setDiscount": function($event) {
-        _vm.setDiscount($event)
+      "setDiscount": function (discount) {
+        _vm.properties.discount = discount
       }
     }
   })], 1), _vm._v(" "), _c('div', {
     staticClass: "w3-panel"
   }, [_c('Terms', {
     on: {
-      "setTerms": function($event) {
-        _vm.setTerms($event)
+      "setTerms": function (terms) {
+        _vm.properties.terms = terms
       }
     }
   })], 1), _vm._v(" "), (_vm.errors.length) ? _c('div', {
@@ -7290,7 +7278,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.email = $event.target.value
       }
     }
-  }), _vm._v(" "), (_vm.isValid) ? _c('Check') : _c('Cross'), _vm._v(" "), _c('label', {
+  }), _vm._v(" "), (_vm.isValid && _vm.confirmed) ? _c('Check') : _c('Cross'), _vm._v(" "), _c('label', {
     staticClass: "w3-show-block"
   }, [_vm._v(_vm._s(_vm.label))])], 1)
 },staticRenderFns: []}

@@ -40,7 +40,7 @@ services:
             - REDIS_HOST=redis
     db:
         container_name: db
-        image: mariadb:latest
+        image: mysql:latest
         environment:
             - MYSQL_ROOT_PASSWORD=
             - MYSQL_DATABASE=InsuranceSocialMedia

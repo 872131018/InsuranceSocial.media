@@ -3,7 +3,7 @@
         <input class="w3-input w3-show-inline-block" type="text" style="width:80%"
             v-model="email"
             v-on:keyup="validate()">
-        <Check v-if="isValid"></Check>
+        <Check v-if="isValid && confirmed"></Check>
         <Cross v-else></Cross>
         <label class="w3-show-block">{{ label }}</label>
     </div>
@@ -31,7 +31,7 @@
         methods: {
             validate() {
                 this.$emit('setEmail', this.email);
-                if(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,9})+$/.test(this.email) && this.confirmed) {
+                if(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,9})+$/.test(this.email)) {
                     this.isValid = true;
                 } else {
                     this.isValid = false;

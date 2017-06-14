@@ -6,28 +6,30 @@
         </div>
         <div class="w3-panel">
             <Name v-bind:label="'Full Name'"
-                v-on:setName="setName($event)">
+                v-on:setName="(name) => { properties.name = name }">
             </Name>
             <Email v-bind:label="'Email'"
                 v-bind:confirmed="true"
-                v-on:setEmail="setEmail($event)">
+                v-on:setEmail="(email) => { properties.email = email }">
             </Email>
             <Email v-bind:label="'Confirm Email'"
                 v-bind:confirmed="properties.email_confirmed"
                 v-on:setEmail="confirmEmail($event)">
             </Email>
             <Password v-bind:label="'Password'"
-                v-on:setPassword="setPassword($event)">
+                v-bind:confirmed="true"
+                v-on:setPassword="(password) => { properties.password = password }">
             </Password>
             <Password v-bind:label="'Confirm Password'"
+                v-bind:confirmed="properties.password_confirmed"
                 v-on:setPassword="confirmPassword($event)">
             </Password>
             <Discount v-bind:label="'Discount Discount'"
-                v-on:setDiscount="setDiscount($event)">
+                v-on:setDiscount="(discount) => { properties.discount = discount }">
             </Discount>
         </div>
         <div class="w3-panel">
-            <Terms v-on:setTerms="setTerms($event)"></Terms>
+            <Terms v-on:setTerms="(terms) => { properties.terms = terms }"></Terms>
         </div>
         <div class="w3-panel"
             v-if="errors.length">
@@ -69,32 +71,13 @@
             }
         },
         methods: {
-            setName(name) {
-                this.properties.name = name;
-            },
-            setEmail(email) {
-                this.properties.email = email;
-            },
             confirmEmail(email) {
                 this.properties.email_confirmation = email;
-                console.log(this.properties.email)
-                console.log(this.properties.email_confirmation)
-                console.log(this.properties.email_confirmed)
-                if(this.properties.email == this.properties.email_confirmation) {
-                    this.properties.email_confirmed = true;
-                }
-            },
-            setPassword(password) {
-                this.properties.password = password;
+                this.properties.email_confirmed = (this.properties.email == this.properties.email_confirmation);
             },
             confirmPassword(password) {
                 this.properties.password_confirmation = password;
-            },
-            setDiscount(discount) {
-                this.properties.discount = discount;
-            },
-            setTerms(terms) {
-                this.properties.terms = terms;
+                this.properties.password_confirmed = (this.properties.password == this.properties.password_confirmation);
             },
             update() {
                 this.errors = [];
@@ -120,7 +103,7 @@
                 if(this.errors.length == 0) {
                     axios.post(window.location, this.properties).then(response => {
                         store.dispatch({ type: 'SET_USER', data: response.data });
-                        if(response.data.discount != '0') {
+                        if(response.data.discount) {
                             this.$router.push({ name: 'Corporate', params: { discount: response.data.discount } });
                         } else {
                             this.$router.push({ name: 'Select' });

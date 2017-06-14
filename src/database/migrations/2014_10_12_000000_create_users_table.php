@@ -19,7 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->string('api_token', 60)->unique();
-            $table->string('discount')->default(false);
+            $table->string('discount')->nullable();
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();
