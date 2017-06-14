@@ -42,6 +42,16 @@ class RegisterController extends Controller
     }
 
     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index(Request $request, $discount = '')
+    {
+        return view('layouts.frontend.app');
+    }
+
+    /**
      * Get a validator for an incoming registration request.
      *
      * @param  array  $data

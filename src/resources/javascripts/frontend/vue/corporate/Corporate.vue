@@ -1,6 +1,10 @@
 <template>
     <div class="w3-container w3-card-2 form">
         <div class="w3-panel">
+            <img class="w3-half" v-bind:src="logo">
+            <h3 class="w3-half">Insurance Social Media is proud to work with you and your team at {{ company }}</h3>
+        </div>
+        <div class="w3-panel">
             <h3>Plan Description</h3>
             <h5>As part of your company package, your plan includes:</h5>
         </div>
@@ -37,7 +41,11 @@
         },
         methods: {
             update() {
-                this.$router.push({ name: 'RegisterWithDiscount', params: { discount: this.$route.params.discount } });
+                if(store.getState().UserStore.id != '') {
+                    this.$router.push({ name: 'Select' });
+                } else {
+                    this.$router.push({ name: 'RegisterWithDiscount', params: { discount: this.$route.params.discount } });
+                }
             }
         },
         components: {

@@ -27,13 +27,25 @@ Route::get('/corporate/{discount?}', 'CorporateController@index');
  *
  * @return \Illuminate\Http\Response
  */
-Route::get('/register', 'RegisterController@index');
+Route::get('/register', 'Auth\RegisterController@index');
 /**
  * Overwrite the default functionality to deliver the SPA
  *
  * @return \Illuminate\Http\Response
  */
-Route::get('/register/{discount?}', 'RegisterController@index');
+Route::get('/register/{discount?}', 'Auth\RegisterController@index');
+/**
+ * Overwrite the default functionality to deliver the SPA
+ *
+ * @return \Illuminate\Http\Response
+ */
+Route::post('/register', 'Auth\RegisterController@register');
+/**
+ * Overwrite the default functionality to deliver the SPA
+ *
+ * @return \Illuminate\Http\Response
+ */
+Route::post('/register/{discount?}', 'Auth\RegisterController@register');
 
 /**
  * Deliver the homepage
