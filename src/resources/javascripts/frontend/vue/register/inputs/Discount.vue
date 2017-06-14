@@ -33,9 +33,9 @@
         },
         methods: {
             validate() {
+                this.$emit('setDiscount', this.discount);
                 if(this.discount != '') {
                     this.isValid = true;
-                    this.$emit('setDiscount', this.discount);
                 } else {
                     this.isValid = false;
                 }

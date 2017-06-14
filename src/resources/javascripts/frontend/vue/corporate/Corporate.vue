@@ -28,7 +28,10 @@
             return {
                 logo: '',
                 company: '',
-                plan: {}
+                plan: {
+                    name: '',
+                    features: []
+                }
             }
         },
         mounted() {

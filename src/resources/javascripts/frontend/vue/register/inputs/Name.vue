@@ -27,9 +27,9 @@
         },
         methods: {
             validate() {
+                this.$emit('setName', this.name);
                 if(this.name != '') {
                     this.isValid = true;
-                    this.$emit('setName', this.name);
                 } else {
                     this.isValid = false;
                 }

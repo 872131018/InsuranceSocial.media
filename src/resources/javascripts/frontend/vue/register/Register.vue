@@ -9,9 +9,11 @@
                 v-on:setName="setName($event)">
             </Name>
             <Email v-bind:label="'Email'"
+                v-bind:confirmed="true"
                 v-on:setEmail="setEmail($event)">
             </Email>
             <Email v-bind:label="'Confirm Email'"
+                v-bind:confirmed="properties.email_confirmed"
                 v-on:setEmail="confirmEmail($event)">
             </Email>
             <Password v-bind:label="'Password'"
@@ -23,6 +25,8 @@
             <Discount v-bind:label="'Discount Discount'"
                 v-on:setDiscount="setDiscount($event)">
             </Discount>
+        </div>
+        <div class="w3-panel">
             <Terms v-on:setTerms="setTerms($event)"></Terms>
         </div>
         <div class="w3-panel"
@@ -54,8 +58,10 @@
                     name: '',
                     email: '',
                     email_confirmation: '',
+                    email_confirmed: false,
                     password: '',
                     password_confirmation: '',
+                    password_confirmed: false,
                     discount: '',
                     terms: false,
                 },
@@ -71,6 +77,12 @@
             },
             confirmEmail(email) {
                 this.properties.email_confirmation = email;
+                console.log(this.properties.email)
+                console.log(this.properties.email_confirmation)
+                console.log(this.properties.email_confirmed)
+                if(this.properties.email == this.properties.email_confirmation) {
+                    this.properties.email_confirmed = true;
+                }
             },
             setPassword(password) {
                 this.properties.password = password;

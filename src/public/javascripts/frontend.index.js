@@ -2302,7 +2302,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         return {
             logo: '',
             company: '',
-            plan: {}
+            plan: {
+                name: '',
+                features: []
+            }
         };
     },
     mounted: function mounted() {
@@ -3099,6 +3102,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 
 
@@ -3114,8 +3121,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 name: '',
                 email: '',
                 email_confirmation: '',
+                email_confirmed: false,
                 password: '',
                 password_confirmation: '',
+                password_confirmed: false,
                 discount: '',
                 terms: false
             },
@@ -3132,6 +3141,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         confirmEmail: function confirmEmail(email) {
             this.properties.email_confirmation = email;
+            console.log(this.properties.email);
+            console.log(this.properties.email_confirmation);
+            console.log(this.properties.email_confirmed);
+            if (this.properties.email == this.properties.email_confirmation) {
+                this.properties.email_confirmed = true;
+            }
         },
         setPassword: function setPassword(password) {
             this.properties.password = password;
@@ -3265,9 +3280,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     methods: {
         validate: function validate() {
+            this.$emit('setDiscount', this.discount);
             if (this.discount != '') {
                 this.isValid = true;
-                this.$emit('setDiscount', this.discount);
             } else {
                 this.isValid = false;
             }
@@ -3308,6 +3323,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     props: {
         label: {
             type: String
+        },
+        confirmed: {
+            type: Boolean
         }
     },
     data: function data() {
@@ -3319,9 +3337,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     methods: {
         validate: function validate() {
-            if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,9})+$/.test(this.email)) {
+            this.$emit('setEmail', this.email);
+            if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,9})+$/.test(this.email) && this.confirmed) {
                 this.isValid = true;
-                this.$emit('setEmail', this.email);
             } else {
                 this.isValid = false;
             }
@@ -3373,9 +3391,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     methods: {
         validate: function validate() {
+            this.$emit('setName', this.name);
             if (this.name != '') {
                 this.isValid = true;
-                this.$emit('setName', this.name);
             } else {
                 this.isValid = false;
             }
@@ -3428,9 +3446,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     methods: {
         validate: function validate() {
+            this.$emit('setPassword', this.password);
             if (/^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$/.test(this.password)) {
                 this.isValid = true;
-                this.$emit('setPassword', this.password);
             } else {
                 this.isValid = false;
             }
@@ -3450,6 +3468,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__modal_Modal__ = __webpack_require__(117);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__modal_Modal___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__modal_Modal__);
+//
+//
+//
+//
 //
 //
 //
@@ -6859,7 +6881,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }), _vm._v(" "), _c('Email', {
     attrs: {
-      "label": 'Email'
+      "label": 'Email',
+      "confirmed": true
     },
     on: {
       "setEmail": function($event) {
@@ -6868,7 +6891,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }), _vm._v(" "), _c('Email', {
     attrs: {
-      "label": 'Confirm Email'
+      "label": 'Confirm Email',
+      "confirmed": _vm.properties.email_confirmed
     },
     on: {
       "setEmail": function($event) {
@@ -6902,7 +6926,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.setDiscount($event)
       }
     }
-  }), _vm._v(" "), _c('Terms', {
+  })], 1), _vm._v(" "), _c('div', {
+    staticClass: "w3-panel"
+  }, [_c('Terms', {
     on: {
       "setTerms": function($event) {
         _vm.setTerms($event)
@@ -7256,7 +7282,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "value": (_vm.email)
     },
     on: {
-      "change": function($event) {
+      "keyup": function($event) {
         _vm.validate()
       },
       "input": function($event) {
@@ -7282,6 +7308,8 @@ if (false) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
+    staticClass: "w3-section"
+  }, [_c('div', {
     staticClass: "w3-section"
   }, [_c('input', {
     directives: [{
@@ -7324,14 +7352,16 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "for": "terms"
     }
-  }), _vm._v(" "), _vm._m(0), _vm._v(" "), _c('button', {
+  }), _vm._v(" "), _vm._m(0)]), _vm._v(" "), _c('div', {
+    staticClass: "w3-section"
+  }, [_c('button', {
     staticClass: "w3-button w3-text-white secondary",
     on: {
       "click": function($event) {
         _vm.setModal()
       }
     }
-  }, [_vm._v("Terms of Service\n    ")]), _vm._v(" "), (_vm.modal) ? _c('Modal', {
+  }, [_vm._v("Terms of Service\n        ")])]), _vm._v(" "), (_vm.modal) ? _c('Modal', {
     on: {
       "setModal": function($event) {
         _vm.setModal()
@@ -7341,7 +7371,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('span', {
     staticClass: "w3-large w3-margin-left"
-  }, [_vm._v("By clicking sign up below, you agree to the\n        "), _c('b', [_vm._v("Insurance Social Media")])])
+  }, [_vm._v("By clicking sign up below, you agree to\n            "), _c('b', [_vm._v("Insurance Social Media")]), _vm._v(" Terms of Service.\n        ")])
 }]}
 module.exports.render._withStripped = true
 if (false) {
