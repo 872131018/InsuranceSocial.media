@@ -2738,7 +2738,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var _this = this;
 
             this.discount = discount;
-            axios.post(window.location, { discount: this.discount }).then(function (response) {
+            axios.put(window.location + '/' + this.discount).then(function (response) {
                 _this.reduction = response.data;
             });
         },
@@ -6111,7 +6111,18 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.setDiscount($event)
       }
     }
-  })], 1), _vm._v(" "), _vm._m(1), _vm._v(" "), _c('div', {
+  })], 1), _vm._v(" "), _c('div', {
+    staticClass: "w3-panel"
+  }, [_c('h3', [_vm._v("Payment Information")]), _vm._v(" "), _c('h5', [_vm._v("Visa, Mastercard, American Express")]), _vm._v(" "), _c('Card', {
+    attrs: {
+      "label": 'Card Number'
+    },
+    on: {
+      "setCard": function (number) {
+        _vm.card = number
+      }
+    }
+  })], 1), _vm._v(" "), _c('div', {
     staticClass: "w3-panel"
   }, [_c('Expiration')], 1), _vm._v(" "), _c('div', {
     staticClass: "w3-panel"
@@ -6140,10 +6151,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   return _c('div', {
     staticClass: "w3-panel"
   }, [_c('h3', [_vm._v("Payment Methods")]), _vm._v(" "), _c('h5', [_vm._v("Enter a payment method as the last step in registration")])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "w3-panel"
-  }, [_c('h3', [_vm._v("Payment Information")]), _vm._v(" "), _c('h5', [_vm._v("Visa, Mastercard, American Express")])])
 }]}
 module.exports.render._withStripped = true
 if (false) {

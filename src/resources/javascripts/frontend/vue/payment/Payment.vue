@@ -18,7 +18,7 @@
             <h3>Payment Information</h3>
             <h5>Visa, Mastercard, American Express</h5>
             <Card v-bind:label="'Card Number'"
-                v-on:setCard="(number) => { card = number }"
+                v-on:setCard="(number) => { card = number }">
             </Card>
         </div>
         <div class="w3-panel">
@@ -66,7 +66,7 @@
         methods: {
             setDiscount(discount) {
                 this.discount = discount;
-                axios.post(window.location, { discount: this.discount }).then(response => {
+                axios.put(`${ window.location }/${ this.discount }`,).then(response => {
                     this.reduction = response.data;
                 });
             },

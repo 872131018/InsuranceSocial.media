@@ -46,6 +46,18 @@ Route::post('/register', 'Auth\RegisterController@register');
  * @return \Illuminate\Http\Response
  */
 Route::post('/register/{discount?}', 'Auth\RegisterController@register');
+/**
+ * Overwrite the default functionality to deliver the SPA
+ *
+ * @return \Illuminate\Http\Response
+ */
+Route::get('/payment', 'PaymentController@index');
+/**
+ * Overwrite the default functionality to deliver the SPA
+ *
+ * @return \Illuminate\Http\Response
+ */
+Route::put('/payment/{discount}', 'PaymentController@update');
 
 /**
  * Deliver the homepage
@@ -127,87 +139,4 @@ Route::post('/register/{discount?}', 'Auth\RegisterController@register');
  */
 Route::get('/social-media', function () {
     return view('layouts.frontend.app');
-});
-/**
- * Deliver the homepage
- *
- * @return \Illuminate\Http\Response
- */
-Route::get('/payment', function (Request $request, $discount = '') {
-    if($request->wantsJson()) {
-        $data = [
-             [
-                'name' => 'Trial Plan',
-                'price' => '0.00',
-                'features' => [
-                    'Insert free plan specifics here.',
-                    'Insert free plan specifics here.',
-                    'Insert free plan specifics here.'
-                ]
-            ],
-            [
-                'name' => 'Essential Plan',
-                'price' => '39.00',
-                'features' => [
-                    'Facebook and Twitter account set-up, if necessary',
-                    '6 posts/week (3 each to Facebook and Twitter)',
-                    'Personalized content, tailored to your community, interests, products and companies – edited for optimum engagement',
-                    'Automatic notifications when friends or followers react to your posts',
-                    '24/7 access to analytics on your social media reach and engagement'
-                ]
-            ],
-            [
-                'name' => 'Standard Plan',
-                'price' => '59.00',
-                'features' => [
-                    'All the benefits of the Essential Plan',
-                    '10 posts/week (5 each to Facebook and Twitter)',
-                    'PLUS, 4 email campaigns per year to help grow your Facebook and Twitter audience',
-                    'Up to 1,500 names per campaign'
-                ]
-            ],
-            [
-                'name' => 'Concierge Plan',
-                'price' => '399.00',
-                'features' => [
-                    'Personal Account Concierge crafts unique posts and interacts with your friends and followers',
-                    'Includes personal contact and consulting as we build your social media presence, relationships and engagement',
-                    '4 email campaigns per year',
-                    'Up to 5,000 names per campaign'
-                ]
-            ],
-            [
-                'name' => 'Enterprise Plan',
-                'price' => 'Contact Us',
-                'features' => [
-                    'Special pricing for agent groups',
-                    'Turnkey launch, onboarding and account set-up tools',
-                    'Enterprise Dashboard provides detailed, per-agent analytics',
-                    'Agent training and webinars'
-                ]
-            ]
-        ];
-
-        return response()->json($data);
-    } else {
-        return view('layouts.frontend.app');
-    }
-});
-/**
- * Deliver the homepage
- *
- * @return \Illuminate\Http\Response
- */
-Route::post('/payment', function (Request $request) {
-    if($request->wantsJson()) {
-        $discount = $request->discount;
-        if($discount == 'asdf1234') {
-            $mock_discount = '10.00';
-            return response()->json($mock_discount);
-        } else {
-            return response()->json('Invalid Discount Code', 400);
-        }
-    } else {
-        return response()->json('Error occured', 400);
-    }
 });
