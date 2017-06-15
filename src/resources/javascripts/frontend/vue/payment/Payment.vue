@@ -1,8 +1,8 @@
 <template>
     <div class="w3-container w3-card-2 form">
         <div class="w3-panel">
-            <h3>Payment Methods</h3>
-            <h5>Enter a payment method as the last step in registration</h5>
+            <h3>Plan Information</h3>
+            <h5>Please confirm your plan or enter a promotion code.</h5>
         </div>
         <div class="w3-panel">
             <Cart v-bind:plan="plan"
@@ -15,24 +15,23 @@
             </Discount>
         </div>
         <div class="w3-panel">
-            <h3>Payment Information</h3>
-            <h5>Visa, Mastercard, American Express</h5>
-            <Card v-bind:label="'Card Number'"
-                v-on:setCard="(number) => { card = number }">
-            </Card>
+            <h3>Payment Method</h3>
+            <h5>Please enter a form of payment to complete registration.</h5>
         </div>
         <div class="w3-panel">
-            <Expiration></Expiration>
+            <Card v-on:setCard="(input) => { card = input }"></Card>
         </div>
         <div class="w3-panel">
-            <Name v-bind:label="'Card Holder Name'"
-                v-on:setName="(name) => { name = name }">
-            </Name>
+            <Expiration v-on:setMonth="(input) => { month = input.value }"
+                v-on:setYear="(input) => { year = input }">
+            </Expiration>
         </div>
         <div class="w3-panel">
-            <h5 class="w3-large">We look forward to working with you. Please click register to finish setting up your account.</h5>
+            <Name v-on:setName="(input) => { name = input }"></Name>
+        </div>
+        <div class="w3-panel">
             <button class="w3-button w3-text-white primary"
-                v-on:click="complete()">Complete
+                v-on:click="sendPaymentDataToAnet()">Complete
             </button>
         </div>
     </div>
@@ -70,15 +69,27 @@
                     this.reduction = response.data;
                 });
             },
-            setMonth(month) {
-                this.month = month;
-            },
-            setYear(year) {
-                this.year = year;
-            },
-            complete() {
+            sendPaymentDataToAnet() {
                 console.log("NEW CARD SUBMITTED")
                 console.log(`info is ${ this.card }, ${ this.month }, ${ this.year }, ${ this.name }`)
+
+                const secureData = {
+                    cardData: {
+                        cardNumber: this.card,
+                        month: this.month,
+                        year: this.year,
+                        cardcode: '123',
+                    },
+                    authData: {
+                        clientKey: '4tspwTt5c6A9uuR97LR28mgUWu887qB4LEj5EnZ4U3qAYywUe2X6SYaGsv7GgR4q',
+                        apiLoginID: '7WA27Zgq9'
+                    }
+                };
+
+                Accept.dispatchData(secureData, (response) => {
+                    console.log(response)
+                });
+
             },
         },
         components: {

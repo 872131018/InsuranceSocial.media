@@ -7,6 +7,9 @@
 .v-align {
     vertical-align: middle;
 }
+.eighty {
+    width: 80%
+}
 .header-logo {
     background-image: url('../images/talk-bubble.png');
     background-repeat: no-repeat;

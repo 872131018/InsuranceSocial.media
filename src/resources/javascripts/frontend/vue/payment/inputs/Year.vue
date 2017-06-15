@@ -1,37 +1,17 @@
 <template>
-    <div class="w3-section w3-show-inline-block w3-margin-left">
-        <input class="w3-input" type="text"
+    <div class="w3-section w3-show-inline-block w3-margin-left v-align">
+        <input class="w3-input" type="text" placeholder="Year"
             v-model="year"
-            v-on:change="validate()">
-        <label class="w3-show-block">{{ label }}</label>
+            v-on:keyup="$emit('setYear', year)">
     </div>
 </template>
 
 <script>
     export default {
-        props: {
-            label: {
-                type: String
-            }
-        },
         data() {
             return {
-                year: '',
-                isValid: false
+                year: ''
             }
-        },
-        methods: {
-            validate() {
-                if(this.year != '') {
-                    this.isValid = true;
-                    this.$emit('setYear', this.year);
-                } else {
-                    this.isValid = false;
-                }
-            }
-        },
-        components: {
-            //
         }
     }
 </script>

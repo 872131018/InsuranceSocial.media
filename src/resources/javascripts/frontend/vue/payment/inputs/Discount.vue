@@ -1,9 +1,9 @@
 <template>
     <div class="w3-section">
-        <input class="w3-input w3-show-inline-block" type="text" style="width:80%"
+        <input class="w3-input w3-show-inline-block eighty" type="text"
             v-model="code">
         <label class="w3-show-block">Enter discount code</label>
-        <button class="w3-button w3-text-white secondary"
+        <button class="w3-button w3-section w3-text-white secondary"
             v-on:click="$emit('setDiscount', code)">Apply
         </button>
     </div>

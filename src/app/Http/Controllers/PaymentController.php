@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use net\authorize\api\contract\v1 as AnetAPI;
+
 class PaymentController extends Controller
 {
     /**

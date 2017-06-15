@@ -1,38 +1,19 @@
 <template>
     <div class="w3-section">
-        <input class="w3-input w3-show-inline-block" type="text" style="width:80%"
+        <input class="w3-input w3-show-inline-block eighty" type="text"
             v-model="card"
-            v-on:keyup="validate()">
-        <label class="w3-show-block">{{ label }}</label>
+            v-on:keyup="$emit('setCard', card)">
+        <label class="w3-show-block">Card Number</label>
         <span class="w3-small">Accepted payment forms are Visa, Mastercard, and American Express</span>
     </div>
 </template>
 
 <script>
     export default {
-        props: {
-            label: {
-                type: String
-            }
-        },
         data() {
             return {
-                card: '',
-                isValid: false
+                card: ''
             }
-        },
-        methods: {
-            validate() {
-                this.$emit('setCard', this.card);
-                if(this.card != '') {
-                    this.isValid = true;
-                } else {
-                    this.isValid = false;
-                }
-            }
-        },
-        components: {
-            //
         }
     }
 </script>

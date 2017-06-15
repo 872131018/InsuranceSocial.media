@@ -1,9 +1,8 @@
 <template>
     <div class="w3-section eighty">
-        <Month v-on:setMonth="setMonth($event)"></Month>
-        <Year v-bind:label="'Expiration Year'"
-            v-on:setYear="setYear($event)">
-        </Year>
+        <Month v-on:setMonth="(month) => { $emit('setMonth', month) }"></Month>
+        <Year v-on:setYear="(year) => { $emit('setYear', year) }"></Year>
+        <span>Expiration Month and Year</span>
     </div>
 </template>
 
@@ -12,30 +11,9 @@
     import Year from './Year';
 
     export default {
-        data() {
-            return {
-                discount: ''
-            }
-        },
-        mounted() {
-            if(store.getState().UserStore.discount) {
-                this.discount = store.getState().UserStore.discount;
-            }
-        },
-        methods: {
-            setDiscount() {
-                this.$emit('setDiscount', this.discount);
-            }
-        },
         components: {
             Month,
             Year
         }
     }
 </script>
-
-<style>
-    .eighty {
-        width: 80%
-    }
-</style>
