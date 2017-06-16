@@ -1,11 +1,11 @@
 <template>
     <div class="w3-section">
-        <input class="w3-input w3-show-inline-block" type="text" style="width:80%"
+        <input class="w3-input w3-show-inline-block eighty" type="text"
             v-model="name"
             v-on:change="validate()">
         <Check v-if="isValid"></Check>
         <Cross v-else></Cross>
-        <label class="w3-show-block">{{ label }}</label>
+        <label class="w3-show-block">Full Name</label>
     </div>
 </template>
 
@@ -14,11 +14,6 @@
     import Cross from './Cross';
 
     export default {
-        props: {
-            label: {
-                type: String
-            }
-        },
         data() {
             return {
                 name: '',

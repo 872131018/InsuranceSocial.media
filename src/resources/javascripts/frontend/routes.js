@@ -40,10 +40,5 @@ export default [
         path: '/payment',
         name: 'Payment',
         component: Payment
-    },
-    {
-        path: '/payment/:discount',
-        name: 'PaymentWithDiscount',
-        component: Payment
     }
 ];

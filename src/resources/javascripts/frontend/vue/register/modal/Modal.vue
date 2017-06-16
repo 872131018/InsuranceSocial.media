@@ -8,7 +8,7 @@
                 <p class="w3-text-white">Last modified September 17, 2015</p>
             </header>
             <div class="w3-container">
-                
+
                 <p>Welcome to InsuranceSocial.Media. These terms and conditions (“Terms of Service” or “Agreement”) govern your access to and use of Serious Social Media, Inc.’s (“Serious Social Media”) services and website accessible via www.InsuranceSocial.Media, including successor domain names or sites (the “Site”), and any and all information, text, graphics, photos, or other materials uploaded, downloaded, or appearing on the Services (as defined below).
 BY ACCESSING AND USING THE SERVICES IN ANY MANNER, YOU ARE "ACCEPTING" AND AGREEING TO BE BOUND BY THESE TERMS OF SERVICE TO THE EXCLUSION OF ALL OTHER TERMS. IF YOU DO NOT UNCONDITIONALLY ACCEPT THESE TERMS IN THEIR ENTIRETY, YOU SHALL NOT (AND SHALL HAVE NO RIGHT TO) ACCESS OR USE THE SERVICES. IF THE TERMS OF THIS AGREEMENT ARE CONSIDERED AN OFFER, ACCEPTANCE IS EXPRESSLY LIMITED TO SUCH TERMS. THESE TERMS SHOULD BE READ IN CONJUNCTION WITH THE INSURANCESOCIAL.MEDIA PRIVACY POLICY.
 Wherever used in these Terms of Service, “you,” “your,” “Customer,” or similar terms means the person or legal entity accessing or using the Services. If you are accessing and using the Services on behalf of a company (such as your employer) or other legal entity, you represent and warrant that you have the authority to bind that company or other legal entity to these Terms of Service.
@@ -86,10 +86,6 @@ THE PARTIES ACKNOWLEDGE AND AGREE THAT THE ESSENTIAL PURPOSE OF THIS SECTION IS 
 
 <script>
     export default {
-        data() {
-            return {
-                checked: false
-            }
-        }
+        //
     }
 </script>

@@ -5,26 +5,30 @@
             <h5>Please complete required fields to complete registration.</h5>
         </div>
         <div class="w3-panel">
-            <Name v-bind:label="'Full Name'"
+            <Name
                 v-on:setName="(name) => { properties.name = name }">
             </Name>
-            <Email v-bind:label="'Email'"
+            <Email
+                v-bind:label="'Email'"
                 v-bind:confirmed="true"
                 v-on:setEmail="(email) => { properties.email = email }">
             </Email>
-            <Email v-bind:label="'Confirm Email'"
+            <Email
+                v-bind:label="'Confirm Email'"
                 v-bind:confirmed="properties.email_confirmed"
                 v-on:setEmail="confirmEmail($event)">
             </Email>
-            <Password v-bind:label="'Password'"
+            <Password
+                v-bind:label="'Password'"
                 v-bind:confirmed="true"
                 v-on:setPassword="(password) => { properties.password = password }">
             </Password>
-            <Password v-bind:label="'Confirm Password'"
+            <Password
+                v-bind:label="'Confirm Password'"
                 v-bind:confirmed="properties.password_confirmed"
                 v-on:setPassword="confirmPassword($event)">
             </Password>
-            <Discount v-bind:label="'Discount Discount'"
+            <Discount
                 v-on:setDiscount="(discount) => { properties.discount = discount }">
             </Discount>
         </div>

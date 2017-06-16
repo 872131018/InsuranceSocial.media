@@ -3074,6 +3074,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 
 
@@ -3209,11 +3213,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: {
-        label: {
-            type: String
-        }
-    },
     data: function data() {
         return {
             discount: '',
@@ -3326,11 +3325,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: {
-        label: {
-            type: String
-        }
-    },
     data: function data() {
         return {
             name: '',
@@ -3420,6 +3414,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__modal_Modal__ = __webpack_require__(114);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__modal_Modal___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__modal_Modal__);
+//
 //
 //
 //
@@ -3557,11 +3552,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    data: function data() {
-        return {
-            checked: false
-        };
-    }
+    //
 });
 
 /***/ }),
@@ -3597,6 +3588,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Features__ = __webpack_require__(115);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Features___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Features__);
+//
 //
 //
 //
@@ -3670,6 +3662,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 
@@ -3692,11 +3685,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
 
     methods: {
-        setPlan: function setPlan(plan) {
-            this.selected = plan;
-            store.dispatch({ type: 'SET_PLAN', data: plan });
-        },
         update: function update() {
+            store.dispatch({ type: 'SET_PLAN', data: this.selected });
             this.$router.push({ name: 'SocialMedia' });
         }
     },
@@ -3711,6 +3701,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Facebook__ = __webpack_require__(157);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Facebook___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Facebook__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Twitter__ = __webpack_require__(160);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Twitter___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__Twitter__);
 //
 //
 //
@@ -3736,14 +3730,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
+
+
+
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -3754,11 +3743,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }
         };
     },
-    mounted: function mounted() {
-        if (this.$route.params.discount) {
-            //
-        }
-    },
 
     methods: {
         update: function update() {
@@ -3767,7 +3751,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         }
     },
     components: {
-        //
+        Facebook: __WEBPACK_IMPORTED_MODULE_0__Facebook___default.a,
+        Twitter: __WEBPACK_IMPORTED_MODULE_1__Twitter___default.a
     }
 });
 
@@ -3887,10 +3872,6 @@ var reducers = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redux__["a" /* 
 }, {
     path: '/payment',
     name: 'Payment',
-    component: __WEBPACK_IMPORTED_MODULE_5__vue_payment_Payment___default.a
-}, {
-    path: '/payment/:discount',
-    name: 'PaymentWithDiscount',
     component: __WEBPACK_IMPORTED_MODULE_5__vue_payment_Payment___default.a
 }]);
 
@@ -5758,6 +5739,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     },
     domProps: {
       "checked": _vm.selected
+    },
+    on: {
+      "change": function($event) {
+        _vm.$emit('setPlan', _vm.plan)
+      }
     }
   }), _vm._v(" "), _c('label', {
     staticClass: "v-align check-box",
@@ -5906,10 +5892,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       value: (_vm.password),
       expression: "password"
     }],
-    staticClass: "w3-input w3-show-inline-block",
-    staticStyle: {
-      "width": "80%"
-    },
+    staticClass: "w3-input w3-show-inline-block eighty",
     attrs: {
       "type": "password"
     },
@@ -5953,10 +5936,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       value: (_vm.discount),
       expression: "discount"
     }],
-    staticClass: "w3-input w3-show-inline-block",
-    staticStyle: {
-      "width": "80%"
-    },
+    staticClass: "w3-input w3-show-inline-block eighty",
     attrs: {
       "type": "text"
     },
@@ -5974,7 +5954,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }), _vm._v(" "), (_vm.isValid) ? _c('Check') : _c('Cross'), _vm._v(" "), _c('label', {
     staticClass: "w3-show-block"
-  }, [_vm._v(_vm._s(_vm.label))])], 1)
+  }, [_vm._v("Discount Code")])], 1)
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
@@ -6165,9 +6145,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "plan": plan,
         "selected": _vm.selected.name == plan.name
       },
-      nativeOn: {
-        "click": function($event) {
-          _vm.setPlan(plan)
+      on: {
+        "setPlan": function (choice) {
+          _vm.selected = choice
         }
       }
     })
@@ -6661,9 +6641,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_vm._m(0), _vm._v(" "), _c('div', {
     staticClass: "w3-panel"
   }, [_c('Name', {
-    attrs: {
-      "label": 'Full Name'
-    },
     on: {
       "setName": function (name) {
         _vm.properties.name = name
@@ -6710,9 +6687,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }
     }
   }), _vm._v(" "), _c('Discount', {
-    attrs: {
-      "label": 'Discount Discount'
-    },
     on: {
       "setDiscount": function (discount) {
         _vm.properties.discount = discount
@@ -6764,85 +6738,21 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "w3-container w3-card-2 form"
   }, [_vm._m(0), _vm._v(" "), _c('div', {
     staticClass: "w3-panel"
-  }, [_c('input', {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: (_vm.properties.facebook),
-      expression: "properties.facebook"
-    }],
-    staticClass: "v-align",
-    attrs: {
-      "type": "checkbox",
-      "id": "facebook"
-    },
-    domProps: {
-      "checked": Array.isArray(_vm.properties.facebook) ? _vm._i(_vm.properties.facebook, null) > -1 : (_vm.properties.facebook)
-    },
+  }, [_c('Facebook', {
     on: {
-      "__c": function($event) {
-        var $$a = _vm.properties.facebook,
-          $$el = $event.target,
-          $$c = $$el.checked ? (true) : (false);
-        if (Array.isArray($$a)) {
-          var $$v = null,
-            $$i = _vm._i($$a, $$v);
-          if ($$c) {
-            $$i < 0 && (_vm.properties.facebook = $$a.concat($$v))
-          } else {
-            $$i > -1 && (_vm.properties.facebook = $$a.slice(0, $$i).concat($$a.slice($$i + 1)))
-          }
-        } else {
-          _vm.properties.facebook = $$c
-        }
+      "setFacebook": function (facebook) {
+        _vm.properties.facebook = facebook
       }
     }
-  }), _vm._v(" "), _c('label', {
-    staticClass: "v-align check-box",
-    attrs: {
-      "for": "facebook"
-    }
-  }), _vm._v(" "), _vm._m(1)]), _vm._v(" "), _c('div', {
+  })], 1), _vm._v(" "), _c('div', {
     staticClass: "w3-panel"
-  }, [_c('input', {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: (_vm.properties.twitter),
-      expression: "properties.twitter"
-    }],
-    staticClass: "v-align",
-    attrs: {
-      "type": "checkbox",
-      "id": "twitter"
-    },
-    domProps: {
-      "checked": Array.isArray(_vm.properties.twitter) ? _vm._i(_vm.properties.twitter, null) > -1 : (_vm.properties.twitter)
-    },
+  }, [_c('Twitter', {
     on: {
-      "__c": function($event) {
-        var $$a = _vm.properties.twitter,
-          $$el = $event.target,
-          $$c = $$el.checked ? (true) : (false);
-        if (Array.isArray($$a)) {
-          var $$v = null,
-            $$i = _vm._i($$a, $$v);
-          if ($$c) {
-            $$i < 0 && (_vm.properties.twitter = $$a.concat($$v))
-          } else {
-            $$i > -1 && (_vm.properties.twitter = $$a.slice(0, $$i).concat($$a.slice($$i + 1)))
-          }
-        } else {
-          _vm.properties.twitter = $$c
-        }
+      "setTwitter": function (twitter) {
+        _vm.properties.twitter = twitter
       }
     }
-  }), _vm._v(" "), _c('label', {
-    staticClass: "v-align check-box",
-    attrs: {
-      "for": "twitter"
-    }
-  }), _vm._v(" "), _vm._m(2)]), _vm._v(" "), _c('div', {
+  })], 1), _vm._v(" "), _c('div', {
     staticClass: "w3-panel"
   }, [_c('h5', [_vm._v("We look forward to working with you. Please click register to finish setting up your account.")]), _vm._v(" "), _c('button', {
     staticClass: "w3-button w3-text-white primary",
@@ -6856,18 +6766,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   return _c('div', {
     staticClass: "w3-panel"
   }, [_c('h3', [_vm._v("Social Media Accounts")]), _vm._v(" "), _c('h5', [_vm._v("Select the forms of social media you would like to use.")])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('span', {
-    staticClass: "w3-large w3-margin-left"
-  }, [_vm._v("\n            Facebook\n            "), _c('i', {
-    staticClass: "fa fa-facebook-official fa-2x w3-text-blue v-align"
-  })])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('span', {
-    staticClass: "w3-large w3-margin-left"
-  }, [_vm._v("\n            Twitter\n            "), _c('i', {
-    staticClass: "fa fa-twitter-square fa-2x w3-text-blue v-align"
-  })])
 }]}
 module.exports.render._withStripped = true
 if (false) {
@@ -6985,10 +6883,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       value: (_vm.name),
       expression: "name"
     }],
-    staticClass: "w3-input w3-show-inline-block",
-    staticStyle: {
-      "width": "80%"
-    },
+    staticClass: "w3-input w3-show-inline-block eighty",
     attrs: {
       "type": "text"
     },
@@ -7006,7 +6901,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }), _vm._v(" "), (_vm.isValid) ? _c('Check') : _c('Cross'), _vm._v(" "), _c('label', {
     staticClass: "w3-show-block"
-  }, [_vm._v(_vm._s(_vm.label))])], 1)
+  }, [_vm._v("Full Name")])], 1)
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
@@ -7059,10 +6954,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       value: (_vm.email),
       expression: "email"
     }],
-    staticClass: "w3-input w3-show-inline-block",
-    staticStyle: {
-      "width": "80%"
-    },
+    staticClass: "w3-input w3-show-inline-block eighty",
     attrs: {
       "type": "text"
     },
@@ -7098,7 +6990,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   return _c('div', {
     staticClass: "w3-section"
   }, [_c('div', {
-    staticClass: "w3-section"
+    staticClass: "w3-panel"
   }, [_c('input', {
     directives: [{
       name: "model",
@@ -7141,7 +7033,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "for": "terms"
     }
   }), _vm._v(" "), _vm._m(0)]), _vm._v(" "), _c('div', {
-    staticClass: "w3-section"
+    staticClass: "w3-panel"
   }, [_c('button', {
     staticClass: "w3-button w3-text-white secondary",
     on: {
@@ -7159,7 +7051,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('span', {
     staticClass: "w3-large w3-margin-left"
-  }, [_vm._v("By clicking sign up below, you agree to\n            "), _c('b', [_vm._v("Insurance Social Media")]), _vm._v(" Terms of Service.\n        ")])
+  }, [_vm._v("By clicking sign up below, you agree to the\n            "), _c('b', [_vm._v("Insurance Social Media")]), _vm._v(" Terms of Service.\n        ")])
 }]}
 module.exports.render._withStripped = true
 if (false) {
@@ -19373,6 +19265,256 @@ module.exports = function(module) {
 
 module.exports = __webpack_require__(16);
 
+
+/***/ }),
+/* 156 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            facebook: true
+        };
+    }
+});
+
+/***/ }),
+/* 157 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Component = __webpack_require__(0)(
+  /* script */
+  __webpack_require__(156),
+  /* template */
+  __webpack_require__(158),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+Component.options.__file = "/home/johnhuffman/InsuranceSocial.media/src/resources/javascripts/frontend/vue/social-media/Facebook.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] Facebook.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-1c563ed2", Component.options)
+  } else {
+    hotAPI.reload("data-v-1c563ed2", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 158 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "w3-section"
+  }, [_c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.facebook),
+      expression: "facebook"
+    }],
+    staticClass: "v-align",
+    attrs: {
+      "type": "checkbox",
+      "id": "facebook"
+    },
+    domProps: {
+      "checked": Array.isArray(_vm.facebook) ? _vm._i(_vm.facebook, null) > -1 : (_vm.facebook)
+    },
+    on: {
+      "change": function($event) {
+        _vm.$emit('setFacebook', _vm.facebook)
+      },
+      "__c": function($event) {
+        var $$a = _vm.facebook,
+          $$el = $event.target,
+          $$c = $$el.checked ? (true) : (false);
+        if (Array.isArray($$a)) {
+          var $$v = null,
+            $$i = _vm._i($$a, $$v);
+          if ($$c) {
+            $$i < 0 && (_vm.facebook = $$a.concat($$v))
+          } else {
+            $$i > -1 && (_vm.facebook = $$a.slice(0, $$i).concat($$a.slice($$i + 1)))
+          }
+        } else {
+          _vm.facebook = $$c
+        }
+      }
+    }
+  }), _vm._v(" "), _c('label', {
+    staticClass: "v-align w3-margin-right  check-box",
+    attrs: {
+      "for": "facebook"
+    }
+  }), _vm._v(" "), _vm._m(0)])
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('span', {
+    staticClass: "w3-large"
+  }, [_vm._v("\n        Facebook"), _c('i', {
+    staticClass: "fa fa-facebook-official fa-2x w3-margin-left w3-text-blue v-align"
+  })])
+}]}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-1c563ed2", module.exports)
+  }
+}
+
+/***/ }),
+/* 159 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            twitter: true
+        };
+    }
+});
+
+/***/ }),
+/* 160 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Component = __webpack_require__(0)(
+  /* script */
+  __webpack_require__(159),
+  /* template */
+  __webpack_require__(161),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+Component.options.__file = "/home/johnhuffman/InsuranceSocial.media/src/resources/javascripts/frontend/vue/social-media/Twitter.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] Twitter.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-fabb4b9c", Component.options)
+  } else {
+    hotAPI.reload("data-v-fabb4b9c", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 161 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "w3-section"
+  }, [_c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.twitter),
+      expression: "twitter"
+    }],
+    staticClass: "v-align",
+    attrs: {
+      "type": "checkbox",
+      "id": "twitter"
+    },
+    domProps: {
+      "checked": Array.isArray(_vm.twitter) ? _vm._i(_vm.twitter, null) > -1 : (_vm.twitter)
+    },
+    on: {
+      "change": function($event) {
+        _vm.$emit('setTwitter', _vm.twitter)
+      },
+      "__c": function($event) {
+        var $$a = _vm.twitter,
+          $$el = $event.target,
+          $$c = $$el.checked ? (true) : (false);
+        if (Array.isArray($$a)) {
+          var $$v = null,
+            $$i = _vm._i($$a, $$v);
+          if ($$c) {
+            $$i < 0 && (_vm.twitter = $$a.concat($$v))
+          } else {
+            $$i > -1 && (_vm.twitter = $$a.slice(0, $$i).concat($$a.slice($$i + 1)))
+          }
+        } else {
+          _vm.twitter = $$c
+        }
+      }
+    }
+  }), _vm._v(" "), _c('label', {
+    staticClass: "v-align w3-margin-right check-box",
+    attrs: {
+      "for": "twitter"
+    }
+  }), _vm._v(" "), _vm._m(0)])
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('span', {
+    staticClass: "w3-large"
+  }, [_vm._v("\n        Twitter"), _c('i', {
+    staticClass: "fa fa-twitter fa-2x w3-margin-left w3-text-blue v-align"
+  })])
+}]}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-fabb4b9c", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

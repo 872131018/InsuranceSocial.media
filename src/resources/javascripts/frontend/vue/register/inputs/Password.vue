@@ -1,6 +1,6 @@
 <template>
     <div class="w3-section">
-        <input class="w3-input w3-show-inline-block" type="password" style="width:80%"
+        <input class="w3-input w3-show-inline-block eighty" type="password"
             v-model="password"
             v-on:keyup="validate()">
         <Check v-if="isValid && confirmed"></Check>

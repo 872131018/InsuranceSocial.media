@@ -5,22 +5,14 @@
             <h5>Select the forms of social media you would like to use.</h5>
         </div>
         <div class="w3-panel">
-            <input class="v-align" type="checkbox" id="facebook"
-                v-model="properties.facebook">
-            <label class="v-align check-box" for="facebook"></label>
-            <span class="w3-large w3-margin-left">
-                Facebook
-                <i class="fa fa-facebook-official fa-2x w3-text-blue v-align"></i>
-            </span>
+            <Facebook
+                v-on:setFacebook="(facebook) => { properties.facebook = facebook }">
+            </Facebook>
         </div>
         <div class="w3-panel">
-            <input class="v-align" type="checkbox" id="twitter"
-                v-model="properties.twitter">
-            <label class="v-align check-box" for="twitter"></label>
-            <span class="w3-large w3-margin-left">
-                Twitter
-                <i class="fa fa-twitter-square fa-2x w3-text-blue v-align"></i>
-            </span>
+            <Twitter
+                v-on:setTwitter="(twitter) => { properties.twitter = twitter }">
+            </Twitter>
         </div>
         <div class="w3-panel">
             <h5>We look forward to working with you. Please click register to finish setting up your account.</h5>
@@ -32,6 +24,9 @@
 </template>
 
 <script>
+    import Facebook from './Facebook';
+    import Twitter from './Twitter';
+
     export default {
         data() {
             return {
@@ -41,11 +36,6 @@
                 }
             }
         },
-        mounted() {
-            if(this.$route.params.discount) {
-                //
-            }
-        },
         methods: {
             update() {
                 store.dispatch({ type: 'SET_SOCIAL_MEDIA', data: this.properties });
@@ -53,7 +43,8 @@
             }
         },
         components: {
-            //
+            Facebook,
+            Twitter
         }
     }
 </script>

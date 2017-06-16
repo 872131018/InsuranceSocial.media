@@ -5,11 +5,12 @@
             <h5>You may add additional features to your account.</h5>
         </div>
         <div class="w3-panel">
-            <Plan v-for="(plan, index) in plans"
+            <Plan
+                v-for="(plan, index) in plans"
                 v-bind:key="index"
                 v-bind:plan="plan"
                 v-bind:selected="selected.name == plan.name"
-                v-on:click.native="setPlan(plan)">
+                v-on:setPlan="(choice) => { selected = choice }">
             </Plan>
         </div>
         <div class="w3-panel">
@@ -40,12 +41,9 @@
             });
         },
         methods: {
-            setPlan(plan) {
-                this.selected = plan;
-                store.dispatch({ type: 'SET_PLAN', data: plan });
-            },
             update() {
-                this.$router.push({ name: 'SocialMedia' });
+                store.dispatch({ type: 'SET_PLAN', data: this.selected });
+                this.$router.push({ name: 'SocialMedia' })
             }
         },
         components: {
