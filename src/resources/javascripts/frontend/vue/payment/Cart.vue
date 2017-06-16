@@ -33,7 +33,7 @@
         },
         methods: {
             getTotal() {
-                let total = parseInt(this.plan.price) - parseInt(this.reduction);
+                const total = parseInt(this.plan.price) - parseInt(this.reduction);
                 return total.toFixed(2).toString();
             }
         }

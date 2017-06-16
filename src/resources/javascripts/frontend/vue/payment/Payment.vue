@@ -5,12 +5,14 @@
             <h5>Please confirm your plan or enter a promotion code.</h5>
         </div>
         <div class="w3-panel">
-            <Cart v-bind:plan="plan"
+            <Cart
+                v-bind:plan="plan"
                 v-bind:reduction="reduction">
             </Cart>
         </div>
         <div class="w3-panel">
-            <Discount v-bind:discount="discount"
+            <Discount
+                v-bind:discount="discount"
                 v-on:setDiscount="setDiscount($event)">
             </Discount>
         </div>
@@ -19,15 +21,19 @@
             <h5>Please enter a form of payment to complete registration.</h5>
         </div>
         <div class="w3-panel">
-            <Card v-on:setCard="(input) => { card = input }"></Card>
+            <Card v-on:setCard="(card) => { properties.card = card }"></Card>
         </div>
         <div class="w3-panel">
-            <Expiration v-on:setMonth="(input) => { month = input.value }"
-                v-on:setYear="(input) => { year = input }">
+            <Expiration
+                v-on:setMonth="(month) => { properties.month = month.value }"
+                v-on:setYear="(year) => { properties.year = year }">
             </Expiration>
         </div>
         <div class="w3-panel">
-            <Name v-on:setName="(input) => { name = input }"></Name>
+            <CCV v-on:setCode="(code) => { properties.code = code }"></CCV>
+        </div>
+        <div class="w3-panel">
+            <Name v-on:setName="(name) => { properties.name = name }"></Name>
         </div>
         <div class="w3-panel">
             <button class="w3-button w3-text-white primary"
@@ -42,6 +48,7 @@
     import Cart from './Cart';
     import Card from './inputs/Card';
     import Expiration from './inputs/Expiration';
+    import CCV from './inputs/CCV';
     import Name from './inputs/Name';
 
     export default {
@@ -50,13 +57,23 @@
                 plan: {},
                 reduction: '0.00',
                 discount: '',
-                card: '',
-                month: '',
-                year: '',
-                name: ''
+                properties: {
+                    card: '',
+                    month: '',
+                    year: '',
+                    code: '',
+                    name: '',
+                    apiLoginID: '',
+                    clientKey: ''
+                }
             }
         },
         mounted() {
+            axios.get(window.location).then(response => {
+                this.properties.apiLoginID = response.data.apiLoginID;
+                this.properties.clientKey = response.data.clientKey;
+            });
+
             this.plan = store.getState().UserStore.plan;
             if(store.getState().UserStore.discount) {
                 setDiscount(store.getState().UserStore.discount);
@@ -70,19 +87,16 @@
                 });
             },
             sendPaymentDataToAnet() {
-                console.log("NEW CARD SUBMITTED")
-                console.log(`info is ${ this.card }, ${ this.month }, ${ this.year }, ${ this.name }`)
-
                 const secureData = {
                     cardData: {
-                        cardNumber: this.card,
-                        month: this.month,
-                        year: this.year,
-                        cardcode: '123',
+                        cardNumber: this.properties.card,
+                        month: this.properties.month,
+                        year: this.properties.year,
+                        cardcode: this.properties.code
                     },
                     authData: {
-                        clientKey: '4tspwTt5c6A9uuR97LR28mgUWu887qB4LEj5EnZ4U3qAYywUe2X6SYaGsv7GgR4q',
-                        apiLoginID: '7WA27Zgq9'
+                        apiLoginID: this.properties.apiLoginID,
+                        clientKey: this.properties.clientKey
                     }
                 };
 
@@ -97,6 +111,7 @@
             Cart,
             Card,
             Expiration,
+            CCV,
             Name
         }
     }

@@ -2665,8 +2665,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__inputs_Card___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__inputs_Card__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__inputs_Expiration__ = __webpack_require__(103);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__inputs_Expiration___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__inputs_Expiration__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__inputs_Name__ = __webpack_require__(105);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__inputs_Name___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__inputs_Name__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__inputs_CCV__ = __webpack_require__(163);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__inputs_CCV___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__inputs_CCV__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__inputs_Name__ = __webpack_require__(105);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__inputs_Name___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__inputs_Name__);
 //
 //
 //
@@ -2706,6 +2708,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+
 
 
 
@@ -2719,13 +2728,25 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             plan: {},
             reduction: '0.00',
             discount: '',
-            card: '',
-            month: '',
-            year: '',
-            name: ''
+            properties: {
+                card: '',
+                month: '',
+                year: '',
+                code: '',
+                name: '',
+                apiLoginID: '',
+                clientKey: ''
+            }
         };
     },
     mounted: function mounted() {
+        var _this = this;
+
+        axios.get(window.location).then(function (response) {
+            _this.properties.apiLoginID = response.data.apiLoginID;
+            _this.properties.clientKey = response.data.clientKey;
+        });
+
         this.plan = store.getState().UserStore.plan;
         if (store.getState().UserStore.discount) {
             setDiscount(store.getState().UserStore.discount);
@@ -2734,27 +2755,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     methods: {
         setDiscount: function setDiscount(discount) {
-            var _this = this;
+            var _this2 = this;
 
             this.discount = discount;
             axios.put(window.location + '/' + this.discount).then(function (response) {
-                _this.reduction = response.data;
+                _this2.reduction = response.data;
             });
         },
         sendPaymentDataToAnet: function sendPaymentDataToAnet() {
-            console.log("NEW CARD SUBMITTED");
-            console.log('info is ' + this.card + ', ' + this.month + ', ' + this.year + ', ' + this.name);
-
             var secureData = {
                 cardData: {
-                    cardNumber: this.card,
-                    month: this.month,
-                    year: this.year,
-                    cardcode: '123'
+                    cardNumber: this.properties.card,
+                    month: this.properties.month,
+                    year: this.properties.year,
+                    cardcode: this.properties.code
                 },
                 authData: {
-                    clientKey: '4tspwTt5c6A9uuR97LR28mgUWu887qB4LEj5EnZ4U3qAYywUe2X6SYaGsv7GgR4q',
-                    apiLoginID: '7WA27Zgq9'
+                    apiLoginID: this.properties.apiLoginID,
+                    clientKey: this.properties.clientKey
                 }
             };
 
@@ -2768,7 +2786,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         Cart: __WEBPACK_IMPORTED_MODULE_1__Cart___default.a,
         Card: __WEBPACK_IMPORTED_MODULE_2__inputs_Card___default.a,
         Expiration: __WEBPACK_IMPORTED_MODULE_3__inputs_Expiration___default.a,
-        Name: __WEBPACK_IMPORTED_MODULE_4__inputs_Name___default.a
+        CCV: __WEBPACK_IMPORTED_MODULE_4__inputs_CCV___default.a,
+        Name: __WEBPACK_IMPORTED_MODULE_5__inputs_Name___default.a
     }
 });
 
@@ -2868,6 +2887,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
 //
 //
 //
@@ -5993,27 +6014,35 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "w3-panel"
   }, [_c('Card', {
     on: {
-      "setCard": function (input) {
-        _vm.card = input
+      "setCard": function (card) {
+        _vm.properties.card = card
       }
     }
   })], 1), _vm._v(" "), _c('div', {
     staticClass: "w3-panel"
   }, [_c('Expiration', {
     on: {
-      "setMonth": function (input) {
-        _vm.month = input.value
+      "setMonth": function (month) {
+        _vm.properties.month = month.value
       },
-      "setYear": function (input) {
-        _vm.year = input
+      "setYear": function (year) {
+        _vm.properties.year = year
+      }
+    }
+  })], 1), _vm._v(" "), _c('div', {
+    staticClass: "w3-panel"
+  }, [_c('CCV', {
+    on: {
+      "setCode": function (code) {
+        _vm.properties.code = code
       }
     }
   })], 1), _vm._v(" "), _c('div', {
     staticClass: "w3-panel"
   }, [_c('Name', {
     on: {
-      "setName": function (input) {
-        _vm.name = input
+      "setName": function (name) {
+        _vm.properties.name = name
       }
     }
   })], 1), _vm._v(" "), _c('div', {
@@ -6291,12 +6320,12 @@ if (false) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
-    staticClass: "w3-section w3-show-inline-block w3-margin-right v-align"
+    staticClass: "w3-left fifty v-align"
   }, [_c('div', {
     staticClass: "w3-dropdown-hover"
   }, [_c('button', {
     staticClass: "w3-button"
-  }, [_vm._v(_vm._s(_vm.selected.name)), _c('i', {
+  }, [_vm._v(_vm._s(_vm.selected.name) + "\n            "), _c('i', {
     staticClass: "fa fa-caret-down"
   })]), _vm._v(" "), _c('div', {
     staticClass: "w3-dropdown-content w3-bar-block w3-border"
@@ -6371,10 +6400,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       value: (_vm.name),
       expression: "name"
     }],
-    staticClass: "w3-input w3-show-inline-block",
-    staticStyle: {
-      "width": "80%"
-    },
+    staticClass: "w3-input w3-show-inline-block eighty",
     attrs: {
       "type": "text"
     },
@@ -6834,7 +6860,7 @@ if (false) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
-    staticClass: "w3-section w3-show-inline-block w3-margin-left v-align"
+    staticClass: "w3-right fifty v-align"
   }, [_c('input', {
     directives: [{
       name: "model",
@@ -6917,7 +6943,7 @@ if (false) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
-    staticClass: "w3-section eighty"
+    staticClass: "eighty"
   }, [_c('Month', {
     on: {
       "setMonth": function (month) {
@@ -6930,7 +6956,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.$emit('setYear', year)
       }
     }
-  }), _vm._v(" "), _c('span', [_vm._v("Expiration Month and Year")])], 1)
+  }), _vm._v(" "), _c('p', {
+    staticStyle: {
+      "clear": "both"
+    }
+  }, [_vm._v("Expiration Month and Year")])], 1)
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
@@ -19513,6 +19543,106 @@ if (false) {
   module.hot.accept()
   if (module.hot.data) {
      require("vue-hot-reload-api").rerender("data-v-fabb4b9c", module.exports)
+  }
+}
+
+/***/ }),
+/* 162 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            code: ''
+        };
+    }
+});
+
+/***/ }),
+/* 163 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Component = __webpack_require__(0)(
+  /* script */
+  __webpack_require__(162),
+  /* template */
+  __webpack_require__(164),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+Component.options.__file = "/home/johnhuffman/InsuranceSocial.media/src/resources/javascripts/frontend/vue/payment/inputs/CCV.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] CCV.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-ee8d083a", Component.options)
+  } else {
+    hotAPI.reload("data-v-ee8d083a", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 164 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "w3-section"
+  }, [_c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.code),
+      expression: "code"
+    }],
+    staticClass: "w3-input w3-show-inline-block eighty",
+    attrs: {
+      "type": "text"
+    },
+    domProps: {
+      "value": (_vm.code)
+    },
+    on: {
+      "keyup": function($event) {
+        _vm.$emit('setCode', _vm.code)
+      },
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.code = $event.target.value
+      }
+    }
+  }), _vm._v(" "), _c('label', {
+    staticClass: "w3-show-block"
+  }, [_vm._v("Card Verification")])])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-ee8d083a", module.exports)
   }
 }
 

@@ -16,7 +16,10 @@ class PaymentController extends Controller
     public function index(Request $request)
     {
         if($request->wantsJson()) {
-            $data = [];
+            $data = [
+                'apiLoginID' => env('API_LOGIN_ID'),
+                'clientKey' => env('CLIENT_KEY')
+            ];
             return response()->json($data);
         } else {
             return view('layouts.frontend.app');

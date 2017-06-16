@@ -1,7 +1,9 @@
 <template>
-    <div class="w3-section w3-show-inline-block w3-margin-right v-align">
+    <div class="w3-left fifty v-align">
         <div class="w3-dropdown-hover">
-            <button class="w3-button">{{ selected.name }}<i class="fa fa-caret-down"></i></button>
+            <button class="w3-button">{{ selected.name }}
+                <i class="fa fa-caret-down"></i>
+            </button>
             <div class="w3-dropdown-content w3-bar-block w3-border">
                 <div class="w3-bar-item w3-button"
                     v-for="month in months"

@@ -1,8 +1,8 @@
 <template>
-    <div class="w3-section eighty">
+    <div class="eighty">
         <Month v-on:setMonth="(month) => { $emit('setMonth', month) }"></Month>
         <Year v-on:setYear="(year) => { $emit('setYear', year) }"></Year>
-        <span>Expiration Month and Year</span>
+        <p style="clear: both">Expiration Month and Year</p>
     </div>
 </template>
 

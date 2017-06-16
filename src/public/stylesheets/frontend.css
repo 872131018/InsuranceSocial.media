@@ -220,6 +220,9 @@ hr{border:0;border-top:1px solid #eee;margin:20px 0}
 .eighty {
     width: 80%
 }
+.fifty {
+    width: 50%
+}
 .header-logo {
     background-image: url('../images/talk-bubble.png');
     background-repeat: no-repeat;
@@ -240,7 +243,8 @@ hr{border:0;border-top:1px solid #eee;margin:20px 0}
 .bgimg2 {
     background-position: center;
     background-size: cover;
-    background-image: url("../images/stock2.jpg");
+    //background-image: url("../images/stock2.jpg");
+    background-color: #c4daff;
 }
 .login-form {
     float: right;
