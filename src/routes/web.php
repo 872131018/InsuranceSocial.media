@@ -57,6 +57,12 @@ Route::get('/payment', 'PaymentController@index');
  *
  * @return \Illuminate\Http\Response
  */
+Route::post('/payment', 'PaymentController@store');
+/**
+ * Overwrite the default functionality to deliver the SPA
+ *
+ * @return \Illuminate\Http\Response
+ */
 Route::put('/payment/{discount}', 'PaymentController@update');
 
 /**

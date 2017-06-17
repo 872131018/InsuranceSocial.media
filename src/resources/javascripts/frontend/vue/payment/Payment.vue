@@ -101,7 +101,19 @@
                 };
 
                 Accept.dispatchData(secureData, (response) => {
-                    console.log(response)
+                    let total = parseInt(this.plan.price) - parseInt(this.reduction);
+                    total = total.toFixed(2).toString();
+
+                    const transaction = {
+                        total: total,
+                        dataDescriptor: response.opaqueData.dataDescriptor,
+                        dataValue: response.opaqueData.dataValue
+                    };
+
+                    axios.post(window.location, transaction).then(response => {
+                        console.log(response.data)
+                    });
+
                 });
 
             },

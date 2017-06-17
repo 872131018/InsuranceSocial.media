@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use net\authorize\api\contract\v1 as AnetAPI;
+use net\authorize\api\controller as AnetController;
 
 class PaymentController extends Controller
 {
@@ -44,7 +45,76 @@ class PaymentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Common setup for API credentials
+        $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
+        $merchantAuthentication->setName(env('API_LOGIN_ID'));
+        $merchantAuthentication->setTransactionKey(env('TRANSACTION_KEY'));
+
+        // Create the payment data for a credit card from nonce
+        $op = new AnetAPI\OpaqueDataType();
+        $op->setDataDescriptor($request->input('dataDescriptor'));
+        $op->setDataValue($request->input('dataValue'));
+        $paymentOne = new AnetAPI\PaymentType();
+        $paymentOne->setOpaqueData($op);
+
+        // Create a transaction
+        $transactionRequestType = new AnetAPI\TransactionRequestType();
+        $transactionRequestType->setTransactionType("authCaptureTransaction");
+        $transactionRequestType->setAmount($request->input('total'));
+        $transactionRequestType->setPayment($paymentOne);
+
+        $request = new AnetAPI\CreateTransactionRequest();
+        $request->setMerchantAuthentication($merchantAuthentication);
+        $request->setRefId('ref'.time());
+        $request->setTransactionRequest($transactionRequestType);
+
+        $controller = new AnetController\CreateTransactionController($request);
+
+        $response = $controller->executeWithApiResponse(\net\authorize\api\constants\ANetEnvironment::SANDBOX);
+
+        if ($response != null) {
+            $data = [];
+            if($response->getMessages()->getResultCode() =='Ok') {
+                $tresponse = $response->getTransactionResponse();
+
+                if ($tresponse != null && $tresponse->getMessages() != null) {
+                    $data = [
+                        'responseCode' => $tresponse->getResponseCode(),
+                        'authCode' => $tresponse->getAuthCode(),
+                        'transactionId' => $tresponse->getTransId(),
+                        'code' => $tresponse->getMessages()[0]->getCode(),
+                        'description' => $tresponse->getMessages()[0]->getDescription()
+                    ];
+                } else {
+                    if($tresponse->getErrors() != null) {
+                        $data = [
+                            'error' => 'FAILED!',
+                            'errorCode' => $tresponse->getErrors()[0]->getErrorCode(),
+                            'errorMessage' => $tresponse->getErrors()[0]->getErrorText()
+                        ];
+                    }
+                }
+            } else {
+                $tresponse = $response->getTransactionResponse();
+
+                if($tresponse != null && $tresponse->getErrors() != null) {
+                    $data = [
+                        'error' => 'FAILED!',
+                        'errorCode' => $tresponse->getErrors()[0]->getErrorCode(),
+                        'errorMessage' => $tresponse->getErrors()[0]->getErrorText()
+                    ];
+                } else {
+                    $data = [
+                        'error' => 'FAILED!',
+                        'errorCode' => $response->getMessages()->getMessage()[0]->getCode(),
+                        'errorMessage' => $response->getMessages()->getMessage()[0]->getText()
+                    ];
+                }
+            }
+            return response()->json($data);
+        } else {
+            return response()->json('No Response Returned');
+        }
     }
 
     /**
