@@ -97,7 +97,8 @@
                     authData: {
                         apiLoginID: this.properties.apiLoginID,
                         clientKey: this.properties.clientKey
-                    }
+                    },
+                    customerData: store.getState().UserStore
                 };
 
                 Accept.dispatchData(secureData, (response) => {

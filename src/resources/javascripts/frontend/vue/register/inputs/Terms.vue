@@ -11,12 +11,12 @@
         </div>
         <div class="w3-panel">
             <button class="w3-button w3-text-white secondary"
-                v-on:click="setModal()">Terms of Service
+                v-on:click="() => { modal = !modal }">Terms of Service
             </button>
         </div>
         <Modal
             v-if="modal"
-            v-on:setModal="setModal()">
+            v-on:setModal="() => { modal = !modal }">
         </Modal>
     </div>
 </template>
@@ -29,11 +29,6 @@
             return {
                 checked: false,
                 modal: false
-            }
-        },
-        methods: {
-            setModal() {
-                this.modal = !this.modal;
             }
         },
         components: {

@@ -9,6 +9,8 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 
 use Illuminate\Http\Request;
 
+use Exception;
+
 class RegisterController extends Controller
 {
     /*
@@ -81,7 +83,9 @@ class RegisterController extends Controller
                 'api_token' => str_random(60),
                 'discount' => $data['discount']
             ]);
-    }/**
+    }
+
+    /**
      * The user has been registered.
      *
      * @param  \Illuminate\Http\Request  $request

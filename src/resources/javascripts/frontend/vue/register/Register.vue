@@ -112,6 +112,8 @@
                         } else {
                             this.$router.push({ name: 'Select' });
                         }
+                    }).catch(error => {
+                        this.errors.push('An error has occured, please contact support.');
                     });
                 }
             }

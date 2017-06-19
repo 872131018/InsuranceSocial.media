@@ -4,11 +4,18 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use net\authorize\api\contract\v1 as AnetAPI;
+use App\Services\PaymentService;
+
 use net\authorize\api\controller as AnetController;
 
 class PaymentController extends Controller
 {
+    protected $paymentService;
+
+    public function __construct(PaymentService $paymentService)
+    {
+        $this->paymentService = $paymentService;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -45,30 +52,7 @@ class PaymentController extends Controller
      */
     public function store(Request $request)
     {
-        // Common setup for API credentials
-        $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
-        $merchantAuthentication->setName(env('API_LOGIN_ID'));
-        $merchantAuthentication->setTransactionKey(env('TRANSACTION_KEY'));
-
-        // Create the payment data for a credit card from nonce
-        $op = new AnetAPI\OpaqueDataType();
-        $op->setDataDescriptor($request->input('dataDescriptor'));
-        $op->setDataValue($request->input('dataValue'));
-        $paymentOne = new AnetAPI\PaymentType();
-        $paymentOne->setOpaqueData($op);
-
-        // Create a transaction
-        $transactionRequestType = new AnetAPI\TransactionRequestType();
-        $transactionRequestType->setTransactionType("authCaptureTransaction");
-        $transactionRequestType->setAmount($request->input('total'));
-        $transactionRequestType->setPayment($paymentOne);
-
-        $request = new AnetAPI\CreateTransactionRequest();
-        $request->setMerchantAuthentication($merchantAuthentication);
-        $request->setRefId('ref'.time());
-        $request->setTransactionRequest($transactionRequestType);
-
-        $controller = new AnetController\CreateTransactionController($request);
+        $controller = new AnetController\CreateTransactionController($this->paymentService->getTransactionRequest($request));
 
         $response = $controller->executeWithApiResponse(\net\authorize\api\constants\ANetEnvironment::SANDBOX);
 
