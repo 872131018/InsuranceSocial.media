@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Auth;
+
 use App\Services\PaymentService;
 
 use net\authorize\api\controller as AnetController;
@@ -69,6 +71,15 @@ class PaymentController extends Controller
                         'code' => $tresponse->getMessages()[0]->getCode(),
                         'description' => $tresponse->getMessages()[0]->getDescription()
                     ];
+
+                    $user = Auth::user();
+                    $user->discount = $request->input('discount');
+                    $user->plan = json_encode($request->input('customerData')['plan']);
+                    $user->facebook = $request->input('customerData')['facebook'];
+                    $user->twitter = $request->input('customerData')['twitter'];
+                    $user->auth_code = $tresponse->getAuthCode();
+                    $user->transaction_id = $tresponse->getTransId();
+                    $user->update();
                 } else {
                     if($tresponse->getErrors() != null) {
                         $data = [

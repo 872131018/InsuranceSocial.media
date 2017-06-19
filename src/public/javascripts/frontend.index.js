@@ -2814,8 +2814,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 authData: {
                     apiLoginID: this.properties.apiLoginID,
                     clientKey: this.properties.clientKey
-                },
-                customerData: store.getState().UserStore
+                }
             };
 
             Accept.dispatchData(secureData, function (response) {
@@ -2825,7 +2824,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 var transaction = {
                     total: total,
                     dataDescriptor: response.opaqueData.dataDescriptor,
-                    dataValue: response.opaqueData.dataValue
+                    dataValue: response.opaqueData.dataValue,
+                    customerData: store.getState().UserStore
                 };
 
                 axios.post(window.location, transaction).then(function (response) {
