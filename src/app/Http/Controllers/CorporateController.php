@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Plan;
+
 class CorporateController extends Controller
 {
     /**
@@ -25,24 +27,21 @@ class CorporateController extends Controller
                 */
                 $mock_logo = asset('images/office.jpg');
                 $mock_company = 'Dunder Mifflin Inc.';
-                $mock_plan = [
-                    'name' => 'Essential Plan',
-                    'price' => '39.00',
-                    'features' => [
-                        'Facebook and Twitter account set-up, if necessary',
-                        '6 posts/week (3 each to Facebook and Twitter)',
-                        'Personalized content, tailored to your community, interests, products and companies – edited for optimum engagement',
-                        'Automatic notifications when friends or followers react to your posts',
-                        '24/7 access to analytics on your social media reach and engagement'
-                    ]
+                $mock_plans = [
+                    Plan::where('tier', '2')->first(),
+                    Plan::where('tier', '3')->first()
                 ];
+
+                foreach ($mock_plans as $key => $value) {
+                    $mock_plans[$key]['features'] = json_decode($value['features']);
+                }
                 /**
                 * Build an object to output onto the view
                 */
                 $data = [
                     'logo' => $mock_logo,
                     'company' => $mock_company,
-                    'plan' => $mock_plan
+                    'plans' => $mock_plans
                 ];
             } else {
                 /**

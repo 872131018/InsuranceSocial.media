@@ -12,11 +12,6 @@ export default [
         component: Login
     },
     {
-        path: '/corporate/:discount',
-        name: 'Corporate',
-        component: Corporate
-    },
-    {
         path: '/register',
         name: 'Register',
         component: Register
@@ -25,6 +20,11 @@ export default [
         path: '/register/:discount',
         name: 'RegisterWithDiscount',
         component: Register
+    },
+    {
+        path: '/corporate',
+        name: 'Corporate',
+        component: Corporate
     },
     {
         path: '/select',

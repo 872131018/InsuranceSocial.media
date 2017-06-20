@@ -108,7 +108,7 @@
                     axios.post(window.location, this.properties).then(response => {
                         store.dispatch({ type: 'SET_USER', data: response.data });
                         if(response.data.discount) {
-                            this.$router.push({ name: 'Corporate', params: { discount: response.data.discount } });
+                            this.$router.push({ name: 'Corporate' });
                         } else {
                             this.$router.push({ name: 'Select' });
                         }

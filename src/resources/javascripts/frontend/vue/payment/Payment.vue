@@ -56,7 +56,7 @@
             return {
                 plan: {},
                 reduction: '0.00',
-                discount: '',
+                discount: store.getState().UserStore.discount,
                 properties: {
                     card: '',
                     month: '',
@@ -75,14 +75,14 @@
             });
 
             this.plan = store.getState().UserStore.plan;
-            if(store.getState().UserStore.discount) {
-                setDiscount(store.getState().UserStore.discount);
+
+            if(this.discount) {
+                this.setDiscount(this.discount);
             }
         },
         methods: {
             setDiscount(discount) {
-                this.discount = discount;
-                axios.put(`${ window.location }/${ this.discount }`,).then(response => {
+                axios.put(`${ window.location }/${ discount }`,).then(response => {
                     this.reduction = response.data;
                 });
             },

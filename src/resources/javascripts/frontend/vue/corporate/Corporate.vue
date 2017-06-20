@@ -1,15 +1,31 @@
 <template>
     <div class="w3-container w3-card-2 form">
-        <div class="w3-panel">
-            <img class="w3-half" v-bind:src="logo">
-            <h3 class="w3-half">Insurance Social Media is proud to work with you and your team at {{ company }}</h3>
+        <div class="w3-panel w3-row">
+            <img class="w3-col l5 m5 s11 w3-margin"
+                v-bind:src="logo">
+            <h3 class="w3-col l5 m5 s11 w3-margin">Insurance Social Media is proud to work with you and your team at {{ company }}</h3>
         </div>
         <div class="w3-panel">
             <h3>Plan Description</h3>
             <h5>As part of your company package, your plan includes:</h5>
         </div>
         <div class="w3-panel">
-            <Plan v-bind:plan="plan"></Plan>
+            <Plan
+                v-bind:plan="plans[0]"
+                v-bind:selected="selected.name == plans[0].name"
+                v-on:setPlan="(choice) => { selected = choice }">
+            </Plan>
+        </div>
+        <div class="w3-panel">
+            <h3>Upgrade Now</h3>
+            <h5>You can also upgrade your plan to recieve added benefits at a reduced price:</h5>
+        </div>
+        <div class="w3-panel">
+            <Plan
+                v-bind:plan="plans[1]"
+                v-bind:selected="selected.name == plans[1].name"
+                v-on:setPlan="(choice) => { selected = choice }">
+            </Plan>
         </div>
         <div class="w3-panel">
             <h5>We look forward to working with you. Please click register to finish setting up your account.</h5>
@@ -28,27 +44,30 @@
             return {
                 logo: '',
                 company: '',
-                plan: {
-                    name: '',
-                    features: []
-                }
+                plans: [
+                    {
+                        name: ''
+                    },
+                    {
+                        name: ''
+                    }
+                ],
+                selected: {}
             }
         },
         mounted() {
-            axios.get(window.location).then(response => {
+            axios.get(`${window.location}/${store.getState().UserStore.discount}`).then(response => {
                 this.logo = response.data.logo;
                 this.company = response.data.company;
-                this.plan = response.data.plan;
-                store.dispatch({ type: 'SET_PLAN', data: response.data.plan });
+                this.plans = response.data.plans;
+                this.selected = this.plans[0];
+                store.dispatch({ type: 'SET_PLAN', data: response.data.plans[0] });
             });
         },
         methods: {
             update() {
-                if(store.getState().UserStore.id != '') {
-                    this.$router.push({ name: 'Select' });
-                } else {
-                    this.$router.push({ name: 'RegisterWithDiscount', params: { discount: this.$route.params.discount } });
-                }
+                store.dispatch({ type: 'SET_PLAN', data: this.selected });
+                this.$router.push({ name: 'SocialMedia' });
             }
         },
         components: {
