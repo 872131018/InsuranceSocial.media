@@ -1,11 +1,11 @@
 <template>
     <div class="w3-section">
         <input class="w3-input w3-show-inline-block eighty" type="text"
-            v-model="email"
-            v-on:keyup="validate()">
+            v-model="year"
+            v-on:change="validate()">
         <Check v-if="isValid"></Check>
         <Cross v-else></Cross>
-        <label class="w3-show-block">{{ label }}</label>
+        <label class="w3-show-block">Founding Year</label>
     </div>
 </template>
 
@@ -14,21 +14,16 @@
     import Cross from './Cross';
 
     export default {
-        props: {
-            label: {
-                type: String
-            }
-        },
         data() {
             return {
-                email: '',
+                year: '',
                 isValid: false
             }
         },
         methods: {
             validate() {
-                this.$emit('setEmail', this.email);
-                if(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,9})+$/.test(this.email)) {
+                this.$emit('setYear', this.year);
+                if(this.year != '' && this.year.length == 4) {
                     this.isValid = true;
                 } else {
                     this.isValid = false;

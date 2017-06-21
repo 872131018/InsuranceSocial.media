@@ -5,7 +5,7 @@
             v-on:change="validate()">
         <Check v-if="isValid"></Check>
         <Cross v-else></Cross>
-        <label class="w3-show-block">Full Name</label>
+        <label class="w3-show-block">{{ label }}</label>
     </div>
 </template>
 
@@ -14,6 +14,11 @@
     import Cross from './Cross';
 
     export default {
+        props: {
+            label: {
+                type: String
+            }
+        },
         data() {
             return {
                 name: '',
