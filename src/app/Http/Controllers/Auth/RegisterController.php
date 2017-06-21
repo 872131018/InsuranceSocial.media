@@ -31,7 +31,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/setup/welcome';
 
     /**
      * Create a new controller instance.
@@ -50,7 +50,7 @@ class RegisterController extends Controller
      */
     public function index(Request $request, $discount = '')
     {
-        return view('layouts.frontend.app');
+        return view('layouts.register.app');
     }
 
     /**

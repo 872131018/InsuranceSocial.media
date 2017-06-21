@@ -18,11 +18,13 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 /**
- * Overwrite the default functionality to deliver the SPA
+ * Deliver the homepage
  *
  * @return \Illuminate\Http\Response
  */
-Route::get('/corporate/{discount?}', 'CorporateController@index');
+ Route::get('/', function () {
+    return view('layouts.register.app');
+ });
 
 /**
  * Overwrite the default functionality to deliver the SPA
@@ -30,36 +32,58 @@ Route::get('/corporate/{discount?}', 'CorporateController@index');
  * @return \Illuminate\Http\Response
  */
 Route::get('/register', 'Auth\RegisterController@index');
+
 /**
  * Overwrite the default functionality to deliver the SPA
  *
  * @return \Illuminate\Http\Response
  */
 Route::get('/register/{discount?}', 'Auth\RegisterController@index');
+
 /**
  * Overwrite the default functionality to deliver the SPA
  *
  * @return \Illuminate\Http\Response
  */
 Route::post('/register', 'Auth\RegisterController@register');
+
 /**
  * Overwrite the default functionality to deliver the SPA
  *
  * @return \Illuminate\Http\Response
  */
 Route::post('/register/{discount?}', 'Auth\RegisterController@register');
+
+/**
+ * Overwrite the default functionality to deliver the SPA
+ *
+ * @return \Illuminate\Http\Response
+ */
+Route::get('/corporate/{discount?}', 'CorporateController@index');
+
+/**
+ * Deliver the homepage
+ *
+ * @return \Illuminate\Http\Response
+ */
+Route::get('/social-media', function () {
+    return view('layouts.register.app');
+});
+
 /**
  * Overwrite the default functionality to deliver the SPA
  *
  * @return \Illuminate\Http\Response
  */
 Route::get('/payment', 'PaymentController@index');
+
 /**
  * Overwrite the default functionality to deliver the SPA
  *
  * @return \Illuminate\Http\Response
  */
 Route::post('/payment', 'PaymentController@store');
+
 /**
  * Overwrite the default functionality to deliver the SPA
  *
@@ -67,22 +91,14 @@ Route::post('/payment', 'PaymentController@store');
  */
 Route::put('/payment/{discount}', 'PaymentController@update');
 
-/**
+
+ /**
  * Deliver the homepage
  *
  * @return \Illuminate\Http\Response
  */
- Route::get('/', function () {
-    return view('layouts.frontend.app');
- });
- /**
-  * Deliver the homepage
-  *
-  * @return \Illuminate\Http\Response
-  */
-  Route::get('/select', function (Request $request) {
+Route::get('/select', function (Request $request) {
     if($request->wantsJson()) {
-
         $data = [];
         foreach (Plan::all() as $key => $value) {
             $value['features'] = json_decode($value['features']);
@@ -91,14 +107,34 @@ Route::put('/payment/{discount}', 'PaymentController@update');
 
         return response()->json($data);
     } else {
-        return view('layouts.frontend.app');
+        return view('layouts.register.app');
     }
-  });
-/**
+});
+
+ /**
  * Deliver the homepage
  *
  * @return \Illuminate\Http\Response
  */
-Route::get('/social-media', function () {
-    return view('layouts.frontend.app');
+Route::get('/setup/welcome', function (Request $request) {
+    if($request->wantsJson()) {
+
+        return response()->json(Auth::user());
+    } else {
+        return view('layouts.setup.app');
+    }
+});
+
+/**
+* Deliver the homepage
+*
+* @return \Illuminate\Http\Response
+*/
+Route::get('/setup/profile', function (Request $request) {
+   if($request->wantsJson()) {
+
+       return response()->json(Auth::user());
+   } else {
+       return view('layouts.setup.app');
+   }
 });

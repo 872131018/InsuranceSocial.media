@@ -24,7 +24,13 @@ mix.combine([
     'resources/stylesheets/frontend/checkbox.styles.css',
     'resources/stylesheets/frontend/radio.styles.css'
 ], 'public/stylesheets/frontend.css');
+
 /**
 * JAVASCRIPTS FRONTEND
 */
-mix.js('resources/javascripts/frontend/index.js', 'public/javascripts/frontend.index.js');
+mix.js('resources/javascripts/frontend/register/index.js', 'public/javascripts/register.index.js');
+
+/**
+* JAVASCRIPTS FRONTEND
+*/
+mix.js('resources/javascripts/frontend/setup/index.js', 'public/javascripts/setup.index.js');

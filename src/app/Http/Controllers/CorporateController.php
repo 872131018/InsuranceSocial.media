@@ -51,7 +51,7 @@ class CorporateController extends Controller
             }
             return response()->json($data);
         } else {
-            return view('layouts.frontend.app');
+            return view('layouts.register.app');
         }
     }
 

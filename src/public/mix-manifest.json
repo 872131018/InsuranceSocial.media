@@ -1,4 +1,5 @@
 {
-    "/javascripts/frontend.index.js": "/javascripts/frontend.index.js",
+    "/javascripts/register.index.js": "/javascripts/register.index.js",
+    "/javascripts/setup.index.js": "/javascripts/setup.index.js",
     "/stylesheets/frontend.css": "/stylesheets/frontend.css"
 }

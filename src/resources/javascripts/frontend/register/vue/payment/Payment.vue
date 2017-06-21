@@ -112,7 +112,7 @@
                     };
 
                     axios.post(window.location, transaction).then(response => {
-                        console.log(response.data)
+                        window.location = window.base_url + '/setup/welcome';
                     });
 
                 });
