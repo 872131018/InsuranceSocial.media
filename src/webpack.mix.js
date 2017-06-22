@@ -28,6 +28,11 @@ mix.combine([
 /**
 * JAVASCRIPTS FRONTEND
 */
+mix.js('resources/javascripts/frontend/login/index.js', 'public/javascripts/login.index.js');
+
+/**
+* JAVASCRIPTS FRONTEND
+*/
 mix.js('resources/javascripts/frontend/register/index.js', 'public/javascripts/register.index.js');
 
 /**

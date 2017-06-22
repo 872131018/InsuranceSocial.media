@@ -7,7 +7,7 @@ import Payment from './vue/payment/Payment';
 
 export default [
     {
-        path: '/',
+        path: '/login',
         name: 'Login',
         component: Login
     },

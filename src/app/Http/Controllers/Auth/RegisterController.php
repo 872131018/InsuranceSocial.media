@@ -9,8 +9,6 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 
 use Illuminate\Http\Request;
 
-use Exception;
-
 class RegisterController extends Controller
 {
     /*
@@ -48,7 +46,7 @@ class RegisterController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request, $discount = '')
+    public function index(Request $request)
     {
         return view('layouts.register.app');
     }

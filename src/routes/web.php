@@ -22,9 +22,7 @@ Route::get('/home', 'HomeController@index')->name('home');
  *
  * @return \Illuminate\Http\Response
  */
- Route::get('/', function () {
-    return view('layouts.register.app');
- });
+ Route::get('/login', 'Auth\LoginController@index');
 
 /**
  * Overwrite the default functionality to deliver the SPA
@@ -111,30 +109,32 @@ Route::get('/select', function (Request $request) {
     }
 });
 
- /**
- * Deliver the homepage
- *
- * @return \Illuminate\Http\Response
- */
-Route::get('/setup/welcome', function (Request $request) {
-    if($request->wantsJson()) {
+Route::middleware(['auth'])->group(function() {
+    /**
+    * Deliver the homepage
+    *
+    * @return \Illuminate\Http\Response
+    */
+   Route::get('/setup/welcome', function (Request $request) {
+       if($request->wantsJson()) {
 
-        return response()->json(Auth::user());
-    } else {
-        return view('layouts.setup.app');
-    }
-});
+           return response()->json(Auth::user());
+       } else {
+           return view('layouts.setup.app');
+       }
+   });
 
-/**
-* Deliver the homepage
-*
-* @return \Illuminate\Http\Response
-*/
-Route::get('/setup/profile', function (Request $request) {
-   if($request->wantsJson()) {
+   /**
+   * Deliver the homepage
+   *
+   * @return \Illuminate\Http\Response
+   */
+   Route::get('/setup/profile', function (Request $request) {
+      if($request->wantsJson()) {
 
-       return response()->json(Auth::user());
-   } else {
-       return view('layouts.setup.app');
-   }
+          return response()->json(Auth::user());
+      } else {
+          return view('layouts.setup.app');
+      }
+   });
 });

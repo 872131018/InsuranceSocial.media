@@ -1,5 +1,6 @@
 {
     "/javascripts/register.index.js": "/javascripts/register.index.js",
     "/javascripts/setup.index.js": "/javascripts/setup.index.js",
+    "/javascripts/login.index.js": "/javascripts/login.index.js",
     "/stylesheets/frontend.css": "/stylesheets/frontend.css"
 }
