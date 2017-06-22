@@ -4,25 +4,23 @@
             <img class="w3-margin-right login-logo" src="/images/talk-bubble-color.png">
             <span class="w3-large">Insurance Social Media</span>
         </div>
-        <form class="w3-container w3-padding-32"
-            v-bind:action="getUrl()" method="POST">
+        <div class="w3-container w3-padding-32">
             <div class="w3-section">
-                <input class="w3-input" type="text" style="width:90%" required>
+                <input class="w3-input eighty" type="text"
+                    v-model="properties.email">
                 <label>Email</label>
             </div>
             <div class="w3-section">
-                <input class="w3-input" type="password" style="width:90%" required>
+                <input class="w3-input eighty" type="password"
+                    v-model="properties.password">
                 <label>Password</label>
             </div>
             <div class="w3-section">
-                <input class="w3-check" type="checkbox" checked="checked">
-                <label>Stay logged in</label>
+                <button class="w3-button w3-text-white primary"
+                    v-on:click="login()">Login
+                </button>
             </div>
-            <div class="w3-section">
-                <input type="hidden" name="_token" v-bind:value="getToken()">
-                <button class="w3-button w3-text-white primary">Log in</button>
-            </div>
-        </form>
+        </div>
         <div class="w3-container w3-padding-32">
             <p class="w3-large">Don't have a login?</p>
             <button class="w3-button w3-text-white secondary"
@@ -34,18 +32,25 @@
 
 <script>
     export default {
-        components: {
-            //
+        data() {
+            return {
+                properties: {
+                    email: '',
+                    password: ''
+                }
+            }
         },
         methods: {
-            getUrl() {
-                return window.location + '/login';
-            },
-            getToken() {
-                return document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+            login() {
+                axios.post(window.location, this.properties).then(response => {
+                    store.dispatch({ type: 'SET_USER', data: response.data });
+                    window.location = `${ window.base_url }/setup/welcome`;
+                }).catch(error => {
+                    this.errors.push('An error has occured, please contact support.');
+                });
             },
             register() {
-                window.location = window.base_url + '/register';
+                window.location = `${ window.base_url }/register`;
             }
         }
     }

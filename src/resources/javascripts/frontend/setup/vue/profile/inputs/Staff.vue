@@ -1,13 +1,13 @@
 <template>
     <div class="w3-section">
         <div class="w3-dropdown-hover">
-            <button class="w3-button">{{ selected.name }}
+            <button class="w3-button">{{ selected.size }}
                 <i class="fa fa-caret-down"></i>
             </button>
             <div class="w3-dropdown-content w3-bar-block w3-border">
                 <div class="w3-bar-item w3-button"
                     v-for="size in sizes"
-                    v-on:click="setStaff(size)">{{ size.name }}
+                    v-on:click="setStaff(size)">{{ size.size }}
                 </div>
             </div>
         </div>
@@ -20,20 +20,23 @@
             return {
                 sizes: [
                     {
-                        name: 'January',
-                        value: '01'
+                        size: 'Sole Proprietor'
                     },
                     {
-                        name: 'February',
-                        value: '02'
+                        size: '2-5 Employees'
                     },
                     {
-                        name: 'March',
-                        value: '03'
+                        size: '6-10 Employees'
+                    },
+                    {
+                        size: '11-15 Employees'
+                    },
+                    {
+                        size: '16+ Employees'
                     }
                 ],
                 selected: {
-                    name: 'Staff Size'
+                    size: 'How many agents do you employ?'
                 }
             }
         },

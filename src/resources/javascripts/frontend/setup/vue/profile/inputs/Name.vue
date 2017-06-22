@@ -17,11 +17,15 @@
         props: {
             label: {
                 type: String
+            },
+            value: {
+                type: String,
+                default: ''
             }
         },
         data() {
             return {
-                name: '',
+                name: this.value,
                 isValid: false
             }
         },

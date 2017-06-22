@@ -1,13 +1,13 @@
 <template>
     <div class="w3-section">
         <div class="w3-dropdown-hover">
-            <button class="w3-button">{{ selected.name }}
+            <button class="w3-button">{{ selected.generation }}
                 <i class="fa fa-caret-down"></i>
             </button>
             <div class="w3-dropdown-content w3-bar-block w3-border">
                 <div class="w3-bar-item w3-button"
                     v-for="generation in generations"
-                    v-on:click="setGeneration(generation)">{{ generation.name }}
+                    v-on:click="setGeneration(generation)">{{ generation.generation }}
                 </div>
             </div>
         </div>
@@ -20,20 +20,23 @@
             return {
                 generations: [
                     {
-                        name: 'January',
-                        value: '01'
+                        generation: '1st'
                     },
                     {
-                        name: 'February',
-                        value: '02'
+                        generation: '2nd'
                     },
                     {
-                        name: 'March',
-                        value: '03'
+                        generation: '3rd'
+                    },
+                    {
+                        generation: '4th'
+                    },
+                    {
+                        generation: '5th'
                     }
                 ],
                 selected: {
-                    name: 'Multigenerational'
+                    generation: 'Is this a multigenerational company?'
                 }
             }
         },

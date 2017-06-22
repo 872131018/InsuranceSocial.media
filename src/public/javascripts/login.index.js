@@ -15270,19 +15270,27 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    components: {
-        //
+    data: function data() {
+        return {
+            properties: {
+                email: '',
+                password: ''
+            }
+        };
     },
+
     methods: {
-        getUrl: function getUrl() {
-            return window.location + '/login';
-        },
-        getToken: function getToken() {
-            return document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+        login: function login() {
+            var _this = this;
+
+            axios.post(window.location, this.properties).then(function (response) {
+                store.dispatch({ type: 'SET_USER', data: response.data });
+                window.location = window.base_url + '/setup/welcome';
+            }).catch(function (error) {
+                _this.errors.push('An error has occured, please contact support.');
+            });
         },
         register: function register() {
             window.location = window.base_url + '/register';
@@ -15297,25 +15305,62 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "w3-container w3-margin w3-padding-32 w3-card-2 w3-row l4 m6 s12 login-form"
-  }, [_vm._m(0), _vm._v(" "), _c('form', {
-    staticClass: "w3-container w3-padding-32",
-    attrs: {
-      "action": _vm.getUrl(),
-      "method": "POST"
-    }
-  }, [_vm._m(1), _vm._v(" "), _vm._m(2), _vm._v(" "), _vm._m(3), _vm._v(" "), _c('div', {
+  }, [_vm._m(0), _vm._v(" "), _c('div', {
+    staticClass: "w3-container w3-padding-32"
+  }, [_c('div', {
     staticClass: "w3-section"
   }, [_c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.properties.email),
+      expression: "properties.email"
+    }],
+    staticClass: "w3-input eighty",
     attrs: {
-      "type": "hidden",
-      "name": "_token"
+      "type": "text"
     },
     domProps: {
-      "value": _vm.getToken()
+      "value": (_vm.properties.email)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.properties.email = $event.target.value
+      }
     }
-  }), _vm._v(" "), _c('button', {
-    staticClass: "w3-button w3-text-white primary"
-  }, [_vm._v("Log in")])])]), _vm._v(" "), _c('div', {
+  }), _vm._v(" "), _c('label', [_vm._v("Email")])]), _vm._v(" "), _c('div', {
+    staticClass: "w3-section"
+  }, [_c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.properties.password),
+      expression: "properties.password"
+    }],
+    staticClass: "w3-input eighty",
+    attrs: {
+      "type": "password"
+    },
+    domProps: {
+      "value": (_vm.properties.password)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.properties.password = $event.target.value
+      }
+    }
+  }), _vm._v(" "), _c('label', [_vm._v("Password")])]), _vm._v(" "), _c('div', {
+    staticClass: "w3-section"
+  }, [_c('button', {
+    staticClass: "w3-button w3-text-white primary",
+    on: {
+      "click": function($event) {
+        _vm.login()
+      }
+    }
+  }, [_vm._v("Login\n            ")])])]), _vm._v(" "), _c('div', {
     staticClass: "w3-container w3-padding-32"
   }, [_c('p', {
     staticClass: "w3-large"
@@ -15338,42 +15383,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _vm._v(" "), _c('span', {
     staticClass: "w3-large"
   }, [_vm._v("Insurance Social Media")])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "w3-section"
-  }, [_c('input', {
-    staticClass: "w3-input",
-    staticStyle: {
-      "width": "90%"
-    },
-    attrs: {
-      "type": "text",
-      "required": ""
-    }
-  }), _vm._v(" "), _c('label', [_vm._v("Email")])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "w3-section"
-  }, [_c('input', {
-    staticClass: "w3-input",
-    staticStyle: {
-      "width": "90%"
-    },
-    attrs: {
-      "type": "password",
-      "required": ""
-    }
-  }), _vm._v(" "), _c('label', [_vm._v("Password")])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "w3-section"
-  }, [_c('input', {
-    staticClass: "w3-check",
-    attrs: {
-      "type": "checkbox",
-      "checked": "checked"
-    }
-  }), _vm._v(" "), _c('label', [_vm._v("Stay logged in")])])
 }]}
 module.exports.render._withStripped = true
 if (false) {

@@ -1,13 +1,13 @@
 <template>
     <div class="w3-section">
         <div class="w3-dropdown-hover">
-            <button class="w3-button">{{ selected.name }}
+            <button class="w3-button">{{ selected.title }}
                 <i class="fa fa-caret-down"></i>
             </button>
             <div class="w3-dropdown-content w3-bar-block w3-border">
                 <div class="w3-bar-item w3-button"
                     v-for="title in titles"
-                    v-on:click="setTitle(title)">{{ title.name }}
+                    v-on:click="setTitle(title)">{{ title.title }}
                 </div>
             </div>
         </div>
@@ -20,20 +20,26 @@
             return {
                 titles: [
                     {
-                        name: 'January',
-                        value: '01'
+                        title: 'Owner'
                     },
                     {
-                        name: 'February',
-                        value: '02'
+                        title: 'Operations Manager'
                     },
                     {
-                        name: 'March',
-                        value: '03'
+                        title: 'Marketing Manager'
+                    },
+                    {
+                        title: 'Principle'
+                    },
+                    {
+                        title: 'Sales Manager'
+                    },
+                    {
+                        title: 'Other'
                     }
                 ],
                 selected: {
-                    name: 'Title'
+                    title: 'What is your title?'
                 }
             }
         },

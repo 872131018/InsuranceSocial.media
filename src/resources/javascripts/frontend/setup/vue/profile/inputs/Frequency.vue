@@ -1,13 +1,13 @@
 <template>
     <div class="w3-section">
         <div class="w3-dropdown-hover">
-            <button class="w3-button">{{ selected.name }}
+            <button class="w3-button">{{ selected.frequency }}
                 <i class="fa fa-caret-down"></i>
             </button>
             <div class="w3-dropdown-content w3-bar-block w3-border">
                 <div class="w3-bar-item w3-button"
                     v-for="frequency in frequencies"
-                    v-on:click="setFrequency(frequency)">{{ frequency.name }}
+                    v-on:click="setFrequency(frequency)">{{ frequency.frequency }}
                 </div>
             </div>
         </div>
@@ -20,20 +20,23 @@
             return {
                 frequencies: [
                     {
-                        name: 'January',
-                        value: '01'
+                        frequency: 'Daily'
                     },
                     {
-                        name: 'February',
-                        value: '02'
+                        frequency: 'Weekly'
                     },
                     {
-                        name: 'March',
-                        value: '03'
-                    }
+                        frequency: 'Monthly'
+                    },
+                    {
+                        frequency: 'Quarterly'
+                    },
+                    {
+                        frequency: 'Never'
+                    },
                 ],
                 selected: {
-                    name: 'Notification Frequency'
+                    frequency: 'How often would like to be notified?'
                 }
             }
         },

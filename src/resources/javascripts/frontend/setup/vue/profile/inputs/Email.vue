@@ -17,11 +17,15 @@
         props: {
             label: {
                 type: String
+            },
+            value: {
+                type: String,
+                default: ''
             }
         },
         data() {
             return {
-                email: '',
+                email: this.value,
                 isValid: false
             }
         },
