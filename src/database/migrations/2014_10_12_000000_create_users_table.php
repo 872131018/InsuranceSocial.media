@@ -37,6 +37,14 @@ class CreateUsersTable extends Migration
             $table->string('notification_frequency')->nullable();
             $table->boolean('notify_email')->nullable();
             $table->boolean('notify_text')->nullable();
+            $table->string('address_1')->nullable();
+            $table->string('address_2')->nullable();
+            $table->string('city')->nullable();
+            $table->string('state')->nullable();
+            $table->string('zip')->nullable();
+            $table->string('marketing_region')->nullable();
+            $table->string('marketing_state')->nullable();
+            $table->string('marketing_county')->nullable();
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();

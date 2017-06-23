@@ -118,9 +118,8 @@
                 }
                 if(this.errors.length == 0) {
                     axios.post(window.location, this.properties).then(response => {
-                        console.log(response.data)
                         store.dispatch({ type: 'SET_PROPERTIES', data: response.data });
-                        //this.$router.push({ name: 'Location' });
+                        this.$router.push({ name: 'Location' });
                     }).catch(error => {
                         this.errors.push('An error has occured, please contact support.');
                     });

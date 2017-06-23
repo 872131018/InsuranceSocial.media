@@ -1,59 +1,58 @@
 <template>
     <div class="w3-container w3-card-2 form">
         <div class="w3-panel">
-            <h3>Who are we?</h3>
-            <h5>Please complete this information so we may provide you the best service.</h5>
+            <h3>Where are we?</h3>
+            <h5>Please complete this information for geographic service marketing.</h5>
         </div>
         <div class="w3-panel">
-            <Name
-                v-bind:label="'Full Name'"
-                v-bind:value="properties.name"
-                v-on:setName="(name) => { properties.name = name }">
-            </Name>
-            <Email
-                v-bind:label="'Email'"
-                v-bind:value="properties.email"
-                v-on:setEmail="(email) => { properties.email = email }">
-            </Email>
-            <Phone
-                v-on:setPhone="(phone) => { properties.phone = phone }">
-            </Phone>
-            <Title
-                v-on:setTitle="(title) => { properties.title = title.name }">
-            </Title>
-            <div v-if="properties.title != 'Principle' && properties.title != ''">
-                <Name
-                    v-bind:label="'Principle Name'"
-                    v-on:setName="(name) => { properties.principle_name = name }">
-                </Name>
-                <Email
-                    v-bind:label="'Principle Email'"
-                    v-on:setEmail="(email) => { properties.principle_email = email }">
-                </Email>
+            <Field
+                v-bind:label="'Business Address 1'"
+                v-on:setValue="(value) => properties.address_1 = value">
+            </Field>
+            <Field
+                v-bind:label="'Business Address 2'"
+                v-on:setValue="(value) => properties.address_2 = value">
+            </Field>
+            <Field
+                v-bind:label="'City'"
+                v-on:setValue="(value) => properties.city = value">
+            </Field>
+            <Dropdown
+                v-bind:label="'State'"
+                v-bind:options="states"
+                v-on:setOption="(option) => properties.state = option">
+            </Dropdown>
+            <Field
+                v-bind:label="'Zip Code'"
+                v-on:setValue="(value) => properties.zip = value">
+            </Field>
+            <Dropdown
+                v-bind:label="'Marketing Geography'"
+                v-bind:options="targets"
+                v-on:setOption="(option) => geography = option">
+            </Dropdown>
+            <div v-show="geography == 'Region'">
+                <ul class="w3-ul w3-border w3-hoverable">
+                    <li v-for="region in regions">{{ region }}</li>
+                </ul>
+                <Dropdown
+                    v-bind:label="'Marketing Region'"
+                    v-bind:options="regions"
+                    v-on:setOption="(option) => properties.marketing_region = option">
+                </Dropdown>
             </div>
-            <Name
-                v-bind:label="'Organization Name'"
-                v-on:setName="(name) => { properties.organization_name = name }">
-            </Name>
-            <Website
-                v-on:setWebsite="(website) => { properties.website = website }">
-            </Website>
-            <Staff
-                v-on:setStaff="(staff) => { properties.staff = staff.name }">
-            </Staff>
-            <Year
-                v-on:setYear="(year) => { properties.year = year }">
-            </Year>
-            <Generation
-                v-on:setGeneration="(generation) => { properties.generation = generation.generation }">
-            </Generation>
-            <Frequency
-                v-on:setFrequency="(frequency) => { properties.frequency = frequency }">
-            </Frequency>
-            <Notification
-                v-on:setEmail="(email) => { properties.notify.email = email }"
-                v-on:setText="(text) => { properties.notify.text = text }">
-            </Notification>
+            <div v-show="geography == 'State and Counties'">
+                <Dropdown
+                    v-bind:label="'Marketing State'"
+                    v-bind:options="states"
+                    v-on:setOption="(option) => properties.marketing_state = option">
+                </Dropdown>
+                <Dropdown
+                    v-bind:label="'Marketing County'"
+                    v-bind:options="counties"
+                    v-on:setOption="(option) => properties.marketing_county = option">
+                </Dropdown>
+            </div>
         </div>
         <div class="w3-panel"
             v-if="errors.length">
@@ -70,82 +69,72 @@
 </template>
 
 <script>
-    import Name from './inputs/Name';
-    import Email from './inputs/Email';
-    import Phone from './inputs/Phone';
-    import Title from './inputs/Title';
-    import Website from './inputs/Website';
-    import Staff from './inputs/Staff';
-    import Year from './inputs/Year';
-    import Generation from './inputs/Generation';
-    import Frequency from './inputs/Frequency';
-    import Notification from './inputs/Notification';
+    import Field from './inputs/Field';
+    import Dropdown from './inputs/Dropdown';
     import Errors from './Errors';
 
     export default {
         data() {
             return {
                 properties: {
-                    name: store.getState().UserStore.name,
                     email: store.getState().UserStore.email,
-                    phone: '',
-                    title: '',
-                    principle_name: '',
-                    principle_email: '',
-                    website: '',
-                    staff: '',
-                    year: '',
-                    generation: '',
-                    frequency: '',
-                    notify: {
-                        email: true,
-                        text: true
-                    }
+                    address_1: '',
+                    address_2: '',
+                    city: '',
+                    state: '',
+                    zip: '',
+                    marketing_region: '',
+                    marketing_state: '',
+                    marketing_county: ''
                 },
+                geography: '',
+                targets: [
+                    'Region',
+                    'State and Counties'
+                ],
+                states: [
+                    'asdqwer',
+                    'asdfghjf',
+                    'asdfasdfasdf'
+                ],
+                regions: [
+                    'as1324df',
+                    'asdf1234asdf',
+                    'qerq12341234wer'
+                ],
+                counties: [
+                    'asdf',
+                    'asdfasdf',
+                    'qerqwer',
+                    'asdf',
+                    'asdf',
+                    'asdfasdfasdf'
+                ],
                 errors: []
             }
         },
         methods: {
             update() {
+                console.log(this.geography)
+                console.log(this.properties.marketing_region, this.properties.marketing_state, this.properties.marketing_county)
+                return
                 this.errors = [];
                 if(this.properties.name == '') {
                     this.errors.push('You must enter your full name.');
                 }
-                if(this.properties.email == '') {
-                    this.errors.push('You must enter your full email.');
-                }
-                if(this.properties.phone == '') {
-                    this.errors.push('You must enter your full phone.');
-                }
                 if(this.errors.length == 0) {
-                    console.log(this.properties)
-                    store.dispatch({ type: 'SET_PROPERTIES', data: this.properties });
-                    /*
                     axios.post(window.location, this.properties).then(response => {
-                        store.dispatch({ type: 'SET_USER', data: response.data });
-                        if(response.data.discount) {
-                            this.$router.push({ name: 'Corporate' });
-                        } else {
-                            this.$router.push({ name: 'Select' });
-                        }
+                        store.dispatch({ type: 'SET_LOCATION', data: response.data });
+                        this.$router.push({ name: 'Select' });
                     }).catch(error => {
                         this.errors.push('An error has occured, please contact support.');
                     });
-                    */
                 }
             }
         },
         components: {
-            Name,
-            Email,
-            Phone,
-            Title,
-            Website,
-            Staff,
-            Year,
-            Generation,
-            Frequency,
-            Notification,
+            Field,
+            Dropdown,
             Errors
         }
     }

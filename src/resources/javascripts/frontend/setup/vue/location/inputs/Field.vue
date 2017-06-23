@@ -1,11 +1,11 @@
 <template>
     <div class="w3-section">
         <input class="w3-input w3-show-inline-block eighty" type="text"
-            v-model="website"
+            v-model="value"
             v-on:change="validate()">
         <Check v-if="isValid"></Check>
         <Cross v-else></Cross>
-        <label class="w3-show-block">Website</label>
+        <label class="w3-show-block">{{ label }}</label>
     </div>
 </template>
 
@@ -14,16 +14,21 @@
     import Cross from './Cross';
 
     export default {
+        props: {
+            label: {
+                type: String
+            }
+        },
         data() {
             return {
-                website: '',
+                value: '',
                 isValid: false
             }
         },
         methods: {
             validate() {
-                this.$emit('setWebsite', this.website);
-                if(this.website != '') {
+                this.$emit('setValue', this.value);
+                if(this.value != '') {
                     this.isValid = true;
                 } else {
                     this.isValid = false;

@@ -18,7 +18,15 @@ const initialState = {
     multi_generation: '',
     notification_frequency: '',
     notify_email: true,
-    notify_text: true
+    notify_text: true,
+    address_1: '',
+    address_2: '',
+    city: '',
+    state: '',
+    zip: '',
+    marketing_region: '',
+    marketing_state: '',
+    marketing_county: ''
 };
 
 module.exports = function(user = initialState, action) {
@@ -50,6 +58,16 @@ module.exports = function(user = initialState, action) {
             user.notification_frequency = action.data.notification_frequency;
             user.notify_email = action.data.notify_email;
             user.notify_text = action.data.notify_text;
+        case 'SET_LOCATION':
+            user.address_1 = action.data.address_1;
+            user.address_2 = action.data.address_2;
+            user.city = action.data.city;
+            user.state = action.data.state;
+            user.zip = action.data.zip;
+            user.marketing_region = action.data.marketing_region;
+            user.marketing_state = action.data.marketing_state;
+            user.marketing_county = action.data.marketing_county;
+
         default:
             break;
     }
