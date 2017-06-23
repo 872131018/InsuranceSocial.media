@@ -124,82 +124,30 @@ Route::middleware(['auth'])->group(function() {
     });
 
     /**
-    * Deliver the homepage
-    *
-    * @return \Illuminate\Http\Response
-    */
-    Route::get('/setup/profile', function (Request $request) {
-        if($request->wantsJson()) {
-            return response()->json(Auth::user());
-        } else {
-            return view('layouts.setup.app');
-        }
-    });
+     * Overwrite the default functionality to deliver the SPA
+     *
+     * @return \Illuminate\Http\Response
+     */
+    Route::get('/setup/profile', 'ProfileController@index');
 
     /**
-    * Deliver the homepage
-    *
-    * @return \Illuminate\Http\Response
-    */
-    Route::post('/setup/profile', function (Request $request) {
-        if($request->wantsJson()) {
-            $user = Auth::user();
-            if($user->email == $request->input('email')) {
-                $user->phone = $request->input('phone');
-                $user->title = $request->input('title');
-                $user->principle_name = $request->input('principle_name');
-                $user->principle_email = $request->input('principle_email');
-                $user->organization_name = $request->input('organization_name');
-                $user->website = $request->input('website');
-                $user->staff_size = $request->input('staff_size');
-                $user->year_founded = $request->input('year_founded');
-                $user->multi_generation = $request->input('multi_generation');
-                $user->notification_frequency = $request->input('notification_frequency');
-                $user->notify_email = $request->input('notify_email');
-                $user->notify_text = $request->input('notify_text');
-                $user->update();
-            }
-            return response()->json($user);
-        } else {
-            return view('layouts.setup.app');
-        }
-    });
+     * Overwrite the default functionality to deliver the SPA
+     *
+     * @return \Illuminate\Http\Response
+     */
+    Route::post('/setup/profile', 'ProfileController@store');
 
     /**
-    * Deliver the homepage
-    *
-    * @return \Illuminate\Http\Response
-    */
-    Route::get('/setup/location', function (Request $request) {
-        if($request->wantsJson()) {
-            return response()->json(Auth::user());
-        } else {
-            return view('layouts.setup.app');
-        }
-    });
+     * Overwrite the default functionality to deliver the SPA
+     *
+     * @return \Illuminate\Http\Response
+     */
+    Route::get('/setup/location', 'LocationController@index');
 
     /**
-    * Deliver the homepage
-    *
-    * @return \Illuminate\Http\Response
-    */
-    Route::post('/setup/location', function (Request $request) {
-        if($request->wantsJson()) {
-            $user = Auth::user();
-            if($user->email == $request->input('email')) {
-                $user->address_1 = $request->input('address_1');
-                $user->address_2 = $request->input('address_2');
-                $user->city = $request->input('city');
-                $user->state = $request->input('state');
-                $user->zip = $request->input('zip');
-                $user->marketing_region = $request->input('marketing_region');
-                $user->marketing_state = $request->input('marketing_state');
-                $user->marketing_county = $request->input('marketing_county');
-                $user->update();
-            }
-            return response()->json($user);
-        } else {
-            return view('layouts.setup.app');
-        }
-    });
+     * Overwrite the default functionality to deliver the SPA
+     *
+     * @return \Illuminate\Http\Response
+     */
+    Route::post('/setup/location', 'LocationController@store');
 });

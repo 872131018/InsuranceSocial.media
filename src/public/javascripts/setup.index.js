@@ -17783,9 +17783,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         update: function update() {
             var _this = this;
 
-            console.log(this.geography);
-            console.log(this.properties.marketing_region, this.properties.marketing_state, this.properties.marketing_county);
-            return;
             this.errors = [];
             if (this.properties.name == '') {
                 this.errors.push('You must enter your full name.');
