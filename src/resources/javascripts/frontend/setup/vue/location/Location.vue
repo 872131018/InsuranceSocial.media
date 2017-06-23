@@ -19,7 +19,7 @@
                 v-on:setPhone="(phone) => { properties.phone = phone }">
             </Phone>
             <Title
-                v-on:setTitle="(title) => { properties.title = title.title }">
+                v-on:setTitle="(title) => { properties.title = title.name }">
             </Title>
             <div v-if="properties.title != 'Principle' && properties.title != ''">
                 <Name
@@ -39,20 +39,20 @@
                 v-on:setWebsite="(website) => { properties.website = website }">
             </Website>
             <Staff
-                v-on:setStaff="(staff) => { properties.staff_size = staff.size }">
+                v-on:setStaff="(staff) => { properties.staff = staff.name }">
             </Staff>
             <Year
-                v-on:setYear="(year) => { properties.year_founded = year }">
+                v-on:setYear="(year) => { properties.year = year }">
             </Year>
             <Generation
-                v-on:setGeneration="(generation) => { properties.multi_generation = generation.generation }">
+                v-on:setGeneration="(generation) => { properties.generation = generation.generation }">
             </Generation>
             <Frequency
-                v-on:setFrequency="(frequency) => { properties.notification_frequency = frequency.frequency }">
+                v-on:setFrequency="(frequency) => { properties.frequency = frequency }">
             </Frequency>
             <Notification
-                v-on:setEmail="(email) => { properties.notify_email = email }"
-                v-on:setText="(text) => { properties.notify_text = text }">
+                v-on:setEmail="(email) => { properties.notify.email = email }"
+                v-on:setText="(text) => { properties.notify.text = text }">
             </Notification>
         </div>
         <div class="w3-panel"
@@ -92,14 +92,15 @@
                     title: '',
                     principle_name: '',
                     principle_email: '',
-                    organization_name: '',
                     website: '',
-                    staff_size: '',
-                    year_founded: '',
-                    multi_generation: '',
-                    notification_frequency: '',
-                    notify_email: true,
-                    notify_text: true
+                    staff: '',
+                    year: '',
+                    generation: '',
+                    frequency: '',
+                    notify: {
+                        email: true,
+                        text: true
+                    }
                 },
                 errors: []
             }
@@ -117,13 +118,20 @@
                     this.errors.push('You must enter your full phone.');
                 }
                 if(this.errors.length == 0) {
+                    console.log(this.properties)
+                    store.dispatch({ type: 'SET_PROPERTIES', data: this.properties });
+                    /*
                     axios.post(window.location, this.properties).then(response => {
-                        console.log(response.data)
-                        store.dispatch({ type: 'SET_PROPERTIES', data: response.data });
-                        //this.$router.push({ name: 'Location' });
+                        store.dispatch({ type: 'SET_USER', data: response.data });
+                        if(response.data.discount) {
+                            this.$router.push({ name: 'Corporate' });
+                        } else {
+                            this.$router.push({ name: 'Select' });
+                        }
                     }).catch(error => {
                         this.errors.push('An error has occured, please contact support.');
                     });
+                    */
                 }
             }
         },

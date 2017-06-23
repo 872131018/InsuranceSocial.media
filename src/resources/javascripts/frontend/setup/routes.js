@@ -1,5 +1,6 @@
 import Welcome from './vue/welcome/Welcome';
 import Profile from './vue/profile/Profile';
+import Location from './vue/location/Location';
 
 export default [
     {
@@ -11,5 +12,10 @@ export default [
         path: '/setup/profile',
         name: 'Profile',
         component: Profile
+    },
+    {
+        path: '/setup/location',
+        name: 'Location',
+        component: Location
     },
 ];

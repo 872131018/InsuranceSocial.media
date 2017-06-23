@@ -115,26 +115,53 @@ Route::middleware(['auth'])->group(function() {
     *
     * @return \Illuminate\Http\Response
     */
-   Route::get('/setup/welcome', function (Request $request) {
-       if($request->wantsJson()) {
+    Route::get('/setup/welcome', function (Request $request) {
+        if($request->wantsJson()) {
+            return response()->json(Auth::user());
+        } else {
+            return view('layouts.setup.app');
+        }
+    });
 
-           return response()->json(Auth::user());
-       } else {
-           return view('layouts.setup.app');
-       }
-   });
+    /**
+    * Deliver the homepage
+    *
+    * @return \Illuminate\Http\Response
+    */
+    Route::get('/setup/profile', function (Request $request) {
+        if($request->wantsJson()) {
+            return response()->json(Auth::user());
+        } else {
+            return view('layouts.setup.app');
+        }
+    });
 
-   /**
-   * Deliver the homepage
-   *
-   * @return \Illuminate\Http\Response
-   */
-   Route::get('/setup/profile', function (Request $request) {
-      if($request->wantsJson()) {
-
-          return response()->json(Auth::user());
-      } else {
-          return view('layouts.setup.app');
-      }
-   });
+    /**
+    * Deliver the homepage
+    *
+    * @return \Illuminate\Http\Response
+    */
+    Route::post('/setup/profile', function (Request $request) {
+        if($request->wantsJson()) {
+            $user = Auth::user();
+            if($user->email == $request->input('email')) {
+                $user->phone = $request->input('phone');
+                $user->title = $request->input('title');
+                $user->principle_name = $request->input('principle_name');
+                $user->principle_email = $request->input('principle_email');
+                $user->organization_name = $request->input('organization_name');
+                $user->website = $request->input('website');
+                $user->staff_size = $request->input('staff_size');
+                $user->year_founded = $request->input('year_founded');
+                $user->multi_generation = $request->input('multi_generation');
+                $user->notification_frequency = $request->input('notification_frequency');
+                $user->notify_email = $request->input('notify_email');
+                $user->notify_text = $request->input('notify_text');
+                $user->update();
+            }
+            return response()->json($user);
+        } else {
+            return view('layouts.setup.app');
+        }
+    });
 });

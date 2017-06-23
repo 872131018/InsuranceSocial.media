@@ -25,6 +25,18 @@ class CreateUsersTable extends Migration
             $table->boolean('twitter')->nullable();
             $table->string('auth_code')->nullable();
             $table->string('transaction_id')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('title')->nullable();
+            $table->string('principle_name')->nullable();
+            $table->string('principle_email')->nullable();
+            $table->string('organization_name')->nullable();
+            $table->string('website')->nullable();
+            $table->string('staff_size')->nullable();
+            $table->string('year_founded')->nullable();
+            $table->string('multi_generation')->nullable();
+            $table->string('notification_frequency')->nullable();
+            $table->boolean('notify_email')->nullable();
+            $table->boolean('notify_text')->nullable();
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();
