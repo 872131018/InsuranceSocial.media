@@ -5,51 +5,64 @@
             <h5>Please complete this information so we may provide you the best service.</h5>
         </div>
         <div class="w3-panel">
-            <Name
+            <Field
                 v-bind:label="'Full Name'"
-                v-bind:value="properties.name"
-                v-on:setName="(name) => { properties.name = name }">
-            </Name>
-            <Email
+                v-bind:default="properties.name"
+                v-on:setValue="(value) => properties.name = value">
+            </Field>
+            <Field
                 v-bind:label="'Email'"
-                v-bind:value="properties.email"
-                v-on:setEmail="(email) => { properties.email = email }">
-            </Email>
-            <Phone
-                v-on:setPhone="(phone) => { properties.phone = phone }">
-            </Phone>
-            <Title
-                v-on:setTitle="(title) => { properties.title = title.title }">
-            </Title>
+                v-bind:validation="'EMAIL'"
+                v-bind:default="properties.email"
+                v-on:setValue="(value) => properties.email = value">
+            </Field>
+            <Field
+                v-bind:label="'Phone'"
+                v-bind:validation="'PHONE'"
+                v-on:setValue="(value) => properties.email = value">
+            </Field>
+            <Dropdown
+                v-bind:label="'Title'"
+                v-bind:options="titles"
+                v-on:setOption="(option) => properties.title = option">
+            </Dropdown>
             <div v-if="properties.title != 'Principle' && properties.title != ''">
-                <Name
+                <Field
                     v-bind:label="'Principle Name'"
-                    v-on:setName="(name) => { properties.principle_name = name }">
-                </Name>
-                <Email
+                    v-on:setValue="(value) => properties.principle_name = value">
+                </Field>
+                <Field
                     v-bind:label="'Principle Email'"
-                    v-on:setEmail="(email) => { properties.principle_email = email }">
-                </Email>
+                    v-on:setValue="(value) => properties.principle_email = value">
+                </Field>
             </div>
-            <Name
-                v-bind:label="'Organization Name'"
-                v-on:setName="(name) => { properties.organization_name = name }">
-            </Name>
-            <Website
-                v-on:setWebsite="(website) => { properties.website = website }">
-            </Website>
-            <Staff
-                v-on:setStaff="(staff) => { properties.staff_size = staff.size }">
-            </Staff>
-            <Year
-                v-on:setYear="(year) => { properties.year_founded = year }">
-            </Year>
-            <Generation
-                v-on:setGeneration="(generation) => { properties.multi_generation = generation.generation }">
-            </Generation>
-            <Frequency
-                v-on:setFrequency="(frequency) => { properties.notification_frequency = frequency.frequency }">
-            </Frequency>
+            <Field
+                v-bind:label="'Organizaiton Name'"
+                v-on:setValue="(value) => properties.organization_name = value">
+            </Field>
+            <Field
+                v-bind:label="'Website'"
+                v-on:setValue="(value) => properties.website = value">
+            </Field>
+            <Dropdown
+                v-bind:label="'Staff Size'"
+                v-bind:options="sizes"
+                v-on:setOption="(option) => properties.staff_size = option">
+            </Dropdown>
+            <Field
+                v-bind:label="'Founding Year'"
+                v-on:setValue="(value) => properties.year_founded = value">
+            </Field>
+            <Dropdown
+                v-bind:label="'Generation'"
+                v-bind:options="generations"
+                v-on:setOption="(option) => properties.multi_generation = option">
+            </Dropdown>
+            <Dropdown
+                v-bind:label="'Frequency'"
+                v-bind:options="frequencies"
+                v-on:setOption="(option) => properties.notification_frequency = option">
+            </Dropdown>
             <Notification
                 v-on:setEmail="(email) => { properties.notify_email = email }"
                 v-on:setText="(text) => { properties.notify_text = text }">
@@ -70,9 +83,9 @@
 </template>
 
 <script>
-    import Name from './inputs/Name';
-    import Email from './inputs/Email';
-    import Phone from './inputs/Phone';
+    import Field from './inputs/Field';
+    import Dropdown from './inputs/Dropdown';
+
     import Title from './inputs/Title';
     import Website from './inputs/Website';
     import Staff from './inputs/Staff';
@@ -101,6 +114,10 @@
                     notify_email: true,
                     notify_text: true
                 },
+                titles: [],
+                sizes: [],
+                frequencies: [],
+                generations: [],
                 errors: []
             }
         },
@@ -127,9 +144,8 @@
             }
         },
         components: {
-            Name,
-            Email,
-            Phone,
+            Field,
+            Dropdown,
             Title,
             Website,
             Staff,
