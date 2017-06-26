@@ -46,18 +46,6 @@ class LoginController extends Controller
      */
     public function index(Request $request)
     {
-        return view('layouts.login.app');
-    }
-
-    /**
-     * The user has been authenticated.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  mixed  $user
-     * @return mixed
-     */
-    protected function authenticated(Request $request, $user)
-    {
-        return response()->json($user);
+        return view('layouts.auth.app');
     }
 }

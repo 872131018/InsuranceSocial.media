@@ -5,21 +5,23 @@
             <span class="w3-large">Insurance Social Media</span>
         </div>
         <div class="w3-container w3-padding-32">
-            <div class="w3-section">
-                <input class="w3-input eighty" type="text"
-                    v-model="properties.email">
-                <label>Email</label>
-            </div>
-            <div class="w3-section">
-                <input class="w3-input eighty" type="password"
-                    v-model="properties.password">
-                <label>Password</label>
-            </div>
-            <div class="w3-section">
-                <button class="w3-button w3-text-white primary"
-                    v-on:click="login()">Login
-                </button>
-            </div>
+            <form v-bind:action="getUrl()" method="POST">
+                <div class="w3-section">
+                    <input class="w3-input eighty" type="text"
+                        name="email">
+                    <label>Email</label>
+                </div>
+                <div class="w3-section">
+                    <input class="w3-input eighty" type="password"
+                        name="password">
+                    <label>Password</label>
+                </div>
+                <input type="hidden" name="_token"
+                    v-bind:value="getToken()">
+                <div class="w3-section">
+                    <button class="w3-button w3-text-white primary" type="submit">Login</button>
+                </div>
+            </form>
         </div>
         <div class="w3-container w3-padding-32">
             <p class="w3-large">Don't have a login?</p>
@@ -32,22 +34,12 @@
 
 <script>
     export default {
-        data() {
-            return {
-                properties: {
-                    email: '',
-                    password: ''
-                }
-            }
-        },
         methods: {
-            login() {
-                axios.post(window.location, this.properties).then(response => {
-                    store.dispatch({ type: 'SET_USER', data: response.data });
-                    window.location = `${ window.base_url }/setup/welcome`;
-                }).catch(error => {
-                    this.errors.push('An error has occured, please contact support.');
-                });
+            getUrl() {
+                return window.location;
+            },
+            getToken() {
+                return document.head.querySelector('meta[name="csrf-token"]').content;
             },
             register() {
                 window.location = `${ window.base_url }/register`;

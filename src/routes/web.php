@@ -18,18 +18,18 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 /**
- * Deliver the homepage
+ * Overwrite the default functionality to deliver the SPA
  *
  * @return \Illuminate\Http\Response
  */
- Route::get('/login', 'Auth\LoginController@index');
+Route::get('/login', 'Auth\LoginController@index')->name('login');
 
 /**
  * Overwrite the default functionality to deliver the SPA
  *
  * @return \Illuminate\Http\Response
  */
-Route::get('/register', 'Auth\RegisterController@index');
+Route::get('/register', 'Auth\RegisterController@index')->name('register');
 
 /**
  * Overwrite the default functionality to deliver the SPA
