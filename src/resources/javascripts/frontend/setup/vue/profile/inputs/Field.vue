@@ -55,6 +55,13 @@
                             this.isValid = false;
                         }
                         break;
+                    case 'YEAR':
+                        if(this.value != '' && this.value.length == 4) {
+                            this.isValid = true;
+                        } else {
+                            this.isValid = false;
+                        }
+                        break;
                     default:
                         if(this.value != '') {
                             this.isValid = true;

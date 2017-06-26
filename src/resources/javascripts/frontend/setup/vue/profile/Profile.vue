@@ -22,7 +22,7 @@
                 v-on:setValue="(value) => properties.email = value">
             </Field>
             <Dropdown
-                v-bind:label="'Title'"
+                v-bind:label="'What is your title?'"
                 v-bind:options="titles"
                 v-on:setOption="(option) => properties.title = option">
             </Dropdown>
@@ -45,27 +45,28 @@
                 v-on:setValue="(value) => properties.website = value">
             </Field>
             <Dropdown
-                v-bind:label="'Staff Size'"
+                v-bind:label="'What is the size of your staff?'"
                 v-bind:options="sizes"
                 v-on:setOption="(option) => properties.staff_size = option">
             </Dropdown>
             <Field
                 v-bind:label="'Founding Year'"
+                v-bind:validation="'YEAR'"
                 v-on:setValue="(value) => properties.year_founded = value">
             </Field>
             <Dropdown
-                v-bind:label="'Generation'"
+                v-bind:label="'Is this a multigenerational company?'"
                 v-bind:options="generations"
                 v-on:setOption="(option) => properties.multi_generation = option">
             </Dropdown>
             <Dropdown
-                v-bind:label="'Frequency'"
+                v-bind:label="'How often would you like to be notified?'"
                 v-bind:options="frequencies"
                 v-on:setOption="(option) => properties.notification_frequency = option">
             </Dropdown>
             <Notification
-                v-on:setEmail="(email) => { properties.notify_email = email }"
-                v-on:setText="(text) => { properties.notify_text = text }">
+                v-on:setEmail="(email) => properties.notify_email = email"
+                v-on:setText="(text) => properties.notify_text = text">
             </Notification>
         </div>
         <div class="w3-panel"
@@ -85,13 +86,6 @@
 <script>
     import Field from './inputs/Field';
     import Dropdown from './inputs/Dropdown';
-
-    import Title from './inputs/Title';
-    import Website from './inputs/Website';
-    import Staff from './inputs/Staff';
-    import Year from './inputs/Year';
-    import Generation from './inputs/Generation';
-    import Frequency from './inputs/Frequency';
     import Notification from './inputs/Notification';
     import Errors from './Errors';
 
@@ -114,10 +108,10 @@
                     notify_email: true,
                     notify_text: true
                 },
-                titles: [],
-                sizes: [],
-                frequencies: [],
-                generations: [],
+                titles: store.getState().OptionStore.titles,
+                sizes: store.getState().OptionStore.sizes,
+                generations: store.getState().OptionStore.generations,
+                frequencies: store.getState().OptionStore.frequencies,
                 errors: []
             }
         },
@@ -128,10 +122,10 @@
                     this.errors.push('You must enter your full name.');
                 }
                 if(this.properties.email == '') {
-                    this.errors.push('You must enter your full email.');
+                    this.errors.push('You must enter your email.');
                 }
                 if(this.properties.phone == '') {
-                    this.errors.push('You must enter your full phone.');
+                    this.errors.push('You must enter your phone.');
                 }
                 if(this.errors.length == 0) {
                     axios.post(window.location, this.properties).then(response => {
@@ -146,12 +140,6 @@
         components: {
             Field,
             Dropdown,
-            Title,
-            Website,
-            Staff,
-            Year,
-            Generation,
-            Frequency,
             Notification,
             Errors
         }
