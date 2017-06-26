@@ -19,7 +19,7 @@
             <Field
                 v-bind:label="'Phone'"
                 v-bind:validation="'PHONE'"
-                v-on:setValue="(value) => properties.email = value">
+                v-on:setValue="(value) => properties.phone = value">
             </Field>
             <Dropdown
                 v-bind:label="'What is your title?'"
@@ -33,6 +33,7 @@
                 </Field>
                 <Field
                     v-bind:label="'Principle Email'"
+                    v-bind:validation="'EMAIL'"
                     v-on:setValue="(value) => properties.principle_email = value">
                 </Field>
             </div>
@@ -74,7 +75,7 @@
             <Errors v-bind:errors="errors"></Errors>
         </div>
         <div class="w3-panel">
-            <h5>Continue to select the plan you wish to sign up for.</h5>
+            <h5>Please continue to fill out the geographic information for your profile.</h5>
             <button class="w3-button w3-text-white primary"
                 v-on:click="update()">Continue
             </button>

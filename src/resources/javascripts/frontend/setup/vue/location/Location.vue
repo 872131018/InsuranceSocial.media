@@ -24,15 +24,17 @@
             </Dropdown>
             <Field
                 v-bind:label="'Zip Code'"
+                v-bind:validation="'ZIP'"
                 v-on:setValue="(value) => properties.zip = value">
             </Field>
             <Dropdown
                 v-bind:label="'Marketing Geography'"
                 v-bind:options="targets"
-                v-on:setOption="(option) => geography = option">
+                v-on:setOption="(option) => target = option">
             </Dropdown>
-            <div v-show="geography == 'Region'">
-                <ul class="w3-ul w3-border w3-hoverable">
+            <div v-show="target == 'Region'">
+                <ul class="w3-ul w3-hoverable">
+                    <Checkbox></Checkbox>
                     <li v-for="region in regions">{{ region }}</li>
                 </ul>
                 <Dropdown
@@ -41,7 +43,7 @@
                     v-on:setOption="(option) => properties.marketing_region = option">
                 </Dropdown>
             </div>
-            <div v-show="geography == 'State and Counties'">
+            <div v-show="target == 'State and Counties'">
                 <Dropdown
                     v-bind:label="'Marketing State'"
                     v-bind:options="states"
@@ -71,6 +73,7 @@
 <script>
     import Field from './inputs/Field';
     import Dropdown from './inputs/Dropdown';
+    import Checkbox from './inputs/Checkbox';
     import Errors from './Errors';
 
     export default {
@@ -87,21 +90,10 @@
                     marketing_state: '',
                     marketing_county: ''
                 },
-                geography: '',
-                targets: [
-                    'Region',
-                    'State and Counties'
-                ],
-                states: [
-                    'asdqwer',
-                    'asdfghjf',
-                    'asdfasdfasdf'
-                ],
-                regions: [
-                    'as1324df',
-                    'asdf1234asdf',
-                    'qerq12341234wer'
-                ],
+                states: store.getState().OptionStore.states,
+                targets: store.getState().OptionStore.targets,
+                target: '',
+                regions: store.getState().OptionStore.regions,
                 counties: [
                     'asdf',
                     'asdfasdf',
@@ -132,6 +124,7 @@
         components: {
             Field,
             Dropdown,
+            Checkbox,
             Errors
         }
     }

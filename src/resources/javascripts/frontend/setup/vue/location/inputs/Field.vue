@@ -2,7 +2,7 @@
     <div class="w3-section">
         <input class="w3-input w3-show-inline-block eighty" type="text"
             v-model="value"
-            v-on:change="validate()">
+            v-on:keyup="validate()">
         <Check v-if="isValid"></Check>
         <Cross v-else></Cross>
         <label class="w3-show-block">{{ label }}</label>
@@ -17,6 +17,9 @@
         props: {
             label: {
                 type: String
+            },
+            validation: {
+                type: String
             }
         },
         data() {
@@ -28,10 +31,21 @@
         methods: {
             validate() {
                 this.$emit('setValue', this.value);
-                if(this.value != '') {
-                    this.isValid = true;
-                } else {
-                    this.isValid = false;
+                switch(this.validation) {
+                    case 'ZIP':
+                        if(/(^\d{5}$)|(^\d{5}-\d{4}$)/.test(this.value)) {
+                            this.isValid = true;
+                        } else {
+                            this.isValid = false;
+                        }
+                        break;
+                    default:
+                        if(this.value != '') {
+                            this.isValid = true;
+                        } else {
+                            this.isValid = false;
+                        }
+                        break;
                 }
             }
         },
