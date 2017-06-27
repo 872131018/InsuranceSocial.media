@@ -8,7 +8,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}" />
     <link href="//fonts.googleapis.com/css?family=Lato" type="text/css" rel="stylesheet">
     <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css" rel="stylesheet">
-    <link href="{{ url('stylesheets/frontend.css') }}" type="text/css" rel="stylesheet">
+    <link href="{{ url('stylesheets/setup.css') }}" type="text/css" rel="stylesheet">
     <!-- Apply base url so the JS can reference it -->
     <script>
         window.base_url = "{{ url('/') }}"

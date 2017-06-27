@@ -34,8 +34,14 @@
             </Dropdown>
             <div v-show="target == 'Region'">
                 <ul class="w3-ul w3-hoverable">
-                    <Checkbox></Checkbox>
-                    <li v-for="region in regions">{{ region }}</li>
+                    <li v-for="(region, index) in regions">
+                        <Checkbox
+                            v-bind:label="region"
+                            v-bind:id="`check${ index }`"
+                            v-bind:value="region"
+                            v-on:setChecked="(region) => properties.marketing_regions.push(region)">
+                        </Checkbox>
+                    </li>
                 </ul>
                 <Dropdown
                     v-bind:label="'Marketing Region'"
@@ -86,9 +92,9 @@
                     city: '',
                     state: '',
                     zip: '',
-                    marketing_region: '',
-                    marketing_state: '',
-                    marketing_county: ''
+                    marketing_regions: [],
+                    marketing_states: [],
+                    marketing_counties: []
                 },
                 states: store.getState().OptionStore.states,
                 targets: store.getState().OptionStore.targets,
@@ -112,6 +118,8 @@
                     this.errors.push('You must enter your full name.');
                 }
                 if(this.errors.length == 0) {
+                    console.log(this.properties.marketing_regions);
+                    return;
                     axios.post(window.location, this.properties).then(response => {
                         store.dispatch({ type: 'SET_LOCATION', data: response.data });
                         this.$router.push({ name: 'Select' });

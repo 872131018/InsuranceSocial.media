@@ -2,5 +2,7 @@
     "/javascripts/register.index.js": "/javascripts/register.index.js",
     "/javascripts/setup.index.js": "/javascripts/setup.index.js",
     "/javascripts/login.index.js": "/javascripts/login.index.js",
-    "/stylesheets/frontend.css": "/stylesheets/frontend.css"
+    "/stylesheets/login.css": "/stylesheets/login.css",
+    "/stylesheets/register.css": "/stylesheets/register.css",
+    "/stylesheets/setup.css": "/stylesheets/setup.css"
 }

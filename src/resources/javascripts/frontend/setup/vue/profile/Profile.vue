@@ -66,8 +66,7 @@
                 v-on:setOption="(option) => properties.notification_frequency = option">
             </Dropdown>
             <Notification
-                v-on:setEmail="(email) => properties.notify_email = email"
-                v-on:setText="(text) => properties.notify_text = text">
+                v-on:setChecked="(method) => properties.notify_method.push(method)">
             </Notification>
         </div>
         <div class="w3-panel"
@@ -87,7 +86,7 @@
 <script>
     import Field from './inputs/Field';
     import Dropdown from './inputs/Dropdown';
-    import Notification from './inputs/Notification';
+    import Notification from './Notification';
     import Errors from './Errors';
 
     export default {
@@ -106,8 +105,7 @@
                     year_founded: '',
                     multi_generation: '',
                     notification_frequency: '',
-                    notify_email: true,
-                    notify_text: true
+                    notify_method: [],
                 },
                 titles: store.getState().OptionStore.titles,
                 sizes: store.getState().OptionStore.sizes,
@@ -118,7 +116,6 @@
         },
         methods: {
             update() {
-                this.errors = [];
                 if(this.properties.name == '') {
                     this.errors.push('You must enter your full name.');
                 }
