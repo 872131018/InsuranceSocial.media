@@ -15311,8 +15311,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_router__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__routes__ = __webpack_require__(197);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__vue_App__ = __webpack_require__(246);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__routes__ = __webpack_require__(200);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__vue_App__ = __webpack_require__(252);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__vue_App___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__vue_App__);
 /**
 * Load the project dependencies and other boilerplate js
@@ -15359,14 +15359,13 @@ var Site = new __WEBPACK_IMPORTED_MODULE_1_vue___default.a({
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__redux_user_reducer__ = __webpack_require__(195);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__redux_user_reducer___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__redux_user_reducer__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__redux_option_reducer__ = __webpack_require__(196);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__redux_option_reducer___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__redux_option_reducer__);
 
 
 
 
 var reducers = __WEBPACK_IMPORTED_MODULE_0_redux__["a" /* combineReducers */]({
     UserStore: __WEBPACK_IMPORTED_MODULE_1__redux_user_reducer___default.a,
-    OptionStore: __WEBPACK_IMPORTED_MODULE_2__redux_option_reducer___default.a
+    OptionStore: __WEBPACK_IMPORTED_MODULE_2__redux_option_reducer__["a" /* default */]
 });
 
 /* harmony default export */ __webpack_exports__["a"] = (__WEBPACK_IMPORTED_MODULE_0_redux__["b" /* createStore */](reducers));
@@ -15455,20 +15454,29 @@ module.exports = function () {
 
 /***/ }),
 /* 196 */
-/***/ (function(module, exports) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__states_json__ = __webpack_require__(198);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__states_json___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__states_json__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__counties_json__ = __webpack_require__(199);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__counties_json___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__counties_json__);
+
+
 
 var initialState = {
     titles: ['Owner', 'Operations Manager', 'Marketing Manager', 'Principle', 'Sales Manager', 'Other'],
     sizes: ['Sole Proprietor', '2-5 Employees', '6-10 Employees', '11-15 Employees', '16+ Employees'],
     generations: ['1st', '2nd', '3rd', '4th', '5th'],
     frequencies: ['Daily', 'Weekly', 'Monthly', 'Quarterly', 'Never'],
-    states: ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware', 'District of Columbia', 'Florida', 'Georgia', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana', 'Maine', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire', 'New Jersey', 'New Mexico', 'New York', 'North Carolina', 'North Dakota', 'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island', 'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'],
+    states: __WEBPACK_IMPORTED_MODULE_0__states_json___default.a.states,
+    counties: __WEBPACK_IMPORTED_MODULE_1__counties_json___default.a.counties,
     targets: ['Region', 'State and Counties'],
     regions: ['Northern California', 'Southern California', 'Middle Atlantic', 'Midwest', 'New England', 'South', 'Southwest', 'West']
 
 };
 
-module.exports = function () {
+/* harmony default export */ __webpack_exports__["a"] = (function () {
     var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
     var action = arguments[1];
 
@@ -15477,18 +15485,3231 @@ module.exports = function () {
             break;
     }
     return JSON.parse(JSON.stringify(options));
+});
+
+/***/ }),
+/* 197 */,
+/* 198 */
+/***/ (function(module, exports) {
+
+module.exports = {
+	"states": [
+		"AK - Alaska",
+		"AL - Alabama",
+		"AR - Arkansas",
+		"AZ - Arizona",
+		"CA - California",
+		"CO - Colorado",
+		"CT - Connecticut",
+		"DC - District of Columbia",
+		"DE - Delaware",
+		"FL - Florida",
+		"GA - Georgia",
+		"HI - Hawaii",
+		"IA - Iowa",
+		"ID - Idaho",
+		"IL - Illinois",
+		"IN - Indiana",
+		"KS - Kansas",
+		"KY - Kentucky",
+		"LA - Louisiana",
+		"MA - Massachusetts",
+		"MD - Maryland",
+		"ME - Maine",
+		"MI - Michigan",
+		"MN - Minnesota",
+		"MO - Missouri",
+		"MS - Mississippi",
+		"MT - Montana",
+		"NC - North Carolina",
+		"ND - North Dakota",
+		"NE - Nebraska",
+		"NH - New Hampshire",
+		"NJ - New Jersey",
+		"NM - New Mexico",
+		"NV - Nevada",
+		"NY - New York",
+		"OH - Ohio",
+		"OK - Oklahoma",
+		"OR - Oregon",
+		"PA - Pennsylvania",
+		"RI - Rhode Island",
+		"SC - South Carolina",
+		"SD - South Dakota",
+		"TN - Tennessee",
+		"TX - Texas",
+		"UT - Utah",
+		"VA - Virginia",
+		"VT - Vermont",
+		"WA - Washington",
+		"WI - Wisconsin",
+		"WV - West Virginia",
+		"WY - Wyoming"
+	]
 };
 
 /***/ }),
-/* 197 */
+/* 199 */
+/***/ (function(module, exports) {
+
+module.exports = {
+	"counties": [
+		"Autauga County - AL",
+		"Baldwin County - AL",
+		"Barbour County - AL",
+		"Bibb County - AL",
+		"Blount County - AL",
+		"Bullock County - AL",
+		"Butler County - AL",
+		"Calhoun County - AL",
+		"Chambers County - AL",
+		"Cherokee County - AL",
+		"Chilton County - AL",
+		"Choctaw County - AL",
+		"Clarke County - AL",
+		"Clay County - AL",
+		"Cleburne County - AL",
+		"Coffee County - AL",
+		"Colbert County - AL",
+		"Conecuh County - AL",
+		"Coosa County - AL",
+		"Covington County - AL",
+		"Crenshaw County - AL",
+		"Cullman County - AL",
+		"Dale County - AL",
+		"Dallas County - AL",
+		"DeKalb County - AL",
+		"Elmore County - AL",
+		"Escambia County - AL",
+		"Etowah County - AL",
+		"Fayette County - AL",
+		"Franklin County - AL",
+		"Geneva County - AL",
+		"Greene County - AL",
+		"Hale County - AL",
+		"Henry County - AL",
+		"Houston County - AL",
+		"Jackson County - AL",
+		"Jefferson County - AL",
+		"Lamar County - AL",
+		"Lauderdale County - AL",
+		"Lawrence County - AL",
+		"Lee County - AL",
+		"Limestone County - AL",
+		"Lowndes County - AL",
+		"Macon County - AL",
+		"Madison County - AL",
+		"Marengo County - AL",
+		"Marion County - AL",
+		"Marshall County - AL",
+		"Mobile County - AL",
+		"Monroe County - AL",
+		"Montgomery County - AL",
+		"Morgan County - AL",
+		"Perry County - AL",
+		"Pickens County - AL",
+		"Pike County - AL",
+		"Randolph County - AL",
+		"Russell County - AL",
+		"St. Clair County - AL",
+		"Shelby County - AL",
+		"Sumter County - AL",
+		"Talladega County - AL",
+		"Tallapoosa County - AL",
+		"Tuscaloosa County - AL",
+		"Walker County - AL",
+		"Washington County - AL",
+		"Wilcox County - AL",
+		"Winston County - AL",
+		"Aleutians East Borough - AK",
+		"Aleutians West Census Area - AK",
+		"Anchorage Municipality - AK",
+		"Bethel Census Area - AK",
+		"Bristol Bay Borough - AK",
+		"Denali Borough - AK",
+		"Dillingham Census Area - AK",
+		"Fairbanks North Star Borough - AK",
+		"Haines Borough - AK",
+		"Hoonah-Angoon Census Area - AK",
+		"Juneau City and Borough - AK",
+		"Kenai Peninsula Borough - AK",
+		"Ketchikan Gateway Borough - AK",
+		"Kodiak Island Borough - AK",
+		"Lake and Peninsula Borough - AK",
+		"Matanuska-Susitna Borough - AK",
+		"Nome Census Area - AK",
+		"North Slope Borough - AK",
+		"Northwest Arctic Borough - AK",
+		"Petersburg Census Area - AK",
+		"Prince of Wales-Hyder Census Area - AK",
+		"Sitka City and Borough - AK",
+		"Skagway Municipality - AK",
+		"Southeast Fairbanks Census Area - AK",
+		"Valdez-Cordova Census Area - AK",
+		"Wade Hampton Census Area - AK",
+		"Wrangell City and Borough - AK",
+		"Yakutat City and Borough - AK",
+		"Yukon-Koyukuk Census Area - AK",
+		"Apache County - AZ",
+		"Cochise County - AZ",
+		"Coconino County - AZ",
+		"Gila County - AZ",
+		"Graham County - AZ",
+		"Greenlee County - AZ",
+		"La Paz County - AZ",
+		"Maricopa County - AZ",
+		"Mohave County - AZ",
+		"Navajo County - AZ",
+		"Pima County - AZ",
+		"Pinal County - AZ",
+		"Santa Cruz County - AZ",
+		"Yavapai County - AZ",
+		"Yuma County - AZ",
+		"Arkansas County - AR",
+		"Ashley County - AR",
+		"Baxter County - AR",
+		"Benton County - AR",
+		"Boone County - AR",
+		"Bradley County - AR",
+		"Calhoun County - AR",
+		"Carroll County - AR",
+		"Chicot County - AR",
+		"Clark County - AR",
+		"Clay County - AR",
+		"Cleburne County - AR",
+		"Cleveland County - AR",
+		"Columbia County - AR",
+		"Conway County - AR",
+		"Craighead County - AR",
+		"Crawford County - AR",
+		"Crittenden County - AR",
+		"Cross County - AR",
+		"Dallas County - AR",
+		"Desha County - AR",
+		"Drew County - AR",
+		"Faulkner County - AR",
+		"Franklin County - AR",
+		"Fulton County - AR",
+		"Garland County - AR",
+		"Grant County - AR",
+		"Greene County - AR",
+		"Hempstead County - AR",
+		"Hot Spring County - AR",
+		"Howard County - AR",
+		"Independence County - AR",
+		"Izard County - AR",
+		"Jackson County - AR",
+		"Jefferson County - AR",
+		"Johnson County - AR",
+		"Lafayette County - AR",
+		"Lawrence County - AR",
+		"Lee County - AR",
+		"Lincoln County - AR",
+		"Little River County - AR",
+		"Logan County - AR",
+		"Lonoke County - AR",
+		"Madison County - AR",
+		"Marion County - AR",
+		"Miller County - AR",
+		"Mississippi County - AR",
+		"Monroe County - AR",
+		"Montgomery County - AR",
+		"Nevada County - AR",
+		"Newton County - AR",
+		"Ouachita County - AR",
+		"Perry County - AR",
+		"Phillips County - AR",
+		"Pike County - AR",
+		"Poinsett County - AR",
+		"Polk County - AR",
+		"Pope County - AR",
+		"Prairie County - AR",
+		"Pulaski County - AR",
+		"Randolph County - AR",
+		"St. Francis County - AR",
+		"Saline County - AR",
+		"Scott County - AR",
+		"Searcy County - AR",
+		"Sebastian County - AR",
+		"Sevier County - AR",
+		"Sharp County - AR",
+		"Stone County - AR",
+		"Union County - AR",
+		"Van Buren County - AR",
+		"Washington County - AR",
+		"White County - AR",
+		"Woodruff County - AR",
+		"Yell County - AR",
+		"Alameda County - CA",
+		"Alpine County - CA",
+		"Amador County - CA",
+		"Butte County - CA",
+		"Calaveras County - CA",
+		"Colusa County - CA",
+		"Contra Costa County - CA",
+		"Del Norte County - CA",
+		"El Dorado County - CA",
+		"Fresno County - CA",
+		"Glenn County - CA",
+		"Humboldt County - CA",
+		"Imperial County - CA",
+		"Inyo County - CA",
+		"Kern County - CA",
+		"Kings County - CA",
+		"Lake County - CA",
+		"Lassen County - CA",
+		"Los Angeles County - CA",
+		"Madera County - CA",
+		"Marin County - CA",
+		"Mariposa County - CA",
+		"Mendocino County - CA",
+		"Merced County - CA",
+		"Modoc County - CA",
+		"Mono County - CA",
+		"Monterey County - CA",
+		"Napa County - CA",
+		"Nevada County - CA",
+		"Orange County - CA",
+		"Placer County - CA",
+		"Plumas County - CA",
+		"Riverside County - CA",
+		"Sacramento County - CA",
+		"San Benito County - CA",
+		"San Bernardino County - CA",
+		"San Diego County - CA",
+		"San Francisco County - CA",
+		"San Joaquin County - CA",
+		"San Luis Obispo County - CA",
+		"San Mateo County - CA",
+		"Santa Barbara County - CA",
+		"Santa Clara County - CA",
+		"Santa Cruz County - CA",
+		"Shasta County - CA",
+		"Sierra County - CA",
+		"Siskiyou County - CA",
+		"Solano County - CA",
+		"Sonoma County - CA",
+		"Stanislaus County - CA",
+		"Sutter County - CA",
+		"Tehama County - CA",
+		"Trinity County - CA",
+		"Tulare County - CA",
+		"Tuolumne County - CA",
+		"Ventura County - CA",
+		"Yolo County - CA",
+		"Yuba County - CA",
+		"Adams County - CO",
+		"Alamosa County - CO",
+		"Arapahoe County - CO",
+		"Archuleta County - CO",
+		"Baca County - CO",
+		"Bent County - CO",
+		"Boulder County - CO",
+		"Broomfield County - CO",
+		"Chaffee County - CO",
+		"Cheyenne County - CO",
+		"Clear Creek County - CO",
+		"Conejos County - CO",
+		"Costilla County - CO",
+		"Crowley County - CO",
+		"Custer County - CO",
+		"Delta County - CO",
+		"Denver County - CO",
+		"Dolores County - CO",
+		"Douglas County - CO",
+		"Eagle County - CO",
+		"Elbert County - CO",
+		"El Paso County - CO",
+		"Fremont County - CO",
+		"Garfield County - CO",
+		"Gilpin County - CO",
+		"Grand County - CO",
+		"Gunnison County - CO",
+		"Hinsdale County - CO",
+		"Huerfano County - CO",
+		"Jackson County - CO",
+		"Jefferson County - CO",
+		"Kiowa County - CO",
+		"Kit Carson County - CO",
+		"Lake County - CO",
+		"La Plata County - CO",
+		"Larimer County - CO",
+		"Las Animas County - CO",
+		"Lincoln County - CO",
+		"Logan County - CO",
+		"Mesa County - CO",
+		"Mineral County - CO",
+		"Moffat County - CO",
+		"Montezuma County - CO",
+		"Montrose County - CO",
+		"Morgan County - CO",
+		"Otero County - CO",
+		"Ouray County - CO",
+		"Park County - CO",
+		"Phillips County - CO",
+		"Pitkin County - CO",
+		"Prowers County - CO",
+		"Pueblo County - CO",
+		"Rio Blanco County - CO",
+		"Rio Grande County - CO",
+		"Routt County - CO",
+		"Saguache County - CO",
+		"San Juan County - CO",
+		"San Miguel County - CO",
+		"Sedgwick County - CO",
+		"Summit County - CO",
+		"Teller County - CO",
+		"Washington County - CO",
+		"Weld County - CO",
+		"Yuma County - CO",
+		"Fairfield County - CT",
+		"Hartford County - CT",
+		"Litchfield County - CT",
+		"Middlesex County - CT",
+		"New Haven County - CT",
+		"New London County - CT",
+		"Tolland County - CT",
+		"Windham County - CT",
+		"Kent County - DE",
+		"New Castle County - DE",
+		"Sussex County - DE",
+		"District of Columbia- DC",
+		"Alachua County - FL",
+		"Baker County - FL",
+		"Bay County - FL",
+		"Bradford County - FL",
+		"Brevard County - FL",
+		"Broward County - FL",
+		"Calhoun County - FL",
+		"Charlotte County - FL",
+		"Citrus County - FL",
+		"Clay County - FL",
+		"Collier County - FL",
+		"Columbia County - FL",
+		"DeSoto County - FL",
+		"Dixie County - FL",
+		"Duval County - FL",
+		"Escambia County - FL",
+		"Flagler County - FL",
+		"Franklin County - FL",
+		"Gadsden County - FL",
+		"Gilchrist County - FL",
+		"Glades County - FL",
+		"Gulf County - FL",
+		"Hamilton County - FL",
+		"Hardee County - FL",
+		"Hendry County - FL",
+		"Hernando County - FL",
+		"Highlands County - FL",
+		"Hillsborough County - FL",
+		"Holmes County - FL",
+		"Indian River County - FL",
+		"Jackson County - FL",
+		"Jefferson County - FL",
+		"Lafayette County - FL",
+		"Lake County - FL",
+		"Lee County - FL",
+		"Leon County - FL",
+		"Levy County - FL",
+		"Liberty County - FL",
+		"Madison County - FL",
+		"Manatee County - FL",
+		"Marion County - FL",
+		"Martin County - FL",
+		"Miami-Dade County - FL",
+		"Monroe County - FL",
+		"Nassau County - FL",
+		"Okaloosa County - FL",
+		"Okeechobee County - FL",
+		"Orange County - FL",
+		"Osceola County - FL",
+		"Palm Beach County - FL",
+		"Pasco County - FL",
+		"Pinellas County - FL",
+		"Polk County - FL",
+		"Putnam County - FL",
+		"St. Johns County - FL",
+		"St. Lucie County - FL",
+		"Santa Rosa County - FL",
+		"Sarasota County - FL",
+		"Seminole County - FL",
+		"Sumter County - FL",
+		"Suwannee County - FL",
+		"Taylor County - FL",
+		"Union County - FL",
+		"Volusia County - FL",
+		"Wakulla County - FL",
+		"Walton County - FL",
+		"Washington County - FL",
+		"Appling County - GA",
+		"Atkinson County - GA",
+		"Bacon County - GA",
+		"Baker County - GA",
+		"Baldwin County - GA",
+		"Banks County - GA",
+		"Barrow County - GA",
+		"Bartow County - GA",
+		"Ben Hill County - GA",
+		"Berrien County - GA",
+		"Bibb County - GA",
+		"Bleckley County - GA",
+		"Brantley County - GA",
+		"Brooks County - GA",
+		"Bryan County - GA",
+		"Bulloch County - GA",
+		"Burke County - GA",
+		"Butts County - GA",
+		"Calhoun County - GA",
+		"Camden County - GA",
+		"Candler County - GA",
+		"Carroll County - GA",
+		"Catoosa County - GA",
+		"Charlton County - GA",
+		"Chatham County - GA",
+		"Chattahoochee County - GA",
+		"Chattooga County - GA",
+		"Cherokee County - GA",
+		"Clarke County - GA",
+		"Clay County - GA",
+		"Clayton County - GA",
+		"Clinch County - GA",
+		"Cobb County - GA",
+		"Coffee County - GA",
+		"Colquitt County - GA",
+		"Columbia County - GA",
+		"Cook County - GA",
+		"Coweta County - GA",
+		"Crawford County - GA",
+		"Crisp County - GA",
+		"Dade County - GA",
+		"Dawson County - GA",
+		"Decatur County - GA",
+		"DeKalb County - GA",
+		"Dodge County - GA",
+		"Dooly County - GA",
+		"Dougherty County - GA",
+		"Douglas County - GA",
+		"Early County - GA",
+		"Echols County - GA",
+		"Effingham County - GA",
+		"Elbert County - GA",
+		"Emanuel County - GA",
+		"Evans County - GA",
+		"Fannin County - GA",
+		"Fayette County - GA",
+		"Floyd County - GA",
+		"Forsyth County - GA",
+		"Franklin County - GA",
+		"Fulton County - GA",
+		"Gilmer County - GA",
+		"Glascock County - GA",
+		"Glynn County - GA",
+		"Gordon County - GA",
+		"Grady County - GA",
+		"Greene County - GA",
+		"Gwinnett County - GA",
+		"Habersham County - GA",
+		"Hall County - GA",
+		"Hancock County - GA",
+		"Haralson County - GA",
+		"Harris County - GA",
+		"Hart County - GA",
+		"Heard County - GA",
+		"Henry County - GA",
+		"Houston County - GA",
+		"Irwin County - GA",
+		"Jackson County - GA",
+		"Jasper County - GA",
+		"Jeff Davis County - GA",
+		"Jefferson County - GA",
+		"Jenkins County - GA",
+		"Johnson County - GA",
+		"Jones County - GA",
+		"Lamar County - GA",
+		"Lanier County - GA",
+		"Laurens County - GA",
+		"Lee County - GA",
+		"Liberty County - GA",
+		"Lincoln County - GA",
+		"Long County - GA",
+		"Lowndes County - GA",
+		"Lumpkin County - GA",
+		"McDuffie County - GA",
+		"McIntosh County - GA",
+		"Macon County - GA",
+		"Madison County - GA",
+		"Marion County - GA",
+		"Meriwether County - GA",
+		"Miller County - GA",
+		"Mitchell County - GA",
+		"Monroe County - GA",
+		"Montgomery County - GA",
+		"Morgan County - GA",
+		"Murray County - GA",
+		"Muscogee County - GA",
+		"Newton County - GA",
+		"Oconee County - GA",
+		"Oglethorpe County - GA",
+		"Paulding County - GA",
+		"Peach County - GA",
+		"Pickens County - GA",
+		"Pierce County - GA",
+		"Pike County - GA",
+		"Polk County - GA",
+		"Pulaski County - GA",
+		"Putnam County - GA",
+		"Quitman County - GA",
+		"Rabun County - GA",
+		"Randolph County - GA",
+		"Richmond County - GA",
+		"Rockdale County - GA",
+		"Schley County - GA",
+		"Screven County - GA",
+		"Seminole County - GA",
+		"Spalding County - GA",
+		"Stephens County - GA",
+		"Stewart County - GA",
+		"Sumter County - GA",
+		"Talbot County - GA",
+		"Taliaferro County - GA",
+		"Tattnall County - GA",
+		"Taylor County - GA",
+		"Telfair County - GA",
+		"Terrell County - GA",
+		"Thomas County - GA",
+		"Tift County - GA",
+		"Toombs County - GA",
+		"Towns County - GA",
+		"Treutlen County - GA",
+		"Troup County - GA",
+		"Turner County - GA",
+		"Twiggs County - GA",
+		"Union County - GA",
+		"Upson County - GA",
+		"Walker County - GA",
+		"Walton County - GA",
+		"Ware County - GA",
+		"Warren County - GA",
+		"Washington County - GA",
+		"Wayne County - GA",
+		"Webster County - GA",
+		"Wheeler County - GA",
+		"White County - GA",
+		"Whitfield County - GA",
+		"Wilcox County - GA",
+		"Wilkes County - GA",
+		"Wilkinson County - GA",
+		"Worth County - GA",
+		"Hawaii County - HI",
+		"Honolulu County - HI",
+		"Kalawao County - HI",
+		"Kauai County - HI",
+		"Maui County - HI",
+		"Ada County - ID",
+		"Adams County - ID",
+		"Bannock County - ID",
+		"Bear Lake County - ID",
+		"Benewah County - ID",
+		"Bingham County - ID",
+		"Blaine County - ID",
+		"Boise County - ID",
+		"Bonner County - ID",
+		"Bonneville County - ID",
+		"Boundary County - ID",
+		"Butte County - ID",
+		"Camas County - ID",
+		"Canyon County - ID",
+		"Caribou County - ID",
+		"Cassia County - ID",
+		"Clark County - ID",
+		"Clearwater County - ID",
+		"Custer County - ID",
+		"Elmore County - ID",
+		"Franklin County - ID",
+		"Fremont County - ID",
+		"Gem County - ID",
+		"Gooding County - ID",
+		"Idaho County - ID",
+		"Jefferson County - ID",
+		"Jerome County - ID",
+		"Kootenai County - ID",
+		"Latah County - ID",
+		"Lemhi County - ID",
+		"Lewis County - ID",
+		"Lincoln County - ID",
+		"Madison County - ID",
+		"Minidoka County - ID",
+		"Nez Perce County - ID",
+		"Oneida County - ID",
+		"Owyhee County - ID",
+		"Payette County - ID",
+		"Power County - ID",
+		"Shoshone County - ID",
+		"Teton County - ID",
+		"Twin Falls County - ID",
+		"Valley County - ID",
+		"Washington County - ID",
+		"Adams County - IL",
+		"Alexander County - IL",
+		"Bond County - IL",
+		"Boone County - IL",
+		"Brown County - IL",
+		"Bureau County - IL",
+		"Calhoun County - IL",
+		"Carroll County - IL",
+		"Cass County - IL",
+		"Champaign County - IL",
+		"Christian County - IL",
+		"Clark County - IL",
+		"Clay County - IL",
+		"Clinton County - IL",
+		"Coles County - IL",
+		"Cook County - IL",
+		"Crawford County - IL",
+		"Cumberland County - IL",
+		"DeKalb County - IL",
+		"De Witt County - IL",
+		"Douglas County - IL",
+		"DuPage County - IL",
+		"Edgar County - IL",
+		"Edwards County - IL",
+		"Effingham County - IL",
+		"Fayette County - IL",
+		"Ford County - IL",
+		"Franklin County - IL",
+		"Fulton County - IL",
+		"Gallatin County - IL",
+		"Greene County - IL",
+		"Grundy County - IL",
+		"Hamilton County - IL",
+		"Hancock County - IL",
+		"Hardin County - IL",
+		"Henderson County - IL",
+		"Henry County - IL",
+		"Iroquois County - IL",
+		"Jackson County - IL",
+		"Jasper County - IL",
+		"Jefferson County - IL",
+		"Jersey County - IL",
+		"Jo Daviess County - IL",
+		"Johnson County - IL",
+		"Kane County - IL",
+		"Kankakee County - IL",
+		"Kendall County - IL",
+		"Knox County - IL",
+		"Lake County - IL",
+		"LaSalle County - IL",
+		"Lawrence County - IL",
+		"Lee County - IL",
+		"Livingston County - IL",
+		"Logan County - IL",
+		"McDonough County - IL",
+		"McHenry County - IL",
+		"McLean County - IL",
+		"Macon County - IL",
+		"Macoupin County - IL",
+		"Madison County - IL",
+		"Marion County - IL",
+		"Marshall County - IL",
+		"Mason County - IL",
+		"Massac County - IL",
+		"Menard County - IL",
+		"Mercer County - IL",
+		"Monroe County - IL",
+		"Montgomery County - IL",
+		"Morgan County - IL",
+		"Moultrie County - IL",
+		"Ogle County - IL",
+		"Peoria County - IL",
+		"Perry County - IL",
+		"Piatt County - IL",
+		"Pike County - IL",
+		"Pope County - IL",
+		"Pulaski County - IL",
+		"Putnam County - IL",
+		"Randolph County - IL",
+		"Richland County - IL",
+		"Rock Island County - IL",
+		"St. Clair County - IL",
+		"Saline County - IL",
+		"Sangamon County - IL",
+		"Schuyler County - IL",
+		"Scott County - IL",
+		"Shelby County - IL",
+		"Stark County - IL",
+		"Stephenson County - IL",
+		"Tazewell County - IL",
+		"Union County - IL",
+		"Vermilion County - IL",
+		"Wabash County - IL",
+		"Warren County - IL",
+		"Washington County - IL",
+		"Wayne County - IL",
+		"White County - IL",
+		"Whiteside County - IL",
+		"Will County - IL",
+		"Williamson County - IL",
+		"Winnebago County - IL",
+		"Woodford County - IL",
+		"Adams County - IN",
+		"Allen County - IN",
+		"Bartholomew County - IN",
+		"Benton County - IN",
+		"Blackford County - IN",
+		"Boone County - IN",
+		"Brown County - IN",
+		"Carroll County - IN",
+		"Cass County - IN",
+		"Clark County - IN",
+		"Clay County - IN",
+		"Clinton County - IN",
+		"Crawford County - IN",
+		"Daviess County - IN",
+		"Dearborn County - IN",
+		"Decatur County - IN",
+		"DeKalb County - IN",
+		"Delaware County - IN",
+		"Dubois County - IN",
+		"Elkhart County - IN",
+		"Fayette County - IN",
+		"Floyd County - IN",
+		"Fountain County - IN",
+		"Franklin County - IN",
+		"Fulton County - IN",
+		"Gibson County - IN",
+		"Grant County - IN",
+		"Greene County - IN",
+		"Hamilton County - IN",
+		"Hancock County - IN",
+		"Harrison County - IN",
+		"Hendricks County - IN",
+		"Henry County - IN",
+		"Howard County - IN",
+		"Huntington County - IN",
+		"Jackson County - IN",
+		"Jasper County - IN",
+		"Jay County - IN",
+		"Jefferson County - IN",
+		"Jennings County - IN",
+		"Johnson County - IN",
+		"Knox County - IN",
+		"Kosciusko County - IN",
+		"LaGrange County - IN",
+		"Lake County - IN",
+		"LaPorte County - IN",
+		"Lawrence County - IN",
+		"Madison County - IN",
+		"Marion County - IN",
+		"Marshall County - IN",
+		"Martin County - IN",
+		"Miami County - IN",
+		"Monroe County - IN",
+		"Montgomery County - IN",
+		"Morgan County - IN",
+		"Newton County - IN",
+		"Noble County - IN",
+		"Ohio County - IN",
+		"Orange County - IN",
+		"Owen County - IN",
+		"Parke County - IN",
+		"Perry County - IN",
+		"Pike County - IN",
+		"Porter County - IN",
+		"Posey County - IN",
+		"Pulaski County - IN",
+		"Putnam County - IN",
+		"Randolph County - IN",
+		"Ripley County - IN",
+		"Rush County - IN",
+		"St. Joseph County - IN",
+		"Scott County - IN",
+		"Shelby County - IN",
+		"Spencer County - IN",
+		"Starke County - IN",
+		"Steuben County - IN",
+		"Sullivan County - IN",
+		"Switzerland County - IN",
+		"Tippecanoe County - IN",
+		"Tipton County - IN",
+		"Union County - IN",
+		"Vanderburgh County - IN",
+		"Vermillion County - IN",
+		"Vigo County - IN",
+		"Wabash County - IN",
+		"Warren County - IN",
+		"Warrick County - IN",
+		"Washington County - IN",
+		"Wayne County - IN",
+		"Wells County - IN",
+		"White County - IN",
+		"Whitley County - IN",
+		"Adair County - IA",
+		"Adams County - IA",
+		"Allamakee County - IA",
+		"Appanoose County - IA",
+		"Audubon County - IA",
+		"Benton County - IA",
+		"Black Hawk County - IA",
+		"Boone County - IA",
+		"Bremer County - IA",
+		"Buchanan County - IA",
+		"Buena Vista County - IA",
+		"Butler County - IA",
+		"Calhoun County - IA",
+		"Carroll County - IA",
+		"Cass County - IA",
+		"Cedar County - IA",
+		"Cerro Gordo County - IA",
+		"Cherokee County - IA",
+		"Chickasaw County - IA",
+		"Clarke County - IA",
+		"Clay County - IA",
+		"Clayton County - IA",
+		"Clinton County - IA",
+		"Crawford County - IA",
+		"Dallas County - IA",
+		"Davis County - IA",
+		"Decatur County - IA",
+		"Delaware County - IA",
+		"Des Moines County - IA",
+		"Dickinson County - IA",
+		"Dubuque County - IA",
+		"Emmet County - IA",
+		"Fayette County - IA",
+		"Floyd County - IA",
+		"Franklin County - IA",
+		"Fremont County - IA",
+		"Greene County - IA",
+		"Grundy County - IA",
+		"Guthrie County - IA",
+		"Hamilton County - IA",
+		"Hancock County - IA",
+		"Hardin County - IA",
+		"Harrison County - IA",
+		"Henry County - IA",
+		"Howard County - IA",
+		"Humboldt County - IA",
+		"Ida County - IA",
+		"Iowa County - IA",
+		"Jackson County - IA",
+		"Jasper County - IA",
+		"Jefferson County - IA",
+		"Johnson County - IA",
+		"Jones County - IA",
+		"Keokuk County - IA",
+		"Kossuth County - IA",
+		"Lee County - IA",
+		"Linn County - IA",
+		"Louisa County - IA",
+		"Lucas County - IA",
+		"Lyon County - IA",
+		"Madison County - IA",
+		"Mahaska County - IA",
+		"Marion County - IA",
+		"Marshall County - IA",
+		"Mills County - IA",
+		"Mitchell County - IA",
+		"Monona County - IA",
+		"Monroe County - IA",
+		"Montgomery County - IA",
+		"Muscatine County - IA",
+		"O'Brien County - IA",
+		"Osceola County - IA",
+		"Page County - IA",
+		"Palo Alto County - IA",
+		"Plymouth County - IA",
+		"Pocahontas County - IA",
+		"Polk County - IA",
+		"Pottawattamie County - IA",
+		"Poweshiek County - IA",
+		"Ringgold County - IA",
+		"Sac County - IA",
+		"Scott County - IA",
+		"Shelby County - IA",
+		"Sioux County - IA",
+		"Story County - IA",
+		"Tama County - IA",
+		"Taylor County - IA",
+		"Union County - IA",
+		"Van Buren County - IA",
+		"Wapello County - IA",
+		"Warren County - IA",
+		"Washington County - IA",
+		"Wayne County - IA",
+		"Webster County - IA",
+		"Winnebago County - IA",
+		"Winneshiek County - IA",
+		"Woodbury County - IA",
+		"Worth County - IA",
+		"Wright County - IA",
+		"Allen County - KS",
+		"Anderson County - KS",
+		"Atchison County - KS",
+		"Barber County - KS",
+		"Barton County - KS",
+		"Bourbon County - KS",
+		"Brown County - KS",
+		"Butler County - KS",
+		"Chase County - KS",
+		"Chautauqua County - KS",
+		"Cherokee County - KS",
+		"Cheyenne County - KS",
+		"Clark County - KS",
+		"Clay County - KS",
+		"Cloud County - KS",
+		"Coffey County - KS",
+		"Comanche County - KS",
+		"Cowley County - KS",
+		"Crawford County - KS",
+		"Decatur County - KS",
+		"Dickinson County - KS",
+		"Doniphan County - KS",
+		"Douglas County - KS",
+		"Edwards County - KS",
+		"Elk County - KS",
+		"Ellis County - KS",
+		"Ellsworth County - KS",
+		"Finney County - KS",
+		"Ford County - KS",
+		"Franklin County - KS",
+		"Geary County - KS",
+		"Gove County - KS",
+		"Graham County - KS",
+		"Grant County - KS",
+		"Gray County - KS",
+		"Greeley County - KS",
+		"Greenwood County - KS",
+		"Hamilton County - KS",
+		"Harper County - KS",
+		"Harvey County - KS",
+		"Haskell County - KS",
+		"Hodgeman County - KS",
+		"Jackson County - KS",
+		"Jefferson County - KS",
+		"Jewell County - KS",
+		"Johnson County - KS",
+		"Kearny County - KS",
+		"Kingman County - KS",
+		"Kiowa County - KS",
+		"Labette County - KS",
+		"Lane County - KS",
+		"Leavenworth County - KS",
+		"Lincoln County - KS",
+		"Linn County - KS",
+		"Logan County - KS",
+		"Lyon County - KS",
+		"McPherson County - KS",
+		"Marion County - KS",
+		"Marshall County - KS",
+		"Meade County - KS",
+		"Miami County - KS",
+		"Mitchell County - KS",
+		"Montgomery County - KS",
+		"Morris County - KS",
+		"Morton County - KS",
+		"Nemaha County - KS",
+		"Neosho County - KS",
+		"Ness County - KS",
+		"Norton County - KS",
+		"Osage County - KS",
+		"Osborne County - KS",
+		"Ottawa County - KS",
+		"Pawnee County - KS",
+		"Phillips County - KS",
+		"Pottawatomie County - KS",
+		"Pratt County - KS",
+		"Rawlins County - KS",
+		"Reno County - KS",
+		"Republic County - KS",
+		"Rice County - KS",
+		"Riley County - KS",
+		"Rooks County - KS",
+		"Rush County - KS",
+		"Russell County - KS",
+		"Saline County - KS",
+		"Scott County - KS",
+		"Sedgwick County - KS",
+		"Seward County - KS",
+		"Shawnee County - KS",
+		"Sheridan County - KS",
+		"Sherman County - KS",
+		"Smith County - KS",
+		"Stafford County - KS",
+		"Stanton County - KS",
+		"Stevens County - KS",
+		"Sumner County - KS",
+		"Thomas County - KS",
+		"Trego County - KS",
+		"Wabaunsee County - KS",
+		"Wallace County - KS",
+		"Washington County - KS",
+		"Wichita County - KS",
+		"Wilson County - KS",
+		"Woodson County - KS",
+		"Wyandotte County - KS",
+		"Adair County - KY",
+		"Allen County - KY",
+		"Anderson County - KY",
+		"Ballard County - KY",
+		"Barren County - KY",
+		"Bath County - KY",
+		"Bell County - KY",
+		"Boone County - KY",
+		"Bourbon County - KY",
+		"Boyd County - KY",
+		"Boyle County - KY",
+		"Bracken County - KY",
+		"Breathitt County - KY",
+		"Breckinridge County - KY",
+		"Bullitt County - KY",
+		"Butler County - KY",
+		"Caldwell County - KY",
+		"Calloway County - KY",
+		"Campbell County - KY",
+		"Carlisle County - KY",
+		"Carroll County - KY",
+		"Carter County - KY",
+		"Casey County - KY",
+		"Christian County - KY",
+		"Clark County - KY",
+		"Clay County - KY",
+		"Clinton County - KY",
+		"Crittenden County - KY",
+		"Cumberland County - KY",
+		"Daviess County - KY",
+		"Edmonson County - KY",
+		"Elliott County - KY",
+		"Estill County - KY",
+		"Fayette County - KY",
+		"Fleming County - KY",
+		"Floyd County - KY",
+		"Franklin County - KY",
+		"Fulton County - KY",
+		"Gallatin County - KY",
+		"Garrard County - KY",
+		"Grant County - KY",
+		"Graves County - KY",
+		"Grayson County - KY",
+		"Green County - KY",
+		"Greenup County - KY",
+		"Hancock County - KY",
+		"Hardin County - KY",
+		"Harlan County - KY",
+		"Harrison County - KY",
+		"Hart County - KY",
+		"Henderson County - KY",
+		"Henry County - KY",
+		"Hickman County - KY",
+		"Hopkins County - KY",
+		"Jackson County - KY",
+		"Jefferson County - KY",
+		"Jessamine County - KY",
+		"Johnson County - KY",
+		"Kenton County - KY",
+		"Knott County - KY",
+		"Knox County - KY",
+		"Larue County - KY",
+		"Laurel County - KY",
+		"Lawrence County - KY",
+		"Lee County - KY",
+		"Leslie County - KY",
+		"Letcher County - KY",
+		"Lewis County - KY",
+		"Lincoln County - KY",
+		"Livingston County - KY",
+		"Logan County - KY",
+		"Lyon County - KY",
+		"McCracken County - KY",
+		"McCreary County - KY",
+		"McLean County - KY",
+		"Madison County - KY",
+		"Magoffin County - KY",
+		"Marion County - KY",
+		"Marshall County - KY",
+		"Martin County - KY",
+		"Mason County - KY",
+		"Meade County - KY",
+		"Menifee County - KY",
+		"Mercer County - KY",
+		"Metcalfe County - KY",
+		"Monroe County - KY",
+		"Montgomery County - KY",
+		"Morgan County - KY",
+		"Muhlenberg County - KY",
+		"Nelson County - KY",
+		"Nicholas County - KY",
+		"Ohio County - KY",
+		"Oldham County - KY",
+		"Owen County - KY",
+		"Owsley County - KY",
+		"Pendleton County - KY",
+		"Perry County - KY",
+		"Pike County - KY",
+		"Powell County - KY",
+		"Pulaski County - KY",
+		"Robertson County - KY",
+		"Rockcastle County - KY",
+		"Rowan County - KY",
+		"Russell County - KY",
+		"Scott County - KY",
+		"Shelby County - KY",
+		"Simpson County - KY",
+		"Spencer County - KY",
+		"Taylor County - KY",
+		"Todd County - KY",
+		"Trigg County - KY",
+		"Trimble County - KY",
+		"Union County - KY",
+		"Warren County - KY",
+		"Washington County - KY",
+		"Wayne County - KY",
+		"Webster County - KY",
+		"Whitley County - KY",
+		"Wolfe County - KY",
+		"Woodford County - KY",
+		"Acadia Parish - LA",
+		"Allen Parish - LA",
+		"Ascension Parish - LA",
+		"Assumption Parish - LA",
+		"Avoyelles Parish - LA",
+		"Beauregard Parish - LA",
+		"Bienville Parish - LA",
+		"Bossier Parish - LA",
+		"Caddo Parish - LA",
+		"Calcasieu Parish - LA",
+		"Caldwell Parish - LA",
+		"Cameron Parish - LA",
+		"Catahoula Parish - LA",
+		"Claiborne Parish - LA",
+		"Concordia Parish - LA",
+		"De Soto Parish - LA",
+		"East Baton Rouge Parish - LA",
+		"East Carroll Parish - LA",
+		"East Feliciana Parish - LA",
+		"Evangeline Parish - LA",
+		"Franklin Parish - LA",
+		"Grant Parish - LA",
+		"Iberia Parish - LA",
+		"Iberville Parish - LA",
+		"Jackson Parish - LA",
+		"Jefferson Parish - LA",
+		"Jefferson Davis Parish - LA",
+		"Lafayette Parish - LA",
+		"Lafourche Parish - LA",
+		"La Salle Parish - LA",
+		"Lincoln Parish - LA",
+		"Livingston Parish - LA",
+		"Madison Parish - LA",
+		"Morehouse Parish - LA",
+		"Natchitoches Parish - LA",
+		"Orleans Parish - LA",
+		"Ouachita Parish - LA",
+		"Plaquemines Parish - LA",
+		"Pointe Coupee Parish - LA",
+		"Rapides Parish - LA",
+		"Red River Parish - LA",
+		"Richland Parish - LA",
+		"Sabine Parish - LA",
+		"St. Bernard Parish - LA",
+		"St. Charles Parish - LA",
+		"St. Helena Parish - LA",
+		"St. James Parish - LA",
+		"St. John the Baptist Parish - LA",
+		"St. Landry Parish - LA",
+		"St. Martin Parish - LA",
+		"St. Mary Parish - LA",
+		"St. Tammany Parish - LA",
+		"Tangipahoa Parish - LA",
+		"Tensas Parish - LA",
+		"Terrebonne Parish - LA",
+		"Union Parish - LA",
+		"Vermilion Parish - LA",
+		"Vernon Parish - LA",
+		"Washington Parish - LA",
+		"Webster Parish - LA",
+		"West Baton Rouge Parish - LA",
+		"West Carroll Parish - LA",
+		"West Feliciana Parish - LA",
+		"Winn Parish - LA",
+		"Androscoggin County - ME",
+		"Aroostook County - ME",
+		"Cumberland County - ME",
+		"Franklin County - ME",
+		"Hancock County - ME",
+		"Kennebec County - ME",
+		"Knox County - ME",
+		"Lincoln County - ME",
+		"Oxford County - ME",
+		"Penobscot County - ME",
+		"Piscataquis County - ME",
+		"Sagadahoc County - ME",
+		"Somerset County - ME",
+		"Waldo County - ME",
+		"Washington County - ME",
+		"York County - ME",
+		"Allegany County - MD",
+		"Anne Arundel County - MD",
+		"Baltimore County - MD",
+		"Calvert County - MD",
+		"Caroline County - MD",
+		"Carroll County - MD",
+		"Cecil County - MD",
+		"Charles County - MD",
+		"Dorchester County - MD",
+		"Frederick County - MD",
+		"Garrett County - MD",
+		"Harford County - MD",
+		"Howard County - MD",
+		"Kent County - MD",
+		"Montgomery County - MD",
+		"Prince George's County - MD",
+		"Queen Anne's County - MD",
+		"St. Mary's County - MD",
+		"Somerset County - MD",
+		"Talbot County - MD",
+		"Washington County - MD",
+		"Wicomico County - MD",
+		"Worcester County - MD",
+		"Baltimore city - MD",
+		"Barnstable County - MA",
+		"Berkshire County - MA",
+		"Bristol County - MA",
+		"Dukes County - MA",
+		"Essex County - MA",
+		"Franklin County - MA",
+		"Hampden County - MA",
+		"Hampshire County - MA",
+		"Middlesex County - MA",
+		"Nantucket County - MA",
+		"Norfolk County - MA",
+		"Plymouth County - MA",
+		"Suffolk County - MA",
+		"Worcester County - MA",
+		"Alcona County - MI",
+		"Alger County - MI",
+		"Allegan County - MI",
+		"Alpena County - MI",
+		"Antrim County - MI",
+		"Arenac County - MI",
+		"Baraga County - MI",
+		"Barry County - MI",
+		"Bay County - MI",
+		"Benzie County - MI",
+		"Berrien County - MI",
+		"Branch County - MI",
+		"Calhoun County - MI",
+		"Cass County - MI",
+		"Charlevoix County - MI",
+		"Cheboygan County - MI",
+		"Chippewa County - MI",
+		"Clare County - MI",
+		"Clinton County - MI",
+		"Crawford County - MI",
+		"Delta County - MI",
+		"Dickinson County - MI",
+		"Eaton County - MI",
+		"Emmet County - MI",
+		"Genesee County - MI",
+		"Gladwin County - MI",
+		"Gogebic County - MI",
+		"Grand Traverse County - MI",
+		"Gratiot County - MI",
+		"Hillsdale County - MI",
+		"Houghton County - MI",
+		"Huron County - MI",
+		"Ingham County - MI",
+		"Ionia County - MI",
+		"Iosco County - MI",
+		"Iron County - MI",
+		"Isabella County - MI",
+		"Jackson County - MI",
+		"Kalamazoo County - MI",
+		"Kalkaska County - MI",
+		"Kent County - MI",
+		"Keweenaw County - MI",
+		"Lake County - MI",
+		"Lapeer County - MI",
+		"Leelanau County - MI",
+		"Lenawee County - MI",
+		"Livingston County - MI",
+		"Luce County - MI",
+		"Mackinac County - MI",
+		"Macomb County - MI",
+		"Manistee County - MI",
+		"Marquette County - MI",
+		"Mason County - MI",
+		"Mecosta County - MI",
+		"Menominee County - MI",
+		"Midland County - MI",
+		"Missaukee County - MI",
+		"Monroe County - MI",
+		"Montcalm County - MI",
+		"Montmorency County - MI",
+		"Muskegon County - MI",
+		"Newaygo County - MI",
+		"Oakland County - MI",
+		"Oceana County - MI",
+		"Ogemaw County - MI",
+		"Ontonagon County - MI",
+		"Osceola County - MI",
+		"Oscoda County - MI",
+		"Otsego County - MI",
+		"Ottawa County - MI",
+		"Presque Isle County - MI",
+		"Roscommon County - MI",
+		"Saginaw County - MI",
+		"St. Clair County - MI",
+		"St. Joseph County - MI",
+		"Sanilac County - MI",
+		"Schoolcraft County - MI",
+		"Shiawassee County - MI",
+		"Tuscola County - MI",
+		"Van Buren County - MI",
+		"Washtenaw County - MI",
+		"Wayne County - MI",
+		"Wexford County - MI",
+		"Aitkin County - MN",
+		"Anoka County - MN",
+		"Becker County - MN",
+		"Beltrami County - MN",
+		"Benton County - MN",
+		"Big Stone County - MN",
+		"Blue Earth County - MN",
+		"Brown County - MN",
+		"Carlton County - MN",
+		"Carver County - MN",
+		"Cass County - MN",
+		"Chippewa County - MN",
+		"Chisago County - MN",
+		"Clay County - MN",
+		"Clearwater County - MN",
+		"Cook County - MN",
+		"Cottonwood County - MN",
+		"Crow Wing County - MN",
+		"Dakota County - MN",
+		"Dodge County - MN",
+		"Douglas County - MN",
+		"Faribault County - MN",
+		"Fillmore County - MN",
+		"Freeborn County - MN",
+		"Goodhue County - MN",
+		"Grant County - MN",
+		"Hennepin County - MN",
+		"Houston County - MN",
+		"Hubbard County - MN",
+		"Isanti County - MN",
+		"Itasca County - MN",
+		"Jackson County - MN",
+		"Kanabec County - MN",
+		"Kandiyohi County - MN",
+		"Kittson County - MN",
+		"Koochiching County - MN",
+		"Lac qui Parle County - MN",
+		"Lake County - MN",
+		"Lake of the Woods County - MN",
+		"Le Sueur County - MN",
+		"Lincoln County - MN",
+		"Lyon County - MN",
+		"McLeod County - MN",
+		"Mahnomen County - MN",
+		"Marshall County - MN",
+		"Martin County - MN",
+		"Meeker County - MN",
+		"Mille Lacs County - MN",
+		"Morrison County - MN",
+		"Mower County - MN",
+		"Murray County - MN",
+		"Nicollet County - MN",
+		"Nobles County - MN",
+		"Norman County - MN",
+		"Olmsted County - MN",
+		"Otter Tail County - MN",
+		"Pennington County - MN",
+		"Pine County - MN",
+		"Pipestone County - MN",
+		"Polk County - MN",
+		"Pope County - MN",
+		"Ramsey County - MN",
+		"Red Lake County - MN",
+		"Redwood County - MN",
+		"Renville County - MN",
+		"Rice County - MN",
+		"Rock County - MN",
+		"Roseau County - MN",
+		"St. Louis County - MN",
+		"Scott County - MN",
+		"Sherburne County - MN",
+		"Sibley County - MN",
+		"Stearns County - MN",
+		"Steele County - MN",
+		"Stevens County - MN",
+		"Swift County - MN",
+		"Todd County - MN",
+		"Traverse County - MN",
+		"Wabasha County - MN",
+		"Wadena County - MN",
+		"Waseca County - MN",
+		"Washington County - MN",
+		"Watonwan County - MN",
+		"Wilkin County - MN",
+		"Winona County - MN",
+		"Wright County - MN",
+		"Yellow Medicine County - MN",
+		"Adams County - MS",
+		"Alcorn County - MS",
+		"Amite County - MS",
+		"Attala County - MS",
+		"Benton County - MS",
+		"Bolivar County - MS",
+		"Calhoun County - MS",
+		"Carroll County - MS",
+		"Chickasaw County - MS",
+		"Choctaw County - MS",
+		"Claiborne County - MS",
+		"Clarke County - MS",
+		"Clay County - MS",
+		"Coahoma County - MS",
+		"Copiah County - MS",
+		"Covington County - MS",
+		"DeSoto County - MS",
+		"Forrest County - MS",
+		"Franklin County - MS",
+		"George County - MS",
+		"Greene County - MS",
+		"Grenada County - MS",
+		"Hancock County - MS",
+		"Harrison County - MS",
+		"Hinds County - MS",
+		"Holmes County - MS",
+		"Humphreys County - MS",
+		"Issaquena County - MS",
+		"Itawamba County - MS",
+		"Jackson County - MS",
+		"Jasper County - MS",
+		"Jefferson County - MS",
+		"Jefferson Davis County - MS",
+		"Jones County - MS",
+		"Kemper County - MS",
+		"Lafayette County - MS",
+		"Lamar County - MS",
+		"Lauderdale County - MS",
+		"Lawrence County - MS",
+		"Leake County - MS",
+		"Lee County - MS",
+		"Leflore County - MS",
+		"Lincoln County - MS",
+		"Lowndes County - MS",
+		"Madison County - MS",
+		"Marion County - MS",
+		"Marshall County - MS",
+		"Monroe County - MS",
+		"Montgomery County - MS",
+		"Neshoba County - MS",
+		"Newton County - MS",
+		"Noxubee County - MS",
+		"Oktibbeha County - MS",
+		"Panola County - MS",
+		"Pearl River County - MS",
+		"Perry County - MS",
+		"Pike County - MS",
+		"Pontotoc County - MS",
+		"Prentiss County - MS",
+		"Quitman County - MS",
+		"Rankin County - MS",
+		"Scott County - MS",
+		"Sharkey County - MS",
+		"Simpson County - MS",
+		"Smith County - MS",
+		"Stone County - MS",
+		"Sunflower County - MS",
+		"Tallahatchie County - MS",
+		"Tate County - MS",
+		"Tippah County - MS",
+		"Tishomingo County - MS",
+		"Tunica County - MS",
+		"Union County - MS",
+		"Walthall County - MS",
+		"Warren County - MS",
+		"Washington County - MS",
+		"Wayne County - MS",
+		"Webster County - MS",
+		"Wilkinson County - MS",
+		"Winston County - MS",
+		"Yalobusha County - MS",
+		"Yazoo County - MS",
+		"Adair County - MO",
+		"Andrew County - MO",
+		"Atchison County - MO",
+		"Audrain County - MO",
+		"Barry County - MO",
+		"Barton County - MO",
+		"Bates County - MO",
+		"Benton County - MO",
+		"Bollinger County - MO",
+		"Boone County - MO",
+		"Buchanan County - MO",
+		"Butler County - MO",
+		"Caldwell County - MO",
+		"Callaway County - MO",
+		"Camden County - MO",
+		"Cape Girardeau County - MO",
+		"Carroll County - MO",
+		"Carter County - MO",
+		"Cass County - MO",
+		"Cedar County - MO",
+		"Chariton County - MO",
+		"Christian County - MO",
+		"Clark County - MO",
+		"Clay County - MO",
+		"Clinton County - MO",
+		"Cole County - MO",
+		"Cooper County - MO",
+		"Crawford County - MO",
+		"Dade County - MO",
+		"Dallas County - MO",
+		"Daviess County - MO",
+		"DeKalb County - MO",
+		"Dent County - MO",
+		"Douglas County - MO",
+		"Dunklin County - MO",
+		"Franklin County - MO",
+		"Gasconade County - MO",
+		"Gentry County - MO",
+		"Greene County - MO",
+		"Grundy County - MO",
+		"Harrison County - MO",
+		"Henry County - MO",
+		"Hickory County - MO",
+		"Holt County - MO",
+		"Howard County - MO",
+		"Howell County - MO",
+		"Iron County - MO",
+		"Jackson County - MO",
+		"Jasper County - MO",
+		"Jefferson County - MO",
+		"Johnson County - MO",
+		"Knox County - MO",
+		"Laclede County - MO",
+		"Lafayette County - MO",
+		"Lawrence County - MO",
+		"Lewis County - MO",
+		"Lincoln County - MO",
+		"Linn County - MO",
+		"Livingston County - MO",
+		"McDonald County - MO",
+		"Macon County - MO",
+		"Madison County - MO",
+		"Maries County - MO",
+		"Marion County - MO",
+		"Mercer County - MO",
+		"Miller County - MO",
+		"Mississippi County - MO",
+		"Moniteau County - MO",
+		"Monroe County - MO",
+		"Montgomery County - MO",
+		"Morgan County - MO",
+		"New Madrid County - MO",
+		"Newton County - MO",
+		"Nodaway County - MO",
+		"Oregon County - MO",
+		"Osage County - MO",
+		"Ozark County - MO",
+		"Pemiscot County - MO",
+		"Perry County - MO",
+		"Pettis County - MO",
+		"Phelps County - MO",
+		"Pike County - MO",
+		"Platte County - MO",
+		"Polk County - MO",
+		"Pulaski County - MO",
+		"Putnam County - MO",
+		"Ralls County - MO",
+		"Randolph County - MO",
+		"Ray County - MO",
+		"Reynolds County - MO",
+		"Ripley County - MO",
+		"St. Charles County - MO",
+		"St. Clair County - MO",
+		"Ste. Genevieve County - MO",
+		"St. Francois County - MO",
+		"St. Louis County - MO",
+		"Saline County - MO",
+		"Schuyler County - MO",
+		"Scotland County - MO",
+		"Scott County - MO",
+		"Shannon County - MO",
+		"Shelby County - MO",
+		"Stoddard County - MO",
+		"Stone County - MO",
+		"Sullivan County - MO",
+		"Taney County - MO",
+		"Texas County - MO",
+		"Vernon County - MO",
+		"Warren County - MO",
+		"Washington County - MO",
+		"Wayne County - MO",
+		"Webster County - MO",
+		"Worth County - MO",
+		"Wright County - MO",
+		"St. Louis city - MO",
+		"Beaverhead County - MT",
+		"Big Horn County - MT",
+		"Blaine County - MT",
+		"Broadwater County - MT",
+		"Carbon County - MT",
+		"Carter County - MT",
+		"Cascade County - MT",
+		"Chouteau County - MT",
+		"Custer County - MT",
+		"Daniels County - MT",
+		"Dawson County - MT",
+		"Deer Lodge County - MT",
+		"Fallon County - MT",
+		"Fergus County - MT",
+		"Flathead County - MT",
+		"Gallatin County - MT",
+		"Garfield County - MT",
+		"Glacier County - MT",
+		"Golden Valley County - MT",
+		"Granite County - MT",
+		"Hill County - MT",
+		"Jefferson County - MT",
+		"Judith Basin County - MT",
+		"Lake County - MT",
+		"Lewis and Clark County - MT",
+		"Liberty County - MT",
+		"Lincoln County - MT",
+		"McCone County - MT",
+		"Madison County - MT",
+		"Meagher County - MT",
+		"Mineral County - MT",
+		"Missoula County - MT",
+		"Musselshell County - MT",
+		"Park County - MT",
+		"Petroleum County - MT",
+		"Phillips County - MT",
+		"Pondera County - MT",
+		"Powder River County - MT",
+		"Powell County - MT",
+		"Prairie County - MT",
+		"Ravalli County - MT",
+		"Richland County - MT",
+		"Roosevelt County - MT",
+		"Rosebud County - MT",
+		"Sanders County - MT",
+		"Sheridan County - MT",
+		"Silver Bow County - MT",
+		"Stillwater County - MT",
+		"Sweet Grass County - MT",
+		"Teton County - MT",
+		"Toole County - MT",
+		"Treasure County - MT",
+		"Valley County - MT",
+		"Wheatland County - MT",
+		"Wibaux County - MT",
+		"Yellowstone County - MT",
+		"Adams County - NE",
+		"Antelope County - NE",
+		"Arthur County - NE",
+		"Banner County - NE",
+		"Blaine County - NE",
+		"Boone County - NE",
+		"Box Butte County - NE",
+		"Boyd County - NE",
+		"Brown County - NE",
+		"Buffalo County - NE",
+		"Burt County - NE",
+		"Butler County - NE",
+		"Cass County - NE",
+		"Cedar County - NE",
+		"Chase County - NE",
+		"Cherry County - NE",
+		"Cheyenne County - NE",
+		"Clay County - NE",
+		"Colfax County - NE",
+		"Cuming County - NE",
+		"Custer County - NE",
+		"Dakota County - NE",
+		"Dawes County - NE",
+		"Dawson County - NE",
+		"Deuel County - NE",
+		"Dixon County - NE",
+		"Dodge County - NE",
+		"Douglas County - NE",
+		"Dundy County - NE",
+		"Fillmore County - NE",
+		"Franklin County - NE",
+		"Frontier County - NE",
+		"Furnas County - NE",
+		"Gage County - NE",
+		"Garden County - NE",
+		"Garfield County - NE",
+		"Gosper County - NE",
+		"Grant County - NE",
+		"Greeley County - NE",
+		"Hall County - NE",
+		"Hamilton County - NE",
+		"Harlan County - NE",
+		"Hayes County - NE",
+		"Hitchcock County - NE",
+		"Holt County - NE",
+		"Hooker County - NE",
+		"Howard County - NE",
+		"Jefferson County - NE",
+		"Johnson County - NE",
+		"Kearney County - NE",
+		"Keith County - NE",
+		"Keya Paha County - NE",
+		"Kimball County - NE",
+		"Knox County - NE",
+		"Lancaster County - NE",
+		"Lincoln County - NE",
+		"Logan County - NE",
+		"Loup County - NE",
+		"McPherson County - NE",
+		"Madison County - NE",
+		"Merrick County - NE",
+		"Morrill County - NE",
+		"Nance County - NE",
+		"Nemaha County - NE",
+		"Nuckolls County - NE",
+		"Otoe County - NE",
+		"Pawnee County - NE",
+		"Perkins County - NE",
+		"Phelps County - NE",
+		"Pierce County - NE",
+		"Platte County - NE",
+		"Polk County - NE",
+		"Red Willow County - NE",
+		"Richardson County - NE",
+		"Rock County - NE",
+		"Saline County - NE",
+		"Sarpy County - NE",
+		"Saunders County - NE",
+		"Scotts Bluff County - NE",
+		"Seward County - NE",
+		"Sheridan County - NE",
+		"Sherman County - NE",
+		"Sioux County - NE",
+		"Stanton County - NE",
+		"Thayer County - NE",
+		"Thomas County - NE",
+		"Thurston County - NE",
+		"Valley County - NE",
+		"Washington County - NE",
+		"Wayne County - NE",
+		"Webster County - NE",
+		"Wheeler County - NE",
+		"York County - NE",
+		"Churchill County - NV",
+		"Clark County - NV",
+		"Douglas County - NV",
+		"Elko County - NV",
+		"Esmeralda County - NV",
+		"Eureka County - NV",
+		"Humboldt County - NV",
+		"Lander County - NV",
+		"Lincoln County - NV",
+		"Lyon County - NV",
+		"Mineral County - NV",
+		"Nye County - NV",
+		"Pershing County - NV",
+		"Storey County - NV",
+		"Washoe County - NV",
+		"White Pine County - NV",
+		"Carson City - NV",
+		"Belknap County - NH",
+		"Carroll County - NH",
+		"Cheshire County - NH",
+		"Coos County - NH",
+		"Grafton County - NH",
+		"Hillsborough County - NH",
+		"Merrimack County - NH",
+		"Rockingham County - NH",
+		"Strafford County - NH",
+		"Sullivan County - NH",
+		"Atlantic County - NJ",
+		"Bergen County - NJ",
+		"Burlington County - NJ",
+		"Camden County - NJ",
+		"Cape May County - NJ",
+		"Cumberland County - NJ",
+		"Essex County - NJ",
+		"Gloucester County - NJ",
+		"Hudson County - NJ",
+		"Hunterdon County - NJ",
+		"Mercer County - NJ",
+		"Middlesex County - NJ",
+		"Monmouth County - NJ",
+		"Morris County - NJ",
+		"Ocean County - NJ",
+		"Passaic County - NJ",
+		"Salem County - NJ",
+		"Somerset County - NJ",
+		"Sussex County - NJ",
+		"Union County - NJ",
+		"Warren County - NJ",
+		"Bernalillo County - NM",
+		"Catron County - NM",
+		"Chaves County - NM",
+		"Cibola County - NM",
+		"Colfax County - NM",
+		"Curry County - NM",
+		"De Baca County - NM",
+		"Do�a Ana County - NM",
+		"Eddy County - NM",
+		"Grant County - NM",
+		"Guadalupe County - NM",
+		"Harding County - NM",
+		"Hidalgo County - NM",
+		"Lea County - NM",
+		"Lincoln County - NM",
+		"Los Alamos County - NM",
+		"Luna County - NM",
+		"McKinley County - NM",
+		"Mora County - NM",
+		"Otero County - NM",
+		"Quay County - NM",
+		"Rio Arriba County - NM",
+		"Roosevelt County - NM",
+		"Sandoval County - NM",
+		"San Juan County - NM",
+		"San Miguel County - NM",
+		"Santa Fe County - NM",
+		"Sierra County - NM",
+		"Socorro County - NM",
+		"Taos County - NM",
+		"Torrance County - NM",
+		"Union County - NM",
+		"Valencia County - NM",
+		"Albany County - NY",
+		"Allegany County - NY",
+		"Bronx County - NY",
+		"Broome County - NY",
+		"Cattaraugus County - NY",
+		"Cayuga County - NY",
+		"Chautauqua County - NY",
+		"Chemung County - NY",
+		"Chenango County - NY",
+		"Clinton County - NY",
+		"Columbia County - NY",
+		"Cortland County - NY",
+		"Delaware County - NY",
+		"Dutchess County - NY",
+		"Erie County - NY",
+		"Essex County - NY",
+		"Franklin County - NY",
+		"Fulton County - NY",
+		"Genesee County - NY",
+		"Greene County - NY",
+		"Hamilton County - NY",
+		"Herkimer County - NY",
+		"Jefferson County - NY",
+		"Kings County - NY",
+		"Lewis County - NY",
+		"Livingston County - NY",
+		"Madison County - NY",
+		"Monroe County - NY",
+		"Montgomery County - NY",
+		"Nassau County - NY",
+		"New York County - NY",
+		"Niagara County - NY",
+		"Oneida County - NY",
+		"Onondaga County - NY",
+		"Ontario County - NY",
+		"Orange County - NY",
+		"Orleans County - NY",
+		"Oswego County - NY",
+		"Otsego County - NY",
+		"Putnam County - NY",
+		"Queens County - NY",
+		"Rensselaer County - NY",
+		"Richmond County - NY",
+		"Rockland County - NY",
+		"St. Lawrence County - NY",
+		"Saratoga County - NY",
+		"Schenectady County - NY",
+		"Schoharie County - NY",
+		"Schuyler County - NY",
+		"Seneca County - NY",
+		"Steuben County - NY",
+		"Suffolk County - NY",
+		"Sullivan County - NY",
+		"Tioga County - NY",
+		"Tompkins County - NY",
+		"Ulster County - NY",
+		"Warren County - NY",
+		"Washington County - NY",
+		"Wayne County - NY",
+		"Westchester County - NY",
+		"Wyoming County - NY",
+		"Yates County - NY",
+		"Alamance County - NC",
+		"Alexander County - NC",
+		"Alleghany County - NC",
+		"Anson County - NC",
+		"Ashe County - NC",
+		"Avery County - NC",
+		"Beaufort County - NC",
+		"Bertie County - NC",
+		"Bladen County - NC",
+		"Brunswick County - NC",
+		"Buncombe County - NC",
+		"Burke County - NC",
+		"Cabarrus County - NC",
+		"Caldwell County - NC",
+		"Camden County - NC",
+		"Carteret County - NC",
+		"Caswell County - NC",
+		"Catawba County - NC",
+		"Chatham County - NC",
+		"Cherokee County - NC",
+		"Chowan County - NC",
+		"Clay County - NC",
+		"Cleveland County - NC",
+		"Columbus County - NC",
+		"Craven County - NC",
+		"Cumberland County - NC",
+		"Currituck County - NC",
+		"Dare County - NC",
+		"Davidson County - NC",
+		"Davie County - NC",
+		"Duplin County - NC",
+		"Durham County - NC",
+		"Edgecombe County - NC",
+		"Forsyth County - NC",
+		"Franklin County - NC",
+		"Gaston County - NC",
+		"Gates County - NC",
+		"Graham County - NC",
+		"Granville County - NC",
+		"Greene County - NC",
+		"Guilford County - NC",
+		"Halifax County - NC",
+		"Harnett County - NC",
+		"Haywood County - NC",
+		"Henderson County - NC",
+		"Hertford County - NC",
+		"Hoke County - NC",
+		"Hyde County - NC",
+		"Iredell County - NC",
+		"Jackson County - NC",
+		"Johnston County - NC",
+		"Jones County - NC",
+		"Lee County - NC",
+		"Lenoir County - NC",
+		"Lincoln County - NC",
+		"McDowell County - NC",
+		"Macon County - NC",
+		"Madison County - NC",
+		"Martin County - NC",
+		"Mecklenburg County - NC",
+		"Mitchell County - NC",
+		"Montgomery County - NC",
+		"Moore County - NC",
+		"Nash County - NC",
+		"New Hanover County - NC",
+		"Northampton County - NC",
+		"Onslow County - NC",
+		"Orange County - NC",
+		"Pamlico County - NC",
+		"Pasquotank County - NC",
+		"Pender County - NC",
+		"Perquimans County - NC",
+		"Person County - NC",
+		"Pitt County - NC",
+		"Polk County - NC",
+		"Randolph County - NC",
+		"Richmond County - NC",
+		"Robeson County - NC",
+		"Rockingham County - NC",
+		"Rowan County - NC",
+		"Rutherford County - NC",
+		"Sampson County - NC",
+		"Scotland County - NC",
+		"Stanly County - NC",
+		"Stokes County - NC",
+		"Surry County - NC",
+		"Swain County - NC",
+		"Transylvania County - NC",
+		"Tyrrell County - NC",
+		"Union County - NC",
+		"Vance County - NC",
+		"Wake County - NC",
+		"Warren County - NC",
+		"Washington County - NC",
+		"Watauga County - NC",
+		"Wayne County - NC",
+		"Wilkes County - NC",
+		"Wilson County - NC",
+		"Yadkin County - NC",
+		"Yancey County - NC",
+		"Adams County - ND",
+		"Barnes County - ND",
+		"Benson County - ND",
+		"Billings County - ND",
+		"Bottineau County - ND",
+		"Bowman County - ND",
+		"Burke County - ND",
+		"Burleigh County - ND",
+		"Cass County - ND",
+		"Cavalier County - ND",
+		"Dickey County - ND",
+		"Divide County - ND",
+		"Dunn County - ND",
+		"Eddy County - ND",
+		"Emmons County - ND",
+		"Foster County - ND",
+		"Golden Valley County - ND",
+		"Grand Forks County - ND",
+		"Grant County - ND",
+		"Griggs County - ND",
+		"Hettinger County - ND",
+		"Kidder County - ND",
+		"LaMoure County - ND",
+		"Logan County - ND",
+		"McHenry County - ND",
+		"McIntosh County - ND",
+		"McKenzie County - ND",
+		"McLean County - ND",
+		"Mercer County - ND",
+		"Morton County - ND",
+		"Mountrail County - ND",
+		"Nelson County - ND",
+		"Oliver County - ND",
+		"Pembina County - ND",
+		"Pierce County - ND",
+		"Ramsey County - ND",
+		"Ransom County - ND",
+		"Renville County - ND",
+		"Richland County - ND",
+		"Rolette County - ND",
+		"Sargent County - ND",
+		"Sheridan County - ND",
+		"Sioux County - ND",
+		"Slope County - ND",
+		"Stark County - ND",
+		"Steele County - ND",
+		"Stutsman County - ND",
+		"Towner County - ND",
+		"Traill County - ND",
+		"Walsh County - ND",
+		"Ward County - ND",
+		"Wells County - ND",
+		"Williams County - ND",
+		"Adams County - OH",
+		"Allen County - OH",
+		"Ashland County - OH",
+		"Ashtabula County - OH",
+		"Athens County - OH",
+		"Auglaize County - OH",
+		"Belmont County - OH",
+		"Brown County - OH",
+		"Butler County - OH",
+		"Carroll County - OH",
+		"Champaign County - OH",
+		"Clark County - OH",
+		"Clermont County - OH",
+		"Clinton County - OH",
+		"Columbiana County - OH",
+		"Coshocton County - OH",
+		"Crawford County - OH",
+		"Cuyahoga County - OH",
+		"Darke County - OH",
+		"Defiance County - OH",
+		"Delaware County - OH",
+		"Erie County - OH",
+		"Fairfield County - OH",
+		"Fayette County - OH",
+		"Franklin County - OH",
+		"Fulton County - OH",
+		"Gallia County - OH",
+		"Geauga County - OH",
+		"Greene County - OH",
+		"Guernsey County - OH",
+		"Hamilton County - OH",
+		"Hancock County - OH",
+		"Hardin County - OH",
+		"Harrison County - OH",
+		"Henry County - OH",
+		"Highland County - OH",
+		"Hocking County - OH",
+		"Holmes County - OH",
+		"Huron County - OH",
+		"Jackson County - OH",
+		"Jefferson County - OH",
+		"Knox County - OH",
+		"Lake County - OH",
+		"Lawrence County - OH",
+		"Licking County - OH",
+		"Logan County - OH",
+		"Lorain County - OH",
+		"Lucas County - OH",
+		"Madison County - OH",
+		"Mahoning County - OH",
+		"Marion County - OH",
+		"Medina County - OH",
+		"Meigs County - OH",
+		"Mercer County - OH",
+		"Miami County - OH",
+		"Monroe County - OH",
+		"Montgomery County - OH",
+		"Morgan County - OH",
+		"Morrow County - OH",
+		"Muskingum County - OH",
+		"Noble County - OH",
+		"Ottawa County - OH",
+		"Paulding County - OH",
+		"Perry County - OH",
+		"Pickaway County - OH",
+		"Pike County - OH",
+		"Portage County - OH",
+		"Preble County - OH",
+		"Putnam County - OH",
+		"Richland County - OH",
+		"Ross County - OH",
+		"Sandusky County - OH",
+		"Scioto County - OH",
+		"Seneca County - OH",
+		"Shelby County - OH",
+		"Stark County - OH",
+		"Summit County - OH",
+		"Trumbull County - OH",
+		"Tuscarawas County - OH",
+		"Union County - OH",
+		"Van Wert County - OH",
+		"Vinton County - OH",
+		"Warren County - OH",
+		"Washington County - OH",
+		"Wayne County - OH",
+		"Williams County - OH",
+		"Wood County - OH",
+		"Wyandot County - OH",
+		"Adair County - OK",
+		"Alfalfa County - OK",
+		"Atoka County - OK",
+		"Beaver County - OK",
+		"Beckham County - OK",
+		"Blaine County - OK",
+		"Bryan County - OK",
+		"Caddo County - OK",
+		"Canadian County - OK",
+		"Carter County - OK",
+		"Cherokee County - OK",
+		"Choctaw County - OK",
+		"Cimarron County - OK",
+		"Cleveland County - OK",
+		"Coal County - OK",
+		"Comanche County - OK",
+		"Cotton County - OK",
+		"Craig County - OK",
+		"Creek County - OK",
+		"Custer County - OK",
+		"Delaware County - OK",
+		"Dewey County - OK",
+		"Ellis County - OK",
+		"Garfield County - OK",
+		"Garvin County - OK",
+		"Grady County - OK",
+		"Grant County - OK",
+		"Greer County - OK",
+		"Harmon County - OK",
+		"Harper County - OK",
+		"Haskell County - OK",
+		"Hughes County - OK",
+		"Jackson County - OK",
+		"Jefferson County - OK",
+		"Johnston County - OK",
+		"Kay County - OK",
+		"Kingfisher County - OK",
+		"Kiowa County - OK",
+		"Latimer County - OK",
+		"Le Flore County - OK",
+		"Lincoln County - OK",
+		"Logan County - OK",
+		"Love County - OK",
+		"McClain County - OK",
+		"McCurtain County - OK",
+		"McIntosh County - OK",
+		"Major County - OK",
+		"Marshall County - OK",
+		"Mayes County - OK",
+		"Murray County - OK",
+		"Muskogee County - OK",
+		"Noble County - OK",
+		"Nowata County - OK",
+		"Okfuskee County - OK",
+		"Oklahoma County - OK",
+		"Okmulgee County - OK",
+		"Osage County - OK",
+		"Ottawa County - OK",
+		"Pawnee County - OK",
+		"Payne County - OK",
+		"Pittsburg County - OK",
+		"Pontotoc County - OK",
+		"Pottawatomie County - OK",
+		"Pushmataha County - OK",
+		"Roger Mills County - OK",
+		"Rogers County - OK",
+		"Seminole County - OK",
+		"Sequoyah County - OK",
+		"Stephens County - OK",
+		"Texas County - OK",
+		"Tillman County - OK",
+		"Tulsa County - OK",
+		"Wagoner County - OK",
+		"Washington County - OK",
+		"Washita County - OK",
+		"Woods County - OK",
+		"Woodward County - OK",
+		"Baker County - OR",
+		"Benton County - OR",
+		"Clackamas County - OR",
+		"Clatsop County - OR",
+		"Columbia County - OR",
+		"Coos County - OR",
+		"Crook County - OR",
+		"Curry County - OR",
+		"Deschutes County - OR",
+		"Douglas County - OR",
+		"Gilliam County - OR",
+		"Grant County - OR",
+		"Harney County - OR",
+		"Hood River County - OR",
+		"Jackson County - OR",
+		"Jefferson County - OR",
+		"Josephine County - OR",
+		"Klamath County - OR",
+		"Lake County - OR",
+		"Lane County - OR",
+		"Lincoln County - OR",
+		"Linn County - OR",
+		"Malheur County - OR",
+		"Marion County - OR",
+		"Morrow County - OR",
+		"Multnomah County - OR",
+		"Polk County - OR",
+		"Sherman County - OR",
+		"Tillamook County - OR",
+		"Umatilla County - OR",
+		"Union County - OR",
+		"Wallowa County - OR",
+		"Wasco County - OR",
+		"Washington County - OR",
+		"Wheeler County - OR",
+		"Yamhill County - OR",
+		"Adams County - PA",
+		"Allegheny County - PA",
+		"Armstrong County - PA",
+		"Beaver County - PA",
+		"Bedford County - PA",
+		"Berks County - PA",
+		"Blair County - PA",
+		"Bradford County - PA",
+		"Bucks County - PA",
+		"Butler County - PA",
+		"Cambria County - PA",
+		"Cameron County - PA",
+		"Carbon County - PA",
+		"Centre County - PA",
+		"Chester County - PA",
+		"Clarion County - PA",
+		"Clearfield County - PA",
+		"Clinton County - PA",
+		"Columbia County - PA",
+		"Crawford County - PA",
+		"Cumberland County - PA",
+		"Dauphin County - PA",
+		"Delaware County - PA",
+		"Elk County - PA",
+		"Erie County - PA",
+		"Fayette County - PA",
+		"Forest County - PA",
+		"Franklin County - PA",
+		"Fulton County - PA",
+		"Greene County - PA",
+		"Huntingdon County - PA",
+		"Indiana County - PA",
+		"Jefferson County - PA",
+		"Juniata County - PA",
+		"Lackawanna County - PA",
+		"Lancaster County - PA",
+		"Lawrence County - PA",
+		"Lebanon County - PA",
+		"Lehigh County - PA",
+		"Luzerne County - PA",
+		"Lycoming County - PA",
+		"McKean County - PA",
+		"Mercer County - PA",
+		"Mifflin County - PA",
+		"Monroe County - PA",
+		"Montgomery County - PA",
+		"Montour County - PA",
+		"Northampton County - PA",
+		"Northumberland County - PA",
+		"Perry County - PA",
+		"Philadelphia County - PA",
+		"Pike County - PA",
+		"Potter County - PA",
+		"Schuylkill County - PA",
+		"Snyder County - PA",
+		"Somerset County - PA",
+		"Sullivan County - PA",
+		"Susquehanna County - PA",
+		"Tioga County - PA",
+		"Union County - PA",
+		"Venango County - PA",
+		"Warren County - PA",
+		"Washington County - PA",
+		"Wayne County - PA",
+		"Westmoreland County - PA",
+		"Wyoming County - PA",
+		"York County - PA",
+		"Bristol County - RI",
+		"Kent County - RI",
+		"Newport County - RI",
+		"Providence County - RI",
+		"Washington County - RI",
+		"Abbeville County - SC",
+		"Aiken County - SC",
+		"Allendale County - SC",
+		"Anderson County - SC",
+		"Bamberg County - SC",
+		"Barnwell County - SC",
+		"Beaufort County - SC",
+		"Berkeley County - SC",
+		"Calhoun County - SC",
+		"Charleston County - SC",
+		"Cherokee County - SC",
+		"Chester County - SC",
+		"Chesterfield County - SC",
+		"Clarendon County - SC",
+		"Colleton County - SC",
+		"Darlington County - SC",
+		"Dillon County - SC",
+		"Dorchester County - SC",
+		"Edgefield County - SC",
+		"Fairfield County - SC",
+		"Florence County - SC",
+		"Georgetown County - SC",
+		"Greenville County - SC",
+		"Greenwood County - SC",
+		"Hampton County - SC",
+		"Horry County - SC",
+		"Jasper County - SC",
+		"Kershaw County - SC",
+		"Lancaster County - SC",
+		"Laurens County - SC",
+		"Lee County - SC",
+		"Lexington County - SC",
+		"McCormick County - SC",
+		"Marion County - SC",
+		"Marlboro County - SC",
+		"Newberry County - SC",
+		"Oconee County - SC",
+		"Orangeburg County - SC",
+		"Pickens County - SC",
+		"Richland County - SC",
+		"Saluda County - SC",
+		"Spartanburg County - SC",
+		"Sumter County - SC",
+		"Union County - SC",
+		"Williamsburg County - SC",
+		"York County - SC",
+		"Aurora County - SD",
+		"Beadle County - SD",
+		"Bennett County - SD",
+		"Bon Homme County - SD",
+		"Brookings County - SD",
+		"Brown County - SD",
+		"Brule County - SD",
+		"Buffalo County - SD",
+		"Butte County - SD",
+		"Campbell County - SD",
+		"Charles Mix County - SD",
+		"Clark County - SD",
+		"Clay County - SD",
+		"Codington County - SD",
+		"Corson County - SD",
+		"Custer County - SD",
+		"Davison County - SD",
+		"Day County - SD",
+		"Deuel County - SD",
+		"Dewey County - SD",
+		"Douglas County - SD",
+		"Edmunds County - SD",
+		"Fall River County - SD",
+		"Faulk County - SD",
+		"Grant County - SD",
+		"Gregory County - SD",
+		"Haakon County - SD",
+		"Hamlin County - SD",
+		"Hand County - SD",
+		"Hanson County - SD",
+		"Harding County - SD",
+		"Hughes County - SD",
+		"Hutchinson County - SD",
+		"Hyde County - SD",
+		"Jackson County - SD",
+		"Jerauld County - SD",
+		"Jones County - SD",
+		"Kingsbury County - SD",
+		"Lake County - SD",
+		"Lawrence County - SD",
+		"Lincoln County - SD",
+		"Lyman County - SD",
+		"McCook County - SD",
+		"McPherson County - SD",
+		"Marshall County - SD",
+		"Meade County - SD",
+		"Mellette County - SD",
+		"Miner County - SD",
+		"Minnehaha County - SD",
+		"Moody County - SD",
+		"Pennington County - SD",
+		"Perkins County - SD",
+		"Potter County - SD",
+		"Roberts County - SD",
+		"Sanborn County - SD",
+		"Shannon County - SD",
+		"Spink County - SD",
+		"Stanley County - SD",
+		"Sully County - SD",
+		"Todd County - SD",
+		"Tripp County - SD",
+		"Turner County - SD",
+		"Union County - SD",
+		"Walworth County - SD",
+		"Yankton County - SD",
+		"Ziebach County - SD",
+		"Anderson County - TN",
+		"Bedford County - TN",
+		"Benton County - TN",
+		"Bledsoe County - TN",
+		"Blount County - TN",
+		"Bradley County - TN",
+		"Campbell County - TN",
+		"Cannon County - TN",
+		"Carroll County - TN",
+		"Carter County - TN",
+		"Cheatham County - TN",
+		"Chester County - TN",
+		"Claiborne County - TN",
+		"Clay County - TN",
+		"Cocke County - TN",
+		"Coffee County - TN",
+		"Crockett County - TN",
+		"Cumberland County - TN",
+		"Davidson County - TN",
+		"Decatur County - TN",
+		"DeKalb County - TN",
+		"Dickson County - TN",
+		"Dyer County - TN",
+		"Fayette County - TN",
+		"Fentress County - TN",
+		"Franklin County - TN",
+		"Gibson County - TN",
+		"Giles County - TN",
+		"Grainger County - TN",
+		"Greene County - TN",
+		"Grundy County - TN",
+		"Hamblen County - TN",
+		"Hamilton County - TN",
+		"Hancock County - TN",
+		"Hardeman County - TN",
+		"Hardin County - TN",
+		"Hawkins County - TN",
+		"Haywood County - TN",
+		"Henderson County - TN",
+		"Henry County - TN",
+		"Hickman County - TN",
+		"Houston County - TN",
+		"Humphreys County - TN",
+		"Jackson County - TN",
+		"Jefferson County - TN",
+		"Johnson County - TN",
+		"Knox County - TN",
+		"Lake County - TN",
+		"Lauderdale County - TN",
+		"Lawrence County - TN",
+		"Lewis County - TN",
+		"Lincoln County - TN",
+		"Loudon County - TN",
+		"McMinn County - TN",
+		"McNairy County - TN",
+		"Macon County - TN",
+		"Madison County - TN",
+		"Marion County - TN",
+		"Marshall County - TN",
+		"Maury County - TN",
+		"Meigs County - TN",
+		"Monroe County - TN",
+		"Montgomery County - TN",
+		"Moore County - TN",
+		"Morgan County - TN",
+		"Obion County - TN",
+		"Overton County - TN",
+		"Perry County - TN",
+		"Pickett County - TN",
+		"Polk County - TN",
+		"Putnam County - TN",
+		"Rhea County - TN",
+		"Roane County - TN",
+		"Robertson County - TN",
+		"Rutherford County - TN",
+		"Scott County - TN",
+		"Sequatchie County - TN",
+		"Sevier County - TN",
+		"Shelby County - TN",
+		"Smith County - TN",
+		"Stewart County - TN",
+		"Sullivan County - TN",
+		"Sumner County - TN",
+		"Tipton County - TN",
+		"Trousdale County - TN",
+		"Unicoi County - TN",
+		"Union County - TN",
+		"Van Buren County - TN",
+		"Warren County - TN",
+		"Washington County - TN",
+		"Wayne County - TN",
+		"Weakley County - TN",
+		"White County - TN",
+		"Williamson County - TN",
+		"Wilson County - TN",
+		"Anderson County - TX",
+		"Andrews County - TX",
+		"Angelina County - TX",
+		"Aransas County - TX",
+		"Archer County - TX",
+		"Armstrong County - TX",
+		"Atascosa County - TX",
+		"Austin County - TX",
+		"Bailey County - TX",
+		"Bandera County - TX",
+		"Bastrop County - TX",
+		"Baylor County - TX",
+		"Bee County - TX",
+		"Bell County - TX",
+		"Bexar County - TX",
+		"Blanco County - TX",
+		"Borden County - TX",
+		"Bosque County - TX",
+		"Bowie County - TX",
+		"Brazoria County - TX",
+		"Brazos County - TX",
+		"Brewster County - TX",
+		"Briscoe County - TX",
+		"Brooks County - TX",
+		"Brown County - TX",
+		"Burleson County - TX",
+		"Burnet County - TX",
+		"Caldwell County - TX",
+		"Calhoun County - TX",
+		"Callahan County - TX",
+		"Cameron County - TX",
+		"Camp County - TX",
+		"Carson County - TX",
+		"Cass County - TX",
+		"Castro County - TX",
+		"Chambers County - TX",
+		"Cherokee County - TX",
+		"Childress County - TX",
+		"Clay County - TX",
+		"Cochran County - TX",
+		"Coke County - TX",
+		"Coleman County - TX",
+		"Collin County - TX",
+		"Collingsworth County - TX",
+		"Colorado County - TX",
+		"Comal County - TX",
+		"Comanche County - TX",
+		"Concho County - TX",
+		"Cooke County - TX",
+		"Coryell County - TX",
+		"Cottle County - TX",
+		"Crane County - TX",
+		"Crockett County - TX",
+		"Crosby County - TX",
+		"Culberson County - TX",
+		"Dallam County - TX",
+		"Dallas County - TX",
+		"Dawson County - TX",
+		"Deaf Smith County - TX",
+		"Delta County - TX",
+		"Denton County - TX",
+		"DeWitt County - TX",
+		"Dickens County - TX",
+		"Dimmit County - TX",
+		"Donley County - TX",
+		"Duval County - TX",
+		"Eastland County - TX",
+		"Ector County - TX",
+		"Edwards County - TX",
+		"Ellis County - TX",
+		"El Paso County - TX",
+		"Erath County - TX",
+		"Falls County - TX",
+		"Fannin County - TX",
+		"Fayette County - TX",
+		"Fisher County - TX",
+		"Floyd County - TX",
+		"Foard County - TX",
+		"Fort Bend County - TX",
+		"Franklin County - TX",
+		"Freestone County - TX",
+		"Frio County - TX",
+		"Gaines County - TX",
+		"Galveston County - TX",
+		"Garza County - TX",
+		"Gillespie County - TX",
+		"Glasscock County - TX",
+		"Goliad County - TX",
+		"Gonzales County - TX",
+		"Gray County - TX",
+		"Grayson County - TX",
+		"Gregg County - TX",
+		"Grimes County - TX",
+		"Guadalupe County - TX",
+		"Hale County - TX",
+		"Hall County - TX",
+		"Hamilton County - TX",
+		"Hansford County - TX",
+		"Hardeman County - TX",
+		"Hardin County - TX",
+		"Harris County - TX",
+		"Harrison County - TX",
+		"Hartley County - TX",
+		"Haskell County - TX",
+		"Hays County - TX",
+		"Hemphill County - TX",
+		"Henderson County - TX",
+		"Hidalgo County - TX",
+		"Hill County - TX",
+		"Hockley County - TX",
+		"Hood County - TX",
+		"Hopkins County - TX",
+		"Houston County - TX",
+		"Howard County - TX",
+		"Hudspeth County - TX",
+		"Hunt County - TX",
+		"Hutchinson County - TX",
+		"Irion County - TX",
+		"Jack County - TX",
+		"Jackson County - TX",
+		"Jasper County - TX",
+		"Jeff Davis County - TX",
+		"Jefferson County - TX",
+		"Jim Hogg County - TX",
+		"Jim Wells County - TX",
+		"Johnson County - TX",
+		"Jones County - TX",
+		"Karnes County - TX",
+		"Kaufman County - TX",
+		"Kendall County - TX",
+		"Kenedy County - TX",
+		"Kent County - TX",
+		"Kerr County - TX",
+		"Kimble County - TX",
+		"King County - TX",
+		"Kinney County - TX",
+		"Kleberg County - TX",
+		"Knox County - TX",
+		"Lamar County - TX",
+		"Lamb County - TX",
+		"Lampasas County - TX",
+		"La Salle County - TX",
+		"Lavaca County - TX",
+		"Lee County - TX",
+		"Leon County - TX",
+		"Liberty County - TX",
+		"Limestone County - TX",
+		"Lipscomb County - TX",
+		"Live Oak County - TX",
+		"Llano County - TX",
+		"Loving County - TX",
+		"Lubbock County - TX",
+		"Lynn County - TX",
+		"McCulloch County - TX",
+		"McLennan County - TX",
+		"McMullen County - TX",
+		"Madison County - TX",
+		"Marion County - TX",
+		"Martin County - TX",
+		"Mason County - TX",
+		"Matagorda County - TX",
+		"Maverick County - TX",
+		"Medina County - TX",
+		"Menard County - TX",
+		"Midland County - TX",
+		"Milam County - TX",
+		"Mills County - TX",
+		"Mitchell County - TX",
+		"Montague County - TX",
+		"Montgomery County - TX",
+		"Moore County - TX",
+		"Morris County - TX",
+		"Motley County - TX",
+		"Nacogdoches County - TX",
+		"Navarro County - TX",
+		"Newton County - TX",
+		"Nolan County - TX",
+		"Nueces County - TX",
+		"Ochiltree County - TX",
+		"Oldham County - TX",
+		"Orange County - TX",
+		"Palo Pinto County - TX",
+		"Panola County - TX",
+		"Parker County - TX",
+		"Parmer County - TX",
+		"Pecos County - TX",
+		"Polk County - TX",
+		"Potter County - TX",
+		"Presidio County - TX",
+		"Rains County - TX",
+		"Randall County - TX",
+		"Reagan County - TX",
+		"Real County - TX",
+		"Red River County - TX",
+		"Reeves County - TX",
+		"Refugio County - TX",
+		"Roberts County - TX",
+		"Robertson County - TX",
+		"Rockwall County - TX",
+		"Runnels County - TX",
+		"Rusk County - TX",
+		"Sabine County - TX",
+		"San Augustine County - TX",
+		"San Jacinto County - TX",
+		"San Patricio County - TX",
+		"San Saba County - TX",
+		"Schleicher County - TX",
+		"Scurry County - TX",
+		"Shackelford County - TX",
+		"Shelby County - TX",
+		"Sherman County - TX",
+		"Smith County - TX",
+		"Somervell County - TX",
+		"Starr County - TX",
+		"Stephens County - TX",
+		"Sterling County - TX",
+		"Stonewall County - TX",
+		"Sutton County - TX",
+		"Swisher County - TX",
+		"Tarrant County - TX",
+		"Taylor County - TX",
+		"Terrell County - TX",
+		"Terry County - TX",
+		"Throckmorton County - TX",
+		"Titus County - TX",
+		"Tom Green County - TX",
+		"Travis County - TX",
+		"Trinity County - TX",
+		"Tyler County - TX",
+		"Upshur County - TX",
+		"Upton County - TX",
+		"Uvalde County - TX",
+		"Val Verde County - TX",
+		"Van Zandt County - TX",
+		"Victoria County - TX",
+		"Walker County - TX",
+		"Waller County - TX",
+		"Ward County - TX",
+		"Washington County - TX",
+		"Webb County - TX",
+		"Wharton County - TX",
+		"Wheeler County - TX",
+		"Wichita County - TX",
+		"Wilbarger County - TX",
+		"Willacy County - TX",
+		"Williamson County - TX",
+		"Wilson County - TX",
+		"Winkler County - TX",
+		"Wise County - TX",
+		"Wood County - TX",
+		"Yoakum County - TX",
+		"Young County - TX",
+		"Zapata County - TX",
+		"Zavala County - TX",
+		"Beaver County - UT",
+		"Box Elder County - UT",
+		"Cache County - UT",
+		"Carbon County - UT",
+		"Daggett County - UT",
+		"Davis County - UT",
+		"Duchesne County - UT",
+		"Emery County - UT",
+		"Garfield County - UT",
+		"Grand County - UT",
+		"Iron County - UT",
+		"Juab County - UT",
+		"Kane County - UT",
+		"Millard County - UT",
+		"Morgan County - UT",
+		"Piute County - UT",
+		"Rich County - UT",
+		"Salt Lake County - UT",
+		"San Juan County - UT",
+		"Sanpete County - UT",
+		"Sevier County - UT",
+		"Summit County - UT",
+		"Tooele County - UT",
+		"Uintah County - UT",
+		"Utah County - UT",
+		"Wasatch County - UT",
+		"Washington County - UT",
+		"Wayne County - UT",
+		"Weber County - UT",
+		"Addison County- VT",
+		"Bennington County - VT",
+		"Caledonia County - VT",
+		"Chittenden County - VT",
+		"Essex County - VT",
+		"Franklin County - VT",
+		"Grand Isle County - VT",
+		"Lamoille County - VT",
+		"Orange County - VT",
+		"Orleans County - VT",
+		"Rutland County - VT",
+		"Washington County - VT",
+		"Windham County - VT",
+		"Windsor County - VT",
+		"Accomack County - VA",
+		"Albemarle County - VA",
+		"Alleghany County - VA",
+		"Amelia County - VA",
+		"Amherst County - VA",
+		"Appomattox County - VA",
+		"Arlington County - VA",
+		"Augusta County - VA",
+		"Bath County - VA",
+		"Bedford County - VA",
+		"Bland County - VA",
+		"Botetourt County - VA",
+		"Brunswick County - VA",
+		"Buchanan County - VA",
+		"Buckingham County - VA",
+		"Campbell County - VA",
+		"Caroline County - VA",
+		"Carroll County - VA",
+		"Charles City County - VA",
+		"Charlotte County - VA",
+		"Chesterfield County - VA",
+		"Clarke County - VA",
+		"Craig County - VA",
+		"Culpeper County - VA",
+		"Cumberland County - VA",
+		"Dickenson County - VA",
+		"Dinwiddie County - VA",
+		"Essex County - VA",
+		"Fairfax County - VA",
+		"Fauquier County - VA",
+		"Floyd County - VA",
+		"Fluvanna County - VA",
+		"Franklin County - VA",
+		"Frederick County - VA",
+		"Giles County - VA",
+		"Gloucester County - VA",
+		"Goochland County - VA",
+		"Grayson County - VA",
+		"Greene County - VA",
+		"Greensville County - VA",
+		"Halifax County - VA",
+		"Hanover County - VA",
+		"Henrico County - VA",
+		"Henry County - VA",
+		"Highland County - VA",
+		"Isle of Wight County - VA",
+		"James City County - VA",
+		"King and Queen County - VA",
+		"King George County - VA",
+		"King William County - VA",
+		"Lancaster County - VA",
+		"Lee County - VA",
+		"Loudoun County - VA",
+		"Louisa County - VA",
+		"Lunenburg County - VA",
+		"Madison County - VA",
+		"Mathews County - VA",
+		"Mecklenburg County - VA",
+		"Middlesex County - VA",
+		"Montgomery County - VA",
+		"Nelson County - VA",
+		"New Kent County - VA",
+		"Northampton County - VA",
+		"Northumberland County - VA",
+		"Nottoway County - VA",
+		"Orange County - VA",
+		"Page County - VA",
+		"Patrick County - VA",
+		"Pittsylvania County - VA",
+		"Powhatan County - VA",
+		"Prince Edward County - VA",
+		"Prince George County - VA",
+		"Prince William County - VA",
+		"Pulaski County - VA",
+		"Rappahannock County - VA",
+		"Richmond County - VA",
+		"Roanoke County - VA",
+		"Rockbridge County - VA",
+		"Rockingham County - VA",
+		"Russell County - VA",
+		"Scott County - VA",
+		"Shenandoah County - VA",
+		"Smyth County - VA",
+		"Southampton County - VA",
+		"Spotsylvania County - VA",
+		"Stafford County - VA",
+		"Surry County - VA",
+		"Sussex County - VA",
+		"Tazewell County - VA",
+		"Warren County - VA",
+		"Washington County - VA",
+		"Westmoreland County - VA",
+		"Wise County - VA",
+		"Wythe County - VA",
+		"York County - VA",
+		"Alexandria city - VA",
+		"Bedford city - VA",
+		"Bristol city - VA",
+		"Buena Vista city - VA",
+		"Charlottesville city - VA",
+		"Chesapeake city - VA",
+		"Colonial Heights city - VA",
+		"Covington city - VA",
+		"Danville city - VA",
+		"Emporia city - VA",
+		"Fairfax city - VA",
+		"Falls Church city - VA",
+		"Franklin city - VA",
+		"Fredericksburg city - VA",
+		"Galax city - VA",
+		"Hampton city - VA",
+		"Harrisonburg city - VA",
+		"Hopewell city - VA",
+		"Lexington city - VA",
+		"Lynchburg city - VA",
+		"Manassas city - VA",
+		"Manassas Park city - VA",
+		"Martinsville city - VA",
+		"Newport News city - VA",
+		"Norfolk city - VA",
+		"Norton city - VA",
+		"Petersburg city - VA",
+		"Poquoson city - VA",
+		"Portsmouth city - VA",
+		"Radford city - VA",
+		"Richmond city - VA",
+		"Roanoke city - VA",
+		"Salem city - VA",
+		"Staunton city - VA",
+		"Suffolk city - VA",
+		"Virginia Beach city - VA",
+		"Waynesboro city - VA",
+		"Williamsburg city - VA",
+		"Winchester city - VA",
+		"Adams County - WA",
+		"Asotin County - WA",
+		"Benton County - WA",
+		"Chelan County - WA",
+		"Clallam County - WA",
+		"Clark County - WA",
+		"Columbia County - WA",
+		"Cowlitz County - WA",
+		"Douglas County - WA",
+		"Ferry County - WA",
+		"Franklin County - WA",
+		"Garfield County - WA",
+		"Grant County - WA",
+		"Grays Harbor County - WA",
+		"Island County - WA",
+		"Jefferson County - WA",
+		"King County - WA",
+		"Kitsap County - WA",
+		"Kittitas County - WA",
+		"Klickitat County - WA",
+		"Lewis County - WA",
+		"Lincoln County - WA",
+		"Mason County - WA",
+		"Okanogan County - WA",
+		"Pacific County - WA",
+		"Pend Oreille County - WA",
+		"Pierce County - WA",
+		"San Juan County - WA",
+		"Skagit County - WA",
+		"Skamania County - WA",
+		"Snohomish County - WA",
+		"Spokane County - WA",
+		"Stevens County - WA",
+		"Thurston County - WA",
+		"Wahkiakum County - WA",
+		"Walla Walla County - WA",
+		"Whatcom County - WA",
+		"Whitman County - WA",
+		"Yakima County - WA",
+		"Barbour County - WV",
+		"Berkeley County - WV",
+		"Boone County - WV",
+		"Braxton County - WV",
+		"Brooke County - WV",
+		"Cabell County - WV",
+		"Calhoun County - WV",
+		"Clay County - WV",
+		"Doddridge County - WV",
+		"Fayette County - WV",
+		"Gilmer County - WV",
+		"Grant County - WV",
+		"Greenbrier County - WV",
+		"Hampshire County - WV",
+		"Hancock County - WV",
+		"Hardy County - WV",
+		"Harrison County - WV",
+		"Jackson County - WV",
+		"Jefferson County - WV",
+		"Kanawha County - WV",
+		"Lewis County - WV",
+		"Lincoln County - WV",
+		"Logan County - WV",
+		"McDowell County - WV",
+		"Marion County - WV",
+		"Marshall County - WV",
+		"Mason County - WV",
+		"Mercer County - WV",
+		"Mineral County - WV",
+		"Mingo County - WV",
+		"Monongalia County - WV",
+		"Monroe County - WV",
+		"Morgan County - WV",
+		"Nicholas County - WV",
+		"Ohio County - WV",
+		"Pendleton County - WV",
+		"Pleasants County - WV",
+		"Pocahontas County - WV",
+		"Preston County - WV",
+		"Putnam County - WV",
+		"Raleigh County - WV",
+		"Randolph County - WV",
+		"Ritchie County - WV",
+		"Roane County - WV",
+		"Summers County - WV",
+		"Taylor County - WV",
+		"Tucker County - WV",
+		"Tyler County - WV",
+		"Upshur County - WV",
+		"Wayne County - WV",
+		"Webster County - WV",
+		"Wetzel County - WV",
+		"Wirt County - WV",
+		"Wood County - WV",
+		"Wyoming County - WV",
+		"Adams County - WI",
+		"Ashland County - WI",
+		"Barron County - WI",
+		"Bayfield County - WI",
+		"Brown County - WI",
+		"Buffalo County - WI",
+		"Burnett County - WI",
+		"Calumet County - WI",
+		"Chippewa County - WI",
+		"Clark County - WI",
+		"Columbia County - WI",
+		"Crawford County - WI",
+		"Dane County - WI",
+		"Dodge County - WI",
+		"Door County - WI",
+		"Douglas County - WI",
+		"Dunn County - WI",
+		"Eau Claire County - WI",
+		"Florence County - WI",
+		"Fond du Lac County - WI",
+		"Forest County - WI",
+		"Grant County - WI",
+		"Green County - WI",
+		"Green Lake County - WI",
+		"Iowa County - WI",
+		"Iron County - WI",
+		"Jackson County - WI",
+		"Jefferson County - WI",
+		"Juneau County - WI",
+		"Kenosha County - WI",
+		"Kewaunee County - WI",
+		"La Crosse County - WI",
+		"Lafayette County - WI",
+		"Langlade County - WI",
+		"Lincoln County - WI",
+		"Manitowoc County - WI",
+		"Marathon County - WI",
+		"Marinette County - WI",
+		"Marquette County - WI",
+		"Menominee County - WI",
+		"Milwaukee County - WI",
+		"Monroe County - WI",
+		"Oconto County - WI",
+		"Oneida County - WI",
+		"Outagamie County - WI",
+		"Ozaukee County - WI",
+		"Pepin County - WI",
+		"Pierce County - WI",
+		"Polk County - WI",
+		"Portage County - WI",
+		"Price County - WI",
+		"Racine County - WI",
+		"Richland County - WI",
+		"Rock County - WI",
+		"Rusk County - WI",
+		"St. Croix County - WI",
+		"Sauk County - WI",
+		"Sawyer County - WI",
+		"Shawano County - WI",
+		"Sheboygan County - WI",
+		"Taylor County - WI",
+		"Trempealeau County - WI",
+		"Vernon County - WI",
+		"Vilas County - WI",
+		"Walworth County - WI",
+		"Washburn County - WI",
+		"Washington County - WI",
+		"Waukesha County - WI",
+		"Waupaca County - WI",
+		"Waushara County - WI",
+		"Winnebago County - WI",
+		"Wood County - WI",
+		"Albany County - WY",
+		"Big Horn County - WY",
+		"Campbell County - WY",
+		"Carbon County - WY",
+		"Converse County - WY",
+		"Crook County - WY",
+		"Fremont County - WY",
+		"Goshen County - WY",
+		"Hot Springs County - WY",
+		"Johnson County - WY",
+		"Laramie County - WY",
+		"Lincoln County - WY",
+		"Natrona County - WY",
+		"Niobrara County - WY",
+		"Park County - WY",
+		"Platte County - WY",
+		"Sheridan County - WY",
+		"Sublette County - WY",
+		"Sweetwater County - WY",
+		"Teton County - WY",
+		"Uinta County - WY",
+		"Washakie County - WY",
+		"Weston County - WY"
+	]
+};
+
+/***/ }),
+/* 200 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__vue_welcome_Welcome__ = __webpack_require__(198);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__vue_welcome_Welcome__ = __webpack_require__(201);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__vue_welcome_Welcome___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__vue_welcome_Welcome__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__vue_profile_Profile__ = __webpack_require__(204);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__vue_profile_Profile__ = __webpack_require__(207);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__vue_profile_Profile___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__vue_profile_Profile__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__vue_location_Location__ = __webpack_require__(225);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__vue_location_Location__ = __webpack_require__(231);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__vue_location_Location___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__vue_location_Location__);
 
 
@@ -15509,15 +18730,15 @@ module.exports = function () {
 }]);
 
 /***/ }),
-/* 198 */
+/* 201 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var Component = __webpack_require__(0)(
   /* script */
-  __webpack_require__(199),
+  __webpack_require__(202),
   /* template */
-  __webpack_require__(203),
+  __webpack_require__(206),
   /* styles */
   null,
   /* scopeId */
@@ -15549,12 +18770,12 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 199 */
+/* 202 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Introduction__ = __webpack_require__(200);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Introduction__ = __webpack_require__(203);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Introduction___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Introduction__);
 //
 //
@@ -15600,15 +18821,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 200 */
+/* 203 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var Component = __webpack_require__(0)(
   /* script */
-  __webpack_require__(201),
+  __webpack_require__(204),
   /* template */
-  __webpack_require__(202),
+  __webpack_require__(205),
   /* styles */
   null,
   /* scopeId */
@@ -15640,7 +18861,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 201 */
+/* 204 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -15653,15 +18874,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    data: function data() {
-        return {
-            src: 'https://www.youtube.com/embed/R_CYkvXdYXE'
-        };
+    methods: {
+        getSource: function getSource() {
+            return 'https://www.youtube.com/embed/R_CYkvXdYXE';
+        }
     }
 });
 
 /***/ }),
-/* 202 */
+/* 205 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -15669,7 +18890,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "width": "100%",
       "height": "360",
-      "src": _vm.src
+      "src": _vm.getSource()
     }
   })
 },staticRenderFns: []}
@@ -15682,7 +18903,7 @@ if (false) {
 }
 
 /***/ }),
-/* 203 */
+/* 206 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -15692,7 +18913,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "w3-panel"
   }, [_c('Introduction')], 1), _vm._v(" "), _c('div', {
     staticClass: "w3-panel"
-  }, [_c('h5', [_vm._v("Click next to fill out important information for your profile.")]), _vm._v(" "), _c('button', {
+  }, [_c('h5', [_vm._v("Click next to fill out important information for your profile and business.")]), _vm._v(" "), _c('button', {
     staticClass: "w3-button w3-text-white primary",
     on: {
       "click": function($event) {
@@ -15714,15 +18935,15 @@ if (false) {
 }
 
 /***/ }),
-/* 204 */
+/* 207 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var Component = __webpack_require__(0)(
   /* script */
-  __webpack_require__(205),
+  __webpack_require__(208),
   /* template */
-  __webpack_require__(224),
+  __webpack_require__(230),
   /* styles */
   null,
   /* scopeId */
@@ -15754,19 +18975,23 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 205 */
+/* 208 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__inputs_Field__ = __webpack_require__(206);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__inputs_Field__ = __webpack_require__(209);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__inputs_Field___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__inputs_Field__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__inputs_Dropdown__ = __webpack_require__(215);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__inputs_Dropdown__ = __webpack_require__(218);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__inputs_Dropdown___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__inputs_Dropdown__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Notification__ = __webpack_require__(264);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Notification__ = __webpack_require__(221);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Notification___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__Notification__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Errors__ = __webpack_require__(221);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Errors__ = __webpack_require__(227);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Errors___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__Errors__);
+//
+//
+//
+//
 //
 //
 //
@@ -15916,15 +19141,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 206 */
+/* 209 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var Component = __webpack_require__(0)(
   /* script */
-  __webpack_require__(207),
+  __webpack_require__(210),
   /* template */
-  __webpack_require__(214),
+  __webpack_require__(217),
   /* styles */
   null,
   /* scopeId */
@@ -15956,14 +19181,14 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 207 */
+/* 210 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Check__ = __webpack_require__(208);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Check__ = __webpack_require__(211);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Check___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Check__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Cross__ = __webpack_require__(211);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Cross__ = __webpack_require__(214);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Cross___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__Cross__);
 //
 //
@@ -16047,15 +19272,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 208 */
+/* 211 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var Component = __webpack_require__(0)(
   /* script */
-  __webpack_require__(209),
+  __webpack_require__(212),
   /* template */
-  __webpack_require__(210),
+  __webpack_require__(213),
   /* styles */
   null,
   /* scopeId */
@@ -16087,7 +19312,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 209 */
+/* 212 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -16102,7 +19327,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 210 */
+/* 213 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -16119,15 +19344,15 @@ if (false) {
 }
 
 /***/ }),
-/* 211 */
+/* 214 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var Component = __webpack_require__(0)(
   /* script */
-  __webpack_require__(212),
+  __webpack_require__(215),
   /* template */
-  __webpack_require__(213),
+  __webpack_require__(216),
   /* styles */
   null,
   /* scopeId */
@@ -16159,7 +19384,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 212 */
+/* 215 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -16174,7 +19399,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 213 */
+/* 216 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -16191,13 +19416,15 @@ if (false) {
 }
 
 /***/ }),
-/* 214 */
+/* 217 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "w3-section"
-  }, [_c('input', {
+  }, [_c('label', {
+    staticClass: "w3-show-block"
+  }, [_vm._v(_vm._s(_vm.label))]), _vm._v(" "), _c('input', {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -16220,9 +19447,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.value = $event.target.value
       }
     }
-  }), _vm._v(" "), (_vm.isValid) ? _c('Check') : _c('Cross'), _vm._v(" "), _c('label', {
-    staticClass: "w3-show-block"
-  }, [_vm._v(_vm._s(_vm.label))])], 1)
+  }), _vm._v(" "), (_vm.isValid) ? _c('Check') : _c('Cross')], 1)
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
@@ -16233,15 +19458,15 @@ if (false) {
 }
 
 /***/ }),
-/* 215 */
+/* 218 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var Component = __webpack_require__(0)(
   /* script */
-  __webpack_require__(216),
+  __webpack_require__(219),
   /* template */
-  __webpack_require__(217),
+  __webpack_require__(220),
   /* styles */
   null,
   /* scopeId */
@@ -16273,7 +19498,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 216 */
+/* 219 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -16320,14 +19545,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 217 */
+/* 220 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
-    staticClass: "fifty v-align"
-  }, [_c('div', {
-    staticClass: "w3-dropdown-hover"
+    staticClass: "eighty v-align"
+  }, [_c('div', [_vm._v(_vm._s(_vm.label))]), _vm._v(" "), _c('div', {
+    staticClass: "w3-dropdown-hover w3-grey"
   }, [_c('button', {
     staticClass: "w3-button"
   }, [_vm._v(_vm._s(_vm.selected) + "\n            "), _c('i', {
@@ -16343,7 +19568,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         }
       }
     }, [_vm._v(_vm._s(option) + "\n            ")])
-  }))]), _vm._v(" "), _c('div', [_vm._v(_vm._s(_vm.label))])])
+  }))])])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
@@ -16354,9 +19579,6 @@ if (false) {
 }
 
 /***/ }),
-/* 218 */,
-/* 219 */,
-/* 220 */,
 /* 221 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -16365,7 +19587,267 @@ var Component = __webpack_require__(0)(
   /* script */
   __webpack_require__(222),
   /* template */
-  __webpack_require__(223),
+  __webpack_require__(226),
+  /* styles */
+  null,
+  /* scopeId */
+  null,
+  /* moduleIdentifier (server only) */
+  null
+)
+Component.options.__file = "/home/johnhuffman/InsuranceSocial.media/src/resources/javascripts/frontend/setup/vue/profile/Notification.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] Notification.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-2bc4402d", Component.options)
+  } else {
+    hotAPI.reload("data-v-2bc4402d", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 222 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__inputs_Checkbox__ = __webpack_require__(223);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__inputs_Checkbox___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__inputs_Checkbox__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    components: {
+        Checkbox: __WEBPACK_IMPORTED_MODULE_0__inputs_Checkbox___default.a
+    }
+});
+
+/***/ }),
+/* 223 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var Component = __webpack_require__(0)(
+  /* script */
+  __webpack_require__(224),
+  /* template */
+  __webpack_require__(225),
+  /* styles */
+  null,
+  /* scopeId */
+  null,
+  /* moduleIdentifier (server only) */
+  null
+)
+Component.options.__file = "/home/johnhuffman/InsuranceSocial.media/src/resources/javascripts/frontend/setup/vue/profile/inputs/Checkbox.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] Checkbox.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-f2324dd2", Component.options)
+  } else {
+    hotAPI.reload("data-v-f2324dd2", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 224 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: {
+        label: {
+            type: String
+        },
+        id: {
+            type: String
+        },
+        value: {
+            type: String
+        }
+    },
+    data: function data() {
+        return {
+            checked: false
+        };
+    }
+});
+
+/***/ }),
+/* 225 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', [_c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.checked),
+      expression: "checked"
+    }],
+    attrs: {
+      "type": "checkbox",
+      "id": _vm.id
+    },
+    domProps: {
+      "value": _vm.value,
+      "checked": Array.isArray(_vm.checked) ? _vm._i(_vm.checked, _vm.value) > -1 : (_vm.checked)
+    },
+    on: {
+      "change": function($event) {
+        _vm.$emit('setChecked', _vm.value)
+      },
+      "__c": function($event) {
+        var $$a = _vm.checked,
+          $$el = $event.target,
+          $$c = $$el.checked ? (true) : (false);
+        if (Array.isArray($$a)) {
+          var $$v = _vm.value,
+            $$i = _vm._i($$a, $$v);
+          if ($$c) {
+            $$i < 0 && (_vm.checked = $$a.concat($$v))
+          } else {
+            $$i > -1 && (_vm.checked = $$a.slice(0, $$i).concat($$a.slice($$i + 1)))
+          }
+        } else {
+          _vm.checked = $$c
+        }
+      }
+    }
+  }), _vm._v(" "), _c('label', {
+    attrs: {
+      "for": _vm.id
+    }
+  }, [_c('span', {
+    staticClass: "w3-show-inline-block w3-margin-right v-align"
+  }), _vm._v(_vm._s(_vm.label) + "\n    ")])])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-f2324dd2", module.exports)
+  }
+}
+
+/***/ }),
+/* 226 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "w3-section"
+  }, [_c('span', {
+    staticClass: "w3-large"
+  }, [_vm._v("Notification Method: ")]), _vm._v(" "), _c('div', {
+    staticClass: "w3-show-inline-block w3-margin-left"
+  }, [_c('Checkbox', {
+    attrs: {
+      "label": 'Email',
+      "id": 'check1',
+      "value": 'Email'
+    },
+    on: {
+      "setChecked": function($event) {
+        _vm.$emit('setChecked', $event)
+      }
+    }
+  })], 1), _vm._v(" "), _c('div', {
+    staticClass: "w3-show-inline-block w3-margin-left"
+  }, [_c('Checkbox', {
+    attrs: {
+      "label": 'Text',
+      "id": 'check2',
+      "value": 'Text'
+    },
+    on: {
+      "setChecked": function($event) {
+        _vm.$emit('setChecked', $event)
+      }
+    }
+  })], 1)])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-2bc4402d", module.exports)
+  }
+}
+
+/***/ }),
+/* 227 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var Component = __webpack_require__(0)(
+  /* script */
+  __webpack_require__(228),
+  /* template */
+  __webpack_require__(229),
   /* styles */
   null,
   /* scopeId */
@@ -16397,7 +19879,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 222 */
+/* 228 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -16422,7 +19904,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 223 */
+/* 229 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -16445,7 +19927,7 @@ if (false) {
 }
 
 /***/ }),
-/* 224 */
+/* 230 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -16531,7 +20013,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "setValue": function (value) { return _vm.properties.year_founded = value; }
     }
-  }), _vm._v(" "), _c('Dropdown', {
+  }), _vm._v(" "), _c('div', {
+    staticClass: "w3-section"
+  }, [_c('Dropdown', {
     attrs: {
       "label": 'Is this a multigenerational company?',
       "options": _vm.generations
@@ -16539,7 +20023,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "setOption": function (option) { return _vm.properties.multi_generation = option; }
     }
-  }), _vm._v(" "), _c('Dropdown', {
+  })], 1), _vm._v(" "), _c('div', {
+    staticClass: "w3-section"
+  }, [_c('Dropdown', {
     attrs: {
       "label": 'How often would you like to be notified?',
       "options": _vm.frequencies
@@ -16547,7 +20033,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "setOption": function (option) { return _vm.properties.notification_frequency = option; }
     }
-  }), _vm._v(" "), _c('Notification', {
+  })], 1), _vm._v(" "), _c('Notification', {
     on: {
       "setChecked": function (method) { return _vm.properties.notify_method.push(method); }
     }
@@ -16581,15 +20067,15 @@ if (false) {
 }
 
 /***/ }),
-/* 225 */
+/* 231 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var Component = __webpack_require__(0)(
   /* script */
-  __webpack_require__(226),
+  __webpack_require__(232),
   /* template */
-  __webpack_require__(245),
+  __webpack_require__(251),
   /* styles */
   null,
   /* scopeId */
@@ -16621,19 +20107,41 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 226 */
+/* 232 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__inputs_Field__ = __webpack_require__(227);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__inputs_Field__ = __webpack_require__(233);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__inputs_Field___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__inputs_Field__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__inputs_Dropdown__ = __webpack_require__(236);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__inputs_Dropdown__ = __webpack_require__(242);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__inputs_Dropdown___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__inputs_Dropdown__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__inputs_Checkbox__ = __webpack_require__(239);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__inputs_Checkbox__ = __webpack_require__(245);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__inputs_Checkbox___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__inputs_Checkbox__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Errors__ = __webpack_require__(242);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Errors__ = __webpack_require__(248);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Errors___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__Errors__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -16736,22 +20244,73 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             targets: store.getState().OptionStore.targets,
             target: '',
             regions: store.getState().OptionStore.regions,
-            counties: ['asdf', 'asdfasdf', 'qerqwer', 'asdf', 'asdf', 'asdfasdfasdf'],
+            counties: store.getState().OptionStore.counties,
             errors: []
         };
     },
 
     methods: {
+        setState: function setState(state) {
+            this.properties.marketing_states.push(state);
+            var filtered_counties = [];
+            var _iteratorNormalCompletion = true;
+            var _didIteratorError = false;
+            var _iteratorError = undefined;
+
+            try {
+                for (var _iterator = this.properties.marketing_states[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                    var filter = _step.value;
+
+                    var abbr = filter.slice(0, 2);
+                    var _iteratorNormalCompletion2 = true;
+                    var _didIteratorError2 = false;
+                    var _iteratorError2 = undefined;
+
+                    try {
+                        for (var _iterator2 = store.getState().OptionStore.counties[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+                            var county = _step2.value;
+
+                            if (county.search(abbr) != -1) {
+                                filtered_counties.push(county);
+                            }
+                        }
+                    } catch (err) {
+                        _didIteratorError2 = true;
+                        _iteratorError2 = err;
+                    } finally {
+                        try {
+                            if (!_iteratorNormalCompletion2 && _iterator2.return) {
+                                _iterator2.return();
+                            }
+                        } finally {
+                            if (_didIteratorError2) {
+                                throw _iteratorError2;
+                            }
+                        }
+                    }
+                }
+            } catch (err) {
+                _didIteratorError = true;
+                _iteratorError = err;
+            } finally {
+                try {
+                    if (!_iteratorNormalCompletion && _iterator.return) {
+                        _iterator.return();
+                    }
+                } finally {
+                    if (_didIteratorError) {
+                        throw _iteratorError;
+                    }
+                }
+            }
+
+            this.counties = filtered_counties;
+        },
         update: function update() {
             var _this = this;
 
             this.errors = [];
-            if (this.properties.name == '') {
-                this.errors.push('You must enter your full name.');
-            }
             if (this.errors.length == 0) {
-                console.log(this.properties.marketing_regions);
-                return;
                 axios.post(window.location, this.properties).then(function (response) {
                     store.dispatch({ type: 'SET_LOCATION', data: response.data });
                     _this.$router.push({ name: 'Select' });
@@ -16770,15 +20329,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 227 */
+/* 233 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var Component = __webpack_require__(0)(
   /* script */
-  __webpack_require__(228),
+  __webpack_require__(234),
   /* template */
-  __webpack_require__(235),
+  __webpack_require__(241),
   /* styles */
   null,
   /* scopeId */
@@ -16810,14 +20369,14 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 228 */
+/* 234 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Check__ = __webpack_require__(229);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Check__ = __webpack_require__(235);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Check___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Check__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Cross__ = __webpack_require__(232);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Cross__ = __webpack_require__(238);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Cross___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__Cross__);
 //
 //
@@ -16878,15 +20437,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 229 */
+/* 235 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var Component = __webpack_require__(0)(
   /* script */
-  __webpack_require__(230),
+  __webpack_require__(236),
   /* template */
-  __webpack_require__(231),
+  __webpack_require__(237),
   /* styles */
   null,
   /* scopeId */
@@ -16918,7 +20477,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 230 */
+/* 236 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -16933,7 +20492,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 231 */
+/* 237 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -16950,15 +20509,15 @@ if (false) {
 }
 
 /***/ }),
-/* 232 */
+/* 238 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var Component = __webpack_require__(0)(
   /* script */
-  __webpack_require__(233),
+  __webpack_require__(239),
   /* template */
-  __webpack_require__(234),
+  __webpack_require__(240),
   /* styles */
   null,
   /* scopeId */
@@ -16990,7 +20549,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 233 */
+/* 239 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -17005,7 +20564,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 234 */
+/* 240 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -17022,13 +20581,15 @@ if (false) {
 }
 
 /***/ }),
-/* 235 */
+/* 241 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "w3-section"
-  }, [_c('input', {
+  }, [_c('label', {
+    staticClass: "w3-show-block"
+  }, [_vm._v(_vm._s(_vm.label))]), _vm._v(" "), _c('input', {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -17051,9 +20612,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.value = $event.target.value
       }
     }
-  }), _vm._v(" "), (_vm.isValid) ? _c('Check') : _c('Cross'), _vm._v(" "), _c('label', {
-    staticClass: "w3-show-block"
-  }, [_vm._v(_vm._s(_vm.label))])], 1)
+  }), _vm._v(" "), (_vm.isValid) ? _c('Check') : _c('Cross')], 1)
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
@@ -17064,15 +20623,15 @@ if (false) {
 }
 
 /***/ }),
-/* 236 */
+/* 242 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var Component = __webpack_require__(0)(
   /* script */
-  __webpack_require__(237),
+  __webpack_require__(243),
   /* template */
-  __webpack_require__(238),
+  __webpack_require__(244),
   /* styles */
   null,
   /* scopeId */
@@ -17104,7 +20663,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 237 */
+/* 243 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -17151,20 +20710,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 238 */
+/* 244 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
-    staticClass: "fifty v-align"
-  }, [_c('div', {
-    staticClass: "w3-dropdown-hover"
+    staticClass: "eighty v-align"
+  }, [_c('div', [_vm._v(_vm._s(_vm.label))]), _vm._v(" "), _c('div', {
+    staticClass: "w3-dropdown-hover w3-grey"
   }, [_c('button', {
     staticClass: "w3-button"
   }, [_vm._v(_vm._s(_vm.selected) + "\n            "), _c('i', {
     staticClass: "fa fa-caret-down"
   })]), _vm._v(" "), _c('div', {
-    staticClass: "w3-dropdown-content w3-bar-block w3-border"
+    staticClass: "w3-dropdown-content w3-bar-block w3-border dropdown"
   }, _vm._l((_vm.options), function(option) {
     return _c('div', {
       staticClass: "w3-bar-item w3-button",
@@ -17174,7 +20733,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         }
       }
     }, [_vm._v(_vm._s(option) + "\n            ")])
-  }))]), _vm._v(" "), _c('div', [_vm._v(_vm._s(_vm.label))])])
+  }))])])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
@@ -17185,15 +20744,15 @@ if (false) {
 }
 
 /***/ }),
-/* 239 */
+/* 245 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var Component = __webpack_require__(0)(
   /* script */
-  __webpack_require__(240),
+  __webpack_require__(246),
   /* template */
-  __webpack_require__(241),
+  __webpack_require__(247),
   /* styles */
   null,
   /* scopeId */
@@ -17225,7 +20784,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 240 */
+/* 246 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -17264,7 +20823,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 241 */
+/* 247 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -17321,15 +20880,15 @@ if (false) {
 }
 
 /***/ }),
-/* 242 */
+/* 248 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var Component = __webpack_require__(0)(
   /* script */
-  __webpack_require__(243),
+  __webpack_require__(249),
   /* template */
-  __webpack_require__(244),
+  __webpack_require__(250),
   /* styles */
   null,
   /* scopeId */
@@ -17361,7 +20920,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 243 */
+/* 249 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -17386,7 +20945,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 244 */
+/* 250 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -17409,7 +20968,7 @@ if (false) {
 }
 
 /***/ }),
-/* 245 */
+/* 251 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -17462,17 +21021,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "setOption": function (option) { return _vm.target = option; }
     }
-  }), _vm._v(" "), _c('div', {
-    directives: [{
-      name: "show",
-      rawName: "v-show",
-      value: (_vm.target == 'Region'),
-      expression: "target == 'Region'"
-    }]
-  }, [_c('ul', {
+  }), _vm._v(" "), (_vm.target == 'Region') ? _c('div', [_c('ul', {
     staticClass: "w3-ul w3-hoverable"
   }, _vm._l((_vm.regions), function(region, index) {
-    return _c('li', [_c('Checkbox', {
+    return _c('li', {
+      staticClass: "w3-section"
+    }, [_c('Checkbox', {
       attrs: {
         "label": region,
         "id": ("check" + index),
@@ -17482,38 +21036,55 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "setChecked": function (region) { return _vm.properties.marketing_regions.push(region); }
       }
     })], 1)
-  })), _vm._v(" "), _c('Dropdown', {
-    attrs: {
-      "label": 'Marketing Region',
-      "options": _vm.regions
-    },
-    on: {
-      "setOption": function (option) { return _vm.properties.marketing_region = option; }
-    }
-  })], 1), _vm._v(" "), _c('div', {
-    directives: [{
-      name: "show",
-      rawName: "v-show",
-      value: (_vm.target == 'State and Counties'),
-      expression: "target == 'State and Counties'"
-    }]
+  }))]) : _vm._e(), _vm._v(" "), (_vm.target == 'State and Counties') ? _c('div', [_c('div', {
+    staticClass: "w3-section"
   }, [_c('Dropdown', {
     attrs: {
       "label": 'Marketing State',
       "options": _vm.states
     },
     on: {
-      "setOption": function (option) { return _vm.properties.marketing_state = option; }
+      "setOption": function($event) {
+        _vm.setState($event)
+      }
     }
-  }), _vm._v(" "), _c('Dropdown', {
+  })], 1), _vm._v(" "), _c('div', {
+    staticClass: "w3-section"
+  }, [_c('div', [_vm._v(" Selected States (click to remove)")]), _vm._v(" "), _c('ul', {
+    staticClass: "w3-ul w3-hoverable"
+  }, _vm._l((_vm.properties.marketing_states), function(state, index) {
+    return _c('li', {
+      staticClass: "w3-section",
+      on: {
+        "click": function (state) { return _vm.properties.marketing_states.splice(index, 1); }
+      }
+    }, [_vm._v("\n                        " + _vm._s(state) + "\n                        "), _c('i', {
+      staticClass: "fa fa-times w3-margin-left"
+    })])
+  }))]), _vm._v(" "), _c('div', {
+    staticClass: "w3-section"
+  }, [_c('Dropdown', {
     attrs: {
-      "label": 'Marketing County',
+      "label": 'Marketing Counties',
       "options": _vm.counties
     },
     on: {
-      "setOption": function (option) { return _vm.properties.marketing_county = option; }
+      "setOption": function (county) { return _vm.properties.marketing_counties.push(county); }
     }
-  })], 1)], 1), _vm._v(" "), (_vm.errors.length) ? _c('div', {
+  })], 1), _vm._v(" "), _c('div', {
+    staticClass: "w3-section"
+  }, [_c('div', [_vm._v(" Selected Counties (click to remove)")]), _vm._v(" "), _c('ul', {
+    staticClass: "w3-ul w3-hoverable"
+  }, _vm._l((_vm.properties.marketing_counties), function(counties, index) {
+    return _c('li', {
+      staticClass: "w3-section",
+      on: {
+        "click": function (county) { return _vm.properties.marketing_counties.splice(index, 1); }
+      }
+    }, [_vm._v("\n                        " + _vm._s(counties) + "\n                        "), _c('i', {
+      staticClass: "fa fa-times w3-margin-left"
+    })])
+  }))])]) : _vm._e()], 1), _vm._v(" "), (_vm.errors.length) ? _c('div', {
     staticClass: "w3-panel"
   }, [_c('Errors', {
     attrs: {
@@ -17543,15 +21114,15 @@ if (false) {
 }
 
 /***/ }),
-/* 246 */
+/* 252 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var Component = __webpack_require__(0)(
   /* script */
-  __webpack_require__(247),
+  __webpack_require__(253),
   /* template */
-  __webpack_require__(263),
+  __webpack_require__(269),
   /* styles */
   null,
   /* scopeId */
@@ -17583,14 +21154,14 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 247 */
+/* 253 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__navigation_Navigation__ = __webpack_require__(248);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__navigation_Navigation__ = __webpack_require__(254);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__navigation_Navigation___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__navigation_Navigation__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__foot_Foot__ = __webpack_require__(260);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__foot_Foot__ = __webpack_require__(266);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__foot_Foot___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__foot_Foot__);
 //
 //
@@ -17618,15 +21189,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 248 */
+/* 254 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var Component = __webpack_require__(0)(
   /* script */
-  __webpack_require__(249),
+  __webpack_require__(255),
   /* template */
-  __webpack_require__(259),
+  __webpack_require__(265),
   /* styles */
   null,
   /* scopeId */
@@ -17658,14 +21229,14 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 249 */
+/* 255 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Desktop__ = __webpack_require__(250);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Desktop__ = __webpack_require__(256);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Desktop___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Desktop__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Mobile__ = __webpack_require__(253);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Mobile__ = __webpack_require__(259);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Mobile___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__Mobile__);
 //
 //
@@ -17690,15 +21261,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 250 */
+/* 256 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var Component = __webpack_require__(0)(
   /* script */
-  __webpack_require__(251),
+  __webpack_require__(257),
   /* template */
-  __webpack_require__(252),
+  __webpack_require__(258),
   /* styles */
   null,
   /* scopeId */
@@ -17730,7 +21301,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 251 */
+/* 257 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -17755,7 +21326,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 252 */
+/* 258 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -17784,15 +21355,15 @@ if (false) {
 }
 
 /***/ }),
-/* 253 */
+/* 259 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var Component = __webpack_require__(0)(
   /* script */
-  __webpack_require__(254),
+  __webpack_require__(260),
   /* template */
-  __webpack_require__(258),
+  __webpack_require__(264),
   /* styles */
   null,
   /* scopeId */
@@ -17824,12 +21395,12 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 254 */
+/* 260 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Toggle__ = __webpack_require__(255);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Toggle__ = __webpack_require__(261);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Toggle___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Toggle__);
 //
 //
@@ -17868,15 +21439,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 255 */
+/* 261 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var Component = __webpack_require__(0)(
   /* script */
-  __webpack_require__(256),
+  __webpack_require__(262),
   /* template */
-  __webpack_require__(257),
+  __webpack_require__(263),
   /* styles */
   null,
   /* scopeId */
@@ -17908,7 +21479,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 256 */
+/* 262 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -17926,7 +21497,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 257 */
+/* 263 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -17950,7 +21521,7 @@ if (false) {
 }
 
 /***/ }),
-/* 258 */
+/* 264 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -17985,7 +21556,7 @@ if (false) {
 }
 
 /***/ }),
-/* 259 */
+/* 265 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -18006,15 +21577,15 @@ if (false) {
 }
 
 /***/ }),
-/* 260 */
+/* 266 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var Component = __webpack_require__(0)(
   /* script */
-  __webpack_require__(261),
+  __webpack_require__(267),
   /* template */
-  __webpack_require__(262),
+  __webpack_require__(268),
   /* styles */
   null,
   /* scopeId */
@@ -18046,7 +21617,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 261 */
+/* 267 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -18082,7 +21653,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 262 */
+/* 268 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -18125,7 +21696,7 @@ if (false) {
 }
 
 /***/ }),
-/* 263 */
+/* 269 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -18138,266 +21709,6 @@ if (false) {
   module.hot.accept()
   if (module.hot.data) {
      require("vue-hot-reload-api").rerender("data-v-2326cd96", module.exports)
-  }
-}
-
-/***/ }),
-/* 264 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var Component = __webpack_require__(0)(
-  /* script */
-  __webpack_require__(265),
-  /* template */
-  __webpack_require__(266),
-  /* styles */
-  null,
-  /* scopeId */
-  null,
-  /* moduleIdentifier (server only) */
-  null
-)
-Component.options.__file = "/home/johnhuffman/InsuranceSocial.media/src/resources/javascripts/frontend/setup/vue/profile/Notification.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] Notification.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-2bc4402d", Component.options)
-  } else {
-    hotAPI.reload("data-v-2bc4402d", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 265 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__inputs_Checkbox__ = __webpack_require__(267);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__inputs_Checkbox___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__inputs_Checkbox__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    components: {
-        Checkbox: __WEBPACK_IMPORTED_MODULE_0__inputs_Checkbox___default.a
-    }
-});
-
-/***/ }),
-/* 266 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "w3-section"
-  }, [_c('span', {
-    staticClass: "w3-large"
-  }, [_vm._v("Notification Method: ")]), _vm._v(" "), _c('div', {
-    staticClass: "w3-show-inline-block w3-margin-left"
-  }, [_c('Checkbox', {
-    attrs: {
-      "label": 'Email',
-      "id": 'check1',
-      "value": 'Email'
-    },
-    on: {
-      "setChecked": function($event) {
-        _vm.$emit('setChecked', $event)
-      }
-    }
-  })], 1), _vm._v(" "), _c('div', {
-    staticClass: "w3-show-inline-block w3-margin-left"
-  }, [_c('Checkbox', {
-    attrs: {
-      "label": 'Text',
-      "id": 'check2',
-      "value": 'Text'
-    },
-    on: {
-      "setChecked": function($event) {
-        _vm.$emit('setChecked', $event)
-      }
-    }
-  })], 1)])
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-2bc4402d", module.exports)
-  }
-}
-
-/***/ }),
-/* 267 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var Component = __webpack_require__(0)(
-  /* script */
-  __webpack_require__(268),
-  /* template */
-  __webpack_require__(269),
-  /* styles */
-  null,
-  /* scopeId */
-  null,
-  /* moduleIdentifier (server only) */
-  null
-)
-Component.options.__file = "/home/johnhuffman/InsuranceSocial.media/src/resources/javascripts/frontend/setup/vue/profile/inputs/Checkbox.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] Checkbox.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-f2324dd2", Component.options)
-  } else {
-    hotAPI.reload("data-v-f2324dd2", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 268 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    props: {
-        label: {
-            type: String
-        },
-        id: {
-            type: String
-        },
-        value: {
-            type: String
-        }
-    },
-    data: function data() {
-        return {
-            checked: false
-        };
-    }
-});
-
-/***/ }),
-/* 269 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('input', {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: (_vm.checked),
-      expression: "checked"
-    }],
-    attrs: {
-      "type": "checkbox",
-      "id": _vm.id
-    },
-    domProps: {
-      "value": _vm.value,
-      "checked": Array.isArray(_vm.checked) ? _vm._i(_vm.checked, _vm.value) > -1 : (_vm.checked)
-    },
-    on: {
-      "change": function($event) {
-        _vm.$emit('setChecked', _vm.value)
-      },
-      "__c": function($event) {
-        var $$a = _vm.checked,
-          $$el = $event.target,
-          $$c = $$el.checked ? (true) : (false);
-        if (Array.isArray($$a)) {
-          var $$v = _vm.value,
-            $$i = _vm._i($$a, $$v);
-          if ($$c) {
-            $$i < 0 && (_vm.checked = $$a.concat($$v))
-          } else {
-            $$i > -1 && (_vm.checked = $$a.slice(0, $$i).concat($$a.slice($$i + 1)))
-          }
-        } else {
-          _vm.checked = $$c
-        }
-      }
-    }
-  }), _vm._v(" "), _c('label', {
-    attrs: {
-      "for": _vm.id
-    }
-  }, [_c('span', {
-    staticClass: "w3-show-inline-block w3-margin-right v-align"
-  }), _vm._v(_vm._s(_vm.label) + "\n    ")])])
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-f2324dd2", module.exports)
   }
 }
 

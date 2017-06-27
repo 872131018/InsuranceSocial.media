@@ -8,7 +8,7 @@
             <Introduction></Introduction>
         </div>
         <div class="w3-panel">
-            <h5>Click next to fill out important information for your profile.</h5>
+            <h5>Click next to fill out important information for your profile and business.</h5>
             <button class="w3-button w3-text-white primary"
                 v-on:click="update()">Continue
             </button>

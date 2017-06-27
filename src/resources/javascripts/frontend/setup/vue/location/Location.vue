@@ -32,9 +32,10 @@
                 v-bind:options="targets"
                 v-on:setOption="(option) => target = option">
             </Dropdown>
-            <div v-show="target == 'Region'">
+            <div v-if="target == 'Region'">
                 <ul class="w3-ul w3-hoverable">
-                    <li v-for="(region, index) in regions">
+                    <li class="w3-section"
+                        v-for="(region, index) in regions">
                         <Checkbox
                             v-bind:label="region"
                             v-bind:id="`check${ index }`"
@@ -43,23 +44,44 @@
                         </Checkbox>
                     </li>
                 </ul>
-                <Dropdown
-                    v-bind:label="'Marketing Region'"
-                    v-bind:options="regions"
-                    v-on:setOption="(option) => properties.marketing_region = option">
-                </Dropdown>
             </div>
-            <div v-show="target == 'State and Counties'">
-                <Dropdown
-                    v-bind:label="'Marketing State'"
-                    v-bind:options="states"
-                    v-on:setOption="(option) => properties.marketing_state = option">
-                </Dropdown>
-                <Dropdown
-                    v-bind:label="'Marketing County'"
-                    v-bind:options="counties"
-                    v-on:setOption="(option) => properties.marketing_county = option">
-                </Dropdown>
+            <div v-if="target == 'State and Counties'">
+                <div class="w3-section">
+                    <Dropdown
+                        v-bind:label="'Marketing State'"
+                        v-bind:options="states"
+                        v-on:setOption="setState($event)">
+                    </Dropdown>
+                </div>
+                <div class="w3-section">
+                    <div> Selected States (click to remove)</div>
+                    <ul class="w3-ul w3-hoverable">
+                        <li class="w3-section"
+                            v-for="(state, index) in properties.marketing_states"
+                            v-on:click="(state) => properties.marketing_states.splice(index, 1)">
+                            {{ state }}
+                            <i class="fa fa-times w3-margin-left"></i>
+                        </li>
+                    </ul>
+                </div>
+                <div class="w3-section">
+                    <Dropdown
+                        v-bind:label="'Marketing Counties'"
+                        v-bind:options="counties"
+                        v-on:setOption="(county) => properties.marketing_counties.push(county)">
+                    </Dropdown>
+                </div>
+                <div class="w3-section">
+                    <div> Selected Counties (click to remove)</div>
+                    <ul class="w3-ul w3-hoverable">
+                        <li class="w3-section"
+                            v-for="(counties, index) in properties.marketing_counties"
+                            v-on:click="(county) => properties.marketing_counties.splice(index, 1)">
+                            {{ counties }}
+                            <i class="fa fa-times w3-margin-left"></i>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
         <div class="w3-panel"
@@ -100,26 +122,27 @@
                 targets: store.getState().OptionStore.targets,
                 target: '',
                 regions: store.getState().OptionStore.regions,
-                counties: [
-                    'asdf',
-                    'asdfasdf',
-                    'qerqwer',
-                    'asdf',
-                    'asdf',
-                    'asdfasdfasdf'
-                ],
+                counties: store.getState().OptionStore.counties,
                 errors: []
             }
         },
         methods: {
+            setState(state) {
+                this.properties.marketing_states.push(state);
+                let filtered_counties = [];
+                for(let filter of this.properties.marketing_states) {
+                    let abbr = filter.slice(0, 2);
+                    for(let county of store.getState().OptionStore.counties) {
+                        if(county.search(abbr) != -1) {
+                            filtered_counties.push(county);
+                        }
+                    }
+                }
+                this.counties = filtered_counties;
+            },
             update() {
                 this.errors = [];
-                if(this.properties.name == '') {
-                    this.errors.push('You must enter your full name.');
-                }
                 if(this.errors.length == 0) {
-                    console.log(this.properties.marketing_regions);
-                    return;
                     axios.post(window.location, this.properties).then(response => {
                         store.dispatch({ type: 'SET_LOCATION', data: response.data });
                         this.$router.push({ name: 'Select' });

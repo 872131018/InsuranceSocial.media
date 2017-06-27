@@ -48,9 +48,9 @@ class LocationController extends Controller
                 $user->city = $request->input('city');
                 $user->state = $request->input('state');
                 $user->zip = $request->input('zip');
-                $user->marketing_region = $request->input('marketing_region');
-                $user->marketing_state = $request->input('marketing_state');
-                $user->marketing_county = $request->input('marketing_county');
+                $user->marketing_regions = json_encode($request->input('marketing_regions'));
+                $user->marketing_states = json_encode($request->input('marketing_states'));
+                $user->marketing_counties = json_encode($request->input('marketing_counties'));
                 $user->update();
             }
             return response()->json($user);

@@ -1,17 +1,17 @@
 <template>
-    <div class="fifty v-align">
-        <div class="w3-dropdown-hover">
+    <div class="eighty v-align">
+        <div>{{ label }}</div>
+        <div class="w3-dropdown-hover w3-grey">
             <button class="w3-button">{{ selected }}
                 <i class="fa fa-caret-down"></i>
             </button>
-            <div class="w3-dropdown-content w3-bar-block w3-border">
+            <div class="w3-dropdown-content w3-bar-block w3-border dropdown">
                 <div class="w3-bar-item w3-button"
                     v-for="option in options"
                     v-on:click="setSelected(option)">{{ option }}
                 </div>
             </div>
         </div>
-        <div>{{ label }}</div>
     </div>
 </template>
 

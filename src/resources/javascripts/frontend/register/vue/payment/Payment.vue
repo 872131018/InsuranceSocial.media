@@ -19,6 +19,7 @@
         <div class="w3-panel">
             <h3>Payment Method</h3>
             <h5>Please enter a form of payment to complete registration.</h5>
+            <p>The first 30 days of the Insurance Social.Media Essential plan are free. We ask for your credit card to prevent any service interruption should you keep your account open. Your card will not be charged for the trial period. After the trial, you will be charged each month. You can cancel at any time.</p>
         </div>
         <div class="w3-panel">
             <Card v-on:setCard="(card) => { properties.card = card }"></Card>

@@ -18267,6 +18267,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 
@@ -19343,7 +19344,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "w3-panel"
-  }, [_c('h3', [_vm._v("Payment Method")]), _vm._v(" "), _c('h5', [_vm._v("Please enter a form of payment to complete registration.")])])
+  }, [_c('h3', [_vm._v("Payment Method")]), _vm._v(" "), _c('h5', [_vm._v("Please enter a form of payment to complete registration.")]), _vm._v(" "), _c('p', [_vm._v("The first 30 days of the Insurance Social.Media Essential plan are free. We ask for your credit card to prevent any service interruption should you keep your account open. Your card will not be charged for the trial period. After the trial, you will be charged each month. You can cancel at any time.")])])
 }]}
 module.exports.render._withStripped = true
 if (false) {

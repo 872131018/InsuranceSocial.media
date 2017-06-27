@@ -41,9 +41,9 @@ class CreateUsersTable extends Migration
             $table->string('city')->nullable();
             $table->string('state')->nullable();
             $table->string('zip')->nullable();
-            $table->string('marketing_region')->nullable();
-            $table->string('marketing_state')->nullable();
-            $table->string('marketing_county')->nullable();
+            $table->text('marketing_regions')->nullable();
+            $table->text('marketing_states')->nullable();
+            $table->text('marketing_counties')->nullable();
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();

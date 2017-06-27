@@ -1,6 +1,7 @@
 <template>
-    <div class="fifty v-align">
-        <div class="w3-dropdown-hover">
+    <div class="eighty v-align">
+        <div>{{ label }}</div>
+        <div class="w3-dropdown-hover w3-grey">
             <button class="w3-button">{{ selected }}
                 <i class="fa fa-caret-down"></i>
             </button>
@@ -11,7 +12,6 @@
                 </div>
             </div>
         </div>
-        <div>{{ label }}</div>
     </div>
 </template>
 

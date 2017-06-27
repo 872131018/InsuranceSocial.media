@@ -55,16 +55,20 @@
                 v-bind:validation="'YEAR'"
                 v-on:setValue="(value) => properties.year_founded = value">
             </Field>
-            <Dropdown
-                v-bind:label="'Is this a multigenerational company?'"
-                v-bind:options="generations"
-                v-on:setOption="(option) => properties.multi_generation = option">
-            </Dropdown>
-            <Dropdown
-                v-bind:label="'How often would you like to be notified?'"
-                v-bind:options="frequencies"
-                v-on:setOption="(option) => properties.notification_frequency = option">
-            </Dropdown>
+            <div class="w3-section">
+                <Dropdown
+                    v-bind:label="'Is this a multigenerational company?'"
+                    v-bind:options="generations"
+                    v-on:setOption="(option) => properties.multi_generation = option">
+                </Dropdown>
+            </div>
+            <div class="w3-section">
+                <Dropdown
+                    v-bind:label="'How often would you like to be notified?'"
+                    v-bind:options="frequencies"
+                    v-on:setOption="(option) => properties.notification_frequency = option">
+                </Dropdown>
+            </div>
             <Notification
                 v-on:setChecked="(method) => properties.notify_method.push(method)">
             </Notification>
