@@ -1,0 +1,167 @@
+<template>
+    <div class="w3-container w3-card-2 form">
+        <div class="w3-panel">
+            <h3>What do we write?</h3>
+            <h5>Please evaluate what forms of insurance you deal with.</h5>
+        </div>
+        <div class="w3-panel">
+            <div class="w3-section">
+                <Dropdown
+                    v-bind:label="'Carriers'"
+                    v-bind:options="carriers"
+                    v-on:setOption="(carriers) => properties.carriers.push(carriers)">
+                </Dropdown>
+            </div>
+            <div class="w3-section">
+                <div> Selected Carriers (click to remove)</div>
+                <ul class="w3-ul w3-hoverable">
+                    <li class="w3-section"
+                        v-for="(carrier, index) in properties.carriers"
+                        v-on:click="(carrier) => properties.carriers.splice(index, 1)">
+                        {{ carrier }}
+                        <i class="fa fa-times w3-margin-left"></i>
+                    </li>
+                </ul>
+            </div>
+            <div class="w3-section">
+                <div>Lines of Coverages</div>
+                <ul class="w3-ul w3-hoverable">
+                    <li class="w3-section"
+                        v-for="(line, index) in coverage_lines">
+                        <Checkbox
+                            v-bind:label="line"
+                            v-bind:id="`check${ index }`"
+                            v-bind:value="line"
+                            v-on:setChecked="(line) => properties.coverage_lines.push(line)">
+                        </Checkbox>
+                    </li>
+                </ul>
+            </div>
+            <div class="w3-section">
+                <Dropdown
+                    v-bind:label="'Target Coverages'"
+                    v-bind:options="coverage_targets"
+                    v-on:setOption="(target) => properties.coverage_targets.push(target)">
+                </Dropdown>
+            </div>
+            <div class="w3-section">
+                <div> Selected Coverage Targets (click to remove)</div>
+                <ul class="w3-ul w3-hoverable">
+                    <li class="w3-section"
+                        v-for="(target, index) in properties.coverage_targets"
+                        v-on:click="(target) => properties.coverage_targets.splice(index, 1)">
+                        {{ target }}
+                        <i class="fa fa-times w3-margin-left"></i>
+                    </li>
+                </ul>
+            </div>
+            <div class="w3-section">
+                <Dropdown
+                    v-bind:label="'Current Industries'"
+                    v-bind:options="industry_currents"
+                    v-on:setOption="(industry) => properties.industry_currents.push(industry)">
+                </Dropdown>
+            </div>
+            <div class="w3-section">
+                <div> Selected Industries (click to remove)</div>
+                <ul class="w3-ul w3-hoverable">
+                    <li class="w3-section"
+                        v-for="(industry, index) in properties.industry_currents"
+                        v-on:click="(industry) => properties.industry_currents.splice(index, 1)">
+                        {{ industry }}
+                        <i class="fa fa-times w3-margin-left"></i>
+                    </li>
+                </ul>
+            </div>
+            <div class="w3-section">
+                <Dropdown
+                    v-bind:label="'Target Industries'"
+                    v-bind:options="industry_targets"
+                    v-on:setOption="(industry) => properties.industry_targets.push(industry)">
+                </Dropdown>
+            </div>
+            <div class="w3-section">
+                <div> Selected Industries (click to remove)</div>
+                <ul class="w3-ul w3-hoverable">
+                    <li class="w3-section"
+                        v-for="(industry, index) in properties.industry_targets"
+                        v-on:click="(industry) => properties.industry_targets.splice(index, 1)">
+                        {{ industry }}
+                        <i class="fa fa-times w3-margin-left"></i>
+                    </li>
+                </ul>
+            </div>
+            <div class="w3-section">
+                <Ratio
+                    v-on:setRatio="setRatio($event)">
+                </Ratio>
+            </div>
+        </div>
+        <div class="w3-panel"
+            v-if="errors.length">
+            <Errors v-bind:errors="errors"></Errors>
+        </div>
+        <div class="w3-panel">
+            <h5>Continue to select the plan you wish to sign up for.</h5>
+            <button class="w3-button w3-text-white primary"
+                v-on:click="update()">Continue
+            </button>
+        </div>
+        </div>
+    </div>
+</template>
+
+<script>
+    import Field from './inputs/Field';
+    import Dropdown from './inputs/Dropdown';
+    import Checkbox from './inputs/Checkbox';
+    import Ratio from './Ratio';
+    import Errors from './Errors';
+
+    export default {
+        data() {
+            return {
+                properties: {
+                    email: store.getState().UserStore.email,
+                    carriers: [],
+                    coverage_lines: [],
+                    coverage_targets: [],
+                    industry_currents: [],
+                    industry_targets: [],
+                    commercial_mix: '',
+                    personal_mix: ''
+                },
+                carriers: store.getState().OptionStore.carriers,
+                coverage_lines: store.getState().OptionStore.coverage_lines,
+                coverage_targets: store.getState().OptionStore.coverage_targets,
+                industry_currents: store.getState().OptionStore.industry_currents,
+                industry_targets: store.getState().OptionStore.industry_targets,
+                errors: []
+            }
+        },
+        methods: {
+            setRatio(ratio) {
+                this.properties.commercial_mix = ratio.commercial;
+                this.properties.personal_mix = ratio.personal;
+            },
+            update() {
+                this.errors = [];
+                if(this.errors.length == 0) {
+                    axios.post(window.location, this.properties).then(response => {
+                        store.dispatch({ type: 'SET_COVERAGE', data: response.data });
+                        this.$router.push({ name: 'Select' });
+                    }).catch(error => {
+                        this.errors.push('An error has occured, please contact support.');
+                    });
+                }
+            }
+        },
+        components: {
+            Field,
+            Dropdown,
+            Checkbox,
+            Ratio,
+            Errors
+        }
+    }
+</script>

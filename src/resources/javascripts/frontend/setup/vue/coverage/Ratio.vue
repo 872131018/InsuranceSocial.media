@@ -1,0 +1,66 @@
+<template>
+    <div>
+        <div class="w3-section">
+            <div>Ratio of Commercial to Personal business</div>
+            <div class="w3-section">
+                <label class="w3-show-block">% Commercial</label>
+                <input class="w3-input w3-show-inline-block eighty" type="text"
+                    v-model="commercial"
+                    v-on:blur="setCommercialMix()">
+                <Check v-if="isValid"></Check>
+                <Cross v-else></Cross>
+            </div>
+            <div class="w3-section">
+                <label class="w3-show-block">% Personal</label>
+                <input class="w3-input w3-show-inline-block eighty" type="text"
+                    v-model="personal"
+                    v-on:blur="setPersonalMix()">
+                <Check v-if="isValid"></Check>
+                <Cross v-else></Cross>
+            </div>
+        </div>
+    </div>
+</template>
+
+<script>
+    import Check from './inputs/Check';
+    import Cross from './inputs/Cross';
+
+    export default {
+        data() {
+            return {
+                commercial: '',
+                personal: '',
+                isValid: false
+            }
+        },
+        methods: {
+            setCommercialMix() {
+                let result = 100 - parseInt(this.commercial);
+                this.personal = result.toString();
+                if(this.commercial != '' && this.personal != '') {
+                    this.isValid = true;
+                    this.$emit('setRatio', {
+                        commercial: this.commercial,
+                        personal: this.personal
+                    });
+                }
+            },
+            setPersonalMix() {
+                let result = 100 - parseInt(this.personal);
+                this.commercial = result.toString();
+                if(this.commercial != '' && this.personal != '') {
+                    this.isValid = true;
+                    this.$emit('setRatio', {
+                        commercial: this.commercial,
+                        personal: this.personal
+                    });
+                }
+            }
+        },
+        components: {
+            Check,
+            Cross
+        }
+    }
+</script>

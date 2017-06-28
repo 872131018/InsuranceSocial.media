@@ -145,7 +145,7 @@
                 if(this.errors.length == 0) {
                     axios.post(window.location, this.properties).then(response => {
                         store.dispatch({ type: 'SET_LOCATION', data: response.data });
-                        this.$router.push({ name: 'Select' });
+                        this.$router.push({ name: 'Coverage' });
                     }).catch(error => {
                         this.errors.push('An error has occured, please contact support.');
                     });

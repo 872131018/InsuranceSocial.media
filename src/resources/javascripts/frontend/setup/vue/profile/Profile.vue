@@ -26,15 +26,15 @@
                 v-bind:options="titles"
                 v-on:setOption="(option) => properties.title = option">
             </Dropdown>
-            <div v-if="properties.title != 'Principle' && properties.title != ''">
+            <div v-if="properties.title != 'Principal' && properties.title != ''">
                 <Field
-                    v-bind:label="'Principle Name'"
-                    v-on:setValue="(value) => properties.principle_name = value">
+                    v-bind:label="'Principal Name'"
+                    v-on:setValue="(value) => properties.principal_name = value">
                 </Field>
                 <Field
-                    v-bind:label="'Principle Email'"
+                    v-bind:label="'Principal Email'"
                     v-bind:validation="'EMAIL'"
-                    v-on:setValue="(value) => properties.principle_email = value">
+                    v-on:setValue="(value) => properties.principal_email = value">
                 </Field>
             </div>
             <Field
@@ -101,8 +101,8 @@
                     email: store.getState().UserStore.email,
                     phone: '',
                     title: '',
-                    principle_name: '',
-                    principle_email: '',
+                    principal_name: '',
+                    principal_email: '',
                     organization_name: '',
                     website: '',
                     staff_size: '',

@@ -150,4 +150,18 @@ Route::middleware(['auth'])->group(function() {
      * @return \Illuminate\Http\Response
      */
     Route::post('/setup/location', 'LocationController@store');
+
+    /**
+     * Overwrite the default functionality to deliver the SPA
+     *
+     * @return \Illuminate\Http\Response
+     */
+    Route::get('/setup/coverage', 'CoverageController@index');
+
+    /**
+     * Overwrite the default functionality to deliver the SPA
+     *
+     * @return \Illuminate\Http\Response
+     */
+    Route::post('/setup/coverage', 'CoverageController@store');
 });

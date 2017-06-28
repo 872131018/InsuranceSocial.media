@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Auth;
 
-class ProfileController extends Controller
+class CoverageController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -43,17 +43,13 @@ class ProfileController extends Controller
         if($request->wantsJson()) {
             $user = Auth::user();
             if($user->email == $request->input('email')) {
-                $user->phone = $request->input('phone');
-                $user->title = $request->input('title');
-                $user->principal_name = $request->input('principle_name');
-                $user->principal_email = $request->input('principle_email');
-                $user->organization_name = $request->input('organization_name');
-                $user->website = $request->input('website');
-                $user->staff_size = $request->input('staff_size');
-                $user->year_founded = $request->input('year_founded');
-                $user->multi_generation = $request->input('multi_generation');
-                $user->notification_frequency = $request->input('notification_frequency');
-                $user->notify_method = json_encode($request->input('notify_method'));
+                $user->carriers = json_encode($request->input('carriers'));
+                $user->coverage_lines = json_encode($request->input('coverage_lines'));
+                $user->coverage_targets = json_encode($request->input('coverage_targets'));
+                $user->industry_currents = json_encode($request->input('industry_currents'));
+                $user->industry_targets = json_encode($request->input('industry_targets'));
+                $user->commercial_mix = $request->input('commercial_mix');
+                $user->personal_mix = $request->input('personal_mix');
                 $user->update();
             }
             return response()->json($user);

@@ -27,8 +27,8 @@ class CreateUsersTable extends Migration
             $table->string('transaction_id')->nullable();
             $table->string('phone')->nullable();
             $table->string('title')->nullable();
-            $table->string('principle_name')->nullable();
-            $table->string('principle_email')->nullable();
+            $table->string('principal_name')->nullable();
+            $table->string('principal_email')->nullable();
             $table->string('organization_name')->nullable();
             $table->string('website')->nullable();
             $table->string('staff_size')->nullable();
@@ -44,6 +44,13 @@ class CreateUsersTable extends Migration
             $table->text('marketing_regions')->nullable();
             $table->text('marketing_states')->nullable();
             $table->text('marketing_counties')->nullable();
+            $table->text('carriers')->nullable();
+            $table->text('coverage_lines')->nullable();
+            $table->text('coverage_targets')->nullable();
+            $table->text('industry_currents')->nullable();
+            $table->text('industry_targets')->nullable();
+            $table->string('commercial_mix')->nullable();
+            $table->string('personal_mix')->nullable();
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();

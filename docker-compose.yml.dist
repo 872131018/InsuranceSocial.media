@@ -16,12 +16,12 @@ services:
         build:
             context: ./fpm
         links:
-            - db
+            - mysql
             - redis
         volumes:
             - ./src:/var/www/html
         environment:
-            - DB_HOST=db
+            - DB_HOST=mysql
             - DB_USERNAME=
             - DB_PASSWORD=
             - REDIS_HOST=redis
@@ -30,17 +30,17 @@ services:
         build:
             context: ./supervisor
         links:
-            - db
+            - mysql
             - redis
         volumes:
             - ./src:/var/www/html
         environment:
-            - DB_HOST=db
+            - DB_HOST=mysql
             - DB_USERNAME=
             - DB_PASSWORD=
             - REDIS_HOST=redis
-    db:
-        container_name: db
+    mysql:
+        container_name: mysql
         image: mysql:latest
         environment:
             - MYSQL_ROOT_PASSWORD=

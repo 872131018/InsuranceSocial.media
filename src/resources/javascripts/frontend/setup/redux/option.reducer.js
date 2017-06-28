@@ -46,8 +46,41 @@ const initialState = {
         'South',
         'Southwest',
         'West'
+    ],
+    carriers: [
+        'Carrier',
+        'Farmer\'s Mutual Hail',
+        'Grinnel Mutual',
+        'GuideOne',
+        'IMT Group',
+        'Plymouth Rock Insurance'
+    ],
+    coverage_lines: [
+        'Commercial',
+        'Personal',
+        'Benefits'
+    ],
+    coverage_targets: [
+        'asdf',
+        'qewrqwer',
+        '123123123',
+        'aszxcvzx',
+        '12354634'
+    ],
+    industry_currents: [
+        'qwerty',
+        'asdfzxcvzxcv',
+        '12345sasdf',
+        '098132098kjshdfkjh',
+        '08asdfmkn0972'
+    ],
+    industry_targets: [
+        'qwerty',
+        'asdfzxcvzxcv',
+        '12345sasdf',
+        '098132098kjshdfkjh',
+        '08asdfmkn0972'
     ]
-
 };
 
 export default function(options = initialState, action) {
