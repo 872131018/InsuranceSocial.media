@@ -31,7 +31,6 @@
         },
         methods: {
             validate() {
-                this.$emit('setPassword', this.password);
                 if(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$/.test(this.password)) {
                     this.isValid = true;
                 } else {

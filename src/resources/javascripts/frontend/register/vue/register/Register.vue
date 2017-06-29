@@ -5,32 +5,42 @@
             <h5>Please complete required fields to complete registration.</h5>
         </div>
         <div class="w3-panel">
-            <Name
-                v-on:setName="(name) => { properties.name = name }">
-            </Name>
-            <Email
+            <Field
+                v-bind:label="'Full Name'"
+                v-on:setValue="(value) => properties.name = value"
+                v-on:valid="() => name_confirmed = true"
+                v-on:invalid="() => name_confirmed = false">
+            </Field>
+            <Field
                 v-bind:label="'Email'"
-                v-bind:confirmed="true"
-                v-on:setEmail="(email) => { properties.email = email }">
-            </Email>
-            <Email
+                v-bind:validation="'EMAIL'"
+                v-on:setValue="(value) => properties.email = value">
+            </Field>
+            <Field
                 v-bind:label="'Confirm Email'"
-                v-bind:confirmed="properties.email_confirmed"
-                v-on:setEmail="confirmEmail($event)">
-            </Email>
-            <Password
+                v-bind:validation="'CONFIRM'"
+                v-bind:confirmation="properties.email"
+                v-on:setValue="(value) => properties.email_confirmation = value"
+                v-on:valid="() => email_confirmed = true"
+                v-on:invalid="() => email_confirmed = false">
+            </Field>
+            <PasswordField
                 v-bind:label="'Password'"
-                v-bind:confirmed="true"
-                v-on:setPassword="(password) => { properties.password = password }">
-            </Password>
-            <Password
+                v-bind:validation="'PASSWORD'"
+                v-on:setValue="(value) => properties.password = value">
+            </PasswordField>
+            <PasswordField
                 v-bind:label="'Confirm Password'"
-                v-bind:confirmed="properties.password_confirmed"
-                v-on:setPassword="confirmPassword($event)">
-            </Password>
-            <Discount
-                v-on:setDiscount="(discount) => { properties.discount = discount }">
-            </Discount>
+                v-bind:validation="'CONFIRM'"
+                v-bind:confirmation="properties.password"
+                v-on:setValue="(value) => properties.password_confirmation = value"
+                v-on:valid="() => password_confirmed = true"
+                v-on:invalid="() => password_confirmed = false">
+            </PasswordField>
+            <Field
+                v-bind:label="'Discount Code'"
+                v-bind:confirmation="properties.discount">
+            </Field>
         </div>
         <div class="w3-panel">
             <Terms v-on:setTerms="(terms) => { properties.terms = terms }"></Terms>
@@ -50,10 +60,8 @@
 </template>
 
 <script>
-    import Name from './inputs/Name';
-    import Email from './inputs/Email';
-    import Password from './inputs/Password';
-    import Discount from './inputs/Discount';
+    import Field from './inputs/Field';
+    import PasswordField from './inputs/PasswordField';
     import Terms from './inputs/Terms';
     import Errors from './Errors';
 
@@ -64,42 +72,28 @@
                     name: '',
                     email: '',
                     email_confirmation: '',
-                    email_confirmed: false,
                     password: '',
                     password_confirmation: '',
-                    password_confirmed: false,
                     discount: '',
                     terms: false,
                 },
+                name_confirmed: false,
+                email_confirmed: false,
+                password_confirmed: false,
                 errors: []
             }
         },
         methods: {
-            confirmEmail(email) {
-                this.properties.email_confirmation = email;
-                this.properties.email_confirmed = (this.properties.email == this.properties.email_confirmation);
-            },
-            confirmPassword(password) {
-                this.properties.password_confirmation = password;
-                this.properties.password_confirmed = (this.properties.password == this.properties.password_confirmation);
-            },
             update() {
                 this.errors = [];
-                if(this.properties.name == '') {
+                if(this.name_confirmed == false) {
                     this.errors.push('You must enter your full name.');
                 }
-                if(this.properties.email == '' || this.properties.email_confirmation == '') {
-                    this.errors.push('You must enter and confirm an email.');
+                if(this.emails_confirmed == false) {
+                    this.errors.push('You must enter and confirm your email.');
                 }
-                if(this.properties.email != this.properties.email_confirmation) {
-                    this.errors.push('Emails do not match.');
-
-                }
-                if(this.properties.password == '' || this.properties.password_confirmation == '') {
-                    this.errors.push('You must enter and confirm a password');
-                }
-                if(this.properties.password != this.properties.password_confirmation) {
-                    this.errors.push('Passwords do not match.');
+                if(this.password_confirmed == false) {
+                    this.errors.push('You must enter and confirm a password.');
                 }
                 if(!this.properties.terms) {
                     this.errors.push('You must accept the Terms of Service.');
@@ -119,10 +113,8 @@
             }
         },
         components: {
-            Name,
-            Email,
-            Password,
-            Discount,
+            Field,
+            PasswordField,
             Terms,
             Errors
         }
