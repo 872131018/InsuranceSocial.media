@@ -51,6 +51,12 @@ class CreateUsersTable extends Migration
             $table->text('industry_targets')->nullable();
             $table->string('commercial_mix')->nullable();
             $table->string('personal_mix')->nullable();
+            $table->string('engagement_mix')->nullable();
+            $table->string('engagement_tone')->nullable();
+            $table->text('special_topics')->nullable();
+            $table->text('causes')->nullable();
+            $table->text('posting_days')->nullable();
+            $table->string('posting_time')->nullable();
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();

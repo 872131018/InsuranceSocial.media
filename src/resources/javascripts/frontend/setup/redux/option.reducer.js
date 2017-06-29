@@ -80,6 +80,70 @@ const initialState = {
         '12345sasdf',
         '098132098kjshdfkjh',
         '08asdfmkn0972'
+    ],
+    engagement_mix: [
+        'Existing Clients Only',
+        'Mostly Existinig Clients',
+        'Existing and New Clients Equally',
+        'Mostly New Clients',
+        'New Clients Only'
+    ],
+    engagement_tone: [
+        'Simply Informative',
+        'Conversational',
+        'Entertainingly Informative'
+    ],
+    special_topics: [
+        'Recognition of National Holidays',
+        'Insurance Humor',
+        'Current News'
+    ],
+    causes: [
+        'Alzheimer\'s',
+        'American Red Cross',
+        'Amnesty International',
+        'Animal Rescue',
+        'Arthritis',
+        'Asthma',
+        'Cancer',
+        'Child Abuse',
+        'Chronic Obstructive Pulmonary Disease (COPD)',
+        'Dental Health',
+        'Depression',
+        'Diabetes',
+        'Environmental Issues',
+        'Habitat for Humanity',
+        'Heart Disease',
+        'Heifer International',
+        'Homelessness',
+        'Hunger',
+        'Kidney Disease',
+        'Mental Health',
+        'Military Veterans',
+        'Mommy & Me Cancer Foundation',
+        'Multiple Sclerosis',
+        'Poverty',
+        'Vision Health'
+    ],
+    days: [
+        'Sunday',
+        'Monday',
+        'Tuesday',
+        'Wednesday',
+        'Thursday',
+        'Friday',
+        'Saturday'
+    ],
+    times: [
+        'System Chosen',
+        '2-5am',
+        '5-8am',
+        '8-11am',
+        '11am-2pm',
+        '2-5pm',
+        '5-8pm',
+        '8-11pm',
+        '11pm-2am'
     ]
 };
 

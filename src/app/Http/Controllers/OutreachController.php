@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Auth;
 
-class ProfileController extends Controller
+class OutreachController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -43,17 +43,12 @@ class ProfileController extends Controller
         if($request->wantsJson()) {
             $user = Auth::user();
             if($user->email == $request->input('email')) {
-                $user->phone = $request->input('phone');
-                $user->title = $request->input('title');
-                $user->principal_name = $request->input('principal_name');
-                $user->principal_email = $request->input('principal_email');
-                $user->organization_name = $request->input('organization_name');
-                $user->website = $request->input('website');
-                $user->staff_size = $request->input('staff_size');
-                $user->year_founded = $request->input('year_founded');
-                $user->multi_generation = $request->input('multi_generation');
-                $user->notification_frequency = $request->input('notification_frequency');
-                $user->notify_method = json_encode($request->input('notify_method'));
+                $user->engagement_mix = $request->input('engagement_mix');
+                $user->engagement_tone = $request->input('engagement_tone');
+                $user->special_topics = json_encode($request->input('special_topics'));
+                $user->causes = json_encode($request->input('causes'));
+                $user->posting_days = json_encode($request->input('posting_days'));
+                $user->posting_time = $request->input('posting_time');
                 $user->update();
             }
             return response()->json($user);

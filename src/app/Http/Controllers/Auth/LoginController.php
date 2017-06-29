@@ -27,7 +27,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/setup/welcome';
+    //protected $redirectTo = '/setup/welcome';
 
     /**
      * Create a new controller instance.
@@ -47,5 +47,17 @@ class LoginController extends Controller
     public function index(Request $request)
     {
         return view('layouts.auth.app');
+    }
+
+    /**
+     * The user has been authenticated.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  mixed  $user
+     * @return mixed
+     */
+    protected function authenticated(Request $request, $user)
+    {
+        return redirect('/setup/welcome');
     }
 }

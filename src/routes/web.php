@@ -123,45 +123,19 @@ Route::middleware(['auth'])->group(function() {
         }
     });
 
-    /**
-     * Overwrite the default functionality to deliver the SPA
-     *
-     * @return \Illuminate\Http\Response
-     */
     Route::get('/setup/profile', 'ProfileController@index');
 
-    /**
-     * Overwrite the default functionality to deliver the SPA
-     *
-     * @return \Illuminate\Http\Response
-     */
     Route::post('/setup/profile', 'ProfileController@store');
 
-    /**
-     * Overwrite the default functionality to deliver the SPA
-     *
-     * @return \Illuminate\Http\Response
-     */
     Route::get('/setup/location', 'LocationController@index');
 
-    /**
-     * Overwrite the default functionality to deliver the SPA
-     *
-     * @return \Illuminate\Http\Response
-     */
     Route::post('/setup/location', 'LocationController@store');
 
-    /**
-     * Overwrite the default functionality to deliver the SPA
-     *
-     * @return \Illuminate\Http\Response
-     */
     Route::get('/setup/coverage', 'CoverageController@index');
 
-    /**
-     * Overwrite the default functionality to deliver the SPA
-     *
-     * @return \Illuminate\Http\Response
-     */
     Route::post('/setup/coverage', 'CoverageController@store');
+
+    Route::get('/setup/outreach', 'OutreachController@index');
+
+    Route::post('/setup/outreach', 'OutreachController@store');
 });

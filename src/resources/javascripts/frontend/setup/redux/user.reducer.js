@@ -32,7 +32,13 @@ const initialState = {
     industry_currents: [],
     industry_targets: [],
     commercial_mix: '',
-    personal_mix: ''
+    personal_mix: '',
+    engagement_mix: '',
+    engagement_tone: '',
+    special_topics: [],
+    causes: [],
+    posting_days: [],
+    posting_time: ''
 };
 
 module.exports = function(user = initialState, action) {
@@ -83,6 +89,13 @@ module.exports = function(user = initialState, action) {
             user.commercial_mix = action.data.commercial_mix;
             user.personal_mix = action.data.personal_mix;
             break;
+        case 'SET_OUTREACH':
+            user.engagement_mix = action.data.engagement_mix;
+            user.engagement_tone = action.data.engagement_tone;
+            user.special_topics = action.data.special_topics;
+            user.causes = action.data.causes;
+            user.posting_days = action.data.posting_days;
+            user.posting_time = action.data.posting_time;
         default:
             break;
     }
