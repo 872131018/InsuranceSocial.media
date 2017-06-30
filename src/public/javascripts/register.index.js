@@ -15753,9 +15753,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             properties: {
                 name: '',
                 email: '',
-                email_confirmation: '',
+                email_confirmation: '', //required for laravel validation
                 password: '',
-                password_confirmation: '',
+                password_confirmation: '', //required for laravel validation
                 discount: '',
                 terms: false
             },
@@ -15792,7 +15792,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                         _this.$router.push({ name: 'Select' });
                     }
                 }).catch(function (error) {
-                    _this.errors.push('An error has occured, please contact support.');
+                    if (error.email) {
+                        _this.errors.push('That email is already used, please try another');
+                    } else {
+                        _this.errors.push('An error has occured, please contact support.');
+                    }
                 });
             }
         }
@@ -16517,7 +16521,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   return _c('div', {
     staticClass: "w3-section"
   }, [_c('div', {
-    staticClass: "w3-panel"
+    staticClass: "w3-panel alt-checkbox"
   }, [_c('input', {
     directives: [{
       name: "model",
@@ -17500,11 +17504,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }
     }
   }), _vm._v(" "), _c('label', {
-    staticClass: "v-align check-box",
     attrs: {
       "for": _vm.getId(_vm.plan.name)
     }
-  }), _vm._v(" "), _c('span', {
+  }, [_c('span', {
+    staticClass: "w3-show-inline-block w3-margin-right v-align"
+  })]), _vm._v(" "), _c('span', {
     staticClass: "w3-large w3-margin-left"
   }, [_vm._v(_vm._s(_vm.plan.name))]), _vm._v(" "), _c('span', {
     staticClass: "w3-large w3-right w3-margin-right w3-padding-right"
@@ -17784,16 +17789,15 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         }
       }
     }
-  }), _vm._v(" "), _c('label', {
-    staticClass: "v-align w3-margin-right  check-box",
+  }), _vm._v(" "), _vm._m(0)])
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('label', {
     attrs: {
       "for": "facebook"
     }
-  }), _vm._v(" "), _vm._m(0)])
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('span', {
-    staticClass: "w3-large"
-  }, [_vm._v("\n        Facebook"), _c('i', {
+  }, [_c('span', {
+    staticClass: "w3-show-inline-block w3-margin-right v-align"
+  }), _vm._v("\n        Facebook"), _c('i', {
     staticClass: "fa fa-facebook-official fa-2x w3-margin-left w3-text-blue v-align"
   })])
 }]}
@@ -17915,16 +17919,15 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         }
       }
     }
-  }), _vm._v(" "), _c('label', {
-    staticClass: "v-align w3-margin-right check-box",
+  }), _vm._v(" "), _vm._m(0)])
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('label', {
     attrs: {
       "for": "twitter"
     }
-  }), _vm._v(" "), _vm._m(0)])
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('span', {
-    staticClass: "w3-large"
-  }, [_vm._v("\n        Twitter"), _c('i', {
+  }, [_c('span', {
+    staticClass: "w3-show-inline-block w3-margin-right v-align"
+  }), _vm._v("\n        Twitter"), _c('i', {
     staticClass: "fa fa-twitter fa-2x w3-margin-left w3-text-blue v-align"
   })])
 }]}

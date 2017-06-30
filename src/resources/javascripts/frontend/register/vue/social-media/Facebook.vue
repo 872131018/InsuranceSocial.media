@@ -3,10 +3,10 @@
         <input class="v-align" type="checkbox" id="facebook"
             v-model="facebook"
             v-on:change="$emit('setFacebook', facebook)">
-        <label class="v-align w3-margin-right  check-box" for="facebook"></label>
-        <span class="w3-large">
+        <label for="facebook">
+            <span class="w3-show-inline-block w3-margin-right v-align"></span>
             Facebook<i class="fa fa-facebook-official fa-2x w3-margin-left w3-text-blue v-align"></i>
-        </span>
+        </label>
     </div>
 </template>
 

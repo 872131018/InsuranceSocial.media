@@ -1,6 +1,6 @@
 <template>
     <div class="w3-section">
-        <div class="w3-panel">
+        <div class="w3-panel alt-checkbox">
             <input class="v-align" type="checkbox" id="terms"
                 v-model="checked"
                 v-on:change="$emit('setTerms', checked)">

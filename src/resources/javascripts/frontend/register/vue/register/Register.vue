@@ -71,9 +71,9 @@
                 properties: {
                     name: '',
                     email: '',
-                    email_confirmation: '',
+                    email_confirmation: '', //required for laravel validation
                     password: '',
-                    password_confirmation: '',
+                    password_confirmation: '', //required for laravel validation
                     discount: '',
                     terms: false,
                 },
@@ -107,7 +107,11 @@
                             this.$router.push({ name: 'Select' });
                         }
                     }).catch(error => {
-                        this.errors.push('An error has occured, please contact support.');
+                        if(error.email) {
+                            this.errors.push('That email is already used, please try another');
+                        } else {
+                            this.errors.push('An error has occured, please contact support.');
+                        }
                     });
                 }
             }
