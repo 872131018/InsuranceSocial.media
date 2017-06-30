@@ -123,6 +123,10 @@ Route::middleware(['auth'])->group(function() {
         }
     });
 
+    Route::get('/setup/facebook', 'FacebookController@index');
+
+    Route::get('/setup/facebook/return', 'FacebookController@update');
+
     Route::get('/setup/profile', 'ProfileController@index');
 
     Route::post('/setup/profile', 'ProfileController@store');

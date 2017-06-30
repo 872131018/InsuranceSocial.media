@@ -32,7 +32,7 @@
         },
         methods: {
             update() {
-                this.$router.push({ name: 'Profile' });
+                this.$router.push({ name: 'Facebook' });
             }
         },
         components: {
