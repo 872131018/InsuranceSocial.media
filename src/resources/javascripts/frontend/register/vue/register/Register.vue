@@ -39,11 +39,10 @@
             </PasswordField>
             <Field
                 v-bind:label="'Discount Code'"
-                v-bind:confirmation="properties.discount">
+                v-bind:default="properties.discount"
+                v-on:setValue="(value) => properties.discount = value">
             </Field>
-        </div>
-        <div class="w3-panel">
-            <Terms v-on:setTerms="(terms) => { properties.terms = terms }"></Terms>
+            <Terms v-on:setTerms="(terms) => properties.terms = terms"></Terms>
         </div>
         <div class="w3-panel"
             v-if="errors.length">
@@ -52,7 +51,7 @@
         <div class="w3-panel">
             <h5>Continue to select the plan you wish to sign up for.</h5>
             <button class="w3-button w3-text-white primary"
-                v-on:click="update()">Continue
+                v-on:click="register()">Register
             </button>
         </div>
         </div>
@@ -74,7 +73,7 @@
                     email_confirmation: '', //required for laravel validation
                     password: '',
                     password_confirmation: '', //required for laravel validation
-                    discount: '',
+                    discount: this.$route.params.discount,
                     terms: false,
                 },
                 name_confirmed: false,
@@ -84,7 +83,7 @@
             }
         },
         methods: {
-            update() {
+            register() {
                 this.errors = [];
                 if(this.name_confirmed == false) {
                     this.errors.push('You must enter your full name.');

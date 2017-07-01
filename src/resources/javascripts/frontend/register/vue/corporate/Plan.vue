@@ -5,8 +5,8 @@
                 v-bind:id="getId(plan.name)"
                 v-bind:checked="selected"
                 v-on:change="$emit('setPlan', plan)">
-            <label class="v-align check-box"
-                v-bind:for="getId(plan.name)">
+            <label v-bind:for="getId(plan.name)">
+                <span class="w3-show-inline-block w3-margin-right v-align"></span>
             </label>
             <span class="w3-large w3-margin-left">{{ plan.name }}</span>
             <span class="w3-large w3-right w3-margin-right w3-padding-right">{{ plan.price }} Monthly</span>

@@ -37,6 +37,7 @@
         mounted() {
             if(this.default) {
                 this.value = this.default;
+                console.log(this.value)
                 this.validate();
             }
         },

@@ -1,6 +1,6 @@
 <template>
-    <div class="w3-section">
-        <div class="w3-panel alt-checkbox">
+    <div >
+        <div class="w3-section alt-checkbox">
             <input class="v-align" type="checkbox" id="terms"
                 v-model="checked"
                 v-on:change="$emit('setTerms', checked)">
@@ -9,14 +9,14 @@
                 <b>Insurance Social Media</b> Terms of Service.
             </span>
         </div>
-        <div class="w3-panel">
+        <div class="w3-section">
             <button class="w3-button w3-text-white secondary"
-                v-on:click="() => { modal = !modal }">Terms of Service
+                v-on:click="modal = !modal">Terms of Service
             </button>
         </div>
         <Modal
             v-if="modal"
-            v-on:setModal="() => { modal = !modal }">
+            v-on:setModal="modal = !modal">
         </Modal>
     </div>
 </template>

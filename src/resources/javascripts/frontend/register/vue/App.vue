@@ -3,7 +3,6 @@
         <Navigation></Navigation>
         <Tips></Tips>
         <div class="w3-container w3-padding-32 bgimg2">
-            <Branding></Branding>
             <router-view></router-view>
         </div>
         <Foot></Foot>
