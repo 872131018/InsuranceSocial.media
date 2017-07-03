@@ -6,7 +6,7 @@
         <div class="w3-container w3-card-2 form">
             <div class="w3-panel">
                 <h3>Link your Social Accounts</h3>
-                <h5>Please log in to Facebook<i class="fa fa-facebook-official fa-2x w3-margin-left w3-text-blue v-align"></i> in order to recieve our Facebook services.</h5>
+                <h5>Please log in to Twitter<i class="fa fa-facebook-official fa-2x w3-margin-left w3-text-blue v-align"></i> in order to recieve our Facebook services.</h5>
             </div>
             <div class="w3-section">
                 <div class="w3-panel">
@@ -66,7 +66,7 @@
             return {
                 properties: {
                     has_facebook: false,
-                    create_facebook: true
+                    create_facebook: false
                 },
                 redirectUrl: ''
             }
@@ -74,18 +74,17 @@
         mounted() {
             axios.get(window.location).then(response => {
                 this.redirectUrl = response.data
+                if(store.getState().UserStore.facebook_access_token) {
+                    this.properties.has_facebook = true;
+                }
             });
-            if(store.getState().UserStore.facebook_access_token) {
-                this.properties.has_facebook = true;
-            }
         },
         methods: {
             update() {
-                if(this.properties.has_facebook) {
+                if(this.properties.has_facebook && !store.getState().UserStore.facebook_access_token) {
                     window.location = this.redirectUrl;
                 } else {
-                    //this.$router.push({ name: 'Twitter' });
-                    this.$router.push({ name: 'Payment' });
+                    this.$router.push({ name: 'Twitter' });
                 }
             }
         },

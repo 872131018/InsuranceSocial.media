@@ -58,6 +58,8 @@ class CreateUsersTable extends Migration
             $table->text('posting_days')->nullable();
             $table->string('posting_time')->nullable();
             $table->string('facebook_access_token')->nullable();
+            $table->string('facebook_auth_code')->nullable();
+            $table->string('facebook_transaction_id')->nullable();
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();

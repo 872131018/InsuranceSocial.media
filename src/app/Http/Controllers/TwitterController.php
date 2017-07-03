@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 
 use Facebook\Facebook;
 
-class FacebookController extends Controller
+class TwitterController extends Controller
 {
 
     protected $fb;
@@ -125,7 +125,7 @@ class FacebookController extends Controller
           $user->facebook_access_token = (string) $accessToken;
           $user->update();
 
-           return redirect('setup/profile');
+           return redirect('setup/facebook');
         }
     }
 

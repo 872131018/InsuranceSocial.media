@@ -53,18 +53,9 @@ Route::post('/register', 'Auth\RegisterController@register');
 Route::post('/register/{discount?}', 'Auth\RegisterController@register');
 
 Route::middleware(['auth'])->group(function() {
-    /**
-     * Overwrite the default functionality to deliver the SPA
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     Route::get('/corporate/{discount?}', 'CorporateController@index');
-    
-    /**
-    * Deliver the homepage
-    *
-    * @return \Illuminate\Http\Response
-    */
+
    Route::get('/select', function (Request $request) {
        if($request->wantsJson()) {
            $data = [];
@@ -79,52 +70,40 @@ Route::middleware(['auth'])->group(function() {
        }
    });
 
-    /**
-     * Deliver the homepage
-     *
-     * @return \Illuminate\Http\Response
-     */
     Route::get('/social-media', function () {
         return view('layouts.register.app');
     });
 
-    /**
-     * Overwrite the default functionality to deliver the SPA
-     *
-     * @return \Illuminate\Http\Response
-     */
     Route::get('/payment', 'PaymentController@index');
 
-    /**
-     * Overwrite the default functionality to deliver the SPA
-     *
-     * @return \Illuminate\Http\Response
-     */
     Route::post('/payment', 'PaymentController@store');
 
-    /**
-     * Overwrite the default functionality to deliver the SPA
-     *
-     * @return \Illuminate\Http\Response
-     */
     Route::put('/payment/{discount}', 'PaymentController@update');
 
     /**
-    * Deliver the homepage
-    *
-    * @return \Illuminate\Http\Response
-    */
-    Route::get('/setup/welcome', function (Request $request) {
+     * Routes for the setup app
+     *
+     * @return \Illuminate\Http\Response
+     */
+    Route::get('/setup', function (Request $request) {
         if($request->wantsJson()) {
             return response()->json(Auth::user());
-        } else {
-            return view('layouts.setup.app');
         }
+    });
+
+    Route::get('/setup/welcome', function (Request $request) {
+        return view('layouts.setup.app');
     });
 
     Route::get('/setup/facebook', 'FacebookController@index');
 
     Route::get('/setup/facebook/return', 'FacebookController@update');
+
+    Route::get('/setup/payment', 'PaymentController@index');
+
+    Route::post('/setup/payment', 'PaymentController@storealt');
+
+    Route::get('/setup/twitter', 'TwitterController@index');
 
     Route::get('/setup/profile', 'ProfileController@index');
 

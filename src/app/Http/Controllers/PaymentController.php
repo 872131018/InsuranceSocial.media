@@ -113,6 +113,68 @@ class PaymentController extends Controller
     }
 
     /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function storealt(Request $request)
+    {
+        $controller = new AnetController\CreateTransactionController($this->paymentService->getTransactionRequest($request));
+
+        $response = $controller->executeWithApiResponse(\net\authorize\api\constants\ANetEnvironment::SANDBOX);
+
+        if ($response != null) {
+            $data = [];
+            if($response->getMessages()->getResultCode() =='Ok') {
+                $tresponse = $response->getTransactionResponse();
+
+                if ($tresponse != null && $tresponse->getMessages() != null) {
+                    $data = [
+                        'responseCode' => $tresponse->getResponseCode(),
+                        'authCode' => $tresponse->getAuthCode(),
+                        'transactionId' => $tresponse->getTransId(),
+                        'code' => $tresponse->getMessages()[0]->getCode(),
+                        'description' => $tresponse->getMessages()[0]->getDescription()
+                    ];
+
+                    $user = Auth::user();
+                    $user->facebook_auth_code = $tresponse->getAuthCode();
+                    $user->facebook_transaction_id = $tresponse->getTransId();
+                    $user->update();
+                } else {
+                    if($tresponse->getErrors() != null) {
+                        $data = [
+                            'error' => 'FAILED!',
+                            'errorCode' => $tresponse->getErrors()[0]->getErrorCode(),
+                            'errorMessage' => $tresponse->getErrors()[0]->getErrorText()
+                        ];
+                    }
+                }
+            } else {
+                $tresponse = $response->getTransactionResponse();
+
+                if($tresponse != null && $tresponse->getErrors() != null) {
+                    $data = [
+                        'error' => 'FAILED!',
+                        'errorCode' => $tresponse->getErrors()[0]->getErrorCode(),
+                        'errorMessage' => $tresponse->getErrors()[0]->getErrorText()
+                    ];
+                } else {
+                    $data = [
+                        'error' => 'FAILED!',
+                        'errorCode' => $response->getMessages()->getMessage()[0]->getCode(),
+                        'errorMessage' => $response->getMessages()->getMessage()[0]->getText()
+                    ];
+                }
+            }
+            return response()->json($data);
+        } else {
+            return response()->json('No Response Returned');
+        }
+    }
+
+    /**
      * Display the specified resource.
      *
      * @param  int  $id

@@ -14,7 +14,11 @@
 
     export default {
         mounted() {
-            console.log('App mounted.')
+            console.log('App mounted.');
+
+            axios.get(`${ window.base_url }/setup`).then(response => {
+                store.dispatch({ type: 'SET_USER', data: response.data });
+            });
         },
         components: {
             Navigation,

@@ -44,11 +44,14 @@ const initialState = {
 module.exports = function(user = initialState, action) {
     switch(action.type) {
         case 'SET_USER':
+        /*
             user.id = action.data.id;
             user.name = action.data.name;
             user.email = action.data.email;
             user.api_token = action.data.api_token;
             user.discount = action.data.discount;
+            */
+            user = action.data;
             break;
         case 'SET_PLAN':
             user.plan = action.data;
