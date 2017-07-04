@@ -1,119 +1,125 @@
 <template>
-    <div class="w3-container w3-card-2 form">
-        <div class="w3-panel">
-            <h3>Where are we?</h3>
-            <h5>Please complete this information for geographic service marketing.</h5>
-        </div>
-        <div class="w3-panel">
-            <Field
-                v-bind:label="'Business Address 1'"
-                v-bind:default="properties.address_1"
-                v-on:setValue="(value) => properties.address_1 = value">
-            </Field>
-            <Field
-                v-bind:label="'Business Address 2'"
-                v-bind:default="properties.address_2"
-                v-on:setValue="(value) => properties.address_2 = value">
-            </Field>
-            <Field
-                v-bind:label="'City'"
-                v-bind:default="properties.city"
-                v-on:setValue="(value) => properties.city = value">
-            </Field>
-            <Dropdown
-                v-bind:label="'State'"
-                v-bind:options="states"
-                v-bind:default="properties.state"
-                v-on:setOption="(option) => properties.state = option">
-            </Dropdown>
-            <Field
-                v-bind:label="'Zip Code'"
-                v-bind:validation="'ZIP'"
-                v-bind:default="properties.zip"
-                v-on:setValue="(value) => properties.zip = value">
-            </Field>
-            <Dropdown
-                v-bind:label="'Marketing Geography'"
-                v-bind:options="targets"
-                v-on:setOption="(option) => target = option">
-            </Dropdown>
-            <div v-if="target == 'Region'">
-                <div class="w3-section">
-                    <Dropdown
-                        v-bind:label="'Marketing Regions'"
-                        v-bind:options="regions"
-                        v-on:setOption="(region) => properties.marketing_regions.push(region)">
-                    </Dropdown>
+    <div>
+        <Progress
+            v-bind:progress="67">
+        </Progress>
+        <div class="w3-container w3-card-2 form">
+            <div class="w3-panel">
+                <h3>Where are we?</h3>
+                <h5>Please complete this information for geographic service marketing.</h5>
+            </div>
+            <div class="w3-panel">
+                <Field
+                    v-bind:label="'Business Address 1'"
+                    v-bind:default="properties.address_1"
+                    v-on:setValue="(value) => properties.address_1 = value">
+                </Field>
+                <Field
+                    v-bind:label="'Business Address 2'"
+                    v-bind:default="properties.address_2"
+                    v-on:setValue="(value) => properties.address_2 = value">
+                </Field>
+                <Field
+                    v-bind:label="'City'"
+                    v-bind:default="properties.city"
+                    v-on:setValue="(value) => properties.city = value">
+                </Field>
+                <Dropdown
+                    v-bind:label="'State'"
+                    v-bind:options="states"
+                    v-bind:default="properties.state"
+                    v-on:setOption="(option) => properties.state = option">
+                </Dropdown>
+                <Field
+                    v-bind:label="'Zip Code'"
+                    v-bind:validation="'ZIP'"
+                    v-bind:default="properties.zip"
+                    v-on:setValue="(value) => properties.zip = value">
+                </Field>
+                <Dropdown
+                    v-bind:label="'Marketing Geography'"
+                    v-bind:options="targets"
+                    v-on:setOption="(option) => target = option">
+                </Dropdown>
+                <div v-if="target == 'Region'">
+                    <div class="w3-section">
+                        <Dropdown
+                            v-bind:label="'Marketing Regions'"
+                            v-bind:options="regions"
+                            v-on:setOption="(region) => properties.marketing_regions.push(region)">
+                        </Dropdown>
+                    </div>
+                    <div class="w3-section">
+                        <div> Selected Counties (click to remove)</div>
+                        <ul class="w3-ul w3-hoverable">
+                            <li class="w3-section"
+                                v-for="(region, index) in properties.marketing_regions"
+                                v-on:click="(region) => properties.marketing_regions.splice(index, 1)">
+                                {{ region }}
+                                <i class="fa fa-times w3-margin-left"></i>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="w3-section">
-                    <div> Selected Counties (click to remove)</div>
-                    <ul class="w3-ul w3-hoverable">
-                        <li class="w3-section"
-                            v-for="(region, index) in properties.marketing_regions"
-                            v-on:click="(region) => properties.marketing_regions.splice(index, 1)">
-                            {{ region }}
-                            <i class="fa fa-times w3-margin-left"></i>
-                        </li>
-                    </ul>
+                <div v-if="target == 'State and Counties'">
+                    <div class="w3-section">
+                        <Dropdown
+                            v-bind:label="'Marketing State'"
+                            v-bind:options="states"
+                            v-on:setOption="setState($event)">
+                        </Dropdown>
+                    </div>
+                    <div class="w3-section">
+                        <div> Selected States (click to remove)</div>
+                        <ul class="w3-ul w3-hoverable">
+                            <li class="w3-section"
+                                v-for="(state, index) in properties.marketing_states"
+                                v-on:click="(state) => properties.marketing_states.splice(index, 1)">
+                                {{ state }}
+                                <i class="fa fa-times w3-margin-left"></i>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="w3-section">
+                        <Dropdown
+                            v-bind:label="'Marketing Counties'"
+                            v-bind:options="counties"
+                            v-on:setOption="(county) => properties.marketing_counties.push(county)">
+                        </Dropdown>
+                    </div>
+                    <div class="w3-section">
+                        <div> Selected Counties (click to remove)</div>
+                        <ul class="w3-ul w3-hoverable">
+                            <li class="w3-section"
+                                v-for="(counties, index) in properties.marketing_counties"
+                                v-on:click="(county) => properties.marketing_counties.splice(index, 1)">
+                                {{ counties }}
+                                <i class="fa fa-times w3-margin-left"></i>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-            <div v-if="target == 'State and Counties'">
-                <div class="w3-section">
-                    <Dropdown
-                        v-bind:label="'Marketing State'"
-                        v-bind:options="states"
-                        v-on:setOption="setState($event)">
-                    </Dropdown>
-                </div>
-                <div class="w3-section">
-                    <div> Selected States (click to remove)</div>
-                    <ul class="w3-ul w3-hoverable">
-                        <li class="w3-section"
-                            v-for="(state, index) in properties.marketing_states"
-                            v-on:click="(state) => properties.marketing_states.splice(index, 1)">
-                            {{ state }}
-                            <i class="fa fa-times w3-margin-left"></i>
-                        </li>
-                    </ul>
-                </div>
-                <div class="w3-section">
-                    <Dropdown
-                        v-bind:label="'Marketing Counties'"
-                        v-bind:options="counties"
-                        v-on:setOption="(county) => properties.marketing_counties.push(county)">
-                    </Dropdown>
-                </div>
-                <div class="w3-section">
-                    <div> Selected Counties (click to remove)</div>
-                    <ul class="w3-ul w3-hoverable">
-                        <li class="w3-section"
-                            v-for="(counties, index) in properties.marketing_counties"
-                            v-on:click="(county) => properties.marketing_counties.splice(index, 1)">
-                            {{ counties }}
-                            <i class="fa fa-times w3-margin-left"></i>
-                        </li>
-                    </ul>
-                </div>
+            <div class="w3-panel"
+                v-if="errors.length">
+                <Errors v-bind:errors="errors"></Errors>
             </div>
-        </div>
-        <div class="w3-panel"
-            v-if="errors.length">
-            <Errors v-bind:errors="errors"></Errors>
-        </div>
-        <div class="w3-panel">
-            <h5>Continue to select the plan you wish to sign up for.</h5>
-            <button class="w3-button w3-text-white primary"
-                v-on:click="previous()">Previous
-            </button>
-            <button class="w3-button w3-text-white primary"
-                v-on:click="update()">Continue
-            </button>
-        </div>
+            <div class="w3-panel">
+                <h5>Continue to select the plan you wish to sign up for.</h5>
+                <button class="w3-button w3-text-white primary"
+                    v-on:click="previous()">Previous
+                </button>
+                <button class="w3-button w3-text-white primary"
+                    v-on:click="update()">Continue
+                </button>
+            </div>
+            </div>
         </div>
     </div>
 </template>
 
 <script>
+    import Progress from '../Progress';
     import Field from './inputs/Field';
     import Dropdown from './inputs/Dropdown';
     import Checkbox from './inputs/Checkbox';
@@ -172,6 +178,7 @@
             }
         },
         components: {
+            Progress,
             Field,
             Dropdown,
             Checkbox,
