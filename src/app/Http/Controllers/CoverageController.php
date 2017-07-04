@@ -51,6 +51,14 @@ class CoverageController extends Controller
                 $user->commercial_mix = $request->input('commercial_mix');
                 $user->personal_mix = $request->input('personal_mix');
                 $user->update();
+                /*
+                * Unscrub that data after its saved
+                */
+                $user->carriers = $request->input('carriers');
+                $user->coverage_lines = $request->input('coverage_lines');
+                $user->coverage_targets = $request->input('coverage_targets');
+                $user->industry_currents = $request->input('industry_currents');
+                $user->industry_targets = $request->input('industry_targets');
             }
             return response()->json($user);
         } else {

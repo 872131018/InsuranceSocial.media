@@ -35,7 +35,8 @@ class CreateUsersTable extends Migration
             $table->string('year_founded')->nullable();
             $table->string('multi_generation')->nullable();
             $table->string('notification_frequency')->nullable();
-            $table->text('notify_method')->nullable();
+            $table->boolean('notify_email')->nullable();
+            $table->boolean('notify_text')->nullable();
             $table->string('address_1')->nullable();
             $table->string('address_2')->nullable();
             $table->string('city')->nullable();

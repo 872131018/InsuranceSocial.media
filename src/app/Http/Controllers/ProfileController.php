@@ -53,7 +53,8 @@ class ProfileController extends Controller
                 $user->year_founded = $request->input('year_founded');
                 $user->multi_generation = $request->input('multi_generation');
                 $user->notification_frequency = $request->input('notification_frequency');
-                $user->notify_method = json_encode($request->input('notify_method'));
+                $user->notify_email = $request->input('notify_email');
+                $user->notify_text = $request->input('notify_text');
                 $user->update();
             }
             return response()->json($user);

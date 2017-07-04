@@ -19,11 +19,19 @@
         props: {
             options: {
                 type: Array
+            },
+            default: {
+                type: String
             }
         },
         data() {
             return {
                 selected: ''
+            }
+        },
+        mounted() {
+            if(typeof(this.default != undefined)) {
+                this.selected = this.default;
             }
         }
     }

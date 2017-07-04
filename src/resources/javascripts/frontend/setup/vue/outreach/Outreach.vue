@@ -8,6 +8,7 @@
             <div>Desired engagement mix</div>
             <Radio
                 v-bind:options="engagement_mix"
+                v-bind:default="properties.engagement_mix"
                 v-on:setChecked="(option) => properties.engagement_mix = option">
             </Radio>
         </div>
@@ -15,6 +16,7 @@
             <div>Desired engagement tone</div>
             <Radio
                 v-bind:options="engagement_tone"
+                v-bind:default="properties.engagement_tone"
                 v-on:setChecked="(option) => properties.engagement_tone = option">
             </Radio>
         </div>
@@ -82,6 +84,9 @@
         <div class="w3-panel">
             <h5>Continue to select the plan you wish to sign up for.</h5>
             <button class="w3-button w3-text-white primary"
+                v-on:click="previous()">Previous
+            </button>
+            <button class="w3-button w3-text-white primary"
                 v-on:click="update()">Continue
             </button>
         </div>
@@ -101,8 +106,8 @@
             return {
                 properties: {
                     email: store.getState().UserStore.email,
-                    engagement_mix: '',
-                    engagement_tone: '',
+                    engagement_mix: store.getState().UserStore.engagement_mix,
+                    engagement_tone: store.getState().UserStore.engagement_tone,
                     special_topics: [],
                     causes: [],
                     posting_days: [],
@@ -118,6 +123,10 @@
             }
         },
         methods: {
+            previous() {
+                store.dispatch({ type: 'SET_OUTREACH', data: this.properties });
+                this.$router.push({ name: 'Coverage' });
+            },
             update() {
                 this.errors = [];
                 if(this.errors.length == 0) {

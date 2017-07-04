@@ -1,43 +1,49 @@
 <template>
-    <div class="w3-container w3-card-2 form">
-        <div class="w3-panel">
-            <h3>Payment Information</h3>
-            <h5>Please confirm a payment method for facebook setup.</h5>
-        </div>
-        <div class="w3-panel">
-            <Cart
-                v-bind:plan="plan">
-            </Cart>
-        </div>
-        <div class="w3-panel">
-            <h3>Payment Method</h3>
-            <h5>Please enter a form of payment.</h5>
-            <p>This is a one time charge to cover the cost of setting up a corporate Facebook page for you.</p>
-        </div>
-        <div class="w3-panel">
-            <Card v-on:setCard="(card) => properties.card = card"></Card>
-        </div>
-        <div class="w3-panel">
-            <Expiration
-                v-on:setMonth="(month) => properties.month = month.value"
-                v-on:setYear="(year) => properties.year = year">
-            </Expiration>
-        </div>
-        <div class="w3-panel">
-            <CCV v-on:setCode="(code) => properties.code = code"></CCV>
-        </div>
-        <div class="w3-panel">
-            <Name v-on:setName="(name) => properties.name = name"></Name>
-        </div>
-        <div class="w3-panel">
-            <button class="w3-button w3-text-white primary"
-                v-on:click="sendPaymentDataToAnet()">Complete
-            </button>
+    <div>
+        <Progress
+            v-bind:progress="33">
+        </Progress>
+        <div class="w3-container w3-card-2 form">
+            <div class="w3-panel">
+                <h3>Payment Information</h3>
+                <h5>Please confirm a payment method for facebook setup.</h5>
+            </div>
+            <div class="w3-panel">
+                <Cart
+                    v-bind:plan="plan">
+                </Cart>
+            </div>
+            <div class="w3-panel">
+                <h3>Payment Method</h3>
+                <h5>Please enter a form of payment.</h5>
+                <p>This is a one time charge to cover the cost of setting up a corporate Facebook page for you.</p>
+            </div>
+            <div class="w3-panel">
+                <Card v-on:setCard="(card) => properties.card = card"></Card>
+            </div>
+            <div class="w3-panel">
+                <Expiration
+                    v-on:setMonth="(month) => properties.month = month.value"
+                    v-on:setYear="(year) => properties.year = year">
+                </Expiration>
+            </div>
+            <div class="w3-panel">
+                <CCV v-on:setCode="(code) => properties.code = code"></CCV>
+            </div>
+            <div class="w3-panel">
+                <Name v-on:setName="(name) => properties.name = name"></Name>
+            </div>
+            <div class="w3-panel">
+                <button class="w3-button w3-text-white primary"
+                    v-on:click="sendPaymentDataToAnet()">Complete
+                </button>
+            </div>
         </div>
     </div>
 </template>
 
 <script>
+    import Progress from '../Progress';
     import Cart from './Cart';
     import Card from './inputs/Card';
     import Expiration from './inputs/Expiration';
@@ -103,6 +109,7 @@
             },
         },
         components: {
+            Progress,
             Cart,
             Card,
             Expiration,

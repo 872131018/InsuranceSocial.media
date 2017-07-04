@@ -7,24 +7,29 @@
         <div class="w3-panel">
             <Field
                 v-bind:label="'Business Address 1'"
+                v-bind:default="properties.address_1"
                 v-on:setValue="(value) => properties.address_1 = value">
             </Field>
             <Field
                 v-bind:label="'Business Address 2'"
+                v-bind:default="properties.address_2"
                 v-on:setValue="(value) => properties.address_2 = value">
             </Field>
             <Field
                 v-bind:label="'City'"
+                v-bind:default="properties.city"
                 v-on:setValue="(value) => properties.city = value">
             </Field>
             <Dropdown
                 v-bind:label="'State'"
                 v-bind:options="states"
+                v-bind:default="properties.state"
                 v-on:setOption="(option) => properties.state = option">
             </Dropdown>
             <Field
                 v-bind:label="'Zip Code'"
                 v-bind:validation="'ZIP'"
+                v-bind:default="properties.zip"
                 v-on:setValue="(value) => properties.zip = value">
             </Field>
             <Dropdown
@@ -33,17 +38,24 @@
                 v-on:setOption="(option) => target = option">
             </Dropdown>
             <div v-if="target == 'Region'">
-                <ul class="w3-ul w3-hoverable">
-                    <li class="w3-section"
-                        v-for="(region, index) in regions">
-                        <Checkbox
-                            v-bind:label="region"
-                            v-bind:id="`check${ index }`"
-                            v-bind:value="region"
-                            v-on:setChecked="(region) => properties.marketing_regions.push(region)">
-                        </Checkbox>
-                    </li>
-                </ul>
+                <div class="w3-section">
+                    <Dropdown
+                        v-bind:label="'Marketing Regions'"
+                        v-bind:options="regions"
+                        v-on:setOption="(region) => properties.marketing_regions.push(region)">
+                    </Dropdown>
+                </div>
+                <div class="w3-section">
+                    <div> Selected Counties (click to remove)</div>
+                    <ul class="w3-ul w3-hoverable">
+                        <li class="w3-section"
+                            v-for="(region, index) in properties.marketing_regions"
+                            v-on:click="(region) => properties.marketing_regions.splice(index, 1)">
+                            {{ region }}
+                            <i class="fa fa-times w3-margin-left"></i>
+                        </li>
+                    </ul>
+                </div>
             </div>
             <div v-if="target == 'State and Counties'">
                 <div class="w3-section">
@@ -91,6 +103,9 @@
         <div class="w3-panel">
             <h5>Continue to select the plan you wish to sign up for.</h5>
             <button class="w3-button w3-text-white primary"
+                v-on:click="previous()">Previous
+            </button>
+            <button class="w3-button w3-text-white primary"
                 v-on:click="update()">Continue
             </button>
         </div>
@@ -109,14 +124,14 @@
             return {
                 properties: {
                     email: store.getState().UserStore.email,
-                    address_1: '',
-                    address_2: '',
-                    city: '',
-                    state: '',
-                    zip: '',
-                    marketing_regions: [],
-                    marketing_states: [],
-                    marketing_counties: []
+                    address_1: store.getState().UserStore.address_1,
+                    address_2: store.getState().UserStore.address_2,
+                    city: store.getState().UserStore.city,
+                    state: store.getState().UserStore.state,
+                    zip: store.getState().UserStore.zip,
+                    marketing_regions: store.getState().UserStore.marketing_regions,
+                    marketing_states: store.getState().UserStore.marketing_states,
+                    marketing_counties: store.getState().UserStore.marketing_counties
                 },
                 states: store.getState().OptionStore.states,
                 targets: store.getState().OptionStore.targets,
@@ -139,6 +154,10 @@
                     }
                 }
                 this.counties = filtered_counties;
+            },
+            previous() {
+                store.dispatch({ type: 'SET_LOCATION', data: this.properties });
+                this.$router.push({ name: 'Profile' });
             },
             update() {
                 this.errors = [];

@@ -23,11 +23,19 @@
             },
             options: {
                 type: Array
+            },
+            default: {
+                type: String
             }
         },
         data() {
             return {
                 selected: 'Options'
+            }
+        },
+        mounted() {
+            if(this.default) {
+                this.selected = this.default;
             }
         },
         methods: {

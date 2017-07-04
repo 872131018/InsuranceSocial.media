@@ -22,19 +22,19 @@
             <p>The first 30 days of the Insurance Social.Media Essential plan are free. We ask for your credit card to prevent any service interruption should you keep your account open. Your card will not be charged for the trial period. After the trial, you will be charged each month. You can cancel at any time.</p>
         </div>
         <div class="w3-panel">
-            <Card v-on:setCard="(card) => { properties.card = card }"></Card>
+            <Card v-on:setCard="(card) => properties.card = card"></Card>
         </div>
         <div class="w3-panel">
             <Expiration
-                v-on:setMonth="(month) => { properties.month = month.value }"
-                v-on:setYear="(year) => { properties.year = year }">
+                v-on:setMonth="(month) => properties.month = month.value"
+                v-on:setYear="(year) => properties.year = year">
             </Expiration>
         </div>
         <div class="w3-panel">
-            <CCV v-on:setCode="(code) => { properties.code = code }"></CCV>
+            <CCV v-on:setCode="(code) => properties.code = code"></CCV>
         </div>
         <div class="w3-panel">
-            <Name v-on:setName="(name) => { properties.name = name }"></Name>
+            <Name v-on:setName="(name) => properties.name = name"></Name>
         </div>
         <div class="w3-panel">
             <button class="w3-button w3-text-white primary"

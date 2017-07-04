@@ -52,6 +52,10 @@ class LocationController extends Controller
                 $user->marketing_states = json_encode($request->input('marketing_states'));
                 $user->marketing_counties = json_encode($request->input('marketing_counties'));
                 $user->update();
+
+                $user->marketing_regions = $request->input('marketing_regions');
+                $user->marketing_states = $request->input('marketing_states');
+                $user->marketing_counties = $request->input('marketing_counties');
             }
             return response()->json($user);
         } else {

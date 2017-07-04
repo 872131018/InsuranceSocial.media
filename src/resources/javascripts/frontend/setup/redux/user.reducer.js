@@ -17,7 +17,8 @@ const initialState = {
     year_founded: '',
     multi_generation: '',
     notification_frequency: '',
-    notify_method: [],
+    notify_email: false,
+    notify_text: false,
     address_1: '',
     address_2: '',
     city: '',
@@ -44,14 +45,11 @@ const initialState = {
 module.exports = function(user = initialState, action) {
     switch(action.type) {
         case 'SET_USER':
-        /*
             user.id = action.data.id;
             user.name = action.data.name;
             user.email = action.data.email;
             user.api_token = action.data.api_token;
             user.discount = action.data.discount;
-            */
-            user = action.data;
             break;
         case 'SET_PLAN':
             user.plan = action.data;
@@ -71,7 +69,8 @@ module.exports = function(user = initialState, action) {
             user.year_founded = action.data.year_founded;
             user.multi_generation = action.data.multi_generation;
             user.notification_frequency = action.data.notification_frequency;
-            user.notify_method = action.data.notify_method;
+            user.notify_email = action.data.notify_email;
+            user.notify_text = action.data.notify_text;
             break;
         case 'SET_LOCATION':
             user.address_1 = action.data.address_1;

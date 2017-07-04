@@ -27,11 +27,29 @@
     import Cross from './inputs/Cross';
 
     export default {
+        props: {
+            commercial_mix: {
+                type: String
+            },
+            personal_mix: {
+                type: String
+            }
+        },
         data() {
             return {
                 commercial: '',
                 personal: '',
                 isValid: false
+            }
+        },
+        mounted() {
+            if(this.commercial_mix) {
+                this.commercial = this.commercial_mix;
+                this.isValid = true;
+            }
+            if(this.personal_mix) {
+                this.personal = this.personal_mix;
+                this.isValid = true;
             }
         },
         methods: {

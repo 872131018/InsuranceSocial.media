@@ -24,16 +24,20 @@
                 </ul>
             </div>
             <div class="w3-section">
-                <div>Lines of Coverages</div>
+                <Dropdown
+                    v-bind:label="'Lines of Coverages'"
+                    v-bind:options="coverage_lines"
+                    v-on:setOption="(coverage) => properties.coverage_lines.push(coverage)">
+                </Dropdown>
+            </div>
+            <div class="w3-section">
+                <div> Selected Coverage Lines (click to remove)</div>
                 <ul class="w3-ul w3-hoverable">
                     <li class="w3-section"
-                        v-for="(line, index) in coverage_lines">
-                        <Checkbox
-                            v-bind:label="line"
-                            v-bind:id="`check${ index }`"
-                            v-bind:value="line"
-                            v-on:setChecked="(line) => properties.coverage_lines.push(line)">
-                        </Checkbox>
+                        v-for="(coverage, index) in properties.coverage_lines"
+                        v-on:click="(coverage) => properties.coverage_lines.splice(index, 1)">
+                        {{ coverage }}
+                        <i class="fa fa-times w3-margin-left"></i>
                     </li>
                 </ul>
             </div>
@@ -93,6 +97,8 @@
             </div>
             <div class="w3-section">
                 <Ratio
+                    v-bind:commercial_mix="properties.commercial_mix"
+                    v-bind:personal_mix="properties.personal_mix"
                     v-on:setRatio="setRatio($event)">
                 </Ratio>
             </div>
@@ -103,6 +109,9 @@
         </div>
         <div class="w3-panel">
             <h5>Continue to select the plan you wish to sign up for.</h5>
+            <button class="w3-button w3-text-white primary"
+                v-on:click="previous()">Previous
+            </button>
             <button class="w3-button w3-text-white primary"
                 v-on:click="update()">Continue
             </button>
@@ -123,13 +132,13 @@
             return {
                 properties: {
                     email: store.getState().UserStore.email,
-                    carriers: [],
-                    coverage_lines: [],
-                    coverage_targets: [],
-                    industry_currents: [],
-                    industry_targets: [],
-                    commercial_mix: '',
-                    personal_mix: ''
+                    carriers: store.getState().UserStore.carriers,
+                    coverage_lines: store.getState().UserStore.coverage_lines,
+                    coverage_targets: store.getState().UserStore.coverage_targets,
+                    industry_currents: store.getState().UserStore.industry_currents,
+                    industry_targets: store.getState().UserStore.industry_targets,
+                    commercial_mix: store.getState().UserStore.commercial_mix,
+                    personal_mix: store.getState().UserStore.personal_mix
                 },
                 carriers: store.getState().OptionStore.carriers,
                 coverage_lines: store.getState().OptionStore.coverage_lines,
@@ -143,6 +152,10 @@
             setRatio(ratio) {
                 this.properties.commercial_mix = ratio.commercial;
                 this.properties.personal_mix = ratio.personal;
+            },
+            previous() {
+                store.dispatch({ type: 'SET_COVERAGE', data: this.properties });
+                this.$router.push({ name: 'Location' });
             },
             update() {
                 this.errors = [];

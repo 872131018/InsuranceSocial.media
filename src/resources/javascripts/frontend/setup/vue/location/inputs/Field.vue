@@ -18,6 +18,9 @@
             label: {
                 type: String
             },
+            default: {
+                type: String
+            },
             validation: {
                 type: String
             }
@@ -26,6 +29,12 @@
             return {
                 value: '',
                 isValid: false
+            }
+        },
+        mounted() {
+            if(this.default) {
+                this.value = this.default;
+                this.validate();
             }
         },
         methods: {
