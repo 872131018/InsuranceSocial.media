@@ -1,5 +1,6 @@
 import Welcome from './vue/welcome/Welcome';
 import Facebook from './vue/facebook/Facebook';
+import Twitter from './vue/twitter/Twitter';
 import Payment from './vue/payment/Payment';
 import Profile from './vue/profile/Profile';
 import Location from './vue/location/Location';
@@ -16,6 +17,11 @@ export default [
         path: '/setup/facebook',
         name: 'Facebook',
         component: Facebook
+    },
+    {
+        path: '/setup/twitter',
+        name: 'Twitter',
+        component: Twitter
     },
     {
         path: '/setup/payment',

@@ -125,7 +125,7 @@ class FacebookController extends Controller
           $user->facebook_access_token = (string) $accessToken;
           $user->update();
 
-           return redirect('setup/profile');
+           return redirect('setup/twitter');
         }
     }
 

@@ -84,8 +84,7 @@
                 if(this.properties.has_facebook) {
                     window.location = this.redirectUrl;
                 } else {
-                    //this.$router.push({ name: 'Twitter' });
-                    this.$router.push({ name: 'Payment' });
+                    this.$router.push({ name: 'Twitter' });
                 }
             }
         },

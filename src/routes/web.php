@@ -105,6 +105,8 @@ Route::middleware(['auth'])->group(function() {
 
     Route::get('/setup/twitter', 'TwitterController@index');
 
+    Route::get('/setup/twitter/return', 'TwitterController@update');
+
     Route::get('/setup/profile', 'ProfileController@index');
 
     Route::post('/setup/profile', 'ProfileController@store');

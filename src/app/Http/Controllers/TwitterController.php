@@ -6,12 +6,10 @@ use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Auth;
 
-use Facebook\Facebook;
+use Abraham\TwitterOAuth\TwitterOAuth;
 
 class TwitterController extends Controller
 {
-
-    protected $fb;
     /**
      * Create a new controller instance.
      *
@@ -19,11 +17,7 @@ class TwitterController extends Controller
      */
     public function __construct()
     {
-        $this->fb = new Facebook([
-            'app_id' => env('APP_ID'),
-            'app_secret' => env('APP_SECRET'),
-            'default_graph_version' => env('DEFAULT_GRAPH_VERSION')
-        ]);
+        //
     }
 
     /**
@@ -34,12 +28,14 @@ class TwitterController extends Controller
     public function index(Request $request)
     {
         if($request->wantsJson()) {
-            $helper = $this->fb->getRedirectLoginHelper();
-            $permissions = ['email']; // optional
-            $url = env('APP_URL');
-            $loginUrl = $helper->getLoginUrl("{$url}/setup/facebook/return", $permissions);
+            $connection = new TwitterOAuth(env('CONSUMER_KEY'), env('CONSUMER_SECRET'));
+            $request_token = $connection->oauth('oauth/request_token', array('oauth_callback' => env('APP_URL').'/setup/twitter/return'));
+            session(['oauth_token' => $request_token['oauth_token']]);
+            session(['oauth_token_secret' => $request_token['oauth_token_secret']]);
 
-            return response()->json($loginUrl);
+            $url = $connection->url('oauth/authorize', array('oauth_token' => $request_token['oauth_token']));
+
+            return response()->json($url);
         } else {
             return view('layouts.setup.app');
         }
@@ -105,27 +101,21 @@ class TwitterController extends Controller
      */
     public function update(Request $request)
     {
-        $helper = $this->fb->getRedirectLoginHelper();
-        if ($request->input('state')) {
-            $helper->getPersistentDataHandler()->set('state', $request->input('state'));
+        $oauth_token = $request->input('oauth_token');
+        if(isset($oauth_token) && session('oauth_token') !== $request->input('oauth_token')) {
+            return response(500);
         }
-        try {
-          $accessToken = $helper->getAccessToken();
-        } catch(Facebook\Exceptions\FacebookResponseException $e) {
-          // When Graph returns an error
-          return response()->json($e->getMessage(), 502);
-        } catch(Facebook\Exceptions\FacebookSDKException $e) {
-          // When validation fails or other local issues
-          return response()->json($e->getMessage(), 502);
-        }
+        $connection = new TwitterOAuth(env('CONSUMER_KEY'), env('CONSUMER_SECRET'), session('oauth_token'), session('oauth_token_secret'));
+        $access_token = $connection->oauth("oauth/access_token", ["oauth_verifier" => $request->input('oauth_verifier')]);
 
-        if (isset($accessToken)) {
+        if (isset($access_token)) {
           // Logged in!
           $user = Auth::user();
-          $user->facebook_access_token = (string) $accessToken;
+          $user->twitter_oauth_token = $access_token['oauth_token'];
+          $user->twitter_oauth_token_secret = $access_token['oauth_token_secret'];
           $user->update();
 
-           return redirect('setup/facebook');
+           return redirect('setup/profile');
         }
     }
 

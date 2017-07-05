@@ -61,6 +61,8 @@ class CreateUsersTable extends Migration
             $table->string('facebook_access_token')->nullable();
             $table->string('facebook_auth_code')->nullable();
             $table->string('facebook_transaction_id')->nullable();
+            $table->string('twitter_oauth_token')->nullable();
+            $table->string('twitter_oauth_token_secret')->nullable();
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();

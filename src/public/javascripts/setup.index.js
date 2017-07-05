@@ -18853,16 +18853,19 @@ module.exports = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__vue_welcome_Welcome___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__vue_welcome_Welcome__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__vue_facebook_Facebook__ = __webpack_require__(199);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__vue_facebook_Facebook___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__vue_facebook_Facebook__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__vue_payment_Payment__ = __webpack_require__(202);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__vue_payment_Payment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__vue_payment_Payment__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__vue_profile_Profile__ = __webpack_require__(226);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__vue_profile_Profile___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__vue_profile_Profile__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__vue_location_Location__ = __webpack_require__(247);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__vue_location_Location___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__vue_location_Location__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__vue_coverage_Coverage__ = __webpack_require__(268);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__vue_coverage_Coverage___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__vue_coverage_Coverage__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__vue_outreach_Outreach__ = __webpack_require__(290);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__vue_outreach_Outreach___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__vue_outreach_Outreach__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__vue_twitter_Twitter__ = __webpack_require__(332);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__vue_twitter_Twitter___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__vue_twitter_Twitter__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__vue_payment_Payment__ = __webpack_require__(202);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__vue_payment_Payment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__vue_payment_Payment__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__vue_profile_Profile__ = __webpack_require__(226);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__vue_profile_Profile___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__vue_profile_Profile__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__vue_location_Location__ = __webpack_require__(247);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__vue_location_Location___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__vue_location_Location__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__vue_coverage_Coverage__ = __webpack_require__(268);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__vue_coverage_Coverage___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__vue_coverage_Coverage__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__vue_outreach_Outreach__ = __webpack_require__(290);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__vue_outreach_Outreach___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__vue_outreach_Outreach__);
+
 
 
 
@@ -18880,25 +18883,29 @@ module.exports = {
     name: 'Facebook',
     component: __WEBPACK_IMPORTED_MODULE_1__vue_facebook_Facebook___default.a
 }, {
+    path: '/setup/twitter',
+    name: 'Twitter',
+    component: __WEBPACK_IMPORTED_MODULE_2__vue_twitter_Twitter___default.a
+}, {
     path: '/setup/payment',
     name: 'Payment',
-    component: __WEBPACK_IMPORTED_MODULE_2__vue_payment_Payment___default.a
+    component: __WEBPACK_IMPORTED_MODULE_3__vue_payment_Payment___default.a
 }, {
     path: '/setup/profile',
     name: 'Profile',
-    component: __WEBPACK_IMPORTED_MODULE_3__vue_profile_Profile___default.a
+    component: __WEBPACK_IMPORTED_MODULE_4__vue_profile_Profile___default.a
 }, {
     path: '/setup/location',
     name: 'Location',
-    component: __WEBPACK_IMPORTED_MODULE_4__vue_location_Location___default.a
+    component: __WEBPACK_IMPORTED_MODULE_5__vue_location_Location___default.a
 }, {
     path: '/setup/coverage',
     name: 'Coverage',
-    component: __WEBPACK_IMPORTED_MODULE_5__vue_coverage_Coverage___default.a
+    component: __WEBPACK_IMPORTED_MODULE_6__vue_coverage_Coverage___default.a
 }, {
     path: '/setup/outreach',
     name: 'Outreach',
-    component: __WEBPACK_IMPORTED_MODULE_6__vue_outreach_Outreach___default.a
+    component: __WEBPACK_IMPORTED_MODULE_7__vue_outreach_Outreach___default.a
 }]);
 
 /***/ }),
@@ -19328,8 +19335,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             if (this.properties.has_facebook) {
                 window.location = this.redirectUrl;
             } else {
-                //this.$router.push({ name: 'Twitter' });
-                this.$router.push({ name: 'Payment' });
+                this.$router.push({ name: 'Twitter' });
             }
         }
     },
@@ -25736,6 +25742,256 @@ if (false) {
   module.hot.accept()
   if (module.hot.data) {
      require("vue-hot-reload-api").rerender("data-v-2326cd96", module.exports)
+  }
+}
+
+/***/ }),
+/* 332 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var Component = __webpack_require__(0)(
+  /* script */
+  __webpack_require__(333),
+  /* template */
+  __webpack_require__(334),
+  /* styles */
+  null,
+  /* scopeId */
+  null,
+  /* moduleIdentifier (server only) */
+  null
+)
+Component.options.__file = "/home/johnhuffman/InsuranceSocial.media/src/resources/javascripts/frontend/setup/vue/twitter/Twitter.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] Twitter.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-4cc2ee2a", Component.options)
+  } else {
+    hotAPI.reload("data-v-4cc2ee2a", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 333 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Progress__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Progress___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Progress__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            properties: {
+                has_twitter: false,
+                create_twitter: false
+            },
+            redirectUrl: ''
+        };
+    },
+    mounted: function mounted() {
+        var _this = this;
+
+        axios.get(window.location).then(function (response) {
+            _this.redirectUrl = response.data;
+            if (store.getState().UserStore.twitter_access_token) {
+                _this.properties.has_twitter = true;
+            }
+        });
+    },
+
+    methods: {
+        update: function update() {
+            if (this.properties.has_twitter && !store.getState().UserStore.twitter_access_token) {
+                window.location = this.redirectUrl;
+            } else {
+                this.$router.push({ name: 'Profile' });
+            }
+        }
+    },
+    components: {
+        Progress: __WEBPACK_IMPORTED_MODULE_0__Progress___default.a
+    }
+});
+
+/***/ }),
+/* 334 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', [_c('Progress', {
+    attrs: {
+      "progress": 33
+    }
+  }), _vm._v(" "), _c('div', {
+    staticClass: "w3-container w3-card-2 form"
+  }, [_vm._m(0), _vm._v(" "), _c('div', {
+    staticClass: "w3-section"
+  }, [_c('div', {
+    staticClass: "w3-panel"
+  }, [_c('div', [_vm._v("Do you have a corporate Twitter account?")]), _vm._v(" "), _c('div', {
+    staticClass: "w3-panel"
+  }, [_c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.properties.has_twitter),
+      expression: "properties.has_twitter"
+    }],
+    staticClass: "v-align",
+    attrs: {
+      "type": "radio",
+      "id": "twitter_yes"
+    },
+    domProps: {
+      "value": true,
+      "checked": _vm.properties.has_twitter,
+      "checked": _vm._q(_vm.properties.has_twitter, true)
+    },
+    on: {
+      "__c": function($event) {
+        _vm.properties.has_twitter = true
+      }
+    }
+  }), _vm._v(" "), _vm._m(1), _vm._v(" "), _c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.properties.has_twitter),
+      expression: "properties.has_twitter"
+    }],
+    staticClass: "v-align",
+    attrs: {
+      "type": "radio",
+      "id": "twitter_no"
+    },
+    domProps: {
+      "value": false,
+      "checked": _vm.properties.has_twitter,
+      "checked": _vm._q(_vm.properties.has_twitter, false)
+    },
+    on: {
+      "__c": function($event) {
+        _vm.properties.has_twitter = false
+      }
+    }
+  }), _vm._v(" "), _vm._m(2)])])]), _vm._v(" "), _c('div', {
+    staticClass: "w3-section"
+  }, [_c('h5', [_vm._v("We look forward to working with you. Please click register to finish setting up your account.")]), _vm._v(" "), _c('button', {
+    staticClass: "w3-button w3-text-white primary",
+    on: {
+      "click": function($event) {
+        _vm.update()
+      }
+    }
+  }, [_vm._v("Continue\n            ")])])])], 1)
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "w3-panel"
+  }, [_c('h3', [_vm._v("Link your Social Accounts")]), _vm._v(" "), _c('h5', [_vm._v("Please log in to Twitter"), _c('i', {
+    staticClass: "fa fa-twitter fa-2x w3-margin-left w3-text-blue v-align"
+  }), _vm._v(" in order to recieve our Twitter services.")])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('label', {
+    attrs: {
+      "for": "twitter_yes"
+    }
+  }, [_c('span', {
+    staticClass: "w3-show-inline-block w3-margin v-align"
+  }), _vm._v("Yes\n                    ")])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('label', {
+    attrs: {
+      "for": "twitter_no"
+    }
+  }, [_c('span', {
+    staticClass: "w3-show-inline-block w3-margin v-align"
+  }), _vm._v("No\n                    ")])
+}]}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-4cc2ee2a", module.exports)
   }
 }
 
