@@ -11,7 +11,7 @@ class PlansTableSeeder extends Seeder
     {
         DB::table('plans')->insert([
             'name' => 'Free Trial',
-            'price' => '0.00',
+            'price' => 'Free for 30 days',
             'tier' => '1',
             'features' => '["Insert free plan specifics here.","Insert free plan specifics here.","Insert free plan specifics here."]'
         ]);

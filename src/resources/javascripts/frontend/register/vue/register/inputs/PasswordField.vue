@@ -1,7 +1,7 @@
 <template>
     <div class="w3-section">
         <label class="w3-show-block">{{ label }}</label>
-        <div class="w3-small">Must contain min 8 characters, 1 capital letter, 1 special character</div>
+        <div class="w3-small">Must contain min 8 characters, 1 number, and 1 special character</div>
         <input class="w3-input w3-show-inline-block eighty" type="password"
             v-model="value"
             v-on:keyup="validate()">
