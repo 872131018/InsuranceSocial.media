@@ -3,6 +3,9 @@
         <Progress
             v-bind:progress="67">
         </Progress>
+        <QuickNavigation
+            v-on:route="update($event)">
+        </QuickNavigation>
         <div class="w3-container w3-card-2 form">
             <div class="w3-panel">
                 <h3>Who are we?</h3>
@@ -97,7 +100,7 @@
             <div class="w3-panel">
                 <h5>Please continue to fill out the geographic information for your profile.</h5>
                 <button class="w3-button w3-text-white primary"
-                    v-on:click="update()">Continue
+                    v-on:click="update('Location')">Continue
                 </button>
             </div>
         </div>
@@ -106,6 +109,7 @@
 
 <script>
     import Progress from '../Progress';
+    import QuickNavigation from '../QuickNavigation';
     import Field from './inputs/Field';
     import Dropdown from './inputs/Dropdown';
     import Notification from './Notification';
@@ -138,7 +142,7 @@
             }
         },
         methods: {
-            update() {
+            update(route) {
                 this.errors = [];
                 if(this.properties.name == '') {
                     this.errors.push('You must enter your full name.');
@@ -152,7 +156,7 @@
                 if(this.errors.length == 0) {
                     axios.post(window.location, this.properties).then(response => {
                         store.dispatch({ type: 'SET_PROPERTIES', data: response.data });
-                        this.$router.push({ name: 'Location' });
+                        this.$router.push({ name: route });
                     }).catch(error => {
                         this.errors.push('An error has occured, please contact support.');
                     });
@@ -161,6 +165,7 @@
         },
         components: {
             Progress,
+            QuickNavigation,
             Field,
             Dropdown,
             Notification,
