@@ -26112,12 +26112,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: {
-        progress: {
-            type: Number,
-            default: 33
+    methods: {
+        isActive: function isActive(route) {
+            return this.$route.path == "/setup/" + route;
         }
     }
 });
@@ -26128,38 +26129,52 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
-    staticClass: "progress"
+    staticClass: "w3-row w3-center form"
   }, [_c('div', {
-    staticClass: "w3-section w3-row w3-center"
-  }, [_c('div', {
-    staticClass: "primary w3-col l3 m3 s12 w3-padding w3-text-white w3-hover-shadow",
+    class: [{
+      'primary': _vm.isActive('profile')
+    }, {
+      'w3-text-white': _vm.isActive('profile')
+    }, 'w3-col', 'l3', 'm3', 's12', 'w3-card-2', 'w3-padding'],
     on: {
       "click": function($event) {
         _vm.$emit('route', 'Profile')
       }
     }
-  }, [_vm._v("Profile")]), _vm._v(" "), _c('div', {
-    staticClass: "primary w3-col l3 m3 s12 w3-padding w3-text-white w3-hover-shadow",
+  }, [_vm._v("Profile\n    ")]), _vm._v(" "), _c('div', {
+    class: [{
+      'primary': _vm.isActive('location')
+    }, {
+      'w3-text-white': _vm.isActive('location')
+    }, 'w3-col', 'l3', 'm3', 's12', 'w3-card-2', 'w3-padding'],
     on: {
       "click": function($event) {
         _vm.$emit('route', 'Location')
       }
     }
-  }, [_vm._v("Location")]), _vm._v(" "), _c('div', {
-    staticClass: "primary w3-col l3 m3 s12 w3-padding w3-text-white w3-hover-shadow",
+  }, [_vm._v("Location\n    ")]), _vm._v(" "), _c('div', {
+    class: [{
+      'primary': _vm.isActive('coverage')
+    }, {
+      'w3-text-white': _vm.isActive('coverage')
+    }, 'w3-col', 'l3', 'm3', 's12', 'w3-card-2', 'w3-padding'],
     on: {
       "click": function($event) {
         _vm.$emit('route', 'Coverage')
       }
     }
-  }, [_vm._v("Coverage")]), _vm._v(" "), _c('div', {
-    staticClass: "primary w3-col l3 m3 s12 w3-padding w3-text-white w3-hover-shadow",
+  }, [_vm._v("Coverage\n    ")]), _vm._v(" "), _c('div', {
+    class: [{
+      'primary': _vm.isActive('outreach')
+    }, {
+      'w3-text-white': _vm.isActive('outreach')
+    }, 'w3-col', 'l3', 'm3', 's12', 'w3-card-2', 'w3-padding'],
     on: {
       "click": function($event) {
         _vm.$emit('route', 'Outreach')
       }
     }
-  }, [_vm._v("Outreach")])])])
+  }, [_vm._v("Outreach\n    ")])])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
