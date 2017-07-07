@@ -6,7 +6,7 @@ const initialState = {
         'Owner',
         'Operations Manager',
         'Marketing Manager',
-        'Principle',
+        'Principal',
         'Sales Manager',
         'Other'
     ],
@@ -18,7 +18,7 @@ const initialState = {
         '16+ Employees'
     ],
     generations: [
-        '1st',
+        'No',
         '2nd',
         '3rd',
         '4th',
@@ -51,9 +51,8 @@ const initialState = {
         'Carrier',
         'Farmer\'s Mutual Hail',
         'Grinnel Mutual',
-        'GuideOne',
         'IMT Group',
-        'Plymouth Rock Insurance'
+        'Plymouth Rock Assurance'
     ],
     coverage_lines: [
         'Commercial',

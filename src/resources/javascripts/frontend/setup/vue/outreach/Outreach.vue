@@ -35,7 +35,7 @@
                 </Dropdown>
             </div>
             <div class="w3-panel">
-                <div> Selected Topics (click to remove)</div>
+                <div>Selected Topics (click to remove)</div>
                 <ul class="w3-ul w3-hoverable">
                     <li class="w3-section"
                         v-for="(topic, index) in properties.special_topics"
@@ -53,7 +53,7 @@
                 </Dropdown>
             </div>
             <div class="w3-panel">
-                <div> Selected Causes (click to remove)</div>
+                <div>Selected Causes (click to remove)</div>
                 <ul class="w3-ul w3-hoverable">
                     <li class="w3-section"
                         v-for="(cause, index) in properties.causes"
@@ -71,7 +71,7 @@
                 </Dropdown>
             </div>
             <div class="w3-panel">
-                <div> Selected Posting Days (click to remove)</div>
+                <div>Selected Posting Days (click to remove)</div>
                 <ul class="w3-ul w3-hoverable">
                     <li class="w3-section"
                         v-for="(day, index) in properties.posting_days"
@@ -82,7 +82,7 @@
                 </ul>
             </div>
             <div class="w3-panel">
-                <div>Times to post</div>
+                <div>Times to post(All times PST)</div>
                 <Radio
                     v-bind:options="times"
                     v-bind:default="properties.posting_time"
@@ -94,7 +94,7 @@
                 <Errors v-bind:errors="errors"></Errors>
             </div>
             <div class="w3-panel">
-                <h5>Continue to select the plan you wish to sign up for.</h5>
+                <h5>Congratulations! You have completed your profile. Click continue to go to your dashboard.</h5>
                 <button class="w3-button w3-text-white primary"
                     v-on:click="previous()">Previous
                 </button>

@@ -45,6 +45,8 @@ services:
         environment:
             - MYSQL_ROOT_PASSWORD=
             - MYSQL_DATABASE=InsuranceSocialMedia
+        volumes:
+          - ./data:/var/lib/mysql
     redis:
         container_name: redis
         image: redis:latest

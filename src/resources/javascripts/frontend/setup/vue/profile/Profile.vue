@@ -24,7 +24,7 @@
                     v-on:setValue="(value) => properties.email = value">
                 </Field>
                 <Field
-                    v-bind:label="'Phone'"
+                    v-bind:label="'Cell Phone'"
                     v-bind:validation="'PHONE'"
                     v-bind:default="properties.phone"
                     v-on:setValue="(value) => properties.phone = value">
@@ -80,7 +80,7 @@
                 </div>
                 <div class="w3-section">
                     <Dropdown
-                        v-bind:label="'How often would you like to be notified?'"
+                        v-bind:label="'How often would you like us to communicate with you?'"
                         v-bind:options="frequencies"
                         v-bind:default="properties.notification_frequency"
                         v-on:setOption="(option) => properties.notification_frequency = option">

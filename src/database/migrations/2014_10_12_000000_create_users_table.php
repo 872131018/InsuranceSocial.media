@@ -67,6 +67,25 @@ class CreateUsersTable extends Migration
             $table->timestamps();
             $table->softDeletes();
         });
+        /*
+        Schema::create('users', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name');
+            $table->string('email')->unique();
+            $table->string('password');
+            $table->string('api_token', 60)->unique();
+            $table->char('status', 1);
+            $table->char('role', 1);
+            $table->string('cellPhone')->nullable();
+            $table->date('effDt');
+            $table->date('expDt');
+            $table->string('couponCd');
+            $table->string('termReason');
+            $table->text('termComment');
+            $table->timestamps();
+            $table->softDeletes();
+        });
+        */
     }
 
     /**

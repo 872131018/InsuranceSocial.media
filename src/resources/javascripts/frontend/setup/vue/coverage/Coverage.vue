@@ -9,7 +9,7 @@
         <div class="w3-container w3-card-2 form">
             <div class="w3-panel">
                 <h3>What do we write?</h3>
-                <h5>Please evaluate what forms of insurance you deal with.</h5>
+                <h5>Please tell us about the lines you write and any industries you market to.</h5>
             </div>
             <div class="w3-panel">
                 <div class="w3-section">
@@ -20,7 +20,7 @@
                     </Dropdown>
                 </div>
                 <div class="w3-section">
-                    <div> Selected Carriers (click to remove)</div>
+                    <div>Selected Carriers (click to remove)</div>
                     <ul class="w3-ul w3-hoverable">
                         <li class="w3-section"
                             v-for="(carrier, index) in properties.carriers"
@@ -38,7 +38,7 @@
                     </Dropdown>
                 </div>
                 <div class="w3-section">
-                    <div> Selected Coverage Lines (click to remove)</div>
+                    <div>Selected Coverage Lines (click to remove)</div>
                     <ul class="w3-ul w3-hoverable">
                         <li class="w3-section"
                             v-for="(coverage, index) in properties.coverage_lines"
@@ -56,7 +56,7 @@
                     </Dropdown>
                 </div>
                 <div class="w3-section">
-                    <div> Selected Coverage Targets (click to remove)</div>
+                    <div>Selected Coverage Targets (click to remove)</div>
                     <ul class="w3-ul w3-hoverable">
                         <li class="w3-section"
                             v-for="(target, index) in properties.coverage_targets"
@@ -68,13 +68,13 @@
                 </div>
                 <div class="w3-section">
                     <Dropdown
-                        v-bind:label="'Current Industries'"
+                        v-bind:label="'Current industries you market to'"
                         v-bind:options="industry_currents"
                         v-on:setOption="(industry) => properties.industry_currents.push(industry)">
                     </Dropdown>
                 </div>
                 <div class="w3-section">
-                    <div> Selected Industries (click to remove)</div>
+                    <div>Selected Industries (click to remove)</div>
                     <ul class="w3-ul w3-hoverable">
                         <li class="w3-section"
                             v-for="(industry, index) in properties.industry_currents"
@@ -86,7 +86,7 @@
                 </div>
                 <div class="w3-section">
                     <Dropdown
-                        v-bind:label="'Target Industries'"
+                        v-bind:label="'Target industries for future marketing'"
                         v-bind:options="industry_targets"
                         v-on:setOption="(industry) => properties.industry_targets.push(industry)">
                     </Dropdown>
@@ -115,7 +115,7 @@
                 <Errors v-bind:errors="errors"></Errors>
             </div>
             <div class="w3-panel">
-                <h5>Continue to select the plan you wish to sign up for.</h5>
+                <h5>Click continue to select how you want to reach your followers.</h5>
                 <button class="w3-button w3-text-white primary"
                     v-on:click="previous()">Previous
                 </button>

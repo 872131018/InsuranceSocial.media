@@ -4,7 +4,7 @@
             v-model="card"
             v-on:keyup="$emit('setCard', card)">
         <label class="w3-show-block">Card Number</label>
-        <span class="w3-small">Accepted payment forms are Visa, Mastercard, and American Express</span>
+        <span class="w3-small">Accepted payment forms are Visa, Mastercard, Discover, and American Express</span>
     </div>
 </template>
 

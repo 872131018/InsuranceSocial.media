@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="w3-section">
-            <div>Ratio of Commercial to Personal business</div>
+            <div>Ratio of Commercial to Personal Business</div>
             <div class="w3-section">
                 <label class="w3-show-block">% Commercial</label>
                 <input class="w3-input w3-show-inline-block eighty" type="text"

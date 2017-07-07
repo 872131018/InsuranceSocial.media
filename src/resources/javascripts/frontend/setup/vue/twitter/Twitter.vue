@@ -10,7 +10,7 @@
             </div>
             <div class="w3-section">
                 <div class="w3-panel">
-                    <div>Do you have a corporate Twitter account?</div>
+                    <div>Do you have a Twitter account?</div>
                     <div class="w3-panel">
                         <input class="v-align" type="radio" id="twitter_yes"
                             v-bind:value="true"
@@ -51,7 +51,7 @@
             -->
             </div>
             <div class="w3-section">
-                <h5>We look forward to working with you. Please click register to finish setting up your account.</h5>
+                <h5>We look forward to working with you. Please click continue to finish setting up your account.</h5>
                 <button class="w3-button w3-text-white primary"
                     v-on:click="update()">Continue
                 </button>

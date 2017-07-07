@@ -1,10 +1,9 @@
-#remember to set these on production builds
 /src/database/seeds/UsersTableSeeder.php
 
-#remember to set this on production builds
 docker-compose.yml
 
-#remember to set this on production builds
 /src/.env
 
 npm-debug.log
+
+/data/*

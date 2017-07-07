@@ -53,7 +53,7 @@
                         </Dropdown>
                     </div>
                     <div class="w3-section">
-                        <div> Selected Counties (click to remove)</div>
+                        <div>Selected Regions (click to remove)</div>
                         <ul class="w3-ul w3-hoverable">
                             <li class="w3-section"
                                 v-for="(region, index) in properties.marketing_regions"
@@ -73,7 +73,7 @@
                         </Dropdown>
                     </div>
                     <div class="w3-section">
-                        <div> Selected States (click to remove)</div>
+                        <div>Selected States (click to remove)</div>
                         <ul class="w3-ul w3-hoverable">
                             <li class="w3-section"
                                 v-for="(state, index) in properties.marketing_states"
@@ -91,7 +91,7 @@
                         </Dropdown>
                     </div>
                     <div class="w3-section">
-                        <div> Selected Counties (click to remove)</div>
+                        <div>Selected Counties (click to remove)</div>
                         <ul class="w3-ul w3-hoverable">
                             <li class="w3-section"
                                 v-for="(counties, index) in properties.marketing_counties"
@@ -108,7 +108,7 @@
                 <Errors v-bind:errors="errors"></Errors>
             </div>
             <div class="w3-panel">
-                <h5>Continue to select the plan you wish to sign up for.</h5>
+                <h5>Click continue to select the coverages you wish to write.</h5>
                 <button class="w3-button w3-text-white primary"
                     v-on:click="previous()">Previous
                 </button>
