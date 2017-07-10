@@ -77,13 +77,13 @@ class RegisterController extends Controller
         if(!isset($data['discount'])) {
             $data['discount'] = '';
         }
-        
+
         return User::create([
                 'name' => $data['name'],
                 'email' => $data['email'],
                 'password' => bcrypt($data['password']),
                 'api_token' => str_random(60),
-                'discount' => $data['discount']
+                'couponCd' => $data['discount']
             ]);
     }
 

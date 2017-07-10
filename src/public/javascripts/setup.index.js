@@ -15648,7 +15648,7 @@ var initialState = {
     counties: __WEBPACK_IMPORTED_MODULE_1__counties_json___default.a.counties,
     targets: ['Region', 'State and Counties'],
     regions: ['Northern California', 'Southern California', 'Middle Atlantic', 'Midwest', 'New England', 'South', 'Southwest', 'West'],
-    carriers: ['Carrier', 'Farmer\'s Mutual Hail', 'Grinnel Mutual', 'IMT Group', 'Plymouth Rock Assurance'],
+    carriers: ['Carrier', 'Farmer\'s Mutual Hail', 'Grinnell Mutual', 'IMT Group', 'Plymouth Rock Assurance'],
     coverage_lines: ['Commercial', 'Personal', 'Benefits'],
     coverage_targets: ['Auto Insurance - Commercial', 'Auto Insurance - Personal', 'Aviation Insurance', 'Boat Insurance', 'Boiler and Machinery Insurance', 'Builder\'s Risk Insurance', 'Business Interruption Insurance', 'Business Owners Policy', 'Cancer Insurance', 'Church Insurance', 'Classic Car Insurance', 'Commercial Property Insurance', 'Condo Insurance', 'Crime Insurance', 'Crop Insurance', 'Cyber Liability Insurance', 'Dental Insurance', 'Directors and Officers Insurance', 'Disability Insurance - Long-Term', 'Disability Insurance - Short-Term', 'Dwelling/Fire Insurance', 'Earthquake Insurance', 'Employment Practices Liability', 'Errors and Omissions Insurance', 'Farm Insurance', 'Fidelity Bond', 'Flood Insurance', 'Gap Insurance', 'General Liability Insurance', 'Health Insurance - Group', 'Health Insurance - Individual', 'Home Insurance', 'Identity Theft Insurance', 'Individual Retirement Accounts', 'Landlord Insurance', 'Life Insurance - Group', 'Life Insurance - Individual', 'Long-term Care', 'Marine Cargo Insurance', 'Medicare Supplement Insurance', 'Mobile Home Insurance', 'Motorcycle Insurance', 'Mutual Funds', 'Personal Identity Theft Insurance', 'Pet  Insurance', 'Professional Liability Insurance', 'Public Liability Insurance', 'Renters Insurance', 'RV Insurance', 'Snowmobile Insurance', 'Surety Bond', 'Travel Insurance', 'Umbrella Insurance', 'Vision Insurance', 'Workers\' Compensation', 'Youth Sports Protection Insurance'],
     industry_currents: ['Agribusiness', 'Barber and Beauty', 'Commercial Trucking', 'Contractor', 'Convenience Stores', 'Feed, Seed, Grain', 'Florist', 'Garage and Auto', 'Golf', 'Photographer', 'Religious Organization', 'Restaurant', 'Storage Warehouse', 'Veterinarian'],
@@ -25528,7 +25528,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     })])
   }))]), _vm._v(" "), _c('div', {
     staticClass: "w3-panel"
-  }, [_c('div', [_vm._v("Times to post(All times PST)")]), _vm._v(" "), _c('Radio', {
+  }, [_c('div', [_vm._v("Times to post(all times PST)")]), _vm._v(" "), _c('Radio', {
     attrs: {
       "options": _vm.times,
       "default": _vm.properties.posting_time

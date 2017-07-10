@@ -82,7 +82,7 @@
                 </ul>
             </div>
             <div class="w3-panel">
-                <div>Times to post(All times PST)</div>
+                <div>Times to post(all times PST)</div>
                 <Radio
                     v-bind:options="times"
                     v-bind:default="properties.posting_time"

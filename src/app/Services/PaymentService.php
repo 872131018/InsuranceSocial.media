@@ -12,6 +12,10 @@ use net\authorize\api\contract\v1\TransactionRequestType;
 
 use net\authorize\api\contract\v1\CreateTransactionRequest;
 
+use net\authorize\api\contract\v1\CustomerProfileBaseType;
+
+use net\authorize\api\contract\v1\CreateCustomerProfileFromTransactionRequest;
+
 class PaymentService
 {
     protected $merchantAuthenticationType;
@@ -56,5 +60,19 @@ class PaymentService
         $op->setDataDescriptor($request->input('dataDescriptor'));
         $op->setDataValue($request->input('dataValue'));
         return $op;
+    }
+
+    public function createProfile($user = null, $transId = 0) {
+        $customerProfile = new CustomerProfileBaseType();
+        $customerProfile->setMerchantCustomerId(time());
+        $customerProfile->setEmail($user->email);
+        $customerProfile->setDescription('Name: '.$user->name.' Email: '.$user->email);
+
+        $request = new CreateCustomerProfileFromTransactionRequest();
+        $request->setMerchantAuthentication($this->merchantAuthenticationType);
+        $request->setTransId($transId);
+        $request->setCustomer($customerProfile);
+
+        return $request;
     }
 }

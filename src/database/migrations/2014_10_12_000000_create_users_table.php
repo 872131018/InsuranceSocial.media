@@ -13,6 +13,7 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
+        /*
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
@@ -67,25 +68,28 @@ class CreateUsersTable extends Migration
             $table->timestamps();
             $table->softDeletes();
         });
-        /*
+        */
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
-            $table->string('api_token', 60)->unique();
-            $table->char('status', 1);
-            $table->char('role', 1);
+            $table->char('role', 1)->nullable();
+            $table->char('status', 1)->nullable();
             $table->string('cellPhone')->nullable();
-            $table->date('effDt');
-            $table->date('expDt');
-            $table->string('couponCd');
-            $table->string('termReason');
-            $table->text('termComment');
+            $table->string('titleCd')->nullable();
+            $table->date('effDt')->nullable();
+            $table->date('expDt')->nullable();
+            $table->string('couponCd')->nullable();
+            $table->string('termReason')->nullable();
+            $table->text('termComment')->nullable();
+            $table->string('customerProfileId')->nullable();
+            $table->string('customerPaymentProfileId')->nullable();
+            $table->string('api_token', 60)->unique();
             $table->timestamps();
             $table->softDeletes();
         });
-        */
+
     }
 
     /**

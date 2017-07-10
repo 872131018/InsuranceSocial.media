@@ -55,60 +55,82 @@ class PaymentController extends Controller
     public function store(Request $request)
     {
         $controller = new AnetController\CreateTransactionController($this->paymentService->getTransactionRequest($request));
-
         $response = $controller->executeWithApiResponse(\net\authorize\api\constants\ANetEnvironment::SANDBOX);
-
-        if ($response != null) {
+        /**
+        * ERROR no response
+        */
+        if($response == null) {
+            $data = [
+                'error' => 'FAILED',
+                'errorCode' => 'No Code',
+                'errorMessage' => 'No response returned'
+            ];
+            return response()->json($data, 501);
+        }
+        /**
+        * ERROR problem with response code
+        */
+        if($response->getMessages()->getResultCode() != 'Ok') {
             $data = [];
-            if($response->getMessages()->getResultCode() =='Ok') {
-                $tresponse = $response->getTransactionResponse();
-
-                if ($tresponse != null && $tresponse->getMessages() != null) {
-                    $data = [
-                        'responseCode' => $tresponse->getResponseCode(),
-                        'authCode' => $tresponse->getAuthCode(),
-                        'transactionId' => $tresponse->getTransId(),
-                        'code' => $tresponse->getMessages()[0]->getCode(),
-                        'description' => $tresponse->getMessages()[0]->getDescription()
-                    ];
-
-                    $user = Auth::user();
-                    $user->discount = $request->input('discount');
-                    $user->plan = json_encode($request->input('customerData')['plan']);
-                    $user->facebook = $request->input('customerData')['facebook'];
-                    $user->twitter = $request->input('customerData')['twitter'];
-                    $user->auth_code = $tresponse->getAuthCode();
-                    $user->transaction_id = $tresponse->getTransId();
-                    $user->update();
-                } else {
-                    if($tresponse->getErrors() != null) {
-                        $data = [
-                            'error' => 'FAILED!',
-                            'errorCode' => $tresponse->getErrors()[0]->getErrorCode(),
-                            'errorMessage' => $tresponse->getErrors()[0]->getErrorText()
-                        ];
-                    }
-                }
+            if ($response->getTransactionResponse() != null && $response->getTransactionResponse()->getErrors() != null) {
+                $data = [
+                    'error' => 'FAILED',
+                    'errorCode' => $response->getTransactionResponse()->getErrors()[0]->getErrorCode(),
+                    'errorMessage' => $response->getTransactionResponse()->getErrors()[0]->getErrorText()
+                ];
             } else {
-                $tresponse = $response->getTransactionResponse();
-
-                if($tresponse != null && $tresponse->getErrors() != null) {
-                    $data = [
-                        'error' => 'FAILED!',
-                        'errorCode' => $tresponse->getErrors()[0]->getErrorCode(),
-                        'errorMessage' => $tresponse->getErrors()[0]->getErrorText()
-                    ];
-                } else {
-                    $data = [
-                        'error' => 'FAILED!',
-                        'errorCode' => $response->getMessages()->getMessage()[0]->getCode(),
-                        'errorMessage' => $response->getMessages()->getMessage()[0]->getText()
-                    ];
-                }
+                $data = [
+                    'error' => 'FAILED',
+                    'errorCode' => $response->getMessages()->getMessage()[0]->getCode(),
+                    'errorMessage' => $response->getMessages()->getMessage()[0]->getCode()
+                ];
             }
-            return response()->json($data);
+            return response()->json($data, 501);
+        }
+        /**
+        * Error response ok transaction failed
+        */
+        if($response->getMessages()->getResultCode() == 'Ok') {
+            $data = [];
+            if ($response->getTransactionResponse()->getErrors() != null) {
+                $data = [
+                    'error' => 'FAILED',
+                    'errorCode' => $response->getTransactionResponse()->getErrors()[0]->getErrorCode(),
+                    'errorMessage' => $response->getTransactionResponse()->getErrors()[0]->getErrorText()
+                ];
+                return response()->json($data, 501);
+            }
+        }
+        /**
+        * Success transaction ok capture ID
+        */
+        $transactionId = 0;
+        if($response->getMessages()->getResultCode() == 'Ok') {
+            $data = [];
+            if ($response->getTransactionResponse() != null && $response->getTransactionResponse()->getMessages() != null) {
+                $transactionId = $response->getTransactionResponse()->getTransId();
+            }
+        }
+        /**
+        * Create customer profile from transaction
+        */
+        $controller = new AnetController\CreateCustomerProfileFromTransactionController($this->paymentService->createProfile(Auth::user(), $transactionId));
+        $response = $controller->executeWithApiResponse(\net\authorize\api\constants\ANetEnvironment::SANDBOX);
+        if(($response != null) && ($response->getMessages()->getResultCode() == "Ok") ) {
+            $user = Auth::user();
+            $user->couponCd = $request->input('discount');
+            $user->customerProfileId = $response->getCustomerProfileId();
+            $user->customerPaymentProfileId = $response->getCustomerPaymentProfileIdList()[0];
+            $user->update();
+
+            return response()->json($user);
         } else {
-            return response()->json('No Response Returned');
+            $data = [
+                'error' => 'FAILED',
+                'errorCode' => $response->getMessages()->getMessage()[0]->getCode(),
+                'errorMessage' => $response->getMessages()->getMessage()[0]->getText()
+            ];
+            return response()->json($data, 501);
         }
     }
 

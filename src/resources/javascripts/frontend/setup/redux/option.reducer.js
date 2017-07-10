@@ -50,7 +50,7 @@ const initialState = {
     carriers: [
         'Carrier',
         'Farmer\'s Mutual Hail',
-        'Grinnel Mutual',
+        'Grinnell Mutual',
         'IMT Group',
         'Plymouth Rock Assurance'
     ],
