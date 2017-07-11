@@ -1,8 +1,10 @@
 {
     "/javascripts/setup.index.js": "/javascripts/setup.index.js",
+    "/javascripts/checkout.index.js": "/javascripts/checkout.index.js",
     "/javascripts/register.index.js": "/javascripts/register.index.js",
     "/javascripts/login.index.js": "/javascripts/login.index.js",
     "/stylesheets/login.css": "/stylesheets/login.css",
     "/stylesheets/register.css": "/stylesheets/register.css",
+    "/stylesheets/checkout.css": "/stylesheets/checkout.css",
     "/stylesheets/setup.css": "/stylesheets/setup.css"
 }

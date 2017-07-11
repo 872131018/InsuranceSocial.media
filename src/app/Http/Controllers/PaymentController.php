@@ -32,7 +32,7 @@ class PaymentController extends Controller
             ];
             return response()->json($data);
         } else {
-            return view('layouts.register.app');
+            return view('layouts.checkout.app');
         }
     }
 

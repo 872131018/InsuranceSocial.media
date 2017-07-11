@@ -18,40 +18,28 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 /**
- * Overwrite the default functionality to deliver the SPA
+ * Deliver the login SPA
  *
  * @return \Illuminate\Http\Response
  */
 Route::get('/login', 'Auth\LoginController@index')->name('login');
 
 /**
- * Overwrite the default functionality to deliver the SPA
+ * Deliver the registration SPA and handle posts
  *
  * @return \Illuminate\Http\Response
  */
 Route::get('/register', 'Auth\RegisterController@index')->name('register');
 
-/**
- * Overwrite the default functionality to deliver the SPA
- *
- * @return \Illuminate\Http\Response
- */
 Route::get('/register/{discount?}', 'Auth\RegisterController@index');
 
-/**
- * Overwrite the default functionality to deliver the SPA
- *
- * @return \Illuminate\Http\Response
- */
 Route::post('/register', 'Auth\RegisterController@register');
 
-/**
- * Overwrite the default functionality to deliver the SPA
- *
- * @return \Illuminate\Http\Response
- */
 Route::post('/register/{discount?}', 'Auth\RegisterController@register');
 
+/**
+* All requirements for user having logged in
+*/
 Route::middleware(['auth'])->group(function() {
 
     Route::get('/corporate/{discount?}', 'CorporateController@index');
@@ -66,12 +54,12 @@ Route::middleware(['auth'])->group(function() {
 
            return response()->json($data);
        } else {
-           return view('layouts.register.app');
+           return view('layouts.checkout.app');
        }
    });
 
     Route::get('/social-media', function () {
-        return view('layouts.register.app');
+        return view('layouts.checkout.app');
     });
 
     Route::get('/payment', 'PaymentController@index');

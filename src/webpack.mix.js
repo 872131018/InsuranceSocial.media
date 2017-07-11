@@ -16,7 +16,7 @@ mix.js('resources/assets/js/app.js', 'public/js')
 */
 
 /**
-* STYLESHEETS FRONTEND
+* Login styles
 */
 mix.combine([
     'node_modules/w3-css/w3.css',
@@ -24,18 +24,26 @@ mix.combine([
 ], 'public/stylesheets/login.css');
 
 /**
-* STYLESHEETS FRONTEND
+* Register Styles
+*/
+mix.combine([
+    'node_modules/w3-css/w3.css',
+    'resources/stylesheets/frontend/frontend.styles.css',
+    'resources/stylesheets/frontend/checkbox.terms.styles.css',
+], 'public/stylesheets/register.css');
+
+/**
+* Checkout Styles
 */
 mix.combine([
     'node_modules/w3-css/w3.css',
     'resources/stylesheets/frontend/frontend.styles.css',
     'resources/stylesheets/frontend/checkbox.styles.css',
-    'resources/stylesheets/frontend/checkbox.terms.styles.css',
     'resources/stylesheets/frontend/radio.styles.css',
-], 'public/stylesheets/register.css');
+], 'public/stylesheets/checkout.css');
 
 /**
-* STYLESHEETS FRONTEND
+* Setup Styles
 */
 mix.combine([
     'node_modules/w3-css/w3.css',
@@ -45,16 +53,21 @@ mix.combine([
 ], 'public/stylesheets/setup.css');
 
 /**
-* JAVASCRIPTS FRONTEND
+* Login SPA
 */
 mix.js('resources/javascripts/frontend/login/index.js', 'public/javascripts/login.index.js');
 
 /**
-* JAVASCRIPTS FRONTEND
+* Registration SPA
 */
 mix.js('resources/javascripts/frontend/register/index.js', 'public/javascripts/register.index.js');
 
 /**
-* JAVASCRIPTS FRONTEND
+* Checkout SPA
+*/
+mix.js('resources/javascripts/frontend/checkout/index.js', 'public/javascripts/checkout.index.js');
+
+/**
+* Setup SPA
 */
 mix.js('resources/javascripts/frontend/setup/index.js', 'public/javascripts/setup.index.js');

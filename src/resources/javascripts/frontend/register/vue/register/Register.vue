@@ -99,11 +99,10 @@
                 }
                 if(this.errors.length == 0) {
                     axios.post(window.location, this.properties).then(response => {
-                        store.dispatch({ type: 'SET_USER', data: response.data });
                         if(response.data.discount) {
-                            this.$router.push({ name: 'Corporate' });
+                            window.location = `${ window.base_url }/corporate`;
                         } else {
-                            this.$router.push({ name: 'Select' });
+                            window.location = `${ window.base_url }/select`;
                         }
                     }).catch(error => {
                         if(error.email) {
