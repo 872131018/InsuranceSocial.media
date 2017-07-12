@@ -19,7 +19,7 @@
         <div class="w3-panel">
             <h3>Payment Method</h3>
             <h5>Please enter a form of payment to complete registration.</h5>
-            <p>The first 30 days of the Insurance Social.Media Essential plan are free. We ask for your credit card to prevent any service interruption should you keep your account open after the trial period. Your card will not be charged for the trial period. After the trial, you will be charged for each month. You can cancel at any time.</p>
+            <p>The first 30 days of the Insurance Social Media Essential plan are free. We ask for your credit card to prevent any service interruption should you keep your account open after the trial period. Your card will not be charged for the trial period. After the trial, you will be charged for each month. You can cancel at any time.</p>
         </div>
         <div class="w3-panel">
             <Card v-on:setCard="(card) => properties.card = card"></Card>
@@ -27,11 +27,10 @@
         <div class="w3-panel">
             <Expiration
                 v-on:setMonth="(month) => properties.month = month.value"
-                v-on:setYear="(year) => properties.year = year">
+                v-on:setYear="(year) => properties.year = year"
+                v-on:setCode="(code) => properties.code = code">
             </Expiration>
-        </div>
-        <div class="w3-panel">
-            <CCV v-on:setCode="(code) => properties.code = code"></CCV>
+            <div>Expiration Month and Year(YYYY) with Securty Code</div>
         </div>
         <div class="w3-panel">
             <Name v-on:setName="(name) => properties.name = name"></Name>
@@ -70,7 +69,7 @@
             }
         },
         mounted() {
-            axios.get(window.location).then(response => {
+            axios.get(`${ window.base_url }/api/payment`).then(response => {
                 this.properties.apiLoginID = response.data.apiLoginID;
                 this.properties.clientKey = response.data.clientKey;
             });
@@ -100,20 +99,17 @@
                         clientKey: this.properties.clientKey
                     }
                 };
-
+                
                 Accept.dispatchData(secureData, (response) => {
-                    let total = parseInt(this.plan.price) - parseInt(this.reduction);
-                    total = total.toFixed(2).toString();
-
                     const transaction = {
-                        total: total,
+                        total: '1.00',
                         dataDescriptor: response.opaqueData.dataDescriptor,
                         dataValue: response.opaqueData.dataValue,
                         customerData: store.getState().UserStore
                     };
 
                     axios.post(window.location, transaction).then(response => {
-                        window.location = window.base_url + '/setup/welcome';
+                        window.location = `${ window.base_url }/setup/welcome`;
                     });
 
                 });

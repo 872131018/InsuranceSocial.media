@@ -44,7 +44,7 @@ class LoginController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function showLoginForm()
     {
         return view('layouts.auth.app');
     }

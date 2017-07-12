@@ -1,6 +1,8 @@
 <?php
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Auth;
+
 use App\Plan;
 
 /*
@@ -18,13 +20,6 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 /**
- * Deliver the login SPA
- *
- * @return \Illuminate\Http\Response
- */
-Route::get('/login', 'Auth\LoginController@index')->name('login');
-
-/**
  * Deliver the registration SPA and handle posts
  *
  * @return \Illuminate\Http\Response
@@ -38,35 +33,51 @@ Route::post('/register', 'Auth\RegisterController@register');
 Route::post('/register/{discount?}', 'Auth\RegisterController@register');
 
 /**
+* Deliver the SPA that require authentication
+*/
+Route::middleware(['auth'])->group(function() {
+    Route::get('/select', 'CheckoutController@index');
+
+    Route::get('/social-media', 'CheckoutController@index');
+
+    Route::get('/payment', 'CheckoutController@index');
+});
+/**
+* API routes guarded by authentication
+*/
+Route::middleware(['auth:api'])->group(function() {
+    Route::get('/api/user', function (Request $request) {
+        return response()->json(Auth::user());
+    });
+
+    Route::get('/api/plans', function (Request $request) {
+        $data = [];
+        foreach (Plan::all() as $key => $value) {
+            $value['features'] = json_decode($value['features']);
+            array_push($data, $value);
+        }
+        return response()->json($data);
+    });
+
+    Route::get('/api/payment', function (Request $request) {
+        $data = [
+            'apiLoginID' => env('API_LOGIN_ID'),
+            'clientKey' => env('CLIENT_KEY')
+        ];
+        return response()->json($data);
+    });
+
+    Route::post('/payment', 'PaymentController@store');
+
+    Route::put('/payment/{discount}', 'PaymentController@update');
+});
+
+/**
 * All requirements for user having logged in
 */
 Route::middleware(['auth'])->group(function() {
 
     Route::get('/corporate/{discount?}', 'CorporateController@index');
-
-   Route::get('/select', function (Request $request) {
-       if($request->wantsJson()) {
-           $data = [];
-           foreach (Plan::all() as $key => $value) {
-               $value['features'] = json_decode($value['features']);
-               array_push($data, $value);
-           }
-
-           return response()->json($data);
-       } else {
-           return view('layouts.checkout.app');
-       }
-   });
-
-    Route::get('/social-media', function () {
-        return view('layouts.checkout.app');
-    });
-
-    Route::get('/payment', 'PaymentController@index');
-
-    Route::post('/payment', 'PaymentController@store');
-
-    Route::put('/payment/{discount}', 'PaymentController@update');
 
     /**
      * Routes for the setup app

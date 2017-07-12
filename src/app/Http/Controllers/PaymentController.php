@@ -10,6 +10,8 @@ use App\Services\PaymentService;
 
 use net\authorize\api\controller as AnetController;
 
+use Carbon\Carbon;
+
 class PaymentController extends Controller
 {
     protected $paymentService;
@@ -116,21 +118,31 @@ class PaymentController extends Controller
         */
         $controller = new AnetController\CreateCustomerProfileFromTransactionController($this->paymentService->createProfile(Auth::user(), $transactionId));
         $response = $controller->executeWithApiResponse(\net\authorize\api\constants\ANetEnvironment::SANDBOX);
-        if(($response != null) && ($response->getMessages()->getResultCode() == "Ok") ) {
-            $user = Auth::user();
-            $user->couponCd = $request->input('discount');
-            $user->customerProfileId = $response->getCustomerProfileId();
-            $user->customerPaymentProfileId = $response->getCustomerPaymentProfileIdList()[0];
-            $user->update();
-
-            return response()->json($user);
-        } else {
+        /**
+        * Error problem creating customer payment profile
+        */
+        if(($response == null) || ($response->getMessages()->getResultCode() != "Ok") ) {
             $data = [
                 'error' => 'FAILED',
                 'errorCode' => $response->getMessages()->getMessage()[0]->getCode(),
                 'errorMessage' => $response->getMessages()->getMessage()[0]->getText()
             ];
             return response()->json($data, 501);
+        }
+        /**
+        * Success sign up user with gathered information
+        */
+        if(($response != null) && ($response->getMessages()->getResultCode() == "Ok") ) {
+            $user = Auth::user();
+            $user->status = 'N';
+            $user->role = 'A';
+            $user->effDt = new Carbon('first day of next month');
+            $user->couponCd = $request->input('discount');
+            $user->customerProfileId = $response->getCustomerProfileId();
+            $user->customerPaymentProfileId = $response->getCustomerPaymentProfileIdList()[0];
+            $user->update();
+
+            return response()->json($user);
         }
     }
 

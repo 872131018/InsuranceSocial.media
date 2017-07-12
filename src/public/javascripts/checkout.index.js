@@ -15258,6 +15258,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 window.axios = __webpack_require__(12);
 axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 axios.defaults.headers.common['X-CSRF-TOKEN'] = document.head.querySelector('meta[name="csrf-token"]').content;
+axios.defaults.headers.common['Authorization'] = 'Bearer ' + document.querySelector('meta[name="api-token"]').content;
 
 
 window.store = __WEBPACK_IMPORTED_MODULE_0__root_redux__["a" /* default */];
@@ -15320,7 +15321,6 @@ module.exports = function () {
 
     switch (action.type) {
         case 'SET_USER':
-            //Lockr.set('FrontendContents', action.data);
             user = {
                 id: action.data.id,
                 name: action.data.name,
@@ -15337,11 +15337,6 @@ module.exports = function () {
             user.twitter = action.data.twitter;
             break;
         default:
-            /*
-            if(Lockr.get('FrontendContents')) {
-                contents = Lockr.get('FrontendContents');
-            }
-            */
             break;
     }
     return JSON.parse(JSON.stringify(user));
@@ -15890,11 +15885,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     mounted: function mounted() {
         var _this = this;
 
-        if (store.getState().UserStore.plan) {
-            this.selected = store.getState().UserStore.plan;
-        }
-        axios.get(window.location).then(function (response) {
+        axios.get(window.base_url + '/api/plans').then(function (response) {
             _this.plans = response.data;
+            if (store.getState().UserStore.plan) {
+                _this.selected = store.getState().UserStore.plan;
+            }
         });
     },
 
@@ -16533,7 +16528,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 
 
@@ -16562,7 +16556,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     mounted: function mounted() {
         var _this = this;
 
-        axios.get(window.location).then(function (response) {
+        axios.get(window.base_url + '/api/payment').then(function (response) {
             _this.properties.apiLoginID = response.data.apiLoginID;
             _this.properties.clientKey = response.data.clientKey;
         });
@@ -16583,8 +16577,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             });
         },
         sendPaymentDataToAnet: function sendPaymentDataToAnet() {
-            var _this3 = this;
-
             var secureData = {
                 cardData: {
                     cardNumber: this.properties.card,
@@ -16599,11 +16591,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             };
 
             Accept.dispatchData(secureData, function (response) {
-                var total = parseInt(_this3.plan.price) - parseInt(_this3.reduction);
-                total = total.toFixed(2).toString();
-
                 var transaction = {
-                    total: total,
+                    total: '1.00',
                     dataDescriptor: response.opaqueData.dataDescriptor,
                     dataValue: response.opaqueData.dataValue,
                     customerData: store.getState().UserStore
@@ -17014,6 +17003,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Month___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Month__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Year__ = __webpack_require__(170);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Year___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__Year__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__CCV__ = __webpack_require__(174);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__CCV___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__CCV__);
 //
 //
 //
@@ -17022,6 +17013,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+
 
 
 
@@ -17029,7 +17021,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
     components: {
         Month: __WEBPACK_IMPORTED_MODULE_0__Month___default.a,
-        Year: __WEBPACK_IMPORTED_MODULE_1__Year___default.a
+        Year: __WEBPACK_IMPORTED_MODULE_1__Year___default.a,
+        CCV: __WEBPACK_IMPORTED_MODULE_2__CCV___default.a
     }
 });
 
@@ -17156,7 +17149,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
-    staticClass: "w3-left fifty v-align"
+    staticClass: "w3-col l3 m3 s12 w3-margin-right v-align"
   }, [_c('div', {
     staticClass: "w3-dropdown-hover"
   }, [_c('button', {
@@ -17253,7 +17246,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
-    staticClass: "w3-right fifty v-align"
+    staticClass: "w3-col l3 m3 s12 v-align"
   }, [_c('input', {
     directives: [{
       name: "model",
@@ -17294,24 +17287,20 @@ if (false) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
-    staticClass: "eighty"
+    staticClass: "eighty w3-row-padding"
   }, [_c('Month', {
     on: {
-      "setMonth": function (month) {
-        _vm.$emit('setMonth', month)
-      }
+      "setMonth": function (month) { return _vm.$emit('setMonth', month); }
     }
   }), _vm._v(" "), _c('Year', {
     on: {
-      "setYear": function (year) {
-        _vm.$emit('setYear', year)
-      }
+      "setYear": function (year) { return _vm.$emit('setYear', year); }
     }
-  }), _vm._v(" "), _c('p', {
-    staticStyle: {
-      "clear": "both"
+  }), _vm._v(" "), _c('CCV', {
+    on: {
+      "setCode": function (code) { return _vm.$emit('setCode', code); }
     }
-  }, [_vm._v("Expiration Month and Year")])], 1)
+  })], 1)
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
@@ -17375,7 +17364,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -17391,7 +17379,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
-    staticClass: "w3-section"
+    staticClass: "w3-col l3 m3 s12 v-align"
   }, [_c('input', {
     directives: [{
       name: "model",
@@ -17399,9 +17387,10 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       value: (_vm.code),
       expression: "code"
     }],
-    staticClass: "w3-input w3-show-inline-block eighty",
+    staticClass: "w3-input",
     attrs: {
-      "type": "text"
+      "type": "text",
+      "placeholder": "CCV"
     },
     domProps: {
       "value": (_vm.code)
@@ -17415,9 +17404,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.code = $event.target.value
       }
     }
-  }), _vm._v(" "), _c('label', {
-    staticClass: "w3-show-block"
-  }, [_vm._v("Card Verification")])])
+  })])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
@@ -17569,15 +17556,10 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('Expiration', {
     on: {
       "setMonth": function (month) { return _vm.properties.month = month.value; },
-      "setYear": function (year) { return _vm.properties.year = year; }
-    }
-  })], 1), _vm._v(" "), _c('div', {
-    staticClass: "w3-panel"
-  }, [_c('CCV', {
-    on: {
+      "setYear": function (year) { return _vm.properties.year = year; },
       "setCode": function (code) { return _vm.properties.code = code; }
     }
-  })], 1), _vm._v(" "), _c('div', {
+  }), _vm._v(" "), _c('div', [_vm._v("Expiration Month and Year(YYYY) with Securty Code")])], 1), _vm._v(" "), _c('div', {
     staticClass: "w3-panel"
   }, [_c('Name', {
     on: {
@@ -17600,7 +17582,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "w3-panel"
-  }, [_c('h3', [_vm._v("Payment Method")]), _vm._v(" "), _c('h5', [_vm._v("Please enter a form of payment to complete registration.")]), _vm._v(" "), _c('p', [_vm._v("The first 30 days of the Insurance Social.Media Essential plan are free. We ask for your credit card to prevent any service interruption should you keep your account open after the trial period. Your card will not be charged for the trial period. After the trial, you will be charged for each month. You can cancel at any time.")])])
+  }, [_c('h3', [_vm._v("Payment Method")]), _vm._v(" "), _c('h5', [_vm._v("Please enter a form of payment to complete registration.")]), _vm._v(" "), _c('p', [_vm._v("The first 30 days of the Insurance Social Media Essential plan are free. We ask for your credit card to prevent any service interruption should you keep your account open after the trial period. Your card will not be charged for the trial period. After the trial, you will be charged for each month. You can cancel at any time.")])])
 }]}
 module.exports.render._withStripped = true
 if (false) {
@@ -17670,13 +17652,27 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            loading: 0
+        };
+    },
     mounted: function mounted() {
+        var _this = this;
+
         console.log('App mounted.');
+
+        this.loading++;
+        axios.get(window.base_url + '/api/user').then(function (response) {
+            store.dispatch({ type: 'SET_USER', data: response.data });
+            _this.loading--;
+        });
     },
 
     components: {
@@ -18197,9 +18193,9 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('Navigation'), _vm._v(" "), _c('div', {
+  return _c('div', [_c('Navigation'), _vm._v(" "), (_vm.loading == 0) ? _c('div', {
     staticClass: "w3-container w3-padding-32 bgimg2"
-  }, [_c('router-view')], 1), _vm._v(" "), _c('Foot')], 1)
+  }, [_c('router-view')], 1) : _vm._e(), _vm._v(" "), _c('Foot')], 1)
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {

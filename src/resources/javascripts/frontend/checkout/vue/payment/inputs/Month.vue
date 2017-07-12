@@ -1,5 +1,5 @@
 <template>
-    <div class="w3-left fifty v-align">
+    <div class="w3-col l3 m3 s12 w3-margin-right v-align">
         <div class="w3-dropdown-hover">
             <button class="w3-button">{{ selected.name }}
                 <i class="fa fa-caret-down"></i>

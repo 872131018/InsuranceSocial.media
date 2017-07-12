@@ -33,11 +33,11 @@
             }
         },
         mounted() {
-            if(store.getState().UserStore.plan) {
-                this.selected = store.getState().UserStore.plan;
-            }
-            axios.get(window.location).then(response => {
+            axios.get(`${ window.base_url }/api/plans`).then(response => {
                 this.plans = response.data;
+                if(store.getState().UserStore.plan) {
+                    this.selected = store.getState().UserStore.plan;
+                }
             });
         },
         methods: {

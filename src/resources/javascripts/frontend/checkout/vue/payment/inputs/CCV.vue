@@ -1,9 +1,8 @@
 <template>
-    <div class="w3-section">
-        <input class="w3-input w3-show-inline-block eighty" type="text"
+    <div class="w3-col l3 m3 s12 v-align">
+        <input class="w3-input" type="text" placeholder="CCV"
             v-model="code"
             v-on:keyup="$emit('setCode', code)">
-        <label class="w3-show-block">Card Verification</label>
     </div>
 </template>
 
