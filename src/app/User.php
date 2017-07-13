@@ -28,4 +28,12 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    /**
+     * Get the fbAccount record associated with the user.
+     */
+    public function fb()
+    {
+        return $this->hasOne('App\FbAccount', 'email');
+    }
 }
