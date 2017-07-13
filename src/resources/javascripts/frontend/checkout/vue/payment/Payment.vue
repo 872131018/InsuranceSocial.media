@@ -11,12 +11,6 @@
             </Cart>
         </div>
         <div class="w3-panel">
-            <Discount
-                v-bind:discount="discount"
-                v-on:setDiscount="setDiscount($event)">
-            </Discount>
-        </div>
-        <div class="w3-panel">
             <h3>Payment Method</h3>
             <h5>Please enter a form of payment to complete registration.</h5>
             <p>The first 30 days of the Insurance Social Media Essential plan are free. We ask for your credit card to prevent any service interruption should you keep your account open after the trial period. Your card will not be charged for the trial period. After the trial, you will be charged for each month. You can cancel at any time.</p>
@@ -44,7 +38,6 @@
 </template>
 
 <script>
-    import Discount from './inputs/Discount';
     import Cart from './Cart';
     import Card from './inputs/Card';
     import Expiration from './inputs/Expiration';
@@ -56,7 +49,6 @@
             return {
                 plan: {},
                 reduction: '0.00',
-                discount: store.getState().UserStore.discount,
                 properties: {
                     card: '',
                     month: '',
@@ -75,17 +67,8 @@
             });
 
             this.plan = store.getState().UserStore.plan;
-
-            if(this.discount) {
-                this.setDiscount(this.discount);
-            }
         },
         methods: {
-            setDiscount(discount) {
-                axios.put(`${ window.location }/${ discount }`,).then(response => {
-                    this.reduction = response.data;
-                });
-            },
             sendPaymentDataToAnet() {
                 const secureData = {
                     cardData: {
@@ -99,7 +82,7 @@
                         clientKey: this.properties.clientKey
                     }
                 };
-                
+
                 Accept.dispatchData(secureData, (response) => {
                     const transaction = {
                         total: '1.00',
@@ -117,7 +100,6 @@
             },
         },
         components: {
-            Discount,
             Cart,
             Card,
             Expiration,

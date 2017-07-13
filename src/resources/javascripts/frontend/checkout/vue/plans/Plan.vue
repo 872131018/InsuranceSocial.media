@@ -9,7 +9,7 @@
                 <span class="w3-show-inline-block w3-margin-right v-align"></span>
             </label>
             <span class="w3-large w3-margin-left">{{ plan.name }}</span>
-            <span class="w3-large w3-right w3-margin-right w3-padding-right">{{ plan.price }} Monthly</span>
+            <span class="w3-large w3-right w3-margin-right w3-padding-right">{{ plan.cost }}</span>
             <Features v-bind:features="plan.features"></Features>
         </div>
         <div v-else>

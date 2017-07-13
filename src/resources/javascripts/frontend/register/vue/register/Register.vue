@@ -49,9 +49,9 @@
             <Errors v-bind:errors="errors"></Errors>
         </div>
         <div class="w3-panel">
-            <h5>Continue to select the plan you wish to sign up for.</h5>
             <button class="w3-button w3-text-white primary"
-                v-on:click="register()">Register
+                v-on:click="register()">
+                <div style="height: 22px; width: 127px">Register</div>
             </button>
         </div>
         </div>
@@ -102,7 +102,7 @@
                         if(response.data.discount) {
                             window.location = `${ window.base_url }/corporate`;
                         } else {
-                            window.location = `${ window.base_url }/select`;
+                            window.location = `${ window.base_url }/plans`;
                         }
                     }).catch(error => {
                         if(error.email) {

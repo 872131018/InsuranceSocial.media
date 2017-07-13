@@ -12,17 +12,25 @@ use net\authorize\api\controller as AnetController;
 
 use Carbon\Carbon;
 
+use App\UserPlan;
+
 use App\FbAccount;
 
 class PaymentController extends Controller
 {
     protected $paymentService;
 
+    protected $userPlan;
+
     protected $fbAccount;
 
-    public function __construct(PaymentService $paymentService, FbAccount $fbAccount)
+    public function __construct(
+        PaymentService $paymentService,
+        UserPlan $userPlan,
+        FbAccount $fbAccount)
     {
         $this->paymentService = $paymentService;
+        $this->userPlan = $userPlan;
         $this->fbAccount = $fbAccount;
     }
     /**
@@ -142,13 +150,16 @@ class PaymentController extends Controller
             $user->status = 'N';
             $user->role = 'A';
             $user->effDt = new Carbon('first day of next month');
-            $user->couponCd = $request->input('discount');
             $user->customerProfileId = $response->getCustomerProfileId();
             $user->customerPaymentProfileId = $response->getCustomerPaymentProfileIdList()[0];
             $user->update();
 
             $this->fbAccount->email = $user->email;
             $this->fbAccount->save();
+
+            $this->userPlan->email = $user->email;
+            $this->userPlan->planCd = $request->input('customerData')['plan']['tier'];
+            $this->userPlan->save();
 
             return response()->json($user);
         }
@@ -245,18 +256,9 @@ class PaymentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $discount)
+    public function update(Request $request)
     {
-        if($request->wantsJson()) {
-            if($discount == 'asdf1234') {
-                $mock_discount = '10.00';
-                return response()->json($mock_discount);
-            } else {
-                return response()->json('Invalid Discount Code', 400);
-            }
-        } else {
-            return response()->json('Error occured', 400);
-        }
+        //
     }
 
     /**

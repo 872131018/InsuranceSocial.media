@@ -43,7 +43,7 @@
         methods: {
             update() {
                 store.dispatch({ type: 'SET_PLAN', data: this.selected });
-                this.$router.push({ name: 'SocialMedia' })
+                this.$router.push({ name: 'Payment' })
             }
         },
         components: {

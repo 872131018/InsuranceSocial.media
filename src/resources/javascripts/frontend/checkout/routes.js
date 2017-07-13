@@ -1,6 +1,5 @@
 import Corporate from './vue/corporate/Corporate';
-import Select from './vue/select/Select';
-import SocialMedia from './vue/social-media/SocialMedia';
+import Plans from './vue/plans/Plans';
 import Payment from './vue/payment/Payment';
 
 export default [
@@ -10,14 +9,9 @@ export default [
         component: Corporate
     },
     {
-        path: '/select',
-        name: 'Select',
-        component: Select
-    },
-    {
-        path: '/social-media',
-        name: 'SocialMedia',
-        component: SocialMedia
+        path: '/plans',
+        name: 'Plans',
+        component: Plans
     },
     {
         path: '/payment',

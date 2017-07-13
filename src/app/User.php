@@ -32,6 +32,14 @@ class User extends Authenticatable
     /**
      * Get the fbAccount record associated with the user.
      */
+    public function plan()
+    {
+        return $this->hasOne('App\UserPlan', 'email');
+    }
+
+    /**
+     * Get the fbAccount record associated with the user.
+     */
     public function fb()
     {
         return $this->hasOne('App\FbAccount', 'email');

@@ -36,9 +36,7 @@ Route::post('/register/{discount?}', 'Auth\RegisterController@register');
 * Deliver the SPA that require authentication
 */
 Route::middleware(['auth'])->group(function() {
-    Route::get('/select', 'CheckoutController@index');
-
-    Route::get('/social-media', 'CheckoutController@index');
+    Route::get('/plans', 'CheckoutController@index');
 
     Route::get('/payment', 'CheckoutController@index');
 });
@@ -68,8 +66,6 @@ Route::middleware(['auth:api'])->group(function() {
     });
 
     Route::post('/payment', 'PaymentController@store');
-
-    Route::put('/payment/{discount}', 'PaymentController@update');
 });
 
 /**

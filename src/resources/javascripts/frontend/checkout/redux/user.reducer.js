@@ -3,7 +3,6 @@ const initialState = {
     name: '',
     email: '',
     api_token: '',
-    discount: '',
     plan: {},
     facebook: false,
     twitter: false
@@ -16,8 +15,7 @@ module.exports = function(user = initialState, action) {
                 id: action.data.id,
                 name: action.data.name,
                 email: action.data.email,
-                api_token: action.data.api_token,
-                discount: action.data.discount
+                api_token: action.data.api_token
             };
             break;
         case 'SET_PLAN':
