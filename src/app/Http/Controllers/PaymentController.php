@@ -12,13 +12,18 @@ use net\authorize\api\controller as AnetController;
 
 use Carbon\Carbon;
 
+use App\FbAccount;
+
 class PaymentController extends Controller
 {
     protected $paymentService;
 
-    public function __construct(PaymentService $paymentService)
+    protected $fbAccount;
+
+    public function __construct(PaymentService $paymentService, FbAccount $fbAccount)
     {
         $this->paymentService = $paymentService;
+        $this->fbAccount = $fbAccount;
     }
     /**
      * Display a listing of the resource.
@@ -141,6 +146,9 @@ class PaymentController extends Controller
             $user->customerProfileId = $response->getCustomerProfileId();
             $user->customerPaymentProfileId = $response->getCustomerPaymentProfileIdList()[0];
             $user->update();
+
+            $this->fbAccount->email = $user->email;
+            $this->fbAccount->save();
 
             return response()->json($user);
         }

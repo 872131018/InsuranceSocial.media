@@ -8,6 +8,10 @@ use Illuminate\Support\Facades\Auth;
 
 use Facebook\Facebook;
 
+use Facebook\FacebookRequest;
+
+use Facebook\GraphUser;
+
 class FacebookController extends Controller
 {
 
@@ -35,7 +39,7 @@ class FacebookController extends Controller
     {
         if($request->wantsJson()) {
             $helper = $this->fb->getRedirectLoginHelper();
-            $permissions = ['email']; // optional
+            $permissions = ['email', 'pages_show_list', 'manage_pages']; // optional
             $url = env('APP_URL');
             $loginUrl = $helper->getLoginUrl("{$url}/setup/facebook/return", $permissions);
 
@@ -106,26 +110,43 @@ class FacebookController extends Controller
     public function update(Request $request)
     {
         $helper = $this->fb->getRedirectLoginHelper();
-        if ($request->input('state')) {
+        if($request->input('state')) {
             $helper->getPersistentDataHandler()->set('state', $request->input('state'));
         }
         try {
-          $accessToken = $helper->getAccessToken();
+            $accessToken = $helper->getAccessToken();
         } catch(Facebook\Exceptions\FacebookResponseException $e) {
-          // When Graph returns an error
-          return response()->json($e->getMessage(), 502);
+            // When Graph returns an error
+            return response()->json($e->getMessage(), 502);
         } catch(Facebook\Exceptions\FacebookSDKException $e) {
-          // When validation fails or other local issues
-          return response()->json($e->getMessage(), 502);
+            // When validation fails or other local issues
+            return response()->json($e->getMessage(), 502);
         }
 
-        if (isset($accessToken)) {
-          // Logged in!
-          $user = Auth::user();
-          $user->facebook_access_token = (string) $accessToken;
-          $user->update();
+        if(isset($accessToken)) {
+            /**
+            * Logged in!!!
+            */
+            $user = Auth::user();
+            $user->fb()->access_token = (string) $accessToken;
+            $user->update();
 
-           return redirect('setup/twitter');
+            /**
+            * Get the facebook pages for the user
+            */
+            try {
+                $response = $this->fb->get('/me/accounts', $accessToken);
+            } catch(Facebook\Exceptions\FacebookResponseException $e) {
+                return response()->json($e->getMessage(), 502);
+            } catch(Facebook\Exceptions\FacebookSDKException $e) {
+                return response()->json($e->getMessage(), 502);
+            }
+
+            $pages = [];
+            foreach($response->getGraphEdge() as $page) {
+                array_push($pages, $page->asArray());
+            }
+            return response()->json($pages);
         }
     }
 
