@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Auth;
 
 use Abraham\TwitterOAuth\TwitterOAuth;
 
+use App\TwitterAccount;
+
 class TwitterController extends Controller
 {
     /**
@@ -59,15 +61,7 @@ class TwitterController extends Controller
      */
     public function store(Request $request)
     {
-        if($request->wantsJson()) {
-            $user = Auth::user();
-            if($user->email == $request->input('email')) {
-                //
-            }
-            return response()->json($user);
-        } else {
-            return view('layouts.setup.app');
-        }
+        //
     }
 
     /**
@@ -108,12 +102,13 @@ class TwitterController extends Controller
         $connection = new TwitterOAuth(env('CONSUMER_KEY'), env('CONSUMER_SECRET'), session('oauth_token'), session('oauth_token_secret'));
         $access_token = $connection->oauth("oauth/access_token", ["oauth_verifier" => $request->input('oauth_verifier')]);
 
-        if (isset($access_token)) {
-          // Logged in!
+        if(isset($access_token)) {
           $user = Auth::user();
-          $user->twitter_oauth_token = $access_token['oauth_token'];
-          $user->twitter_oauth_token_secret = $access_token['oauth_token_secret'];
-          $user->update();
+          $twitterAccount = new TwitterAccount();
+          $twitterAccount->email = $user->email;
+          $twitterAccount->access_token = $access_token['oauth_token'];
+          $twitterAccount->secret_token = $access_token['oauth_token_secret'];
+          $user->twitter()->save($twitterAccount);
 
            return redirect('setup/profile');
         }

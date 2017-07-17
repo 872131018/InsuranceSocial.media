@@ -7,13 +7,11 @@
         <div class="w3-container w3-padding-32">
             <form v-bind:action="getUrl()" method="POST">
                 <div class="w3-section">
-                    <input class="w3-input eighty" type="text"
-                        name="email">
+                    <input class="w3-input eighty" type="text" name="email">
                     <label>Email</label>
                 </div>
                 <div class="w3-section">
-                    <input class="w3-input eighty" type="password"
-                        name="password">
+                    <input class="w3-input eighty" type="password" name="password">
                     <label>Password</label>
                 </div>
                 <input type="hidden" name="_token"

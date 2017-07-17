@@ -2,13 +2,16 @@
     <div class="w3-container w3-card-2 form">
         <div class="w3-panel">
             <h3>Plan Information</h3>
-            <h5>Please confirm your plan or enter a promotion code.</h5>
+            <h5>
+                You have selected the following plan.  If you register now your free trial will begin
+                <b>{{ startDate}}</b> and billing will begin <b>{{ billingDate }}.</b>
+            </h5>
         </div>
         <div class="w3-panel">
-            <Cart
-                v-bind:plan="plan"
-                v-bind:reduction="reduction">
-            </Cart>
+            <Plan
+                v-if="plan.name"
+                v-bind:plan="plan">
+            </Plan>
         </div>
         <div class="w3-panel">
             <h3>Payment Method</h3>
@@ -38,9 +41,10 @@
 </template>
 
 <script>
-    import Cart from './Cart';
+    import Moment from 'moment';
+    import Plan from './Plan';
     import Card from './inputs/Card';
-    import Expiration from './inputs/Expiration';
+    import Expiration from './Expiration';
     import CCV from './inputs/CCV';
     import Name from './inputs/Name';
 
@@ -48,7 +52,8 @@
         data() {
             return {
                 plan: {},
-                reduction: '0.00',
+                startDate: new Moment().startOf('month').add(1, 'month').format('MM-DD-YYYY'),
+                billingDate: new Moment().startOf('month').add(2, 'months').format('MM-DD-YYYY'),
                 properties: {
                     card: '',
                     month: '',
@@ -100,7 +105,7 @@
             },
         },
         components: {
-            Cart,
+            Plan,
             Card,
             Expiration,
             CCV,

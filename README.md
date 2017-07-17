@@ -10,8 +10,6 @@
     @TODO talk to tuan about always giving 30 days free
     @TODO fix indentations on plan details
     @TODO presentation video modal
-    @TODO per month discount change cart to plan selected
-    @TODO add information about the dates of when free trials ends and billing starts
     @TODO add tooltip for cvv in payment
 
     @TODO facebook signup change header to link your facebook
@@ -22,3 +20,6 @@
 
     @TODO add copy to inform user of how many selections they get
     @TODO change marketing geography label to "where do we sell?"
+
+    @TODO remove red X from inputs until they have inputs
+    @TODO Trim whitespace where plausable to make more real estate for phones

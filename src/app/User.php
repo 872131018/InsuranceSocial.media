@@ -17,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'api_token', 'discount'
+        'name', 'email', 'password', 'api_token'
     ];
 
     /**
@@ -34,14 +34,22 @@ class User extends Authenticatable
      */
     public function plan()
     {
-        return $this->hasOne('App\UserPlan', 'email');
+        return $this->hasOne('App\UserPlan');
     }
 
     /**
      * Get the fbAccount record associated with the user.
      */
-    public function fb()
+    public function facebook()
     {
-        return $this->hasOne('App\FbAccount', 'email');
+        return $this->hasOne('App\FacebookAccount');
+    }
+
+    /**
+     * Get the fbAccount record associated with the user.
+     */
+    public function twitter()
+    {
+        return $this->hasOne('App\TwitterAccount');
     }
 }

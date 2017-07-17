@@ -94,6 +94,15 @@ Route::middleware(['auth'])->group(function() {
 
     Route::get('/setup/facebook/return', 'FacebookController@update');
 
+    Route::get('/setup/page', 'FacebookController@index');
+
+    Route::get('/api/pages', function (Request $request) {
+        $data = json_decode(session('pages'));
+        return response()->json($data);
+    });
+
+    Route::post('/setup/page', 'FacebookController@store');
+
     Route::get('/setup/payment', 'PaymentController@index');
 
     Route::post('/setup/payment', 'PaymentController@storealt');

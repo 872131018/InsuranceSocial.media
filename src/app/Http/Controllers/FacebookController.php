@@ -12,10 +12,12 @@ use Facebook\FacebookRequest;
 
 use Facebook\GraphUser;
 
+use App\FacebookAccount;
+
 class FacebookController extends Controller
 {
 
-    protected $fb;
+    protected $facebook;
     /**
      * Create a new controller instance.
      *
@@ -23,7 +25,7 @@ class FacebookController extends Controller
      */
     public function __construct()
     {
-        $this->fb = new Facebook([
+        $this->facebook = new Facebook([
             'app_id' => env('APP_ID'),
             'app_secret' => env('APP_SECRET'),
             'default_graph_version' => env('DEFAULT_GRAPH_VERSION')
@@ -38,7 +40,7 @@ class FacebookController extends Controller
     public function index(Request $request)
     {
         if($request->wantsJson()) {
-            $helper = $this->fb->getRedirectLoginHelper();
+            $helper = $this->facebook->getRedirectLoginHelper();
             $permissions = ['email', 'pages_show_list', 'manage_pages']; // optional
             $url = env('APP_URL');
             $loginUrl = $helper->getLoginUrl("{$url}/setup/facebook/return", $permissions);
@@ -69,9 +71,12 @@ class FacebookController extends Controller
     {
         if($request->wantsJson()) {
             $user = Auth::user();
-            if($user->email == $request->input('email')) {
-                //
-            }
+            $facebook = FacebookAccount::find($user->facebook->id);
+            $facebook->page_id = $request->page_id;
+            $facebook->page_name = $request->page_name;
+            $facebook->page_token = $request->page_access_token;
+            $facebook->update();
+
             return response()->json($user);
         } else {
             return view('layouts.setup.app');
@@ -109,7 +114,7 @@ class FacebookController extends Controller
      */
     public function update(Request $request)
     {
-        $helper = $this->fb->getRedirectLoginHelper();
+        $helper = $this->facebook->getRedirectLoginHelper();
         if($request->input('state')) {
             $helper->getPersistentDataHandler()->set('state', $request->input('state'));
         }
@@ -128,14 +133,16 @@ class FacebookController extends Controller
             * Logged in!!!
             */
             $user = Auth::user();
-            $user->fb()->access_token = (string) $accessToken;
-            $user->update();
+            $facebookAccount = new FacebookAccount();
+            $facebookAccount->email = $user->email;
+            $facebookAccount->access_token = (string) $accessToken;
+            $user->facebook()->save($facebookAccount);
 
             /**
             * Get the facebook pages for the user
             */
             try {
-                $response = $this->fb->get('/me/accounts', $accessToken);
+                $response = $this->facebook->get('/me/accounts', $accessToken);
             } catch(Facebook\Exceptions\FacebookResponseException $e) {
                 return response()->json($e->getMessage(), 502);
             } catch(Facebook\Exceptions\FacebookSDKException $e) {
@@ -146,7 +153,10 @@ class FacebookController extends Controller
             foreach($response->getGraphEdge() as $page) {
                 array_push($pages, $page->asArray());
             }
-            return response()->json($pages);
+
+            session(['pages' => json_encode($pages)]);
+
+            return redirect('/setup/page');
         }
     }
 

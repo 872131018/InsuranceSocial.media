@@ -83,7 +83,7 @@ class RegisterController extends Controller
                 'email' => $data['email'],
                 'password' => bcrypt($data['password']),
                 'api_token' => str_random(60),
-                'couponCd' => $data['discount']
+                'coupon_code' => $data['discount']
             ]);
     }
 

@@ -11,8 +11,9 @@
   },
   "dependencies": {
     "axios": "^0.16.2",
-    "laravel-mix": "^1.2.1",
-    "redux": "^3.7.1",
+    "laravel-mix": "^1.2.2",
+    "moment": "^2.18.1",
+    "redux": "^3.7.2",
     "vue": "^2.4.1",
     "vue-router": "^2.7.0",
     "w3-css": "^4.0.4"

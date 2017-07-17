@@ -5,7 +5,7 @@ use Illuminate\Database\Eloquent\Model;
 
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class FbAccount extends Model
+class TwitterAccount extends Model
 {
     use SoftDeletes;
     /**
@@ -20,13 +20,13 @@ class FbAccount extends Model
      *
      * @var string
      */
-    protected $table = 'fbAccount';
+    protected $table = 'twitter_account';
 
     /**
      * Get the user that owns the FbAccount.
      */
     public function user()
     {
-        return $this->belongsTo('App\User', 'email');
+        return $this->belongsTo('App\User');
     }
 }

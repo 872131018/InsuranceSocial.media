@@ -5,7 +5,7 @@ use Illuminate\Database\Eloquent\Model;
 
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class UserPlan extends Model
+class FacebookAccount extends Model
 {
     use SoftDeletes;
     /**
@@ -20,13 +20,13 @@ class UserPlan extends Model
      *
      * @var string
      */
-    protected $table = 'user_plan';
+    protected $table = 'facebook_account';
 
     /**
-    * Get the user this plan belongs to
-    */
-   public function user()
-   {
-       return $this->belongsTo('App\User');
-   }
+     * Get the user that owns the FbAccount.
+     */
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
 }

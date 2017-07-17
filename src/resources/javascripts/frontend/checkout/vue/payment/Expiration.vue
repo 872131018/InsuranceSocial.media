@@ -7,9 +7,9 @@
 </template>
 
 <script>
-    import Month from './Month';
-    import Year from './Year';
-    import CCV from './CCV';
+    import Month from './inputs/Month';
+    import Year from './inputs/Year';
+    import CCV from './inputs/CCV';
 
     export default {
         components: {

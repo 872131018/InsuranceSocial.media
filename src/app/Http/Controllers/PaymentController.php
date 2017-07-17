@@ -14,24 +14,13 @@ use Carbon\Carbon;
 
 use App\UserPlan;
 
-use App\FbAccount;
-
 class PaymentController extends Controller
 {
     protected $paymentService;
 
-    protected $userPlan;
-
-    protected $fbAccount;
-
-    public function __construct(
-        PaymentService $paymentService,
-        UserPlan $userPlan,
-        FbAccount $fbAccount)
+    public function __construct(PaymentService $paymentService)
     {
         $this->paymentService = $paymentService;
-        $this->userPlan = $userPlan;
-        $this->fbAccount = $fbAccount;
     }
     /**
      * Display a listing of the resource.
@@ -149,17 +138,15 @@ class PaymentController extends Controller
             $user = Auth::user();
             $user->status = 'N';
             $user->role = 'A';
-            $user->effDt = new Carbon('first day of next month');
-            $user->customerProfileId = $response->getCustomerProfileId();
-            $user->customerPaymentProfileId = $response->getCustomerPaymentProfileIdList()[0];
+            $user->effective_date = new Carbon('first day of next month');
+            $user->customer_profile_id = $response->getCustomerProfileId();
+            $user->customer_payment_profile_id = $response->getCustomerPaymentProfileIdList()[0];
             $user->update();
 
-            $this->fbAccount->email = $user->email;
-            $this->fbAccount->save();
-
-            $this->userPlan->email = $user->email;
-            $this->userPlan->planCd = $request->input('customerData')['plan']['tier'];
-            $this->userPlan->save();
+            $userPlan = new UserPlan();
+            $userPlan->email = $user->email;
+            $userPlan->plan_code = $request->input('customerData')['plan']['tier'];
+            $user->plan()->save($userPlan);
 
             return response()->json($user);
         }
