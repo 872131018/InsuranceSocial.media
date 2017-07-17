@@ -80,14 +80,14 @@ Route::middleware(['auth'])->group(function() {
      *
      * @return \Illuminate\Http\Response
      */
-    Route::get('/setup', function (Request $request) {
+    Route::get('/social', function (Request $request) {
         if($request->wantsJson()) {
             return response()->json(Auth::user());
         }
     });
 
     Route::get('/setup/welcome', function (Request $request) {
-        return view('layouts.setup.app');
+        return view('layouts.social.app');
     });
 
     Route::get('/setup/facebook', 'FacebookController@index');

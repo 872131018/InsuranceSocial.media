@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 381);
+/******/ 	return __webpack_require__(__webpack_require__.s = 314);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -15536,16 +15536,15 @@ function applyMiddleware() {
 }
 
 /***/ }),
-/* 53 */,
-/* 54 */
+/* 53 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var Component = __webpack_require__(1)(
   /* script */
-  __webpack_require__(391),
+  __webpack_require__(321),
   /* template */
-  __webpack_require__(392),
+  __webpack_require__(322),
   /* styles */
   null,
   /* scopeId */
@@ -15553,7 +15552,7 @@ var Component = __webpack_require__(1)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/johnhuffman/Sites/InsuranceSocial.media/src/resources/javascripts/frontend/setup/vue/Progress.vue"
+Component.options.__file = "/Users/johnhuffman/Sites/InsuranceSocial.media/src/resources/javascripts/frontend/social/vue/Progress.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Progress.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -15564,9 +15563,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-fcf0226e", Component.options)
+    hotAPI.createRecord("data-v-70bd32a7", Component.options)
   } else {
-    hotAPI.reload("data-v-fcf0226e", Component.options)
+    hotAPI.reload("data-v-70bd32a7", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -15577,46 +15576,8 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 55 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var Component = __webpack_require__(1)(
-  /* script */
-  __webpack_require__(393),
-  /* template */
-  __webpack_require__(394),
-  /* styles */
-  null,
-  /* scopeId */
-  null,
-  /* moduleIdentifier (server only) */
-  null
-)
-Component.options.__file = "/Users/johnhuffman/Sites/InsuranceSocial.media/src/resources/javascripts/frontend/setup/vue/QuickNavigation.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] QuickNavigation.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-2a68ecf5", Component.options)
-  } else {
-    hotAPI.reload("data-v-2a68ecf5", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
+/* 54 */,
+/* 55 */,
 /* 56 */,
 /* 57 */,
 /* 58 */,
@@ -15735,86 +15696,8 @@ module.exports = Component.exports
 /* 171 */,
 /* 172 */,
 /* 173 */,
-/* 174 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var Component = __webpack_require__(1)(
-  /* script */
-  __webpack_require__(439),
-  /* template */
-  __webpack_require__(440),
-  /* styles */
-  null,
-  /* scopeId */
-  null,
-  /* moduleIdentifier (server only) */
-  null
-)
-Component.options.__file = "/Users/johnhuffman/Sites/InsuranceSocial.media/src/resources/javascripts/frontend/setup/vue/coverage/inputs/Check.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] Check.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-99543b86", Component.options)
-  } else {
-    hotAPI.reload("data-v-99543b86", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 175 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var Component = __webpack_require__(1)(
-  /* script */
-  __webpack_require__(441),
-  /* template */
-  __webpack_require__(442),
-  /* styles */
-  null,
-  /* scopeId */
-  null,
-  /* moduleIdentifier (server only) */
-  null
-)
-Component.options.__file = "/Users/johnhuffman/Sites/InsuranceSocial.media/src/resources/javascripts/frontend/setup/vue/coverage/inputs/Cross.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] Cross.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-22438d16", Component.options)
-  } else {
-    hotAPI.reload("data-v-22438d16", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
+/* 174 */,
+/* 175 */,
 /* 176 */,
 /* 177 */,
 /* 178 */,
@@ -15953,91 +15836,24 @@ module.exports = Component.exports
 /* 311 */,
 /* 312 */,
 /* 313 */,
-/* 314 */,
-/* 315 */,
-/* 316 */,
-/* 317 */,
-/* 318 */,
-/* 319 */,
-/* 320 */,
-/* 321 */,
-/* 322 */,
-/* 323 */,
-/* 324 */,
-/* 325 */,
-/* 326 */,
-/* 327 */,
-/* 328 */,
-/* 329 */,
-/* 330 */,
-/* 331 */,
-/* 332 */,
-/* 333 */,
-/* 334 */,
-/* 335 */,
-/* 336 */,
-/* 337 */,
-/* 338 */,
-/* 339 */,
-/* 340 */,
-/* 341 */,
-/* 342 */,
-/* 343 */,
-/* 344 */,
-/* 345 */,
-/* 346 */,
-/* 347 */,
-/* 348 */,
-/* 349 */,
-/* 350 */,
-/* 351 */,
-/* 352 */,
-/* 353 */,
-/* 354 */,
-/* 355 */,
-/* 356 */,
-/* 357 */,
-/* 358 */,
-/* 359 */,
-/* 360 */,
-/* 361 */,
-/* 362 */,
-/* 363 */,
-/* 364 */,
-/* 365 */,
-/* 366 */,
-/* 367 */,
-/* 368 */,
-/* 369 */,
-/* 370 */,
-/* 371 */,
-/* 372 */,
-/* 373 */,
-/* 374 */,
-/* 375 */,
-/* 376 */,
-/* 377 */,
-/* 378 */,
-/* 379 */,
-/* 380 */,
-/* 381 */
+/* 314 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(382);
+module.exports = __webpack_require__(315);
 
 
 /***/ }),
-/* 382 */
+/* 315 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__root_redux__ = __webpack_require__(383);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__root_redux__ = __webpack_require__(316);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_router__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__routes__ = __webpack_require__(388);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__vue_App__ = __webpack_require__(481);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__routes__ = __webpack_require__(318);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__vue_App__ = __webpack_require__(363);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__vue_App___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__vue_App__);
 window.axios = __webpack_require__(17);
 axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
@@ -16067,27 +15883,24 @@ var Site = new __WEBPACK_IMPORTED_MODULE_1_vue___default.a({
 }).$mount('#app');
 
 /***/ }),
-/* 383 */
+/* 316 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_redux__ = __webpack_require__(38);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__redux_user_reducer__ = __webpack_require__(384);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__redux_user_reducer__ = __webpack_require__(317);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__redux_user_reducer___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__redux_user_reducer__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__redux_option_reducer__ = __webpack_require__(385);
-
 
 
 
 var reducers = Object(__WEBPACK_IMPORTED_MODULE_0_redux__["a" /* combineReducers */])({
-    UserStore: __WEBPACK_IMPORTED_MODULE_1__redux_user_reducer___default.a,
-    OptionStore: __WEBPACK_IMPORTED_MODULE_2__redux_option_reducer__["a" /* default */]
+    UserStore: __WEBPACK_IMPORTED_MODULE_1__redux_user_reducer___default.a
 });
 
 /* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_0_redux__["b" /* createStore */])(reducers));
 
 /***/ }),
-/* 384 */
+/* 317 */
 /***/ (function(module, exports) {
 
 var initialState = {
@@ -16200,3308 +16013,58 @@ module.exports = function () {
 };
 
 /***/ }),
-/* 385 */
+/* 318 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__states_json__ = __webpack_require__(386);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__states_json___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__states_json__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__counties_json__ = __webpack_require__(387);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__counties_json___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__counties_json__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__vue_welcome_Welcome__ = __webpack_require__(319);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__vue_welcome_Welcome___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__vue_welcome_Welcome__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__vue_facebook_Facebook__ = __webpack_require__(327);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__vue_facebook_Facebook___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__vue_facebook_Facebook__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__vue_page_Page__ = __webpack_require__(330);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__vue_page_Page___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__vue_page_Page__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__vue_twitter_Twitter__ = __webpack_require__(336);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__vue_twitter_Twitter___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__vue_twitter_Twitter__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__vue_payment_Payment__ = __webpack_require__(339);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__vue_payment_Payment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__vue_payment_Payment__);
 
-
-
-var initialState = {
-    titles: ['Owner', 'Operations Manager', 'Marketing Manager', 'Principal', 'Sales Manager', 'Other'],
-    sizes: ['Sole Proprietor', '2-5 Employees', '6-10 Employees', '11-15 Employees', '16+ Employees'],
-    generations: ['No', '2nd', '3rd', '4th', '5th'],
-    frequencies: ['Daily', 'Weekly', 'Monthly', 'Quarterly', 'Never'],
-    states: __WEBPACK_IMPORTED_MODULE_0__states_json___default.a.states,
-    counties: __WEBPACK_IMPORTED_MODULE_1__counties_json___default.a.counties,
-    targets: ['Region', 'State and Counties'],
-    regions: ['Northern California', 'Southern California', 'Middle Atlantic', 'Midwest', 'New England', 'South', 'Southwest', 'West'],
-    carriers: ['Carrier', 'Farmer\'s Mutual Hail', 'Grinnell Mutual', 'IMT Group', 'Plymouth Rock Assurance'],
-    coverage_lines: ['Commercial', 'Personal', 'Benefits'],
-    coverage_targets: ['Auto Insurance - Commercial', 'Auto Insurance - Personal', 'Aviation Insurance', 'Boat Insurance', 'Boiler and Machinery Insurance', 'Builder\'s Risk Insurance', 'Business Interruption Insurance', 'Business Owners Policy', 'Cancer Insurance', 'Church Insurance', 'Classic Car Insurance', 'Commercial Property Insurance', 'Condo Insurance', 'Crime Insurance', 'Crop Insurance', 'Cyber Liability Insurance', 'Dental Insurance', 'Directors and Officers Insurance', 'Disability Insurance - Long-Term', 'Disability Insurance - Short-Term', 'Dwelling/Fire Insurance', 'Earthquake Insurance', 'Employment Practices Liability', 'Errors and Omissions Insurance', 'Farm Insurance', 'Fidelity Bond', 'Flood Insurance', 'Gap Insurance', 'General Liability Insurance', 'Health Insurance - Group', 'Health Insurance - Individual', 'Home Insurance', 'Identity Theft Insurance', 'Individual Retirement Accounts', 'Landlord Insurance', 'Life Insurance - Group', 'Life Insurance - Individual', 'Long-term Care', 'Marine Cargo Insurance', 'Medicare Supplement Insurance', 'Mobile Home Insurance', 'Motorcycle Insurance', 'Mutual Funds', 'Personal Identity Theft Insurance', 'Pet  Insurance', 'Professional Liability Insurance', 'Public Liability Insurance', 'Renters Insurance', 'RV Insurance', 'Snowmobile Insurance', 'Surety Bond', 'Travel Insurance', 'Umbrella Insurance', 'Vision Insurance', 'Workers\' Compensation', 'Youth Sports Protection Insurance'],
-    industry_currents: ['Agribusiness', 'Barber and Beauty', 'Commercial Trucking', 'Contractor', 'Convenience Stores', 'Feed, Seed, Grain', 'Florist', 'Garage and Auto', 'Golf', 'Photographer', 'Religious Organization', 'Restaurant', 'Storage Warehouse', 'Veterinarian'],
-    industry_targets: ['Agribusiness', 'Barber and Beauty', 'Commercial Trucking', 'Contractor', 'Convenience Stores', 'Feed, Seed, Grain', 'Florist', 'Garage and Auto', 'Golf', 'Photographer', 'Religious Organization', 'Restaurant', 'Storage Warehouse', 'Veterinarian'],
-    engagement_mix: ['Existing Clients Only', 'Mostly Existinig Clients', 'Existing and New Clients Equally', 'Mostly New Clients', 'New Clients Only'],
-    engagement_tone: ['Simply Informative', 'Conversational', 'Entertainingly Informative'],
-    special_topics: ['Recognition of National Holidays', 'Insurance Humor', 'Current News'],
-    causes: ['Alzheimer\'s', 'American Red Cross', 'Amnesty International', 'Animal Rescue', 'Arthritis', 'Asthma', 'Cancer', 'Child Abuse', 'Chronic Obstructive Pulmonary Disease (COPD)', 'Dental Health', 'Depression', 'Diabetes', 'Environmental Issues', 'Habitat for Humanity', 'Heart Disease', 'Heifer International', 'Homelessness', 'Hunger', 'Kidney Disease', 'Mental Health', 'Military Veterans', 'Mommy & Me Cancer Foundation', 'Multiple Sclerosis', 'Poverty', 'Vision Health'],
-    days: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
-    times: ['System Chosen', '2-5am', '5-8am', '8-11am', '11am-2pm', '2-5pm', '5-8pm', '8-11pm', '11pm-2am']
-};
-
-/* harmony default export */ __webpack_exports__["a"] = (function () {
-    var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
-    var action = arguments[1];
-
-    switch (action.type) {
-        default:
-            break;
-    }
-    return JSON.parse(JSON.stringify(options));
-});
-
-/***/ }),
-/* 386 */
-/***/ (function(module, exports) {
-
-module.exports = {
-	"states": [
-		"AK - Alaska",
-		"AL - Alabama",
-		"AR - Arkansas",
-		"AZ - Arizona",
-		"CA - California",
-		"CO - Colorado",
-		"CT - Connecticut",
-		"DC - District of Columbia",
-		"DE - Delaware",
-		"FL - Florida",
-		"GA - Georgia",
-		"HI - Hawaii",
-		"IA - Iowa",
-		"ID - Idaho",
-		"IL - Illinois",
-		"IN - Indiana",
-		"KS - Kansas",
-		"KY - Kentucky",
-		"LA - Louisiana",
-		"MA - Massachusetts",
-		"MD - Maryland",
-		"ME - Maine",
-		"MI - Michigan",
-		"MN - Minnesota",
-		"MO - Missouri",
-		"MS - Mississippi",
-		"MT - Montana",
-		"NC - North Carolina",
-		"ND - North Dakota",
-		"NE - Nebraska",
-		"NH - New Hampshire",
-		"NJ - New Jersey",
-		"NM - New Mexico",
-		"NV - Nevada",
-		"NY - New York",
-		"OH - Ohio",
-		"OK - Oklahoma",
-		"OR - Oregon",
-		"PA - Pennsylvania",
-		"RI - Rhode Island",
-		"SC - South Carolina",
-		"SD - South Dakota",
-		"TN - Tennessee",
-		"TX - Texas",
-		"UT - Utah",
-		"VA - Virginia",
-		"VT - Vermont",
-		"WA - Washington",
-		"WI - Wisconsin",
-		"WV - West Virginia",
-		"WY - Wyoming"
-	]
-};
-
-/***/ }),
-/* 387 */
-/***/ (function(module, exports) {
-
-module.exports = {
-	"counties": [
-		"Autauga County - AL",
-		"Baldwin County - AL",
-		"Barbour County - AL",
-		"Bibb County - AL",
-		"Blount County - AL",
-		"Bullock County - AL",
-		"Butler County - AL",
-		"Calhoun County - AL",
-		"Chambers County - AL",
-		"Cherokee County - AL",
-		"Chilton County - AL",
-		"Choctaw County - AL",
-		"Clarke County - AL",
-		"Clay County - AL",
-		"Cleburne County - AL",
-		"Coffee County - AL",
-		"Colbert County - AL",
-		"Conecuh County - AL",
-		"Coosa County - AL",
-		"Covington County - AL",
-		"Crenshaw County - AL",
-		"Cullman County - AL",
-		"Dale County - AL",
-		"Dallas County - AL",
-		"DeKalb County - AL",
-		"Elmore County - AL",
-		"Escambia County - AL",
-		"Etowah County - AL",
-		"Fayette County - AL",
-		"Franklin County - AL",
-		"Geneva County - AL",
-		"Greene County - AL",
-		"Hale County - AL",
-		"Henry County - AL",
-		"Houston County - AL",
-		"Jackson County - AL",
-		"Jefferson County - AL",
-		"Lamar County - AL",
-		"Lauderdale County - AL",
-		"Lawrence County - AL",
-		"Lee County - AL",
-		"Limestone County - AL",
-		"Lowndes County - AL",
-		"Macon County - AL",
-		"Madison County - AL",
-		"Marengo County - AL",
-		"Marion County - AL",
-		"Marshall County - AL",
-		"Mobile County - AL",
-		"Monroe County - AL",
-		"Montgomery County - AL",
-		"Morgan County - AL",
-		"Perry County - AL",
-		"Pickens County - AL",
-		"Pike County - AL",
-		"Randolph County - AL",
-		"Russell County - AL",
-		"St. Clair County - AL",
-		"Shelby County - AL",
-		"Sumter County - AL",
-		"Talladega County - AL",
-		"Tallapoosa County - AL",
-		"Tuscaloosa County - AL",
-		"Walker County - AL",
-		"Washington County - AL",
-		"Wilcox County - AL",
-		"Winston County - AL",
-		"Aleutians East Borough - AK",
-		"Aleutians West Census Area - AK",
-		"Anchorage Municipality - AK",
-		"Bethel Census Area - AK",
-		"Bristol Bay Borough - AK",
-		"Denali Borough - AK",
-		"Dillingham Census Area - AK",
-		"Fairbanks North Star Borough - AK",
-		"Haines Borough - AK",
-		"Hoonah-Angoon Census Area - AK",
-		"Juneau City and Borough - AK",
-		"Kenai Peninsula Borough - AK",
-		"Ketchikan Gateway Borough - AK",
-		"Kodiak Island Borough - AK",
-		"Lake and Peninsula Borough - AK",
-		"Matanuska-Susitna Borough - AK",
-		"Nome Census Area - AK",
-		"North Slope Borough - AK",
-		"Northwest Arctic Borough - AK",
-		"Petersburg Census Area - AK",
-		"Prince of Wales-Hyder Census Area - AK",
-		"Sitka City and Borough - AK",
-		"Skagway Municipality - AK",
-		"Southeast Fairbanks Census Area - AK",
-		"Valdez-Cordova Census Area - AK",
-		"Wade Hampton Census Area - AK",
-		"Wrangell City and Borough - AK",
-		"Yakutat City and Borough - AK",
-		"Yukon-Koyukuk Census Area - AK",
-		"Apache County - AZ",
-		"Cochise County - AZ",
-		"Coconino County - AZ",
-		"Gila County - AZ",
-		"Graham County - AZ",
-		"Greenlee County - AZ",
-		"La Paz County - AZ",
-		"Maricopa County - AZ",
-		"Mohave County - AZ",
-		"Navajo County - AZ",
-		"Pima County - AZ",
-		"Pinal County - AZ",
-		"Santa Cruz County - AZ",
-		"Yavapai County - AZ",
-		"Yuma County - AZ",
-		"Arkansas County - AR",
-		"Ashley County - AR",
-		"Baxter County - AR",
-		"Benton County - AR",
-		"Boone County - AR",
-		"Bradley County - AR",
-		"Calhoun County - AR",
-		"Carroll County - AR",
-		"Chicot County - AR",
-		"Clark County - AR",
-		"Clay County - AR",
-		"Cleburne County - AR",
-		"Cleveland County - AR",
-		"Columbia County - AR",
-		"Conway County - AR",
-		"Craighead County - AR",
-		"Crawford County - AR",
-		"Crittenden County - AR",
-		"Cross County - AR",
-		"Dallas County - AR",
-		"Desha County - AR",
-		"Drew County - AR",
-		"Faulkner County - AR",
-		"Franklin County - AR",
-		"Fulton County - AR",
-		"Garland County - AR",
-		"Grant County - AR",
-		"Greene County - AR",
-		"Hempstead County - AR",
-		"Hot Spring County - AR",
-		"Howard County - AR",
-		"Independence County - AR",
-		"Izard County - AR",
-		"Jackson County - AR",
-		"Jefferson County - AR",
-		"Johnson County - AR",
-		"Lafayette County - AR",
-		"Lawrence County - AR",
-		"Lee County - AR",
-		"Lincoln County - AR",
-		"Little River County - AR",
-		"Logan County - AR",
-		"Lonoke County - AR",
-		"Madison County - AR",
-		"Marion County - AR",
-		"Miller County - AR",
-		"Mississippi County - AR",
-		"Monroe County - AR",
-		"Montgomery County - AR",
-		"Nevada County - AR",
-		"Newton County - AR",
-		"Ouachita County - AR",
-		"Perry County - AR",
-		"Phillips County - AR",
-		"Pike County - AR",
-		"Poinsett County - AR",
-		"Polk County - AR",
-		"Pope County - AR",
-		"Prairie County - AR",
-		"Pulaski County - AR",
-		"Randolph County - AR",
-		"St. Francis County - AR",
-		"Saline County - AR",
-		"Scott County - AR",
-		"Searcy County - AR",
-		"Sebastian County - AR",
-		"Sevier County - AR",
-		"Sharp County - AR",
-		"Stone County - AR",
-		"Union County - AR",
-		"Van Buren County - AR",
-		"Washington County - AR",
-		"White County - AR",
-		"Woodruff County - AR",
-		"Yell County - AR",
-		"Alameda County - CA",
-		"Alpine County - CA",
-		"Amador County - CA",
-		"Butte County - CA",
-		"Calaveras County - CA",
-		"Colusa County - CA",
-		"Contra Costa County - CA",
-		"Del Norte County - CA",
-		"El Dorado County - CA",
-		"Fresno County - CA",
-		"Glenn County - CA",
-		"Humboldt County - CA",
-		"Imperial County - CA",
-		"Inyo County - CA",
-		"Kern County - CA",
-		"Kings County - CA",
-		"Lake County - CA",
-		"Lassen County - CA",
-		"Los Angeles County - CA",
-		"Madera County - CA",
-		"Marin County - CA",
-		"Mariposa County - CA",
-		"Mendocino County - CA",
-		"Merced County - CA",
-		"Modoc County - CA",
-		"Mono County - CA",
-		"Monterey County - CA",
-		"Napa County - CA",
-		"Nevada County - CA",
-		"Orange County - CA",
-		"Placer County - CA",
-		"Plumas County - CA",
-		"Riverside County - CA",
-		"Sacramento County - CA",
-		"San Benito County - CA",
-		"San Bernardino County - CA",
-		"San Diego County - CA",
-		"San Francisco County - CA",
-		"San Joaquin County - CA",
-		"San Luis Obispo County - CA",
-		"San Mateo County - CA",
-		"Santa Barbara County - CA",
-		"Santa Clara County - CA",
-		"Santa Cruz County - CA",
-		"Shasta County - CA",
-		"Sierra County - CA",
-		"Siskiyou County - CA",
-		"Solano County - CA",
-		"Sonoma County - CA",
-		"Stanislaus County - CA",
-		"Sutter County - CA",
-		"Tehama County - CA",
-		"Trinity County - CA",
-		"Tulare County - CA",
-		"Tuolumne County - CA",
-		"Ventura County - CA",
-		"Yolo County - CA",
-		"Yuba County - CA",
-		"Adams County - CO",
-		"Alamosa County - CO",
-		"Arapahoe County - CO",
-		"Archuleta County - CO",
-		"Baca County - CO",
-		"Bent County - CO",
-		"Boulder County - CO",
-		"Broomfield County - CO",
-		"Chaffee County - CO",
-		"Cheyenne County - CO",
-		"Clear Creek County - CO",
-		"Conejos County - CO",
-		"Costilla County - CO",
-		"Crowley County - CO",
-		"Custer County - CO",
-		"Delta County - CO",
-		"Denver County - CO",
-		"Dolores County - CO",
-		"Douglas County - CO",
-		"Eagle County - CO",
-		"Elbert County - CO",
-		"El Paso County - CO",
-		"Fremont County - CO",
-		"Garfield County - CO",
-		"Gilpin County - CO",
-		"Grand County - CO",
-		"Gunnison County - CO",
-		"Hinsdale County - CO",
-		"Huerfano County - CO",
-		"Jackson County - CO",
-		"Jefferson County - CO",
-		"Kiowa County - CO",
-		"Kit Carson County - CO",
-		"Lake County - CO",
-		"La Plata County - CO",
-		"Larimer County - CO",
-		"Las Animas County - CO",
-		"Lincoln County - CO",
-		"Logan County - CO",
-		"Mesa County - CO",
-		"Mineral County - CO",
-		"Moffat County - CO",
-		"Montezuma County - CO",
-		"Montrose County - CO",
-		"Morgan County - CO",
-		"Otero County - CO",
-		"Ouray County - CO",
-		"Park County - CO",
-		"Phillips County - CO",
-		"Pitkin County - CO",
-		"Prowers County - CO",
-		"Pueblo County - CO",
-		"Rio Blanco County - CO",
-		"Rio Grande County - CO",
-		"Routt County - CO",
-		"Saguache County - CO",
-		"San Juan County - CO",
-		"San Miguel County - CO",
-		"Sedgwick County - CO",
-		"Summit County - CO",
-		"Teller County - CO",
-		"Washington County - CO",
-		"Weld County - CO",
-		"Yuma County - CO",
-		"Fairfield County - CT",
-		"Hartford County - CT",
-		"Litchfield County - CT",
-		"Middlesex County - CT",
-		"New Haven County - CT",
-		"New London County - CT",
-		"Tolland County - CT",
-		"Windham County - CT",
-		"Kent County - DE",
-		"New Castle County - DE",
-		"Sussex County - DE",
-		"District of Columbia- DC",
-		"Alachua County - FL",
-		"Baker County - FL",
-		"Bay County - FL",
-		"Bradford County - FL",
-		"Brevard County - FL",
-		"Broward County - FL",
-		"Calhoun County - FL",
-		"Charlotte County - FL",
-		"Citrus County - FL",
-		"Clay County - FL",
-		"Collier County - FL",
-		"Columbia County - FL",
-		"DeSoto County - FL",
-		"Dixie County - FL",
-		"Duval County - FL",
-		"Escambia County - FL",
-		"Flagler County - FL",
-		"Franklin County - FL",
-		"Gadsden County - FL",
-		"Gilchrist County - FL",
-		"Glades County - FL",
-		"Gulf County - FL",
-		"Hamilton County - FL",
-		"Hardee County - FL",
-		"Hendry County - FL",
-		"Hernando County - FL",
-		"Highlands County - FL",
-		"Hillsborough County - FL",
-		"Holmes County - FL",
-		"Indian River County - FL",
-		"Jackson County - FL",
-		"Jefferson County - FL",
-		"Lafayette County - FL",
-		"Lake County - FL",
-		"Lee County - FL",
-		"Leon County - FL",
-		"Levy County - FL",
-		"Liberty County - FL",
-		"Madison County - FL",
-		"Manatee County - FL",
-		"Marion County - FL",
-		"Martin County - FL",
-		"Miami-Dade County - FL",
-		"Monroe County - FL",
-		"Nassau County - FL",
-		"Okaloosa County - FL",
-		"Okeechobee County - FL",
-		"Orange County - FL",
-		"Osceola County - FL",
-		"Palm Beach County - FL",
-		"Pasco County - FL",
-		"Pinellas County - FL",
-		"Polk County - FL",
-		"Putnam County - FL",
-		"St. Johns County - FL",
-		"St. Lucie County - FL",
-		"Santa Rosa County - FL",
-		"Sarasota County - FL",
-		"Seminole County - FL",
-		"Sumter County - FL",
-		"Suwannee County - FL",
-		"Taylor County - FL",
-		"Union County - FL",
-		"Volusia County - FL",
-		"Wakulla County - FL",
-		"Walton County - FL",
-		"Washington County - FL",
-		"Appling County - GA",
-		"Atkinson County - GA",
-		"Bacon County - GA",
-		"Baker County - GA",
-		"Baldwin County - GA",
-		"Banks County - GA",
-		"Barrow County - GA",
-		"Bartow County - GA",
-		"Ben Hill County - GA",
-		"Berrien County - GA",
-		"Bibb County - GA",
-		"Bleckley County - GA",
-		"Brantley County - GA",
-		"Brooks County - GA",
-		"Bryan County - GA",
-		"Bulloch County - GA",
-		"Burke County - GA",
-		"Butts County - GA",
-		"Calhoun County - GA",
-		"Camden County - GA",
-		"Candler County - GA",
-		"Carroll County - GA",
-		"Catoosa County - GA",
-		"Charlton County - GA",
-		"Chatham County - GA",
-		"Chattahoochee County - GA",
-		"Chattooga County - GA",
-		"Cherokee County - GA",
-		"Clarke County - GA",
-		"Clay County - GA",
-		"Clayton County - GA",
-		"Clinch County - GA",
-		"Cobb County - GA",
-		"Coffee County - GA",
-		"Colquitt County - GA",
-		"Columbia County - GA",
-		"Cook County - GA",
-		"Coweta County - GA",
-		"Crawford County - GA",
-		"Crisp County - GA",
-		"Dade County - GA",
-		"Dawson County - GA",
-		"Decatur County - GA",
-		"DeKalb County - GA",
-		"Dodge County - GA",
-		"Dooly County - GA",
-		"Dougherty County - GA",
-		"Douglas County - GA",
-		"Early County - GA",
-		"Echols County - GA",
-		"Effingham County - GA",
-		"Elbert County - GA",
-		"Emanuel County - GA",
-		"Evans County - GA",
-		"Fannin County - GA",
-		"Fayette County - GA",
-		"Floyd County - GA",
-		"Forsyth County - GA",
-		"Franklin County - GA",
-		"Fulton County - GA",
-		"Gilmer County - GA",
-		"Glascock County - GA",
-		"Glynn County - GA",
-		"Gordon County - GA",
-		"Grady County - GA",
-		"Greene County - GA",
-		"Gwinnett County - GA",
-		"Habersham County - GA",
-		"Hall County - GA",
-		"Hancock County - GA",
-		"Haralson County - GA",
-		"Harris County - GA",
-		"Hart County - GA",
-		"Heard County - GA",
-		"Henry County - GA",
-		"Houston County - GA",
-		"Irwin County - GA",
-		"Jackson County - GA",
-		"Jasper County - GA",
-		"Jeff Davis County - GA",
-		"Jefferson County - GA",
-		"Jenkins County - GA",
-		"Johnson County - GA",
-		"Jones County - GA",
-		"Lamar County - GA",
-		"Lanier County - GA",
-		"Laurens County - GA",
-		"Lee County - GA",
-		"Liberty County - GA",
-		"Lincoln County - GA",
-		"Long County - GA",
-		"Lowndes County - GA",
-		"Lumpkin County - GA",
-		"McDuffie County - GA",
-		"McIntosh County - GA",
-		"Macon County - GA",
-		"Madison County - GA",
-		"Marion County - GA",
-		"Meriwether County - GA",
-		"Miller County - GA",
-		"Mitchell County - GA",
-		"Monroe County - GA",
-		"Montgomery County - GA",
-		"Morgan County - GA",
-		"Murray County - GA",
-		"Muscogee County - GA",
-		"Newton County - GA",
-		"Oconee County - GA",
-		"Oglethorpe County - GA",
-		"Paulding County - GA",
-		"Peach County - GA",
-		"Pickens County - GA",
-		"Pierce County - GA",
-		"Pike County - GA",
-		"Polk County - GA",
-		"Pulaski County - GA",
-		"Putnam County - GA",
-		"Quitman County - GA",
-		"Rabun County - GA",
-		"Randolph County - GA",
-		"Richmond County - GA",
-		"Rockdale County - GA",
-		"Schley County - GA",
-		"Screven County - GA",
-		"Seminole County - GA",
-		"Spalding County - GA",
-		"Stephens County - GA",
-		"Stewart County - GA",
-		"Sumter County - GA",
-		"Talbot County - GA",
-		"Taliaferro County - GA",
-		"Tattnall County - GA",
-		"Taylor County - GA",
-		"Telfair County - GA",
-		"Terrell County - GA",
-		"Thomas County - GA",
-		"Tift County - GA",
-		"Toombs County - GA",
-		"Towns County - GA",
-		"Treutlen County - GA",
-		"Troup County - GA",
-		"Turner County - GA",
-		"Twiggs County - GA",
-		"Union County - GA",
-		"Upson County - GA",
-		"Walker County - GA",
-		"Walton County - GA",
-		"Ware County - GA",
-		"Warren County - GA",
-		"Washington County - GA",
-		"Wayne County - GA",
-		"Webster County - GA",
-		"Wheeler County - GA",
-		"White County - GA",
-		"Whitfield County - GA",
-		"Wilcox County - GA",
-		"Wilkes County - GA",
-		"Wilkinson County - GA",
-		"Worth County - GA",
-		"Hawaii County - HI",
-		"Honolulu County - HI",
-		"Kalawao County - HI",
-		"Kauai County - HI",
-		"Maui County - HI",
-		"Ada County - ID",
-		"Adams County - ID",
-		"Bannock County - ID",
-		"Bear Lake County - ID",
-		"Benewah County - ID",
-		"Bingham County - ID",
-		"Blaine County - ID",
-		"Boise County - ID",
-		"Bonner County - ID",
-		"Bonneville County - ID",
-		"Boundary County - ID",
-		"Butte County - ID",
-		"Camas County - ID",
-		"Canyon County - ID",
-		"Caribou County - ID",
-		"Cassia County - ID",
-		"Clark County - ID",
-		"Clearwater County - ID",
-		"Custer County - ID",
-		"Elmore County - ID",
-		"Franklin County - ID",
-		"Fremont County - ID",
-		"Gem County - ID",
-		"Gooding County - ID",
-		"Idaho County - ID",
-		"Jefferson County - ID",
-		"Jerome County - ID",
-		"Kootenai County - ID",
-		"Latah County - ID",
-		"Lemhi County - ID",
-		"Lewis County - ID",
-		"Lincoln County - ID",
-		"Madison County - ID",
-		"Minidoka County - ID",
-		"Nez Perce County - ID",
-		"Oneida County - ID",
-		"Owyhee County - ID",
-		"Payette County - ID",
-		"Power County - ID",
-		"Shoshone County - ID",
-		"Teton County - ID",
-		"Twin Falls County - ID",
-		"Valley County - ID",
-		"Washington County - ID",
-		"Adams County - IL",
-		"Alexander County - IL",
-		"Bond County - IL",
-		"Boone County - IL",
-		"Brown County - IL",
-		"Bureau County - IL",
-		"Calhoun County - IL",
-		"Carroll County - IL",
-		"Cass County - IL",
-		"Champaign County - IL",
-		"Christian County - IL",
-		"Clark County - IL",
-		"Clay County - IL",
-		"Clinton County - IL",
-		"Coles County - IL",
-		"Cook County - IL",
-		"Crawford County - IL",
-		"Cumberland County - IL",
-		"DeKalb County - IL",
-		"De Witt County - IL",
-		"Douglas County - IL",
-		"DuPage County - IL",
-		"Edgar County - IL",
-		"Edwards County - IL",
-		"Effingham County - IL",
-		"Fayette County - IL",
-		"Ford County - IL",
-		"Franklin County - IL",
-		"Fulton County - IL",
-		"Gallatin County - IL",
-		"Greene County - IL",
-		"Grundy County - IL",
-		"Hamilton County - IL",
-		"Hancock County - IL",
-		"Hardin County - IL",
-		"Henderson County - IL",
-		"Henry County - IL",
-		"Iroquois County - IL",
-		"Jackson County - IL",
-		"Jasper County - IL",
-		"Jefferson County - IL",
-		"Jersey County - IL",
-		"Jo Daviess County - IL",
-		"Johnson County - IL",
-		"Kane County - IL",
-		"Kankakee County - IL",
-		"Kendall County - IL",
-		"Knox County - IL",
-		"Lake County - IL",
-		"LaSalle County - IL",
-		"Lawrence County - IL",
-		"Lee County - IL",
-		"Livingston County - IL",
-		"Logan County - IL",
-		"McDonough County - IL",
-		"McHenry County - IL",
-		"McLean County - IL",
-		"Macon County - IL",
-		"Macoupin County - IL",
-		"Madison County - IL",
-		"Marion County - IL",
-		"Marshall County - IL",
-		"Mason County - IL",
-		"Massac County - IL",
-		"Menard County - IL",
-		"Mercer County - IL",
-		"Monroe County - IL",
-		"Montgomery County - IL",
-		"Morgan County - IL",
-		"Moultrie County - IL",
-		"Ogle County - IL",
-		"Peoria County - IL",
-		"Perry County - IL",
-		"Piatt County - IL",
-		"Pike County - IL",
-		"Pope County - IL",
-		"Pulaski County - IL",
-		"Putnam County - IL",
-		"Randolph County - IL",
-		"Richland County - IL",
-		"Rock Island County - IL",
-		"St. Clair County - IL",
-		"Saline County - IL",
-		"Sangamon County - IL",
-		"Schuyler County - IL",
-		"Scott County - IL",
-		"Shelby County - IL",
-		"Stark County - IL",
-		"Stephenson County - IL",
-		"Tazewell County - IL",
-		"Union County - IL",
-		"Vermilion County - IL",
-		"Wabash County - IL",
-		"Warren County - IL",
-		"Washington County - IL",
-		"Wayne County - IL",
-		"White County - IL",
-		"Whiteside County - IL",
-		"Will County - IL",
-		"Williamson County - IL",
-		"Winnebago County - IL",
-		"Woodford County - IL",
-		"Adams County - IN",
-		"Allen County - IN",
-		"Bartholomew County - IN",
-		"Benton County - IN",
-		"Blackford County - IN",
-		"Boone County - IN",
-		"Brown County - IN",
-		"Carroll County - IN",
-		"Cass County - IN",
-		"Clark County - IN",
-		"Clay County - IN",
-		"Clinton County - IN",
-		"Crawford County - IN",
-		"Daviess County - IN",
-		"Dearborn County - IN",
-		"Decatur County - IN",
-		"DeKalb County - IN",
-		"Delaware County - IN",
-		"Dubois County - IN",
-		"Elkhart County - IN",
-		"Fayette County - IN",
-		"Floyd County - IN",
-		"Fountain County - IN",
-		"Franklin County - IN",
-		"Fulton County - IN",
-		"Gibson County - IN",
-		"Grant County - IN",
-		"Greene County - IN",
-		"Hamilton County - IN",
-		"Hancock County - IN",
-		"Harrison County - IN",
-		"Hendricks County - IN",
-		"Henry County - IN",
-		"Howard County - IN",
-		"Huntington County - IN",
-		"Jackson County - IN",
-		"Jasper County - IN",
-		"Jay County - IN",
-		"Jefferson County - IN",
-		"Jennings County - IN",
-		"Johnson County - IN",
-		"Knox County - IN",
-		"Kosciusko County - IN",
-		"LaGrange County - IN",
-		"Lake County - IN",
-		"LaPorte County - IN",
-		"Lawrence County - IN",
-		"Madison County - IN",
-		"Marion County - IN",
-		"Marshall County - IN",
-		"Martin County - IN",
-		"Miami County - IN",
-		"Monroe County - IN",
-		"Montgomery County - IN",
-		"Morgan County - IN",
-		"Newton County - IN",
-		"Noble County - IN",
-		"Ohio County - IN",
-		"Orange County - IN",
-		"Owen County - IN",
-		"Parke County - IN",
-		"Perry County - IN",
-		"Pike County - IN",
-		"Porter County - IN",
-		"Posey County - IN",
-		"Pulaski County - IN",
-		"Putnam County - IN",
-		"Randolph County - IN",
-		"Ripley County - IN",
-		"Rush County - IN",
-		"St. Joseph County - IN",
-		"Scott County - IN",
-		"Shelby County - IN",
-		"Spencer County - IN",
-		"Starke County - IN",
-		"Steuben County - IN",
-		"Sullivan County - IN",
-		"Switzerland County - IN",
-		"Tippecanoe County - IN",
-		"Tipton County - IN",
-		"Union County - IN",
-		"Vanderburgh County - IN",
-		"Vermillion County - IN",
-		"Vigo County - IN",
-		"Wabash County - IN",
-		"Warren County - IN",
-		"Warrick County - IN",
-		"Washington County - IN",
-		"Wayne County - IN",
-		"Wells County - IN",
-		"White County - IN",
-		"Whitley County - IN",
-		"Adair County - IA",
-		"Adams County - IA",
-		"Allamakee County - IA",
-		"Appanoose County - IA",
-		"Audubon County - IA",
-		"Benton County - IA",
-		"Black Hawk County - IA",
-		"Boone County - IA",
-		"Bremer County - IA",
-		"Buchanan County - IA",
-		"Buena Vista County - IA",
-		"Butler County - IA",
-		"Calhoun County - IA",
-		"Carroll County - IA",
-		"Cass County - IA",
-		"Cedar County - IA",
-		"Cerro Gordo County - IA",
-		"Cherokee County - IA",
-		"Chickasaw County - IA",
-		"Clarke County - IA",
-		"Clay County - IA",
-		"Clayton County - IA",
-		"Clinton County - IA",
-		"Crawford County - IA",
-		"Dallas County - IA",
-		"Davis County - IA",
-		"Decatur County - IA",
-		"Delaware County - IA",
-		"Des Moines County - IA",
-		"Dickinson County - IA",
-		"Dubuque County - IA",
-		"Emmet County - IA",
-		"Fayette County - IA",
-		"Floyd County - IA",
-		"Franklin County - IA",
-		"Fremont County - IA",
-		"Greene County - IA",
-		"Grundy County - IA",
-		"Guthrie County - IA",
-		"Hamilton County - IA",
-		"Hancock County - IA",
-		"Hardin County - IA",
-		"Harrison County - IA",
-		"Henry County - IA",
-		"Howard County - IA",
-		"Humboldt County - IA",
-		"Ida County - IA",
-		"Iowa County - IA",
-		"Jackson County - IA",
-		"Jasper County - IA",
-		"Jefferson County - IA",
-		"Johnson County - IA",
-		"Jones County - IA",
-		"Keokuk County - IA",
-		"Kossuth County - IA",
-		"Lee County - IA",
-		"Linn County - IA",
-		"Louisa County - IA",
-		"Lucas County - IA",
-		"Lyon County - IA",
-		"Madison County - IA",
-		"Mahaska County - IA",
-		"Marion County - IA",
-		"Marshall County - IA",
-		"Mills County - IA",
-		"Mitchell County - IA",
-		"Monona County - IA",
-		"Monroe County - IA",
-		"Montgomery County - IA",
-		"Muscatine County - IA",
-		"O'Brien County - IA",
-		"Osceola County - IA",
-		"Page County - IA",
-		"Palo Alto County - IA",
-		"Plymouth County - IA",
-		"Pocahontas County - IA",
-		"Polk County - IA",
-		"Pottawattamie County - IA",
-		"Poweshiek County - IA",
-		"Ringgold County - IA",
-		"Sac County - IA",
-		"Scott County - IA",
-		"Shelby County - IA",
-		"Sioux County - IA",
-		"Story County - IA",
-		"Tama County - IA",
-		"Taylor County - IA",
-		"Union County - IA",
-		"Van Buren County - IA",
-		"Wapello County - IA",
-		"Warren County - IA",
-		"Washington County - IA",
-		"Wayne County - IA",
-		"Webster County - IA",
-		"Winnebago County - IA",
-		"Winneshiek County - IA",
-		"Woodbury County - IA",
-		"Worth County - IA",
-		"Wright County - IA",
-		"Allen County - KS",
-		"Anderson County - KS",
-		"Atchison County - KS",
-		"Barber County - KS",
-		"Barton County - KS",
-		"Bourbon County - KS",
-		"Brown County - KS",
-		"Butler County - KS",
-		"Chase County - KS",
-		"Chautauqua County - KS",
-		"Cherokee County - KS",
-		"Cheyenne County - KS",
-		"Clark County - KS",
-		"Clay County - KS",
-		"Cloud County - KS",
-		"Coffey County - KS",
-		"Comanche County - KS",
-		"Cowley County - KS",
-		"Crawford County - KS",
-		"Decatur County - KS",
-		"Dickinson County - KS",
-		"Doniphan County - KS",
-		"Douglas County - KS",
-		"Edwards County - KS",
-		"Elk County - KS",
-		"Ellis County - KS",
-		"Ellsworth County - KS",
-		"Finney County - KS",
-		"Ford County - KS",
-		"Franklin County - KS",
-		"Geary County - KS",
-		"Gove County - KS",
-		"Graham County - KS",
-		"Grant County - KS",
-		"Gray County - KS",
-		"Greeley County - KS",
-		"Greenwood County - KS",
-		"Hamilton County - KS",
-		"Harper County - KS",
-		"Harvey County - KS",
-		"Haskell County - KS",
-		"Hodgeman County - KS",
-		"Jackson County - KS",
-		"Jefferson County - KS",
-		"Jewell County - KS",
-		"Johnson County - KS",
-		"Kearny County - KS",
-		"Kingman County - KS",
-		"Kiowa County - KS",
-		"Labette County - KS",
-		"Lane County - KS",
-		"Leavenworth County - KS",
-		"Lincoln County - KS",
-		"Linn County - KS",
-		"Logan County - KS",
-		"Lyon County - KS",
-		"McPherson County - KS",
-		"Marion County - KS",
-		"Marshall County - KS",
-		"Meade County - KS",
-		"Miami County - KS",
-		"Mitchell County - KS",
-		"Montgomery County - KS",
-		"Morris County - KS",
-		"Morton County - KS",
-		"Nemaha County - KS",
-		"Neosho County - KS",
-		"Ness County - KS",
-		"Norton County - KS",
-		"Osage County - KS",
-		"Osborne County - KS",
-		"Ottawa County - KS",
-		"Pawnee County - KS",
-		"Phillips County - KS",
-		"Pottawatomie County - KS",
-		"Pratt County - KS",
-		"Rawlins County - KS",
-		"Reno County - KS",
-		"Republic County - KS",
-		"Rice County - KS",
-		"Riley County - KS",
-		"Rooks County - KS",
-		"Rush County - KS",
-		"Russell County - KS",
-		"Saline County - KS",
-		"Scott County - KS",
-		"Sedgwick County - KS",
-		"Seward County - KS",
-		"Shawnee County - KS",
-		"Sheridan County - KS",
-		"Sherman County - KS",
-		"Smith County - KS",
-		"Stafford County - KS",
-		"Stanton County - KS",
-		"Stevens County - KS",
-		"Sumner County - KS",
-		"Thomas County - KS",
-		"Trego County - KS",
-		"Wabaunsee County - KS",
-		"Wallace County - KS",
-		"Washington County - KS",
-		"Wichita County - KS",
-		"Wilson County - KS",
-		"Woodson County - KS",
-		"Wyandotte County - KS",
-		"Adair County - KY",
-		"Allen County - KY",
-		"Anderson County - KY",
-		"Ballard County - KY",
-		"Barren County - KY",
-		"Bath County - KY",
-		"Bell County - KY",
-		"Boone County - KY",
-		"Bourbon County - KY",
-		"Boyd County - KY",
-		"Boyle County - KY",
-		"Bracken County - KY",
-		"Breathitt County - KY",
-		"Breckinridge County - KY",
-		"Bullitt County - KY",
-		"Butler County - KY",
-		"Caldwell County - KY",
-		"Calloway County - KY",
-		"Campbell County - KY",
-		"Carlisle County - KY",
-		"Carroll County - KY",
-		"Carter County - KY",
-		"Casey County - KY",
-		"Christian County - KY",
-		"Clark County - KY",
-		"Clay County - KY",
-		"Clinton County - KY",
-		"Crittenden County - KY",
-		"Cumberland County - KY",
-		"Daviess County - KY",
-		"Edmonson County - KY",
-		"Elliott County - KY",
-		"Estill County - KY",
-		"Fayette County - KY",
-		"Fleming County - KY",
-		"Floyd County - KY",
-		"Franklin County - KY",
-		"Fulton County - KY",
-		"Gallatin County - KY",
-		"Garrard County - KY",
-		"Grant County - KY",
-		"Graves County - KY",
-		"Grayson County - KY",
-		"Green County - KY",
-		"Greenup County - KY",
-		"Hancock County - KY",
-		"Hardin County - KY",
-		"Harlan County - KY",
-		"Harrison County - KY",
-		"Hart County - KY",
-		"Henderson County - KY",
-		"Henry County - KY",
-		"Hickman County - KY",
-		"Hopkins County - KY",
-		"Jackson County - KY",
-		"Jefferson County - KY",
-		"Jessamine County - KY",
-		"Johnson County - KY",
-		"Kenton County - KY",
-		"Knott County - KY",
-		"Knox County - KY",
-		"Larue County - KY",
-		"Laurel County - KY",
-		"Lawrence County - KY",
-		"Lee County - KY",
-		"Leslie County - KY",
-		"Letcher County - KY",
-		"Lewis County - KY",
-		"Lincoln County - KY",
-		"Livingston County - KY",
-		"Logan County - KY",
-		"Lyon County - KY",
-		"McCracken County - KY",
-		"McCreary County - KY",
-		"McLean County - KY",
-		"Madison County - KY",
-		"Magoffin County - KY",
-		"Marion County - KY",
-		"Marshall County - KY",
-		"Martin County - KY",
-		"Mason County - KY",
-		"Meade County - KY",
-		"Menifee County - KY",
-		"Mercer County - KY",
-		"Metcalfe County - KY",
-		"Monroe County - KY",
-		"Montgomery County - KY",
-		"Morgan County - KY",
-		"Muhlenberg County - KY",
-		"Nelson County - KY",
-		"Nicholas County - KY",
-		"Ohio County - KY",
-		"Oldham County - KY",
-		"Owen County - KY",
-		"Owsley County - KY",
-		"Pendleton County - KY",
-		"Perry County - KY",
-		"Pike County - KY",
-		"Powell County - KY",
-		"Pulaski County - KY",
-		"Robertson County - KY",
-		"Rockcastle County - KY",
-		"Rowan County - KY",
-		"Russell County - KY",
-		"Scott County - KY",
-		"Shelby County - KY",
-		"Simpson County - KY",
-		"Spencer County - KY",
-		"Taylor County - KY",
-		"Todd County - KY",
-		"Trigg County - KY",
-		"Trimble County - KY",
-		"Union County - KY",
-		"Warren County - KY",
-		"Washington County - KY",
-		"Wayne County - KY",
-		"Webster County - KY",
-		"Whitley County - KY",
-		"Wolfe County - KY",
-		"Woodford County - KY",
-		"Acadia Parish - LA",
-		"Allen Parish - LA",
-		"Ascension Parish - LA",
-		"Assumption Parish - LA",
-		"Avoyelles Parish - LA",
-		"Beauregard Parish - LA",
-		"Bienville Parish - LA",
-		"Bossier Parish - LA",
-		"Caddo Parish - LA",
-		"Calcasieu Parish - LA",
-		"Caldwell Parish - LA",
-		"Cameron Parish - LA",
-		"Catahoula Parish - LA",
-		"Claiborne Parish - LA",
-		"Concordia Parish - LA",
-		"De Soto Parish - LA",
-		"East Baton Rouge Parish - LA",
-		"East Carroll Parish - LA",
-		"East Feliciana Parish - LA",
-		"Evangeline Parish - LA",
-		"Franklin Parish - LA",
-		"Grant Parish - LA",
-		"Iberia Parish - LA",
-		"Iberville Parish - LA",
-		"Jackson Parish - LA",
-		"Jefferson Parish - LA",
-		"Jefferson Davis Parish - LA",
-		"Lafayette Parish - LA",
-		"Lafourche Parish - LA",
-		"La Salle Parish - LA",
-		"Lincoln Parish - LA",
-		"Livingston Parish - LA",
-		"Madison Parish - LA",
-		"Morehouse Parish - LA",
-		"Natchitoches Parish - LA",
-		"Orleans Parish - LA",
-		"Ouachita Parish - LA",
-		"Plaquemines Parish - LA",
-		"Pointe Coupee Parish - LA",
-		"Rapides Parish - LA",
-		"Red River Parish - LA",
-		"Richland Parish - LA",
-		"Sabine Parish - LA",
-		"St. Bernard Parish - LA",
-		"St. Charles Parish - LA",
-		"St. Helena Parish - LA",
-		"St. James Parish - LA",
-		"St. John the Baptist Parish - LA",
-		"St. Landry Parish - LA",
-		"St. Martin Parish - LA",
-		"St. Mary Parish - LA",
-		"St. Tammany Parish - LA",
-		"Tangipahoa Parish - LA",
-		"Tensas Parish - LA",
-		"Terrebonne Parish - LA",
-		"Union Parish - LA",
-		"Vermilion Parish - LA",
-		"Vernon Parish - LA",
-		"Washington Parish - LA",
-		"Webster Parish - LA",
-		"West Baton Rouge Parish - LA",
-		"West Carroll Parish - LA",
-		"West Feliciana Parish - LA",
-		"Winn Parish - LA",
-		"Androscoggin County - ME",
-		"Aroostook County - ME",
-		"Cumberland County - ME",
-		"Franklin County - ME",
-		"Hancock County - ME",
-		"Kennebec County - ME",
-		"Knox County - ME",
-		"Lincoln County - ME",
-		"Oxford County - ME",
-		"Penobscot County - ME",
-		"Piscataquis County - ME",
-		"Sagadahoc County - ME",
-		"Somerset County - ME",
-		"Waldo County - ME",
-		"Washington County - ME",
-		"York County - ME",
-		"Allegany County - MD",
-		"Anne Arundel County - MD",
-		"Baltimore County - MD",
-		"Calvert County - MD",
-		"Caroline County - MD",
-		"Carroll County - MD",
-		"Cecil County - MD",
-		"Charles County - MD",
-		"Dorchester County - MD",
-		"Frederick County - MD",
-		"Garrett County - MD",
-		"Harford County - MD",
-		"Howard County - MD",
-		"Kent County - MD",
-		"Montgomery County - MD",
-		"Prince George's County - MD",
-		"Queen Anne's County - MD",
-		"St. Mary's County - MD",
-		"Somerset County - MD",
-		"Talbot County - MD",
-		"Washington County - MD",
-		"Wicomico County - MD",
-		"Worcester County - MD",
-		"Baltimore city - MD",
-		"Barnstable County - MA",
-		"Berkshire County - MA",
-		"Bristol County - MA",
-		"Dukes County - MA",
-		"Essex County - MA",
-		"Franklin County - MA",
-		"Hampden County - MA",
-		"Hampshire County - MA",
-		"Middlesex County - MA",
-		"Nantucket County - MA",
-		"Norfolk County - MA",
-		"Plymouth County - MA",
-		"Suffolk County - MA",
-		"Worcester County - MA",
-		"Alcona County - MI",
-		"Alger County - MI",
-		"Allegan County - MI",
-		"Alpena County - MI",
-		"Antrim County - MI",
-		"Arenac County - MI",
-		"Baraga County - MI",
-		"Barry County - MI",
-		"Bay County - MI",
-		"Benzie County - MI",
-		"Berrien County - MI",
-		"Branch County - MI",
-		"Calhoun County - MI",
-		"Cass County - MI",
-		"Charlevoix County - MI",
-		"Cheboygan County - MI",
-		"Chippewa County - MI",
-		"Clare County - MI",
-		"Clinton County - MI",
-		"Crawford County - MI",
-		"Delta County - MI",
-		"Dickinson County - MI",
-		"Eaton County - MI",
-		"Emmet County - MI",
-		"Genesee County - MI",
-		"Gladwin County - MI",
-		"Gogebic County - MI",
-		"Grand Traverse County - MI",
-		"Gratiot County - MI",
-		"Hillsdale County - MI",
-		"Houghton County - MI",
-		"Huron County - MI",
-		"Ingham County - MI",
-		"Ionia County - MI",
-		"Iosco County - MI",
-		"Iron County - MI",
-		"Isabella County - MI",
-		"Jackson County - MI",
-		"Kalamazoo County - MI",
-		"Kalkaska County - MI",
-		"Kent County - MI",
-		"Keweenaw County - MI",
-		"Lake County - MI",
-		"Lapeer County - MI",
-		"Leelanau County - MI",
-		"Lenawee County - MI",
-		"Livingston County - MI",
-		"Luce County - MI",
-		"Mackinac County - MI",
-		"Macomb County - MI",
-		"Manistee County - MI",
-		"Marquette County - MI",
-		"Mason County - MI",
-		"Mecosta County - MI",
-		"Menominee County - MI",
-		"Midland County - MI",
-		"Missaukee County - MI",
-		"Monroe County - MI",
-		"Montcalm County - MI",
-		"Montmorency County - MI",
-		"Muskegon County - MI",
-		"Newaygo County - MI",
-		"Oakland County - MI",
-		"Oceana County - MI",
-		"Ogemaw County - MI",
-		"Ontonagon County - MI",
-		"Osceola County - MI",
-		"Oscoda County - MI",
-		"Otsego County - MI",
-		"Ottawa County - MI",
-		"Presque Isle County - MI",
-		"Roscommon County - MI",
-		"Saginaw County - MI",
-		"St. Clair County - MI",
-		"St. Joseph County - MI",
-		"Sanilac County - MI",
-		"Schoolcraft County - MI",
-		"Shiawassee County - MI",
-		"Tuscola County - MI",
-		"Van Buren County - MI",
-		"Washtenaw County - MI",
-		"Wayne County - MI",
-		"Wexford County - MI",
-		"Aitkin County - MN",
-		"Anoka County - MN",
-		"Becker County - MN",
-		"Beltrami County - MN",
-		"Benton County - MN",
-		"Big Stone County - MN",
-		"Blue Earth County - MN",
-		"Brown County - MN",
-		"Carlton County - MN",
-		"Carver County - MN",
-		"Cass County - MN",
-		"Chippewa County - MN",
-		"Chisago County - MN",
-		"Clay County - MN",
-		"Clearwater County - MN",
-		"Cook County - MN",
-		"Cottonwood County - MN",
-		"Crow Wing County - MN",
-		"Dakota County - MN",
-		"Dodge County - MN",
-		"Douglas County - MN",
-		"Faribault County - MN",
-		"Fillmore County - MN",
-		"Freeborn County - MN",
-		"Goodhue County - MN",
-		"Grant County - MN",
-		"Hennepin County - MN",
-		"Houston County - MN",
-		"Hubbard County - MN",
-		"Isanti County - MN",
-		"Itasca County - MN",
-		"Jackson County - MN",
-		"Kanabec County - MN",
-		"Kandiyohi County - MN",
-		"Kittson County - MN",
-		"Koochiching County - MN",
-		"Lac qui Parle County - MN",
-		"Lake County - MN",
-		"Lake of the Woods County - MN",
-		"Le Sueur County - MN",
-		"Lincoln County - MN",
-		"Lyon County - MN",
-		"McLeod County - MN",
-		"Mahnomen County - MN",
-		"Marshall County - MN",
-		"Martin County - MN",
-		"Meeker County - MN",
-		"Mille Lacs County - MN",
-		"Morrison County - MN",
-		"Mower County - MN",
-		"Murray County - MN",
-		"Nicollet County - MN",
-		"Nobles County - MN",
-		"Norman County - MN",
-		"Olmsted County - MN",
-		"Otter Tail County - MN",
-		"Pennington County - MN",
-		"Pine County - MN",
-		"Pipestone County - MN",
-		"Polk County - MN",
-		"Pope County - MN",
-		"Ramsey County - MN",
-		"Red Lake County - MN",
-		"Redwood County - MN",
-		"Renville County - MN",
-		"Rice County - MN",
-		"Rock County - MN",
-		"Roseau County - MN",
-		"St. Louis County - MN",
-		"Scott County - MN",
-		"Sherburne County - MN",
-		"Sibley County - MN",
-		"Stearns County - MN",
-		"Steele County - MN",
-		"Stevens County - MN",
-		"Swift County - MN",
-		"Todd County - MN",
-		"Traverse County - MN",
-		"Wabasha County - MN",
-		"Wadena County - MN",
-		"Waseca County - MN",
-		"Washington County - MN",
-		"Watonwan County - MN",
-		"Wilkin County - MN",
-		"Winona County - MN",
-		"Wright County - MN",
-		"Yellow Medicine County - MN",
-		"Adams County - MS",
-		"Alcorn County - MS",
-		"Amite County - MS",
-		"Attala County - MS",
-		"Benton County - MS",
-		"Bolivar County - MS",
-		"Calhoun County - MS",
-		"Carroll County - MS",
-		"Chickasaw County - MS",
-		"Choctaw County - MS",
-		"Claiborne County - MS",
-		"Clarke County - MS",
-		"Clay County - MS",
-		"Coahoma County - MS",
-		"Copiah County - MS",
-		"Covington County - MS",
-		"DeSoto County - MS",
-		"Forrest County - MS",
-		"Franklin County - MS",
-		"George County - MS",
-		"Greene County - MS",
-		"Grenada County - MS",
-		"Hancock County - MS",
-		"Harrison County - MS",
-		"Hinds County - MS",
-		"Holmes County - MS",
-		"Humphreys County - MS",
-		"Issaquena County - MS",
-		"Itawamba County - MS",
-		"Jackson County - MS",
-		"Jasper County - MS",
-		"Jefferson County - MS",
-		"Jefferson Davis County - MS",
-		"Jones County - MS",
-		"Kemper County - MS",
-		"Lafayette County - MS",
-		"Lamar County - MS",
-		"Lauderdale County - MS",
-		"Lawrence County - MS",
-		"Leake County - MS",
-		"Lee County - MS",
-		"Leflore County - MS",
-		"Lincoln County - MS",
-		"Lowndes County - MS",
-		"Madison County - MS",
-		"Marion County - MS",
-		"Marshall County - MS",
-		"Monroe County - MS",
-		"Montgomery County - MS",
-		"Neshoba County - MS",
-		"Newton County - MS",
-		"Noxubee County - MS",
-		"Oktibbeha County - MS",
-		"Panola County - MS",
-		"Pearl River County - MS",
-		"Perry County - MS",
-		"Pike County - MS",
-		"Pontotoc County - MS",
-		"Prentiss County - MS",
-		"Quitman County - MS",
-		"Rankin County - MS",
-		"Scott County - MS",
-		"Sharkey County - MS",
-		"Simpson County - MS",
-		"Smith County - MS",
-		"Stone County - MS",
-		"Sunflower County - MS",
-		"Tallahatchie County - MS",
-		"Tate County - MS",
-		"Tippah County - MS",
-		"Tishomingo County - MS",
-		"Tunica County - MS",
-		"Union County - MS",
-		"Walthall County - MS",
-		"Warren County - MS",
-		"Washington County - MS",
-		"Wayne County - MS",
-		"Webster County - MS",
-		"Wilkinson County - MS",
-		"Winston County - MS",
-		"Yalobusha County - MS",
-		"Yazoo County - MS",
-		"Adair County - MO",
-		"Andrew County - MO",
-		"Atchison County - MO",
-		"Audrain County - MO",
-		"Barry County - MO",
-		"Barton County - MO",
-		"Bates County - MO",
-		"Benton County - MO",
-		"Bollinger County - MO",
-		"Boone County - MO",
-		"Buchanan County - MO",
-		"Butler County - MO",
-		"Caldwell County - MO",
-		"Callaway County - MO",
-		"Camden County - MO",
-		"Cape Girardeau County - MO",
-		"Carroll County - MO",
-		"Carter County - MO",
-		"Cass County - MO",
-		"Cedar County - MO",
-		"Chariton County - MO",
-		"Christian County - MO",
-		"Clark County - MO",
-		"Clay County - MO",
-		"Clinton County - MO",
-		"Cole County - MO",
-		"Cooper County - MO",
-		"Crawford County - MO",
-		"Dade County - MO",
-		"Dallas County - MO",
-		"Daviess County - MO",
-		"DeKalb County - MO",
-		"Dent County - MO",
-		"Douglas County - MO",
-		"Dunklin County - MO",
-		"Franklin County - MO",
-		"Gasconade County - MO",
-		"Gentry County - MO",
-		"Greene County - MO",
-		"Grundy County - MO",
-		"Harrison County - MO",
-		"Henry County - MO",
-		"Hickory County - MO",
-		"Holt County - MO",
-		"Howard County - MO",
-		"Howell County - MO",
-		"Iron County - MO",
-		"Jackson County - MO",
-		"Jasper County - MO",
-		"Jefferson County - MO",
-		"Johnson County - MO",
-		"Knox County - MO",
-		"Laclede County - MO",
-		"Lafayette County - MO",
-		"Lawrence County - MO",
-		"Lewis County - MO",
-		"Lincoln County - MO",
-		"Linn County - MO",
-		"Livingston County - MO",
-		"McDonald County - MO",
-		"Macon County - MO",
-		"Madison County - MO",
-		"Maries County - MO",
-		"Marion County - MO",
-		"Mercer County - MO",
-		"Miller County - MO",
-		"Mississippi County - MO",
-		"Moniteau County - MO",
-		"Monroe County - MO",
-		"Montgomery County - MO",
-		"Morgan County - MO",
-		"New Madrid County - MO",
-		"Newton County - MO",
-		"Nodaway County - MO",
-		"Oregon County - MO",
-		"Osage County - MO",
-		"Ozark County - MO",
-		"Pemiscot County - MO",
-		"Perry County - MO",
-		"Pettis County - MO",
-		"Phelps County - MO",
-		"Pike County - MO",
-		"Platte County - MO",
-		"Polk County - MO",
-		"Pulaski County - MO",
-		"Putnam County - MO",
-		"Ralls County - MO",
-		"Randolph County - MO",
-		"Ray County - MO",
-		"Reynolds County - MO",
-		"Ripley County - MO",
-		"St. Charles County - MO",
-		"St. Clair County - MO",
-		"Ste. Genevieve County - MO",
-		"St. Francois County - MO",
-		"St. Louis County - MO",
-		"Saline County - MO",
-		"Schuyler County - MO",
-		"Scotland County - MO",
-		"Scott County - MO",
-		"Shannon County - MO",
-		"Shelby County - MO",
-		"Stoddard County - MO",
-		"Stone County - MO",
-		"Sullivan County - MO",
-		"Taney County - MO",
-		"Texas County - MO",
-		"Vernon County - MO",
-		"Warren County - MO",
-		"Washington County - MO",
-		"Wayne County - MO",
-		"Webster County - MO",
-		"Worth County - MO",
-		"Wright County - MO",
-		"St. Louis city - MO",
-		"Beaverhead County - MT",
-		"Big Horn County - MT",
-		"Blaine County - MT",
-		"Broadwater County - MT",
-		"Carbon County - MT",
-		"Carter County - MT",
-		"Cascade County - MT",
-		"Chouteau County - MT",
-		"Custer County - MT",
-		"Daniels County - MT",
-		"Dawson County - MT",
-		"Deer Lodge County - MT",
-		"Fallon County - MT",
-		"Fergus County - MT",
-		"Flathead County - MT",
-		"Gallatin County - MT",
-		"Garfield County - MT",
-		"Glacier County - MT",
-		"Golden Valley County - MT",
-		"Granite County - MT",
-		"Hill County - MT",
-		"Jefferson County - MT",
-		"Judith Basin County - MT",
-		"Lake County - MT",
-		"Lewis and Clark County - MT",
-		"Liberty County - MT",
-		"Lincoln County - MT",
-		"McCone County - MT",
-		"Madison County - MT",
-		"Meagher County - MT",
-		"Mineral County - MT",
-		"Missoula County - MT",
-		"Musselshell County - MT",
-		"Park County - MT",
-		"Petroleum County - MT",
-		"Phillips County - MT",
-		"Pondera County - MT",
-		"Powder River County - MT",
-		"Powell County - MT",
-		"Prairie County - MT",
-		"Ravalli County - MT",
-		"Richland County - MT",
-		"Roosevelt County - MT",
-		"Rosebud County - MT",
-		"Sanders County - MT",
-		"Sheridan County - MT",
-		"Silver Bow County - MT",
-		"Stillwater County - MT",
-		"Sweet Grass County - MT",
-		"Teton County - MT",
-		"Toole County - MT",
-		"Treasure County - MT",
-		"Valley County - MT",
-		"Wheatland County - MT",
-		"Wibaux County - MT",
-		"Yellowstone County - MT",
-		"Adams County - NE",
-		"Antelope County - NE",
-		"Arthur County - NE",
-		"Banner County - NE",
-		"Blaine County - NE",
-		"Boone County - NE",
-		"Box Butte County - NE",
-		"Boyd County - NE",
-		"Brown County - NE",
-		"Buffalo County - NE",
-		"Burt County - NE",
-		"Butler County - NE",
-		"Cass County - NE",
-		"Cedar County - NE",
-		"Chase County - NE",
-		"Cherry County - NE",
-		"Cheyenne County - NE",
-		"Clay County - NE",
-		"Colfax County - NE",
-		"Cuming County - NE",
-		"Custer County - NE",
-		"Dakota County - NE",
-		"Dawes County - NE",
-		"Dawson County - NE",
-		"Deuel County - NE",
-		"Dixon County - NE",
-		"Dodge County - NE",
-		"Douglas County - NE",
-		"Dundy County - NE",
-		"Fillmore County - NE",
-		"Franklin County - NE",
-		"Frontier County - NE",
-		"Furnas County - NE",
-		"Gage County - NE",
-		"Garden County - NE",
-		"Garfield County - NE",
-		"Gosper County - NE",
-		"Grant County - NE",
-		"Greeley County - NE",
-		"Hall County - NE",
-		"Hamilton County - NE",
-		"Harlan County - NE",
-		"Hayes County - NE",
-		"Hitchcock County - NE",
-		"Holt County - NE",
-		"Hooker County - NE",
-		"Howard County - NE",
-		"Jefferson County - NE",
-		"Johnson County - NE",
-		"Kearney County - NE",
-		"Keith County - NE",
-		"Keya Paha County - NE",
-		"Kimball County - NE",
-		"Knox County - NE",
-		"Lancaster County - NE",
-		"Lincoln County - NE",
-		"Logan County - NE",
-		"Loup County - NE",
-		"McPherson County - NE",
-		"Madison County - NE",
-		"Merrick County - NE",
-		"Morrill County - NE",
-		"Nance County - NE",
-		"Nemaha County - NE",
-		"Nuckolls County - NE",
-		"Otoe County - NE",
-		"Pawnee County - NE",
-		"Perkins County - NE",
-		"Phelps County - NE",
-		"Pierce County - NE",
-		"Platte County - NE",
-		"Polk County - NE",
-		"Red Willow County - NE",
-		"Richardson County - NE",
-		"Rock County - NE",
-		"Saline County - NE",
-		"Sarpy County - NE",
-		"Saunders County - NE",
-		"Scotts Bluff County - NE",
-		"Seward County - NE",
-		"Sheridan County - NE",
-		"Sherman County - NE",
-		"Sioux County - NE",
-		"Stanton County - NE",
-		"Thayer County - NE",
-		"Thomas County - NE",
-		"Thurston County - NE",
-		"Valley County - NE",
-		"Washington County - NE",
-		"Wayne County - NE",
-		"Webster County - NE",
-		"Wheeler County - NE",
-		"York County - NE",
-		"Churchill County - NV",
-		"Clark County - NV",
-		"Douglas County - NV",
-		"Elko County - NV",
-		"Esmeralda County - NV",
-		"Eureka County - NV",
-		"Humboldt County - NV",
-		"Lander County - NV",
-		"Lincoln County - NV",
-		"Lyon County - NV",
-		"Mineral County - NV",
-		"Nye County - NV",
-		"Pershing County - NV",
-		"Storey County - NV",
-		"Washoe County - NV",
-		"White Pine County - NV",
-		"Carson City - NV",
-		"Belknap County - NH",
-		"Carroll County - NH",
-		"Cheshire County - NH",
-		"Coos County - NH",
-		"Grafton County - NH",
-		"Hillsborough County - NH",
-		"Merrimack County - NH",
-		"Rockingham County - NH",
-		"Strafford County - NH",
-		"Sullivan County - NH",
-		"Atlantic County - NJ",
-		"Bergen County - NJ",
-		"Burlington County - NJ",
-		"Camden County - NJ",
-		"Cape May County - NJ",
-		"Cumberland County - NJ",
-		"Essex County - NJ",
-		"Gloucester County - NJ",
-		"Hudson County - NJ",
-		"Hunterdon County - NJ",
-		"Mercer County - NJ",
-		"Middlesex County - NJ",
-		"Monmouth County - NJ",
-		"Morris County - NJ",
-		"Ocean County - NJ",
-		"Passaic County - NJ",
-		"Salem County - NJ",
-		"Somerset County - NJ",
-		"Sussex County - NJ",
-		"Union County - NJ",
-		"Warren County - NJ",
-		"Bernalillo County - NM",
-		"Catron County - NM",
-		"Chaves County - NM",
-		"Cibola County - NM",
-		"Colfax County - NM",
-		"Curry County - NM",
-		"De Baca County - NM",
-		"Do�a Ana County - NM",
-		"Eddy County - NM",
-		"Grant County - NM",
-		"Guadalupe County - NM",
-		"Harding County - NM",
-		"Hidalgo County - NM",
-		"Lea County - NM",
-		"Lincoln County - NM",
-		"Los Alamos County - NM",
-		"Luna County - NM",
-		"McKinley County - NM",
-		"Mora County - NM",
-		"Otero County - NM",
-		"Quay County - NM",
-		"Rio Arriba County - NM",
-		"Roosevelt County - NM",
-		"Sandoval County - NM",
-		"San Juan County - NM",
-		"San Miguel County - NM",
-		"Santa Fe County - NM",
-		"Sierra County - NM",
-		"Socorro County - NM",
-		"Taos County - NM",
-		"Torrance County - NM",
-		"Union County - NM",
-		"Valencia County - NM",
-		"Albany County - NY",
-		"Allegany County - NY",
-		"Bronx County - NY",
-		"Broome County - NY",
-		"Cattaraugus County - NY",
-		"Cayuga County - NY",
-		"Chautauqua County - NY",
-		"Chemung County - NY",
-		"Chenango County - NY",
-		"Clinton County - NY",
-		"Columbia County - NY",
-		"Cortland County - NY",
-		"Delaware County - NY",
-		"Dutchess County - NY",
-		"Erie County - NY",
-		"Essex County - NY",
-		"Franklin County - NY",
-		"Fulton County - NY",
-		"Genesee County - NY",
-		"Greene County - NY",
-		"Hamilton County - NY",
-		"Herkimer County - NY",
-		"Jefferson County - NY",
-		"Kings County - NY",
-		"Lewis County - NY",
-		"Livingston County - NY",
-		"Madison County - NY",
-		"Monroe County - NY",
-		"Montgomery County - NY",
-		"Nassau County - NY",
-		"New York County - NY",
-		"Niagara County - NY",
-		"Oneida County - NY",
-		"Onondaga County - NY",
-		"Ontario County - NY",
-		"Orange County - NY",
-		"Orleans County - NY",
-		"Oswego County - NY",
-		"Otsego County - NY",
-		"Putnam County - NY",
-		"Queens County - NY",
-		"Rensselaer County - NY",
-		"Richmond County - NY",
-		"Rockland County - NY",
-		"St. Lawrence County - NY",
-		"Saratoga County - NY",
-		"Schenectady County - NY",
-		"Schoharie County - NY",
-		"Schuyler County - NY",
-		"Seneca County - NY",
-		"Steuben County - NY",
-		"Suffolk County - NY",
-		"Sullivan County - NY",
-		"Tioga County - NY",
-		"Tompkins County - NY",
-		"Ulster County - NY",
-		"Warren County - NY",
-		"Washington County - NY",
-		"Wayne County - NY",
-		"Westchester County - NY",
-		"Wyoming County - NY",
-		"Yates County - NY",
-		"Alamance County - NC",
-		"Alexander County - NC",
-		"Alleghany County - NC",
-		"Anson County - NC",
-		"Ashe County - NC",
-		"Avery County - NC",
-		"Beaufort County - NC",
-		"Bertie County - NC",
-		"Bladen County - NC",
-		"Brunswick County - NC",
-		"Buncombe County - NC",
-		"Burke County - NC",
-		"Cabarrus County - NC",
-		"Caldwell County - NC",
-		"Camden County - NC",
-		"Carteret County - NC",
-		"Caswell County - NC",
-		"Catawba County - NC",
-		"Chatham County - NC",
-		"Cherokee County - NC",
-		"Chowan County - NC",
-		"Clay County - NC",
-		"Cleveland County - NC",
-		"Columbus County - NC",
-		"Craven County - NC",
-		"Cumberland County - NC",
-		"Currituck County - NC",
-		"Dare County - NC",
-		"Davidson County - NC",
-		"Davie County - NC",
-		"Duplin County - NC",
-		"Durham County - NC",
-		"Edgecombe County - NC",
-		"Forsyth County - NC",
-		"Franklin County - NC",
-		"Gaston County - NC",
-		"Gates County - NC",
-		"Graham County - NC",
-		"Granville County - NC",
-		"Greene County - NC",
-		"Guilford County - NC",
-		"Halifax County - NC",
-		"Harnett County - NC",
-		"Haywood County - NC",
-		"Henderson County - NC",
-		"Hertford County - NC",
-		"Hoke County - NC",
-		"Hyde County - NC",
-		"Iredell County - NC",
-		"Jackson County - NC",
-		"Johnston County - NC",
-		"Jones County - NC",
-		"Lee County - NC",
-		"Lenoir County - NC",
-		"Lincoln County - NC",
-		"McDowell County - NC",
-		"Macon County - NC",
-		"Madison County - NC",
-		"Martin County - NC",
-		"Mecklenburg County - NC",
-		"Mitchell County - NC",
-		"Montgomery County - NC",
-		"Moore County - NC",
-		"Nash County - NC",
-		"New Hanover County - NC",
-		"Northampton County - NC",
-		"Onslow County - NC",
-		"Orange County - NC",
-		"Pamlico County - NC",
-		"Pasquotank County - NC",
-		"Pender County - NC",
-		"Perquimans County - NC",
-		"Person County - NC",
-		"Pitt County - NC",
-		"Polk County - NC",
-		"Randolph County - NC",
-		"Richmond County - NC",
-		"Robeson County - NC",
-		"Rockingham County - NC",
-		"Rowan County - NC",
-		"Rutherford County - NC",
-		"Sampson County - NC",
-		"Scotland County - NC",
-		"Stanly County - NC",
-		"Stokes County - NC",
-		"Surry County - NC",
-		"Swain County - NC",
-		"Transylvania County - NC",
-		"Tyrrell County - NC",
-		"Union County - NC",
-		"Vance County - NC",
-		"Wake County - NC",
-		"Warren County - NC",
-		"Washington County - NC",
-		"Watauga County - NC",
-		"Wayne County - NC",
-		"Wilkes County - NC",
-		"Wilson County - NC",
-		"Yadkin County - NC",
-		"Yancey County - NC",
-		"Adams County - ND",
-		"Barnes County - ND",
-		"Benson County - ND",
-		"Billings County - ND",
-		"Bottineau County - ND",
-		"Bowman County - ND",
-		"Burke County - ND",
-		"Burleigh County - ND",
-		"Cass County - ND",
-		"Cavalier County - ND",
-		"Dickey County - ND",
-		"Divide County - ND",
-		"Dunn County - ND",
-		"Eddy County - ND",
-		"Emmons County - ND",
-		"Foster County - ND",
-		"Golden Valley County - ND",
-		"Grand Forks County - ND",
-		"Grant County - ND",
-		"Griggs County - ND",
-		"Hettinger County - ND",
-		"Kidder County - ND",
-		"LaMoure County - ND",
-		"Logan County - ND",
-		"McHenry County - ND",
-		"McIntosh County - ND",
-		"McKenzie County - ND",
-		"McLean County - ND",
-		"Mercer County - ND",
-		"Morton County - ND",
-		"Mountrail County - ND",
-		"Nelson County - ND",
-		"Oliver County - ND",
-		"Pembina County - ND",
-		"Pierce County - ND",
-		"Ramsey County - ND",
-		"Ransom County - ND",
-		"Renville County - ND",
-		"Richland County - ND",
-		"Rolette County - ND",
-		"Sargent County - ND",
-		"Sheridan County - ND",
-		"Sioux County - ND",
-		"Slope County - ND",
-		"Stark County - ND",
-		"Steele County - ND",
-		"Stutsman County - ND",
-		"Towner County - ND",
-		"Traill County - ND",
-		"Walsh County - ND",
-		"Ward County - ND",
-		"Wells County - ND",
-		"Williams County - ND",
-		"Adams County - OH",
-		"Allen County - OH",
-		"Ashland County - OH",
-		"Ashtabula County - OH",
-		"Athens County - OH",
-		"Auglaize County - OH",
-		"Belmont County - OH",
-		"Brown County - OH",
-		"Butler County - OH",
-		"Carroll County - OH",
-		"Champaign County - OH",
-		"Clark County - OH",
-		"Clermont County - OH",
-		"Clinton County - OH",
-		"Columbiana County - OH",
-		"Coshocton County - OH",
-		"Crawford County - OH",
-		"Cuyahoga County - OH",
-		"Darke County - OH",
-		"Defiance County - OH",
-		"Delaware County - OH",
-		"Erie County - OH",
-		"Fairfield County - OH",
-		"Fayette County - OH",
-		"Franklin County - OH",
-		"Fulton County - OH",
-		"Gallia County - OH",
-		"Geauga County - OH",
-		"Greene County - OH",
-		"Guernsey County - OH",
-		"Hamilton County - OH",
-		"Hancock County - OH",
-		"Hardin County - OH",
-		"Harrison County - OH",
-		"Henry County - OH",
-		"Highland County - OH",
-		"Hocking County - OH",
-		"Holmes County - OH",
-		"Huron County - OH",
-		"Jackson County - OH",
-		"Jefferson County - OH",
-		"Knox County - OH",
-		"Lake County - OH",
-		"Lawrence County - OH",
-		"Licking County - OH",
-		"Logan County - OH",
-		"Lorain County - OH",
-		"Lucas County - OH",
-		"Madison County - OH",
-		"Mahoning County - OH",
-		"Marion County - OH",
-		"Medina County - OH",
-		"Meigs County - OH",
-		"Mercer County - OH",
-		"Miami County - OH",
-		"Monroe County - OH",
-		"Montgomery County - OH",
-		"Morgan County - OH",
-		"Morrow County - OH",
-		"Muskingum County - OH",
-		"Noble County - OH",
-		"Ottawa County - OH",
-		"Paulding County - OH",
-		"Perry County - OH",
-		"Pickaway County - OH",
-		"Pike County - OH",
-		"Portage County - OH",
-		"Preble County - OH",
-		"Putnam County - OH",
-		"Richland County - OH",
-		"Ross County - OH",
-		"Sandusky County - OH",
-		"Scioto County - OH",
-		"Seneca County - OH",
-		"Shelby County - OH",
-		"Stark County - OH",
-		"Summit County - OH",
-		"Trumbull County - OH",
-		"Tuscarawas County - OH",
-		"Union County - OH",
-		"Van Wert County - OH",
-		"Vinton County - OH",
-		"Warren County - OH",
-		"Washington County - OH",
-		"Wayne County - OH",
-		"Williams County - OH",
-		"Wood County - OH",
-		"Wyandot County - OH",
-		"Adair County - OK",
-		"Alfalfa County - OK",
-		"Atoka County - OK",
-		"Beaver County - OK",
-		"Beckham County - OK",
-		"Blaine County - OK",
-		"Bryan County - OK",
-		"Caddo County - OK",
-		"Canadian County - OK",
-		"Carter County - OK",
-		"Cherokee County - OK",
-		"Choctaw County - OK",
-		"Cimarron County - OK",
-		"Cleveland County - OK",
-		"Coal County - OK",
-		"Comanche County - OK",
-		"Cotton County - OK",
-		"Craig County - OK",
-		"Creek County - OK",
-		"Custer County - OK",
-		"Delaware County - OK",
-		"Dewey County - OK",
-		"Ellis County - OK",
-		"Garfield County - OK",
-		"Garvin County - OK",
-		"Grady County - OK",
-		"Grant County - OK",
-		"Greer County - OK",
-		"Harmon County - OK",
-		"Harper County - OK",
-		"Haskell County - OK",
-		"Hughes County - OK",
-		"Jackson County - OK",
-		"Jefferson County - OK",
-		"Johnston County - OK",
-		"Kay County - OK",
-		"Kingfisher County - OK",
-		"Kiowa County - OK",
-		"Latimer County - OK",
-		"Le Flore County - OK",
-		"Lincoln County - OK",
-		"Logan County - OK",
-		"Love County - OK",
-		"McClain County - OK",
-		"McCurtain County - OK",
-		"McIntosh County - OK",
-		"Major County - OK",
-		"Marshall County - OK",
-		"Mayes County - OK",
-		"Murray County - OK",
-		"Muskogee County - OK",
-		"Noble County - OK",
-		"Nowata County - OK",
-		"Okfuskee County - OK",
-		"Oklahoma County - OK",
-		"Okmulgee County - OK",
-		"Osage County - OK",
-		"Ottawa County - OK",
-		"Pawnee County - OK",
-		"Payne County - OK",
-		"Pittsburg County - OK",
-		"Pontotoc County - OK",
-		"Pottawatomie County - OK",
-		"Pushmataha County - OK",
-		"Roger Mills County - OK",
-		"Rogers County - OK",
-		"Seminole County - OK",
-		"Sequoyah County - OK",
-		"Stephens County - OK",
-		"Texas County - OK",
-		"Tillman County - OK",
-		"Tulsa County - OK",
-		"Wagoner County - OK",
-		"Washington County - OK",
-		"Washita County - OK",
-		"Woods County - OK",
-		"Woodward County - OK",
-		"Baker County - OR",
-		"Benton County - OR",
-		"Clackamas County - OR",
-		"Clatsop County - OR",
-		"Columbia County - OR",
-		"Coos County - OR",
-		"Crook County - OR",
-		"Curry County - OR",
-		"Deschutes County - OR",
-		"Douglas County - OR",
-		"Gilliam County - OR",
-		"Grant County - OR",
-		"Harney County - OR",
-		"Hood River County - OR",
-		"Jackson County - OR",
-		"Jefferson County - OR",
-		"Josephine County - OR",
-		"Klamath County - OR",
-		"Lake County - OR",
-		"Lane County - OR",
-		"Lincoln County - OR",
-		"Linn County - OR",
-		"Malheur County - OR",
-		"Marion County - OR",
-		"Morrow County - OR",
-		"Multnomah County - OR",
-		"Polk County - OR",
-		"Sherman County - OR",
-		"Tillamook County - OR",
-		"Umatilla County - OR",
-		"Union County - OR",
-		"Wallowa County - OR",
-		"Wasco County - OR",
-		"Washington County - OR",
-		"Wheeler County - OR",
-		"Yamhill County - OR",
-		"Adams County - PA",
-		"Allegheny County - PA",
-		"Armstrong County - PA",
-		"Beaver County - PA",
-		"Bedford County - PA",
-		"Berks County - PA",
-		"Blair County - PA",
-		"Bradford County - PA",
-		"Bucks County - PA",
-		"Butler County - PA",
-		"Cambria County - PA",
-		"Cameron County - PA",
-		"Carbon County - PA",
-		"Centre County - PA",
-		"Chester County - PA",
-		"Clarion County - PA",
-		"Clearfield County - PA",
-		"Clinton County - PA",
-		"Columbia County - PA",
-		"Crawford County - PA",
-		"Cumberland County - PA",
-		"Dauphin County - PA",
-		"Delaware County - PA",
-		"Elk County - PA",
-		"Erie County - PA",
-		"Fayette County - PA",
-		"Forest County - PA",
-		"Franklin County - PA",
-		"Fulton County - PA",
-		"Greene County - PA",
-		"Huntingdon County - PA",
-		"Indiana County - PA",
-		"Jefferson County - PA",
-		"Juniata County - PA",
-		"Lackawanna County - PA",
-		"Lancaster County - PA",
-		"Lawrence County - PA",
-		"Lebanon County - PA",
-		"Lehigh County - PA",
-		"Luzerne County - PA",
-		"Lycoming County - PA",
-		"McKean County - PA",
-		"Mercer County - PA",
-		"Mifflin County - PA",
-		"Monroe County - PA",
-		"Montgomery County - PA",
-		"Montour County - PA",
-		"Northampton County - PA",
-		"Northumberland County - PA",
-		"Perry County - PA",
-		"Philadelphia County - PA",
-		"Pike County - PA",
-		"Potter County - PA",
-		"Schuylkill County - PA",
-		"Snyder County - PA",
-		"Somerset County - PA",
-		"Sullivan County - PA",
-		"Susquehanna County - PA",
-		"Tioga County - PA",
-		"Union County - PA",
-		"Venango County - PA",
-		"Warren County - PA",
-		"Washington County - PA",
-		"Wayne County - PA",
-		"Westmoreland County - PA",
-		"Wyoming County - PA",
-		"York County - PA",
-		"Bristol County - RI",
-		"Kent County - RI",
-		"Newport County - RI",
-		"Providence County - RI",
-		"Washington County - RI",
-		"Abbeville County - SC",
-		"Aiken County - SC",
-		"Allendale County - SC",
-		"Anderson County - SC",
-		"Bamberg County - SC",
-		"Barnwell County - SC",
-		"Beaufort County - SC",
-		"Berkeley County - SC",
-		"Calhoun County - SC",
-		"Charleston County - SC",
-		"Cherokee County - SC",
-		"Chester County - SC",
-		"Chesterfield County - SC",
-		"Clarendon County - SC",
-		"Colleton County - SC",
-		"Darlington County - SC",
-		"Dillon County - SC",
-		"Dorchester County - SC",
-		"Edgefield County - SC",
-		"Fairfield County - SC",
-		"Florence County - SC",
-		"Georgetown County - SC",
-		"Greenville County - SC",
-		"Greenwood County - SC",
-		"Hampton County - SC",
-		"Horry County - SC",
-		"Jasper County - SC",
-		"Kershaw County - SC",
-		"Lancaster County - SC",
-		"Laurens County - SC",
-		"Lee County - SC",
-		"Lexington County - SC",
-		"McCormick County - SC",
-		"Marion County - SC",
-		"Marlboro County - SC",
-		"Newberry County - SC",
-		"Oconee County - SC",
-		"Orangeburg County - SC",
-		"Pickens County - SC",
-		"Richland County - SC",
-		"Saluda County - SC",
-		"Spartanburg County - SC",
-		"Sumter County - SC",
-		"Union County - SC",
-		"Williamsburg County - SC",
-		"York County - SC",
-		"Aurora County - SD",
-		"Beadle County - SD",
-		"Bennett County - SD",
-		"Bon Homme County - SD",
-		"Brookings County - SD",
-		"Brown County - SD",
-		"Brule County - SD",
-		"Buffalo County - SD",
-		"Butte County - SD",
-		"Campbell County - SD",
-		"Charles Mix County - SD",
-		"Clark County - SD",
-		"Clay County - SD",
-		"Codington County - SD",
-		"Corson County - SD",
-		"Custer County - SD",
-		"Davison County - SD",
-		"Day County - SD",
-		"Deuel County - SD",
-		"Dewey County - SD",
-		"Douglas County - SD",
-		"Edmunds County - SD",
-		"Fall River County - SD",
-		"Faulk County - SD",
-		"Grant County - SD",
-		"Gregory County - SD",
-		"Haakon County - SD",
-		"Hamlin County - SD",
-		"Hand County - SD",
-		"Hanson County - SD",
-		"Harding County - SD",
-		"Hughes County - SD",
-		"Hutchinson County - SD",
-		"Hyde County - SD",
-		"Jackson County - SD",
-		"Jerauld County - SD",
-		"Jones County - SD",
-		"Kingsbury County - SD",
-		"Lake County - SD",
-		"Lawrence County - SD",
-		"Lincoln County - SD",
-		"Lyman County - SD",
-		"McCook County - SD",
-		"McPherson County - SD",
-		"Marshall County - SD",
-		"Meade County - SD",
-		"Mellette County - SD",
-		"Miner County - SD",
-		"Minnehaha County - SD",
-		"Moody County - SD",
-		"Pennington County - SD",
-		"Perkins County - SD",
-		"Potter County - SD",
-		"Roberts County - SD",
-		"Sanborn County - SD",
-		"Shannon County - SD",
-		"Spink County - SD",
-		"Stanley County - SD",
-		"Sully County - SD",
-		"Todd County - SD",
-		"Tripp County - SD",
-		"Turner County - SD",
-		"Union County - SD",
-		"Walworth County - SD",
-		"Yankton County - SD",
-		"Ziebach County - SD",
-		"Anderson County - TN",
-		"Bedford County - TN",
-		"Benton County - TN",
-		"Bledsoe County - TN",
-		"Blount County - TN",
-		"Bradley County - TN",
-		"Campbell County - TN",
-		"Cannon County - TN",
-		"Carroll County - TN",
-		"Carter County - TN",
-		"Cheatham County - TN",
-		"Chester County - TN",
-		"Claiborne County - TN",
-		"Clay County - TN",
-		"Cocke County - TN",
-		"Coffee County - TN",
-		"Crockett County - TN",
-		"Cumberland County - TN",
-		"Davidson County - TN",
-		"Decatur County - TN",
-		"DeKalb County - TN",
-		"Dickson County - TN",
-		"Dyer County - TN",
-		"Fayette County - TN",
-		"Fentress County - TN",
-		"Franklin County - TN",
-		"Gibson County - TN",
-		"Giles County - TN",
-		"Grainger County - TN",
-		"Greene County - TN",
-		"Grundy County - TN",
-		"Hamblen County - TN",
-		"Hamilton County - TN",
-		"Hancock County - TN",
-		"Hardeman County - TN",
-		"Hardin County - TN",
-		"Hawkins County - TN",
-		"Haywood County - TN",
-		"Henderson County - TN",
-		"Henry County - TN",
-		"Hickman County - TN",
-		"Houston County - TN",
-		"Humphreys County - TN",
-		"Jackson County - TN",
-		"Jefferson County - TN",
-		"Johnson County - TN",
-		"Knox County - TN",
-		"Lake County - TN",
-		"Lauderdale County - TN",
-		"Lawrence County - TN",
-		"Lewis County - TN",
-		"Lincoln County - TN",
-		"Loudon County - TN",
-		"McMinn County - TN",
-		"McNairy County - TN",
-		"Macon County - TN",
-		"Madison County - TN",
-		"Marion County - TN",
-		"Marshall County - TN",
-		"Maury County - TN",
-		"Meigs County - TN",
-		"Monroe County - TN",
-		"Montgomery County - TN",
-		"Moore County - TN",
-		"Morgan County - TN",
-		"Obion County - TN",
-		"Overton County - TN",
-		"Perry County - TN",
-		"Pickett County - TN",
-		"Polk County - TN",
-		"Putnam County - TN",
-		"Rhea County - TN",
-		"Roane County - TN",
-		"Robertson County - TN",
-		"Rutherford County - TN",
-		"Scott County - TN",
-		"Sequatchie County - TN",
-		"Sevier County - TN",
-		"Shelby County - TN",
-		"Smith County - TN",
-		"Stewart County - TN",
-		"Sullivan County - TN",
-		"Sumner County - TN",
-		"Tipton County - TN",
-		"Trousdale County - TN",
-		"Unicoi County - TN",
-		"Union County - TN",
-		"Van Buren County - TN",
-		"Warren County - TN",
-		"Washington County - TN",
-		"Wayne County - TN",
-		"Weakley County - TN",
-		"White County - TN",
-		"Williamson County - TN",
-		"Wilson County - TN",
-		"Anderson County - TX",
-		"Andrews County - TX",
-		"Angelina County - TX",
-		"Aransas County - TX",
-		"Archer County - TX",
-		"Armstrong County - TX",
-		"Atascosa County - TX",
-		"Austin County - TX",
-		"Bailey County - TX",
-		"Bandera County - TX",
-		"Bastrop County - TX",
-		"Baylor County - TX",
-		"Bee County - TX",
-		"Bell County - TX",
-		"Bexar County - TX",
-		"Blanco County - TX",
-		"Borden County - TX",
-		"Bosque County - TX",
-		"Bowie County - TX",
-		"Brazoria County - TX",
-		"Brazos County - TX",
-		"Brewster County - TX",
-		"Briscoe County - TX",
-		"Brooks County - TX",
-		"Brown County - TX",
-		"Burleson County - TX",
-		"Burnet County - TX",
-		"Caldwell County - TX",
-		"Calhoun County - TX",
-		"Callahan County - TX",
-		"Cameron County - TX",
-		"Camp County - TX",
-		"Carson County - TX",
-		"Cass County - TX",
-		"Castro County - TX",
-		"Chambers County - TX",
-		"Cherokee County - TX",
-		"Childress County - TX",
-		"Clay County - TX",
-		"Cochran County - TX",
-		"Coke County - TX",
-		"Coleman County - TX",
-		"Collin County - TX",
-		"Collingsworth County - TX",
-		"Colorado County - TX",
-		"Comal County - TX",
-		"Comanche County - TX",
-		"Concho County - TX",
-		"Cooke County - TX",
-		"Coryell County - TX",
-		"Cottle County - TX",
-		"Crane County - TX",
-		"Crockett County - TX",
-		"Crosby County - TX",
-		"Culberson County - TX",
-		"Dallam County - TX",
-		"Dallas County - TX",
-		"Dawson County - TX",
-		"Deaf Smith County - TX",
-		"Delta County - TX",
-		"Denton County - TX",
-		"DeWitt County - TX",
-		"Dickens County - TX",
-		"Dimmit County - TX",
-		"Donley County - TX",
-		"Duval County - TX",
-		"Eastland County - TX",
-		"Ector County - TX",
-		"Edwards County - TX",
-		"Ellis County - TX",
-		"El Paso County - TX",
-		"Erath County - TX",
-		"Falls County - TX",
-		"Fannin County - TX",
-		"Fayette County - TX",
-		"Fisher County - TX",
-		"Floyd County - TX",
-		"Foard County - TX",
-		"Fort Bend County - TX",
-		"Franklin County - TX",
-		"Freestone County - TX",
-		"Frio County - TX",
-		"Gaines County - TX",
-		"Galveston County - TX",
-		"Garza County - TX",
-		"Gillespie County - TX",
-		"Glasscock County - TX",
-		"Goliad County - TX",
-		"Gonzales County - TX",
-		"Gray County - TX",
-		"Grayson County - TX",
-		"Gregg County - TX",
-		"Grimes County - TX",
-		"Guadalupe County - TX",
-		"Hale County - TX",
-		"Hall County - TX",
-		"Hamilton County - TX",
-		"Hansford County - TX",
-		"Hardeman County - TX",
-		"Hardin County - TX",
-		"Harris County - TX",
-		"Harrison County - TX",
-		"Hartley County - TX",
-		"Haskell County - TX",
-		"Hays County - TX",
-		"Hemphill County - TX",
-		"Henderson County - TX",
-		"Hidalgo County - TX",
-		"Hill County - TX",
-		"Hockley County - TX",
-		"Hood County - TX",
-		"Hopkins County - TX",
-		"Houston County - TX",
-		"Howard County - TX",
-		"Hudspeth County - TX",
-		"Hunt County - TX",
-		"Hutchinson County - TX",
-		"Irion County - TX",
-		"Jack County - TX",
-		"Jackson County - TX",
-		"Jasper County - TX",
-		"Jeff Davis County - TX",
-		"Jefferson County - TX",
-		"Jim Hogg County - TX",
-		"Jim Wells County - TX",
-		"Johnson County - TX",
-		"Jones County - TX",
-		"Karnes County - TX",
-		"Kaufman County - TX",
-		"Kendall County - TX",
-		"Kenedy County - TX",
-		"Kent County - TX",
-		"Kerr County - TX",
-		"Kimble County - TX",
-		"King County - TX",
-		"Kinney County - TX",
-		"Kleberg County - TX",
-		"Knox County - TX",
-		"Lamar County - TX",
-		"Lamb County - TX",
-		"Lampasas County - TX",
-		"La Salle County - TX",
-		"Lavaca County - TX",
-		"Lee County - TX",
-		"Leon County - TX",
-		"Liberty County - TX",
-		"Limestone County - TX",
-		"Lipscomb County - TX",
-		"Live Oak County - TX",
-		"Llano County - TX",
-		"Loving County - TX",
-		"Lubbock County - TX",
-		"Lynn County - TX",
-		"McCulloch County - TX",
-		"McLennan County - TX",
-		"McMullen County - TX",
-		"Madison County - TX",
-		"Marion County - TX",
-		"Martin County - TX",
-		"Mason County - TX",
-		"Matagorda County - TX",
-		"Maverick County - TX",
-		"Medina County - TX",
-		"Menard County - TX",
-		"Midland County - TX",
-		"Milam County - TX",
-		"Mills County - TX",
-		"Mitchell County - TX",
-		"Montague County - TX",
-		"Montgomery County - TX",
-		"Moore County - TX",
-		"Morris County - TX",
-		"Motley County - TX",
-		"Nacogdoches County - TX",
-		"Navarro County - TX",
-		"Newton County - TX",
-		"Nolan County - TX",
-		"Nueces County - TX",
-		"Ochiltree County - TX",
-		"Oldham County - TX",
-		"Orange County - TX",
-		"Palo Pinto County - TX",
-		"Panola County - TX",
-		"Parker County - TX",
-		"Parmer County - TX",
-		"Pecos County - TX",
-		"Polk County - TX",
-		"Potter County - TX",
-		"Presidio County - TX",
-		"Rains County - TX",
-		"Randall County - TX",
-		"Reagan County - TX",
-		"Real County - TX",
-		"Red River County - TX",
-		"Reeves County - TX",
-		"Refugio County - TX",
-		"Roberts County - TX",
-		"Robertson County - TX",
-		"Rockwall County - TX",
-		"Runnels County - TX",
-		"Rusk County - TX",
-		"Sabine County - TX",
-		"San Augustine County - TX",
-		"San Jacinto County - TX",
-		"San Patricio County - TX",
-		"San Saba County - TX",
-		"Schleicher County - TX",
-		"Scurry County - TX",
-		"Shackelford County - TX",
-		"Shelby County - TX",
-		"Sherman County - TX",
-		"Smith County - TX",
-		"Somervell County - TX",
-		"Starr County - TX",
-		"Stephens County - TX",
-		"Sterling County - TX",
-		"Stonewall County - TX",
-		"Sutton County - TX",
-		"Swisher County - TX",
-		"Tarrant County - TX",
-		"Taylor County - TX",
-		"Terrell County - TX",
-		"Terry County - TX",
-		"Throckmorton County - TX",
-		"Titus County - TX",
-		"Tom Green County - TX",
-		"Travis County - TX",
-		"Trinity County - TX",
-		"Tyler County - TX",
-		"Upshur County - TX",
-		"Upton County - TX",
-		"Uvalde County - TX",
-		"Val Verde County - TX",
-		"Van Zandt County - TX",
-		"Victoria County - TX",
-		"Walker County - TX",
-		"Waller County - TX",
-		"Ward County - TX",
-		"Washington County - TX",
-		"Webb County - TX",
-		"Wharton County - TX",
-		"Wheeler County - TX",
-		"Wichita County - TX",
-		"Wilbarger County - TX",
-		"Willacy County - TX",
-		"Williamson County - TX",
-		"Wilson County - TX",
-		"Winkler County - TX",
-		"Wise County - TX",
-		"Wood County - TX",
-		"Yoakum County - TX",
-		"Young County - TX",
-		"Zapata County - TX",
-		"Zavala County - TX",
-		"Beaver County - UT",
-		"Box Elder County - UT",
-		"Cache County - UT",
-		"Carbon County - UT",
-		"Daggett County - UT",
-		"Davis County - UT",
-		"Duchesne County - UT",
-		"Emery County - UT",
-		"Garfield County - UT",
-		"Grand County - UT",
-		"Iron County - UT",
-		"Juab County - UT",
-		"Kane County - UT",
-		"Millard County - UT",
-		"Morgan County - UT",
-		"Piute County - UT",
-		"Rich County - UT",
-		"Salt Lake County - UT",
-		"San Juan County - UT",
-		"Sanpete County - UT",
-		"Sevier County - UT",
-		"Summit County - UT",
-		"Tooele County - UT",
-		"Uintah County - UT",
-		"Utah County - UT",
-		"Wasatch County - UT",
-		"Washington County - UT",
-		"Wayne County - UT",
-		"Weber County - UT",
-		"Addison County- VT",
-		"Bennington County - VT",
-		"Caledonia County - VT",
-		"Chittenden County - VT",
-		"Essex County - VT",
-		"Franklin County - VT",
-		"Grand Isle County - VT",
-		"Lamoille County - VT",
-		"Orange County - VT",
-		"Orleans County - VT",
-		"Rutland County - VT",
-		"Washington County - VT",
-		"Windham County - VT",
-		"Windsor County - VT",
-		"Accomack County - VA",
-		"Albemarle County - VA",
-		"Alleghany County - VA",
-		"Amelia County - VA",
-		"Amherst County - VA",
-		"Appomattox County - VA",
-		"Arlington County - VA",
-		"Augusta County - VA",
-		"Bath County - VA",
-		"Bedford County - VA",
-		"Bland County - VA",
-		"Botetourt County - VA",
-		"Brunswick County - VA",
-		"Buchanan County - VA",
-		"Buckingham County - VA",
-		"Campbell County - VA",
-		"Caroline County - VA",
-		"Carroll County - VA",
-		"Charles City County - VA",
-		"Charlotte County - VA",
-		"Chesterfield County - VA",
-		"Clarke County - VA",
-		"Craig County - VA",
-		"Culpeper County - VA",
-		"Cumberland County - VA",
-		"Dickenson County - VA",
-		"Dinwiddie County - VA",
-		"Essex County - VA",
-		"Fairfax County - VA",
-		"Fauquier County - VA",
-		"Floyd County - VA",
-		"Fluvanna County - VA",
-		"Franklin County - VA",
-		"Frederick County - VA",
-		"Giles County - VA",
-		"Gloucester County - VA",
-		"Goochland County - VA",
-		"Grayson County - VA",
-		"Greene County - VA",
-		"Greensville County - VA",
-		"Halifax County - VA",
-		"Hanover County - VA",
-		"Henrico County - VA",
-		"Henry County - VA",
-		"Highland County - VA",
-		"Isle of Wight County - VA",
-		"James City County - VA",
-		"King and Queen County - VA",
-		"King George County - VA",
-		"King William County - VA",
-		"Lancaster County - VA",
-		"Lee County - VA",
-		"Loudoun County - VA",
-		"Louisa County - VA",
-		"Lunenburg County - VA",
-		"Madison County - VA",
-		"Mathews County - VA",
-		"Mecklenburg County - VA",
-		"Middlesex County - VA",
-		"Montgomery County - VA",
-		"Nelson County - VA",
-		"New Kent County - VA",
-		"Northampton County - VA",
-		"Northumberland County - VA",
-		"Nottoway County - VA",
-		"Orange County - VA",
-		"Page County - VA",
-		"Patrick County - VA",
-		"Pittsylvania County - VA",
-		"Powhatan County - VA",
-		"Prince Edward County - VA",
-		"Prince George County - VA",
-		"Prince William County - VA",
-		"Pulaski County - VA",
-		"Rappahannock County - VA",
-		"Richmond County - VA",
-		"Roanoke County - VA",
-		"Rockbridge County - VA",
-		"Rockingham County - VA",
-		"Russell County - VA",
-		"Scott County - VA",
-		"Shenandoah County - VA",
-		"Smyth County - VA",
-		"Southampton County - VA",
-		"Spotsylvania County - VA",
-		"Stafford County - VA",
-		"Surry County - VA",
-		"Sussex County - VA",
-		"Tazewell County - VA",
-		"Warren County - VA",
-		"Washington County - VA",
-		"Westmoreland County - VA",
-		"Wise County - VA",
-		"Wythe County - VA",
-		"York County - VA",
-		"Alexandria city - VA",
-		"Bedford city - VA",
-		"Bristol city - VA",
-		"Buena Vista city - VA",
-		"Charlottesville city - VA",
-		"Chesapeake city - VA",
-		"Colonial Heights city - VA",
-		"Covington city - VA",
-		"Danville city - VA",
-		"Emporia city - VA",
-		"Fairfax city - VA",
-		"Falls Church city - VA",
-		"Franklin city - VA",
-		"Fredericksburg city - VA",
-		"Galax city - VA",
-		"Hampton city - VA",
-		"Harrisonburg city - VA",
-		"Hopewell city - VA",
-		"Lexington city - VA",
-		"Lynchburg city - VA",
-		"Manassas city - VA",
-		"Manassas Park city - VA",
-		"Martinsville city - VA",
-		"Newport News city - VA",
-		"Norfolk city - VA",
-		"Norton city - VA",
-		"Petersburg city - VA",
-		"Poquoson city - VA",
-		"Portsmouth city - VA",
-		"Radford city - VA",
-		"Richmond city - VA",
-		"Roanoke city - VA",
-		"Salem city - VA",
-		"Staunton city - VA",
-		"Suffolk city - VA",
-		"Virginia Beach city - VA",
-		"Waynesboro city - VA",
-		"Williamsburg city - VA",
-		"Winchester city - VA",
-		"Adams County - WA",
-		"Asotin County - WA",
-		"Benton County - WA",
-		"Chelan County - WA",
-		"Clallam County - WA",
-		"Clark County - WA",
-		"Columbia County - WA",
-		"Cowlitz County - WA",
-		"Douglas County - WA",
-		"Ferry County - WA",
-		"Franklin County - WA",
-		"Garfield County - WA",
-		"Grant County - WA",
-		"Grays Harbor County - WA",
-		"Island County - WA",
-		"Jefferson County - WA",
-		"King County - WA",
-		"Kitsap County - WA",
-		"Kittitas County - WA",
-		"Klickitat County - WA",
-		"Lewis County - WA",
-		"Lincoln County - WA",
-		"Mason County - WA",
-		"Okanogan County - WA",
-		"Pacific County - WA",
-		"Pend Oreille County - WA",
-		"Pierce County - WA",
-		"San Juan County - WA",
-		"Skagit County - WA",
-		"Skamania County - WA",
-		"Snohomish County - WA",
-		"Spokane County - WA",
-		"Stevens County - WA",
-		"Thurston County - WA",
-		"Wahkiakum County - WA",
-		"Walla Walla County - WA",
-		"Whatcom County - WA",
-		"Whitman County - WA",
-		"Yakima County - WA",
-		"Barbour County - WV",
-		"Berkeley County - WV",
-		"Boone County - WV",
-		"Braxton County - WV",
-		"Brooke County - WV",
-		"Cabell County - WV",
-		"Calhoun County - WV",
-		"Clay County - WV",
-		"Doddridge County - WV",
-		"Fayette County - WV",
-		"Gilmer County - WV",
-		"Grant County - WV",
-		"Greenbrier County - WV",
-		"Hampshire County - WV",
-		"Hancock County - WV",
-		"Hardy County - WV",
-		"Harrison County - WV",
-		"Jackson County - WV",
-		"Jefferson County - WV",
-		"Kanawha County - WV",
-		"Lewis County - WV",
-		"Lincoln County - WV",
-		"Logan County - WV",
-		"McDowell County - WV",
-		"Marion County - WV",
-		"Marshall County - WV",
-		"Mason County - WV",
-		"Mercer County - WV",
-		"Mineral County - WV",
-		"Mingo County - WV",
-		"Monongalia County - WV",
-		"Monroe County - WV",
-		"Morgan County - WV",
-		"Nicholas County - WV",
-		"Ohio County - WV",
-		"Pendleton County - WV",
-		"Pleasants County - WV",
-		"Pocahontas County - WV",
-		"Preston County - WV",
-		"Putnam County - WV",
-		"Raleigh County - WV",
-		"Randolph County - WV",
-		"Ritchie County - WV",
-		"Roane County - WV",
-		"Summers County - WV",
-		"Taylor County - WV",
-		"Tucker County - WV",
-		"Tyler County - WV",
-		"Upshur County - WV",
-		"Wayne County - WV",
-		"Webster County - WV",
-		"Wetzel County - WV",
-		"Wirt County - WV",
-		"Wood County - WV",
-		"Wyoming County - WV",
-		"Adams County - WI",
-		"Ashland County - WI",
-		"Barron County - WI",
-		"Bayfield County - WI",
-		"Brown County - WI",
-		"Buffalo County - WI",
-		"Burnett County - WI",
-		"Calumet County - WI",
-		"Chippewa County - WI",
-		"Clark County - WI",
-		"Columbia County - WI",
-		"Crawford County - WI",
-		"Dane County - WI",
-		"Dodge County - WI",
-		"Door County - WI",
-		"Douglas County - WI",
-		"Dunn County - WI",
-		"Eau Claire County - WI",
-		"Florence County - WI",
-		"Fond du Lac County - WI",
-		"Forest County - WI",
-		"Grant County - WI",
-		"Green County - WI",
-		"Green Lake County - WI",
-		"Iowa County - WI",
-		"Iron County - WI",
-		"Jackson County - WI",
-		"Jefferson County - WI",
-		"Juneau County - WI",
-		"Kenosha County - WI",
-		"Kewaunee County - WI",
-		"La Crosse County - WI",
-		"Lafayette County - WI",
-		"Langlade County - WI",
-		"Lincoln County - WI",
-		"Manitowoc County - WI",
-		"Marathon County - WI",
-		"Marinette County - WI",
-		"Marquette County - WI",
-		"Menominee County - WI",
-		"Milwaukee County - WI",
-		"Monroe County - WI",
-		"Oconto County - WI",
-		"Oneida County - WI",
-		"Outagamie County - WI",
-		"Ozaukee County - WI",
-		"Pepin County - WI",
-		"Pierce County - WI",
-		"Polk County - WI",
-		"Portage County - WI",
-		"Price County - WI",
-		"Racine County - WI",
-		"Richland County - WI",
-		"Rock County - WI",
-		"Rusk County - WI",
-		"St. Croix County - WI",
-		"Sauk County - WI",
-		"Sawyer County - WI",
-		"Shawano County - WI",
-		"Sheboygan County - WI",
-		"Taylor County - WI",
-		"Trempealeau County - WI",
-		"Vernon County - WI",
-		"Vilas County - WI",
-		"Walworth County - WI",
-		"Washburn County - WI",
-		"Washington County - WI",
-		"Waukesha County - WI",
-		"Waupaca County - WI",
-		"Waushara County - WI",
-		"Winnebago County - WI",
-		"Wood County - WI",
-		"Albany County - WY",
-		"Big Horn County - WY",
-		"Campbell County - WY",
-		"Carbon County - WY",
-		"Converse County - WY",
-		"Crook County - WY",
-		"Fremont County - WY",
-		"Goshen County - WY",
-		"Hot Springs County - WY",
-		"Johnson County - WY",
-		"Laramie County - WY",
-		"Lincoln County - WY",
-		"Natrona County - WY",
-		"Niobrara County - WY",
-		"Park County - WY",
-		"Platte County - WY",
-		"Sheridan County - WY",
-		"Sublette County - WY",
-		"Sweetwater County - WY",
-		"Teton County - WY",
-		"Uinta County - WY",
-		"Washakie County - WY",
-		"Weston County - WY"
-	]
-};
-
-/***/ }),
-/* 388 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__vue_profile_Profile__ = __webpack_require__(389);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__vue_profile_Profile___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__vue_profile_Profile__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__vue_location_Location__ = __webpack_require__(414);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__vue_location_Location___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__vue_location_Location__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__vue_coverage_Coverage__ = __webpack_require__(435);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__vue_coverage_Coverage___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__vue_coverage_Coverage__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__vue_outreach_Outreach__ = __webpack_require__(457);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__vue_outreach_Outreach___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__vue_outreach_Outreach__);
 
 
 
 
 
 /* harmony default export */ __webpack_exports__["a"] = ([{
-    path: '/setup/profile',
-    name: 'Profile',
-    component: __WEBPACK_IMPORTED_MODULE_0__vue_profile_Profile___default.a
+    path: '/setup/welcome',
+    name: 'Welcome',
+    component: __WEBPACK_IMPORTED_MODULE_0__vue_welcome_Welcome___default.a
 }, {
-    path: '/setup/location',
-    name: 'Location',
-    component: __WEBPACK_IMPORTED_MODULE_1__vue_location_Location___default.a
+    path: '/setup/facebook',
+    name: 'Facebook',
+    component: __WEBPACK_IMPORTED_MODULE_1__vue_facebook_Facebook___default.a
 }, {
-    path: '/setup/coverage',
-    name: 'Coverage',
-    component: __WEBPACK_IMPORTED_MODULE_2__vue_coverage_Coverage___default.a
+    path: '/setup/page',
+    name: 'Page',
+    component: __WEBPACK_IMPORTED_MODULE_2__vue_page_Page___default.a
 }, {
-    path: '/setup/outreach',
-    name: 'Outreach',
-    component: __WEBPACK_IMPORTED_MODULE_3__vue_outreach_Outreach___default.a
+    path: '/setup/twitter',
+    name: 'Twitter',
+    component: __WEBPACK_IMPORTED_MODULE_3__vue_twitter_Twitter___default.a
+}, {
+    path: '/setup/payment',
+    name: 'Payment',
+    component: __WEBPACK_IMPORTED_MODULE_4__vue_payment_Payment___default.a
 }]);
 
 /***/ }),
-/* 389 */
+/* 319 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var Component = __webpack_require__(1)(
   /* script */
-  __webpack_require__(390),
+  __webpack_require__(320),
   /* template */
-  __webpack_require__(413),
+  __webpack_require__(326),
   /* styles */
   null,
   /* scopeId */
@@ -19509,9 +16072,9 @@ var Component = __webpack_require__(1)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/johnhuffman/Sites/InsuranceSocial.media/src/resources/javascripts/frontend/setup/vue/profile/Profile.vue"
+Component.options.__file = "/Users/johnhuffman/Sites/InsuranceSocial.media/src/resources/javascripts/frontend/social/vue/welcome/Welcome.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] Profile.vue: functional components are not supported with templates, they should use render functions.")}
+if (Component.options.functional) {console.error("[vue-loader] Welcome.vue: functional components are not supported with templates, they should use render functions.")}
 
 /* hot reload */
 if (false) {(function () {
@@ -19520,9 +16083,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-05b69b57", Component.options)
+    hotAPI.createRecord("data-v-f6b899aa", Component.options)
   } else {
-    hotAPI.reload("data-v-05b69b57", Component.options)
+    hotAPI.reload("data-v-f6b899aa", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -19533,23 +16096,15 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 390 */
+/* 320 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Progress__ = __webpack_require__(54);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Progress__ = __webpack_require__(53);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Progress___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Progress__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__QuickNavigation__ = __webpack_require__(55);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__QuickNavigation___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__QuickNavigation__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__inputs_Field__ = __webpack_require__(395);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__inputs_Field___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__inputs_Field__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__inputs_Dropdown__ = __webpack_require__(404);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__inputs_Dropdown___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__inputs_Dropdown__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Notification__ = __webpack_require__(407);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Notification___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__Notification__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__Errors__ = __webpack_require__(410);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__Errors___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__Errors__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Introduction__ = __webpack_require__(323);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Introduction___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__Introduction__);
 //
 //
 //
@@ -19573,96 +16128,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-
-
 
 
 
@@ -19670,66 +16135,23 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
-            properties: {
-                name: store.getState().UserStore.name,
-                email: store.getState().UserStore.email,
-                phone: store.getState().UserStore.phone,
-                title: store.getState().UserStore.title,
-                principal_name: store.getState().UserStore.principal_name,
-                principal_email: store.getState().UserStore.principal_email,
-                organization_name: store.getState().UserStore.organization_name,
-                website: store.getState().UserStore.website,
-                staff_size: store.getState().UserStore.staff_size,
-                year_founded: store.getState().UserStore.year_founded,
-                multi_generation: store.getState().UserStore.multi_generation,
-                notification_frequency: store.getState().UserStore.notification_frequency,
-                notify_email: store.getState().UserStore.notify_email,
-                notify_text: store.getState().UserStore.notify_text
-            },
-            titles: store.getState().OptionStore.titles,
-            sizes: store.getState().OptionStore.sizes,
-            generations: store.getState().OptionStore.generations,
-            frequencies: store.getState().OptionStore.frequencies,
-            errors: []
+            //
         };
     },
 
     methods: {
-        update: function update(route) {
-            var _this = this;
-
-            this.errors = [];
-            if (this.properties.name == '') {
-                this.errors.push('You must enter your full name.');
-            }
-            if (this.properties.email == '') {
-                this.errors.push('You must enter your email.');
-            }
-            if (this.properties.phone == '') {
-                this.errors.push('You must enter your phone.');
-            }
-            if (this.errors.length == 0) {
-                axios.post(window.location, this.properties).then(function (response) {
-                    store.dispatch({ type: 'SET_PROPERTIES', data: response.data });
-                    _this.$router.push({ name: route });
-                }).catch(function (error) {
-                    _this.errors.push('An error has occured, please contact support.');
-                });
-            }
+        update: function update() {
+            this.$router.push({ name: 'Facebook' });
         }
     },
     components: {
         Progress: __WEBPACK_IMPORTED_MODULE_0__Progress___default.a,
-        QuickNavigation: __WEBPACK_IMPORTED_MODULE_1__QuickNavigation___default.a,
-        Field: __WEBPACK_IMPORTED_MODULE_2__inputs_Field___default.a,
-        Dropdown: __WEBPACK_IMPORTED_MODULE_3__inputs_Dropdown___default.a,
-        Notification: __WEBPACK_IMPORTED_MODULE_4__Notification___default.a,
-        Errors: __WEBPACK_IMPORTED_MODULE_5__Errors___default.a
+        Introduction: __WEBPACK_IMPORTED_MODULE_1__Introduction___default.a
     }
 });
 
 /***/ }),
-/* 391 */
+/* 321 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -19766,7 +16188,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 392 */
+/* 322 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -19801,113 +16223,20 @@ module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-fcf0226e", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-70bd32a7", module.exports)
   }
 }
 
 /***/ }),
-/* 393 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    methods: {
-        isActive: function isActive(route) {
-            return this.$route.path == "/setup/" + route;
-        }
-    }
-});
-
-/***/ }),
-/* 394 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "w3-row w3-center form"
-  }, [_c('div', {
-    class: [{
-      'primary': _vm.isActive('profile')
-    }, {
-      'w3-text-white': _vm.isActive('profile')
-    }, 'w3-col', 'l3', 'm3', 's12', 'w3-card-2', 'w3-padding'],
-    on: {
-      "click": function($event) {
-        _vm.$emit('route', 'Profile')
-      }
-    }
-  }, [_vm._v("Profile\n    ")]), _vm._v(" "), _c('div', {
-    class: [{
-      'primary': _vm.isActive('location')
-    }, {
-      'w3-text-white': _vm.isActive('location')
-    }, 'w3-col', 'l3', 'm3', 's12', 'w3-card-2', 'w3-padding'],
-    on: {
-      "click": function($event) {
-        _vm.$emit('route', 'Location')
-      }
-    }
-  }, [_vm._v("Location\n    ")]), _vm._v(" "), _c('div', {
-    class: [{
-      'primary': _vm.isActive('coverage')
-    }, {
-      'w3-text-white': _vm.isActive('coverage')
-    }, 'w3-col', 'l3', 'm3', 's12', 'w3-card-2', 'w3-padding'],
-    on: {
-      "click": function($event) {
-        _vm.$emit('route', 'Coverage')
-      }
-    }
-  }, [_vm._v("Coverage\n    ")]), _vm._v(" "), _c('div', {
-    class: [{
-      'primary': _vm.isActive('outreach')
-    }, {
-      'w3-text-white': _vm.isActive('outreach')
-    }, 'w3-col', 'l3', 'm3', 's12', 'w3-card-2', 'w3-padding'],
-    on: {
-      "click": function($event) {
-        _vm.$emit('route', 'Outreach')
-      }
-    }
-  }, [_vm._v("Outreach\n    ")])])
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-2a68ecf5", module.exports)
-  }
-}
-
-/***/ }),
-/* 395 */
+/* 323 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var Component = __webpack_require__(1)(
   /* script */
-  __webpack_require__(396),
+  __webpack_require__(324),
   /* template */
-  __webpack_require__(403),
+  __webpack_require__(325),
   /* styles */
   null,
   /* scopeId */
@@ -19915,9 +16244,9 @@ var Component = __webpack_require__(1)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/johnhuffman/Sites/InsuranceSocial.media/src/resources/javascripts/frontend/setup/vue/profile/inputs/Field.vue"
+Component.options.__file = "/Users/johnhuffman/Sites/InsuranceSocial.media/src/resources/javascripts/frontend/social/vue/welcome/Introduction.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] Field.vue: functional components are not supported with templates, they should use render functions.")}
+if (Component.options.functional) {console.error("[vue-loader] Introduction.vue: functional components are not supported with templates, they should use render functions.")}
 
 /* hot reload */
 if (false) {(function () {
@@ -19926,9 +16255,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-24eb2854", Component.options)
+    hotAPI.createRecord("data-v-08ccbe21", Component.options)
   } else {
-    hotAPI.reload("data-v-24eb2854", Component.options)
+    hotAPI.reload("data-v-08ccbe21", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -19939,20 +16268,11 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 396 */
+/* 324 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Check__ = __webpack_require__(397);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Check___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Check__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Cross__ = __webpack_require__(400);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Cross___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__Cross__);
-//
-//
-//
-//
-//
 //
 //
 //
@@ -19960,605 +16280,393 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 
+/* harmony default export */ __webpack_exports__["default"] = ({
+    methods: {
+        getSource: function getSource() {
+            return 'https://www.youtube.com/embed/R_CYkvXdYXE';
+        }
+    }
+});
+
+/***/ }),
+/* 325 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('iframe', {
+    attrs: {
+      "width": "100%",
+      "height": "360",
+      "src": _vm.getSource()
+    }
+  })
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-08ccbe21", module.exports)
+  }
+}
+
+/***/ }),
+/* 326 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', [_c('Progress', {
+    attrs: {
+      "progress": 33
+    }
+  }), _vm._v(" "), _c('div', {
+    staticClass: "w3-container w3-card-2 form"
+  }, [_vm._m(0), _vm._v(" "), _c('div', {
+    staticClass: "w3-panel"
+  }, [_c('Introduction')], 1), _vm._v(" "), _c('div', {
+    staticClass: "w3-panel"
+  }, [_c('h5', [_vm._v("Click continue to complete setup.")]), _vm._v(" "), _c('button', {
+    staticClass: "w3-button w3-text-white primary",
+    on: {
+      "click": function($event) {
+        _vm.update()
+      }
+    }
+  }, [_vm._v("Continue\n            ")])])])], 1)
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "w3-panel"
+  }, [_c('h3', [_vm._v("Welcome to Insurance Social Media.")]), _vm._v(" "), _c('h5', [_vm._v("We have prepared a video to help you understand the benefits of your subscription.")])])
+}]}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-f6b899aa", module.exports)
+  }
+}
+
+/***/ }),
+/* 327 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var Component = __webpack_require__(1)(
+  /* script */
+  __webpack_require__(328),
+  /* template */
+  __webpack_require__(329),
+  /* styles */
+  null,
+  /* scopeId */
+  null,
+  /* moduleIdentifier (server only) */
+  null
+)
+Component.options.__file = "/Users/johnhuffman/Sites/InsuranceSocial.media/src/resources/javascripts/frontend/social/vue/facebook/Facebook.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] Facebook.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-f3df0db6", Component.options)
+  } else {
+    hotAPI.reload("data-v-f3df0db6", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 328 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Progress__ = __webpack_require__(53);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Progress___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Progress__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: {
-        label: {
-            type: String
-        },
-        default: {
-            type: String
-        },
-        validation: {
-            type: String
-        }
-    },
     data: function data() {
         return {
-            value: '',
-            isValid: false
+            properties: {
+                has_facebook: false,
+                create_facebook: true
+            },
+            redirectUrl: ''
         };
     },
     mounted: function mounted() {
-        if (this.default) {
-            this.value = this.default;
-            this.validate();
+        var _this = this;
+
+        axios.get(window.location).then(function (response) {
+            _this.redirectUrl = response.data;
+        });
+        if (store.getState().UserStore.facebook_access_token) {
+            this.properties.has_facebook = true;
         }
     },
 
     methods: {
-        validate: function validate() {
-            this.$emit('setValue', this.value);
-            switch (this.validation) {
-                case 'EMAIL':
-                    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,9})+$/.test(this.value)) {
-                        this.isValid = true;
-                    } else {
-                        this.isValid = false;
-                    }
-                    break;
-                case 'PHONE':
-                    if (this.value != '' && this.value.length == 10) {
-                        this.isValid = true;
-                    } else {
-                        this.isValid = false;
-                    }
-                    break;
-                case 'YEAR':
-                    if (this.value != '' && this.value.length == 4) {
-                        this.isValid = true;
-                    } else {
-                        this.isValid = false;
-                    }
-                    break;
-                default:
-                    if (this.value != '') {
-                        this.isValid = true;
-                    } else {
-                        this.isValid = false;
-                    }
-                    break;
+        update: function update() {
+            if (this.properties.has_facebook) {
+                window.location = this.redirectUrl;
+            } else {
+                this.$router.push({ name: 'Twitter' });
             }
         }
     },
     components: {
-        Check: __WEBPACK_IMPORTED_MODULE_0__Check___default.a,
-        Cross: __WEBPACK_IMPORTED_MODULE_1__Cross___default.a
+        Progress: __WEBPACK_IMPORTED_MODULE_0__Progress___default.a
     }
 });
 
 /***/ }),
-/* 397 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var Component = __webpack_require__(1)(
-  /* script */
-  __webpack_require__(398),
-  /* template */
-  __webpack_require__(399),
-  /* styles */
-  null,
-  /* scopeId */
-  null,
-  /* moduleIdentifier (server only) */
-  null
-)
-Component.options.__file = "/Users/johnhuffman/Sites/InsuranceSocial.media/src/resources/javascripts/frontend/setup/vue/profile/inputs/Check.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] Check.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-8c3a0e38", Component.options)
-  } else {
-    hotAPI.reload("data-v-8c3a0e38", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 398 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    //
-});
-
-/***/ }),
-/* 399 */
+/* 329 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('i', {
-    staticClass: "fa fa-check fa-3x w3-show-inline-block w3-margin-left w3-text-green v-align"
-  })
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-8c3a0e38", module.exports)
-  }
-}
-
-/***/ }),
-/* 400 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var Component = __webpack_require__(1)(
-  /* script */
-  __webpack_require__(401),
-  /* template */
-  __webpack_require__(402),
-  /* styles */
-  null,
-  /* scopeId */
-  null,
-  /* moduleIdentifier (server only) */
-  null
-)
-Component.options.__file = "/Users/johnhuffman/Sites/InsuranceSocial.media/src/resources/javascripts/frontend/setup/vue/profile/inputs/Cross.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] Cross.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-15295fc8", Component.options)
-  } else {
-    hotAPI.reload("data-v-15295fc8", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 401 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    //
-});
-
-/***/ }),
-/* 402 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('i', {
-    staticClass: "fa fa-times fa-3x w3-show-inline-block w3-margin-left w3-text-red v-align"
-  })
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-15295fc8", module.exports)
-  }
-}
-
-/***/ }),
-/* 403 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "w3-section"
-  }, [_c('label', {
-    staticClass: "w3-show-block"
-  }, [_vm._v(_vm._s(_vm.label))]), _vm._v(" "), _c('input', {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: (_vm.value),
-      expression: "value"
-    }],
-    staticClass: "w3-input w3-show-inline-block eighty",
+  return _c('div', [_c('Progress', {
     attrs: {
-      "type": "text"
-    },
-    domProps: {
-      "value": (_vm.value)
-    },
-    on: {
-      "keyup": function($event) {
-        _vm.validate()
-      },
-      "input": function($event) {
-        if ($event.target.composing) { return; }
-        _vm.value = $event.target.value
-      }
+      "progress": 33
     }
-  }), _vm._v(" "), (_vm.isValid) ? _c('Check') : _c('Cross')], 1)
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-24eb2854", module.exports)
-  }
-}
-
-/***/ }),
-/* 404 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var Component = __webpack_require__(1)(
-  /* script */
-  __webpack_require__(405),
-  /* template */
-  __webpack_require__(406),
-  /* styles */
-  null,
-  /* scopeId */
-  null,
-  /* moduleIdentifier (server only) */
-  null
-)
-Component.options.__file = "/Users/johnhuffman/Sites/InsuranceSocial.media/src/resources/javascripts/frontend/setup/vue/profile/inputs/Dropdown.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] Dropdown.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-57822a65", Component.options)
-  } else {
-    hotAPI.reload("data-v-57822a65", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 405 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    props: {
-        label: {
-            type: String
-        },
-        options: {
-            type: Array
-        },
-        default: {
-            type: String
-        }
-    },
-    data: function data() {
-        return {
-            selected: 'Options'
-        };
-    },
-    mounted: function mounted() {
-        if (this.default) {
-            this.selected = this.default;
-        }
-    },
-
-    methods: {
-        setSelected: function setSelected(option) {
-            this.selected = option;
-            this.$emit('setOption', option);
-        }
-    }
-});
-
-/***/ }),
-/* 406 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "eighty v-align"
-  }, [_c('div', [_vm._v(_vm._s(_vm.label))]), _vm._v(" "), _c('div', {
-    staticClass: "w3-dropdown-hover w3-grey"
-  }, [_c('button', {
-    staticClass: "w3-button"
-  }, [_vm._v(_vm._s(_vm.selected) + "\n            "), _c('i', {
-    staticClass: "fa fa-caret-down"
-  })]), _vm._v(" "), _c('div', {
-    staticClass: "w3-dropdown-content w3-bar-block w3-border"
-  }, _vm._l((_vm.options), function(option) {
-    return _c('div', {
-      staticClass: "w3-bar-item w3-button",
-      on: {
-        "click": function($event) {
-          _vm.setSelected(option)
-        }
-      }
-    }, [_vm._v(_vm._s(option) + "\n            ")])
-  }))])])
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-57822a65", module.exports)
-  }
-}
-
-/***/ }),
-/* 407 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var Component = __webpack_require__(1)(
-  /* script */
-  __webpack_require__(408),
-  /* template */
-  __webpack_require__(409),
-  /* styles */
-  null,
-  /* scopeId */
-  null,
-  /* moduleIdentifier (server only) */
-  null
-)
-Component.options.__file = "/Users/johnhuffman/Sites/InsuranceSocial.media/src/resources/javascripts/frontend/setup/vue/profile/Notification.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] Notification.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-2bc4402d", Component.options)
-  } else {
-    hotAPI.reload("data-v-2bc4402d", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 408 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    props: {
-        notify_email: {
-            type: Boolean
-        },
-        notify_text: {
-            type: Boolean
-        }
-    },
-    data: function data() {
-        return {
-            email: false,
-            text: false
-        };
-    },
-    mounted: function mounted() {
-        if (_typeof(this.notify_email) != undefined) {
-            this.email = this.notify_email;
-        }
-        if (_typeof(this.notify_text) != undefined) {
-            this.text = this.notify_text;
-        }
-    }
-});
-
-/***/ }),
-/* 409 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
+  }), _vm._v(" "), _c('div', {
+    staticClass: "w3-container w3-card-2 form"
+  }, [_vm._m(0), _vm._v(" "), _c('div', {
     staticClass: "w3-section"
-  }, [_c('span', {
-    staticClass: "w3-large"
-  }, [_vm._v("Notification Method: ")]), _vm._v(" "), _c('div', {
-    staticClass: "w3-show-inline-block w3-margin-left"
+  }, [_c('div', {
+    staticClass: "w3-panel"
+  }, [_c('div', [_vm._v("Do you have a corporate Facebook account?")]), _vm._v(" "), _c('div', {
+    staticClass: "w3-panel"
   }, [_c('input', {
     directives: [{
       name: "model",
       rawName: "v-model",
-      value: (_vm.email),
-      expression: "email"
+      value: (_vm.properties.has_facebook),
+      expression: "properties.has_facebook"
     }],
+    staticClass: "v-align",
     attrs: {
-      "type": "checkbox",
-      "id": "check1"
+      "type": "radio",
+      "id": "facebook_yes"
     },
     domProps: {
-      "checked": Array.isArray(_vm.email) ? _vm._i(_vm.email, null) > -1 : (_vm.email)
+      "value": true,
+      "checked": _vm.properties.has_facebook,
+      "checked": _vm._q(_vm.properties.has_facebook, true)
     },
     on: {
-      "change": function($event) {
-        _vm.$emit('setEmail', _vm.email)
-      },
       "__c": function($event) {
-        var $$a = _vm.email,
-          $$el = $event.target,
-          $$c = $$el.checked ? (true) : (false);
-        if (Array.isArray($$a)) {
-          var $$v = null,
-            $$i = _vm._i($$a, $$v);
-          if ($$c) {
-            $$i < 0 && (_vm.email = $$a.concat($$v))
-          } else {
-            $$i > -1 && (_vm.email = $$a.slice(0, $$i).concat($$a.slice($$i + 1)))
-          }
-        } else {
-          _vm.email = $$c
-        }
+        _vm.properties.has_facebook = true
       }
     }
-  }), _vm._v(" "), _vm._m(0)]), _vm._v(" "), _c('div', {
-    staticClass: "w3-show-inline-block w3-margin-left"
+  }), _vm._v(" "), _vm._m(1), _vm._v(" "), _c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.properties.has_facebook),
+      expression: "properties.has_facebook"
+    }],
+    staticClass: "v-align",
+    attrs: {
+      "type": "radio",
+      "id": "facebook_no"
+    },
+    domProps: {
+      "value": false,
+      "checked": _vm.properties.has_facebook,
+      "checked": _vm._q(_vm.properties.has_facebook, false)
+    },
+    on: {
+      "__c": function($event) {
+        _vm.properties.has_facebook = false
+      }
+    }
+  }), _vm._v(" "), _vm._m(2)])]), _vm._v(" "), (_vm.properties.has_facebook == false) ? _c('div', {
+    staticClass: "w3-panel"
+  }, [_c('div', [_vm._v("Do you want InsuranceSocial.Media to setup a corporate Facebook account for you?")]), _vm._v(" "), _vm._m(3), _vm._v(" "), _c('div', {
+    staticClass: "w3-panel"
   }, [_c('input', {
     directives: [{
       name: "model",
       rawName: "v-model",
-      value: (_vm.text),
-      expression: "text"
+      value: (_vm.properties.create_facebook),
+      expression: "properties.create_facebook"
     }],
+    staticClass: "v-align",
     attrs: {
-      "type": "checkbox",
-      "id": "check2"
+      "type": "radio",
+      "id": "create_yes"
     },
     domProps: {
-      "checked": Array.isArray(_vm.text) ? _vm._i(_vm.text, null) > -1 : (_vm.text)
+      "value": true,
+      "checked": _vm._q(_vm.properties.create_facebook, true)
     },
     on: {
-      "change": function($event) {
-        _vm.$emit('setText', _vm.text)
-      },
       "__c": function($event) {
-        var $$a = _vm.text,
-          $$el = $event.target,
-          $$c = $$el.checked ? (true) : (false);
-        if (Array.isArray($$a)) {
-          var $$v = null,
-            $$i = _vm._i($$a, $$v);
-          if ($$c) {
-            $$i < 0 && (_vm.text = $$a.concat($$v))
-          } else {
-            $$i > -1 && (_vm.text = $$a.slice(0, $$i).concat($$a.slice($$i + 1)))
-          }
-        } else {
-          _vm.text = $$c
-        }
+        _vm.properties.create_facebook = true
       }
     }
-  }), _vm._v(" "), _vm._m(1)])])
+  }), _vm._v(" "), _vm._m(4), _vm._v(" "), _c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.properties.create_facebook),
+      expression: "properties.create_facebook"
+    }],
+    staticClass: "v-align",
+    attrs: {
+      "type": "radio",
+      "id": "create_no"
+    },
+    domProps: {
+      "value": false,
+      "checked": _vm._q(_vm.properties.create_facebook, false)
+    },
+    on: {
+      "__c": function($event) {
+        _vm.properties.create_facebook = false
+      }
+    }
+  }), _vm._v(" "), _vm._m(5)])]) : _vm._e()]), _vm._v(" "), _c('div', {
+    staticClass: "w3-section"
+  }, [_c('h5', [_vm._v("We look forward to working with you. Please click continue to finish setting up your account.")]), _vm._v(" "), _c('button', {
+    staticClass: "w3-button w3-text-white primary",
+    on: {
+      "click": function($event) {
+        _vm.update()
+      }
+    }
+  }, [_vm._v("Continue\n            ")])])])], 1)
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('label', {
-    attrs: {
-      "for": "check1"
-    }
-  }, [_c('span', {
-    staticClass: "w3-show-inline-block w3-margin-right v-align"
-  }), _vm._v("Email\n        ")])
+  return _c('div', {
+    staticClass: "w3-panel"
+  }, [_c('h3', [_vm._v("Link your Social Accounts")]), _vm._v(" "), _c('h5', [_vm._v("Please log in to Facebook "), _c('i', {
+    staticClass: "fa fa-facebook-official fa-2x w3-margin-right w3-text-blue v-align"
+  }), _vm._v(" in order to recieve our Facebook services.")])])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('label', {
     attrs: {
-      "for": "check2"
+      "for": "facebook_yes"
     }
   }, [_c('span', {
-    staticClass: "w3-show-inline-block w3-margin-right v-align"
-  }), _vm._v("Text\n        ")])
+    staticClass: "w3-show-inline-block w3-margin v-align"
+  }), _vm._v("Yes\n                    ")])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('label', {
+    attrs: {
+      "for": "facebook_no"
+    }
+  }, [_c('span', {
+    staticClass: "w3-show-inline-block w3-margin v-align"
+  }), _vm._v("No\n                    ")])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', [_c('em', [_vm._v("(Note: A one-time $25 fee will apply)")])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('label', {
+    attrs: {
+      "for": "create_yes"
+    }
+  }, [_c('span', {
+    staticClass: "w3-show-inline-block w3-margin v-align"
+  }), _vm._v("Yes\n                    ")])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('label', {
+    attrs: {
+      "for": "create_no"
+    }
+  }, [_c('span', {
+    staticClass: "w3-show-inline-block w3-margin v-align"
+  }), _vm._v("No\n                    ")])
 }]}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-2bc4402d", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-f3df0db6", module.exports)
   }
 }
 
 /***/ }),
-/* 410 */
+/* 330 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var Component = __webpack_require__(1)(
   /* script */
-  __webpack_require__(411),
+  __webpack_require__(331),
   /* template */
-  __webpack_require__(412),
+  __webpack_require__(335),
   /* styles */
   null,
   /* scopeId */
@@ -20566,9 +16674,9 @@ var Component = __webpack_require__(1)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/johnhuffman/Sites/InsuranceSocial.media/src/resources/javascripts/frontend/setup/vue/profile/Errors.vue"
+Component.options.__file = "/Users/johnhuffman/Sites/InsuranceSocial.media/src/resources/javascripts/frontend/social/vue/page/Page.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] Errors.vue: functional components are not supported with templates, they should use render functions.")}
+if (Component.options.functional) {console.error("[vue-loader] Page.vue: functional components are not supported with templates, they should use render functions.")}
 
 /* hot reload */
 if (false) {(function () {
@@ -20577,9 +16685,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-a6a963a6", Component.options)
+    hotAPI.createRecord("data-v-479fc945", Component.options)
   } else {
-    hotAPI.reload("data-v-a6a963a6", Component.options)
+    hotAPI.reload("data-v-479fc945", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -20590,276 +16698,15 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 411 */
+/* 331 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    props: {
-        errors: {
-            type: Array
-        }
-    }
-});
-
-/***/ }),
-/* 412 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "w3-panel"
-  }, [(_vm.errors.length) ? _c('ul', {
-    staticClass: "w3-ul"
-  }, _vm._l((_vm.errors), function(error) {
-    return _c('li', {
-      staticClass: "w3-text-red"
-    }, [_vm._v(_vm._s(error))])
-  })) : _vm._e()])
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-a6a963a6", module.exports)
-  }
-}
-
-/***/ }),
-/* 413 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('Progress', {
-    attrs: {
-      "progress": 67
-    }
-  }), _vm._v(" "), _c('QuickNavigation', {
-    on: {
-      "route": function($event) {
-        _vm.update($event)
-      }
-    }
-  }), _vm._v(" "), _c('div', {
-    staticClass: "w3-container w3-card-2 form"
-  }, [_vm._m(0), _vm._v(" "), _c('div', {
-    staticClass: "w3-panel"
-  }, [_c('Field', {
-    attrs: {
-      "label": 'Full Name',
-      "default": _vm.properties.name
-    },
-    on: {
-      "setValue": function (value) { return _vm.properties.name = value; }
-    }
-  }), _vm._v(" "), _c('Field', {
-    attrs: {
-      "label": 'Email',
-      "validation": 'EMAIL',
-      "default": _vm.properties.email
-    },
-    on: {
-      "setValue": function (value) { return _vm.properties.email = value; }
-    }
-  }), _vm._v(" "), _c('Field', {
-    attrs: {
-      "label": 'Cell Phone',
-      "validation": 'PHONE',
-      "default": _vm.properties.phone
-    },
-    on: {
-      "setValue": function (value) { return _vm.properties.phone = value; }
-    }
-  }), _vm._v(" "), _c('Dropdown', {
-    attrs: {
-      "label": 'What is your title?',
-      "options": _vm.titles,
-      "default": _vm.properties.title
-    },
-    on: {
-      "setOption": function (option) { return _vm.properties.title = option; }
-    }
-  }), _vm._v(" "), (_vm.properties.title != 'Principal' && _vm.properties.title != '') ? _c('div', [_c('Field', {
-    attrs: {
-      "label": 'Principal Name',
-      "default": _vm.properties.principal_name
-    },
-    on: {
-      "setValue": function (value) { return _vm.properties.principal_name = value; }
-    }
-  }), _vm._v(" "), _c('Field', {
-    attrs: {
-      "label": 'Principal Email',
-      "validation": 'EMAIL',
-      "default": _vm.properties.principal_email
-    },
-    on: {
-      "setValue": function (value) { return _vm.properties.principal_email = value; }
-    }
-  })], 1) : _vm._e(), _vm._v(" "), _c('Field', {
-    attrs: {
-      "label": 'Organization Name',
-      "default": _vm.properties.organization_name
-    },
-    on: {
-      "setValue": function (value) { return _vm.properties.organization_name = value; }
-    }
-  }), _vm._v(" "), _c('Field', {
-    attrs: {
-      "label": 'Website',
-      "default": _vm.properties.website
-    },
-    on: {
-      "setValue": function (value) { return _vm.properties.website = value; }
-    }
-  }), _vm._v(" "), _c('Dropdown', {
-    attrs: {
-      "label": 'What is the size of your staff?',
-      "options": _vm.sizes,
-      "default": _vm.properties.staff_size
-    },
-    on: {
-      "setOption": function (option) { return _vm.properties.staff_size = option; }
-    }
-  }), _vm._v(" "), _c('Field', {
-    attrs: {
-      "label": 'Founding Year',
-      "validation": 'YEAR',
-      "default": _vm.properties.year_founded
-    },
-    on: {
-      "setValue": function (value) { return _vm.properties.year_founded = value; }
-    }
-  }), _vm._v(" "), _c('div', {
-    staticClass: "w3-section"
-  }, [_c('Dropdown', {
-    attrs: {
-      "label": 'Is this a multigenerational company?',
-      "options": _vm.generations,
-      "default": _vm.properties.multi_generation
-    },
-    on: {
-      "setOption": function (option) { return _vm.properties.multi_generation = option; }
-    }
-  })], 1), _vm._v(" "), _c('div', {
-    staticClass: "w3-section"
-  }, [_c('Dropdown', {
-    attrs: {
-      "label": 'How often would you like us to communicate with you?',
-      "options": _vm.frequencies,
-      "default": _vm.properties.notification_frequency
-    },
-    on: {
-      "setOption": function (option) { return _vm.properties.notification_frequency = option; }
-    }
-  })], 1), _vm._v(" "), _c('Notification', {
-    attrs: {
-      "notify_email": _vm.properties.notify_email,
-      "notify_text": _vm.properties.notify_text
-    },
-    on: {
-      "setEmail": function (email) { return _vm.properties.notify_email = email; },
-      "setText": function (text) { return _vm.properties.notify_text = text; }
-    }
-  })], 1), _vm._v(" "), (_vm.errors.length) ? _c('div', {
-    staticClass: "w3-panel"
-  }, [_c('Errors', {
-    attrs: {
-      "errors": _vm.errors
-    }
-  })], 1) : _vm._e(), _vm._v(" "), _c('div', {
-    staticClass: "w3-panel"
-  }, [_c('h5', [_vm._v("Please continue to fill out the geographic information for your profile.")]), _vm._v(" "), _c('button', {
-    staticClass: "w3-button w3-text-white primary",
-    on: {
-      "click": function($event) {
-        _vm.update('Location')
-      }
-    }
-  }, [_vm._v("Continue\n            ")])])])], 1)
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "w3-panel"
-  }, [_c('h3', [_vm._v("Who are we?")]), _vm._v(" "), _c('h5', [_vm._v("Please complete this information so we may provide you the best service.")])])
-}]}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-05b69b57", module.exports)
-  }
-}
-
-/***/ }),
-/* 414 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var Component = __webpack_require__(1)(
-  /* script */
-  __webpack_require__(415),
-  /* template */
-  __webpack_require__(434),
-  /* styles */
-  null,
-  /* scopeId */
-  null,
-  /* moduleIdentifier (server only) */
-  null
-)
-Component.options.__file = "/Users/johnhuffman/Sites/InsuranceSocial.media/src/resources/javascripts/frontend/setup/vue/location/Location.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] Location.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-17d5f023", Component.options)
-  } else {
-    hotAPI.reload("data-v-17d5f023", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 415 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Progress__ = __webpack_require__(54);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Progress__ = __webpack_require__(53);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Progress___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Progress__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__QuickNavigation__ = __webpack_require__(55);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__QuickNavigation___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__QuickNavigation__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__inputs_Field__ = __webpack_require__(416);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__inputs_Field___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__inputs_Field__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__inputs_Dropdown__ = __webpack_require__(425);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__inputs_Dropdown___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__inputs_Dropdown__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__inputs_Checkbox__ = __webpack_require__(428);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__inputs_Checkbox___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__inputs_Checkbox__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__Errors__ = __webpack_require__(431);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__Errors___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__Errors__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__inputs_Radio__ = __webpack_require__(332);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__inputs_Radio___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__inputs_Radio__);
 //
 //
 //
@@ -20886,107 +16733,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-
-
 
 
 
@@ -20995,120 +16741,58 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     data: function data() {
         return {
             properties: {
-                email: store.getState().UserStore.email,
-                address_1: store.getState().UserStore.address_1,
-                address_2: store.getState().UserStore.address_2,
-                city: store.getState().UserStore.city,
-                state: store.getState().UserStore.state,
-                zip: store.getState().UserStore.zip,
-                marketing_regions: store.getState().UserStore.marketing_regions,
-                marketing_states: store.getState().UserStore.marketing_states,
-                marketing_counties: store.getState().UserStore.marketing_counties
+                page_id: '',
+                page_name: '',
+                page_access_token: ''
             },
-            states: store.getState().OptionStore.states,
-            targets: store.getState().OptionStore.targets,
-            target: '',
-            regions: store.getState().OptionStore.regions,
-            counties: store.getState().OptionStore.counties,
-            errors: []
+            pages: [],
+            redirectUrl: ''
         };
+    },
+    mounted: function mounted() {
+        var _this = this;
+
+        axios.get(window.base_url + '/api/pages').then(function (response) {
+            _this.pages = response.data;
+        });
     },
 
     methods: {
-        setState: function setState(state) {
-            this.properties.marketing_states.push(state);
-            var filtered_counties = [];
-            var _iteratorNormalCompletion = true;
-            var _didIteratorError = false;
-            var _iteratorError = undefined;
-
-            try {
-                for (var _iterator = this.properties.marketing_states[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-                    var filter = _step.value;
-
-                    var abbr = filter.slice(0, 2);
-                    var _iteratorNormalCompletion2 = true;
-                    var _didIteratorError2 = false;
-                    var _iteratorError2 = undefined;
-
-                    try {
-                        for (var _iterator2 = store.getState().OptionStore.counties[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
-                            var county = _step2.value;
-
-                            if (county.search(abbr) != -1) {
-                                filtered_counties.push(county);
-                            }
-                        }
-                    } catch (err) {
-                        _didIteratorError2 = true;
-                        _iteratorError2 = err;
-                    } finally {
-                        try {
-                            if (!_iteratorNormalCompletion2 && _iterator2.return) {
-                                _iterator2.return();
-                            }
-                        } finally {
-                            if (_didIteratorError2) {
-                                throw _iteratorError2;
-                            }
-                        }
-                    }
-                }
-            } catch (err) {
-                _didIteratorError = true;
-                _iteratorError = err;
-            } finally {
-                try {
-                    if (!_iteratorNormalCompletion && _iterator.return) {
-                        _iterator.return();
-                    }
-                } finally {
-                    if (_didIteratorError) {
-                        throw _iteratorError;
-                    }
-                }
-            }
-
-            this.counties = filtered_counties;
-        },
-        previous: function previous() {
-            store.dispatch({ type: 'SET_LOCATION', data: this.properties });
-            this.$router.push({ name: 'Profile' });
+        setPage: function setPage(page) {
+            this.properties.page_id = page.id;
+            this.properties.page_name = page.name;
+            this.properties.page_access_token = page.access_token;
         },
         update: function update(route) {
-            var _this = this;
+            var _this2 = this;
 
             this.errors = [];
             if (this.errors.length == 0) {
                 axios.post(window.location, this.properties).then(function (response) {
-                    store.dispatch({ type: 'SET_LOCATION', data: response.data });
-                    _this.$router.push({ name: route });
+                    //store.dispatch({ type: 'SET_FACEBOOK', data: response.data });
+                    _this2.$router.push({ name: route });
                 }).catch(function (error) {
-                    _this.errors.push('An error has occured, please contact support.');
+                    _this2.errors.push('An error has occured, please contact support.');
                 });
             }
         }
     },
     components: {
         Progress: __WEBPACK_IMPORTED_MODULE_0__Progress___default.a,
-        QuickNavigation: __WEBPACK_IMPORTED_MODULE_1__QuickNavigation___default.a,
-        Field: __WEBPACK_IMPORTED_MODULE_2__inputs_Field___default.a,
-        Dropdown: __WEBPACK_IMPORTED_MODULE_3__inputs_Dropdown___default.a,
-        Checkbox: __WEBPACK_IMPORTED_MODULE_4__inputs_Checkbox___default.a,
-        Errors: __WEBPACK_IMPORTED_MODULE_5__Errors___default.a
+        Radio: __WEBPACK_IMPORTED_MODULE_1__inputs_Radio___default.a
     }
 });
 
 /***/ }),
-/* 416 */
+/* 332 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var Component = __webpack_require__(1)(
   /* script */
-  __webpack_require__(417),
+  __webpack_require__(333),
   /* template */
-  __webpack_require__(424),
+  __webpack_require__(334),
   /* styles */
   null,
   /* scopeId */
@@ -21116,2844 +16800,7 @@ var Component = __webpack_require__(1)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/johnhuffman/Sites/InsuranceSocial.media/src/resources/javascripts/frontend/setup/vue/location/inputs/Field.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] Field.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-c4c141fc", Component.options)
-  } else {
-    hotAPI.reload("data-v-c4c141fc", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 417 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Check__ = __webpack_require__(418);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Check___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Check__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Cross__ = __webpack_require__(421);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Cross___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__Cross__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    props: {
-        label: {
-            type: String
-        },
-        default: {
-            type: String
-        },
-        validation: {
-            type: String
-        }
-    },
-    data: function data() {
-        return {
-            value: '',
-            isValid: false
-        };
-    },
-    mounted: function mounted() {
-        if (this.default) {
-            this.value = this.default;
-            this.validate();
-        }
-    },
-
-    methods: {
-        validate: function validate() {
-            this.$emit('setValue', this.value);
-            switch (this.validation) {
-                case 'ZIP':
-                    if (/(^\d{5}$)|(^\d{5}-\d{4}$)/.test(this.value)) {
-                        this.isValid = true;
-                    } else {
-                        this.isValid = false;
-                    }
-                    break;
-                default:
-                    if (this.value != '') {
-                        this.isValid = true;
-                    } else {
-                        this.isValid = false;
-                    }
-                    break;
-            }
-        }
-    },
-    components: {
-        Check: __WEBPACK_IMPORTED_MODULE_0__Check___default.a,
-        Cross: __WEBPACK_IMPORTED_MODULE_1__Cross___default.a
-    }
-});
-
-/***/ }),
-/* 418 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var Component = __webpack_require__(1)(
-  /* script */
-  __webpack_require__(419),
-  /* template */
-  __webpack_require__(420),
-  /* styles */
-  null,
-  /* scopeId */
-  null,
-  /* moduleIdentifier (server only) */
-  null
-)
-Component.options.__file = "/Users/johnhuffman/Sites/InsuranceSocial.media/src/resources/javascripts/frontend/setup/vue/location/inputs/Check.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] Check.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-69f7ec10", Component.options)
-  } else {
-    hotAPI.reload("data-v-69f7ec10", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 419 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    //
-});
-
-/***/ }),
-/* 420 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('i', {
-    staticClass: "fa fa-check fa-3x w3-show-inline-block w3-margin-left w3-text-green v-align"
-  })
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-69f7ec10", module.exports)
-  }
-}
-
-/***/ }),
-/* 421 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var Component = __webpack_require__(1)(
-  /* script */
-  __webpack_require__(422),
-  /* template */
-  __webpack_require__(423),
-  /* styles */
-  null,
-  /* scopeId */
-  null,
-  /* moduleIdentifier (server only) */
-  null
-)
-Component.options.__file = "/Users/johnhuffman/Sites/InsuranceSocial.media/src/resources/javascripts/frontend/setup/vue/location/inputs/Cross.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] Cross.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-b4ff7970", Component.options)
-  } else {
-    hotAPI.reload("data-v-b4ff7970", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 422 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    //
-});
-
-/***/ }),
-/* 423 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('i', {
-    staticClass: "fa fa-times fa-3x w3-show-inline-block w3-margin-left w3-text-red v-align"
-  })
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-b4ff7970", module.exports)
-  }
-}
-
-/***/ }),
-/* 424 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "w3-section"
-  }, [_c('label', {
-    staticClass: "w3-show-block"
-  }, [_vm._v(_vm._s(_vm.label))]), _vm._v(" "), _c('input', {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: (_vm.value),
-      expression: "value"
-    }],
-    staticClass: "w3-input w3-show-inline-block eighty",
-    attrs: {
-      "type": "text"
-    },
-    domProps: {
-      "value": (_vm.value)
-    },
-    on: {
-      "keyup": function($event) {
-        _vm.validate()
-      },
-      "input": function($event) {
-        if ($event.target.composing) { return; }
-        _vm.value = $event.target.value
-      }
-    }
-  }), _vm._v(" "), (_vm.isValid) ? _c('Check') : _c('Cross')], 1)
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-c4c141fc", module.exports)
-  }
-}
-
-/***/ }),
-/* 425 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var Component = __webpack_require__(1)(
-  /* script */
-  __webpack_require__(426),
-  /* template */
-  __webpack_require__(427),
-  /* styles */
-  null,
-  /* scopeId */
-  null,
-  /* moduleIdentifier (server only) */
-  null
-)
-Component.options.__file = "/Users/johnhuffman/Sites/InsuranceSocial.media/src/resources/javascripts/frontend/setup/vue/location/inputs/Dropdown.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] Dropdown.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-2d7857b9", Component.options)
-  } else {
-    hotAPI.reload("data-v-2d7857b9", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 426 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    props: {
-        label: {
-            type: String
-        },
-        options: {
-            type: Array
-        },
-        default: {
-            type: String
-        }
-    },
-    data: function data() {
-        return {
-            selected: 'Options'
-        };
-    },
-    mounted: function mounted() {
-        if (this.default) {
-            this.selected = this.default;
-        }
-    },
-
-    methods: {
-        setSelected: function setSelected(option) {
-            this.selected = option;
-            this.$emit('setOption', option);
-        }
-    }
-});
-
-/***/ }),
-/* 427 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "eighty v-align"
-  }, [_c('div', [_vm._v(_vm._s(_vm.label))]), _vm._v(" "), _c('div', {
-    staticClass: "w3-dropdown-hover w3-grey"
-  }, [_c('button', {
-    staticClass: "w3-button"
-  }, [_vm._v(_vm._s(_vm.selected) + "\n            "), _c('i', {
-    staticClass: "fa fa-caret-down"
-  })]), _vm._v(" "), _c('div', {
-    staticClass: "w3-dropdown-content w3-bar-block w3-border dropdown"
-  }, _vm._l((_vm.options), function(option) {
-    return _c('div', {
-      staticClass: "w3-bar-item w3-button",
-      on: {
-        "click": function($event) {
-          _vm.setSelected(option)
-        }
-      }
-    }, [_vm._v(_vm._s(option) + "\n            ")])
-  }))])])
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-2d7857b9", module.exports)
-  }
-}
-
-/***/ }),
-/* 428 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var Component = __webpack_require__(1)(
-  /* script */
-  __webpack_require__(429),
-  /* template */
-  __webpack_require__(430),
-  /* styles */
-  null,
-  /* scopeId */
-  null,
-  /* moduleIdentifier (server only) */
-  null
-)
-Component.options.__file = "/Users/johnhuffman/Sites/InsuranceSocial.media/src/resources/javascripts/frontend/setup/vue/location/inputs/Checkbox.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] Checkbox.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-5cdd066b", Component.options)
-  } else {
-    hotAPI.reload("data-v-5cdd066b", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 429 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    props: {
-        label: {
-            type: String
-        },
-        id: {
-            type: String
-        },
-        value: {
-            type: String
-        }
-    },
-    data: function data() {
-        return {
-            checked: false
-        };
-    }
-});
-
-/***/ }),
-/* 430 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('input', {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: (_vm.checked),
-      expression: "checked"
-    }],
-    attrs: {
-      "type": "checkbox",
-      "id": _vm.id
-    },
-    domProps: {
-      "value": _vm.value,
-      "checked": Array.isArray(_vm.checked) ? _vm._i(_vm.checked, _vm.value) > -1 : (_vm.checked)
-    },
-    on: {
-      "change": function($event) {
-        _vm.$emit('setChecked', _vm.value)
-      },
-      "__c": function($event) {
-        var $$a = _vm.checked,
-          $$el = $event.target,
-          $$c = $$el.checked ? (true) : (false);
-        if (Array.isArray($$a)) {
-          var $$v = _vm.value,
-            $$i = _vm._i($$a, $$v);
-          if ($$c) {
-            $$i < 0 && (_vm.checked = $$a.concat($$v))
-          } else {
-            $$i > -1 && (_vm.checked = $$a.slice(0, $$i).concat($$a.slice($$i + 1)))
-          }
-        } else {
-          _vm.checked = $$c
-        }
-      }
-    }
-  }), _vm._v(" "), _c('label', {
-    attrs: {
-      "for": _vm.id
-    }
-  }, [_c('span', {
-    staticClass: "w3-show-inline-block w3-margin-right v-align"
-  }), _vm._v(_vm._s(_vm.label) + "\n    ")])])
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-5cdd066b", module.exports)
-  }
-}
-
-/***/ }),
-/* 431 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var Component = __webpack_require__(1)(
-  /* script */
-  __webpack_require__(432),
-  /* template */
-  __webpack_require__(433),
-  /* styles */
-  null,
-  /* scopeId */
-  null,
-  /* moduleIdentifier (server only) */
-  null
-)
-Component.options.__file = "/Users/johnhuffman/Sites/InsuranceSocial.media/src/resources/javascripts/frontend/setup/vue/location/Errors.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] Errors.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-7f911259", Component.options)
-  } else {
-    hotAPI.reload("data-v-7f911259", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 432 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    props: {
-        errors: {
-            type: Array
-        }
-    }
-});
-
-/***/ }),
-/* 433 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "w3-panel"
-  }, [(_vm.errors.length) ? _c('ul', {
-    staticClass: "w3-ul"
-  }, _vm._l((_vm.errors), function(error) {
-    return _c('li', {
-      staticClass: "w3-text-red"
-    }, [_vm._v(_vm._s(error))])
-  })) : _vm._e()])
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-7f911259", module.exports)
-  }
-}
-
-/***/ }),
-/* 434 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('Progress', {
-    attrs: {
-      "progress": 67
-    }
-  }), _vm._v(" "), _c('QuickNavigation', {
-    on: {
-      "route": function($event) {
-        _vm.update($event)
-      }
-    }
-  }), _vm._v(" "), _c('div', {
-    staticClass: "w3-container w3-card-2 form"
-  }, [_vm._m(0), _vm._v(" "), _c('div', {
-    staticClass: "w3-panel"
-  }, [_c('Field', {
-    attrs: {
-      "label": 'Business Address 1',
-      "default": _vm.properties.address_1
-    },
-    on: {
-      "setValue": function (value) { return _vm.properties.address_1 = value; }
-    }
-  }), _vm._v(" "), _c('Field', {
-    attrs: {
-      "label": 'Business Address 2',
-      "default": _vm.properties.address_2
-    },
-    on: {
-      "setValue": function (value) { return _vm.properties.address_2 = value; }
-    }
-  }), _vm._v(" "), _c('Field', {
-    attrs: {
-      "label": 'City',
-      "default": _vm.properties.city
-    },
-    on: {
-      "setValue": function (value) { return _vm.properties.city = value; }
-    }
-  }), _vm._v(" "), _c('Dropdown', {
-    attrs: {
-      "label": 'State',
-      "options": _vm.states,
-      "default": _vm.properties.state
-    },
-    on: {
-      "setOption": function (option) { return _vm.properties.state = option; }
-    }
-  }), _vm._v(" "), _c('Field', {
-    attrs: {
-      "label": 'Zip Code',
-      "validation": 'ZIP',
-      "default": _vm.properties.zip
-    },
-    on: {
-      "setValue": function (value) { return _vm.properties.zip = value; }
-    }
-  }), _vm._v(" "), _c('Dropdown', {
-    attrs: {
-      "label": 'Marketing Geography',
-      "options": _vm.targets
-    },
-    on: {
-      "setOption": function (option) { return _vm.target = option; }
-    }
-  }), _vm._v(" "), (_vm.target == 'Region') ? _c('div', [_c('div', {
-    staticClass: "w3-section"
-  }, [_c('Dropdown', {
-    attrs: {
-      "label": 'Marketing Regions',
-      "options": _vm.regions
-    },
-    on: {
-      "setOption": function (region) { return _vm.properties.marketing_regions.push(region); }
-    }
-  })], 1), _vm._v(" "), _c('div', {
-    staticClass: "w3-section"
-  }, [_c('div', [_vm._v("Selected Regions (click to remove)")]), _vm._v(" "), _c('ul', {
-    staticClass: "w3-ul w3-hoverable"
-  }, _vm._l((_vm.properties.marketing_regions), function(region, index) {
-    return _c('li', {
-      staticClass: "w3-section",
-      on: {
-        "click": function (region) { return _vm.properties.marketing_regions.splice(index, 1); }
-      }
-    }, [_vm._v("\n                            " + _vm._s(region) + "\n                            "), _c('i', {
-      staticClass: "fa fa-times w3-margin-left"
-    })])
-  }))])]) : _vm._e(), _vm._v(" "), (_vm.target == 'State and Counties') ? _c('div', [_c('div', {
-    staticClass: "w3-section"
-  }, [_c('Dropdown', {
-    attrs: {
-      "label": 'Marketing State',
-      "options": _vm.states
-    },
-    on: {
-      "setOption": function($event) {
-        _vm.setState($event)
-      }
-    }
-  })], 1), _vm._v(" "), _c('div', {
-    staticClass: "w3-section"
-  }, [_c('div', [_vm._v("Selected States (click to remove)")]), _vm._v(" "), _c('ul', {
-    staticClass: "w3-ul w3-hoverable"
-  }, _vm._l((_vm.properties.marketing_states), function(state, index) {
-    return _c('li', {
-      staticClass: "w3-section",
-      on: {
-        "click": function (state) { return _vm.properties.marketing_states.splice(index, 1); }
-      }
-    }, [_vm._v("\n                            " + _vm._s(state) + "\n                            "), _c('i', {
-      staticClass: "fa fa-times w3-margin-left"
-    })])
-  }))]), _vm._v(" "), _c('div', {
-    staticClass: "w3-section"
-  }, [_c('Dropdown', {
-    attrs: {
-      "label": 'Marketing Counties',
-      "options": _vm.counties
-    },
-    on: {
-      "setOption": function (county) { return _vm.properties.marketing_counties.push(county); }
-    }
-  })], 1), _vm._v(" "), _c('div', {
-    staticClass: "w3-section"
-  }, [_c('div', [_vm._v("Selected Counties (click to remove)")]), _vm._v(" "), _c('ul', {
-    staticClass: "w3-ul w3-hoverable"
-  }, _vm._l((_vm.properties.marketing_counties), function(counties, index) {
-    return _c('li', {
-      staticClass: "w3-section",
-      on: {
-        "click": function (county) { return _vm.properties.marketing_counties.splice(index, 1); }
-      }
-    }, [_vm._v("\n                            " + _vm._s(counties) + "\n                            "), _c('i', {
-      staticClass: "fa fa-times w3-margin-left"
-    })])
-  }))])]) : _vm._e()], 1), _vm._v(" "), (_vm.errors.length) ? _c('div', {
-    staticClass: "w3-panel"
-  }, [_c('Errors', {
-    attrs: {
-      "errors": _vm.errors
-    }
-  })], 1) : _vm._e(), _vm._v(" "), _c('div', {
-    staticClass: "w3-panel"
-  }, [_c('h5', [_vm._v("Click continue to select the coverages you wish to write.")]), _vm._v(" "), _c('button', {
-    staticClass: "w3-button w3-text-white primary",
-    on: {
-      "click": function($event) {
-        _vm.previous()
-      }
-    }
-  }, [_vm._v("Previous\n            ")]), _vm._v(" "), _c('button', {
-    staticClass: "w3-button w3-text-white primary",
-    on: {
-      "click": function($event) {
-        _vm.update('Coverage')
-      }
-    }
-  }, [_vm._v("Continue\n            ")])])])], 1)
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "w3-panel"
-  }, [_c('h3', [_vm._v("Where are we?")]), _vm._v(" "), _c('h5', [_vm._v("Please complete this information for geographic service marketing.")])])
-}]}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-17d5f023", module.exports)
-  }
-}
-
-/***/ }),
-/* 435 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var Component = __webpack_require__(1)(
-  /* script */
-  __webpack_require__(436),
-  /* template */
-  __webpack_require__(456),
-  /* styles */
-  null,
-  /* scopeId */
-  null,
-  /* moduleIdentifier (server only) */
-  null
-)
-Component.options.__file = "/Users/johnhuffman/Sites/InsuranceSocial.media/src/resources/javascripts/frontend/setup/vue/coverage/Coverage.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] Coverage.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-37048983", Component.options)
-  } else {
-    hotAPI.reload("data-v-37048983", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 436 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Progress__ = __webpack_require__(54);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Progress___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Progress__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__QuickNavigation__ = __webpack_require__(55);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__QuickNavigation___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__QuickNavigation__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__inputs_Field__ = __webpack_require__(437);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__inputs_Field___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__inputs_Field__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__inputs_Dropdown__ = __webpack_require__(444);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__inputs_Dropdown___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__inputs_Dropdown__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__inputs_Checkbox__ = __webpack_require__(447);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__inputs_Checkbox___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__inputs_Checkbox__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__Ratio__ = __webpack_require__(450);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__Ratio___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__Ratio__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__Errors__ = __webpack_require__(453);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__Errors___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__Errors__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-
-
-
-
-
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    data: function data() {
-        return {
-            properties: {
-                email: store.getState().UserStore.email,
-                carriers: store.getState().UserStore.carriers,
-                coverage_lines: store.getState().UserStore.coverage_lines,
-                coverage_targets: store.getState().UserStore.coverage_targets,
-                industry_currents: store.getState().UserStore.industry_currents,
-                industry_targets: store.getState().UserStore.industry_targets,
-                commercial_mix: store.getState().UserStore.commercial_mix,
-                personal_mix: store.getState().UserStore.personal_mix
-            },
-            carriers: store.getState().OptionStore.carriers,
-            coverage_lines: store.getState().OptionStore.coverage_lines,
-            coverage_targets: store.getState().OptionStore.coverage_targets,
-            industry_currents: store.getState().OptionStore.industry_currents,
-            industry_targets: store.getState().OptionStore.industry_targets,
-            errors: []
-        };
-    },
-
-    methods: {
-        setRatio: function setRatio(ratio) {
-            this.properties.commercial_mix = ratio.commercial;
-            this.properties.personal_mix = ratio.personal;
-        },
-        previous: function previous() {
-            store.dispatch({ type: 'SET_COVERAGE', data: this.properties });
-            this.$router.push({ name: 'Location' });
-        },
-        update: function update(route) {
-            var _this = this;
-
-            this.errors = [];
-            if (this.errors.length == 0) {
-                axios.post(window.location, this.properties).then(function (response) {
-                    store.dispatch({ type: 'SET_COVERAGE', data: response.data });
-                    _this.$router.push({ name: route });
-                }).catch(function (error) {
-                    _this.errors.push('An error has occured, please contact support.');
-                });
-            }
-        }
-    },
-    components: {
-        Progress: __WEBPACK_IMPORTED_MODULE_0__Progress___default.a,
-        QuickNavigation: __WEBPACK_IMPORTED_MODULE_1__QuickNavigation___default.a,
-        Field: __WEBPACK_IMPORTED_MODULE_2__inputs_Field___default.a,
-        Dropdown: __WEBPACK_IMPORTED_MODULE_3__inputs_Dropdown___default.a,
-        Checkbox: __WEBPACK_IMPORTED_MODULE_4__inputs_Checkbox___default.a,
-        Ratio: __WEBPACK_IMPORTED_MODULE_5__Ratio___default.a,
-        Errors: __WEBPACK_IMPORTED_MODULE_6__Errors___default.a
-    }
-});
-
-/***/ }),
-/* 437 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var Component = __webpack_require__(1)(
-  /* script */
-  __webpack_require__(438),
-  /* template */
-  __webpack_require__(443),
-  /* styles */
-  null,
-  /* scopeId */
-  null,
-  /* moduleIdentifier (server only) */
-  null
-)
-Component.options.__file = "/Users/johnhuffman/Sites/InsuranceSocial.media/src/resources/javascripts/frontend/setup/vue/coverage/inputs/Field.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] Field.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-320555a2", Component.options)
-  } else {
-    hotAPI.reload("data-v-320555a2", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 438 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Check__ = __webpack_require__(174);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Check___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Check__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Cross__ = __webpack_require__(175);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Cross___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__Cross__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    props: {
-        label: {
-            type: String
-        },
-        default: {
-            type: String
-        },
-        validation: {
-            type: String
-        }
-    },
-    data: function data() {
-        return {
-            value: '',
-            isValid: false
-        };
-    },
-    mounted: function mounted() {
-        if (this.default) {
-            this.value = this.default;
-            this.validate();
-        }
-    },
-
-    methods: {
-        validate: function validate() {
-            this.$emit('setValue', this.value);
-            switch (this.validation) {
-                case 'ZIP':
-                    if (/(^\d{5}$)|(^\d{5}-\d{4}$)/.test(this.value)) {
-                        this.isValid = true;
-                    } else {
-                        this.isValid = false;
-                    }
-                    break;
-                default:
-                    if (this.value != '') {
-                        this.isValid = true;
-                    } else {
-                        this.isValid = false;
-                    }
-                    break;
-            }
-        }
-    },
-    components: {
-        Check: __WEBPACK_IMPORTED_MODULE_0__Check___default.a,
-        Cross: __WEBPACK_IMPORTED_MODULE_1__Cross___default.a
-    }
-});
-
-/***/ }),
-/* 439 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    //
-});
-
-/***/ }),
-/* 440 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('i', {
-    staticClass: "fa fa-check fa-3x w3-show-inline-block w3-margin-left w3-text-green v-align"
-  })
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-99543b86", module.exports)
-  }
-}
-
-/***/ }),
-/* 441 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    //
-});
-
-/***/ }),
-/* 442 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('i', {
-    staticClass: "fa fa-times fa-3x w3-show-inline-block w3-margin-left w3-text-red v-align"
-  })
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-22438d16", module.exports)
-  }
-}
-
-/***/ }),
-/* 443 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "w3-section"
-  }, [_c('label', {
-    staticClass: "w3-show-block"
-  }, [_vm._v(_vm._s(_vm.label))]), _vm._v(" "), _c('input', {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: (_vm.value),
-      expression: "value"
-    }],
-    staticClass: "w3-input w3-show-inline-block eighty",
-    attrs: {
-      "type": "text"
-    },
-    domProps: {
-      "value": (_vm.value)
-    },
-    on: {
-      "keyup": function($event) {
-        _vm.validate()
-      },
-      "input": function($event) {
-        if ($event.target.composing) { return; }
-        _vm.value = $event.target.value
-      }
-    }
-  }), _vm._v(" "), (_vm.isValid) ? _c('Check') : _c('Cross')], 1)
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-320555a2", module.exports)
-  }
-}
-
-/***/ }),
-/* 444 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var Component = __webpack_require__(1)(
-  /* script */
-  __webpack_require__(445),
-  /* template */
-  __webpack_require__(446),
-  /* styles */
-  null,
-  /* scopeId */
-  null,
-  /* moduleIdentifier (server only) */
-  null
-)
-Component.options.__file = "/Users/johnhuffman/Sites/InsuranceSocial.media/src/resources/javascripts/frontend/setup/vue/coverage/inputs/Dropdown.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] Dropdown.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-0a39d328", Component.options)
-  } else {
-    hotAPI.reload("data-v-0a39d328", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 445 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    props: {
-        label: {
-            type: String
-        },
-        options: {
-            type: Array
-        }
-    },
-    data: function data() {
-        return {
-            selected: 'Options'
-        };
-    },
-
-    methods: {
-        setSelected: function setSelected(option) {
-            this.selected = option;
-            this.$emit('setOption', option);
-        }
-    }
-});
-
-/***/ }),
-/* 446 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "eighty v-align"
-  }, [_c('div', [_vm._v(_vm._s(_vm.label))]), _vm._v(" "), _c('div', {
-    staticClass: "w3-dropdown-hover w3-grey"
-  }, [_c('button', {
-    staticClass: "w3-button"
-  }, [_vm._v(_vm._s(_vm.selected) + "\n            "), _c('i', {
-    staticClass: "fa fa-caret-down"
-  })]), _vm._v(" "), _c('div', {
-    staticClass: "w3-dropdown-content w3-bar-block w3-border dropdown"
-  }, _vm._l((_vm.options), function(option) {
-    return _c('div', {
-      staticClass: "w3-bar-item w3-button",
-      on: {
-        "click": function($event) {
-          _vm.setSelected(option)
-        }
-      }
-    }, [_vm._v(_vm._s(option) + "\n            ")])
-  }))])])
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-0a39d328", module.exports)
-  }
-}
-
-/***/ }),
-/* 447 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var Component = __webpack_require__(1)(
-  /* script */
-  __webpack_require__(448),
-  /* template */
-  __webpack_require__(449),
-  /* styles */
-  null,
-  /* scopeId */
-  null,
-  /* moduleIdentifier (server only) */
-  null
-)
-Component.options.__file = "/Users/johnhuffman/Sites/InsuranceSocial.media/src/resources/javascripts/frontend/setup/vue/coverage/inputs/Checkbox.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] Checkbox.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-2a47c51e", Component.options)
-  } else {
-    hotAPI.reload("data-v-2a47c51e", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 448 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    props: {
-        label: {
-            type: String
-        },
-        id: {
-            type: String
-        },
-        value: {
-            type: String
-        }
-    },
-    data: function data() {
-        return {
-            checked: false
-        };
-    }
-});
-
-/***/ }),
-/* 449 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('input', {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: (_vm.checked),
-      expression: "checked"
-    }],
-    attrs: {
-      "type": "checkbox",
-      "id": _vm.id
-    },
-    domProps: {
-      "value": _vm.value,
-      "checked": Array.isArray(_vm.checked) ? _vm._i(_vm.checked, _vm.value) > -1 : (_vm.checked)
-    },
-    on: {
-      "change": function($event) {
-        _vm.$emit('setChecked', _vm.value)
-      },
-      "__c": function($event) {
-        var $$a = _vm.checked,
-          $$el = $event.target,
-          $$c = $$el.checked ? (true) : (false);
-        if (Array.isArray($$a)) {
-          var $$v = _vm.value,
-            $$i = _vm._i($$a, $$v);
-          if ($$c) {
-            $$i < 0 && (_vm.checked = $$a.concat($$v))
-          } else {
-            $$i > -1 && (_vm.checked = $$a.slice(0, $$i).concat($$a.slice($$i + 1)))
-          }
-        } else {
-          _vm.checked = $$c
-        }
-      }
-    }
-  }), _vm._v(" "), _c('label', {
-    attrs: {
-      "for": _vm.id
-    }
-  }, [_c('span', {
-    staticClass: "w3-show-inline-block w3-margin-right v-align"
-  }), _vm._v(_vm._s(_vm.label) + "\n    ")])])
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-2a47c51e", module.exports)
-  }
-}
-
-/***/ }),
-/* 450 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var Component = __webpack_require__(1)(
-  /* script */
-  __webpack_require__(451),
-  /* template */
-  __webpack_require__(452),
-  /* styles */
-  null,
-  /* scopeId */
-  null,
-  /* moduleIdentifier (server only) */
-  null
-)
-Component.options.__file = "/Users/johnhuffman/Sites/InsuranceSocial.media/src/resources/javascripts/frontend/setup/vue/coverage/Ratio.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] Ratio.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-454c4700", Component.options)
-  } else {
-    hotAPI.reload("data-v-454c4700", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 451 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__inputs_Check__ = __webpack_require__(174);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__inputs_Check___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__inputs_Check__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__inputs_Cross__ = __webpack_require__(175);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__inputs_Cross___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__inputs_Cross__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    props: {
-        commercial_mix: {
-            type: String
-        },
-        personal_mix: {
-            type: String
-        }
-    },
-    data: function data() {
-        return {
-            commercial: '',
-            personal: '',
-            isValid: false
-        };
-    },
-    mounted: function mounted() {
-        if (this.commercial_mix) {
-            this.commercial = this.commercial_mix;
-            this.isValid = true;
-        }
-        if (this.personal_mix) {
-            this.personal = this.personal_mix;
-            this.isValid = true;
-        }
-    },
-
-    methods: {
-        setCommercialMix: function setCommercialMix() {
-            var result = 100 - parseInt(this.commercial);
-            this.personal = result.toString();
-            if (this.commercial != '' && this.personal != '') {
-                this.isValid = true;
-                this.$emit('setRatio', {
-                    commercial: this.commercial,
-                    personal: this.personal
-                });
-            }
-        },
-        setPersonalMix: function setPersonalMix() {
-            var result = 100 - parseInt(this.personal);
-            this.commercial = result.toString();
-            if (this.commercial != '' && this.personal != '') {
-                this.isValid = true;
-                this.$emit('setRatio', {
-                    commercial: this.commercial,
-                    personal: this.personal
-                });
-            }
-        }
-    },
-    components: {
-        Check: __WEBPACK_IMPORTED_MODULE_0__inputs_Check___default.a,
-        Cross: __WEBPACK_IMPORTED_MODULE_1__inputs_Cross___default.a
-    }
-});
-
-/***/ }),
-/* 452 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('div', {
-    staticClass: "w3-section"
-  }, [_c('div', [_vm._v("Ratio of Commercial to Personal Business")]), _vm._v(" "), _c('div', {
-    staticClass: "w3-section"
-  }, [_c('label', {
-    staticClass: "w3-show-block"
-  }, [_vm._v("% Commercial")]), _vm._v(" "), _c('input', {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: (_vm.commercial),
-      expression: "commercial"
-    }],
-    staticClass: "w3-input w3-show-inline-block eighty",
-    attrs: {
-      "type": "text"
-    },
-    domProps: {
-      "value": (_vm.commercial)
-    },
-    on: {
-      "blur": function($event) {
-        _vm.setCommercialMix()
-      },
-      "input": function($event) {
-        if ($event.target.composing) { return; }
-        _vm.commercial = $event.target.value
-      }
-    }
-  }), _vm._v(" "), (_vm.isValid) ? _c('Check') : _c('Cross')], 1), _vm._v(" "), _c('div', {
-    staticClass: "w3-section"
-  }, [_c('label', {
-    staticClass: "w3-show-block"
-  }, [_vm._v("% Personal")]), _vm._v(" "), _c('input', {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: (_vm.personal),
-      expression: "personal"
-    }],
-    staticClass: "w3-input w3-show-inline-block eighty",
-    attrs: {
-      "type": "text"
-    },
-    domProps: {
-      "value": (_vm.personal)
-    },
-    on: {
-      "blur": function($event) {
-        _vm.setPersonalMix()
-      },
-      "input": function($event) {
-        if ($event.target.composing) { return; }
-        _vm.personal = $event.target.value
-      }
-    }
-  }), _vm._v(" "), (_vm.isValid) ? _c('Check') : _c('Cross')], 1)])])
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-454c4700", module.exports)
-  }
-}
-
-/***/ }),
-/* 453 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var Component = __webpack_require__(1)(
-  /* script */
-  __webpack_require__(454),
-  /* template */
-  __webpack_require__(455),
-  /* styles */
-  null,
-  /* scopeId */
-  null,
-  /* moduleIdentifier (server only) */
-  null
-)
-Component.options.__file = "/Users/johnhuffman/Sites/InsuranceSocial.media/src/resources/javascripts/frontend/setup/vue/coverage/Errors.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] Errors.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-4b7a6e46", Component.options)
-  } else {
-    hotAPI.reload("data-v-4b7a6e46", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 454 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    props: {
-        errors: {
-            type: Array
-        }
-    }
-});
-
-/***/ }),
-/* 455 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "w3-panel"
-  }, [(_vm.errors.length) ? _c('ul', {
-    staticClass: "w3-ul"
-  }, _vm._l((_vm.errors), function(error) {
-    return _c('li', {
-      staticClass: "w3-text-red"
-    }, [_vm._v(_vm._s(error))])
-  })) : _vm._e()])
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-4b7a6e46", module.exports)
-  }
-}
-
-/***/ }),
-/* 456 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('Progress', {
-    attrs: {
-      "progress": 67
-    }
-  }), _vm._v(" "), _c('QuickNavigation', {
-    on: {
-      "route": function($event) {
-        _vm.update($event)
-      }
-    }
-  }), _vm._v(" "), _c('div', {
-    staticClass: "w3-container w3-card-2 form"
-  }, [_vm._m(0), _vm._v(" "), _c('div', {
-    staticClass: "w3-panel"
-  }, [_c('div', {
-    staticClass: "w3-section"
-  }, [_c('Dropdown', {
-    attrs: {
-      "label": 'Carriers',
-      "options": _vm.carriers
-    },
-    on: {
-      "setOption": function (carriers) { return _vm.properties.carriers.push(carriers); }
-    }
-  })], 1), _vm._v(" "), _c('div', {
-    staticClass: "w3-section"
-  }, [_c('div', [_vm._v("Selected Carriers (click to remove)")]), _vm._v(" "), _c('ul', {
-    staticClass: "w3-ul w3-hoverable"
-  }, _vm._l((_vm.properties.carriers), function(carrier, index) {
-    return _c('li', {
-      staticClass: "w3-section",
-      on: {
-        "click": function (carrier) { return _vm.properties.carriers.splice(index, 1); }
-      }
-    }, [_vm._v("\n                        " + _vm._s(carrier) + "\n                        "), _c('i', {
-      staticClass: "fa fa-times w3-margin-left"
-    })])
-  }))]), _vm._v(" "), _c('div', {
-    staticClass: "w3-section"
-  }, [_c('Dropdown', {
-    attrs: {
-      "label": 'Lines of Coverages',
-      "options": _vm.coverage_lines
-    },
-    on: {
-      "setOption": function (coverage) { return _vm.properties.coverage_lines.push(coverage); }
-    }
-  })], 1), _vm._v(" "), _c('div', {
-    staticClass: "w3-section"
-  }, [_c('div', [_vm._v("Selected Coverage Lines (click to remove)")]), _vm._v(" "), _c('ul', {
-    staticClass: "w3-ul w3-hoverable"
-  }, _vm._l((_vm.properties.coverage_lines), function(coverage, index) {
-    return _c('li', {
-      staticClass: "w3-section",
-      on: {
-        "click": function (coverage) { return _vm.properties.coverage_lines.splice(index, 1); }
-      }
-    }, [_vm._v("\n                        " + _vm._s(coverage) + "\n                        "), _c('i', {
-      staticClass: "fa fa-times w3-margin-left"
-    })])
-  }))]), _vm._v(" "), _c('div', {
-    staticClass: "w3-section"
-  }, [_c('Dropdown', {
-    attrs: {
-      "label": 'Target Coverages',
-      "options": _vm.coverage_targets
-    },
-    on: {
-      "setOption": function (target) { return _vm.properties.coverage_targets.push(target); }
-    }
-  })], 1), _vm._v(" "), _c('div', {
-    staticClass: "w3-section"
-  }, [_c('div', [_vm._v("Selected Coverage Targets (click to remove)")]), _vm._v(" "), _c('ul', {
-    staticClass: "w3-ul w3-hoverable"
-  }, _vm._l((_vm.properties.coverage_targets), function(target, index) {
-    return _c('li', {
-      staticClass: "w3-section",
-      on: {
-        "click": function (target) { return _vm.properties.coverage_targets.splice(index, 1); }
-      }
-    }, [_vm._v("\n                        " + _vm._s(target) + "\n                        "), _c('i', {
-      staticClass: "fa fa-times w3-margin-left"
-    })])
-  }))]), _vm._v(" "), _c('div', {
-    staticClass: "w3-section"
-  }, [_c('Dropdown', {
-    attrs: {
-      "label": 'Current industries you market to',
-      "options": _vm.industry_currents
-    },
-    on: {
-      "setOption": function (industry) { return _vm.properties.industry_currents.push(industry); }
-    }
-  })], 1), _vm._v(" "), _c('div', {
-    staticClass: "w3-section"
-  }, [_c('div', [_vm._v("Selected Industries (click to remove)")]), _vm._v(" "), _c('ul', {
-    staticClass: "w3-ul w3-hoverable"
-  }, _vm._l((_vm.properties.industry_currents), function(industry, index) {
-    return _c('li', {
-      staticClass: "w3-section",
-      on: {
-        "click": function (industry) { return _vm.properties.industry_currents.splice(index, 1); }
-      }
-    }, [_vm._v("\n                        " + _vm._s(industry) + "\n                        "), _c('i', {
-      staticClass: "fa fa-times w3-margin-left"
-    })])
-  }))]), _vm._v(" "), _c('div', {
-    staticClass: "w3-section"
-  }, [_c('Dropdown', {
-    attrs: {
-      "label": 'Target industries for future marketing',
-      "options": _vm.industry_targets
-    },
-    on: {
-      "setOption": function (industry) { return _vm.properties.industry_targets.push(industry); }
-    }
-  })], 1), _vm._v(" "), _c('div', {
-    staticClass: "w3-section"
-  }, [_c('div', [_vm._v(" Selected Industries (click to remove)")]), _vm._v(" "), _c('ul', {
-    staticClass: "w3-ul w3-hoverable"
-  }, _vm._l((_vm.properties.industry_targets), function(industry, index) {
-    return _c('li', {
-      staticClass: "w3-section",
-      on: {
-        "click": function (industry) { return _vm.properties.industry_targets.splice(index, 1); }
-      }
-    }, [_vm._v("\n                        " + _vm._s(industry) + "\n                        "), _c('i', {
-      staticClass: "fa fa-times w3-margin-left"
-    })])
-  }))]), _vm._v(" "), _c('div', {
-    staticClass: "w3-section"
-  }, [_c('Ratio', {
-    attrs: {
-      "commercial_mix": _vm.properties.commercial_mix,
-      "personal_mix": _vm.properties.personal_mix
-    },
-    on: {
-      "setRatio": function($event) {
-        _vm.setRatio($event)
-      }
-    }
-  })], 1)]), _vm._v(" "), (_vm.errors.length) ? _c('div', {
-    staticClass: "w3-panel"
-  }, [_c('Errors', {
-    attrs: {
-      "errors": _vm.errors
-    }
-  })], 1) : _vm._e(), _vm._v(" "), _c('div', {
-    staticClass: "w3-panel"
-  }, [_c('h5', [_vm._v("Click continue to select how you want to reach your followers.")]), _vm._v(" "), _c('button', {
-    staticClass: "w3-button w3-text-white primary",
-    on: {
-      "click": function($event) {
-        _vm.previous()
-      }
-    }
-  }, [_vm._v("Previous\n            ")]), _vm._v(" "), _c('button', {
-    staticClass: "w3-button w3-text-white primary",
-    on: {
-      "click": function($event) {
-        _vm.update('Outreach')
-      }
-    }
-  }, [_vm._v("Continue\n            ")])])])], 1)
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "w3-panel"
-  }, [_c('h3', [_vm._v("What do we write?")]), _vm._v(" "), _c('h5', [_vm._v("Please tell us about the lines you write and any industries you market to.")])])
-}]}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-37048983", module.exports)
-  }
-}
-
-/***/ }),
-/* 457 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var Component = __webpack_require__(1)(
-  /* script */
-  __webpack_require__(458),
-  /* template */
-  __webpack_require__(480),
-  /* styles */
-  null,
-  /* scopeId */
-  null,
-  /* moduleIdentifier (server only) */
-  null
-)
-Component.options.__file = "/Users/johnhuffman/Sites/InsuranceSocial.media/src/resources/javascripts/frontend/setup/vue/outreach/Outreach.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] Outreach.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-25cef3ba", Component.options)
-  } else {
-    hotAPI.reload("data-v-25cef3ba", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 458 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Progress__ = __webpack_require__(54);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Progress___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Progress__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__QuickNavigation__ = __webpack_require__(55);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__QuickNavigation___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__QuickNavigation__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__inputs_Field__ = __webpack_require__(459);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__inputs_Field___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__inputs_Field__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__inputs_Dropdown__ = __webpack_require__(468);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__inputs_Dropdown___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__inputs_Dropdown__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__inputs_Checkbox__ = __webpack_require__(471);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__inputs_Checkbox___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__inputs_Checkbox__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__inputs_Radio__ = __webpack_require__(474);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__inputs_Radio___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__inputs_Radio__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__Errors__ = __webpack_require__(477);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__Errors___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__Errors__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-
-
-
-
-
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    data: function data() {
-        return {
-            properties: {
-                email: store.getState().UserStore.email,
-                engagement_mix: store.getState().UserStore.engagement_mix,
-                engagement_tone: store.getState().UserStore.engagement_tone,
-                special_topics: store.getState().UserStore.special_topics,
-                causes: store.getState().UserStore.causes,
-                posting_days: store.getState().UserStore.posting_days,
-                posting_time: store.getState().UserStore.posting_time
-            },
-            engagement_mix: store.getState().OptionStore.engagement_mix,
-            engagement_tone: store.getState().OptionStore.engagement_tone,
-            special_topics: store.getState().OptionStore.special_topics,
-            causes: store.getState().OptionStore.causes,
-            days: store.getState().OptionStore.days,
-            times: store.getState().OptionStore.times,
-            errors: []
-        };
-    },
-
-    methods: {
-        previous: function previous() {
-            store.dispatch({ type: 'SET_OUTREACH', data: this.properties });
-            this.$router.push({ name: 'Coverage' });
-        },
-        update: function update(route) {
-            var _this = this;
-
-            this.errors = [];
-            if (this.errors.length == 0) {
-                axios.post(window.location, this.properties).then(function (response) {
-                    store.dispatch({ type: 'SET_OUTREACH', data: response.data });
-                    if (route == 'Done') {
-                        alert('success! info saved in database ' + store.getState().UserStore);
-                    } else {
-                        _this.$router.push({ name: route });
-                    }
-                }).catch(function (error) {
-                    _this.errors.push('An error has occured, please contact support.');
-                });
-            }
-        }
-    },
-    components: {
-        Progress: __WEBPACK_IMPORTED_MODULE_0__Progress___default.a,
-        QuickNavigation: __WEBPACK_IMPORTED_MODULE_1__QuickNavigation___default.a,
-        Field: __WEBPACK_IMPORTED_MODULE_2__inputs_Field___default.a,
-        Dropdown: __WEBPACK_IMPORTED_MODULE_3__inputs_Dropdown___default.a,
-        Checkbox: __WEBPACK_IMPORTED_MODULE_4__inputs_Checkbox___default.a,
-        Radio: __WEBPACK_IMPORTED_MODULE_5__inputs_Radio___default.a,
-        Errors: __WEBPACK_IMPORTED_MODULE_6__Errors___default.a
-    }
-});
-
-/***/ }),
-/* 459 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var Component = __webpack_require__(1)(
-  /* script */
-  __webpack_require__(460),
-  /* template */
-  __webpack_require__(467),
-  /* styles */
-  null,
-  /* scopeId */
-  null,
-  /* moduleIdentifier (server only) */
-  null
-)
-Component.options.__file = "/Users/johnhuffman/Sites/InsuranceSocial.media/src/resources/javascripts/frontend/setup/vue/outreach/inputs/Field.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] Field.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-960d8c5c", Component.options)
-  } else {
-    hotAPI.reload("data-v-960d8c5c", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 460 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Check__ = __webpack_require__(461);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Check___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Check__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Cross__ = __webpack_require__(464);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Cross___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__Cross__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    props: {
-        label: {
-            type: String
-        },
-        default: {
-            type: String
-        },
-        validation: {
-            type: String
-        }
-    },
-    data: function data() {
-        return {
-            value: '',
-            isValid: false
-        };
-    },
-    mounted: function mounted() {
-        if (this.default) {
-            this.value = this.default;
-            this.validate();
-        }
-    },
-
-    methods: {
-        validate: function validate() {
-            this.$emit('setValue', this.value);
-            switch (this.validation) {
-                case 'ZIP':
-                    if (/(^\d{5}$)|(^\d{5}-\d{4}$)/.test(this.value)) {
-                        this.isValid = true;
-                    } else {
-                        this.isValid = false;
-                    }
-                    break;
-                default:
-                    if (this.value != '') {
-                        this.isValid = true;
-                    } else {
-                        this.isValid = false;
-                    }
-                    break;
-            }
-        }
-    },
-    components: {
-        Check: __WEBPACK_IMPORTED_MODULE_0__Check___default.a,
-        Cross: __WEBPACK_IMPORTED_MODULE_1__Cross___default.a
-    }
-});
-
-/***/ }),
-/* 461 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var Component = __webpack_require__(1)(
-  /* script */
-  __webpack_require__(462),
-  /* template */
-  __webpack_require__(463),
-  /* styles */
-  null,
-  /* scopeId */
-  null,
-  /* moduleIdentifier (server only) */
-  null
-)
-Component.options.__file = "/Users/johnhuffman/Sites/InsuranceSocial.media/src/resources/javascripts/frontend/setup/vue/outreach/inputs/Check.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] Check.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-fd5c7240", Component.options)
-  } else {
-    hotAPI.reload("data-v-fd5c7240", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 462 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    //
-});
-
-/***/ }),
-/* 463 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('i', {
-    staticClass: "fa fa-check fa-3x w3-show-inline-block w3-margin-left w3-text-green v-align"
-  })
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-fd5c7240", module.exports)
-  }
-}
-
-/***/ }),
-/* 464 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var Component = __webpack_require__(1)(
-  /* script */
-  __webpack_require__(465),
-  /* template */
-  __webpack_require__(466),
-  /* styles */
-  null,
-  /* scopeId */
-  null,
-  /* moduleIdentifier (server only) */
-  null
-)
-Component.options.__file = "/Users/johnhuffman/Sites/InsuranceSocial.media/src/resources/javascripts/frontend/setup/vue/outreach/inputs/Cross.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] Cross.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-864bc3d0", Component.options)
-  } else {
-    hotAPI.reload("data-v-864bc3d0", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 465 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    //
-});
-
-/***/ }),
-/* 466 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('i', {
-    staticClass: "fa fa-times fa-3x w3-show-inline-block w3-margin-left w3-text-red v-align"
-  })
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-864bc3d0", module.exports)
-  }
-}
-
-/***/ }),
-/* 467 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "w3-section"
-  }, [_c('label', {
-    staticClass: "w3-show-block"
-  }, [_vm._v(_vm._s(_vm.label))]), _vm._v(" "), _c('input', {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: (_vm.value),
-      expression: "value"
-    }],
-    staticClass: "w3-input w3-show-inline-block eighty",
-    attrs: {
-      "type": "text"
-    },
-    domProps: {
-      "value": (_vm.value)
-    },
-    on: {
-      "keyup": function($event) {
-        _vm.validate()
-      },
-      "input": function($event) {
-        if ($event.target.composing) { return; }
-        _vm.value = $event.target.value
-      }
-    }
-  }), _vm._v(" "), (_vm.isValid) ? _c('Check') : _c('Cross')], 1)
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-960d8c5c", module.exports)
-  }
-}
-
-/***/ }),
-/* 468 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var Component = __webpack_require__(1)(
-  /* script */
-  __webpack_require__(469),
-  /* template */
-  __webpack_require__(470),
-  /* styles */
-  null,
-  /* scopeId */
-  null,
-  /* moduleIdentifier (server only) */
-  null
-)
-Component.options.__file = "/Users/johnhuffman/Sites/InsuranceSocial.media/src/resources/javascripts/frontend/setup/vue/outreach/inputs/Dropdown.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] Dropdown.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-e2126a2e", Component.options)
-  } else {
-    hotAPI.reload("data-v-e2126a2e", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 469 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    props: {
-        label: {
-            type: String
-        },
-        options: {
-            type: Array
-        }
-    },
-    data: function data() {
-        return {
-            selected: 'Options'
-        };
-    },
-
-    methods: {
-        setSelected: function setSelected(option) {
-            this.selected = option;
-            this.$emit('setOption', option);
-        }
-    }
-});
-
-/***/ }),
-/* 470 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "eighty v-align"
-  }, [_c('div', [_vm._v(_vm._s(_vm.label))]), _vm._v(" "), _c('div', {
-    staticClass: "w3-dropdown-hover w3-grey"
-  }, [_c('button', {
-    staticClass: "w3-button"
-  }, [_vm._v(_vm._s(_vm.selected) + "\n            "), _c('i', {
-    staticClass: "fa fa-caret-down"
-  })]), _vm._v(" "), _c('div', {
-    staticClass: "w3-dropdown-content w3-bar-block w3-border dropdown"
-  }, _vm._l((_vm.options), function(option) {
-    return _c('div', {
-      staticClass: "w3-bar-item w3-button",
-      on: {
-        "click": function($event) {
-          _vm.setSelected(option)
-        }
-      }
-    }, [_vm._v(_vm._s(option) + "\n            ")])
-  }))])])
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-e2126a2e", module.exports)
-  }
-}
-
-/***/ }),
-/* 471 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var Component = __webpack_require__(1)(
-  /* script */
-  __webpack_require__(472),
-  /* template */
-  __webpack_require__(473),
-  /* styles */
-  null,
-  /* scopeId */
-  null,
-  /* moduleIdentifier (server only) */
-  null
-)
-Component.options.__file = "/Users/johnhuffman/Sites/InsuranceSocial.media/src/resources/javascripts/frontend/setup/vue/outreach/inputs/Checkbox.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] Checkbox.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-83490cca", Component.options)
-  } else {
-    hotAPI.reload("data-v-83490cca", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 472 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    props: {
-        label: {
-            type: String
-        },
-        id: {
-            type: String
-        },
-        value: {
-            type: String
-        }
-    },
-    data: function data() {
-        return {
-            checked: false
-        };
-    }
-});
-
-/***/ }),
-/* 473 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('input', {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: (_vm.checked),
-      expression: "checked"
-    }],
-    attrs: {
-      "type": "checkbox",
-      "id": _vm.id
-    },
-    domProps: {
-      "value": _vm.value,
-      "checked": Array.isArray(_vm.checked) ? _vm._i(_vm.checked, _vm.value) > -1 : (_vm.checked)
-    },
-    on: {
-      "change": function($event) {
-        _vm.$emit('setChecked', _vm.value)
-      },
-      "__c": function($event) {
-        var $$a = _vm.checked,
-          $$el = $event.target,
-          $$c = $$el.checked ? (true) : (false);
-        if (Array.isArray($$a)) {
-          var $$v = _vm.value,
-            $$i = _vm._i($$a, $$v);
-          if ($$c) {
-            $$i < 0 && (_vm.checked = $$a.concat($$v))
-          } else {
-            $$i > -1 && (_vm.checked = $$a.slice(0, $$i).concat($$a.slice($$i + 1)))
-          }
-        } else {
-          _vm.checked = $$c
-        }
-      }
-    }
-  }), _vm._v(" "), _c('label', {
-    attrs: {
-      "for": _vm.id
-    }
-  }, [_c('span', {
-    staticClass: "w3-show-inline-block w3-margin-right v-align"
-  }), _vm._v(_vm._s(_vm.label) + "\n    ")])])
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-83490cca", module.exports)
-  }
-}
-
-/***/ }),
-/* 474 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var Component = __webpack_require__(1)(
-  /* script */
-  __webpack_require__(475),
-  /* template */
-  __webpack_require__(476),
-  /* styles */
-  null,
-  /* scopeId */
-  null,
-  /* moduleIdentifier (server only) */
-  null
-)
-Component.options.__file = "/Users/johnhuffman/Sites/InsuranceSocial.media/src/resources/javascripts/frontend/setup/vue/outreach/inputs/Radio.vue"
+Component.options.__file = "/Users/johnhuffman/Sites/InsuranceSocial.media/src/resources/javascripts/frontend/social/vue/page/inputs/Radio.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Radio.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -23964,9 +16811,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-2fbb4453", Component.options)
+    hotAPI.createRecord("data-v-ae15cc6a", Component.options)
   } else {
-    hotAPI.reload("data-v-2fbb4453", Component.options)
+    hotAPI.reload("data-v-ae15cc6a", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -23977,7 +16824,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 475 */
+/* 333 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -24023,7 +16870,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 });
 
 /***/ }),
-/* 476 */
+/* 334 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -24041,47 +16888,92 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }],
       attrs: {
         "type": "radio",
-        "id": ("" + option + index)
+        "id": ("" + (option.id) + index)
       },
       domProps: {
-        "value": option,
-        "checked": _vm._q(_vm.selected, option)
+        "value": option.id,
+        "checked": _vm._q(_vm.selected, option.id)
       },
       on: {
         "change": function($event) {
           _vm.$emit('setChecked', option)
         },
         "__c": function($event) {
-          _vm.selected = option
+          _vm.selected = option.id
         }
       }
     }), _vm._v(" "), _c('label', {
       attrs: {
-        "for": ("" + option + index)
+        "for": ("" + (option.id) + index)
       }
     }, [_c('span', {
       staticClass: "w3-show-inline-block w3-margin-right v-align"
-    }), _vm._v(_vm._s(option) + "\n        ")])])
+    }), _vm._v(_vm._s(option.name) + "\n        ")])])
   }))
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-2fbb4453", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-ae15cc6a", module.exports)
   }
 }
 
 /***/ }),
-/* 477 */
+/* 335 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', [_c('Progress', {
+    attrs: {
+      "progress": 33
+    }
+  }), _vm._v(" "), _c('div', {
+    staticClass: "w3-container w3-card-2 form"
+  }, [_vm._m(0), _vm._v(" "), _c('div', {
+    staticClass: "w3-panel"
+  }, [_c('Radio', {
+    attrs: {
+      "options": _vm.pages
+    },
+    on: {
+      "setChecked": function($event) {
+        _vm.setPage($event)
+      }
+    }
+  })], 1), _vm._v(" "), _c('div', {
+    staticClass: "w3-section"
+  }, [_c('h5', [_vm._v("Click continue to set up your Twitter account.")]), _vm._v(" "), _c('button', {
+    staticClass: "w3-button w3-text-white primary",
+    on: {
+      "click": function($event) {
+        _vm.update('Twitter')
+      }
+    }
+  }, [_vm._v("Continue\n            ")])])])], 1)
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "w3-panel"
+  }, [_c('h3', [_vm._v("Select a Corporate Facebook Page")]), _vm._v(" "), _c('h5', [_vm._v("This is the page Insurance Social Media will post content to.")])])
+}]}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-479fc945", module.exports)
+  }
+}
+
+/***/ }),
+/* 336 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var Component = __webpack_require__(1)(
   /* script */
-  __webpack_require__(478),
+  __webpack_require__(337),
   /* template */
-  __webpack_require__(479),
+  __webpack_require__(338),
   /* styles */
   null,
   /* scopeId */
@@ -24089,9 +16981,9 @@ var Component = __webpack_require__(1)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/johnhuffman/Sites/InsuranceSocial.media/src/resources/javascripts/frontend/setup/vue/outreach/Errors.vue"
+Component.options.__file = "/Users/johnhuffman/Sites/InsuranceSocial.media/src/resources/javascripts/frontend/social/vue/twitter/Twitter.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] Errors.vue: functional components are not supported with templates, they should use render functions.")}
+if (Component.options.functional) {console.error("[vue-loader] Twitter.vue: functional components are not supported with templates, they should use render functions.")}
 
 /* hot reload */
 if (false) {(function () {
@@ -24100,9 +16992,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-2adb4929", Component.options)
+    hotAPI.createRecord("data-v-58cccf4d", Component.options)
   } else {
-    hotAPI.reload("data-v-2adb4929", Component.options)
+    hotAPI.reload("data-v-58cccf4d", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -24113,7 +17005,539 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 478 */
+/* 337 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Progress__ = __webpack_require__(53);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Progress___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Progress__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            properties: {
+                has_twitter: false,
+                create_twitter: false
+            },
+            redirectUrl: ''
+        };
+    },
+    mounted: function mounted() {
+        var _this = this;
+
+        axios.get(window.location).then(function (response) {
+            _this.redirectUrl = response.data;
+            if (store.getState().UserStore.twitter_access_token) {
+                _this.properties.has_twitter = true;
+            }
+        });
+    },
+
+    methods: {
+        update: function update() {
+            if (this.properties.has_twitter && !store.getState().UserStore.twitter_access_token) {
+                window.location = this.redirectUrl;
+            } else {
+                this.$router.push({ name: 'Profile' });
+            }
+        }
+    },
+    components: {
+        Progress: __WEBPACK_IMPORTED_MODULE_0__Progress___default.a
+    }
+});
+
+/***/ }),
+/* 338 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', [_c('Progress', {
+    attrs: {
+      "progress": 33
+    }
+  }), _vm._v(" "), _c('div', {
+    staticClass: "w3-container w3-card-2 form"
+  }, [_vm._m(0), _vm._v(" "), _c('div', {
+    staticClass: "w3-section"
+  }, [_c('div', {
+    staticClass: "w3-panel"
+  }, [_c('div', [_vm._v("Do you have a Twitter account?")]), _vm._v(" "), _c('div', {
+    staticClass: "w3-panel"
+  }, [_c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.properties.has_twitter),
+      expression: "properties.has_twitter"
+    }],
+    staticClass: "v-align",
+    attrs: {
+      "type": "radio",
+      "id": "twitter_yes"
+    },
+    domProps: {
+      "value": true,
+      "checked": _vm.properties.has_twitter,
+      "checked": _vm._q(_vm.properties.has_twitter, true)
+    },
+    on: {
+      "__c": function($event) {
+        _vm.properties.has_twitter = true
+      }
+    }
+  }), _vm._v(" "), _vm._m(1), _vm._v(" "), _c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.properties.has_twitter),
+      expression: "properties.has_twitter"
+    }],
+    staticClass: "v-align",
+    attrs: {
+      "type": "radio",
+      "id": "twitter_no"
+    },
+    domProps: {
+      "value": false,
+      "checked": _vm.properties.has_twitter,
+      "checked": _vm._q(_vm.properties.has_twitter, false)
+    },
+    on: {
+      "__c": function($event) {
+        _vm.properties.has_twitter = false
+      }
+    }
+  }), _vm._v(" "), _vm._m(2)])])]), _vm._v(" "), _c('div', {
+    staticClass: "w3-section"
+  }, [_c('h5', [_vm._v("We look forward to working with you. Please click continue to finish setting up your account.")]), _vm._v(" "), _c('button', {
+    staticClass: "w3-button w3-text-white primary",
+    on: {
+      "click": function($event) {
+        _vm.update()
+      }
+    }
+  }, [_vm._v("Continue\n            ")])])])], 1)
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "w3-panel"
+  }, [_c('h3', [_vm._v("Link your Social Accounts")]), _vm._v(" "), _c('h5', [_vm._v("Please log in to Twitter"), _c('i', {
+    staticClass: "fa fa-twitter fa-2x w3-margin-left w3-text-blue v-align"
+  }), _vm._v(" in order to recieve our Twitter services.")])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('label', {
+    attrs: {
+      "for": "twitter_yes"
+    }
+  }, [_c('span', {
+    staticClass: "w3-show-inline-block w3-margin v-align"
+  }), _vm._v("Yes\n                    ")])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('label', {
+    attrs: {
+      "for": "twitter_no"
+    }
+  }, [_c('span', {
+    staticClass: "w3-show-inline-block w3-margin v-align"
+  }), _vm._v("No\n                    ")])
+}]}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-58cccf4d", module.exports)
+  }
+}
+
+/***/ }),
+/* 339 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var Component = __webpack_require__(1)(
+  /* script */
+  __webpack_require__(340),
+  /* template */
+  __webpack_require__(362),
+  /* styles */
+  null,
+  /* scopeId */
+  null,
+  /* moduleIdentifier (server only) */
+  null
+)
+Component.options.__file = "/Users/johnhuffman/Sites/InsuranceSocial.media/src/resources/javascripts/frontend/social/vue/payment/Payment.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] Payment.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-8f2fcf1a", Component.options)
+  } else {
+    hotAPI.reload("data-v-8f2fcf1a", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 340 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Progress__ = __webpack_require__(53);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Progress___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Progress__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Cart__ = __webpack_require__(341);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Cart___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__Cart__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__inputs_Card__ = __webpack_require__(344);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__inputs_Card___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__inputs_Card__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__inputs_Expiration__ = __webpack_require__(347);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__inputs_Expiration___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__inputs_Expiration__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__inputs_CCV__ = __webpack_require__(356);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__inputs_CCV___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__inputs_CCV__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__inputs_Name__ = __webpack_require__(359);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__inputs_Name___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__inputs_Name__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            plan: {
+                name: 'Create a Facebook Account',
+                price: '25.00'
+            },
+            properties: {
+                card: '',
+                month: '',
+                year: '',
+                code: '',
+                name: '',
+                apiLoginID: '',
+                clientKey: ''
+            }
+        };
+    },
+    mounted: function mounted() {
+        var _this = this;
+
+        axios.get(window.location).then(function (response) {
+            _this.properties.apiLoginID = response.data.apiLoginID;
+            _this.properties.clientKey = response.data.clientKey;
+        });
+    },
+
+    methods: {
+        sendPaymentDataToAnet: function sendPaymentDataToAnet() {
+            var _this2 = this;
+
+            var secureData = {
+                cardData: {
+                    cardNumber: this.properties.card,
+                    month: this.properties.month,
+                    year: this.properties.year,
+                    cardcode: this.properties.code
+                },
+                authData: {
+                    apiLoginID: this.properties.apiLoginID,
+                    clientKey: this.properties.clientKey
+                }
+            };
+
+            Accept.dispatchData(secureData, function (response) {
+                var total = parseInt(_this2.plan.price);
+                total = total.toFixed(2).toString();
+
+                var transaction = {
+                    total: total,
+                    dataDescriptor: response.opaqueData.dataDescriptor,
+                    dataValue: response.opaqueData.dataValue,
+                    customerData: store.getState().UserStore
+                };
+
+                axios.post(window.location, transaction).then(function (response) {
+                    window.location = window.base_url + '/setup/profile';
+                });
+            });
+        }
+    },
+    components: {
+        Progress: __WEBPACK_IMPORTED_MODULE_0__Progress___default.a,
+        Cart: __WEBPACK_IMPORTED_MODULE_1__Cart___default.a,
+        Card: __WEBPACK_IMPORTED_MODULE_2__inputs_Card___default.a,
+        Expiration: __WEBPACK_IMPORTED_MODULE_3__inputs_Expiration___default.a,
+        CCV: __WEBPACK_IMPORTED_MODULE_4__inputs_CCV___default.a,
+        Name: __WEBPACK_IMPORTED_MODULE_5__inputs_Name___default.a
+    }
+});
+
+/***/ }),
+/* 341 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var Component = __webpack_require__(1)(
+  /* script */
+  __webpack_require__(342),
+  /* template */
+  __webpack_require__(343),
+  /* styles */
+  null,
+  /* scopeId */
+  null,
+  /* moduleIdentifier (server only) */
+  null
+)
+Component.options.__file = "/Users/johnhuffman/Sites/InsuranceSocial.media/src/resources/javascripts/frontend/social/vue/payment/Cart.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] Cart.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-662521fa", Component.options)
+  } else {
+    hotAPI.reload("data-v-662521fa", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 342 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: {
+        plan: {
+            type: Object
+        }
+    },
+    methods: {
+        getTotal: function getTotal() {
+            var total = parseInt(this.plan.price);
+            return total.toFixed(2).toString();
+        }
+    }
+});
+
+/***/ }),
+/* 343 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "w3-section"
+  }, [_c('table', {
+    staticClass: "w3-table"
+  }, [_vm._m(0), _vm._v(" "), _c('tr', [_c('td', [_vm._v(_vm._s(_vm.plan.name))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(_vm.plan.price))])]), _vm._v(" "), _c('tr', [_c('td', [_vm._v("Total:")]), _vm._v(" "), _c('td', [_vm._v(_vm._s(_vm.getTotal()))])])])])
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('tr', [_c('th', [_vm._v("Plan Description")]), _vm._v(" "), _c('th', [_vm._v("Price")])])
+}]}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-662521fa", module.exports)
+  }
+}
+
+/***/ }),
+/* 344 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var Component = __webpack_require__(1)(
+  /* script */
+  __webpack_require__(345),
+  /* template */
+  __webpack_require__(346),
+  /* styles */
+  null,
+  /* scopeId */
+  null,
+  /* moduleIdentifier (server only) */
+  null
+)
+Component.options.__file = "/Users/johnhuffman/Sites/InsuranceSocial.media/src/resources/javascripts/frontend/social/vue/payment/inputs/Card.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] Card.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-6876dba3", Component.options)
+  } else {
+    hotAPI.reload("data-v-6876dba3", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 345 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -24130,198 +17554,67 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: {
-        errors: {
-            type: Array
-        }
+    data: function data() {
+        return {
+            card: ''
+        };
     }
 });
 
 /***/ }),
-/* 479 */
+/* 346 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
-    staticClass: "w3-panel"
-  }, [(_vm.errors.length) ? _c('ul', {
-    staticClass: "w3-ul"
-  }, _vm._l((_vm.errors), function(error) {
-    return _c('li', {
-      staticClass: "w3-text-red"
-    }, [_vm._v(_vm._s(error))])
-  })) : _vm._e()])
+    staticClass: "w3-section"
+  }, [_c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.card),
+      expression: "card"
+    }],
+    staticClass: "w3-input w3-show-inline-block eighty",
+    attrs: {
+      "type": "text"
+    },
+    domProps: {
+      "value": (_vm.card)
+    },
+    on: {
+      "keyup": function($event) {
+        _vm.$emit('setCard', _vm.card)
+      },
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.card = $event.target.value
+      }
+    }
+  }), _vm._v(" "), _c('label', {
+    staticClass: "w3-show-block"
+  }, [_vm._v("Card Number")]), _vm._v(" "), _c('span', {
+    staticClass: "w3-small"
+  }, [_vm._v("Accepted payment forms are Visa, Mastercard, and American Express")])])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-2adb4929", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-6876dba3", module.exports)
   }
 }
 
 /***/ }),
-/* 480 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('Progress', {
-    attrs: {
-      "progress": 67
-    }
-  }), _vm._v(" "), _c('QuickNavigation', {
-    on: {
-      "route": function($event) {
-        _vm.update($event)
-      }
-    }
-  }), _vm._v(" "), _c('div', {
-    staticClass: "w3-container w3-card-2 form"
-  }, [_vm._m(0), _vm._v(" "), _c('div', {
-    staticClass: "w3-panel"
-  }, [_c('div', [_vm._v("Desired engagement mix")]), _vm._v(" "), _c('Radio', {
-    attrs: {
-      "options": _vm.engagement_mix,
-      "default": _vm.properties.engagement_mix
-    },
-    on: {
-      "setChecked": function (option) { return _vm.properties.engagement_mix = option; }
-    }
-  })], 1), _vm._v(" "), _c('div', {
-    staticClass: "w3-panel"
-  }, [_c('div', [_vm._v("Desired engagement tone")]), _vm._v(" "), _c('Radio', {
-    attrs: {
-      "options": _vm.engagement_tone,
-      "default": _vm.properties.engagement_tone
-    },
-    on: {
-      "setChecked": function (option) { return _vm.properties.engagement_tone = option; }
-    }
-  })], 1), _vm._v(" "), _c('div', {
-    staticClass: "w3-panel"
-  }, [_c('Dropdown', {
-    attrs: {
-      "label": 'Special Post Topics',
-      "options": _vm.special_topics
-    },
-    on: {
-      "setOption": function (topic) { return _vm.properties.special_topics.push(topic); }
-    }
-  })], 1), _vm._v(" "), _c('div', {
-    staticClass: "w3-panel"
-  }, [_c('div', [_vm._v("Selected Topics (click to remove)")]), _vm._v(" "), _c('ul', {
-    staticClass: "w3-ul w3-hoverable"
-  }, _vm._l((_vm.properties.special_topics), function(topic, index) {
-    return _c('li', {
-      staticClass: "w3-section",
-      on: {
-        "click": function (topic) { return _vm.properties.special_topics.splice(index, 1); }
-      }
-    }, [_vm._v("\n                    " + _vm._s(topic) + "\n                    "), _c('i', {
-      staticClass: "fa fa-times w3-margin-left"
-    })])
-  }))]), _vm._v(" "), _c('div', {
-    staticClass: "w3-panel"
-  }, [_c('Dropdown', {
-    attrs: {
-      "label": 'Supported Causes',
-      "options": _vm.causes
-    },
-    on: {
-      "setOption": function (cause) { return _vm.properties.causes.push(cause); }
-    }
-  })], 1), _vm._v(" "), _c('div', {
-    staticClass: "w3-panel"
-  }, [_c('div', [_vm._v("Selected Causes (click to remove)")]), _vm._v(" "), _c('ul', {
-    staticClass: "w3-ul w3-hoverable"
-  }, _vm._l((_vm.properties.causes), function(cause, index) {
-    return _c('li', {
-      staticClass: "w3-section",
-      on: {
-        "click": function (cause) { return _vm.properties.causes.splice(index, 1); }
-      }
-    }, [_vm._v("\n                    " + _vm._s(cause) + "\n                    "), _c('i', {
-      staticClass: "fa fa-times w3-margin-left"
-    })])
-  }))]), _vm._v(" "), _c('div', {
-    staticClass: "w3-panel"
-  }, [_c('Dropdown', {
-    attrs: {
-      "label": 'Days to Post',
-      "options": _vm.days
-    },
-    on: {
-      "setOption": function (day) { return _vm.properties.posting_days.push(day); }
-    }
-  })], 1), _vm._v(" "), _c('div', {
-    staticClass: "w3-panel"
-  }, [_c('div', [_vm._v("Selected Posting Days (click to remove)")]), _vm._v(" "), _c('ul', {
-    staticClass: "w3-ul w3-hoverable"
-  }, _vm._l((_vm.properties.posting_days), function(day, index) {
-    return _c('li', {
-      staticClass: "w3-section",
-      on: {
-        "click": function (day) { return _vm.properties.posting_days.splice(index, 1); }
-      }
-    }, [_vm._v("\n                    " + _vm._s(day) + "\n                    "), _c('i', {
-      staticClass: "fa fa-times w3-margin-left"
-    })])
-  }))]), _vm._v(" "), _c('div', {
-    staticClass: "w3-panel"
-  }, [_c('div', [_vm._v("Times to post(all times PST)")]), _vm._v(" "), _c('Radio', {
-    attrs: {
-      "options": _vm.times,
-      "default": _vm.properties.posting_time
-    },
-    on: {
-      "setChecked": function (option) { return _vm.properties.posting_time = option; }
-    }
-  })], 1), _vm._v(" "), (_vm.errors.length) ? _c('div', {
-    staticClass: "w3-panel"
-  }, [_c('Errors', {
-    attrs: {
-      "errors": _vm.errors
-    }
-  })], 1) : _vm._e(), _vm._v(" "), _c('div', {
-    staticClass: "w3-panel"
-  }, [_c('h5', [_vm._v("Congratulations! You have completed your profile. Click continue to go to your dashboard.")]), _vm._v(" "), _c('button', {
-    staticClass: "w3-button w3-text-white primary",
-    on: {
-      "click": function($event) {
-        _vm.previous()
-      }
-    }
-  }, [_vm._v("Previous\n            ")]), _vm._v(" "), _c('button', {
-    staticClass: "w3-button w3-text-white primary",
-    on: {
-      "click": function($event) {
-        _vm.update('Done')
-      }
-    }
-  }, [_vm._v("Continue\n            ")])])])], 1)
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "w3-panel"
-  }, [_c('h3', [_vm._v("How do we reach our customers?")]), _vm._v(" "), _c('h5', [_vm._v("Please set your preferences for the type of outreach you would like.")])])
-}]}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-25cef3ba", module.exports)
-  }
-}
-
-/***/ }),
-/* 481 */
+/* 347 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var Component = __webpack_require__(1)(
   /* script */
-  __webpack_require__(482),
+  __webpack_require__(348),
   /* template */
-  __webpack_require__(498),
+  __webpack_require__(355),
   /* styles */
   null,
   /* scopeId */
@@ -24329,9 +17622,9 @@ var Component = __webpack_require__(1)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/johnhuffman/Sites/InsuranceSocial.media/src/resources/javascripts/frontend/setup/vue/App.vue"
+Component.options.__file = "/Users/johnhuffman/Sites/InsuranceSocial.media/src/resources/javascripts/frontend/social/vue/payment/inputs/Expiration.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] App.vue: functional components are not supported with templates, they should use render functions.")}
+if (Component.options.functional) {console.error("[vue-loader] Expiration.vue: functional components are not supported with templates, they should use render functions.")}
 
 /* hot reload */
 if (false) {(function () {
@@ -24340,9 +17633,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-2326cd96", Component.options)
+    hotAPI.createRecord("data-v-4eff1b82", Component.options)
   } else {
-    hotAPI.reload("data-v-2326cd96", Component.options)
+    hotAPI.reload("data-v-4eff1b82", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -24353,14 +17646,652 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 482 */
+/* 348 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__navigation_Navigation__ = __webpack_require__(483);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Month__ = __webpack_require__(349);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Month___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Month__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Year__ = __webpack_require__(352);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Year___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__Year__);
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    components: {
+        Month: __WEBPACK_IMPORTED_MODULE_0__Month___default.a,
+        Year: __WEBPACK_IMPORTED_MODULE_1__Year___default.a
+    }
+});
+
+/***/ }),
+/* 349 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var Component = __webpack_require__(1)(
+  /* script */
+  __webpack_require__(350),
+  /* template */
+  __webpack_require__(351),
+  /* styles */
+  null,
+  /* scopeId */
+  null,
+  /* moduleIdentifier (server only) */
+  null
+)
+Component.options.__file = "/Users/johnhuffman/Sites/InsuranceSocial.media/src/resources/javascripts/frontend/social/vue/payment/inputs/Month.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] Month.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-6a269e7d", Component.options)
+  } else {
+    hotAPI.reload("data-v-6a269e7d", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 350 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            months: [{
+                name: 'January',
+                value: '01'
+            }, {
+                name: 'February',
+                value: '02'
+            }, {
+                name: 'March',
+                value: '03'
+            }, {
+                name: 'April',
+                value: '04'
+            }, {
+                name: 'May',
+                value: '05'
+            }, {
+                name: 'June',
+                value: '06'
+            }, {
+                name: 'July',
+                value: '07'
+            }, {
+                name: 'August',
+                value: '08'
+            }, {
+                name: 'September',
+                value: '09'
+            }, {
+                name: 'October',
+                value: '10'
+            }, {
+                name: 'November',
+                value: '11'
+            }, {
+                name: 'December',
+                value: '12'
+            }],
+            selected: {
+                name: 'Month'
+            }
+        };
+    },
+
+    methods: {
+        setMonth: function setMonth(month) {
+            this.selected = month;
+            this.$emit('setMonth', month);
+        }
+    }
+});
+
+/***/ }),
+/* 351 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "w3-left fifty v-align"
+  }, [_c('div', {
+    staticClass: "w3-dropdown-hover"
+  }, [_c('button', {
+    staticClass: "w3-button"
+  }, [_vm._v(_vm._s(_vm.selected.name) + "\n            "), _c('i', {
+    staticClass: "fa fa-caret-down"
+  })]), _vm._v(" "), _c('div', {
+    staticClass: "w3-dropdown-content w3-bar-block w3-border"
+  }, _vm._l((_vm.months), function(month) {
+    return _c('div', {
+      staticClass: "w3-bar-item w3-button",
+      on: {
+        "click": function($event) {
+          _vm.setMonth(month)
+        }
+      }
+    }, [_vm._v(_vm._s(month.name) + "\n            ")])
+  }))])])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-6a269e7d", module.exports)
+  }
+}
+
+/***/ }),
+/* 352 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var Component = __webpack_require__(1)(
+  /* script */
+  __webpack_require__(353),
+  /* template */
+  __webpack_require__(354),
+  /* styles */
+  null,
+  /* scopeId */
+  null,
+  /* moduleIdentifier (server only) */
+  null
+)
+Component.options.__file = "/Users/johnhuffman/Sites/InsuranceSocial.media/src/resources/javascripts/frontend/social/vue/payment/inputs/Year.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] Year.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-0d2c8a50", Component.options)
+  } else {
+    hotAPI.reload("data-v-0d2c8a50", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 353 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            year: ''
+        };
+    }
+});
+
+/***/ }),
+/* 354 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "w3-right fifty v-align"
+  }, [_c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.year),
+      expression: "year"
+    }],
+    staticClass: "w3-input",
+    attrs: {
+      "type": "text",
+      "placeholder": "Year"
+    },
+    domProps: {
+      "value": (_vm.year)
+    },
+    on: {
+      "keyup": function($event) {
+        _vm.$emit('setYear', _vm.year)
+      },
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.year = $event.target.value
+      }
+    }
+  })])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-0d2c8a50", module.exports)
+  }
+}
+
+/***/ }),
+/* 355 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "eighty"
+  }, [_c('Month', {
+    on: {
+      "setMonth": function (month) {
+        _vm.$emit('setMonth', month)
+      }
+    }
+  }), _vm._v(" "), _c('Year', {
+    on: {
+      "setYear": function (year) {
+        _vm.$emit('setYear', year)
+      }
+    }
+  }), _vm._v(" "), _c('p', {
+    staticStyle: {
+      "clear": "both"
+    }
+  }, [_vm._v("Expiration Month and Year")])], 1)
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-4eff1b82", module.exports)
+  }
+}
+
+/***/ }),
+/* 356 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var Component = __webpack_require__(1)(
+  /* script */
+  __webpack_require__(357),
+  /* template */
+  __webpack_require__(358),
+  /* styles */
+  null,
+  /* scopeId */
+  null,
+  /* moduleIdentifier (server only) */
+  null
+)
+Component.options.__file = "/Users/johnhuffman/Sites/InsuranceSocial.media/src/resources/javascripts/frontend/social/vue/payment/inputs/CCV.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] CCV.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-5aee5253", Component.options)
+  } else {
+    hotAPI.reload("data-v-5aee5253", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 357 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            code: ''
+        };
+    }
+});
+
+/***/ }),
+/* 358 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "w3-section"
+  }, [_c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.code),
+      expression: "code"
+    }],
+    staticClass: "w3-input w3-show-inline-block eighty",
+    attrs: {
+      "type": "text"
+    },
+    domProps: {
+      "value": (_vm.code)
+    },
+    on: {
+      "keyup": function($event) {
+        _vm.$emit('setCode', _vm.code)
+      },
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.code = $event.target.value
+      }
+    }
+  }), _vm._v(" "), _c('label', {
+    staticClass: "w3-show-block"
+  }, [_vm._v("Card Verification")])])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-5aee5253", module.exports)
+  }
+}
+
+/***/ }),
+/* 359 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var Component = __webpack_require__(1)(
+  /* script */
+  __webpack_require__(360),
+  /* template */
+  __webpack_require__(361),
+  /* styles */
+  null,
+  /* scopeId */
+  null,
+  /* moduleIdentifier (server only) */
+  null
+)
+Component.options.__file = "/Users/johnhuffman/Sites/InsuranceSocial.media/src/resources/javascripts/frontend/social/vue/payment/inputs/Name.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] Name.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-52acb4c4", Component.options)
+  } else {
+    hotAPI.reload("data-v-52acb4c4", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 360 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            name: ''
+        };
+    }
+});
+
+/***/ }),
+/* 361 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "w3-section"
+  }, [_c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.name),
+      expression: "name"
+    }],
+    staticClass: "w3-input w3-show-inline-block eighty",
+    attrs: {
+      "type": "text"
+    },
+    domProps: {
+      "value": (_vm.name)
+    },
+    on: {
+      "keyup": function($event) {
+        _vm.$emit('setName', _vm.name)
+      },
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.name = $event.target.value
+      }
+    }
+  }), _vm._v(" "), _c('label', {
+    staticClass: "w3-show-block"
+  }, [_vm._v("Card Holder's Name")])])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-52acb4c4", module.exports)
+  }
+}
+
+/***/ }),
+/* 362 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', [_c('Progress', {
+    attrs: {
+      "progress": 33
+    }
+  }), _vm._v(" "), _c('div', {
+    staticClass: "w3-container w3-card-2 form"
+  }, [_vm._m(0), _vm._v(" "), _c('div', {
+    staticClass: "w3-panel"
+  }, [_c('Cart', {
+    attrs: {
+      "plan": _vm.plan
+    }
+  })], 1), _vm._v(" "), _vm._m(1), _vm._v(" "), _c('div', {
+    staticClass: "w3-panel"
+  }, [_c('Card', {
+    on: {
+      "setCard": function (card) { return _vm.properties.card = card; }
+    }
+  })], 1), _vm._v(" "), _c('div', {
+    staticClass: "w3-panel"
+  }, [_c('Expiration', {
+    on: {
+      "setMonth": function (month) { return _vm.properties.month = month.value; },
+      "setYear": function (year) { return _vm.properties.year = year; }
+    }
+  })], 1), _vm._v(" "), _c('div', {
+    staticClass: "w3-panel"
+  }, [_c('CCV', {
+    on: {
+      "setCode": function (code) { return _vm.properties.code = code; }
+    }
+  })], 1), _vm._v(" "), _c('div', {
+    staticClass: "w3-panel"
+  }, [_c('Name', {
+    on: {
+      "setName": function (name) { return _vm.properties.name = name; }
+    }
+  })], 1), _vm._v(" "), _c('div', {
+    staticClass: "w3-panel"
+  }, [_c('button', {
+    staticClass: "w3-button w3-text-white primary",
+    on: {
+      "click": function($event) {
+        _vm.sendPaymentDataToAnet()
+      }
+    }
+  }, [_vm._v("Complete\n            ")])])])], 1)
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "w3-panel"
+  }, [_c('h3', [_vm._v("Payment Information")]), _vm._v(" "), _c('h5', [_vm._v("Please confirm a payment method for facebook setup.")])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "w3-panel"
+  }, [_c('h3', [_vm._v("Payment Method")]), _vm._v(" "), _c('h5', [_vm._v("Please enter a form of payment.")]), _vm._v(" "), _c('p', [_vm._v("This is a one time charge to cover the cost of setting up a corporate Facebook page for you.")])])
+}]}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-8f2fcf1a", module.exports)
+  }
+}
+
+/***/ }),
+/* 363 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var Component = __webpack_require__(1)(
+  /* script */
+  __webpack_require__(364),
+  /* template */
+  __webpack_require__(380),
+  /* styles */
+  null,
+  /* scopeId */
+  null,
+  /* moduleIdentifier (server only) */
+  null
+)
+Component.options.__file = "/Users/johnhuffman/Sites/InsuranceSocial.media/src/resources/javascripts/frontend/social/vue/App.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] App.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-6b17e297", Component.options)
+  } else {
+    hotAPI.reload("data-v-6b17e297", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 364 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__navigation_Navigation__ = __webpack_require__(365);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__navigation_Navigation___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__navigation_Navigation__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__foot_Foot__ = __webpack_require__(495);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__foot_Foot__ = __webpack_require__(377);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__foot_Foot___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__foot_Foot__);
 //
 //
@@ -24388,7 +18319,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         console.log('App mounted.');
         this.loading++;
-        axios.get(window.base_url + '/setup').then(function (response) {
+        axios.get(window.base_url + '/social').then(function (response) {
             store.dispatch({ type: 'SET_USER', data: response.data });
             _this.loading--;
         });
@@ -24401,15 +18332,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 483 */
+/* 365 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var Component = __webpack_require__(1)(
   /* script */
-  __webpack_require__(484),
+  __webpack_require__(366),
   /* template */
-  __webpack_require__(494),
+  __webpack_require__(376),
   /* styles */
   null,
   /* scopeId */
@@ -24417,7 +18348,7 @@ var Component = __webpack_require__(1)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/johnhuffman/Sites/InsuranceSocial.media/src/resources/javascripts/frontend/setup/vue/navigation/Navigation.vue"
+Component.options.__file = "/Users/johnhuffman/Sites/InsuranceSocial.media/src/resources/javascripts/frontend/social/vue/navigation/Navigation.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Navigation.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -24428,9 +18359,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-55bc2a43", Component.options)
+    hotAPI.createRecord("data-v-6ec09f25", Component.options)
   } else {
-    hotAPI.reload("data-v-55bc2a43", Component.options)
+    hotAPI.reload("data-v-6ec09f25", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -24441,14 +18372,14 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 484 */
+/* 366 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Desktop__ = __webpack_require__(485);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Desktop__ = __webpack_require__(367);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Desktop___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Desktop__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Mobile__ = __webpack_require__(488);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Mobile__ = __webpack_require__(370);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Mobile___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__Mobile__);
 //
 //
@@ -24473,15 +18404,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 485 */
+/* 367 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var Component = __webpack_require__(1)(
   /* script */
-  __webpack_require__(486),
+  __webpack_require__(368),
   /* template */
-  __webpack_require__(487),
+  __webpack_require__(369),
   /* styles */
   null,
   /* scopeId */
@@ -24489,7 +18420,7 @@ var Component = __webpack_require__(1)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/johnhuffman/Sites/InsuranceSocial.media/src/resources/javascripts/frontend/setup/vue/navigation/Desktop.vue"
+Component.options.__file = "/Users/johnhuffman/Sites/InsuranceSocial.media/src/resources/javascripts/frontend/social/vue/navigation/Desktop.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Desktop.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -24500,9 +18431,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-4edc3c7d", Component.options)
+    hotAPI.createRecord("data-v-78ecc2db", Component.options)
   } else {
-    hotAPI.reload("data-v-4edc3c7d", Component.options)
+    hotAPI.reload("data-v-78ecc2db", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -24513,7 +18444,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 486 */
+/* 368 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -24538,7 +18469,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 487 */
+/* 369 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -24562,20 +18493,20 @@ module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-4edc3c7d", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-78ecc2db", module.exports)
   }
 }
 
 /***/ }),
-/* 488 */
+/* 370 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var Component = __webpack_require__(1)(
   /* script */
-  __webpack_require__(489),
+  __webpack_require__(371),
   /* template */
-  __webpack_require__(493),
+  __webpack_require__(375),
   /* styles */
   null,
   /* scopeId */
@@ -24583,7 +18514,7 @@ var Component = __webpack_require__(1)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/johnhuffman/Sites/InsuranceSocial.media/src/resources/javascripts/frontend/setup/vue/navigation/Mobile.vue"
+Component.options.__file = "/Users/johnhuffman/Sites/InsuranceSocial.media/src/resources/javascripts/frontend/social/vue/navigation/Mobile.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Mobile.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -24594,9 +18525,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-58501d51", Component.options)
+    hotAPI.createRecord("data-v-75f3599a", Component.options)
   } else {
-    hotAPI.reload("data-v-58501d51", Component.options)
+    hotAPI.reload("data-v-75f3599a", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -24607,12 +18538,12 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 489 */
+/* 371 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Toggle__ = __webpack_require__(490);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Toggle__ = __webpack_require__(372);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Toggle___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Toggle__);
 //
 //
@@ -24651,15 +18582,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 490 */
+/* 372 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var Component = __webpack_require__(1)(
   /* script */
-  __webpack_require__(491),
+  __webpack_require__(373),
   /* template */
-  __webpack_require__(492),
+  __webpack_require__(374),
   /* styles */
   null,
   /* scopeId */
@@ -24667,7 +18598,7 @@ var Component = __webpack_require__(1)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/johnhuffman/Sites/InsuranceSocial.media/src/resources/javascripts/frontend/setup/vue/navigation/Toggle.vue"
+Component.options.__file = "/Users/johnhuffman/Sites/InsuranceSocial.media/src/resources/javascripts/frontend/social/vue/navigation/Toggle.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Toggle.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -24678,9 +18609,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-b828c1fa", Component.options)
+    hotAPI.createRecord("data-v-10a1d4e5", Component.options)
   } else {
-    hotAPI.reload("data-v-b828c1fa", Component.options)
+    hotAPI.reload("data-v-10a1d4e5", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -24691,7 +18622,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 491 */
+/* 373 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -24709,7 +18640,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 492 */
+/* 374 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -24728,12 +18659,12 @@ module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-b828c1fa", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-10a1d4e5", module.exports)
   }
 }
 
 /***/ }),
-/* 493 */
+/* 375 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -24763,12 +18694,12 @@ module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-58501d51", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-75f3599a", module.exports)
   }
 }
 
 /***/ }),
-/* 494 */
+/* 376 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -24784,20 +18715,20 @@ module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-55bc2a43", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-6ec09f25", module.exports)
   }
 }
 
 /***/ }),
-/* 495 */
+/* 377 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var Component = __webpack_require__(1)(
   /* script */
-  __webpack_require__(496),
+  __webpack_require__(378),
   /* template */
-  __webpack_require__(497),
+  __webpack_require__(379),
   /* styles */
   null,
   /* scopeId */
@@ -24805,7 +18736,7 @@ var Component = __webpack_require__(1)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/johnhuffman/Sites/InsuranceSocial.media/src/resources/javascripts/frontend/setup/vue/foot/Foot.vue"
+Component.options.__file = "/Users/johnhuffman/Sites/InsuranceSocial.media/src/resources/javascripts/frontend/social/vue/foot/Foot.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Foot.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -24816,9 +18747,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-467e34c3", Component.options)
+    hotAPI.createRecord("data-v-3df16ca5", Component.options)
   } else {
-    hotAPI.reload("data-v-467e34c3", Component.options)
+    hotAPI.reload("data-v-3df16ca5", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -24829,7 +18760,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 496 */
+/* 378 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -24865,7 +18796,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 497 */
+/* 379 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -24903,12 +18834,12 @@ module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-467e34c3", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-3df16ca5", module.exports)
   }
 }
 
 /***/ }),
-/* 498 */
+/* 380 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -24920,7 +18851,7 @@ module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-2326cd96", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-6b17e297", module.exports)
   }
 }
 

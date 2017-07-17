@@ -3,9 +3,7 @@ const initialState = {
     name: '',
     email: '',
     api_token: '',
-    plan: {},
-    facebook: false,
-    twitter: false
+    plan: {}
 };
 
 module.exports = function(user = initialState, action) {
@@ -20,10 +18,6 @@ module.exports = function(user = initialState, action) {
             break;
         case 'SET_PLAN':
             user.plan = action.data;
-            break;
-        case 'SET_SOCIAL_MEDIA':
-            user.facebook = action.data.facebook;
-            user.twitter = action.data.twitter;
             break;
         default:
             break;

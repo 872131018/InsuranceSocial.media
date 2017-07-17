@@ -39,7 +39,7 @@ class TwitterController extends Controller
 
             return response()->json($url);
         } else {
-            return view('layouts.setup.app');
+            return view('layouts.social.app');
         }
     }
 

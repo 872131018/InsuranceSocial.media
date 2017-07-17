@@ -47,7 +47,7 @@ class FacebookController extends Controller
 
             return response()->json($loginUrl);
         } else {
-            return view('layouts.setup.app');
+            return view('layouts.social.app');
         }
     }
 
@@ -79,7 +79,7 @@ class FacebookController extends Controller
 
             return response()->json($user);
         } else {
-            return view('layouts.setup.app');
+            return view('layouts.social.app');
         }
     }
 

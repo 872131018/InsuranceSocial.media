@@ -43,6 +43,16 @@ mix.combine([
 ], 'public/stylesheets/checkout.css');
 
 /**
+* Social Styles
+*/
+mix.combine([
+    'node_modules/w3-css/w3.css',
+    'resources/stylesheets/frontend/frontend.styles.css',
+    'resources/stylesheets/frontend/checkbox.styles.css',
+    'resources/stylesheets/frontend/radio.styles.css',
+], 'public/stylesheets/social.css');
+
+/**
 * Setup Styles
 */
 mix.combine([
@@ -66,6 +76,11 @@ mix.js('resources/javascripts/frontend/register/index.js', 'public/javascripts/r
 * Checkout SPA
 */
 mix.js('resources/javascripts/frontend/checkout/index.js', 'public/javascripts/checkout.index.js');
+
+/**
+* Social SPA
+*/
+mix.js('resources/javascripts/frontend/social/index.js', 'public/javascripts/social.index.js');
 
 /**
 * Setup SPA
