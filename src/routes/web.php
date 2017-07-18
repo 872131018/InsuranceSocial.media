@@ -86,6 +86,12 @@ Route::middleware(['auth'])->group(function() {
         }
     });
 
+    Route::get('/setup', function (Request $request) {
+        if($request->wantsJson()) {
+            return response()->json(Auth::user());
+        }
+    });
+
     Route::get('/setup/welcome', function (Request $request) {
         return view('layouts.social.app');
     });

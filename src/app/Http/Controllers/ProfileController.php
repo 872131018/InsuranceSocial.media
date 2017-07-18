@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Auth;
 
+use App\Agency;
+
 class ProfileController extends Controller
 {
     /**
@@ -42,21 +44,24 @@ class ProfileController extends Controller
     {
         if($request->wantsJson()) {
             $user = Auth::user();
-            if($user->email == $request->input('email')) {
-                $user->phone = $request->input('phone');
-                $user->title = $request->input('title');
-                $user->principal_name = $request->input('principal_name');
-                $user->principal_email = $request->input('principal_email');
-                $user->organization_name = $request->input('organization_name');
-                $user->website = $request->input('website');
-                $user->staff_size = $request->input('staff_size');
-                $user->year_founded = $request->input('year_founded');
-                $user->multi_generation = $request->input('multi_generation');
-                $user->notification_frequency = $request->input('notification_frequency');
-                $user->notify_email = $request->input('notify_email');
-                $user->notify_text = $request->input('notify_text');
-                $user->update();
-            }
+            $user->cell_phone = $request->input('phone');
+            $user->title_code = $request->input('title');
+            $user->notify_frequency = $request->input('notification_frequency');
+            $user->notify_email = $request->input('notify_email');
+            $user->notify_text = $request->input('notify_text');
+            $user->update();
+
+            $agency = new Agency();
+            $agency->email = $user->email;
+            $agency->principal_name = $request->input('principal_name');
+            $agency->principal_email = $request->input('principal_email');
+            $agency->name = $request->input('organization_name');
+            $agency->website = $request->input('website');
+            $agency->size = $request->input('staff_size');
+            $agency->established = $request->input('year_founded');
+            $agency->multigenerational = $request->input('multi_generation');
+            $user->agency()->save($agency);
+
             return response()->json($user);
         } else {
             return view('layouts.setup.app');

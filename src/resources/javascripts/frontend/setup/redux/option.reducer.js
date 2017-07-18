@@ -1,51 +1,51 @@
 import States from './states.json';
 import Counties from './counties.json';
+import Regions from './regions.json';
 
 const initialState = {
     titles: [
-        'Owner',
-        'Operations Manager',
-        'Marketing Manager',
-        'Principal',
-        'Sales Manager',
-        'Other'
+        {"code":"OW","name":"Owner"},
+        {"code":"OM","name":"Operations Manager"},
+        {"code":"MM","name":"Marketing Manager"},
+        {"code":"PR","name":"Principle"},
+        {"code":"SM","name":"Sales Manager"},
+        {"code":"OT","name":"Other"}
     ],
     sizes: [
-        'Sole Proprietor',
-        '2-5 Employees',
-        '6-10 Employees',
-        '11-15 Employees',
-        '16+ Employees'
+        {"code": "SP", "name":"Sole Proprietor"},
+        {"code": "2-5", "name":"2-5 Employees"},
+        {"code": "6-10", "name":"6-10 Employees"},
+        {"code": "11-15", "name":"11-15 Employees"},
+        {"code": "16+", "name":"16+ Employees"}
     ],
     generations: [
-        'No',
-        '2nd',
-        '3rd',
-        '4th',
-        '5th'
+        {"code": "N", "name":"No"},
+        {"code": "2", "name":"2nd"},
+        {"code": "3", "name":"3rd"},
+        {"code": "4", "name":"5th"},
+        {"code": "5", "name":"5th"}
     ],
     frequencies: [
-        'Daily',
-        'Weekly',
-        'Monthly',
-        'Quarterly',
-        'Never'
+        {"code": "D", "name":"Daily"},
+        {"code": "W", "name":"Weekly"},
+        {"code": "M", "name":"Monthly"},
+        {"code": "Q", "name":"Quarterly"},
+        {"code": "N", "name":"Never"}
     ],
+    regions: Regions.regions,
     states: States.states,
     counties: Counties.counties,
     targets: [
-        'Region',
-        'State and Counties'
-    ],
-    regions: [
-        'Northern California',
-        'Southern California',
-        'Middle Atlantic',
-        'Midwest',
-        'New England',
-        'South',
-        'Southwest',
-        'West'
+        {
+          "stateCd":"",
+          "code":"R",
+          "desc":"Region"
+        },
+        {
+          "stateCd":"",
+          "code":"S",
+          "desc":"State and Counties"
+        }
     ],
     carriers: [
         'Carrier',

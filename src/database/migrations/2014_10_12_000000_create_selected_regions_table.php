@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTwitterAccountTable extends Migration
+class CreateSelectedRegionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,11 @@ class CreateTwitterAccountTable extends Migration
      */
     public function up()
     {
-        Schema::create('twitter_account', function (Blueprint $table) {
+        Schema::create('selected_regions', function (Blueprint $table) {
             $table->increments('id');
             $table->string('user_id');
             $table->string('email');
-            $table->string('access_token');
-            $table->string('secret_token');
+            $table->string('region_code');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -32,6 +31,6 @@ class CreateTwitterAccountTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('twitter_account');
+        Schema::dropIfExists('selected_regions');
     }
 }

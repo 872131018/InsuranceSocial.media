@@ -33,9 +33,9 @@
                     v-bind:label="'What is your title?'"
                     v-bind:options="titles"
                     v-bind:default="properties.title"
-                    v-on:setOption="(option) => properties.title = option">
+                    v-on:setOption="(option) => properties.title = option.code">
                 </Dropdown>
-                <div v-if="properties.title != 'Principal' && properties.title != ''">
+                <div v-if="properties.title != 'PR' && properties.title != ''">
                     <Field
                         v-bind:label="'Principal Name'"
                         v-bind:default="properties.principal_name"
@@ -62,7 +62,7 @@
                     v-bind:label="'What is the size of your staff?'"
                     v-bind:options="sizes"
                     v-bind:default="properties.staff_size"
-                    v-on:setOption="(option) => properties.staff_size = option">
+                    v-on:setOption="(option) => properties.staff_size = option.code">
                 </Dropdown>
                 <Field
                     v-bind:label="'Founding Year'"
@@ -75,7 +75,7 @@
                         v-bind:label="'Is this a multigenerational company?'"
                         v-bind:options="generations"
                         v-bind:default="properties.multi_generation"
-                        v-on:setOption="(option) => properties.multi_generation = option">
+                        v-on:setOption="(option) => properties.multi_generation = option.code">
                     </Dropdown>
                 </div>
                 <div class="w3-section">
@@ -83,7 +83,7 @@
                         v-bind:label="'How often would you like us to communicate with you?'"
                         v-bind:options="frequencies"
                         v-bind:default="properties.notification_frequency"
-                        v-on:setOption="(option) => properties.notification_frequency = option">
+                        v-on:setOption="(option) => properties.notification_frequency = option.code">
                     </Dropdown>
                 </div>
                 <Notification

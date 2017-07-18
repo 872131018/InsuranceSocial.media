@@ -30,8 +30,8 @@
                 <Dropdown
                     v-bind:label="'State'"
                     v-bind:options="states"
-                    v-bind:default="properties.state"
-                    v-on:setOption="(option) => properties.state = option">
+                    v-bind:default="properties.state.desc"
+                    v-on:setOption="(option) => properties.state = option.code">
                 </Dropdown>
                 <Field
                     v-bind:label="'Zip Code'"
@@ -44,7 +44,7 @@
                     v-bind:options="targets"
                     v-on:setOption="(option) => target = option">
                 </Dropdown>
-                <div v-if="target == 'Region'">
+                <div v-if="target.code == 'R'">
                     <div class="w3-section">
                         <Dropdown
                             v-bind:label="'Marketing Regions'"
@@ -58,13 +58,13 @@
                             <li class="w3-section"
                                 v-for="(region, index) in properties.marketing_regions"
                                 v-on:click="(region) => properties.marketing_regions.splice(index, 1)">
-                                {{ region }}
+                                {{ region.desc }}
                                 <i class="fa fa-times w3-margin-left"></i>
                             </li>
                         </ul>
                     </div>
                 </div>
-                <div v-if="target == 'State and Counties'">
+                <div v-if="target.code == 'S'">
                     <div class="w3-section">
                         <Dropdown
                             v-bind:label="'Marketing State'"
@@ -78,7 +78,7 @@
                             <li class="w3-section"
                                 v-for="(state, index) in properties.marketing_states"
                                 v-on:click="(state) => properties.marketing_states.splice(index, 1)">
-                                {{ state }}
+                                {{ state.desc }}
                                 <i class="fa fa-times w3-margin-left"></i>
                             </li>
                         </ul>
@@ -96,7 +96,7 @@
                             <li class="w3-section"
                                 v-for="(counties, index) in properties.marketing_counties"
                                 v-on:click="(county) => properties.marketing_counties.splice(index, 1)">
-                                {{ counties }}
+                                {{ counties.desc }} - {{ counties.stateCd }}
                                 <i class="fa fa-times w3-margin-left"></i>
                             </li>
                         </ul>
@@ -156,9 +156,9 @@
                 this.properties.marketing_states.push(state);
                 let filtered_counties = [];
                 for(let filter of this.properties.marketing_states) {
-                    let abbr = filter.slice(0, 2);
+                    let stateCd = filter.stateCd;
                     for(let county of store.getState().OptionStore.counties) {
-                        if(county.search(abbr) != -1) {
+                        if(county.stateCd == stateCd) {
                             filtered_counties.push(county);
                         }
                     }

@@ -85,7 +85,11 @@ class CreateUsersTable extends Migration
             $table->text('termination_comment')->nullable();
             $table->string('customer_profile_id')->nullable();
             $table->string('customer_payment_profile_id')->nullable();
+            $table->boolean('notify_email')->nullable();
+            $table->boolean('notify_text')->nullable();
+            $table->char('notify_frequency', 1)->nullable();
             $table->string('api_token', 60)->unique();
+            $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();
         });

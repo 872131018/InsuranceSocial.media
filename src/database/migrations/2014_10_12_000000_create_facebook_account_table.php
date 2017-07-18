@@ -16,7 +16,7 @@ class CreateFacebookAccountTable extends Migration
         Schema::create('facebook_account', function (Blueprint $table) {
             $table->increments('id');
             $table->string('user_id');
-            $table->string('email')->unique();
+            $table->string('email');
             $table->string('access_token');
             $table->string('page_id')->nullable();
             $table->string('page_name')->nullable();

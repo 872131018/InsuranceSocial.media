@@ -1,55 +1,259 @@
 {
-    "states": [
-        "AK - Alaska",
-        "AL - Alabama",
-        "AR - Arkansas",
-        "AZ - Arizona",
-        "CA - California",
-        "CO - Colorado",
-        "CT - Connecticut",
-        "DC - District of Columbia",
-        "DE - Delaware",
-        "FL - Florida",
-        "GA - Georgia",
-        "HI - Hawaii",
-        "IA - Iowa",
-        "ID - Idaho",
-        "IL - Illinois",
-        "IN - Indiana",
-        "KS - Kansas",
-        "KY - Kentucky",
-        "LA - Louisiana",
-        "MA - Massachusetts",
-        "MD - Maryland",
-        "ME - Maine",
-        "MI - Michigan",
-        "MN - Minnesota",
-        "MO - Missouri",
-        "MS - Mississippi",
-        "MT - Montana",
-        "NC - North Carolina",
-        "ND - North Dakota",
-        "NE - Nebraska",
-        "NH - New Hampshire",
-        "NJ - New Jersey",
-        "NM - New Mexico",
-        "NV - Nevada",
-        "NY - New York",
-        "OH - Ohio",
-        "OK - Oklahoma",
-        "OR - Oregon",
-        "PA - Pennsylvania",
-        "RI - Rhode Island",
-        "SC - South Carolina",
-        "SD - South Dakota",
-        "TN - Tennessee",
-        "TX - Texas",
-        "UT - Utah",
-        "VA - Virginia",
-        "VT - Vermont",
-        "WA - Washington",
-        "WI - Wisconsin",
-        "WV - West Virginia",
-        "WY - Wyoming"
-    ]
+    "states":[
+      {
+         "stateCd":"AL",
+         "desc":"Alabama",
+         "code":11168
+      },
+      {
+         "stateCd":"AK",
+         "desc":"Alaska",
+         "code":11169
+      },
+      {
+         "stateCd":"AZ",
+         "desc":"Arizona",
+         "code":11170
+      },
+      {
+         "stateCd":"AR",
+         "desc":"Arkansas",
+         "code":11171
+      },
+      {
+         "stateCd":"CA",
+         "desc":"California",
+         "code":11172
+      },
+      {
+         "stateCd":"CO",
+         "desc":"Colorado",
+         "code":11173
+      },
+      {
+         "stateCd":"CT",
+         "desc":"Connecticut",
+         "code":11174
+      },
+      {
+         "stateCd":"DE",
+         "desc":"Delaware",
+         "code":11175
+      },
+      {
+         "stateCd":"DC",
+         "desc":"District of Columbia",
+         "code":11176
+      },
+      {
+         "stateCd":"FL",
+         "desc":"Florida",
+         "code":11177
+      },
+      {
+         "stateCd":"GA",
+         "desc":"Georgia",
+         "code":11178
+      },
+      {
+         "stateCd":"HI",
+         "desc":"Hawaii",
+         "code":11179
+      },
+      {
+         "stateCd":"ID",
+         "desc":"Idaho",
+         "code":11180
+      },
+      {
+         "stateCd":"IL",
+         "desc":"Illinois",
+         "code":11181
+      },
+      {
+         "stateCd":"IN",
+         "desc":"Indiana",
+         "code":11182
+      },
+      {
+         "stateCd":"IA",
+         "desc":"Iowa",
+         "code":11183
+      },
+      {
+         "stateCd":"KS",
+         "desc":"Kansas",
+         "code":11184
+      },
+      {
+         "stateCd":"KY",
+         "desc":"Kentucky",
+         "code":11185
+      },
+      {
+         "stateCd":"LA",
+         "desc":"Louisiana",
+         "code":11186
+      },
+      {
+         "stateCd":"ME",
+         "desc":"Maine",
+         "code":11187
+      },
+      {
+         "stateCd":"MD",
+         "desc":"Maryland",
+         "code":11188
+      },
+      {
+         "stateCd":"MA",
+         "desc":"Massachusetts",
+         "code":11189
+      },
+      {
+         "stateCd":"MI",
+         "desc":"Michigan",
+         "code":11190
+      },
+      {
+         "stateCd":"MN",
+         "desc":"Minnesota",
+         "code":11191
+      },
+      {
+         "stateCd":"MS",
+         "desc":"Mississippi",
+         "code":11192
+      },
+      {
+         "stateCd":"MO",
+         "desc":"Missouri",
+         "code":11193
+      },
+      {
+         "stateCd":"MT",
+         "desc":"Montana",
+         "code":11194
+      },
+      {
+         "stateCd":"NE",
+         "desc":"Nebraska",
+         "code":11195
+      },
+      {
+         "stateCd":"NV",
+         "desc":"Nevada",
+         "code":11196
+      },
+      {
+         "stateCd":"NH",
+         "desc":"New Hampshire",
+         "code":11197
+      },
+      {
+         "stateCd":"NJ",
+         "desc":"New Jersey",
+         "code":11198
+      },
+      {
+         "stateCd":"NM",
+         "desc":"New Mexico",
+         "code":11199
+      },
+      {
+         "stateCd":"NY",
+         "desc":"New York",
+         "code":11200
+      },
+      {
+         "stateCd":"NC",
+         "desc":"North Carolina",
+         "code":11201
+      },
+      {
+         "stateCd":"ND",
+         "desc":"North Dakota",
+         "code":11202
+      },
+      {
+         "stateCd":"OH",
+         "desc":"Ohio",
+         "code":11203
+      },
+      {
+         "stateCd":"OK",
+         "desc":"Oklahoma",
+         "code":11204
+      },
+      {
+         "stateCd":"OR",
+         "desc":"Oregon",
+         "code":11205
+      },
+      {
+         "stateCd":"PA",
+         "desc":"Pennsylvania",
+         "code":11206
+      },
+      {
+         "stateCd":"RH",
+         "desc":"Rhode Island",
+         "code":11207
+      },
+      {
+         "stateCd":"SC",
+         "desc":"South Carolina",
+         "code":11208
+      },
+      {
+         "stateCd":"SD",
+         "desc":"South Dakota",
+         "code":11209
+      },
+      {
+         "stateCd":"TN",
+         "desc":"Tennessee",
+         "code":11210
+      },
+      {
+         "stateCd":"TX",
+         "desc":"Texas",
+         "code":11211
+      },
+      {
+         "stateCd":"UT",
+         "desc":"Utah",
+         "code":11212
+      },
+      {
+         "stateCd":"VT",
+         "desc":"Vermont",
+         "code":11213
+      },
+      {
+         "stateCd":"VA",
+         "desc":"Virginia",
+         "code":11214
+      },
+      {
+         "stateCd":"WA",
+         "desc":"Washington",
+         "code":11215
+      },
+      {
+         "stateCd":"WV",
+         "desc":"West Virginia",
+         "code":11216
+      },
+      {
+         "stateCd":"WI",
+         "desc":"Wisconsin",
+         "code":11217
+      },
+      {
+         "stateCd":"WY",
+         "desc":"Wyoming",
+         "code":11218
+      }
+   ]
 }

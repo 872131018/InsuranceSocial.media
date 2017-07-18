@@ -16,7 +16,7 @@ class CreateUserPlanTable extends Migration
         Schema::create('user_plan', function (Blueprint $table) {
             $table->increments('id');
             $table->string('user_id');
-            $table->string('email')->unique();
+            $table->string('email');
             $table->char('plan_code', 1)->nullable();
             $table->boolean('monday')->nullable();
             $table->boolean('tuesday')->nullable();

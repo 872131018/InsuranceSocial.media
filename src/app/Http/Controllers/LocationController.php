@@ -6,6 +6,14 @@ use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Auth;
 
+use App\Agency;
+
+use App\SelectedRegion;
+
+use App\SelectedState;
+
+use App\SelectedCounty;
+
 class LocationController extends Controller
 {
     /**
@@ -42,21 +50,41 @@ class LocationController extends Controller
     {
         if($request->wantsJson()) {
             $user = Auth::user();
-            if($user->email == $request->input('email')) {
-                $user->address_1 = $request->input('address_1');
-                $user->address_2 = $request->input('address_2');
-                $user->city = $request->input('city');
-                $user->state = $request->input('state');
-                $user->zip = $request->input('zip');
-                $user->marketing_regions = json_encode($request->input('marketing_regions'));
-                $user->marketing_states = json_encode($request->input('marketing_states'));
-                $user->marketing_counties = json_encode($request->input('marketing_counties'));
-                $user->update();
+            $agency = Agency::find($user->agency->id);
+            $agency->address_1 = $request->input('address_1');
+            $agency->address_2 = $request->input('address_2');
+            $agency->city = $request->input('city');
+            $agency->state = $request->input('state');
+            $agency->zip = $request->input('zip');
+            $agency->update();
 
-                $user->marketing_regions = $request->input('marketing_regions');
-                $user->marketing_states = $request->input('marketing_states');
-                $user->marketing_counties = $request->input('marketing_counties');
+            $selected = [];
+            foreach ($request->input('marketing_regions') as $region) {
+                $selectedRegion = new SelectedRegion();
+                $selectedRegion->email = $user->email;
+                $selectedRegion->region_code = $region['code'];
+                array_push($selected, $selectedRegion);
             }
+            $user->regions()->saveMany($selected);
+
+            $selected = [];
+            foreach ($request->input('marketing_states') as $state) {
+                $selectedState = new SelectedState();
+                $selectedState->email = $user->email;
+                $selectedState->state_code = $state['code'];
+                array_push($selected, $selectedState);
+            }
+            $user->states()->saveMany($selected);
+
+            $selected = [];
+            foreach ($request->input('marketing_counties') as $county) {
+                $selectedCounty = new SelectedCounty();
+                $selectedCounty->email = $user->email;
+                $selectedCounty->county_code = $county['code'];
+                array_push($selected, $selectedCounty);
+            }
+            $user->counties()->saveMany($selected);
+
             return response()->json($user);
         } else {
             return view('layouts.setup.app');

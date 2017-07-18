@@ -1,0 +1,44 @@
+{
+    "regions": [
+      {
+        "stateCd":"",
+        "code":11054,
+        "desc":"Middle Atlantic"
+      },
+      {
+        "stateCd":"",
+        "code":11055,
+        "desc":"Midwest"
+      },
+      {
+        "stateCd":"",
+        "code":11056,
+        "desc":"New England"
+      },
+      {
+        "stateCd":"",
+        "code":11057,
+        "desc":"Northern California"
+      },
+      {
+        "stateCd":"",
+        "code":11059,
+        "desc":"South"
+      },
+      {
+          "stateCd":"",
+         "code":11060,
+         "desc":"Southern California"
+      },
+      {
+        "stateCd":"",
+        "code":11061,
+        "desc":"Southwest"
+      },
+      {
+        "stateCd":"",
+        "code":11062,
+        "desc":"West"
+      }
+   ]
+}

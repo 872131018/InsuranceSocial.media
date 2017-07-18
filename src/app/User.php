@@ -30,7 +30,7 @@ class User extends Authenticatable
     ];
 
     /**
-     * Get the fbAccount record associated with the user.
+     * Get the plan record associated with the user.
      */
     public function plan()
     {
@@ -38,7 +38,7 @@ class User extends Authenticatable
     }
 
     /**
-     * Get the fbAccount record associated with the user.
+     * Get the facebook record associated with the user.
      */
     public function facebook()
     {
@@ -46,10 +46,42 @@ class User extends Authenticatable
     }
 
     /**
-     * Get the fbAccount record associated with the user.
+     * Get the twitter record associated with the user.
      */
     public function twitter()
     {
         return $this->hasOne('App\TwitterAccount');
+    }
+
+    /**
+     * Get the agency record associated with the user.
+     */
+    public function agency()
+    {
+        return $this->hasOne('App\Agency');
+    }
+
+    /**
+     * Get the regions record associated with the user.
+     */
+    public function regions()
+    {
+        return $this->hasMany('App\SelectedRegion');
+    }
+
+    /**
+     * Get the states record associated with the user.
+     */
+    public function states()
+    {
+        return $this->hasMany('App\SelectedState');
+    }
+
+    /**
+     * Get the counties record associated with the user.
+     */
+    public function counties()
+    {
+        return $this->hasMany('App\SelectedCounty');
     }
 }
