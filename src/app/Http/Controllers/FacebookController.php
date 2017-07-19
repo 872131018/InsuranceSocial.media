@@ -14,6 +14,8 @@ use Facebook\GraphUser;
 
 use App\FacebookAccount;
 
+use App\FacebookTemplate;
+
 class FacebookController extends Controller
 {
 
@@ -39,16 +41,12 @@ class FacebookController extends Controller
      */
     public function index(Request $request)
     {
-        if($request->wantsJson()) {
-            $helper = $this->facebook->getRedirectLoginHelper();
-            $permissions = ['email', 'pages_show_list', 'manage_pages']; // optional
-            $url = env('APP_URL');
-            $loginUrl = $helper->getLoginUrl("{$url}/setup/facebook/return", $permissions);
+        $helper = $this->facebook->getRedirectLoginHelper();
+        $permissions = ['email', 'pages_show_list', 'manage_pages']; // optional
+        $url = env('APP_URL');
+        $loginUrl = $helper->getLoginUrl("{$url}/facebook/return", $permissions);
 
-            return response()->json($loginUrl);
-        } else {
-            return view('layouts.social.app');
-        }
+        return response()->json($loginUrl);
     }
 
     /**
@@ -69,18 +67,16 @@ class FacebookController extends Controller
      */
     public function store(Request $request)
     {
-        if($request->wantsJson()) {
-            $user = Auth::user();
-            $facebook = FacebookAccount::find($user->facebook->id);
-            $facebook->page_id = $request->page_id;
-            $facebook->page_name = $request->page_name;
-            $facebook->page_token = $request->page_access_token;
-            $facebook->update();
+        $user = Auth::user();
+        $template = new FacebookTemplate();
+        $template->email = $user->email;
+        $template->name = $request->input('name');
+        $template->image = $request->input('image')['name'];
+        $user->template()->save($template);
 
-            return response()->json($user);
-        } else {
-            return view('layouts.social.app');
-        }
+        
+
+        return response()->json($user);
     }
 
     /**
@@ -100,9 +96,16 @@ class FacebookController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id = 0)
     {
-        //
+        $user = Auth::user();
+        $facebook = FacebookAccount::find($user->facebook->id);
+        $facebook->page_id = $request->page_id;
+        $facebook->page_name = $request->page_name;
+        $facebook->page_token = $request->page_access_token;
+        $facebook->update();
+
+        return response()->json($user);
     }
 
     /**
@@ -156,7 +159,7 @@ class FacebookController extends Controller
 
             session(['pages' => json_encode($pages)]);
 
-            return redirect('/setup/page');
+            return redirect('/page');
         }
     }
 

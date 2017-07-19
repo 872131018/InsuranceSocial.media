@@ -60,25 +60,31 @@ class RouteServiceProvider extends ServiceProvider
         Route::middleware('web')
             ->namespace($this->namespace)
             ->group(function ($router) {
-                require base_path('routes/register.web.php');
+                require base_path('routes/register/register.web.php');
             });
 
         Route::middleware(['web','auth'])
             ->namespace($this->namespace)
             ->group(function ($router) {
-                require base_path('routes/checkout.auth.php');
+                require base_path('routes/checkout/checkout.auth.php');
             });
 
         Route::middleware(['web','auth:api'])
             ->namespace($this->namespace)
             ->group(function ($router) {
-                require base_path('routes/checkout.api.php');
+                require base_path('routes/checkout/checkout.api.php');
             });
 
         Route::middleware(['web','auth'])
             ->namespace($this->namespace)
             ->group(function ($router) {
-                require base_path('routes/social.auth.php');
+                require base_path('routes/social/social.auth.php');
+            });
+
+        Route::middleware(['web','auth:api'])
+            ->namespace($this->namespace)
+            ->group(function ($router) {
+                require base_path('routes/social/social.api.php');
             });
 
         Route::middleware(['web','auth:api'])

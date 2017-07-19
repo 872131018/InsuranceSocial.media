@@ -17,16 +17,9 @@ use Illuminate\Http\Request;
  *
  * @return \Illuminate\Http\Response
  */
- Route::get('/setup/welcome', function (Request $request) {
-     return view('layouts.social.app');
- });
 
- Route::get('/setup/facebook', 'FacebookController@index');
+ Route::get('/api/facebook', 'FacebookController@index');
 
- Route::get('/setup/facebook/return', 'FacebookController@update');
+Route::post('/create', 'FacebookController@store');
 
- Route::get('/setup/page', 'FacebookController@index');
-
- Route::get('/setup/twitter', 'TwitterController@index');
-
- Route::get('/setup/twitter/return', 'TwitterController@update');
+Route::post('/page', 'FacebookController@edit');

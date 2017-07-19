@@ -46,6 +46,14 @@ class User extends Authenticatable
     }
 
     /**
+     * Get the template record associated with the user.
+     */
+    public function template()
+    {
+        return $this->hasOne('App\FacebookTemplate');
+    }
+
+    /**
      * Get the twitter record associated with the user.
      */
     public function twitter()

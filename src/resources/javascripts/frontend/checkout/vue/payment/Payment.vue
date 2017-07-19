@@ -97,7 +97,7 @@
                     };
 
                     axios.post(window.location, transaction).then(response => {
-                        window.location = `${ window.base_url }/setup/welcome`;
+                        window.location = `${ window.base_url }/welcome`;
                     });
 
                 });

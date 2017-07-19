@@ -46,8 +46,6 @@ Route::middleware(['auth'])->group(function() {
         return response()->json($data);
     });
 
-    Route::post('/setup/page', 'FacebookController@store');
-
     Route::get('/setup/payment', 'PaymentController@index');
 
     Route::post('/setup/payment', 'PaymentController@storealt');

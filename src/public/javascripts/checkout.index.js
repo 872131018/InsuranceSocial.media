@@ -32291,7 +32291,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 };
 
                 axios.post(window.location, transaction).then(function (response) {
-                    window.location = window.base_url + '/setup/welcome';
+                    window.location = window.base_url + '/welcome';
                 });
             });
         }

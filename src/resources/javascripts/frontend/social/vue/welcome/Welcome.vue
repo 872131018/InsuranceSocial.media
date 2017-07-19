@@ -26,11 +26,6 @@
     import Introduction from './Introduction';
 
     export default {
-        data() {
-            return {
-                //
-            }
-        },
         methods: {
             update() {
                 this.$router.push({ name: 'Facebook' });
