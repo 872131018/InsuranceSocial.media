@@ -1,0 +1,60 @@
+{
+    "industries": [
+       {
+          "code":11228,
+          "desc":"Agribusiness"
+       },
+       {
+          "code":11229,
+          "desc":"Barber and beauty"
+       },
+       {
+          "code":11230,
+          "desc":"Commercial trucking"
+       },
+       {
+          "code":11231,
+          "desc":"Contractor"
+       },
+       {
+          "code":11232,
+          "desc":"Convenience stores"
+       },
+       {
+          "code":11233,
+          "desc":"Feed, seed, grain"
+       },
+       {
+          "code":11234,
+          "desc":"Florist"
+       },
+       {
+          "code":11235,
+          "desc":"Garage and auto"
+       },
+       {
+          "code":11236,
+          "desc":"Golf"
+       },
+       {
+          "code":11237,
+          "desc":"Photographer"
+       },
+       {
+          "code":11238,
+          "desc":"Religious organization"
+       },
+       {
+          "code":11239,
+          "desc":"Restaurant"
+       },
+       {
+          "code":11240,
+          "desc":"Storage warehouse"
+       },
+       {
+          "code":11241,
+          "desc":"Veterinarian"
+       }
+    ]
+}

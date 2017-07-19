@@ -16210,15 +16210,21 @@ module.exports = function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__counties_json___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__counties_json__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__regions_json__ = __webpack_require__(499);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__regions_json___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__regions_json__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__coverages_json__ = __webpack_require__(500);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__coverages_json___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__coverages_json__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__industries_json__ = __webpack_require__(501);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__industries_json___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__industries_json__);
+
+
 
 
 
 
 var initialState = {
-    titles: [{ "code": "OW", "name": "Owner" }, { "code": "OM", "name": "Operations Manager" }, { "code": "MM", "name": "Marketing Manager" }, { "code": "PR", "name": "Principle" }, { "code": "SM", "name": "Sales Manager" }, { "code": "OT", "name": "Other" }],
-    sizes: [{ "code": "SP", "name": "Sole Proprietor" }, { "code": "2-5", "name": "2-5 Employees" }, { "code": "6-10", "name": "6-10 Employees" }, { "code": "11-15", "name": "11-15 Employees" }, { "code": "16+", "name": "16+ Employees" }],
-    generations: [{ "code": "N", "name": "No" }, { "code": "2", "name": "2nd" }, { "code": "3", "name": "3rd" }, { "code": "4", "name": "5th" }, { "code": "5", "name": "5th" }],
-    frequencies: [{ "code": "D", "name": "Daily" }, { "code": "W", "name": "Weekly" }, { "code": "M", "name": "Monthly" }, { "code": "Q", "name": "Quarterly" }, { "code": "N", "name": "Never" }],
+    titles: [{ "code": "OW", "desc": "Owner" }, { "code": "OM", "desc": "Operations Manager" }, { "code": "MM", "desc": "Marketing Manager" }, { "code": "PR", "desc": "Principle" }, { "code": "SM", "desc": "Sales Manager" }, { "code": "OT", "desc": "Other" }],
+    sizes: [{ "code": "SP", "desc": "Sole Proprietor" }, { "code": "2-5", "desc": "2-5 Employees" }, { "code": "6-10", "desc": "6-10 Employees" }, { "code": "11-15", "desc": "11-15 Employees" }, { "code": "16+", "desc": "16+ Employees" }],
+    generations: [{ "code": "N", "desc": "No" }, { "code": "2", "desc": "2nd" }, { "code": "3", "desc": "3rd" }, { "code": "4", "desc": "5th" }, { "code": "5", "desc": "5th" }],
+    frequencies: [{ "code": "D", "desc": "Daily" }, { "code": "W", "desc": "Weekly" }, { "code": "M", "desc": "Monthly" }, { "code": "Q", "desc": "Quarterly" }, { "code": "N", "desc": "Never" }],
     regions: __WEBPACK_IMPORTED_MODULE_2__regions_json___default.a.regions,
     states: __WEBPACK_IMPORTED_MODULE_0__states_json___default.a.states,
     counties: __WEBPACK_IMPORTED_MODULE_1__counties_json___default.a.counties,
@@ -16231,11 +16237,11 @@ var initialState = {
         "code": "S",
         "desc": "State and Counties"
     }],
-    carriers: ['Carrier', 'Farmer\'s Mutual Hail', 'Grinnell Mutual', 'IMT Group', 'Plymouth Rock Assurance'],
-    coverage_lines: ['Commercial', 'Personal', 'Benefits'],
-    coverage_targets: ['Auto Insurance - Commercial', 'Auto Insurance - Personal', 'Aviation Insurance', 'Boat Insurance', 'Boiler and Machinery Insurance', 'Builder\'s Risk Insurance', 'Business Interruption Insurance', 'Business Owners Policy', 'Cancer Insurance', 'Church Insurance', 'Classic Car Insurance', 'Commercial Property Insurance', 'Condo Insurance', 'Crime Insurance', 'Crop Insurance', 'Cyber Liability Insurance', 'Dental Insurance', 'Directors and Officers Insurance', 'Disability Insurance - Long-Term', 'Disability Insurance - Short-Term', 'Dwelling/Fire Insurance', 'Earthquake Insurance', 'Employment Practices Liability', 'Errors and Omissions Insurance', 'Farm Insurance', 'Fidelity Bond', 'Flood Insurance', 'Gap Insurance', 'General Liability Insurance', 'Health Insurance - Group', 'Health Insurance - Individual', 'Home Insurance', 'Identity Theft Insurance', 'Individual Retirement Accounts', 'Landlord Insurance', 'Life Insurance - Group', 'Life Insurance - Individual', 'Long-term Care', 'Marine Cargo Insurance', 'Medicare Supplement Insurance', 'Mobile Home Insurance', 'Motorcycle Insurance', 'Mutual Funds', 'Personal Identity Theft Insurance', 'Pet  Insurance', 'Professional Liability Insurance', 'Public Liability Insurance', 'Renters Insurance', 'RV Insurance', 'Snowmobile Insurance', 'Surety Bond', 'Travel Insurance', 'Umbrella Insurance', 'Vision Insurance', 'Workers\' Compensation', 'Youth Sports Protection Insurance'],
-    industry_currents: ['Agribusiness', 'Barber and Beauty', 'Commercial Trucking', 'Contractor', 'Convenience Stores', 'Feed, Seed, Grain', 'Florist', 'Garage and Auto', 'Golf', 'Photographer', 'Religious Organization', 'Restaurant', 'Storage Warehouse', 'Veterinarian'],
-    industry_targets: ['Agribusiness', 'Barber and Beauty', 'Commercial Trucking', 'Contractor', 'Convenience Stores', 'Feed, Seed, Grain', 'Florist', 'Garage and Auto', 'Golf', 'Photographer', 'Religious Organization', 'Restaurant', 'Storage Warehouse', 'Veterinarian'],
+    carriers: [{ "code": "C", "desc": "Carrier" }, { "code": "F", "desc": "Farmer\'s Mutual Hail" }, { "code": "G", "desc": "Grinnell Mutual" }, { "code": "I", "desc": "IMT Group" }, { "code": "P", "desc": "Plymouth Rock Assurance" }],
+    coverage_lines: [{ "code": "C", "desc": "Commercial" }, { "code": "P", "desc": "Personal" }, { "code": "B", "desc": "Benefits" }],
+    coverage_targets: __WEBPACK_IMPORTED_MODULE_3__coverages_json___default.a.coverages,
+    industry_currents: __WEBPACK_IMPORTED_MODULE_4__industries_json___default.a.industries,
+    industry_targets: __WEBPACK_IMPORTED_MODULE_4__industries_json___default.a.industries,
     engagement_mix: ['Existing Clients Only', 'Mostly Existinig Clients', 'Existing and New Clients Equally', 'Mostly New Clients', 'New Clients Only'],
     engagement_tone: ['Simply Informative', 'Conversational', 'Entertainingly Informative'],
     special_topics: ['Recognition of National Holidays', 'Insurance Humor', 'Current News'],
@@ -34956,7 +34962,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             if (this.errors.length == 0) {
                 axios.post(window.location, this.properties).then(function (response) {
                     store.dispatch({ type: 'SET_COVERAGE', data: response.data });
-                    _this.$router.push({ name: route });
+                    console.log(response.data);
+                    //this.$router.push({ name: route });
                 }).catch(function (error) {
                     _this.errors.push('An error has occured, please contact support.');
                 });
@@ -35272,7 +35279,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     data: function data() {
         return {
-            selected: 'Options'
+            selected: { 'code': '00', 'desc': 'Options' }
         };
     },
 
@@ -35295,7 +35302,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "w3-dropdown-hover w3-grey"
   }, [_c('button', {
     staticClass: "w3-button"
-  }, [_vm._v(_vm._s(_vm.selected) + "\n            "), _c('i', {
+  }, [_vm._v(_vm._s(_vm.selected.desc) + "\n            "), _c('i', {
     staticClass: "fa fa-caret-down"
   })]), _vm._v(" "), _c('div', {
     staticClass: "w3-dropdown-content w3-bar-block w3-border dropdown"
@@ -35307,7 +35314,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           _vm.setSelected(option)
         }
       }
-    }, [_vm._v(_vm._s(option) + "\n            ")])
+    }, [_vm._v(_vm._s(option.desc) + "\n            ")])
   }))])])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
@@ -35787,7 +35794,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       on: {
         "click": function (carrier) { return _vm.properties.carriers.splice(index, 1); }
       }
-    }, [_vm._v("\n                        " + _vm._s(carrier) + "\n                        "), _c('i', {
+    }, [_vm._v("\n                        " + _vm._s(carrier.desc) + "\n                        "), _c('i', {
       staticClass: "fa fa-times w3-margin-left"
     })])
   }))]), _vm._v(" "), _c('div', {
@@ -35810,7 +35817,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       on: {
         "click": function (coverage) { return _vm.properties.coverage_lines.splice(index, 1); }
       }
-    }, [_vm._v("\n                        " + _vm._s(coverage) + "\n                        "), _c('i', {
+    }, [_vm._v("\n                        " + _vm._s(coverage.desc) + "\n                        "), _c('i', {
       staticClass: "fa fa-times w3-margin-left"
     })])
   }))]), _vm._v(" "), _c('div', {
@@ -35833,7 +35840,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       on: {
         "click": function (target) { return _vm.properties.coverage_targets.splice(index, 1); }
       }
-    }, [_vm._v("\n                        " + _vm._s(target) + "\n                        "), _c('i', {
+    }, [_vm._v("\n                        " + _vm._s(target.desc) + "\n                        "), _c('i', {
       staticClass: "fa fa-times w3-margin-left"
     })])
   }))]), _vm._v(" "), _c('div', {
@@ -35856,7 +35863,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       on: {
         "click": function (industry) { return _vm.properties.industry_currents.splice(index, 1); }
       }
-    }, [_vm._v("\n                        " + _vm._s(industry) + "\n                        "), _c('i', {
+    }, [_vm._v("\n                        " + _vm._s(industry.desc) + "\n                        "), _c('i', {
       staticClass: "fa fa-times w3-margin-left"
     })])
   }))]), _vm._v(" "), _c('div', {
@@ -35879,7 +35886,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       on: {
         "click": function (industry) { return _vm.properties.industry_targets.splice(index, 1); }
       }
-    }, [_vm._v("\n                        " + _vm._s(industry) + "\n                        "), _c('i', {
+    }, [_vm._v("\n                        " + _vm._s(industry.desc) + "\n                        "), _c('i', {
       staticClass: "fa fa-times w3-margin-left"
     })])
   }))]), _vm._v(" "), _c('div', {
@@ -37757,6 +37764,308 @@ module.exports = {
 			"stateCd": "",
 			"code": 11062,
 			"desc": "West"
+		}
+	]
+};
+
+/***/ }),
+/* 500 */
+/***/ (function(module, exports) {
+
+module.exports = {
+	"coverages": [
+		{
+			"code": 11003,
+			"desc": "Annuities"
+		},
+		{
+			"code": 11004,
+			"desc": "Auto Insurance - Commercial"
+		},
+		{
+			"code": 11005,
+			"desc": "Auto Insurance - Personal"
+		},
+		{
+			"code": 11006,
+			"desc": "Aviation Insurance"
+		},
+		{
+			"code": 11007,
+			"desc": "Boat Insurance"
+		},
+		{
+			"code": 11008,
+			"desc": "Boiler and Machinery Insurance"
+		},
+		{
+			"code": 11009,
+			"desc": "Builder's Risk Insurance"
+		},
+		{
+			"code": 11010,
+			"desc": "Business Interruption Insurance"
+		},
+		{
+			"code": 11011,
+			"desc": "Business Owners Policy"
+		},
+		{
+			"code": 11284,
+			"desc": "Cancer Insurance"
+		},
+		{
+			"code": 11012,
+			"desc": "Church Insurance"
+		},
+		{
+			"code": 11013,
+			"desc": "Classic Car Insurance"
+		},
+		{
+			"code": 11264,
+			"desc": "Commercial Property Insurance"
+		},
+		{
+			"code": 11014,
+			"desc": "Condo Insurance"
+		},
+		{
+			"code": 11015,
+			"desc": "Crime Insurance"
+		},
+		{
+			"code": 11016,
+			"desc": "Crop Insurance"
+		},
+		{
+			"code": 11017,
+			"desc": "Cyber Liability Insurance"
+		},
+		{
+			"code": 11018,
+			"desc": "Dental Insurance"
+		},
+		{
+			"code": 11019,
+			"desc": "Directors and Officers Insurance"
+		},
+		{
+			"code": 11020,
+			"desc": "Disability Insurance - Long-term"
+		},
+		{
+			"code": 11021,
+			"desc": "Disability Insurance - Short-term"
+		},
+		{
+			"code": 11263,
+			"desc": "Dwelling/ Fire Insurance"
+		},
+		{
+			"code": 11022,
+			"desc": "Earthquake Insurance"
+		},
+		{
+			"code": 11243,
+			"desc": "Employment Practices Liability"
+		},
+		{
+			"code": 11023,
+			"desc": "Errors and Omissions Insurance"
+		},
+		{
+			"code": 11270,
+			"desc": "Farm Insurance"
+		},
+		{
+			"code": 11024,
+			"desc": "Fidelity Bond"
+		},
+		{
+			"code": 11025,
+			"desc": "Flood Insurance"
+		},
+		{
+			"code": 11026,
+			"desc": "Gap Insurance"
+		},
+		{
+			"code": 11260,
+			"desc": "General Liability Insurance"
+		},
+		{
+			"code": 11027,
+			"desc": "Health Insurance - Group"
+		},
+		{
+			"code": 11028,
+			"desc": "Health Insurance - Individual"
+		},
+		{
+			"code": 11029,
+			"desc": "Home Insurance"
+		},
+		{
+			"code": 11030,
+			"desc": "Identity Theft Insurance"
+		},
+		{
+			"code": 11031,
+			"desc": "Individual Retirement Accounts"
+		},
+		{
+			"code": 11032,
+			"desc": "Landlord Insurance"
+		},
+		{
+			"code": 11033,
+			"desc": "Life Insurance - Group"
+		},
+		{
+			"code": 11034,
+			"desc": "Life Insurance - Individual"
+		},
+		{
+			"code": 11035,
+			"desc": "Long-term Care"
+		},
+		{
+			"code": 11037,
+			"desc": "Marine Cargo Insurance"
+		},
+		{
+			"code": 11036,
+			"desc": "Medicare Supplement Insurance"
+		},
+		{
+			"code": 11262,
+			"desc": "Mobile Home Insurance"
+		},
+		{
+			"code": 11038,
+			"desc": "Motorcycle Insurance"
+		},
+		{
+			"code": 11039,
+			"desc": "Mutual Funds"
+		},
+		{
+			"code": 11261,
+			"desc": "Personal Identity Theft Insurance"
+		},
+		{
+			"code": 11040,
+			"desc": "Pet Insurance"
+		},
+		{
+			"code": 11041,
+			"desc": "Professional Liability Insurance"
+		},
+		{
+			"code": 11042,
+			"desc": "Public Liability Insurance"
+		},
+		{
+			"code": 11043,
+			"desc": "Renters Insurance"
+		},
+		{
+			"code": 11044,
+			"desc": "RV Insurance"
+		},
+		{
+			"code": 11045,
+			"desc": "Snowmobile Insurance"
+		},
+		{
+			"code": 11046,
+			"desc": "Surety Bond"
+		},
+		{
+			"code": 11047,
+			"desc": "Travel Insurance"
+		},
+		{
+			"code": 11048,
+			"desc": "Umbrella Insurance"
+		},
+		{
+			"code": 11049,
+			"desc": "Vision Insurance"
+		},
+		{
+			"code": 11050,
+			"desc": "Workers' Compensation"
+		},
+		{
+			"code": 11285,
+			"desc": "Youth Sports Protection Insurance"
+		}
+	]
+};
+
+/***/ }),
+/* 501 */
+/***/ (function(module, exports) {
+
+module.exports = {
+	"industries": [
+		{
+			"code": 11228,
+			"desc": "Agribusiness"
+		},
+		{
+			"code": 11229,
+			"desc": "Barber and beauty"
+		},
+		{
+			"code": 11230,
+			"desc": "Commercial trucking"
+		},
+		{
+			"code": 11231,
+			"desc": "Contractor"
+		},
+		{
+			"code": 11232,
+			"desc": "Convenience stores"
+		},
+		{
+			"code": 11233,
+			"desc": "Feed, seed, grain"
+		},
+		{
+			"code": 11234,
+			"desc": "Florist"
+		},
+		{
+			"code": 11235,
+			"desc": "Garage and auto"
+		},
+		{
+			"code": 11236,
+			"desc": "Golf"
+		},
+		{
+			"code": 11237,
+			"desc": "Photographer"
+		},
+		{
+			"code": 11238,
+			"desc": "Religious organization"
+		},
+		{
+			"code": 11239,
+			"desc": "Restaurant"
+		},
+		{
+			"code": 11240,
+			"desc": "Storage warehouse"
+		},
+		{
+			"code": 11241,
+			"desc": "Veterinarian"
 		}
 	]
 };

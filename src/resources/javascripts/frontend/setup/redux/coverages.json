@@ -1,0 +1,232 @@
+{
+    "coverages": [
+       {
+          "code":11003,
+          "desc":"Annuities"
+       },
+       {
+          "code":11004,
+          "desc":"Auto Insurance - Commercial"
+       },
+       {
+          "code":11005,
+          "desc":"Auto Insurance - Personal"
+       },
+       {
+          "code":11006,
+          "desc":"Aviation Insurance"
+       },
+       {
+          "code":11007,
+          "desc":"Boat Insurance"
+       },
+       {
+          "code":11008,
+          "desc":"Boiler and Machinery Insurance"
+       },
+       {
+          "code":11009,
+          "desc":"Builder's Risk Insurance"
+       },
+       {
+          "code":11010,
+          "desc":"Business Interruption Insurance"
+       },
+       {
+          "code":11011,
+          "desc":"Business Owners Policy"
+       },
+       {
+          "code":11284,
+          "desc":"Cancer Insurance"
+       },
+       {
+          "code":11012,
+          "desc":"Church Insurance"
+       },
+       {
+          "code":11013,
+          "desc":"Classic Car Insurance"
+       },
+       {
+          "code":11264,
+          "desc":"Commercial Property Insurance"
+       },
+       {
+          "code":11014,
+          "desc":"Condo Insurance"
+       },
+       {
+          "code":11015,
+          "desc":"Crime Insurance"
+       },
+       {
+          "code":11016,
+          "desc":"Crop Insurance"
+       },
+       {
+          "code":11017,
+          "desc":"Cyber Liability Insurance"
+       },
+       {
+          "code":11018,
+          "desc":"Dental Insurance"
+       },
+       {
+          "code":11019,
+          "desc":"Directors and Officers Insurance"
+       },
+       {
+          "code":11020,
+          "desc":"Disability Insurance - Long-term"
+       },
+       {
+          "code":11021,
+          "desc":"Disability Insurance - Short-term"
+       },
+       {
+          "code":11263,
+          "desc":"Dwelling\/ Fire Insurance"
+       },
+       {
+          "code":11022,
+          "desc":"Earthquake Insurance"
+       },
+       {
+          "code":11243,
+          "desc":"Employment Practices Liability"
+       },
+       {
+          "code":11023,
+          "desc":"Errors and Omissions Insurance"
+       },
+       {
+          "code":11270,
+          "desc":"Farm Insurance"
+       },
+       {
+          "code":11024,
+          "desc":"Fidelity Bond"
+       },
+       {
+          "code":11025,
+          "desc":"Flood Insurance"
+       },
+       {
+          "code":11026,
+          "desc":"Gap Insurance"
+       },
+       {
+          "code":11260,
+          "desc":"General Liability Insurance"
+       },
+       {
+          "code":11027,
+          "desc":"Health Insurance - Group"
+       },
+       {
+          "code":11028,
+          "desc":"Health Insurance - Individual"
+       },
+       {
+          "code":11029,
+          "desc":"Home Insurance"
+       },
+       {
+          "code":11030,
+          "desc":"Identity Theft Insurance"
+       },
+       {
+          "code":11031,
+          "desc":"Individual Retirement Accounts"
+       },
+       {
+          "code":11032,
+          "desc":"Landlord Insurance"
+       },
+       {
+          "code":11033,
+          "desc":"Life Insurance - Group"
+       },
+       {
+          "code":11034,
+          "desc":"Life Insurance - Individual"
+       },
+       {
+          "code":11035,
+          "desc":"Long-term Care"
+       },
+       {
+          "code":11037,
+          "desc":"Marine Cargo Insurance"
+       },
+       {
+          "code":11036,
+          "desc":"Medicare Supplement Insurance"
+       },
+       {
+          "code":11262,
+          "desc":"Mobile Home Insurance"
+       },
+       {
+          "code":11038,
+          "desc":"Motorcycle Insurance"
+       },
+       {
+          "code":11039,
+          "desc":"Mutual Funds"
+       },
+       {
+          "code":11261,
+          "desc":"Personal Identity Theft Insurance"
+       },
+       {
+          "code":11040,
+          "desc":"Pet Insurance"
+       },
+       {
+          "code":11041,
+          "desc":"Professional Liability Insurance"
+       },
+       {
+          "code":11042,
+          "desc":"Public Liability Insurance"
+       },
+       {
+          "code":11043,
+          "desc":"Renters Insurance"
+       },
+       {
+          "code":11044,
+          "desc":"RV Insurance"
+       },
+       {
+          "code":11045,
+          "desc":"Snowmobile Insurance"
+       },
+       {
+          "code":11046,
+          "desc":"Surety Bond"
+       },
+       {
+          "code":11047,
+          "desc":"Travel Insurance"
+       },
+       {
+          "code":11048,
+          "desc":"Umbrella Insurance"
+       },
+       {
+          "code":11049,
+          "desc":"Vision Insurance"
+       },
+       {
+          "code":11050,
+          "desc":"Workers' Compensation"
+       },
+       {
+          "code":11285,
+          "desc":"Youth Sports Protection Insurance"
+       }
+    ]
+}

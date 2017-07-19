@@ -25,7 +25,7 @@
                         <li class="w3-section"
                             v-for="(carrier, index) in properties.carriers"
                             v-on:click="(carrier) => properties.carriers.splice(index, 1)">
-                            {{ carrier }}
+                            {{ carrier.desc }}
                             <i class="fa fa-times w3-margin-left"></i>
                         </li>
                     </ul>
@@ -43,7 +43,7 @@
                         <li class="w3-section"
                             v-for="(coverage, index) in properties.coverage_lines"
                             v-on:click="(coverage) => properties.coverage_lines.splice(index, 1)">
-                            {{ coverage }}
+                            {{ coverage.desc }}
                             <i class="fa fa-times w3-margin-left"></i>
                         </li>
                     </ul>
@@ -61,7 +61,7 @@
                         <li class="w3-section"
                             v-for="(target, index) in properties.coverage_targets"
                             v-on:click="(target) => properties.coverage_targets.splice(index, 1)">
-                            {{ target }}
+                            {{ target.desc }}
                             <i class="fa fa-times w3-margin-left"></i>
                         </li>
                     </ul>
@@ -79,7 +79,7 @@
                         <li class="w3-section"
                             v-for="(industry, index) in properties.industry_currents"
                             v-on:click="(industry) => properties.industry_currents.splice(index, 1)">
-                            {{ industry }}
+                            {{ industry.desc }}
                             <i class="fa fa-times w3-margin-left"></i>
                         </li>
                     </ul>
@@ -97,7 +97,7 @@
                         <li class="w3-section"
                             v-for="(industry, index) in properties.industry_targets"
                             v-on:click="(industry) => properties.industry_targets.splice(index, 1)">
-                            {{ industry }}
+                            {{ industry.desc }}
                             <i class="fa fa-times w3-margin-left"></i>
                         </li>
                     </ul>
@@ -172,7 +172,8 @@
                 if(this.errors.length == 0) {
                     axios.post(window.location, this.properties).then(response => {
                         store.dispatch({ type: 'SET_COVERAGE', data: response.data });
-                        this.$router.push({ name: route });
+                        console.log(response.data)
+                        //this.$router.push({ name: route });
                     }).catch(error => {
                         this.errors.push('An error has occured, please contact support.');
                     });

@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Auth;
 
+use App\SelectedCarrier;
+
 class CoverageController extends Controller
 {
     /**
@@ -42,24 +44,32 @@ class CoverageController extends Controller
     {
         if($request->wantsJson()) {
             $user = Auth::user();
-            if($user->email == $request->input('email')) {
-                $user->carriers = json_encode($request->input('carriers'));
-                $user->coverage_lines = json_encode($request->input('coverage_lines'));
-                $user->coverage_targets = json_encode($request->input('coverage_targets'));
-                $user->industry_currents = json_encode($request->input('industry_currents'));
-                $user->industry_targets = json_encode($request->input('industry_targets'));
-                $user->commercial_mix = $request->input('commercial_mix');
-                $user->personal_mix = $request->input('personal_mix');
-                $user->update();
-                /*
-                * Unscrub that data after its saved
-                */
-                $user->carriers = $request->input('carriers');
-                $user->coverage_lines = $request->input('coverage_lines');
-                $user->coverage_targets = $request->input('coverage_targets');
-                $user->industry_currents = $request->input('industry_currents');
-                $user->industry_targets = $request->input('industry_targets');
+
+            $selected = [];
+            foreach ($request->input('carriers') as $carrier) {
+                $selectedCarrier = new SelectedCarrier();
+                $selectedCarrier->email = $user->email;
+                $selectedCarrier->carrier_code = $carrier['code'];
+                array_push($selected, $selectedCarrier);
             }
+            $user->carriers()->saveMany($selected);
+
+
+            $user->coverage_lines = json_encode($request->input('coverage_lines'));
+            $user->coverage_targets = json_encode($request->input('coverage_targets'));
+            $user->industry_currents = json_encode($request->input('industry_currents'));
+            $user->industry_targets = json_encode($request->input('industry_targets'));
+            $user->commercial_mix = $request->input('commercial_mix');
+            $user->personal_mix = $request->input('personal_mix');
+            $user->update();
+            /*
+            * Unscrub that data after its saved
+            */
+            $user->carriers = $request->input('carriers');
+            $user->coverage_lines = $request->input('coverage_lines');
+            $user->coverage_targets = $request->input('coverage_targets');
+            $user->industry_currents = $request->input('industry_currents');
+            $user->industry_targets = $request->input('industry_targets');
             return response()->json($user);
         } else {
             return view('layouts.setup.app');

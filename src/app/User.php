@@ -84,4 +84,12 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\SelectedCounty');
     }
+
+    /**
+     * Get the carriers record associated with the user.
+     */
+    public function carriers()
+    {
+        return $this->hasMany('App\SelectedCarrier');
+    }
 }

@@ -2,13 +2,13 @@
     <div class="eighty v-align">
         <div>{{ label }}</div>
         <div class="w3-dropdown-hover w3-grey">
-            <button class="w3-button">{{ selected }}
+            <button class="w3-button">{{ selected.desc }}
                 <i class="fa fa-caret-down"></i>
             </button>
             <div class="w3-dropdown-content w3-bar-block w3-border dropdown">
                 <div class="w3-bar-item w3-button"
                     v-for="option in options"
-                    v-on:click="setSelected(option)">{{ option }}
+                    v-on:click="setSelected(option)">{{ option.desc }}
                 </div>
             </div>
         </div>
@@ -27,7 +27,7 @@
         },
         data() {
             return {
-                selected: 'Options'
+                selected: { 'code': '00', 'desc': 'Options' }
             }
         },
         methods: {
