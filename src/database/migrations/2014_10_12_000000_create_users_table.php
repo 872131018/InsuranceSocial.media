@@ -88,6 +88,8 @@ class CreateUsersTable extends Migration
             $table->boolean('notify_email')->nullable();
             $table->boolean('notify_text')->nullable();
             $table->char('notify_frequency', 1)->nullable();
+            $table->string('commercial_mix')->nullable();
+            $table->string('personal_mix')->nullable();
             $table->string('api_token', 60)->unique();
             $table->rememberToken();
             $table->timestamps();

@@ -22,7 +22,7 @@
         mounted() {
             console.log('App mounted.');
             this.loading++;
-            axios.get(`${ window.base_url }/setup`).then(response => {
+            axios.get(`${ window.base_url }/api/user`).then(response => {
                 store.dispatch({ type: 'SET_USER', data: response.data });
                 this.loading--;
             });

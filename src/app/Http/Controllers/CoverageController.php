@@ -8,6 +8,16 @@ use Illuminate\Support\Facades\Auth;
 
 use App\SelectedCarrier;
 
+use App\SelectedCommercialCoverage;
+
+use App\SelectedPersonalCoverage;
+
+use App\SelectedBenefitCoverage;
+
+use App\SelectedCurrentIndustry;
+
+use App\SelectedTargetIndustry;
+
 class CoverageController extends Controller
 {
     /**
@@ -17,11 +27,7 @@ class CoverageController extends Controller
      */
     public function index(Request $request)
     {
-        if($request->wantsJson()) {
-            return response()->json(Auth::user());
-        } else {
-            return view('layouts.setup.app');
-        }
+        //
     }
 
     /**
@@ -42,38 +48,67 @@ class CoverageController extends Controller
      */
     public function store(Request $request)
     {
-        if($request->wantsJson()) {
-            $user = Auth::user();
+        $user = Auth::user();
 
-            $selected = [];
-            foreach ($request->input('carriers') as $carrier) {
-                $selectedCarrier = new SelectedCarrier();
-                $selectedCarrier->email = $user->email;
-                $selectedCarrier->carrier_code = $carrier['code'];
-                array_push($selected, $selectedCarrier);
-            }
-            $user->carriers()->saveMany($selected);
-
-
-            $user->coverage_lines = json_encode($request->input('coverage_lines'));
-            $user->coverage_targets = json_encode($request->input('coverage_targets'));
-            $user->industry_currents = json_encode($request->input('industry_currents'));
-            $user->industry_targets = json_encode($request->input('industry_targets'));
-            $user->commercial_mix = $request->input('commercial_mix');
-            $user->personal_mix = $request->input('personal_mix');
-            $user->update();
-            /*
-            * Unscrub that data after its saved
-            */
-            $user->carriers = $request->input('carriers');
-            $user->coverage_lines = $request->input('coverage_lines');
-            $user->coverage_targets = $request->input('coverage_targets');
-            $user->industry_currents = $request->input('industry_currents');
-            $user->industry_targets = $request->input('industry_targets');
-            return response()->json($user);
-        } else {
-            return view('layouts.setup.app');
+        $selected = [];
+        foreach ($request->input('carriers') as $carrier) {
+            $selectedCarrier = new SelectedCarrier();
+            $selectedCarrier->email = $user->email;
+            $selectedCarrier->carrier_code = $carrier['code'];
+            array_push($selected, $selectedCarrier);
         }
+        $user->carriers()->saveMany($selected);
+
+        $selected = [];
+        foreach ($request->input('commercial_coverage_lines') as $coverage) {
+            $selectedCoverage = new SelectedCommercialCoverage();
+            $selectedCoverage->email = $user->email;
+            $selectedCoverage->coverage_code = $coverage['code'];
+            array_push($selected, $selectedCoverage);
+        }
+        $user->commercialCoverages()->saveMany($selected);
+
+        $selected = [];
+        foreach ($request->input('personal_coverage_lines') as $coverage) {
+            $selectedCoverage = new SelectedPersonalCoverage();
+            $selectedCoverage->email = $user->email;
+            $selectedCoverage->coverage_code = $coverage['code'];
+            array_push($selected, $selectedCoverage);
+        }
+        $user->personalCoverages()->saveMany($selected);
+
+        $selected = [];
+        foreach ($request->input('benefit_coverage_lines') as $coverage) {
+            $selectedCoverage = new SelectedBenefitCoverage();
+            $selectedCoverage->email = $user->email;
+            $selectedCoverage->coverage_code = $coverage['code'];
+            array_push($selected, $selectedCoverage);
+        }
+        $user->benefitCoverages()->saveMany($selected);
+
+        $selected = [];
+        foreach ($request->input('industry_currents') as $industry) {
+            $selectedIndustry = new SelectedCurrentIndustry();
+            $selectedIndustry->email = $user->email;
+            $selectedIndustry->industry_code = $industry['code'];
+            array_push($selected, $selectedIndustry);
+        }
+        $user->currentIndustries()->saveMany($selected);
+
+        $selected = [];
+        foreach ($request->input('industry_targets') as $industry) {
+            $selectedIndustry = new SelectedTargetIndustry();
+            $selectedIndustry->email = $user->email;
+            $selectedIndustry->industry_code = $industry['code'];
+            array_push($selected, $selectedIndustry);
+        }
+        $user->targetIndustries()->saveMany($selected);
+
+        $user->commercial_mix = $request->input('commercial_mix');
+        $user->personal_mix = $request->input('personal_mix');
+        $user->update();
+
+        return response()->json($user);
     }
 
     /**

@@ -10,7 +10,7 @@
             </div>
             <div class="w3-section">
                 <div class="w3-panel">
-                    <div>Do you have a corporate Facebook account?</div>
+                    <div>Do you have a corporate Facebook Page?</div>
                     <div class="w3-panel">
                         <input class="v-align" type="radio" id="facebook_yes"
                             v-bind:value="true"
@@ -30,7 +30,7 @@
                 </div>
                 <div class="w3-panel"
                     v-if="properties.has_facebook == false">
-                    <div>Do you want InsuranceSocial.Media to setup a corporate Facebook account for you?</div>
+                    <div>Do you want InsuranceSocial.Media to setup a corporate Facebook Page for you?</div>
                     <div><em>(Note: A one-time $25 fee will apply)</em></div>
                     <div class="w3-panel">
                         <input class="v-align" type="radio" id="create_yes"

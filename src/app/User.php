@@ -100,4 +100,44 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\SelectedCarrier');
     }
+
+    /**
+     * Get the commercial coverages record associated with the user.
+     */
+    public function commercialCoverages()
+    {
+        return $this->hasMany('App\SelectedCommercialCoverage');
+    }
+
+    /**
+     * Get the personal coverages record associated with the user.
+     */
+    public function personalCoverages()
+    {
+        return $this->hasMany('App\SelectedPersonalCoverage');
+    }
+
+    /**
+     * Get the benefit coverages record associated with the user.
+     */
+    public function benefitCoverages()
+    {
+        return $this->hasMany('App\SelectedBenefitCoverage');
+    }
+
+    /**
+     * Get the current industries record associated with the user.
+     */
+    public function currentIndustries()
+    {
+        return $this->hasMany('App\SelectedCurrentIndustry');
+    }
+
+    /**
+     * Get the target industries record associated with the user.
+     */
+    public function targetIndustries()
+    {
+        return $this->hasMany('App\SelectedTargetIndustry');
+    }
 }

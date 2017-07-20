@@ -2,22 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
 use Illuminate\Support\Facades\Auth;
 
-use App\Agency;
-
-class ProfileController extends Controller
+class SetupController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        //
+        return view('layouts.setup.app')->with('api_token', Auth::user()->api_token);
     }
 
     /**
@@ -38,26 +34,7 @@ class ProfileController extends Controller
      */
     public function store(Request $request)
     {
-        $user = Auth::user();
-        $user->cell_phone = $request->input('phone');
-        $user->title_code = $request->input('title');
-        $user->notify_frequency = $request->input('notification_frequency');
-        $user->notify_email = $request->input('notify_email');
-        $user->notify_text = $request->input('notify_text');
-        $user->update();
-
-        $agency = new Agency();
-        $agency->email = $user->email;
-        $agency->principal_name = $request->input('principal_name');
-        $agency->principal_email = $request->input('principal_email');
-        $agency->name = $request->input('organization_name');
-        $agency->website = $request->input('website');
-        $agency->size = $request->input('staff_size');
-        $agency->established = $request->input('year_founded');
-        $agency->multigenerational = $request->input('multi_generation');
-        $user->agency()->save($agency);
-
-        return response()->json($user);
+        //
     }
 
     /**

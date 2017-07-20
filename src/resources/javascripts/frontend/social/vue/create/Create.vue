@@ -16,14 +16,14 @@
                 <div>Note: Your desired Page name may not be available. InsuranceSocial.Media will strive to get a Page name as close to your desired name as possible.</div>
             </div>
             <div class="w3-section">
-                <h5>Please select an image to use as your Facebook background and profile picture.</h5>
+                <h5>Please select an image to use as your Facebook background and profile picture. Note, you will be able to change this later.</h5>
                 <Radio
                     v-bind:options="images"
                     v-on:setChecked="(image) => properties.image = image">
                 </Radio>
             </div>
             <div class="w3-section">
-                <h5>By continuing, your Facebook Page will be queued for creation. You will receive an email in the next 24 hours with further instructions. Please follow these instructions to complete the set-up of your business Facebook Page.</h5>
+                <h5>By clicking continue, your Facebook Page will be queued for creation. You will be charged a one-time fee of $25.  You will also receive an email within 24 hours with further instructions. Please follow these instructions to complete the set-up of your business Facebook Page.</h5>
                 <button class="w3-button w3-text-white primary"
                     v-on:click="update('Twitter')">Continue
                 </button>

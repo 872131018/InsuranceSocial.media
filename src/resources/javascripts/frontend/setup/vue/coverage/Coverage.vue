@@ -32,17 +32,17 @@
                 </div>
                 <div class="w3-section">
                     <Dropdown
-                        v-bind:label="'Lines of Coverages'"
-                        v-bind:options="coverage_lines"
-                        v-on:setOption="(coverage) => properties.coverage_lines.push(coverage)">
+                        v-bind:label="'Commercial Lines of Coverage'"
+                        v-bind:options="coverage_targets"
+                        v-on:setOption="(coverage) => properties.commercial_coverage_lines.push(coverage)">
                     </Dropdown>
                 </div>
                 <div class="w3-section">
                     <div>Selected Coverage Lines (click to remove)</div>
                     <ul class="w3-ul w3-hoverable">
                         <li class="w3-section"
-                            v-for="(coverage, index) in properties.coverage_lines"
-                            v-on:click="(coverage) => properties.coverage_lines.splice(index, 1)">
+                            v-for="(coverage, index) in properties.commercial_coverage_lines"
+                            v-on:click="(coverage) => properties.commercial_coverage_lines.splice(index, 1)">
                             {{ coverage.desc }}
                             <i class="fa fa-times w3-margin-left"></i>
                         </li>
@@ -50,18 +50,36 @@
                 </div>
                 <div class="w3-section">
                     <Dropdown
-                        v-bind:label="'Target Coverages'"
+                        v-bind:label="'Personal Lines of Coverage'"
                         v-bind:options="coverage_targets"
-                        v-on:setOption="(target) => properties.coverage_targets.push(target)">
+                        v-on:setOption="(coverage) => properties.personal_coverage_lines.push(coverage)">
                     </Dropdown>
                 </div>
                 <div class="w3-section">
-                    <div>Selected Coverage Targets (click to remove)</div>
+                    <div>Selected Coverage Lines (click to remove)</div>
                     <ul class="w3-ul w3-hoverable">
                         <li class="w3-section"
-                            v-for="(target, index) in properties.coverage_targets"
-                            v-on:click="(target) => properties.coverage_targets.splice(index, 1)">
-                            {{ target.desc }}
+                            v-for="(coverage, index) in properties.personal_coverage_lines"
+                            v-on:click="(coverage) => properties.personal_coverage_lines.splice(index, 1)">
+                            {{ coverage.desc }}
+                            <i class="fa fa-times w3-margin-left"></i>
+                        </li>
+                    </ul>
+                </div>
+                <div class="w3-section">
+                    <Dropdown
+                        v-bind:label="'Benefit Lines of Coverage'"
+                        v-bind:options="coverage_targets"
+                        v-on:setOption="(coverage) => properties.benefit_coverage_lines.push(coverage)">
+                    </Dropdown>
+                </div>
+                <div class="w3-section">
+                    <div>Selected Coverage Lines (click to remove)</div>
+                    <ul class="w3-ul w3-hoverable">
+                        <li class="w3-section"
+                            v-for="(coverage, index) in properties.benefit_coverage_lines"
+                            v-on:click="(coverage) => properties.benefit_coverage_lines.splice(index, 1)">
+                            {{ coverage.desc }}
                             <i class="fa fa-times w3-margin-left"></i>
                         </li>
                     </ul>
@@ -143,10 +161,11 @@
                 properties: {
                     email: store.getState().UserStore.email,
                     carriers: store.getState().UserStore.carriers,
-                    coverage_lines: store.getState().UserStore.coverage_lines,
-                    coverage_targets: store.getState().UserStore.coverage_targets,
-                    industry_currents: store.getState().UserStore.industry_currents,
-                    industry_targets: store.getState().UserStore.industry_targets,
+                    commercial_coverage_lines: [],
+                    personal_coverage_lines: [],
+                    benefit_coverage_lines: [],
+                    industry_currents: [],
+                    industry_targets: [],
                     commercial_mix: store.getState().UserStore.commercial_mix,
                     personal_mix: store.getState().UserStore.personal_mix
                 },
@@ -172,8 +191,7 @@
                 if(this.errors.length == 0) {
                     axios.post(window.location, this.properties).then(response => {
                         store.dispatch({ type: 'SET_COVERAGE', data: response.data });
-                        console.log(response.data)
-                        //this.$router.push({ name: route });
+                        this.$router.push({ name: route });
                     }).catch(error => {
                         this.errors.push('An error has occured, please contact support.');
                     });

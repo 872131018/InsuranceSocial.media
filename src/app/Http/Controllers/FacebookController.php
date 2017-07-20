@@ -172,7 +172,7 @@ class FacebookController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id = 0)
+    public function edit(Request $request, $id = 0)
     {
         $user = Auth::user();
         $facebook = FacebookAccount::find($user->facebook->id);

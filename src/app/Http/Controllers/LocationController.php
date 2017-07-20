@@ -23,11 +23,7 @@ class LocationController extends Controller
      */
     public function index(Request $request)
     {
-        if($request->wantsJson()) {
-            return response()->json(Auth::user());
-        } else {
-            return view('layouts.setup.app');
-        }
+        //
     }
 
     /**
@@ -48,47 +44,43 @@ class LocationController extends Controller
      */
     public function store(Request $request)
     {
-        if($request->wantsJson()) {
-            $user = Auth::user();
-            $agency = Agency::find($user->agency->id);
-            $agency->address_1 = $request->input('address_1');
-            $agency->address_2 = $request->input('address_2');
-            $agency->city = $request->input('city');
-            $agency->state = $request->input('state');
-            $agency->zip = $request->input('zip');
-            $agency->update();
+        $user = Auth::user();
+        $agency = Agency::find($user->agency->id);
+        $agency->address_1 = $request->input('address_1');
+        $agency->address_2 = $request->input('address_2');
+        $agency->city = $request->input('city');
+        $agency->state = $request->input('state');
+        $agency->zip = $request->input('zip');
+        $agency->update();
 
-            $selected = [];
-            foreach ($request->input('marketing_regions') as $region) {
-                $selectedRegion = new SelectedRegion();
-                $selectedRegion->email = $user->email;
-                $selectedRegion->region_code = $region['code'];
-                array_push($selected, $selectedRegion);
-            }
-            $user->regions()->saveMany($selected);
-
-            $selected = [];
-            foreach ($request->input('marketing_states') as $state) {
-                $selectedState = new SelectedState();
-                $selectedState->email = $user->email;
-                $selectedState->state_code = $state['code'];
-                array_push($selected, $selectedState);
-            }
-            $user->states()->saveMany($selected);
-
-            $selected = [];
-            foreach ($request->input('marketing_counties') as $county) {
-                $selectedCounty = new SelectedCounty();
-                $selectedCounty->email = $user->email;
-                $selectedCounty->county_code = $county['code'];
-                array_push($selected, $selectedCounty);
-            }
-            $user->counties()->saveMany($selected);
-
-            return response()->json($user);
-        } else {
-            return view('layouts.setup.app');
+        $selected = [];
+        foreach ($request->input('marketing_regions') as $region) {
+            $selectedRegion = new SelectedRegion();
+            $selectedRegion->email = $user->email;
+            $selectedRegion->region_code = $region['code'];
+            array_push($selected, $selectedRegion);
         }
+        $user->regions()->saveMany($selected);
+
+        $selected = [];
+        foreach ($request->input('marketing_states') as $state) {
+            $selectedState = new SelectedState();
+            $selectedState->email = $user->email;
+            $selectedState->state_code = $state['code'];
+            array_push($selected, $selectedState);
+        }
+        $user->states()->saveMany($selected);
+
+        $selected = [];
+        foreach ($request->input('marketing_counties') as $county) {
+            $selectedCounty = new SelectedCounty();
+            $selectedCounty->email = $user->email;
+            $selectedCounty->county_code = $county['code'];
+            array_push($selected, $selectedCounty);
+        }
+        $user->counties()->saveMany($selected);
+
+        return response()->json($user);
     }
 
     /**

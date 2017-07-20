@@ -15,11 +15,7 @@ class OutreachController extends Controller
      */
     public function index(Request $request)
     {
-        if($request->wantsJson()) {
-            return response()->json(Auth::user());
-        } else {
-            return view('layouts.setup.app');
-        }
+        //
     }
 
     /**
@@ -40,27 +36,23 @@ class OutreachController extends Controller
      */
     public function store(Request $request)
     {
-        if($request->wantsJson()) {
-            $user = Auth::user();
-            if($user->email == $request->input('email')) {
-                $user->engagement_mix = $request->input('engagement_mix');
-                $user->engagement_tone = $request->input('engagement_tone');
-                $user->special_topics = json_encode($request->input('special_topics'));
-                $user->causes = json_encode($request->input('causes'));
-                $user->posting_days = json_encode($request->input('posting_days'));
-                $user->posting_time = $request->input('posting_time');
-                $user->update();
-                /*
-                * Unscrub that data after its saved
-                */
-                $user->special_topics = $request->input('special_topics');
-                $user->causes = $request->input('causes');
-                $user->posting_days = $request->input('posting_days');
-            }
-            return response()->json($user);
-        } else {
-            return view('layouts.setup.app');
+        $user = Auth::user();
+        if($user->email == $request->input('email')) {
+            $user->engagement_mix = $request->input('engagement_mix');
+            $user->engagement_tone = $request->input('engagement_tone');
+            $user->special_topics = json_encode($request->input('special_topics'));
+            $user->causes = json_encode($request->input('causes'));
+            $user->posting_days = json_encode($request->input('posting_days'));
+            $user->posting_time = $request->input('posting_time');
+            $user->update();
+            /*
+            * Unscrub that data after its saved
+            */
+            $user->special_topics = $request->input('special_topics');
+            $user->causes = $request->input('causes');
+            $user->posting_days = $request->input('posting_days');
         }
+        return response()->json($user);
     }
 
     /**

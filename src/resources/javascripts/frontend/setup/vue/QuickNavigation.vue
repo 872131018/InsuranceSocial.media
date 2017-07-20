@@ -19,7 +19,7 @@
     export default {
         methods: {
             isActive(route) {
-                return this.$route.path == `/setup/${ route }`;
+                return this.$route.path == `/${ route }`;
             }
         }
     }

@@ -16057,6 +16057,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 window.axios = __webpack_require__(17);
 axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 axios.defaults.headers.common['X-CSRF-TOKEN'] = document.head.querySelector('meta[name="csrf-token"]').content;
+axios.defaults.headers.common['Authorization'] = 'Bearer ' + document.querySelector('meta[name="api-token"]').content;
 
 
 window.store = __WEBPACK_IMPORTED_MODULE_0__root_redux__["a" /* default */];
@@ -16253,7 +16254,6 @@ var initialState = {
         "desc": "State and Counties"
     }],
     carriers: [{ "code": "C", "desc": "Carrier" }, { "code": "F", "desc": "Farmer\'s Mutual Hail" }, { "code": "G", "desc": "Grinnell Mutual" }, { "code": "I", "desc": "IMT Group" }, { "code": "P", "desc": "Plymouth Rock Assurance" }],
-    coverage_lines: [{ "code": "C", "desc": "Commercial" }, { "code": "P", "desc": "Personal" }, { "code": "B", "desc": "Benefits" }],
     coverage_targets: __WEBPACK_IMPORTED_MODULE_3__coverages_json___default.a.coverages,
     industry_currents: __WEBPACK_IMPORTED_MODULE_4__industries_json___default.a.industries,
     industry_targets: __WEBPACK_IMPORTED_MODULE_4__industries_json___default.a.industries,
@@ -32634,19 +32634,19 @@ module.exports = {
 
 
 /* harmony default export */ __webpack_exports__["a"] = ([{
-    path: '/setup/profile',
+    path: '/profile',
     name: 'Profile',
     component: __WEBPACK_IMPORTED_MODULE_0__vue_profile_Profile___default.a
 }, {
-    path: '/setup/location',
+    path: '/location',
     name: 'Location',
     component: __WEBPACK_IMPORTED_MODULE_1__vue_location_Location___default.a
 }, {
-    path: '/setup/coverage',
+    path: '/coverage',
     name: 'Coverage',
     component: __WEBPACK_IMPORTED_MODULE_2__vue_coverage_Coverage___default.a
 }, {
-    path: '/setup/outreach',
+    path: '/outreach',
     name: 'Outreach',
     component: __WEBPACK_IMPORTED_MODULE_3__vue_outreach_Outreach___default.a
 }]);
@@ -32991,7 +32991,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
     methods: {
         isActive: function isActive(route) {
-            return this.$route.path == "/setup/" + route;
+            return this.$route.path == "/" + route;
         }
     }
 });
@@ -33452,7 +33452,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     data: function data() {
         return {
-            selected: { code: 'DE', name: 'Options' }
+            selected: { code: 'DE', desc: 'Options' }
         };
     },
     mounted: function mounted() {
@@ -33480,7 +33480,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "w3-dropdown-hover w3-grey"
   }, [_c('button', {
     staticClass: "w3-button"
-  }, [_vm._v(_vm._s(_vm.selected.name) + "\n            "), _c('i', {
+  }, [_vm._v(_vm._s(_vm.selected.desc) + "\n            "), _c('i', {
     staticClass: "fa fa-caret-down"
   })]), _vm._v(" "), _c('div', {
     staticClass: "w3-dropdown-content w3-bar-block w3-border"
@@ -33492,7 +33492,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           _vm.setSelected(option)
         }
       }
-    }, [_vm._v(_vm._s(option.name) + "\n            ")])
+    }, [_vm._v(_vm._s(option.desc) + "\n            ")])
   }))])])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
@@ -35281,6 +35281,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -35296,10 +35314,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             properties: {
                 email: store.getState().UserStore.email,
                 carriers: store.getState().UserStore.carriers,
-                coverage_lines: store.getState().UserStore.coverage_lines,
-                coverage_targets: store.getState().UserStore.coverage_targets,
-                industry_currents: store.getState().UserStore.industry_currents,
-                industry_targets: store.getState().UserStore.industry_targets,
+                commercial_coverage_lines: [],
+                personal_coverage_lines: [],
+                benefit_coverage_lines: [],
+                industry_currents: [],
+                industry_targets: [],
                 commercial_mix: store.getState().UserStore.commercial_mix,
                 personal_mix: store.getState().UserStore.personal_mix
             },
@@ -35328,8 +35347,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             if (this.errors.length == 0) {
                 axios.post(window.location, this.properties).then(function (response) {
                     store.dispatch({ type: 'SET_COVERAGE', data: response.data });
-                    console.log(response.data);
-                    //this.$router.push({ name: route });
+                    _this.$router.push({ name: route });
                 }).catch(function (error) {
                     _this.errors.push('An error has occured, please contact support.');
                 });
@@ -36167,21 +36185,21 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "w3-section"
   }, [_c('Dropdown', {
     attrs: {
-      "label": 'Lines of Coverages',
-      "options": _vm.coverage_lines
+      "label": 'Commercial Lines of Coverage',
+      "options": _vm.coverage_targets
     },
     on: {
-      "setOption": function (coverage) { return _vm.properties.coverage_lines.push(coverage); }
+      "setOption": function (coverage) { return _vm.properties.commercial_coverage_lines.push(coverage); }
     }
   })], 1), _vm._v(" "), _c('div', {
     staticClass: "w3-section"
   }, [_c('div', [_vm._v("Selected Coverage Lines (click to remove)")]), _vm._v(" "), _c('ul', {
     staticClass: "w3-ul w3-hoverable"
-  }, _vm._l((_vm.properties.coverage_lines), function(coverage, index) {
+  }, _vm._l((_vm.properties.commercial_coverage_lines), function(coverage, index) {
     return _c('li', {
       staticClass: "w3-section",
       on: {
-        "click": function (coverage) { return _vm.properties.coverage_lines.splice(index, 1); }
+        "click": function (coverage) { return _vm.properties.commercial_coverage_lines.splice(index, 1); }
       }
     }, [_vm._v("\n                        " + _vm._s(coverage.desc) + "\n                        "), _c('i', {
       staticClass: "fa fa-times w3-margin-left"
@@ -36190,23 +36208,46 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "w3-section"
   }, [_c('Dropdown', {
     attrs: {
-      "label": 'Target Coverages',
+      "label": 'Personal Lines of Coverage',
       "options": _vm.coverage_targets
     },
     on: {
-      "setOption": function (target) { return _vm.properties.coverage_targets.push(target); }
+      "setOption": function (coverage) { return _vm.properties.personal_coverage_lines.push(coverage); }
     }
   })], 1), _vm._v(" "), _c('div', {
     staticClass: "w3-section"
-  }, [_c('div', [_vm._v("Selected Coverage Targets (click to remove)")]), _vm._v(" "), _c('ul', {
+  }, [_c('div', [_vm._v("Selected Coverage Lines (click to remove)")]), _vm._v(" "), _c('ul', {
     staticClass: "w3-ul w3-hoverable"
-  }, _vm._l((_vm.properties.coverage_targets), function(target, index) {
+  }, _vm._l((_vm.properties.personal_coverage_lines), function(coverage, index) {
     return _c('li', {
       staticClass: "w3-section",
       on: {
-        "click": function (target) { return _vm.properties.coverage_targets.splice(index, 1); }
+        "click": function (coverage) { return _vm.properties.personal_coverage_lines.splice(index, 1); }
       }
-    }, [_vm._v("\n                        " + _vm._s(target.desc) + "\n                        "), _c('i', {
+    }, [_vm._v("\n                        " + _vm._s(coverage.desc) + "\n                        "), _c('i', {
+      staticClass: "fa fa-times w3-margin-left"
+    })])
+  }))]), _vm._v(" "), _c('div', {
+    staticClass: "w3-section"
+  }, [_c('Dropdown', {
+    attrs: {
+      "label": 'Benefit Lines of Coverage',
+      "options": _vm.coverage_targets
+    },
+    on: {
+      "setOption": function (coverage) { return _vm.properties.benefit_coverage_lines.push(coverage); }
+    }
+  })], 1), _vm._v(" "), _c('div', {
+    staticClass: "w3-section"
+  }, [_c('div', [_vm._v("Selected Coverage Lines (click to remove)")]), _vm._v(" "), _c('ul', {
+    staticClass: "w3-ul w3-hoverable"
+  }, _vm._l((_vm.properties.benefit_coverage_lines), function(coverage, index) {
+    return _c('li', {
+      staticClass: "w3-section",
+      on: {
+        "click": function (coverage) { return _vm.properties.benefit_coverage_lines.splice(index, 1); }
+      }
+    }, [_vm._v("\n                        " + _vm._s(coverage.desc) + "\n                        "), _c('i', {
       staticClass: "fa fa-times w3-margin-left"
     })])
   }))]), _vm._v(" "), _c('div', {
@@ -37549,7 +37590,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         console.log('App mounted.');
         this.loading++;
-        axios.get(window.base_url + '/setup').then(function (response) {
+        axios.get(window.base_url + '/api/user').then(function (response) {
             store.dispatch({ type: 'SET_USER', data: response.data });
             _this.loading--;
         });

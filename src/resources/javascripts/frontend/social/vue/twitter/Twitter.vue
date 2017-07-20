@@ -65,7 +65,7 @@
                 if(this.properties.has_twitter && !store.getState().UserStore.twitter_access_token) {
                     window.location = this.redirectUrl;
                 } else {
-                    this.$router.push({ name: 'Profile' });
+                    window.location = `${ window.base_url }/profile`;
                 }
             }
         },

@@ -106,7 +106,7 @@ class TwitterController extends Controller
           $twitterAccount->secret_token = $access_token['oauth_token_secret'];
           $user->twitter()->save($twitterAccount);
 
-           return redirect('setup/profile');
+           return redirect('profile');
         }
     }
 

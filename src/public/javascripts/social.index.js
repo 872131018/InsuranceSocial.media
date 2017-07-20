@@ -16512,7 +16512,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "w3-section"
   }, [_c('div', {
     staticClass: "w3-panel"
-  }, [_c('div', [_vm._v("Do you have a corporate Facebook account?")]), _vm._v(" "), _c('div', {
+  }, [_c('div', [_vm._v("Do you have a corporate Facebook Page?")]), _vm._v(" "), _c('div', {
     staticClass: "w3-panel"
   }, [_c('input', {
     directives: [{
@@ -16560,7 +16560,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }), _vm._v(" "), _vm._m(2)])]), _vm._v(" "), (_vm.properties.has_facebook == false) ? _c('div', {
     staticClass: "w3-panel"
-  }, [_c('div', [_vm._v("Do you want InsuranceSocial.Media to setup a corporate Facebook account for you?")]), _vm._v(" "), _vm._m(3), _vm._v(" "), _c('div', {
+  }, [_c('div', [_vm._v("Do you want InsuranceSocial.Media to setup a corporate Facebook Page for you?")]), _vm._v(" "), _vm._m(3), _vm._v(" "), _c('div', {
     staticClass: "w3-panel"
   }, [_c('input', {
     directives: [{
@@ -17304,7 +17304,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }), _vm._v(" "), _c('div', [_vm._v("Note: Your desired Page name may not be available. InsuranceSocial.Media will strive to get a Page name as close to your desired name as possible.")])], 1), _vm._v(" "), _c('div', {
     staticClass: "w3-section"
-  }, [_c('h5', [_vm._v("Please select an image to use as your Facebook background and profile picture.")]), _vm._v(" "), _c('Radio', {
+  }, [_c('h5', [_vm._v("Please select an image to use as your Facebook background and profile picture. Note, you will be able to change this later.")]), _vm._v(" "), _c('Radio', {
     attrs: {
       "options": _vm.images
     },
@@ -17313,7 +17313,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   })], 1), _vm._v(" "), _c('div', {
     staticClass: "w3-section"
-  }, [_c('h5', [_vm._v("By continuing, your Facebook Page will be queued for creation. You will receive an email in the next 24 hours with further instructions. Please follow these instructions to complete the set-up of your business Facebook Page.")]), _vm._v(" "), _c('button', {
+  }, [_c('h5', [_vm._v("By clicking continue, your Facebook Page will be queued for creation. You will be charged a one-time fee of $25.  You will also receive an email within 24 hours with further instructions. Please follow these instructions to complete the set-up of your business Facebook Page.")]), _vm._v(" "), _c('button', {
     staticClass: "w3-button w3-text-white primary",
     on: {
       "click": function($event) {
@@ -17759,7 +17759,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             if (this.properties.has_twitter && !store.getState().UserStore.twitter_access_token) {
                 window.location = this.redirectUrl;
             } else {
-                this.$router.push({ name: 'Profile' });
+                window.location = window.base_url + '/profile';
             }
         }
     },

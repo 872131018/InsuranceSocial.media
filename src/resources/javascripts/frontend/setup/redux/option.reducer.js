@@ -56,11 +56,6 @@ const initialState = {
         {"code": "I", "desc":"IMT Group"},
         {"code": "P", "desc":"Plymouth Rock Assurance"},
     ],
-    coverage_lines: [
-        {"code": "C", "desc":"Commercial"},
-        {"code": "P", "desc":"Personal"},
-        {"code": "B", "desc":"Benefits"}
-    ],
     coverage_targets: Coverages.coverages,
     industry_currents: Industries.industries,
     industry_targets: Industries.industries,

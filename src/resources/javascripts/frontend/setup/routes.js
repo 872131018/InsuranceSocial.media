@@ -5,22 +5,22 @@ import Outreach from './vue/outreach/Outreach';
 
 export default [
     {
-        path: '/setup/profile',
+        path: '/profile',
         name: 'Profile',
         component: Profile
     },
     {
-        path: '/setup/location',
+        path: '/location',
         name: 'Location',
         component: Location
     },
     {
-        path: '/setup/coverage',
+        path: '/coverage',
         name: 'Coverage',
         component: Coverage
     },
     {
-        path: '/setup/outreach',
+        path: '/outreach',
         name: 'Outreach',
         component: Outreach
     }
