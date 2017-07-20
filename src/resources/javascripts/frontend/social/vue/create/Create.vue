@@ -6,14 +6,12 @@
         <div class="w3-container w3-card-2 form">
             <div class="w3-panel">
                 <h3>Corporate Page Preferences</h3>
-                <h5>Please select your preferences for your corporate facebook page.</h5>
+                <h5>Please select your preferences for your corporate Facebook page.</h5>
             </div>
             <div class="w3-section">
                 <Field
                     v-bind:label="'Preferred Page Name'"
-                    v-on:setValue="(value) => properties.name = value"
-                    v-on:valid="() => name_confirmed = true"
-                    v-on:invalid="() => name_confirmed = false">
+                    v-on:setValue="(value) => properties.name = value">
                 </Field>
                 <div>Note: Your desired Page name may not be available. InsuranceSocial.Media will strive to get a Page name as close to your desired name as possible.</div>
             </div>
@@ -25,7 +23,7 @@
                 </Radio>
             </div>
             <div class="w3-section">
-                <h5>We look forward to working with you. Please click continue to finish setting up your account.</h5>
+                <h5>By continuing, your Facebook Page will be queued for creation. You will receive an email in the next 24 hours with further instructions. Please follow these instructions to complete the set-up of your business Facebook Page.</h5>
                 <button class="w3-button w3-text-white primary"
                     v-on:click="update('Twitter')">Continue
                 </button>
@@ -56,7 +54,7 @@
                     {'id':'7', 'name':'Office', 'src':'images/office.jpg'},
                     {'id':'8', 'name':'Pen', 'src':'images/pen.jpg'},
                     {'id':'9', 'name':'Plan', 'src':'images/plan.jpg'},
-                    {'id':'10', 'name':'Tree', 'src':'images/tree.jpg'},
+                    {'id':'10', 'name':'Tree', 'src':'images/tree.jpg'}
                 ]
             }
         },
