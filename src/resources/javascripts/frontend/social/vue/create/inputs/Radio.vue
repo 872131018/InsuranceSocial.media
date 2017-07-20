@@ -10,7 +10,7 @@
             <label v-bind:for="`${ option.id }${ index }`">
                 <span class="w3-show-inline-block w3-margin-right v-align"></span>{{ option.name }}
             </label>
-            <img class="v-align" height="120" width="160"
+            <img class="v-align" height="180" width="180"
                 v-if="option.src"
                 v-bind:src="getSrc(option)">
         </li>

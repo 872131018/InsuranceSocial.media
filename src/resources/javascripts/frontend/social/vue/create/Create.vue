@@ -15,9 +15,10 @@
                     v-on:valid="() => name_confirmed = true"
                     v-on:invalid="() => name_confirmed = false">
                 </Field>
+                <div>Note: Your desired Page name may not be available. InsuranceSocial.Media will strive to get a Page name as close to your desired name as possible.</div>
             </div>
             <div class="w3-section">
-                <h5>Please select an image for your page (this can be changed later).</h5>
+                <h5>Please select an image to use as your Facebook background and profile picture.</h5>
                 <Radio
                     v-bind:options="images"
                     v-on:setChecked="(image) => properties.image = image">
@@ -46,10 +47,16 @@
                     image: {}
                 },
                 images: [
-                    {'id':'1', 'name':'montain1', 'src':'images/mountain1.jpg'},
-                    {'id':'2', 'name':'montain2', 'src':'images/mountain2.jpg'},
-                    {'id':'3', 'name':'montain3', 'src':'images/mountain3.jpg'},
-                    {'id':'4', 'name':'montain4', 'src':'images/mountain4.jpg'}
+                    {'id':'1', 'name':'Apartment', 'src':'images/apartment.jpg'},
+                    {'id':'2', 'name':'Cars', 'src':'images/cars.jpg'},
+                    {'id':'3', 'name':'Cellphone', 'src':'images/cellphone.jpg'},
+                    {'id':'4', 'name':'Compass', 'src':'images/compass.jpg'},
+                    {'id':'5', 'name':'Door', 'src':'images/door.jpg'},
+                    {'id':'6', 'name':'House', 'src':'images/house.jpg'},
+                    {'id':'7', 'name':'Office', 'src':'images/office.jpg'},
+                    {'id':'8', 'name':'Pen', 'src':'images/pen.jpg'},
+                    {'id':'9', 'name':'Plan', 'src':'images/plan.jpg'},
+                    {'id':'10', 'name':'Tree', 'src':'images/tree.jpg'},
                 ]
             }
         },
@@ -58,7 +65,7 @@
                 this.errors = [];
                 if(this.errors.length == 0) {
                     axios.post(window.location, this.properties).then(response => {
-                        store.dispatch({ type: 'SET_TEMPLATE', data: response.data });
+                        //store.dispatch({ type: 'SET_TEMPLATE', data: response.data });
                         this.$router.push({ name: route });
                     }).catch(error => {
                         this.errors.push('An error has occured, please contact support.');

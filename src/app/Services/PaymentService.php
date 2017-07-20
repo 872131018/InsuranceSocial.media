@@ -10,6 +10,10 @@ use net\authorize\api\contract\v1\PaymentType;
 
 use net\authorize\api\contract\v1\TransactionRequestType;
 
+use net\authorize\api\contract\v1\CustomerProfilePaymentType;
+
+use net\authorize\api\contract\v1\PaymentProfileType;
+
 use net\authorize\api\contract\v1\CreateTransactionRequest;
 
 use net\authorize\api\contract\v1\CustomerProfileBaseType;
@@ -31,35 +35,35 @@ class PaymentService
         $this->merchantAuthenticationType->setTransactionKey(env('TRANSACTION_KEY'));
     }
 
-    public function getTransactionRequest($request = null) {
+    public function getTransactionRequest($payment = [], $user = null) {
+        $requestType = new TransactionRequestType();
+        $requestType->setTransactionType("authCaptureTransaction");
+        $requestType->setAmount($payment['amount']);
+        if($payment['type'] == 'new') {
+            $op = new OpaqueDataType();
+            $op->setDataDescriptor($payment['dataDescriptor']);
+            $op->setDataValue($payment['dataValue']);
+
+            $payment = new PaymentType();
+            $payment->setOpaqueData($op);
+
+            $requestType->setPayment($payment);
+        } else {
+            $profileToCharge = new CustomerProfilePaymentType();
+            $profileToCharge->setCustomerProfileId($user->customer_profile_id);
+
+            $paymentProfile = new PaymentProfileType();
+            $paymentProfile->setPaymentProfileId($user->customer_payment_profile_id);
+            $profileToCharge->setPaymentProfile($paymentProfile);
+
+            $requestType->setProfile($profileToCharge);
+        }
+
         $transactionRequest = new CreateTransactionRequest();
         $transactionRequest->setMerchantAuthentication($this->merchantAuthenticationType);
         $transactionRequest->setRefId('ref'.time());
-        $transactionRequest->setTransactionRequest($this->getRequestType($request));
+        $transactionRequest->setTransactionRequest($requestType);
         return $transactionRequest;
-    }
-
-    private function getRequestType($request = null) {
-        // Create a transaction
-        $requestType = new TransactionRequestType();
-        $requestType->setTransactionType("authCaptureTransaction");
-        $requestType->setAmount($request->input('total'));
-        $requestType->setPayment($this->getPayment($request));
-        return $requestType;
-    }
-
-    private function getPayment($request = null) {
-        $payment = new PaymentType();
-        $payment->setOpaqueData($this->getOpaqueData($request));
-        return $payment;
-    }
-
-    private function getOpaqueData($request = null) {
-        // Create the payment data for a credit card from nonce
-        $op = new OpaqueDataType();
-        $op->setDataDescriptor($request->input('dataDescriptor'));
-        $op->setDataValue($request->input('dataValue'));
-        return $op;
     }
 
     public function createProfile($user = null, $transId = 0) {

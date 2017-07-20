@@ -58,7 +58,14 @@ class PaymentController extends Controller
      */
     public function store(Request $request)
     {
-        $controller = new AnetController\CreateTransactionController($this->paymentService->getTransactionRequest($request));
+        $transactionRequest = $this->paymentService->getTransactionRequest([
+            'type' => 'new',
+            'amount' => '1.00',
+            'dataDescriptor' => $request->input('dataDescriptor'),
+            'dataValue' => $request->input('dataValue')
+            ],
+            Auth::user());
+        $controller = new AnetController\CreateTransactionController($transactionRequest);
         $response = $controller->executeWithApiResponse(\net\authorize\api\constants\ANetEnvironment::SANDBOX);
         /**
         * ERROR no response
@@ -86,7 +93,7 @@ class PaymentController extends Controller
                 $data = [
                     'error' => 'FAILED',
                     'errorCode' => $response->getMessages()->getMessage()[0]->getCode(),
-                    'errorMessage' => $response->getMessages()->getMessage()[0]->getCode()
+                    'errorMessage' => $response->getMessages()->getMessage()[0]->getText()
                 ];
             }
             return response()->json($data, 501);

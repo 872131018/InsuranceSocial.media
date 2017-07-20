@@ -16,17 +16,26 @@ use App\FacebookAccount;
 
 use App\FacebookTemplate;
 
+use App\Services\PaymentService;
+
+use net\authorize\api\controller as AnetController;
+
 class FacebookController extends Controller
 {
 
     protected $facebook;
+
+    protected $paymentService;
+
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(PaymentService $paymentService)
     {
+        $this->paymentService = $paymentService;
+
         $this->facebook = new Facebook([
             'app_id' => env('APP_ID'),
             'app_secret' => env('APP_SECRET'),
@@ -74,7 +83,74 @@ class FacebookController extends Controller
         $template->image = $request->input('image')['name'];
         $user->template()->save($template);
 
-        
+        $transactionRequest = $this->paymentService->getTransactionRequest([
+            'type' => 'single',
+            'amount' => '25.00'
+            ],
+            Auth::user());
+        $controller = new AnetController\CreateTransactionController($transactionRequest);
+        $response = $controller->executeWithApiResponse(\net\authorize\api\constants\ANetEnvironment::SANDBOX);
+
+        /**
+        * ERROR no response
+        */
+        if($response == null) {
+            $data = [
+                'error' => 'FAILED',
+                'errorCode' => 'No Code',
+                'errorMessage' => 'No response returned'
+            ];
+            return response()->json($data, 501);
+        }
+        /**
+        * ERROR problem with response code
+        */
+        if($response->getMessages()->getResultCode() != 'Ok') {
+            $data = [];
+            if ($response->getTransactionResponse() != null && $response->getTransactionResponse()->getErrors() != null) {
+                $data = [
+                    'error' => 'FAILED',
+                    'errorCode' => $response->getTransactionResponse()->getErrors()[0]->getErrorCode(),
+                    'errorMessage' => $response->getTransactionResponse()->getErrors()[0]->getErrorText()
+                ];
+            } else {
+                $data = [
+                    'error' => 'FAILED',
+                    'errorCode' => $response->getMessages()->getMessage()[0]->getCode(),
+                    'errorMessage' => $response->getMessages()->getMessage()[0]->getText()
+                ];
+            }
+            return response()->json($data, 501);
+        }
+        /**
+        * Error response ok transaction failed
+        */
+        if($response->getMessages()->getResultCode() == 'Ok') {
+            $data = [];
+            if ($response->getTransactionResponse()->getErrors() != null) {
+                $data = [
+                    'error' => 'FAILED',
+                    'errorCode' => $response->getTransactionResponse()->getErrors()[0]->getErrorCode(),
+                    'errorMessage' => $response->getTransactionResponse()->getErrors()[0]->getErrorText()
+                ];
+                return response()->json($data, 501);
+            }
+        }
+        /**
+        * Success transaction ok capture ID
+        */
+        $transactionId = 0;
+        if($response->getMessages()->getResultCode() == 'Ok') {
+            $data = [];
+            if ($response->getTransactionResponse() != null && $response->getTransactionResponse()->getMessages() != null) {
+                //echo " Transaction Response code : " . $response->getTransactionResponse()->getResponseCode() . "\n";
+                //echo  "Charge Customer Profile APPROVED  :" . "\n";
+                //echo " Charge Customer Profile AUTH CODE : " . $response->getTransactionResponse()->getAuthCode() . "\n";
+                //echo " Charge Customer Profile TRANS ID  : " . $response->getTransactionResponse()->getTransId() . "\n";
+                //echo " Code : " . $response->getTransactionResponse()->getMessages()[0]->getCode() . "\n";
+                //echo " Description : " . $response->getTransactionResponse()->getMessages()[0]->getDescription() . "\n";
+            }
+        }
 
         return response()->json($user);
     }

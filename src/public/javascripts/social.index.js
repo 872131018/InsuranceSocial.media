@@ -17059,27 +17059,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -17096,7 +17075,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     mounted: function mounted() {
         var _this = this;
 
-        axios.get(window.location).then(function (response) {
+        axios.get(window.base_url + '/api/twitter').then(function (response) {
             _this.redirectUrl = response.data;
             if (store.getState().UserStore.twitter_access_token) {
                 _this.properties.has_twitter = true;
@@ -17192,9 +17171,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "w3-panel"
-  }, [_c('h3', [_vm._v("Link your Social Accounts")]), _vm._v(" "), _c('h5', [_vm._v("Please log in to Twitter"), _c('i', {
-    staticClass: "fa fa-twitter fa-2x w3-margin-left w3-text-blue v-align"
-  }), _vm._v(" in order to recieve our Twitter services.")])])
+  }, [_c('h3', [_vm._v("Link your Twitter Account")]), _vm._v(" "), _c('h5', [_vm._v("Please log in to Twitter"), _c('i', {
+    staticClass: "fa fa-twitter fa-2x w3-margin-left w3-margin-right w3-text-blue v-align"
+  }), _vm._v("in order to recieve our Twitter services.")])])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('label', {
     attrs: {
@@ -19069,6 +19048,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 
@@ -19081,7 +19061,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 name: '',
                 image: {}
             },
-            images: [{ 'id': '1', 'name': 'montain1', 'src': 'images/mountain1.jpg' }, { 'id': '2', 'name': 'montain2', 'src': 'images/mountain2.jpg' }, { 'id': '3', 'name': 'montain3', 'src': 'images/mountain3.jpg' }, { 'id': '4', 'name': 'montain4', 'src': 'images/mountain4.jpg' }]
+            images: [{ 'id': '1', 'name': 'Apartment', 'src': 'images/apartment.jpg' }, { 'id': '2', 'name': 'Cars', 'src': 'images/cars.jpg' }, { 'id': '3', 'name': 'Cellphone', 'src': 'images/cellphone.jpg' }, { 'id': '4', 'name': 'Compass', 'src': 'images/compass.jpg' }, { 'id': '5', 'name': 'Door', 'src': 'images/door.jpg' }, { 'id': '6', 'name': 'House', 'src': 'images/house.jpg' }, { 'id': '7', 'name': 'Office', 'src': 'images/office.jpg' }, { 'id': '8', 'name': 'Pen', 'src': 'images/pen.jpg' }, { 'id': '9', 'name': 'Plan', 'src': 'images/plan.jpg' }, { 'id': '10', 'name': 'Tree', 'src': 'images/tree.jpg' }]
         };
     },
 
@@ -19092,7 +19072,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.errors = [];
             if (this.errors.length == 0) {
                 axios.post(window.location, this.properties).then(function (response) {
-                    store.dispatch({ type: 'SET_TEMPLATE', data: response.data });
+                    //store.dispatch({ type: 'SET_TEMPLATE', data: response.data });
                     _this.$router.push({ name: route });
                 }).catch(function (error) {
                     _this.errors.push('An error has occured, please contact support.');
@@ -19129,9 +19109,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "valid": function () { return _vm.name_confirmed = true; },
       "invalid": function () { return _vm.name_confirmed = false; }
     }
-  })], 1), _vm._v(" "), _c('div', {
+  }), _vm._v(" "), _c('div', [_vm._v("Note: Your desired Page name may not be available. InsuranceSocial.Media will strive to get a Page name as close to your desired name as possible.")])], 1), _vm._v(" "), _c('div', {
     staticClass: "w3-section"
-  }, [_c('h5', [_vm._v("Please select an image for your page (this can be changed later).")]), _vm._v(" "), _c('Radio', {
+  }, [_c('h5', [_vm._v("Please select an image to use as your Facebook background and profile picture.")]), _vm._v(" "), _c('Radio', {
     attrs: {
       "options": _vm.images
     },
@@ -19641,8 +19621,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }), _vm._v(_vm._s(option.name) + "\n        ")]), _vm._v(" "), (option.src) ? _c('img', {
       staticClass: "v-align",
       attrs: {
-        "height": "120",
-        "width": "160",
+        "height": "180",
+        "width": "180",
         "src": _vm.getSrc(option)
       }
     }) : _vm._e()])

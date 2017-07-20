@@ -20,6 +20,8 @@ use Illuminate\Http\Request;
 
  Route::get('/api/facebook', 'FacebookController@index');
 
-Route::post('/create', 'FacebookController@store');
+ Route::post('/create', 'FacebookController@store');
 
-Route::post('/page', 'FacebookController@edit');
+ Route::post('/page', 'FacebookController@edit');
+
+ Route::get('/api/twitter', 'TwitterController@index');

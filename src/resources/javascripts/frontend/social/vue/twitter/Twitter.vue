@@ -5,8 +5,8 @@
         </Progress>
         <div class="w3-container w3-card-2 form">
             <div class="w3-panel">
-                <h3>Link your Social Accounts</h3>
-                <h5>Please log in to Twitter<i class="fa fa-twitter fa-2x w3-margin-left w3-text-blue v-align"></i> in order to recieve our Twitter services.</h5>
+                <h3>Link your Twitter Account</h3>
+                <h5>Please log in to Twitter<i class="fa fa-twitter fa-2x w3-margin-left w3-margin-right w3-text-blue v-align"></i>in order to recieve our Twitter services.</h5>
             </div>
             <div class="w3-section">
                 <div class="w3-panel">
@@ -28,27 +28,6 @@
                         </label>
                     </div>
                 </div>
-                <!--
-                <div class="w3-panel"
-                    v-if="properties.has_facebook == false">
-                    <div>Do you want InsuranceSocial.Media to setup a corporate Facebook account for you?</div>
-                    <div><em>(Note: A one time 25$ fee will apply)</em></div>
-                    <div class="w3-panel">
-                        <input class="v-align" type="radio" id="create_yes"
-                            v-bind:value="true"
-                            v-model="properties.create_facebook">
-                        <label for="create_yes">
-                            <span class="w3-show-inline-block w3-margin v-align"></span>Yes
-                        </label>
-                        <input class="v-align" type="radio" id="create_no"
-                            v-bind:value="false"
-                            v-model="properties.create_facebook">
-                        <label for="create_no">
-                            <span class="w3-show-inline-block w3-margin v-align"></span>No
-                        </label>
-                    </div>
-                </div>
-            -->
             </div>
             <div class="w3-section">
                 <h5>We look forward to working with you. Please click continue to finish setting up your account.</h5>
@@ -74,7 +53,7 @@
             }
         },
         mounted() {
-            axios.get(window.location).then(response => {
+            axios.get(`${ window.base_url }/api/twitter`).then(response => {
                 this.redirectUrl = response.data
                 if(store.getState().UserStore.twitter_access_token) {
                     this.properties.has_twitter = true;
