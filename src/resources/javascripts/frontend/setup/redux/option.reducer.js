@@ -3,6 +3,7 @@ import Counties from './counties.json';
 import Regions from './regions.json';
 import Coverages from './coverages.json';
 import Industries from './industries.json';
+import Causes from './causes.json';
 
 const initialState = {
     titles: [
@@ -60,68 +61,41 @@ const initialState = {
     industry_currents: Industries.industries,
     industry_targets: Industries.industries,
     engagement_mix: [
-        'Existing Clients Only',
-        'Mostly Existinig Clients',
-        'Existing and New Clients Equally',
-        'Mostly New Clients',
-        'New Clients Only'
+        {"code": "EO", "desc":"Existing Clients Only"},
+        {"code": "ME", "desc":"Mostly Existinig Clients"},
+        {"code": "EN", "desc":"Existing and New Clients Equally"},
+        {"code": "MN", "desc":"Mostly New Clients"},
+        {"code": "NO", "desc":"New Clients Only"}
     ],
     engagement_tone: [
-        'Simply Informative',
-        'Conversational',
-        'Entertainingly Informative'
+        {"code": "I", "desc":"Simply Informative"},
+        {"code": "C", "desc":"Conversational"},
+        {"code": "E", "desc":"Entertainingly Informative"}
     ],
     special_topics: [
-        'Recognition of National Holidays',
-        'Insurance Humor',
-        'Current News'
+        {"code": "NH", "desc":"Recognition of National Holidays"},
+        {"code": "IH", "desc":"Insurance Humor"},
+        {"code": "CN", "desc":"Current News"}
     ],
-    causes: [
-        'Alzheimer\'s',
-        'American Red Cross',
-        'Amnesty International',
-        'Animal Rescue',
-        'Arthritis',
-        'Asthma',
-        'Cancer',
-        'Child Abuse',
-        'Chronic Obstructive Pulmonary Disease (COPD)',
-        'Dental Health',
-        'Depression',
-        'Diabetes',
-        'Environmental Issues',
-        'Habitat for Humanity',
-        'Heart Disease',
-        'Heifer International',
-        'Homelessness',
-        'Hunger',
-        'Kidney Disease',
-        'Mental Health',
-        'Military Veterans',
-        'Mommy & Me Cancer Foundation',
-        'Multiple Sclerosis',
-        'Poverty',
-        'Vision Health'
-    ],
+    causes: Causes.causes,
     days: [
-        'Sunday',
-        'Monday',
-        'Tuesday',
-        'Wednesday',
-        'Thursday',
-        'Friday',
-        'Saturday'
+        {"code": "sunday", "desc":"Sunday"},
+        {"code": "monday", "desc":"Monday"},
+        {"code": "tuesday", "desc":"Tuesday"},
+        {"code": "wednesday", "desc":"Wednesday"},
+        {"code": "thursday", "desc":"Thursday"},
+        {"code": "friday", "desc":"Friday"},
+        {"code": "saturday", "desc":"Saturday"}
     ],
     times: [
-        'System Chosen',
-        '2-5am',
-        '5-8am',
-        '8-11am',
-        '11am-2pm',
-        '2-5pm',
-        '5-8pm',
-        '8-11pm',
-        '11pm-2am'
+        {"code": "system_chosen", "desc":"System Chosen"},
+        {"code": "2-5am", "desc":"2-5am"},
+        {"code": "5-8am", "desc":"5-8am"},
+        {"code": "8-11am", "desc":"8-11am"},
+        {"code": "11am-2pm", "desc":"11am-2pm"},
+        {"code": "2-5pm", "desc":"2-5pm"},
+        {"code": "8-11pm", "desc":"8-11pm"},
+        {"code": "11pm-2am", "desc":"11pm-2am"}
     ]
 };
 

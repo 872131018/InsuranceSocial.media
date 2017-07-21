@@ -6,6 +6,12 @@ use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Auth;
 
+use App\SelectedSpecialTopic;
+
+use App\SelectedCause;
+
+use App\Plan;
+
 class OutreachController extends Controller
 {
     /**
@@ -37,21 +43,56 @@ class OutreachController extends Controller
     public function store(Request $request)
     {
         $user = Auth::user();
-        if($user->email == $request->input('email')) {
-            $user->engagement_mix = $request->input('engagement_mix');
-            $user->engagement_tone = $request->input('engagement_tone');
-            $user->special_topics = json_encode($request->input('special_topics'));
-            $user->causes = json_encode($request->input('causes'));
-            $user->posting_days = json_encode($request->input('posting_days'));
-            $user->posting_time = $request->input('posting_time');
-            $user->update();
-            /*
-            * Unscrub that data after its saved
-            */
-            $user->special_topics = $request->input('special_topics');
-            $user->causes = $request->input('causes');
-            $user->posting_days = $request->input('posting_days');
+        $plan = $user->plan;
+        $plan->engagement_mix = $request->input('engagement_mix')['code'];
+        $plan->engagement_tone = $request->input('engagement_tone')['code'];
+        $plan->time_code = $request->input('posting_time')['code'];
+        $plan->update();
+
+        $selected = [];
+        foreach ($request->input('special_topics') as $topic) {
+            $selectedTopic = new SelectedSpecialTopic();
+            $selectedTopic->email = $user->email;
+            $selectedTopic->topic_code = $topic['code'];
+            array_push($selected, $selectedTopic);
         }
+        $user->specialTopics()->saveMany($selected);
+
+        $selected = [];
+        foreach ($request->input('causes') as $cause) {
+            $selectedCause = new selectedCause();
+            $selectedCause->email = $user->email;
+            $selectedCause->cause_code = $cause['code'];
+            array_push($selected, $selectedCause);
+        }
+        $user->causes()->saveMany($selected);
+
+        foreach($request->input('posting_days') as $day) {
+            switch($day) {
+                case 'Sunday':
+                    $user->plan->sunday = true;
+                    break;
+                case 'Monday':
+                    $user->plan->monday = true;
+                    break;
+                case 'Tuesday':
+                    $user->plan->tuesday = true;
+                    break;
+                case 'Wednesday':
+                    $user->plan->wednesday = true;
+                    break;
+                case 'Thursday':
+                    $user->plan->thursday = true;
+                    break;
+                case 'Friday':
+                    $user->plan->friday = true;
+                    break;
+                case 'Saturday':
+                    $user->plan->saturday = true;
+                    break;
+            }
+        }
+
         return response()->json($user);
     }
 

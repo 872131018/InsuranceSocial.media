@@ -140,4 +140,20 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\SelectedTargetIndustry');
     }
+
+    /**
+     * Get the special topic record associated with the user.
+     */
+    public function specialTopics()
+    {
+        return $this->hasMany('App\SelectedSpecialTopic');
+    }
+
+    /**
+     * Get the causes record associated with the user.
+     */
+    public function causes()
+    {
+        return $this->hasMany('App\SelectedCause');
+    }
 }

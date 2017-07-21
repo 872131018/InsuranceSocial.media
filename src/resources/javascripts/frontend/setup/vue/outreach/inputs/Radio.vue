@@ -3,12 +3,12 @@
         <li class="w3-section"
             v-for="(option, index) in options">
             <input type="radio"
-                v-bind:id="`${ option }${ index }`"
+                v-bind:id="`${ option.code }${ index }`"
                 v-bind:value="option"
                 v-model="selected"
                 v-on:change="$emit('setChecked', option)">
-            <label v-bind:for="`${ option }${ index }`">
-                <span class="w3-show-inline-block w3-margin-right v-align"></span>{{ option }}
+            <label v-bind:for="`${ option.code }${ index }`">
+                <span class="w3-show-inline-block w3-margin-right v-align"></span>{{ option.desc }}
             </label>
         </li>
     </ul>
@@ -21,12 +21,12 @@
                 type: Array
             },
             default: {
-                type: String
+                type: Object
             }
         },
         data() {
             return {
-                selected: ''
+                selected: {code:'00', desc:'Options'}
             }
         },
         mounted() {

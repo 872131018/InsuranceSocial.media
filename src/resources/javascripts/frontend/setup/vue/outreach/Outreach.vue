@@ -40,7 +40,7 @@
                     <li class="w3-section"
                         v-for="(topic, index) in properties.special_topics"
                         v-on:click="(topic) => properties.special_topics.splice(index, 1)">
-                        {{ topic }}
+                        {{ topic.desc }}
                         <i class="fa fa-times w3-margin-left"></i>
                     </li>
                 </ul>
@@ -58,7 +58,7 @@
                     <li class="w3-section"
                         v-for="(cause, index) in properties.causes"
                         v-on:click="(cause) => properties.causes.splice(index, 1)">
-                        {{ cause }}
+                        {{ cause.desc }}
                         <i class="fa fa-times w3-margin-left"></i>
                     </li>
                 </ul>
@@ -76,7 +76,7 @@
                     <li class="w3-section"
                         v-for="(day, index) in properties.posting_days"
                         v-on:click="(day) => properties.posting_days.splice(index, 1)">
-                        {{ day }}
+                        {{ day.desc }}
                         <i class="fa fa-times w3-margin-left"></i>
                     </li>
                 </ul>
@@ -120,13 +120,12 @@
         data() {
             return {
                 properties: {
-                    email: store.getState().UserStore.email,
-                    engagement_mix: store.getState().UserStore.engagement_mix,
-                    engagement_tone: store.getState().UserStore.engagement_tone,
+                    engagement_mix: {},
+                    engagement_tone:{},
                     special_topics: store.getState().UserStore.special_topics,
                     causes: store.getState().UserStore.causes,
                     posting_days: store.getState().UserStore.posting_days,
-                    posting_time: store.getState().UserStore.posting_time
+                    posting_time: {}
                 },
                 engagement_mix: store.getState().OptionStore.engagement_mix,
                 engagement_tone: store.getState().OptionStore.engagement_tone,

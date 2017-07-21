@@ -1,0 +1,104 @@
+{
+    "causes":[
+       {
+          "code":6655,
+          "desc":"Alzheimer's"
+       },
+       {
+          "code":6659,
+          "desc":"American Red Cross"
+       },
+       {
+          "code":6671,
+          "desc":"Amnesty International"
+       },
+       {
+          "code":6669,
+          "desc":"Animal rescue"
+       },
+       {
+          "code":6657,
+          "desc":"Arthritis"
+       },
+       {
+          "code":6656,
+          "desc":"Asthma"
+       },
+       {
+          "code":6650,
+          "desc":"Cancer"
+       },
+       {
+          "code":6666,
+          "desc":"Child abuse"
+       },
+       {
+          "code":6670,
+          "desc":"Chronic obstructive pulmonary disease (COPD)"
+       },
+       {
+          "code":6652,
+          "desc":"Dental health"
+       },
+       {
+          "code":6667,
+          "desc":"Depression"
+       },
+       {
+          "code":6651,
+          "desc":"Diabetes"
+       },
+       {
+          "code":6662,
+          "desc":"Environmental issues"
+       },
+       {
+          "code":6660,
+          "desc":"Habitat for Humanity"
+       },
+       {
+          "code":6649,
+          "desc":"Heart disease"
+       },
+       {
+          "code":6672,
+          "desc":"Heifer International"
+       },
+       {
+          "code":6665,
+          "desc":"Homelessness"
+       },
+       {
+          "code":6668,
+          "desc":"Hunger"
+       },
+       {
+          "code":6658,
+          "desc":"Kidney disease"
+       },
+       {
+          "code":6654,
+          "desc":"Mental health"
+       },
+       {
+          "code":6663,
+          "desc":"Military veterans"
+       },
+       {
+          "code":11283,
+          "desc":"Mommy & Me Cancer Foundation"
+       },
+       {
+          "code":6661,
+          "desc":"Multiple sclerosis"
+       },
+       {
+          "code":6664,
+          "desc":"Poverty"
+       },
+       {
+          "code":6653,
+          "desc":"Vision health"
+       }
+    ]
+}

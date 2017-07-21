@@ -18,6 +18,8 @@ class CreateUserPlanTable extends Migration
             $table->string('user_id');
             $table->string('email');
             $table->char('plan_code', 1)->nullable();
+            $table->string('engagement_mix')->nullable();
+            $table->string('engagement_tone')->nullable();
             $table->boolean('monday')->nullable();
             $table->boolean('tuesday')->nullable();
             $table->boolean('wednesday')->nullable();
