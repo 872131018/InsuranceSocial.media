@@ -80,7 +80,10 @@ class LocationController extends Controller
         }
         $user->counties()->saveMany($selected);
 
-        return response()->json($user);
+        return response()->json([
+            'user' => $user,
+            'agency' => $agency
+        ]);
     }
 
     /**

@@ -47,6 +47,33 @@ class OutreachController extends Controller
         $plan->engagement_mix = $request->input('engagement_mix')['code'];
         $plan->engagement_tone = $request->input('engagement_tone')['code'];
         $plan->time_code = $request->input('posting_time')['code'];
+
+        foreach($request->input('posting_days') as $day) {
+            switch($day) {
+                case 'Sunday':
+                    $plan->sunday = true;
+                    break;
+                case 'Monday':
+                    $plan->monday = true;
+                    break;
+                case 'Tuesday':
+                    $plan->tuesday = true;
+                    break;
+                case 'Wednesday':
+                    $plan->wednesday = true;
+                    break;
+                case 'Thursday':
+                    $plan->thursday = true;
+                    break;
+                case 'Friday':
+                    $plan->friday = true;
+                    break;
+                case 'Saturday':
+                    $plan->saturday = true;
+                    break;
+            }
+        }
+
         $plan->update();
 
         $selected = [];
@@ -66,32 +93,6 @@ class OutreachController extends Controller
             array_push($selected, $selectedCause);
         }
         $user->causes()->saveMany($selected);
-
-        foreach($request->input('posting_days') as $day) {
-            switch($day) {
-                case 'Sunday':
-                    $user->plan->sunday = true;
-                    break;
-                case 'Monday':
-                    $user->plan->monday = true;
-                    break;
-                case 'Tuesday':
-                    $user->plan->tuesday = true;
-                    break;
-                case 'Wednesday':
-                    $user->plan->wednesday = true;
-                    break;
-                case 'Thursday':
-                    $user->plan->thursday = true;
-                    break;
-                case 'Friday':
-                    $user->plan->friday = true;
-                    break;
-                case 'Saturday':
-                    $user->plan->saturday = true;
-                    break;
-            }
-        }
 
         return response()->json($user);
     }

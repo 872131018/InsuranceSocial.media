@@ -121,10 +121,10 @@
             return {
                 properties: {
                     engagement_mix: {},
-                    engagement_tone:{},
-                    special_topics: store.getState().UserStore.special_topics,
-                    causes: store.getState().UserStore.causes,
-                    posting_days: store.getState().UserStore.posting_days,
+                    engagement_tone: {},
+                    special_topics: [],
+                    causes: [],
+                    posting_days: [],
                     posting_time: {}
                 },
                 engagement_mix: store.getState().OptionStore.engagement_mix,
@@ -145,9 +145,8 @@
                 this.errors = [];
                 if(this.errors.length == 0) {
                     axios.post(window.location, this.properties).then(response => {
-                        store.dispatch({ type: 'SET_OUTREACH', data: response.data });
                         if(route == 'Done') {
-                            alert(`success! info saved in database ${ store.getState().UserStore }`);
+                            window.location = `${ window.base_url }/file`;
                         } else {
                             this.$router.push({ name: route });
                         }

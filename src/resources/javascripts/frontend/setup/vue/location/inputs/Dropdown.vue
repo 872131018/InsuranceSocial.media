@@ -26,12 +26,12 @@
                 type: Array
             },
             default: {
-                type: String
+                type: Number
             }
         },
         data() {
             return {
-                selected: { "stateCd": "00", "desc":"Options", "code":"00" }
+                selected: { "stateCd": "00", "desc":"Options", "code":0 }
             }
         },
         mounted() {

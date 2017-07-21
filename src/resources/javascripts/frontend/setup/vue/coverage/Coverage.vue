@@ -159,8 +159,7 @@
         data() {
             return {
                 properties: {
-                    email: store.getState().UserStore.email,
-                    carriers: store.getState().UserStore.carriers,
+                    carriers: [],
                     commercial_coverage_lines: [],
                     personal_coverage_lines: [],
                     benefit_coverage_lines: [],

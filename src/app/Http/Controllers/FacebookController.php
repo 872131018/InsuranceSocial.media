@@ -181,7 +181,7 @@ class FacebookController extends Controller
         $facebook->page_token = $request->page_access_token;
         $facebook->update();
 
-        return response()->json($user);
+        return response()->json($facebook);
     }
 
     /**

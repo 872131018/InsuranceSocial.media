@@ -24,12 +24,33 @@ Route::middleware(['auth'])->group(function() {
 
     Route::get('/corporate/{discount?}', 'CorporateController@index');
 
-    Route::get('/api/pages', function (Request $request) {
-        $data = json_decode(session('pages'));
-        return response()->json($data);
+    Route::get('/file', function(Request $request) {
+        $user = Auth::user();
+        $myfile = fopen($user->email.".json", "w");
+        $data = [
+            'user' => $user,
+            'plan' => $user->plan,
+            'facebook_account' => $user->facebook,
+            'template' => $user->template,
+            'twitter' => $user->twitter,
+            'agency' => $user->agency,
+            'regions' => $user->regions,
+            'states' => $user->states,
+            'counties' => $user->carriers,
+            'commercialCoverages' => $user->commercialCoverages,
+            'personalCoverages' => $user->personalCoverages,
+            'benefitCoverages' => $user->benefitCoverages,
+            'currentIndustries' => $user->currentIndustries,
+            'targetIndustries' => $user->targetIndustries,
+            'specialTopics' => $user->specialTopics,
+            'causes' => $user->causes
+
+        ];
+
+        fwrite($myfile, json_encode($data, JSON_PRETTY_PRINT));
+        fclose($myfile);
+
+        $response = "<a href=".$user->email.".json"." download=".$user->email.".json".">Download</a>";
+        return response($response);
     });
-
-    Route::get('/setup/payment', 'PaymentController@index');
-
-    Route::post('/setup/payment', 'PaymentController@storealt');
 });

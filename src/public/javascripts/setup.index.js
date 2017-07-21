@@ -16090,14 +16090,18 @@ var Site = new __WEBPACK_IMPORTED_MODULE_1_vue___default.a({
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_redux__ = __webpack_require__(39);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__redux_user_reducer__ = __webpack_require__(399);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__redux_user_reducer___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__redux_user_reducer__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__redux_option_reducer__ = __webpack_require__(400);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__redux_agency_reducer__ = __webpack_require__(518);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__redux_agency_reducer___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__redux_agency_reducer__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__redux_option_reducer__ = __webpack_require__(400);
+
 
 
 
 
 var reducers = Object(__WEBPACK_IMPORTED_MODULE_0_redux__["a" /* combineReducers */])({
     UserStore: __WEBPACK_IMPORTED_MODULE_1__redux_user_reducer___default.a,
-    OptionStore: __WEBPACK_IMPORTED_MODULE_2__redux_option_reducer__["a" /* default */]
+    AgencyStore: __WEBPACK_IMPORTED_MODULE_2__redux_agency_reducer___default.a,
+    OptionStore: __WEBPACK_IMPORTED_MODULE_3__redux_option_reducer__["a" /* default */]
 });
 
 /* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_0_redux__["b" /* createStore */])(reducers));
@@ -16107,47 +16111,26 @@ var reducers = Object(__WEBPACK_IMPORTED_MODULE_0_redux__["a" /* combineReducers
 /***/ (function(module, exports) {
 
 var initialState = {
-    id: '',
-    name: '',
-    email: '',
-    api_token: '',
-    discount: '',
-    plan: {},
-    facebook: false,
-    twitter: false,
-    phone: '',
-    title: '',
-    principal_name: '',
-    principal_email: '',
-    organization_name: '',
-    website: '',
-    staff_size: '',
-    year_founded: '',
-    multi_generation: '',
-    notification_frequency: '',
-    notify_email: false,
-    notify_text: false,
-    address_1: '',
-    address_2: '',
-    city: '',
-    state: '',
-    zip: '',
-    marketing_regions: [],
-    marketing_states: [],
-    marketing_counties: [],
-    carriers: [],
-    coverage_lines: [],
-    coverage_targets: [],
-    industry_currents: [],
-    industry_targets: [],
-    commercial_mix: '',
-    personal_mix: '',
-    engagement_mix: '',
-    engagement_tone: '',
-    special_topics: [],
-    causes: [],
-    posting_days: [],
-    posting_time: ''
+    id: null,
+    name: null,
+    email: null,
+    status: null,
+    role: null,
+    cell_phone: null,
+    title_code: null,
+    effective_date: null,
+    expiration_date: null,
+    coupon_code: null,
+    termination_reason: null,
+    termination_comment: null,
+    customer_profile_id: null,
+    customer_payment_profile_id: null,
+    notify_email: null,
+    notify_text: null,
+    notify_frequency: null,
+    commercial_mix: null,
+    personal_mix: null,
+    api_token: null
 };
 
 module.exports = function () {
@@ -16156,59 +16139,10 @@ module.exports = function () {
 
     switch (action.type) {
         case 'SET_USER':
-            user.id = action.data.id;
-            user.name = action.data.name;
-            user.email = action.data.email;
-            user.api_token = action.data.api_token;
-            user.discount = action.data.discount;
+            for (var property in user) {
+                user[property] = action.data[property];
+            }
             break;
-        case 'SET_PLAN':
-            user.plan = action.data;
-            break;
-        case 'SET_SOCIAL_MEDIA':
-            user.facebook = action.data.facebook;
-            user.twitter = action.data.twitter;
-            break;
-        case 'SET_PROPERTIES':
-            user.phone = action.data.phone;
-            user.title = action.data.title;
-            user.principal_name = action.data.principal_name;
-            user.principal_email = action.data.principal_email;
-            user.organization_name = action.data.organization_name;
-            user.website = action.data.website;
-            user.staff_size = action.data.staff_size;
-            user.year_founded = action.data.year_founded;
-            user.multi_generation = action.data.multi_generation;
-            user.notification_frequency = action.data.notification_frequency;
-            user.notify_email = action.data.notify_email;
-            user.notify_text = action.data.notify_text;
-            break;
-        case 'SET_LOCATION':
-            user.address_1 = action.data.address_1;
-            user.address_2 = action.data.address_2;
-            user.city = action.data.city;
-            user.state = action.data.state;
-            user.zip = action.data.zip;
-            user.marketing_regions = action.data.marketing_regions;
-            user.marketing_states = action.data.marketing_states;
-            user.marketing_counties = action.data.marketing_counties;
-            break;
-        case 'SET_COVERAGE':
-            user.carriers = action.data.carriers;
-            user.coverage_lines = action.data.coverage_lines;
-            user.coverage_targets = action.data.coverage_targets;
-            user.industry_currents = action.data.industry_currents;
-            user.industry_targets = action.data.industry_targets;
-            user.commercial_mix = action.data.commercial_mix;
-            user.personal_mix = action.data.personal_mix;
-            break;
-        case 'SET_OUTREACH':
-            user.engagement_mix = action.data.engagement_mix;
-            user.engagement_tone = action.data.engagement_tone;
-            user.special_topics = action.data.special_topics;
-            user.causes = action.data.causes;
-            user.posting_days = action.data.posting_days;
-            user.posting_time = action.data.posting_time;
         default:
             break;
     }
@@ -32944,16 +32878,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             properties: {
                 name: store.getState().UserStore.name,
                 email: store.getState().UserStore.email,
-                phone: store.getState().UserStore.phone,
-                title: store.getState().UserStore.title,
-                principal_name: store.getState().UserStore.principal_name,
-                principal_email: store.getState().UserStore.principal_email,
-                organization_name: store.getState().UserStore.organization_name,
-                website: store.getState().UserStore.website,
-                staff_size: store.getState().UserStore.staff_size,
-                year_founded: store.getState().UserStore.year_founded,
-                multi_generation: store.getState().UserStore.multi_generation,
-                notification_frequency: store.getState().UserStore.notification_frequency,
+                cell_phone: store.getState().UserStore.cell_phone,
+                title_code: store.getState().AgencyStore.title_code,
+                principal_name: store.getState().AgencyStore.principal_name,
+                principal_email: store.getState().AgencyStore.principal_email,
+                agency_name: store.getState().AgencyStore.agency_name,
+                website: store.getState().AgencyStore.website,
+                size: store.getState().AgencyStore.size,
+                established: store.getState().AgencyStore.established,
+                multigenerational: store.getState().AgencyStore.multigenerational,
+                notify_frequency: store.getState().UserStore.notify_frequency,
                 notify_email: store.getState().UserStore.notify_email,
                 notify_text: store.getState().UserStore.notify_text
             },
@@ -32976,12 +32910,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             if (this.properties.email == '') {
                 this.errors.push('You must enter your email.');
             }
-            if (this.properties.phone == '') {
-                this.errors.push('You must enter your phone.');
+            if (this.properties.cell_phone == '') {
+                this.errors.push('You must enter your cell phone.');
             }
             if (this.errors.length == 0) {
                 axios.post(window.location, this.properties).then(function (response) {
-                    store.dispatch({ type: 'SET_PROPERTIES', data: response.data });
+                    store.dispatch({ type: 'SET_USER', data: response.data.user });
+                    store.dispatch({ type: 'SET_AGENCY', data: response.data.agency });
                     _this.$router.push({ name: route });
                 }).catch(function (error) {
                     _this.errors.push('An error has occured, please contact support.');
@@ -33689,10 +33624,10 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: {
         notify_email: {
-            type: Boolean
+            type: Number
         },
         notify_text: {
-            type: Boolean
+            type: Number
         }
     },
     data: function data() {
@@ -33948,21 +33883,21 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "label": 'Cell Phone',
       "validation": 'PHONE',
-      "default": _vm.properties.phone
+      "default": _vm.properties.cell_phone
     },
     on: {
-      "setValue": function (value) { return _vm.properties.phone = value; }
+      "setValue": function (value) { return _vm.properties.cell_phone = value; }
     }
   }), _vm._v(" "), _c('Dropdown', {
     attrs: {
       "label": 'What is your title?',
       "options": _vm.titles,
-      "default": _vm.properties.title
+      "default": _vm.properties.title_code
     },
     on: {
-      "setOption": function (option) { return _vm.properties.title = option.code; }
+      "setOption": function (option) { return _vm.properties.title_code = option.code; }
     }
-  }), _vm._v(" "), (_vm.properties.title != 'PR' && _vm.properties.title != '') ? _c('div', [_c('Field', {
+  }), _vm._v(" "), (_vm.properties.title_code != 'PR' && _vm.properties.title_code != '') ? _c('div', [_c('Field', {
     attrs: {
       "label": 'Principal Name',
       "default": _vm.properties.principal_name
@@ -33982,10 +33917,10 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   })], 1) : _vm._e(), _vm._v(" "), _c('Field', {
     attrs: {
       "label": 'Organization Name',
-      "default": _vm.properties.organization_name
+      "default": _vm.properties.agency_name
     },
     on: {
-      "setValue": function (value) { return _vm.properties.organization_name = value; }
+      "setValue": function (value) { return _vm.properties.agency_name = value; }
     }
   }), _vm._v(" "), _c('Field', {
     attrs: {
@@ -33999,19 +33934,19 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "label": 'What is the size of your staff?',
       "options": _vm.sizes,
-      "default": _vm.properties.staff_size
+      "default": _vm.properties.size
     },
     on: {
-      "setOption": function (option) { return _vm.properties.staff_size = option.code; }
+      "setOption": function (option) { return _vm.properties.size = option.code; }
     }
   }), _vm._v(" "), _c('Field', {
     attrs: {
       "label": 'Founding Year',
       "validation": 'YEAR',
-      "default": _vm.properties.year_founded
+      "default": _vm.properties.established
     },
     on: {
-      "setValue": function (value) { return _vm.properties.year_founded = value; }
+      "setValue": function (value) { return _vm.properties.established = value; }
     }
   }), _vm._v(" "), _c('div', {
     staticClass: "w3-section"
@@ -34019,10 +33954,10 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "label": 'Is this a multigenerational company?',
       "options": _vm.generations,
-      "default": _vm.properties.multi_generation
+      "default": _vm.properties.multigenerational
     },
     on: {
-      "setOption": function (option) { return _vm.properties.multi_generation = option.code; }
+      "setOption": function (option) { return _vm.properties.multigenerational = option.code; }
     }
   })], 1), _vm._v(" "), _c('div', {
     staticClass: "w3-section"
@@ -34030,10 +33965,10 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "label": 'How often would you like us to communicate with you?',
       "options": _vm.frequencies,
-      "default": _vm.properties.notification_frequency
+      "default": _vm.properties.notify_frequency
     },
     on: {
-      "setOption": function (option) { return _vm.properties.notification_frequency = option.code; }
+      "setOption": function (option) { return _vm.properties.notify_frequency = option.code; }
     }
   })], 1), _vm._v(" "), _c('Notification', {
     attrs: {
@@ -34266,15 +34201,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     data: function data() {
         return {
             properties: {
-                email: store.getState().UserStore.email,
-                address_1: store.getState().UserStore.address_1,
-                address_2: store.getState().UserStore.address_2,
-                city: store.getState().UserStore.city,
-                state: store.getState().UserStore.state,
-                zip: store.getState().UserStore.zip,
-                marketing_regions: store.getState().UserStore.marketing_regions,
-                marketing_states: store.getState().UserStore.marketing_states,
-                marketing_counties: store.getState().UserStore.marketing_counties
+                address_1: store.getState().AgencyStore.address_1,
+                address_2: store.getState().AgencyStore.address_2,
+                city: store.getState().AgencyStore.city,
+                state: store.getState().AgencyStore.state,
+                zip: store.getState().AgencyStore.zip,
+                marketing_regions: [],
+                marketing_states: [],
+                marketing_counties: []
             },
             states: store.getState().OptionStore.states,
             targets: store.getState().OptionStore.targets,
@@ -34352,7 +34286,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.errors = [];
             if (this.errors.length == 0) {
                 axios.post(window.location, this.properties).then(function (response) {
-                    store.dispatch({ type: 'SET_LOCATION', data: response.data });
+                    store.dispatch({ type: 'SET_USER', data: response.data.user });
+                    store.dispatch({ type: 'SET_AGENCY', data: response.data.agency });
                     _this.$router.push({ name: route });
                 }).catch(function (error) {
                     _this.errors.push('An error has occured, please contact support.');
@@ -34747,12 +34682,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             type: Array
         },
         default: {
-            type: String
+            type: Number
         }
     },
     data: function data() {
         return {
-            selected: { "stateCd": "00", "desc": "Options", "code": "00" }
+            selected: { "stateCd": "00", "desc": "Options", "code": 0 }
         };
     },
     mounted: function mounted() {
@@ -35074,7 +35009,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "label": 'State',
       "options": _vm.states,
-      "default": _vm.properties.state.desc
+      "default": _vm.properties.state
     },
     on: {
       "setOption": function (option) { return _vm.properties.state = option.code; }
@@ -35424,8 +35359,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     data: function data() {
         return {
             properties: {
-                email: store.getState().UserStore.email,
-                carriers: store.getState().UserStore.carriers,
+                carriers: [],
                 commercial_coverage_lines: [],
                 personal_coverage_lines: [],
                 benefit_coverage_lines: [],
@@ -36640,9 +36574,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             properties: {
                 engagement_mix: {},
                 engagement_tone: {},
-                special_topics: store.getState().UserStore.special_topics,
-                causes: store.getState().UserStore.causes,
-                posting_days: store.getState().UserStore.posting_days,
+                special_topics: [],
+                causes: [],
+                posting_days: [],
                 posting_time: {}
             },
             engagement_mix: store.getState().OptionStore.engagement_mix,
@@ -36666,9 +36600,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.errors = [];
             if (this.errors.length == 0) {
                 axios.post(window.location, this.properties).then(function (response) {
-                    store.dispatch({ type: 'SET_OUTREACH', data: response.data });
                     if (route == 'Done') {
-                        alert('success! info saved in database ' + store.getState().UserStore);
+                        window.location = window.base_url + '/file';
                     } else {
                         _this.$router.push({ name: route });
                     }
@@ -38236,6 +38169,39 @@ if (false) {
      require("vue-hot-reload-api").rerender("data-v-2326cd96", module.exports)
   }
 }
+
+/***/ }),
+/* 518 */
+/***/ (function(module, exports) {
+
+var initialState = {
+    id: null,
+    user_id: null,
+    email: null,
+    principal_name: null,
+    principal_email: null,
+    name: null,
+    website: null,
+    size: null,
+    established: null,
+    multigenerational: null
+};
+
+module.exports = function () {
+    var agency = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+    var action = arguments[1];
+
+    switch (action.type) {
+        case 'SET_AGENCY':
+            for (var property in agency) {
+                agency[property] = action.data[property];
+            }
+            break;
+        default:
+            break;
+    }
+    return JSON.parse(JSON.stringify(agency));
+};
 
 /***/ })
 /******/ ]);

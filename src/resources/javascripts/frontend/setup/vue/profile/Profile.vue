@@ -26,16 +26,16 @@
                 <Field
                     v-bind:label="'Cell Phone'"
                     v-bind:validation="'PHONE'"
-                    v-bind:default="properties.phone"
-                    v-on:setValue="(value) => properties.phone = value">
+                    v-bind:default="properties.cell_phone"
+                    v-on:setValue="(value) => properties.cell_phone = value">
                 </Field>
                 <Dropdown
                     v-bind:label="'What is your title?'"
                     v-bind:options="titles"
-                    v-bind:default="properties.title"
-                    v-on:setOption="(option) => properties.title = option.code">
+                    v-bind:default="properties.title_code"
+                    v-on:setOption="(option) => properties.title_code = option.code">
                 </Dropdown>
-                <div v-if="properties.title != 'PR' && properties.title != ''">
+                <div v-if="properties.title_code != 'PR' && properties.title_code != ''">
                     <Field
                         v-bind:label="'Principal Name'"
                         v-bind:default="properties.principal_name"
@@ -50,8 +50,8 @@
                 </div>
                 <Field
                     v-bind:label="'Organization Name'"
-                    v-bind:default="properties.organization_name"
-                    v-on:setValue="(value) => properties.organization_name = value">
+                    v-bind:default="properties.agency_name"
+                    v-on:setValue="(value) => properties.agency_name = value">
                 </Field>
                 <Field
                     v-bind:label="'Website'"
@@ -61,29 +61,29 @@
                 <Dropdown
                     v-bind:label="'What is the size of your staff?'"
                     v-bind:options="sizes"
-                    v-bind:default="properties.staff_size"
-                    v-on:setOption="(option) => properties.staff_size = option.code">
+                    v-bind:default="properties.size"
+                    v-on:setOption="(option) => properties.size = option.code">
                 </Dropdown>
                 <Field
                     v-bind:label="'Founding Year'"
                     v-bind:validation="'YEAR'"
-                    v-bind:default="properties.year_founded"
-                    v-on:setValue="(value) => properties.year_founded = value">
+                    v-bind:default="properties.established"
+                    v-on:setValue="(value) => properties.established = value">
                 </Field>
                 <div class="w3-section">
                     <Dropdown
                         v-bind:label="'Is this a multigenerational company?'"
                         v-bind:options="generations"
-                        v-bind:default="properties.multi_generation"
-                        v-on:setOption="(option) => properties.multi_generation = option.code">
+                        v-bind:default="properties.multigenerational"
+                        v-on:setOption="(option) => properties.multigenerational = option.code">
                     </Dropdown>
                 </div>
                 <div class="w3-section">
                     <Dropdown
                         v-bind:label="'How often would you like us to communicate with you?'"
                         v-bind:options="frequencies"
-                        v-bind:default="properties.notification_frequency"
-                        v-on:setOption="(option) => properties.notification_frequency = option.code">
+                        v-bind:default="properties.notify_frequency"
+                        v-on:setOption="(option) => properties.notify_frequency = option.code">
                     </Dropdown>
                 </div>
                 <Notification
@@ -121,16 +121,16 @@
                 properties: {
                     name: store.getState().UserStore.name,
                     email: store.getState().UserStore.email,
-                    phone: store.getState().UserStore.phone,
-                    title: store.getState().UserStore.title,
-                    principal_name: store.getState().UserStore.principal_name,
-                    principal_email: store.getState().UserStore.principal_email,
-                    organization_name: store.getState().UserStore.organization_name,
-                    website: store.getState().UserStore.website,
-                    staff_size: store.getState().UserStore.staff_size,
-                    year_founded: store.getState().UserStore.year_founded,
-                    multi_generation: store.getState().UserStore.multi_generation,
-                    notification_frequency: store.getState().UserStore.notification_frequency,
+                    cell_phone: store.getState().UserStore.cell_phone,
+                    title_code: store.getState().AgencyStore.title_code,
+                    principal_name: store.getState().AgencyStore.principal_name,
+                    principal_email: store.getState().AgencyStore.principal_email,
+                    agency_name: store.getState().AgencyStore.agency_name,
+                    website: store.getState().AgencyStore.website,
+                    size: store.getState().AgencyStore.size,
+                    established: store.getState().AgencyStore.established,
+                    multigenerational: store.getState().AgencyStore.multigenerational,
+                    notify_frequency: store.getState().UserStore.notify_frequency,
                     notify_email: store.getState().UserStore.notify_email,
                     notify_text: store.getState().UserStore.notify_text
                 },
@@ -150,12 +150,13 @@
                 if(this.properties.email == '') {
                     this.errors.push('You must enter your email.');
                 }
-                if(this.properties.phone == '') {
-                    this.errors.push('You must enter your phone.');
+                if(this.properties.cell_phone == '') {
+                    this.errors.push('You must enter your cell phone.');
                 }
                 if(this.errors.length == 0) {
                     axios.post(window.location, this.properties).then(response => {
-                        store.dispatch({ type: 'SET_PROPERTIES', data: response.data });
+                        store.dispatch({ type: 'SET_USER', data: response.data.user });
+                        store.dispatch({ type: 'SET_AGENCY', data: response.data.agency });
                         this.$router.push({ name: route });
                     }).catch(error => {
                         this.errors.push('An error has occured, please contact support.');

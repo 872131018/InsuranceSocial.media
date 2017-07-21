@@ -55,7 +55,6 @@
                 this.errors = [];
                 if(this.errors.length == 0) {
                     axios.post(window.location, this.properties).then(response => {
-                        //store.dispatch({ type: 'SET_FACEBOOK', data: response.data });
                         this.$router.push({ name: route });
                     }).catch(error => {
                         this.errors.push('An error has occured, please contact support.');

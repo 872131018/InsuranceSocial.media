@@ -55,14 +55,11 @@
         mounted() {
             axios.get(`${ window.base_url }/api/twitter`).then(response => {
                 this.redirectUrl = response.data
-                if(store.getState().UserStore.twitter_access_token) {
-                    this.properties.has_twitter = true;
-                }
             });
         },
         methods: {
             update() {
-                if(this.properties.has_twitter && !store.getState().UserStore.twitter_access_token) {
+                if(this.properties.has_twitter) {
                     window.location = this.redirectUrl;
                 } else {
                     window.location = `${ window.base_url }/profile`;

@@ -22,6 +22,11 @@ use Illuminate\Http\Request;
 
  Route::post('/create', 'FacebookController@store');
 
+ Route::get('/api/pages', function (Request $request) {
+     $data = json_decode(session('pages'));
+     return response()->json($data);
+ });
+
  Route::post('/page', 'FacebookController@edit');
 
  Route::get('/api/twitter', 'TwitterController@index');

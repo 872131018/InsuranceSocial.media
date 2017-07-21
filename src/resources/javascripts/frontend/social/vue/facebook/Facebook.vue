@@ -75,9 +75,6 @@
             axios.get(`${ window.base_url }/api/facebook`).then(response => {
                 this.redirectUrl = response.data
             });
-            if(store.getState().UserStore.facebook_access_token) {
-                this.properties.has_facebook = true;
-            }
         },
         methods: {
             update() {

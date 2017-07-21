@@ -39,9 +39,9 @@ class ProfileController extends Controller
     public function store(Request $request)
     {
         $user = Auth::user();
-        $user->cell_phone = $request->input('phone');
-        $user->title_code = $request->input('title');
-        $user->notify_frequency = $request->input('notification_frequency');
+        $user->cell_phone = $request->input('cell_phone');
+        $user->title_code = $request->input('title_code');
+        $user->notify_frequency = $request->input('notify_frequency');
         $user->notify_email = $request->input('notify_email');
         $user->notify_text = $request->input('notify_text');
         $user->update();
@@ -50,14 +50,17 @@ class ProfileController extends Controller
         $agency->email = $user->email;
         $agency->principal_name = $request->input('principal_name');
         $agency->principal_email = $request->input('principal_email');
-        $agency->name = $request->input('organization_name');
+        $agency->name = $request->input('agency_name');
         $agency->website = $request->input('website');
-        $agency->size = $request->input('staff_size');
-        $agency->established = $request->input('year_founded');
-        $agency->multigenerational = $request->input('multi_generation');
+        $agency->size = $request->input('size');
+        $agency->established = $request->input('established');
+        $agency->multigenerational = $request->input('multigenerational');
         $user->agency()->save($agency);
 
-        return response()->json($user);
+        return response()->json([
+            'user' => $user,
+            'agency' => $agency
+        ]);
     }
 
     /**

@@ -30,7 +30,7 @@
                 <Dropdown
                     v-bind:label="'State'"
                     v-bind:options="states"
-                    v-bind:default="properties.state.desc"
+                    v-bind:default="properties.state"
                     v-on:setOption="(option) => properties.state = option.code">
                 </Dropdown>
                 <Field
@@ -133,15 +133,14 @@
         data() {
             return {
                 properties: {
-                    email: store.getState().UserStore.email,
-                    address_1: store.getState().UserStore.address_1,
-                    address_2: store.getState().UserStore.address_2,
-                    city: store.getState().UserStore.city,
-                    state: store.getState().UserStore.state,
-                    zip: store.getState().UserStore.zip,
-                    marketing_regions: store.getState().UserStore.marketing_regions,
-                    marketing_states: store.getState().UserStore.marketing_states,
-                    marketing_counties: store.getState().UserStore.marketing_counties
+                    address_1: store.getState().AgencyStore.address_1,
+                    address_2: store.getState().AgencyStore.address_2,
+                    city: store.getState().AgencyStore.city,
+                    state: store.getState().AgencyStore.state,
+                    zip: store.getState().AgencyStore.zip,
+                    marketing_regions: [],
+                    marketing_states: [],
+                    marketing_counties: []
                 },
                 states: store.getState().OptionStore.states,
                 targets: store.getState().OptionStore.targets,
@@ -173,7 +172,8 @@
                 this.errors = [];
                 if(this.errors.length == 0) {
                     axios.post(window.location, this.properties).then(response => {
-                        store.dispatch({ type: 'SET_LOCATION', data: response.data });
+                        store.dispatch({ type: 'SET_USER', data: response.data.user });
+                        store.dispatch({ type: 'SET_AGENCY', data: response.data.agency });
                         this.$router.push({ name: route });
                     }).catch(error => {
                         this.errors.push('An error has occured, please contact support.');
