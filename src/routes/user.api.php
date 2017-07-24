@@ -1,6 +1,18 @@
 <?php
 use Illuminate\Http\Request;
 
+use App\Region;
+
+use App\State;
+
+use App\County;
+
+use App\Coverage;
+
+use App\Industry;
+
+use App\Cause;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,4 +35,22 @@ use Illuminate\Http\Request;
 
  Route::get('/api/agency', function (Request $request) {
      return response()->json(Auth::user()->agency);
+ });
+ Route::get('/api/regions', function (Request $request) {
+     return response()->json(Region::all());
+ });
+ Route::get('/api/states', function (Request $request) {
+     return response()->json(State::all());
+ });
+ Route::get('/api/counties', function (Request $request) {
+     return response()->json(County::all());
+ });
+ Route::get('/api/coverages', function (Request $request) {
+     return response()->json(Coverage::all());
+ });
+ Route::get('/api/industries', function (Request $request) {
+     return response()->json(Industry::all());
+ });
+ Route::get('/api/causes', function (Request $request) {
+     return response()->json(Cause::all());
  });

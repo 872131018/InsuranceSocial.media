@@ -26,7 +26,7 @@
                 type: Array
             },
             default: {
-                type: Number
+                type: String
             }
         },
         data() {

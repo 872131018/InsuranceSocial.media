@@ -31,6 +31,36 @@
                 store.dispatch({ type: 'SET_AGENCY', data: response.data });
                 this.loading--;
             });
+            this.loading++;
+            axios.get(`${ window.base_url }/api/regions`).then(response => {
+                store.dispatch({ type: 'SET_REGIONS', data: response.data });
+                this.loading--;
+            });
+            this.loading++;
+            axios.get(`${ window.base_url }/api/states`).then(response => {
+                store.dispatch({ type: 'SET_STATES', data: response.data });
+                this.loading--;
+            });
+            this.loading++;
+            axios.get(`${ window.base_url }/api/counties`).then(response => {
+                store.dispatch({ type: 'SET_COUNTIES', data: response.data });
+                this.loading--;
+            });
+            this.loading++;
+            axios.get(`${ window.base_url }/api/coverages`).then(response => {
+                store.dispatch({ type: 'SET_COVERAGES', data: response.data });
+                this.loading--;
+            });
+            this.loading++;
+            axios.get(`${ window.base_url }/api/industries`).then(response => {
+                store.dispatch({ type: 'SET_INDUSTRIES', data: response.data });
+                this.loading--;
+            });
+            this.loading++;
+            axios.get(`${ window.base_url }/api/causes`).then(response => {
+                store.dispatch({ type: 'SET_CAUSES', data: response.data });
+                this.loading--;
+            });
         },
         components: {
             Navigation,

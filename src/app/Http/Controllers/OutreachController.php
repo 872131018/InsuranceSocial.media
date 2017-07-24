@@ -49,26 +49,26 @@ class OutreachController extends Controller
         $plan->time_code = $request->input('posting_time')['code'];
 
         foreach($request->input('posting_days') as $day) {
-            switch($day) {
-                case 'Sunday':
+            switch($day['code']) {
+                case 'sunday':
                     $plan->sunday = true;
                     break;
-                case 'Monday':
+                case 'monday':
                     $plan->monday = true;
                     break;
-                case 'Tuesday':
+                case 'tuesday':
                     $plan->tuesday = true;
                     break;
-                case 'Wednesday':
+                case 'wednesday':
                     $plan->wednesday = true;
                     break;
-                case 'Thursday':
+                case 'thursday':
                     $plan->thursday = true;
                     break;
-                case 'Friday':
+                case 'friday':
                     $plan->friday = true;
                     break;
-                case 'Saturday':
+                case 'saturday':
                     $plan->saturday = true;
                     break;
             }

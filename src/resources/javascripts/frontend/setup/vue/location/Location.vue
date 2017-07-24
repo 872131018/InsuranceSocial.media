@@ -96,7 +96,7 @@
                             <li class="w3-section"
                                 v-for="(counties, index) in properties.marketing_counties"
                                 v-on:click="(county) => properties.marketing_counties.splice(index, 1)">
-                                {{ counties.desc }} - {{ counties.stateCd }}
+                                {{ counties.desc }} - {{ counties.state_code }}
                                 <i class="fa fa-times w3-margin-left"></i>
                             </li>
                         </ul>
@@ -155,9 +155,9 @@
                 this.properties.marketing_states.push(state);
                 let filtered_counties = [];
                 for(let filter of this.properties.marketing_states) {
-                    let stateCd = filter.stateCd;
+                    let state_code = filter.state_code;
                     for(let county of store.getState().OptionStore.counties) {
-                        if(county.stateCd == stateCd) {
+                        if(county.state_code == state_code) {
                             filtered_counties.push(county);
                         }
                     }

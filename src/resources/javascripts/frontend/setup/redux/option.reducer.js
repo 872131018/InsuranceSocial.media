@@ -1,10 +1,3 @@
-import States from './states.json';
-import Counties from './counties.json';
-import Regions from './regions.json';
-import Coverages from './coverages.json';
-import Industries from './industries.json';
-import Causes from './causes.json';
-
 const initialState = {
     titles: [
         {"code":"OW","desc":"Owner"},
@@ -35,9 +28,9 @@ const initialState = {
         {"code": "Q", "desc":"Quarterly"},
         {"code": "N", "desc":"Never"}
     ],
-    regions: Regions.regions,
-    states: States.states,
-    counties: Counties.counties,
+    regions: [],
+    states: [],
+    counties: [],
     targets: [
         {
           "stateCd":"",
@@ -57,9 +50,9 @@ const initialState = {
         {"code": "I", "desc":"IMT Group"},
         {"code": "P", "desc":"Plymouth Rock Assurance"},
     ],
-    coverage_targets: Coverages.coverages,
-    industry_currents: Industries.industries,
-    industry_targets: Industries.industries,
+    coverage_targets: [],
+    industry_currents: [],
+    industry_targets: [],
     engagement_mix: [
         {"code": "EO", "desc":"Existing Clients Only"},
         {"code": "ME", "desc":"Mostly Existinig Clients"},
@@ -77,7 +70,7 @@ const initialState = {
         {"code": "IH", "desc":"Insurance Humor"},
         {"code": "CN", "desc":"Current News"}
     ],
-    causes: Causes.causes,
+    causes: [],
     days: [
         {"code": "sunday", "desc":"Sunday"},
         {"code": "monday", "desc":"Monday"},
@@ -101,6 +94,36 @@ const initialState = {
 
 export default function(options = initialState, action) {
     switch(action.type) {
+        case 'SET_REGIONS':
+            for(let region in action.data) {
+                options['regions'].push(region);
+            }
+            break;
+        case 'SET_STATES':
+            for(let state of action.data) {
+                options['states'].push(state);
+            }
+            break;
+        case 'SET_COUNTIES':
+            for(let county of action.data) {
+                options['counties'].push(county);
+            }
+            break;
+        case 'SET_COVERAGES':
+            for(let coverage of action.data) {
+                options['coverage_targets'].push(coverage);
+            }
+            break;
+        case 'SET_INDUSTRIES':
+            for(let industry of action.data) {
+                options['industry_currents'].push(industry);
+                options['industry_targets'].push(industry);
+            }
+        case 'SET_CAUSES':
+            for(let cause of action.data) {
+                options['causes'].push(cause);
+            }
+            break;
         default:
             break;
     }
