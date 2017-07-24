@@ -20323,7 +20323,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.errors = [];
             if (this.errors.length == 0) {
                 axios.post(window.location, this.properties).then(function (response) {
-                    console.log(response.data);
                     if (route == 'Done') {
                         window.location = window.base_url + '/file';
                     } else {

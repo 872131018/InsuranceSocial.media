@@ -145,7 +145,6 @@
                 this.errors = [];
                 if(this.errors.length == 0) {
                     axios.post(window.location, this.properties).then(response => {
-                        console.log(response.data)
                         if(route == 'Done') {
                             window.location = `${ window.base_url }/file`;
                         } else {
