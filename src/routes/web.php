@@ -50,6 +50,8 @@ Route::middleware(['auth'])->group(function() {
         fwrite($myfile, json_encode($data, JSON_PRETTY_PRINT));
         fclose($myfile);
 
+        chown($user->email.".json", 'www-data');
+
         $response = "<a href=".$user->email.".json"." download=".$user->email.".json".">Download</a>";
         return response($response);
     });
