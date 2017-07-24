@@ -18,7 +18,9 @@ const initialState = {
     notify_frequency:null,
     commercial_mix:null,
     personal_mix:null,
-    api_token:null
+    api_token:null,
+    commercial_mix:null,
+    personal_mix:null
 };
 
 module.exports = function(user = initialState, action) {

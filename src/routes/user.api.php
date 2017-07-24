@@ -20,3 +20,7 @@ use Illuminate\Http\Request;
  Route::get('/api/user', function (Request $request) {
      return response()->json(Auth::user());
  });
+
+ Route::get('/api/agency', function (Request $request) {
+     return response()->json(Auth::user()->agency);
+ });

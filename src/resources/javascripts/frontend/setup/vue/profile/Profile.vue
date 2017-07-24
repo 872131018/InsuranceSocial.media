@@ -125,7 +125,7 @@
                     title_code: store.getState().AgencyStore.title_code,
                     principal_name: store.getState().AgencyStore.principal_name,
                     principal_email: store.getState().AgencyStore.principal_email,
-                    agency_name: store.getState().AgencyStore.agency_name,
+                    agency_name: store.getState().AgencyStore.name,
                     website: store.getState().AgencyStore.website,
                     size: store.getState().AgencyStore.size,
                     established: store.getState().AgencyStore.established,

@@ -18,6 +18,8 @@ use App\FacebookTemplate;
 
 use App\Services\PaymentService;
 
+use App\Payment;
+
 use net\authorize\api\controller as AnetController;
 
 class FacebookController extends Controller
@@ -139,16 +141,17 @@ class FacebookController extends Controller
         /**
         * Success transaction ok capture ID
         */
-        $transactionId = 0;
         if($response->getMessages()->getResultCode() == 'Ok') {
             $data = [];
             if ($response->getTransactionResponse() != null && $response->getTransactionResponse()->getMessages() != null) {
-                //echo " Transaction Response code : " . $response->getTransactionResponse()->getResponseCode() . "\n";
-                //echo  "Charge Customer Profile APPROVED  :" . "\n";
-                //echo " Charge Customer Profile AUTH CODE : " . $response->getTransactionResponse()->getAuthCode() . "\n";
-                //echo " Charge Customer Profile TRANS ID  : " . $response->getTransactionResponse()->getTransId() . "\n";
-                //echo " Code : " . $response->getTransactionResponse()->getMessages()[0]->getCode() . "\n";
-                //echo " Description : " . $response->getTransactionResponse()->getMessages()[0]->getDescription() . "\n";
+                $transactionId = $response->getTransactionResponse()->getTransId();
+                $auth_code = $response->getTransactionResponse()->getAuthCode();
+                
+                $payment = new Payment();
+                $payment->email = $user->email;
+                $payment->transaction_id = $transactionId;
+                $payment->auth_code = $auth_code;
+                $user->payments()->save($payment);
             }
         }
 

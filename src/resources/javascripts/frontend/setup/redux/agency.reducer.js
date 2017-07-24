@@ -9,6 +9,13 @@ const initialState = {
     size:null,
     established:null,
     multigenerational:null,
+    address_1:null,
+    address_2:null,
+    city:null,
+    state:null,
+    zip:null,
+    latitude:null,
+    longitude:null,
 };
 
 module.exports = function(agency = initialState, action) {

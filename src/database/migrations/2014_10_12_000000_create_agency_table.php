@@ -17,10 +17,10 @@ class CreateAgencyTable extends Migration
             $table->increments('id');
             $table->string('user_id');
             $table->string('email');
-            $table->string('name')->nullable();
             $table->string('principal_name')->nullable();
             $table->string('principal_email')->nullable();
             $table->string('phone')->nullable();
+            $table->string('name')->nullable();
             $table->string('website')->nullable();
             $table->string('size')->nullable();
             $table->string('established')->nullable();

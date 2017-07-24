@@ -24,10 +24,10 @@
     export default {
         props: {
             notify_email: {
-                type: Number
+                type: [ Number, Boolean ]
             },
             notify_text: {
-                type: Number
+                type: [ Number, Boolean ]
             }
         },
         data() {

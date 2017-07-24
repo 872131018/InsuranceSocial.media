@@ -14,6 +14,8 @@ use Carbon\Carbon;
 
 use App\UserPlan;
 
+use App\Payment;
+
 class PaymentController extends Controller
 {
     protected $paymentService;
@@ -108,10 +110,12 @@ class PaymentController extends Controller
         * Success transaction ok capture ID
         */
         $transactionId = 0;
+        $auth_code = 0;
         if($response->getMessages()->getResultCode() == 'Ok') {
             $data = [];
             if ($response->getTransactionResponse() != null && $response->getTransactionResponse()->getMessages() != null) {
                 $transactionId = $response->getTransactionResponse()->getTransId();
+                $auth_code = $response->getTransactionResponse()->getAuthCode();
             }
         }
         /**
@@ -146,6 +150,12 @@ class PaymentController extends Controller
             $userPlan->email = $user->email;
             $userPlan->plan_code = $request->input('customerData')['plan']['tier'];
             $user->plan()->save($userPlan);
+
+            $payment = new Payment();
+            $payment->email = $user->email;
+            $payment->transaction_id = $transactionId;
+            $payment->auth_code = $auth_code;
+            $user->payments()->save($payment);
 
             return response()->json($user);
         }

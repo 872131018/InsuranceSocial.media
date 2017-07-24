@@ -26,6 +26,11 @@
                 store.dispatch({ type: 'SET_USER', data: response.data });
                 this.loading--;
             });
+            this.loading++;
+            axios.get(`${ window.base_url }/api/agency`).then(response => {
+                store.dispatch({ type: 'SET_AGENCY', data: response.data });
+                this.loading--;
+            });
         },
         components: {
             Navigation,

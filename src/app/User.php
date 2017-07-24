@@ -156,4 +156,12 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\SelectedCause');
     }
+
+    /**
+     * Get the causes record associated with the user.
+     */
+    public function payments()
+    {
+        return $this->hasMany('App\Payment');
+    }
 }
