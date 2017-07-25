@@ -1,0 +1,437 @@
+{
+    "user": {
+        "id": 2,
+        "name": "qwer qwer",
+        "email": "qwer@qwer.com",
+        "status": "N",
+        "role": "A",
+        "cell_phone": "1231231234",
+        "title_code": "OM",
+        "effective_date": "2017-08-01",
+        "expiration_date": null,
+        "coupon_code": null,
+        "termination_reason": null,
+        "termination_comment": null,
+        "customer_profile_id": "1812634845",
+        "customer_payment_profile_id": "1807225569",
+        "notify_email": 1,
+        "notify_text": 1,
+        "notify_frequency": "W",
+        "commercial_mix": "78",
+        "personal_mix": "22",
+        "api_token": "w85EW4XvhUxgPJ6SsAxBTJXc4CABh84M2WoUkKIpqPrtgpcC0xDH3isxGkxJ",
+        "created_at": "2017-07-25 19:40:27",
+        "updated_at": "2017-07-25 19:42:38",
+        "deleted_at": null,
+        "plan": {
+            "id": 2,
+            "user_id": "2",
+            "email": "qwer@qwer.com",
+            "plan_code": "1",
+            "engagement_mix": "EN",
+            "engagement_tone": "C",
+            "monday": null,
+            "tuesday": 1,
+            "wednesday": 1,
+            "thursday": null,
+            "friday": null,
+            "saturday": null,
+            "sunday": null,
+            "time_code": "system_chosen",
+            "created_at": "2017-07-25 19:40:52",
+            "updated_at": "2017-07-25 19:42:51",
+            "deleted_at": null
+        },
+        "facebook": {
+            "id": 2,
+            "user_id": "2",
+            "email": "qwer@qwer.com",
+            "access_token": "EAAKE8NXpSScBAHVFlUKoPF1Fv1spokixVx30gsI32nF6crEXBg054YfLBgqQdjlxcCwLgSZB6cIe3vjpHnYKryaD0s8uw9ZApF2VSRRCxsMsJxv3WofdQZCdZCvU2HX3UgwV8n4dhJNsToYg4QXgba9oxYy6lV1O4rKV0ZBFy1guzS9miaQtR",
+            "page_id": "1012166008894399",
+            "page_name": "Farmers Mutual Insurance Co. of Macon",
+            "page_token": "EAAKE8NXpSScBAFJevh8MZAXqspuSBQMgUZCrDnoULU4nuy6nFz07VA6enDUB3mwUygqwzIjI2JLZAOrSDO7SxifZBrZAa1QHfXL6lNGW8ZCdA6ND14wi6HlZAGk2k2IX9w89Y13Hwu4TbVVUv42hpoTwPF3Fn6EfptamfdYjDFMFhfzRPZBLegv761Ae7deZCseUZD",
+            "progress": null,
+            "email_sent_date_1": null,
+            "email_sent_date_2": null,
+            "email_sent_date_3": null,
+            "created_at": "2017-07-25 19:41:07",
+            "updated_at": "2017-07-25 19:41:16",
+            "deleted_at": null
+        },
+        "template": null,
+        "twitter": {
+            "id": 2,
+            "user_id": "2",
+            "email": "qwer@qwer.com",
+            "access_token": "4552464794-muGKAHrArnw04GOdZuZK9w4qkekPMlp6GnNgF5p",
+            "secret_token": "5p0arXwOFjyK3qpqwal10acHl2ziHAcZGo7PlyvGH3dnr",
+            "created_at": "2017-07-25 19:41:28",
+            "updated_at": "2017-07-25 19:41:28",
+            "deleted_at": null
+        },
+        "agency": {
+            "id": 5,
+            "user_id": "2",
+            "email": "qwer@qwer.com",
+            "principal_name": "asdf asdf",
+            "principal_email": "asdf@asdf.com",
+            "phone": null,
+            "name": "asdf llc",
+            "website": "www.asdf.com",
+            "size": "2-5",
+            "established": "4567",
+            "multigenerational": "2",
+            "address_1": "123 asdf",
+            "address_2": "123",
+            "city": "ASDFTYU",
+            "state": "11169",
+            "zip": "12345",
+            "latitude": null,
+            "longitude": null,
+            "created_at": "2017-07-25 19:41:58",
+            "updated_at": "2017-07-25 19:42:15",
+            "deleted_at": null
+        },
+        "regions": [],
+        "states": [
+            {
+                "id": 3,
+                "user_id": "2",
+                "email": "qwer@qwer.com",
+                "state_code": "11170",
+                "created_at": "2017-07-25 19:42:15",
+                "updated_at": "2017-07-25 19:42:15",
+                "deleted_at": null
+            },
+            {
+                "id": 4,
+                "user_id": "2",
+                "email": "qwer@qwer.com",
+                "state_code": "11171",
+                "created_at": "2017-07-25 19:42:15",
+                "updated_at": "2017-07-25 19:42:15",
+                "deleted_at": null
+            }
+        ],
+        "carriers": [
+            {
+                "id": 2,
+                "user_id": "2",
+                "email": "qwer@qwer.com",
+                "carrier_code": "G",
+                "created_at": "2017-07-25 19:42:38",
+                "updated_at": "2017-07-25 19:42:38",
+                "deleted_at": null
+            }
+        ],
+        "commercial_coverages": [
+            {
+                "id": 3,
+                "user_id": "2",
+                "email": "qwer@qwer.com",
+                "coverage_code": "11005",
+                "created_at": "2017-07-25 19:42:38",
+                "updated_at": "2017-07-25 19:42:38",
+                "deleted_at": null
+            }
+        ],
+        "personal_coverages": [
+            {
+                "id": 3,
+                "user_id": "2",
+                "email": "qwer@qwer.com",
+                "coverage_code": "11005",
+                "created_at": "2017-07-25 19:42:38",
+                "updated_at": "2017-07-25 19:42:38",
+                "deleted_at": null
+            }
+        ],
+        "benefit_coverages": [
+            {
+                "id": 3,
+                "user_id": "2",
+                "email": "qwer@qwer.com",
+                "coverage_code": "11004",
+                "created_at": "2017-07-25 19:42:38",
+                "updated_at": "2017-07-25 19:42:38",
+                "deleted_at": null
+            },
+            {
+                "id": 4,
+                "user_id": "2",
+                "email": "qwer@qwer.com",
+                "coverage_code": "11005",
+                "created_at": "2017-07-25 19:42:38",
+                "updated_at": "2017-07-25 19:42:38",
+                "deleted_at": null
+            }
+        ],
+        "current_industries": [
+            {
+                "id": 3,
+                "user_id": "2",
+                "email": "qwer@qwer.com",
+                "industry_code": "11229",
+                "created_at": "2017-07-25 19:42:38",
+                "updated_at": "2017-07-25 19:42:38",
+                "deleted_at": null
+            },
+            {
+                "id": 4,
+                "user_id": "2",
+                "email": "qwer@qwer.com",
+                "industry_code": "11230",
+                "created_at": "2017-07-25 19:42:38",
+                "updated_at": "2017-07-25 19:42:38",
+                "deleted_at": null
+            }
+        ],
+        "target_industries": [
+            {
+                "id": 3,
+                "user_id": "2",
+                "email": "qwer@qwer.com",
+                "industry_code": "11231",
+                "created_at": "2017-07-25 19:42:38",
+                "updated_at": "2017-07-25 19:42:38",
+                "deleted_at": null
+            },
+            {
+                "id": 4,
+                "user_id": "2",
+                "email": "qwer@qwer.com",
+                "industry_code": "11230",
+                "created_at": "2017-07-25 19:42:38",
+                "updated_at": "2017-07-25 19:42:38",
+                "deleted_at": null
+            }
+        ],
+        "special_topics": [
+            {
+                "id": 6,
+                "user_id": "2",
+                "email": "qwer@qwer.com",
+                "topic_code": "CN",
+                "created_at": "2017-07-25 19:42:51",
+                "updated_at": "2017-07-25 19:42:51",
+                "deleted_at": null
+            }
+        ],
+        "causes": [
+            {
+                "id": 6,
+                "user_id": "2",
+                "email": "qwer@qwer.com",
+                "cause_code": "6671",
+                "created_at": "2017-07-25 19:42:51",
+                "updated_at": "2017-07-25 19:42:51",
+                "deleted_at": null
+            }
+        ]
+    },
+    "plan": {
+        "id": 2,
+        "user_id": "2",
+        "email": "qwer@qwer.com",
+        "plan_code": "1",
+        "engagement_mix": "EN",
+        "engagement_tone": "C",
+        "monday": null,
+        "tuesday": 1,
+        "wednesday": 1,
+        "thursday": null,
+        "friday": null,
+        "saturday": null,
+        "sunday": null,
+        "time_code": "system_chosen",
+        "created_at": "2017-07-25 19:40:52",
+        "updated_at": "2017-07-25 19:42:51",
+        "deleted_at": null
+    },
+    "facebook_account": {
+        "id": 2,
+        "user_id": "2",
+        "email": "qwer@qwer.com",
+        "access_token": "EAAKE8NXpSScBAHVFlUKoPF1Fv1spokixVx30gsI32nF6crEXBg054YfLBgqQdjlxcCwLgSZB6cIe3vjpHnYKryaD0s8uw9ZApF2VSRRCxsMsJxv3WofdQZCdZCvU2HX3UgwV8n4dhJNsToYg4QXgba9oxYy6lV1O4rKV0ZBFy1guzS9miaQtR",
+        "page_id": "1012166008894399",
+        "page_name": "Farmers Mutual Insurance Co. of Macon",
+        "page_token": "EAAKE8NXpSScBAFJevh8MZAXqspuSBQMgUZCrDnoULU4nuy6nFz07VA6enDUB3mwUygqwzIjI2JLZAOrSDO7SxifZBrZAa1QHfXL6lNGW8ZCdA6ND14wi6HlZAGk2k2IX9w89Y13Hwu4TbVVUv42hpoTwPF3Fn6EfptamfdYjDFMFhfzRPZBLegv761Ae7deZCseUZD",
+        "progress": null,
+        "email_sent_date_1": null,
+        "email_sent_date_2": null,
+        "email_sent_date_3": null,
+        "created_at": "2017-07-25 19:41:07",
+        "updated_at": "2017-07-25 19:41:16",
+        "deleted_at": null
+    },
+    "template": null,
+    "twitter": {
+        "id": 2,
+        "user_id": "2",
+        "email": "qwer@qwer.com",
+        "access_token": "4552464794-muGKAHrArnw04GOdZuZK9w4qkekPMlp6GnNgF5p",
+        "secret_token": "5p0arXwOFjyK3qpqwal10acHl2ziHAcZGo7PlyvGH3dnr",
+        "created_at": "2017-07-25 19:41:28",
+        "updated_at": "2017-07-25 19:41:28",
+        "deleted_at": null
+    },
+    "agency": {
+        "id": 5,
+        "user_id": "2",
+        "email": "qwer@qwer.com",
+        "principal_name": "asdf asdf",
+        "principal_email": "asdf@asdf.com",
+        "phone": null,
+        "name": "asdf llc",
+        "website": "www.asdf.com",
+        "size": "2-5",
+        "established": "4567",
+        "multigenerational": "2",
+        "address_1": "123 asdf",
+        "address_2": "123",
+        "city": "ASDFTYU",
+        "state": "11169",
+        "zip": "12345",
+        "latitude": null,
+        "longitude": null,
+        "created_at": "2017-07-25 19:41:58",
+        "updated_at": "2017-07-25 19:42:15",
+        "deleted_at": null
+    },
+    "regions": [],
+    "states": [
+        {
+            "id": 3,
+            "user_id": "2",
+            "email": "qwer@qwer.com",
+            "state_code": "11170",
+            "created_at": "2017-07-25 19:42:15",
+            "updated_at": "2017-07-25 19:42:15",
+            "deleted_at": null
+        },
+        {
+            "id": 4,
+            "user_id": "2",
+            "email": "qwer@qwer.com",
+            "state_code": "11171",
+            "created_at": "2017-07-25 19:42:15",
+            "updated_at": "2017-07-25 19:42:15",
+            "deleted_at": null
+        }
+    ],
+    "counties": [
+        {
+            "id": 2,
+            "user_id": "2",
+            "email": "qwer@qwer.com",
+            "carrier_code": "G",
+            "created_at": "2017-07-25 19:42:38",
+            "updated_at": "2017-07-25 19:42:38",
+            "deleted_at": null
+        }
+    ],
+    "commercialCoverages": [
+        {
+            "id": 3,
+            "user_id": "2",
+            "email": "qwer@qwer.com",
+            "coverage_code": "11005",
+            "created_at": "2017-07-25 19:42:38",
+            "updated_at": "2017-07-25 19:42:38",
+            "deleted_at": null
+        }
+    ],
+    "personalCoverages": [
+        {
+            "id": 3,
+            "user_id": "2",
+            "email": "qwer@qwer.com",
+            "coverage_code": "11005",
+            "created_at": "2017-07-25 19:42:38",
+            "updated_at": "2017-07-25 19:42:38",
+            "deleted_at": null
+        }
+    ],
+    "benefitCoverages": [
+        {
+            "id": 3,
+            "user_id": "2",
+            "email": "qwer@qwer.com",
+            "coverage_code": "11004",
+            "created_at": "2017-07-25 19:42:38",
+            "updated_at": "2017-07-25 19:42:38",
+            "deleted_at": null
+        },
+        {
+            "id": 4,
+            "user_id": "2",
+            "email": "qwer@qwer.com",
+            "coverage_code": "11005",
+            "created_at": "2017-07-25 19:42:38",
+            "updated_at": "2017-07-25 19:42:38",
+            "deleted_at": null
+        }
+    ],
+    "currentIndustries": [
+        {
+            "id": 3,
+            "user_id": "2",
+            "email": "qwer@qwer.com",
+            "industry_code": "11229",
+            "created_at": "2017-07-25 19:42:38",
+            "updated_at": "2017-07-25 19:42:38",
+            "deleted_at": null
+        },
+        {
+            "id": 4,
+            "user_id": "2",
+            "email": "qwer@qwer.com",
+            "industry_code": "11230",
+            "created_at": "2017-07-25 19:42:38",
+            "updated_at": "2017-07-25 19:42:38",
+            "deleted_at": null
+        }
+    ],
+    "targetIndustries": [
+        {
+            "id": 3,
+            "user_id": "2",
+            "email": "qwer@qwer.com",
+            "industry_code": "11231",
+            "created_at": "2017-07-25 19:42:38",
+            "updated_at": "2017-07-25 19:42:38",
+            "deleted_at": null
+        },
+        {
+            "id": 4,
+            "user_id": "2",
+            "email": "qwer@qwer.com",
+            "industry_code": "11230",
+            "created_at": "2017-07-25 19:42:38",
+            "updated_at": "2017-07-25 19:42:38",
+            "deleted_at": null
+        }
+    ],
+    "specialTopics": [
+        {
+            "id": 6,
+            "user_id": "2",
+            "email": "qwer@qwer.com",
+            "topic_code": "CN",
+            "created_at": "2017-07-25 19:42:51",
+            "updated_at": "2017-07-25 19:42:51",
+            "deleted_at": null
+        }
+    ],
+    "causes": [
+        {
+            "id": 6,
+            "user_id": "2",
+            "email": "qwer@qwer.com",
+            "cause_code": "6671",
+            "created_at": "2017-07-25 19:42:51",
+            "updated_at": "2017-07-25 19:42:51",
+            "deleted_at": null
+        }
+    ]
+}

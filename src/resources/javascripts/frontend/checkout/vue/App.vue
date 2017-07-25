@@ -10,9 +10,6 @@
 </template>
 
 <script>
-    import Navigation from './navigation/Navigation';
-    import Foot from './foot/Foot';
-
     export default {
         data() {
             return {
@@ -27,10 +24,6 @@
                 store.dispatch({ type: 'SET_USER', data: response.data });
                 this.loading--;
             });
-        },
-        components: {
-            Navigation,
-            Foot
         }
     }
 </script>
