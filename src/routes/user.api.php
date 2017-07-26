@@ -13,6 +13,28 @@ use App\Industry;
 
 use App\Cause;
 
+use App\SelectedRegion;
+
+use App\SelectedState;
+
+use App\SelectedCounty;
+
+use App\SelectedCarrier;
+
+use App\SelectedCommercialCoverage;
+
+use App\SelectedPersonalCoverage;
+
+use App\SelectedBenefitCoverage;
+
+use App\SelectedCurrentIndustry;
+
+use App\SelectedTargetIndustry;
+
+use App\SelectedSpecialTopic;
+
+use App\SelectedCause;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -32,7 +54,9 @@ use App\Cause;
  Route::get('/api/user', function (Request $request) {
      return response()->json(Auth::user());
  });
-
+ Route::get('/api/plan', function (Request $request) {
+     return response()->json(Auth::user()->plan);
+ });
  Route::get('/api/agency', function (Request $request) {
      return response()->json(Auth::user()->agency);
  });
@@ -53,4 +77,19 @@ use App\Cause;
  });
  Route::get('/api/causes', function (Request $request) {
      return response()->json(Cause::all());
+ });
+ Route::get('/api/selections', function (Request $request) {
+     return response()->json([
+        'selected_regions' => SelectedRegion::all(),
+        'selected_states' => SelectedState::all(),
+        'selected_counties' => SelectedCounty::all(),
+        'selected_carriers' => SelectedCarrier::all(),
+        'selected_commercial_coverages' => SelectedCommercialCoverage::all(),
+        'selected_personal_coverages' => SelectedPersonalCoverage::all(),
+        'selected_benefit_coverages' => SelectedBenefitCoverage::all(),
+        'selected_current_industries' => SelectedCurrentIndustry::all(),
+        'selected_target_industries' => SelectedTargetIndustry::all(),
+        'selected_special_topics' => SelectedSpecialTopic::all(),
+        'selected_causes' => SelectedCause::all()
+     ]);
  });

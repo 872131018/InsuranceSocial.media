@@ -5,23 +5,23 @@
         "email": "asdf@asdf.com",
         "status": "N",
         "role": "A",
-        "cell_phone": "1231231234",
-        "title_code": "OM",
+        "cell_phone": null,
+        "title_code": null,
         "effective_date": "2017-08-01",
         "expiration_date": null,
         "coupon_code": null,
         "termination_reason": null,
         "termination_comment": null,
-        "customer_profile_id": "1812623248",
-        "customer_payment_profile_id": "1807212744",
-        "notify_email": 1,
-        "notify_text": 1,
-        "notify_frequency": "W",
-        "commercial_mix": "60",
-        "personal_mix": "40",
-        "api_token": "r0bCqn95cGfiBU8UqXZbaY58f3Jv1dep9ygoPxtKA9vz2xCojOdzopVTevIi",
-        "created_at": "2017-07-24 20:34:23",
-        "updated_at": "2017-07-24 21:17:48",
+        "customer_profile_id": "1812647663",
+        "customer_payment_profile_id": "1807239210",
+        "notify_email": null,
+        "notify_text": null,
+        "notify_frequency": null,
+        "commercial_mix": null,
+        "personal_mix": null,
+        "api_token": "ccToDBoAz2LXPnbU2IzbSJgkBXTyURtGo7ekcvpJGcpzP4SBLVTLyb6YLfDU",
+        "created_at": "2017-07-26 21:36:45",
+        "updated_at": "2017-07-26 21:37:08",
         "deleted_at": null,
         "plan": {
             "id": 1,
@@ -29,245 +29,50 @@
             "email": "asdf@asdf.com",
             "plan_code": "1",
             "engagement_mix": "EO",
-            "engagement_tone": "E",
+            "engagement_tone": "C",
             "monday": 1,
-            "tuesday": 1,
-            "wednesday": 1,
-            "thursday": 1,
+            "tuesday": null,
+            "wednesday": null,
+            "thursday": null,
             "friday": null,
             "saturday": null,
-            "sunday": null,
-            "time_code": "2-5am",
-            "created_at": "2017-07-24 20:34:45",
-            "updated_at": "2017-07-24 21:43:06",
+            "sunday": 1,
+            "time_code": "5-8am",
+            "created_at": "2017-07-26 21:37:08",
+            "updated_at": "2017-07-26 21:37:44",
             "deleted_at": null
         },
-        "facebook": {
-            "id": 1,
-            "user_id": "1",
-            "email": "asdf@asdf.com",
-            "access_token": "EAAKE8NXpSScBAPTRKc4H5UB2rnSgL1FyjHKNkwXwmpYEFPVZBZAymQPKaHxdR6QQYcNkqlZBDCiacAOOP9iU6Lz5djoSDaXtQsnRritt1JyzhDjlyGMeC1dCaaslm4X3uwGBR4SYYNmXAeJPQ7167J2hh33QsUtpSHNoh2Y18OO4oOzR46A",
-            "page_id": "1012166008894399",
-            "page_name": "Farmers Mutual Insurance Co. of Macon",
-            "page_token": "EAAKE8NXpSScBAM3wmbyCJhr1mWvpjUjnSpObaLRdh4lkeOKiYr4b2IAjVrN2GlUwADiZADpTAa4jb1CgsATlwDfQcZApvmZCOUvhLcpQZACfxwtMli2soipbEP8U5y6u4WNiK7ngWGClwX4NqwWtMBqjKINZCrtJwv1qFspI4bC8AKT2TxhtUJZAO7nVQQ9sgZD",
-            "progress": null,
-            "email_sent_date_1": null,
-            "email_sent_date_2": null,
-            "email_sent_date_3": null,
-            "created_at": "2017-07-24 20:35:03",
-            "updated_at": "2017-07-24 20:35:11",
-            "deleted_at": null
-        },
+        "facebook": null,
         "template": null,
-        "twitter": {
-            "id": 1,
-            "user_id": "1",
-            "email": "asdf@asdf.com",
-            "access_token": "4552464794-muGKAHrArnw04GOdZuZK9w4qkekPMlp6GnNgF5p",
-            "secret_token": "5p0arXwOFjyK3qpqwal10acHl2ziHAcZGo7PlyvGH3dnr",
-            "created_at": "2017-07-24 20:35:17",
-            "updated_at": "2017-07-24 20:35:17",
-            "deleted_at": null
-        },
-        "agency": {
-            "id": 1,
-            "user_id": "1",
-            "email": "asdf@asdf.com",
-            "principal_name": "asdf asdf",
-            "principal_email": "asdf@asdf.com",
-            "phone": null,
-            "name": "asdf lcc",
-            "website": "www.asdf.com",
-            "size": "2-5",
-            "established": "2333",
-            "multigenerational": "2",
-            "address_1": "123 asdf",
-            "address_2": "12345",
-            "city": "QWERTY",
-            "state": "11170",
-            "zip": "56789",
-            "latitude": null,
-            "longitude": null,
-            "created_at": "2017-07-24 21:07:35",
-            "updated_at": "2017-07-24 21:17:27",
-            "deleted_at": null
-        },
+        "twitter": null,
+        "agency": null,
         "regions": [],
-        "states": [
-            {
-                "id": 1,
-                "user_id": "1",
-                "email": "asdf@asdf.com",
-                "state_code": "11173",
-                "created_at": "2017-07-24 21:17:08",
-                "updated_at": "2017-07-24 21:17:08",
-                "deleted_at": null
-            },
-            {
-                "id": 2,
-                "user_id": "1",
-                "email": "asdf@asdf.com",
-                "state_code": "11170",
-                "created_at": "2017-07-24 21:17:27",
-                "updated_at": "2017-07-24 21:17:27",
-                "deleted_at": null
-            }
-        ],
-        "carriers": [
-            {
-                "id": 1,
-                "user_id": "1",
-                "email": "asdf@asdf.com",
-                "carrier_code": "C",
-                "created_at": "2017-07-24 21:17:48",
-                "updated_at": "2017-07-24 21:17:48",
-                "deleted_at": null
-            }
-        ],
-        "commercial_coverages": [
-            {
-                "id": 1,
-                "user_id": "1",
-                "email": "asdf@asdf.com",
-                "coverage_code": "11004",
-                "created_at": "2017-07-24 21:17:48",
-                "updated_at": "2017-07-24 21:17:48",
-                "deleted_at": null
-            },
-            {
-                "id": 2,
-                "user_id": "1",
-                "email": "asdf@asdf.com",
-                "coverage_code": "11005",
-                "created_at": "2017-07-24 21:17:48",
-                "updated_at": "2017-07-24 21:17:48",
-                "deleted_at": null
-            }
-        ],
-        "personal_coverages": [
-            {
-                "id": 1,
-                "user_id": "1",
-                "email": "asdf@asdf.com",
-                "coverage_code": "11005",
-                "created_at": "2017-07-24 21:17:48",
-                "updated_at": "2017-07-24 21:17:48",
-                "deleted_at": null
-            },
-            {
-                "id": 2,
-                "user_id": "1",
-                "email": "asdf@asdf.com",
-                "coverage_code": "11006",
-                "created_at": "2017-07-24 21:17:48",
-                "updated_at": "2017-07-24 21:17:48",
-                "deleted_at": null
-            }
-        ],
-        "benefit_coverages": [
-            {
-                "id": 1,
-                "user_id": "1",
-                "email": "asdf@asdf.com",
-                "coverage_code": "11004",
-                "created_at": "2017-07-24 21:17:48",
-                "updated_at": "2017-07-24 21:17:48",
-                "deleted_at": null
-            },
-            {
-                "id": 2,
-                "user_id": "1",
-                "email": "asdf@asdf.com",
-                "coverage_code": "11006",
-                "created_at": "2017-07-24 21:17:48",
-                "updated_at": "2017-07-24 21:17:48",
-                "deleted_at": null
-            }
-        ],
-        "current_industries": [
-            {
-                "id": 1,
-                "user_id": "1",
-                "email": "asdf@asdf.com",
-                "industry_code": "11231",
-                "created_at": "2017-07-24 21:17:48",
-                "updated_at": "2017-07-24 21:17:48",
-                "deleted_at": null
-            },
-            {
-                "id": 2,
-                "user_id": "1",
-                "email": "asdf@asdf.com",
-                "industry_code": "11230",
-                "created_at": "2017-07-24 21:17:48",
-                "updated_at": "2017-07-24 21:17:48",
-                "deleted_at": null
-            }
-        ],
-        "target_industries": [
-            {
-                "id": 1,
-                "user_id": "1",
-                "email": "asdf@asdf.com",
-                "industry_code": "11228",
-                "created_at": "2017-07-24 21:17:48",
-                "updated_at": "2017-07-24 21:17:48",
-                "deleted_at": null
-            },
-            {
-                "id": 2,
-                "user_id": "1",
-                "email": "asdf@asdf.com",
-                "industry_code": "11229",
-                "created_at": "2017-07-24 21:17:48",
-                "updated_at": "2017-07-24 21:17:48",
-                "deleted_at": null
-            }
-        ],
+        "states": [],
+        "carriers": [],
+        "commercial_coverages": [],
+        "personal_coverages": [],
+        "benefit_coverages": [],
+        "current_industries": [],
+        "target_industries": [],
         "special_topics": [
             {
                 "id": 1,
                 "user_id": "1",
                 "email": "asdf@asdf.com",
-                "topic_code": "CN",
-                "created_at": "2017-07-24 21:18:04",
-                "updated_at": "2017-07-24 21:18:04",
+                "code": "NH",
+                "desc": "Recognition of National Holidays",
+                "created_at": "2017-07-26 21:37:44",
+                "updated_at": "2017-07-26 21:37:44",
                 "deleted_at": null
             },
             {
                 "id": 2,
                 "user_id": "1",
                 "email": "asdf@asdf.com",
-                "topic_code": "IH",
-                "created_at": "2017-07-24 21:27:55",
-                "updated_at": "2017-07-24 21:27:55",
-                "deleted_at": null
-            },
-            {
-                "id": 3,
-                "user_id": "1",
-                "email": "asdf@asdf.com",
-                "topic_code": "IH",
-                "created_at": "2017-07-24 21:33:29",
-                "updated_at": "2017-07-24 21:33:29",
-                "deleted_at": null
-            },
-            {
-                "id": 4,
-                "user_id": "1",
-                "email": "asdf@asdf.com",
-                "topic_code": "NH",
-                "created_at": "2017-07-24 21:43:06",
-                "updated_at": "2017-07-24 21:43:06",
-                "deleted_at": null
-            },
-            {
-                "id": 5,
-                "user_id": "1",
-                "email": "asdf@asdf.com",
-                "topic_code": "IH",
-                "created_at": "2017-07-24 21:43:06",
-                "updated_at": "2017-07-24 21:43:06",
+                "code": "IH",
+                "desc": "Insurance Humor",
+                "created_at": "2017-07-26 21:37:44",
+                "updated_at": "2017-07-26 21:37:44",
                 "deleted_at": null
             }
         ],
@@ -276,45 +81,20 @@
                 "id": 1,
                 "user_id": "1",
                 "email": "asdf@asdf.com",
-                "cause_code": "11230",
-                "created_at": "2017-07-24 21:18:04",
-                "updated_at": "2017-07-24 21:18:04",
+                "code": "11229",
+                "desc": "Barber and beauty",
+                "created_at": "2017-07-26 21:37:44",
+                "updated_at": "2017-07-26 21:37:44",
                 "deleted_at": null
             },
             {
                 "id": 2,
                 "user_id": "1",
                 "email": "asdf@asdf.com",
-                "cause_code": "11228",
-                "created_at": "2017-07-24 21:27:55",
-                "updated_at": "2017-07-24 21:27:55",
-                "deleted_at": null
-            },
-            {
-                "id": 3,
-                "user_id": "1",
-                "email": "asdf@asdf.com",
-                "cause_code": "6659",
-                "created_at": "2017-07-24 21:33:29",
-                "updated_at": "2017-07-24 21:33:29",
-                "deleted_at": null
-            },
-            {
-                "id": 4,
-                "user_id": "1",
-                "email": "asdf@asdf.com",
-                "cause_code": "6655",
-                "created_at": "2017-07-24 21:43:06",
-                "updated_at": "2017-07-24 21:43:06",
-                "deleted_at": null
-            },
-            {
-                "id": 5,
-                "user_id": "1",
-                "email": "asdf@asdf.com",
-                "cause_code": "6659",
-                "created_at": "2017-07-24 21:43:06",
-                "updated_at": "2017-07-24 21:43:06",
+                "code": "11230",
+                "desc": "Commercial trucking",
+                "created_at": "2017-07-26 21:37:44",
+                "updated_at": "2017-07-26 21:37:44",
                 "deleted_at": null
             }
         ]
@@ -325,245 +105,50 @@
         "email": "asdf@asdf.com",
         "plan_code": "1",
         "engagement_mix": "EO",
-        "engagement_tone": "E",
+        "engagement_tone": "C",
         "monday": 1,
-        "tuesday": 1,
-        "wednesday": 1,
-        "thursday": 1,
+        "tuesday": null,
+        "wednesday": null,
+        "thursday": null,
         "friday": null,
         "saturday": null,
-        "sunday": null,
-        "time_code": "2-5am",
-        "created_at": "2017-07-24 20:34:45",
-        "updated_at": "2017-07-24 21:43:06",
+        "sunday": 1,
+        "time_code": "5-8am",
+        "created_at": "2017-07-26 21:37:08",
+        "updated_at": "2017-07-26 21:37:44",
         "deleted_at": null
     },
-    "facebook_account": {
-        "id": 1,
-        "user_id": "1",
-        "email": "asdf@asdf.com",
-        "access_token": "EAAKE8NXpSScBAPTRKc4H5UB2rnSgL1FyjHKNkwXwmpYEFPVZBZAymQPKaHxdR6QQYcNkqlZBDCiacAOOP9iU6Lz5djoSDaXtQsnRritt1JyzhDjlyGMeC1dCaaslm4X3uwGBR4SYYNmXAeJPQ7167J2hh33QsUtpSHNoh2Y18OO4oOzR46A",
-        "page_id": "1012166008894399",
-        "page_name": "Farmers Mutual Insurance Co. of Macon",
-        "page_token": "EAAKE8NXpSScBAM3wmbyCJhr1mWvpjUjnSpObaLRdh4lkeOKiYr4b2IAjVrN2GlUwADiZADpTAa4jb1CgsATlwDfQcZApvmZCOUvhLcpQZACfxwtMli2soipbEP8U5y6u4WNiK7ngWGClwX4NqwWtMBqjKINZCrtJwv1qFspI4bC8AKT2TxhtUJZAO7nVQQ9sgZD",
-        "progress": null,
-        "email_sent_date_1": null,
-        "email_sent_date_2": null,
-        "email_sent_date_3": null,
-        "created_at": "2017-07-24 20:35:03",
-        "updated_at": "2017-07-24 20:35:11",
-        "deleted_at": null
-    },
+    "facebook_account": null,
     "template": null,
-    "twitter": {
-        "id": 1,
-        "user_id": "1",
-        "email": "asdf@asdf.com",
-        "access_token": "4552464794-muGKAHrArnw04GOdZuZK9w4qkekPMlp6GnNgF5p",
-        "secret_token": "5p0arXwOFjyK3qpqwal10acHl2ziHAcZGo7PlyvGH3dnr",
-        "created_at": "2017-07-24 20:35:17",
-        "updated_at": "2017-07-24 20:35:17",
-        "deleted_at": null
-    },
-    "agency": {
-        "id": 1,
-        "user_id": "1",
-        "email": "asdf@asdf.com",
-        "principal_name": "asdf asdf",
-        "principal_email": "asdf@asdf.com",
-        "phone": null,
-        "name": "asdf lcc",
-        "website": "www.asdf.com",
-        "size": "2-5",
-        "established": "2333",
-        "multigenerational": "2",
-        "address_1": "123 asdf",
-        "address_2": "12345",
-        "city": "QWERTY",
-        "state": "11170",
-        "zip": "56789",
-        "latitude": null,
-        "longitude": null,
-        "created_at": "2017-07-24 21:07:35",
-        "updated_at": "2017-07-24 21:17:27",
-        "deleted_at": null
-    },
+    "twitter": null,
+    "agency": null,
     "regions": [],
-    "states": [
-        {
-            "id": 1,
-            "user_id": "1",
-            "email": "asdf@asdf.com",
-            "state_code": "11173",
-            "created_at": "2017-07-24 21:17:08",
-            "updated_at": "2017-07-24 21:17:08",
-            "deleted_at": null
-        },
-        {
-            "id": 2,
-            "user_id": "1",
-            "email": "asdf@asdf.com",
-            "state_code": "11170",
-            "created_at": "2017-07-24 21:17:27",
-            "updated_at": "2017-07-24 21:17:27",
-            "deleted_at": null
-        }
-    ],
-    "counties": [
-        {
-            "id": 1,
-            "user_id": "1",
-            "email": "asdf@asdf.com",
-            "carrier_code": "C",
-            "created_at": "2017-07-24 21:17:48",
-            "updated_at": "2017-07-24 21:17:48",
-            "deleted_at": null
-        }
-    ],
-    "commercialCoverages": [
-        {
-            "id": 1,
-            "user_id": "1",
-            "email": "asdf@asdf.com",
-            "coverage_code": "11004",
-            "created_at": "2017-07-24 21:17:48",
-            "updated_at": "2017-07-24 21:17:48",
-            "deleted_at": null
-        },
-        {
-            "id": 2,
-            "user_id": "1",
-            "email": "asdf@asdf.com",
-            "coverage_code": "11005",
-            "created_at": "2017-07-24 21:17:48",
-            "updated_at": "2017-07-24 21:17:48",
-            "deleted_at": null
-        }
-    ],
-    "personalCoverages": [
-        {
-            "id": 1,
-            "user_id": "1",
-            "email": "asdf@asdf.com",
-            "coverage_code": "11005",
-            "created_at": "2017-07-24 21:17:48",
-            "updated_at": "2017-07-24 21:17:48",
-            "deleted_at": null
-        },
-        {
-            "id": 2,
-            "user_id": "1",
-            "email": "asdf@asdf.com",
-            "coverage_code": "11006",
-            "created_at": "2017-07-24 21:17:48",
-            "updated_at": "2017-07-24 21:17:48",
-            "deleted_at": null
-        }
-    ],
-    "benefitCoverages": [
-        {
-            "id": 1,
-            "user_id": "1",
-            "email": "asdf@asdf.com",
-            "coverage_code": "11004",
-            "created_at": "2017-07-24 21:17:48",
-            "updated_at": "2017-07-24 21:17:48",
-            "deleted_at": null
-        },
-        {
-            "id": 2,
-            "user_id": "1",
-            "email": "asdf@asdf.com",
-            "coverage_code": "11006",
-            "created_at": "2017-07-24 21:17:48",
-            "updated_at": "2017-07-24 21:17:48",
-            "deleted_at": null
-        }
-    ],
-    "currentIndustries": [
-        {
-            "id": 1,
-            "user_id": "1",
-            "email": "asdf@asdf.com",
-            "industry_code": "11231",
-            "created_at": "2017-07-24 21:17:48",
-            "updated_at": "2017-07-24 21:17:48",
-            "deleted_at": null
-        },
-        {
-            "id": 2,
-            "user_id": "1",
-            "email": "asdf@asdf.com",
-            "industry_code": "11230",
-            "created_at": "2017-07-24 21:17:48",
-            "updated_at": "2017-07-24 21:17:48",
-            "deleted_at": null
-        }
-    ],
-    "targetIndustries": [
-        {
-            "id": 1,
-            "user_id": "1",
-            "email": "asdf@asdf.com",
-            "industry_code": "11228",
-            "created_at": "2017-07-24 21:17:48",
-            "updated_at": "2017-07-24 21:17:48",
-            "deleted_at": null
-        },
-        {
-            "id": 2,
-            "user_id": "1",
-            "email": "asdf@asdf.com",
-            "industry_code": "11229",
-            "created_at": "2017-07-24 21:17:48",
-            "updated_at": "2017-07-24 21:17:48",
-            "deleted_at": null
-        }
-    ],
+    "states": [],
+    "counties": [],
+    "commercialCoverages": [],
+    "personalCoverages": [],
+    "benefitCoverages": [],
+    "currentIndustries": [],
+    "targetIndustries": [],
     "specialTopics": [
         {
             "id": 1,
             "user_id": "1",
             "email": "asdf@asdf.com",
-            "topic_code": "CN",
-            "created_at": "2017-07-24 21:18:04",
-            "updated_at": "2017-07-24 21:18:04",
+            "code": "NH",
+            "desc": "Recognition of National Holidays",
+            "created_at": "2017-07-26 21:37:44",
+            "updated_at": "2017-07-26 21:37:44",
             "deleted_at": null
         },
         {
             "id": 2,
             "user_id": "1",
             "email": "asdf@asdf.com",
-            "topic_code": "IH",
-            "created_at": "2017-07-24 21:27:55",
-            "updated_at": "2017-07-24 21:27:55",
-            "deleted_at": null
-        },
-        {
-            "id": 3,
-            "user_id": "1",
-            "email": "asdf@asdf.com",
-            "topic_code": "IH",
-            "created_at": "2017-07-24 21:33:29",
-            "updated_at": "2017-07-24 21:33:29",
-            "deleted_at": null
-        },
-        {
-            "id": 4,
-            "user_id": "1",
-            "email": "asdf@asdf.com",
-            "topic_code": "NH",
-            "created_at": "2017-07-24 21:43:06",
-            "updated_at": "2017-07-24 21:43:06",
-            "deleted_at": null
-        },
-        {
-            "id": 5,
-            "user_id": "1",
-            "email": "asdf@asdf.com",
-            "topic_code": "IH",
-            "created_at": "2017-07-24 21:43:06",
-            "updated_at": "2017-07-24 21:43:06",
+            "code": "IH",
+            "desc": "Insurance Humor",
+            "created_at": "2017-07-26 21:37:44",
+            "updated_at": "2017-07-26 21:37:44",
             "deleted_at": null
         }
     ],
@@ -572,45 +157,20 @@
             "id": 1,
             "user_id": "1",
             "email": "asdf@asdf.com",
-            "cause_code": "11230",
-            "created_at": "2017-07-24 21:18:04",
-            "updated_at": "2017-07-24 21:18:04",
+            "code": "11229",
+            "desc": "Barber and beauty",
+            "created_at": "2017-07-26 21:37:44",
+            "updated_at": "2017-07-26 21:37:44",
             "deleted_at": null
         },
         {
             "id": 2,
             "user_id": "1",
             "email": "asdf@asdf.com",
-            "cause_code": "11228",
-            "created_at": "2017-07-24 21:27:55",
-            "updated_at": "2017-07-24 21:27:55",
-            "deleted_at": null
-        },
-        {
-            "id": 3,
-            "user_id": "1",
-            "email": "asdf@asdf.com",
-            "cause_code": "6659",
-            "created_at": "2017-07-24 21:33:29",
-            "updated_at": "2017-07-24 21:33:29",
-            "deleted_at": null
-        },
-        {
-            "id": 4,
-            "user_id": "1",
-            "email": "asdf@asdf.com",
-            "cause_code": "6655",
-            "created_at": "2017-07-24 21:43:06",
-            "updated_at": "2017-07-24 21:43:06",
-            "deleted_at": null
-        },
-        {
-            "id": 5,
-            "user_id": "1",
-            "email": "asdf@asdf.com",
-            "cause_code": "6659",
-            "created_at": "2017-07-24 21:43:06",
-            "updated_at": "2017-07-24 21:43:06",
+            "code": "11230",
+            "desc": "Commercial trucking",
+            "created_at": "2017-07-26 21:37:44",
+            "updated_at": "2017-07-26 21:37:44",
             "deleted_at": null
         }
     ]

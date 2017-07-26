@@ -122,7 +122,7 @@
                     name: store.getState().UserStore.name,
                     email: store.getState().UserStore.email,
                     cell_phone: store.getState().UserStore.cell_phone,
-                    title_code: store.getState().AgencyStore.title_code,
+                    title_code: store.getState().UserStore.title_code,
                     principal_name: store.getState().AgencyStore.principal_name,
                     principal_email: store.getState().AgencyStore.principal_email,
                     agency_name: store.getState().AgencyStore.name,

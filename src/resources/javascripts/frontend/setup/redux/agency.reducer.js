@@ -15,7 +15,7 @@ const initialState = {
     state:null,
     zip:null,
     latitude:null,
-    longitude:null,
+    longitude:null
 };
 
 module.exports = function(agency = initialState, action) {

@@ -44,9 +44,9 @@ class OutreachController extends Controller
     {
         $user = Auth::user();
         $plan = $user->plan;
-        $plan->engagement_mix = $request->input('engagement_mix')['code'];
-        $plan->engagement_tone = $request->input('engagement_tone')['code'];
-        $plan->time_code = $request->input('posting_time')['code'];
+        $plan->engagement_mix = $request->input('engagement_mix');
+        $plan->engagement_tone = $request->input('engagement_tone');
+        $plan->time_code = $request->input('time_code');
 
         foreach($request->input('posting_days') as $day) {
             switch($day['code']) {
@@ -73,23 +73,24 @@ class OutreachController extends Controller
                     break;
             }
         }
-
         $plan->update();
 
         $selected = [];
-        foreach ($request->input('special_topics') as $topic) {
+        foreach ($request->input('selected_special_topics') as $topic) {
             $selectedTopic = new SelectedSpecialTopic();
             $selectedTopic->email = $user->email;
-            $selectedTopic->topic_code = $topic['code'];
+            $selectedTopic->code = $topic['code'];
+            $selectedTopic->desc = $topic['desc'];
             array_push($selected, $selectedTopic);
         }
         $user->specialTopics()->saveMany($selected);
 
         $selected = [];
-        foreach ($request->input('causes') as $cause) {
+        foreach ($request->input('selected_causes') as $cause) {
             $selectedCause = new selectedCause();
             $selectedCause->email = $user->email;
-            $selectedCause->cause_code = $cause['code'];
+            $selectedCause->code = $cause['code'];
+            $selectedCause->desc = $cause['desc'];
             array_push($selected, $selectedCause);
         }
         $user->causes()->saveMany($selected);

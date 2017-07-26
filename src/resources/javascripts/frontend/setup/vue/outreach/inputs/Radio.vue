@@ -6,7 +6,7 @@
                 v-bind:id="`${ option.code }${ index }`"
                 v-bind:value="option"
                 v-model="selected"
-                v-on:change="$emit('setChecked', option)">
+                v-on:change="$emit('setChecked', option.code)">
             <label v-bind:for="`${ option.code }${ index }`">
                 <span class="w3-show-inline-block w3-margin-right v-align"></span>{{ option.desc }}
             </label>
@@ -21,7 +21,7 @@
                 type: Array
             },
             default: {
-                type: Object
+                type: String
             }
         },
         data() {
@@ -30,8 +30,13 @@
             }
         },
         mounted() {
-            if(typeof(this.default != undefined)) {
-                this.selected = this.default;
+            if(this.default) {
+                for(let option of this.options) {
+                    if(option.code == this.default) {
+                        this.selected = option;
+                        this.$emit('setChecked', option.code);
+                    }
+                }
             }
         }
     }

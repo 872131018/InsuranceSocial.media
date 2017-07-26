@@ -49,15 +49,15 @@
                         <Dropdown
                             v-bind:label="'Marketing Regions'"
                             v-bind:options="regions"
-                            v-on:setOption="(region) => properties.marketing_regions.push(region)">
+                            v-on:setOption="(region) => properties.selected_regions.push(region)">
                         </Dropdown>
                     </div>
                     <div class="w3-section">
                         <div>Selected Regions (click to remove)</div>
                         <ul class="w3-ul w3-hoverable">
                             <li class="w3-section"
-                                v-for="(region, index) in properties.marketing_regions"
-                                v-on:click="(region) => properties.marketing_regions.splice(index, 1)">
+                                v-for="(region, index) in properties.selected_regions"
+                                v-on:click="(region) => properties.selected_regions.splice(index, 1)">
                                 {{ region.desc }}
                                 <i class="fa fa-times w3-margin-left"></i>
                             </li>
@@ -76,8 +76,8 @@
                         <div>Selected States (click to remove)</div>
                         <ul class="w3-ul w3-hoverable">
                             <li class="w3-section"
-                                v-for="(state, index) in properties.marketing_states"
-                                v-on:click="(state) => properties.marketing_states.splice(index, 1)">
+                                v-for="(state, index) in properties.selected_states"
+                                v-on:click="(state) => properties.selected_states.splice(index, 1)">
                                 {{ state.desc }}
                                 <i class="fa fa-times w3-margin-left"></i>
                             </li>
@@ -87,15 +87,15 @@
                         <Dropdown
                             v-bind:label="'Marketing Counties'"
                             v-bind:options="counties"
-                            v-on:setOption="(county) => properties.marketing_counties.push(county)">
+                            v-on:setOption="(county) => properties.selected_counties.push(county)">
                         </Dropdown>
                     </div>
                     <div class="w3-section">
                         <div>Selected Counties (click to remove)</div>
                         <ul class="w3-ul w3-hoverable">
                             <li class="w3-section"
-                                v-for="(counties, index) in properties.marketing_counties"
-                                v-on:click="(county) => properties.marketing_counties.splice(index, 1)">
+                                v-for="(counties, index) in properties.selected_counties"
+                                v-on:click="(county) => properties.selected_counties.splice(index, 1)">
                                 {{ counties.desc }} - {{ counties.state_code }}
                                 <i class="fa fa-times w3-margin-left"></i>
                             </li>
@@ -138,9 +138,9 @@
                     city: store.getState().AgencyStore.city,
                     state: store.getState().AgencyStore.state,
                     zip: store.getState().AgencyStore.zip,
-                    marketing_regions: [],
-                    marketing_states: [],
-                    marketing_counties: []
+                    selected_regions: store.getState().SelectionStore.selected_regions,
+                    selected_states: store.getState().SelectionStore.selected_states,
+                    selected_counties: store.getState().SelectionStore.selected_counties
                 },
                 states: store.getState().OptionStore.states,
                 targets: store.getState().OptionStore.targets,
@@ -152,9 +152,9 @@
         },
         methods: {
             setState(state) {
-                this.properties.marketing_states.push(state);
+                this.properties.selected_states.push(state);
                 let filtered_counties = [];
-                for(let filter of this.properties.marketing_states) {
+                for(let filter of this.properties.selected_states) {
                     let state_code = filter.state_code;
                     for(let county of store.getState().OptionStore.counties) {
                         if(county.state_code == state_code) {

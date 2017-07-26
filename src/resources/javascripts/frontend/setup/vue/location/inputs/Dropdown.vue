@@ -31,12 +31,16 @@
         },
         data() {
             return {
-                selected: { "stateCd": "00", "desc":"Options", "code":0 }
+                selected: { "stateCd":"00", "desc":"Options", "code":0 }
             }
         },
         mounted() {
             if(this.default) {
-                this.selected = this.default;
+                for(let option of this.options) {
+                    if(option.code == this.default) {
+                        this.selected = option;
+                    }
+                }
             }
         },
         methods: {

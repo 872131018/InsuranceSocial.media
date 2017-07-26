@@ -17,7 +17,8 @@ class CreateSelectedCarriersTable extends Migration
             $table->increments('id');
             $table->string('user_id');
             $table->string('email');
-            $table->string('carrier_code');
+            $table->string('code')->nullable();
+            $table->string('desc')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

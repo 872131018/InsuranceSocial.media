@@ -16,15 +16,15 @@
                     <Dropdown
                         v-bind:label="'Carriers'"
                         v-bind:options="carriers"
-                        v-on:setOption="(carriers) => properties.carriers.push(carriers)">
+                        v-on:setOption="(carriers) => properties.selected_carriers.push(carriers)">
                     </Dropdown>
                 </div>
                 <div class="w3-section">
                     <div>Selected Carriers (click to remove)</div>
                     <ul class="w3-ul w3-hoverable">
                         <li class="w3-section"
-                            v-for="(carrier, index) in properties.carriers"
-                            v-on:click="(carrier) => properties.carriers.splice(index, 1)">
+                            v-for="(carrier, index) in properties.selected_carriers"
+                            v-on:click="(carrier) => properties.selected_carriers.splice(index, 1)">
                             {{ carrier.desc }}
                             <i class="fa fa-times w3-margin-left"></i>
                         </li>
@@ -34,15 +34,15 @@
                     <Dropdown
                         v-bind:label="'Commercial Lines of Coverage'"
                         v-bind:options="coverage_targets"
-                        v-on:setOption="(coverage) => properties.commercial_coverage_lines.push(coverage)">
+                        v-on:setOption="(coverage) => properties.selected_commercial_coverages.push(coverage)">
                     </Dropdown>
                 </div>
                 <div class="w3-section">
                     <div>Selected Coverage Lines (click to remove)</div>
                     <ul class="w3-ul w3-hoverable">
                         <li class="w3-section"
-                            v-for="(coverage, index) in properties.commercial_coverage_lines"
-                            v-on:click="(coverage) => properties.commercial_coverage_lines.splice(index, 1)">
+                            v-for="(coverage, index) in properties.selected_commercial_coverages"
+                            v-on:click="(coverage) => properties.selected_commercial_coverages.splice(index, 1)">
                             {{ coverage.desc }}
                             <i class="fa fa-times w3-margin-left"></i>
                         </li>
@@ -52,15 +52,15 @@
                     <Dropdown
                         v-bind:label="'Personal Lines of Coverage'"
                         v-bind:options="coverage_targets"
-                        v-on:setOption="(coverage) => properties.personal_coverage_lines.push(coverage)">
+                        v-on:setOption="(coverage) => properties.selected_personal_coverages.push(coverage)">
                     </Dropdown>
                 </div>
                 <div class="w3-section">
                     <div>Selected Coverage Lines (click to remove)</div>
                     <ul class="w3-ul w3-hoverable">
                         <li class="w3-section"
-                            v-for="(coverage, index) in properties.personal_coverage_lines"
-                            v-on:click="(coverage) => properties.personal_coverage_lines.splice(index, 1)">
+                            v-for="(coverage, index) in properties.selected_personal_coverages"
+                            v-on:click="(coverage) => properties.selected_personal_coverages.splice(index, 1)">
                             {{ coverage.desc }}
                             <i class="fa fa-times w3-margin-left"></i>
                         </li>
@@ -70,15 +70,15 @@
                     <Dropdown
                         v-bind:label="'Benefit Lines of Coverage'"
                         v-bind:options="coverage_targets"
-                        v-on:setOption="(coverage) => properties.benefit_coverage_lines.push(coverage)">
+                        v-on:setOption="(coverage) => properties.selected_benefit_coverages.push(coverage)">
                     </Dropdown>
                 </div>
                 <div class="w3-section">
                     <div>Selected Coverage Lines (click to remove)</div>
                     <ul class="w3-ul w3-hoverable">
                         <li class="w3-section"
-                            v-for="(coverage, index) in properties.benefit_coverage_lines"
-                            v-on:click="(coverage) => properties.benefit_coverage_lines.splice(index, 1)">
+                            v-for="(coverage, index) in properties.selected_benefit_coverages"
+                            v-on:click="(coverage) => properties.selected_benefit_coverages.splice(index, 1)">
                             {{ coverage.desc }}
                             <i class="fa fa-times w3-margin-left"></i>
                         </li>
@@ -88,15 +88,15 @@
                     <Dropdown
                         v-bind:label="'Current industries you market to'"
                         v-bind:options="industry_currents"
-                        v-on:setOption="(industry) => properties.industry_currents.push(industry)">
+                        v-on:setOption="(industry) => properties.selected_current_industries.push(industry)">
                     </Dropdown>
                 </div>
                 <div class="w3-section">
                     <div>Selected Industries (click to remove)</div>
                     <ul class="w3-ul w3-hoverable">
                         <li class="w3-section"
-                            v-for="(industry, index) in properties.industry_currents"
-                            v-on:click="(industry) => properties.industry_currents.splice(index, 1)">
+                            v-for="(industry, index) in properties.selected_current_industries"
+                            v-on:click="(industry) => properties.selected_current_industries.splice(index, 1)">
                             {{ industry.desc }}
                             <i class="fa fa-times w3-margin-left"></i>
                         </li>
@@ -106,15 +106,15 @@
                     <Dropdown
                         v-bind:label="'Target industries for future marketing'"
                         v-bind:options="industry_targets"
-                        v-on:setOption="(industry) => properties.industry_targets.push(industry)">
+                        v-on:setOption="(industry) => properties.selected_target_industries.push(industry)">
                     </Dropdown>
                 </div>
                 <div class="w3-section">
                     <div> Selected Industries (click to remove)</div>
                     <ul class="w3-ul w3-hoverable">
                         <li class="w3-section"
-                            v-for="(industry, index) in properties.industry_targets"
-                            v-on:click="(industry) => properties.industry_targets.splice(index, 1)">
+                            v-for="(industry, index) in properties.selected_target_industries"
+                            v-on:click="(industry) => properties.selected_target_industries.splice(index, 1)">
                             {{ industry.desc }}
                             <i class="fa fa-times w3-margin-left"></i>
                         </li>
@@ -159,12 +159,12 @@
         data() {
             return {
                 properties: {
-                    carriers: [],
-                    commercial_coverage_lines: [],
-                    personal_coverage_lines: [],
-                    benefit_coverage_lines: [],
-                    industry_currents: [],
-                    industry_targets: [],
+                    selected_carriers: store.getState().SelectionStore.selected_carriers,
+                    selected_commercial_coverages: store.getState().SelectionStore.selected_commercial_coverages,
+                    selected_personal_coverages: store.getState().SelectionStore.selected_personal_coverages,
+                    selected_benefit_coverages: store.getState().SelectionStore.selected_benefit_coverages,
+                    selected_current_industries: store.getState().SelectionStore.selected_current_industries,
+                    selected_target_industries: store.getState().SelectionStore.selected_target_industries,
                     commercial_mix: store.getState().UserStore.commercial_mix,
                     personal_mix: store.getState().UserStore.personal_mix
                 },

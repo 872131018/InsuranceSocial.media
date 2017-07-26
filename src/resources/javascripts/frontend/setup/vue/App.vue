@@ -24,6 +24,11 @@
                 this.loading--;
             });
             this.loading++;
+            axios.get(`${ window.base_url }/api/plan`).then(response => {
+                store.dispatch({ type: 'SET_PLAN', data: response.data });
+                this.loading--;
+            });
+            this.loading++;
             axios.get(`${ window.base_url }/api/agency`).then(response => {
                 store.dispatch({ type: 'SET_AGENCY', data: response.data });
                 this.loading--;
@@ -56,6 +61,11 @@
             this.loading++;
             axios.get(`${ window.base_url }/api/causes`).then(response => {
                 store.dispatch({ type: 'SET_CAUSES', data: response.data });
+                this.loading--;
+            });
+            this.loading++;
+            axios.get(`${ window.base_url }/api/selections`).then(response => {
+                store.dispatch({ type: 'SET_SELECTIONS', data: response.data });
                 this.loading--;
             });
         }

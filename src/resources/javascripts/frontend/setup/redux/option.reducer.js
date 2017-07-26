@@ -95,7 +95,7 @@ const initialState = {
 export default function(options = initialState, action) {
     switch(action.type) {
         case 'SET_REGIONS':
-            for(let region in action.data) {
+            for(let region of action.data) {
                 options['regions'].push(region);
             }
             break;

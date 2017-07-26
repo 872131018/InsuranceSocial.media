@@ -51,55 +51,61 @@ class CoverageController extends Controller
         $user = Auth::user();
 
         $selected = [];
-        foreach ($request->input('carriers') as $carrier) {
+        foreach ($request->input('selected_carriers') as $carrier) {
             $selectedCarrier = new SelectedCarrier();
             $selectedCarrier->email = $user->email;
-            $selectedCarrier->carrier_code = $carrier['code'];
+            $selectedCarrier->code = $carrier['code'];
+            $selectedCarrier->desc = $carrier['desc'];
             array_push($selected, $selectedCarrier);
         }
         $user->carriers()->saveMany($selected);
 
         $selected = [];
-        foreach ($request->input('commercial_coverage_lines') as $coverage) {
+        foreach ($request->input('selected_commercial_coverages') as $coverage) {
             $selectedCoverage = new SelectedCommercialCoverage();
             $selectedCoverage->email = $user->email;
-            $selectedCoverage->coverage_code = $coverage['code'];
+            $selectedCoverage->code = $coverage['code'];
+            $selectedCoverage->desc = $coverage['desc'];
             array_push($selected, $selectedCoverage);
         }
         $user->commercialCoverages()->saveMany($selected);
 
         $selected = [];
-        foreach ($request->input('personal_coverage_lines') as $coverage) {
+        foreach ($request->input('selected_personal_coverages') as $coverage) {
             $selectedCoverage = new SelectedPersonalCoverage();
             $selectedCoverage->email = $user->email;
-            $selectedCoverage->coverage_code = $coverage['code'];
+            $selectedCoverage->code = $coverage['code'];
+            $selectedCoverage->desc = $coverage['desc'];
             array_push($selected, $selectedCoverage);
         }
         $user->personalCoverages()->saveMany($selected);
 
         $selected = [];
-        foreach ($request->input('benefit_coverage_lines') as $coverage) {
+        foreach ($request->input('selected_benefit_coverages') as $coverage) {
             $selectedCoverage = new SelectedBenefitCoverage();
             $selectedCoverage->email = $user->email;
-            $selectedCoverage->coverage_code = $coverage['code'];
+            $selectedCoverage->code = $coverage['code'];
+            $selectedCoverage->desc = $coverage['desc'];
             array_push($selected, $selectedCoverage);
         }
         $user->benefitCoverages()->saveMany($selected);
 
         $selected = [];
-        foreach ($request->input('industry_currents') as $industry) {
+        foreach ($request->input('selected_current_industries') as $industry) {
             $selectedIndustry = new SelectedCurrentIndustry();
             $selectedIndustry->email = $user->email;
-            $selectedIndustry->industry_code = $industry['code'];
+            $selectedIndustry->code = $industry['code'];
+            $selectedIndustry->desc = $industry['desc'];
             array_push($selected, $selectedIndustry);
         }
         $user->currentIndustries()->saveMany($selected);
 
         $selected = [];
-        foreach ($request->input('industry_targets') as $industry) {
+        foreach ($request->input('selected_target_industries') as $industry) {
             $selectedIndustry = new SelectedTargetIndustry();
             $selectedIndustry->email = $user->email;
-            $selectedIndustry->industry_code = $industry['code'];
+            $selectedIndustry->code = $industry['code'];
+            $selectedIndustry->desc = $industry['desc'];
             array_push($selected, $selectedIndustry);
         }
         $user->targetIndustries()->saveMany($selected);

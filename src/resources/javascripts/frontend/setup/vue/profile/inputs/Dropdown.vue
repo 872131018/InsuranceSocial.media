@@ -35,7 +35,11 @@
         },
         mounted() {
             if(this.default) {
-                this.selected = this.default;
+                for(let option of this.options) {
+                    if(option.code == this.default) {
+                        this.selected = option;
+                    }
+                }
             }
         },
         methods: {

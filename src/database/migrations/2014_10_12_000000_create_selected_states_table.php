@@ -17,7 +17,9 @@ class CreateSelectedStatesTable extends Migration
             $table->increments('id');
             $table->string('user_id');
             $table->string('email');
-            $table->string('state_code');
+            $table->string('state_code')->nullable();
+            $table->string('code')->nullable();
+            $table->string('desc')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

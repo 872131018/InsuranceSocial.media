@@ -31,15 +31,15 @@
                 <Dropdown
                     v-bind:label="'Special Post Topics'"
                     v-bind:options="special_topics"
-                    v-on:setOption="(topic) => properties.special_topics.push(topic)">
+                    v-on:setOption="(topic) => properties.selected_special_topics.push(topic)">
                 </Dropdown>
             </div>
             <div class="w3-panel">
                 <div>Selected Topics (click to remove)</div>
                 <ul class="w3-ul w3-hoverable">
                     <li class="w3-section"
-                        v-for="(topic, index) in properties.special_topics"
-                        v-on:click="(topic) => properties.special_topics.splice(index, 1)">
+                        v-for="(topic, index) in properties.selected_special_topics"
+                        v-on:click="(topic) => properties.selected_special_topics.splice(index, 1)">
                         {{ topic.desc }}
                         <i class="fa fa-times w3-margin-left"></i>
                     </li>
@@ -49,15 +49,15 @@
                 <Dropdown
                     v-bind:label="'Supported Causes'"
                     v-bind:options="causes"
-                    v-on:setOption="(cause) => properties.causes.push(cause)">
+                    v-on:setOption="(cause) => properties.selected_causes.push(cause)">
                 </Dropdown>
             </div>
             <div class="w3-panel">
                 <div>Selected Causes (click to remove)</div>
                 <ul class="w3-ul w3-hoverable">
                     <li class="w3-section"
-                        v-for="(cause, index) in properties.causes"
-                        v-on:click="(cause) => properties.causes.splice(index, 1)">
+                        v-for="(cause, index) in properties.selected_causes"
+                        v-on:click="(cause) => properties.selected_causes.splice(index, 1)">
                         {{ cause.desc }}
                         <i class="fa fa-times w3-margin-left"></i>
                     </li>
@@ -85,8 +85,8 @@
                 <div>Times to post(all times PST)</div>
                 <Radio
                     v-bind:options="times"
-                    v-bind:default="properties.posting_time"
-                    v-on:setChecked="(option) => properties.posting_time = option">
+                    v-bind:default="properties.time_code"
+                    v-on:setChecked="(option) => properties.time_code = option">
                 </Radio>
             </div>
             <div class="w3-panel"
@@ -120,12 +120,12 @@
         data() {
             return {
                 properties: {
-                    engagement_mix: {},
-                    engagement_tone: {},
-                    special_topics: [],
-                    causes: [],
-                    posting_days: [],
-                    posting_time: {}
+                    engagement_mix: store.getState().PlanStore.engagement_mix,
+                    engagement_tone: store.getState().PlanStore.engagement_tone,
+                    selected_special_topics: store.getState().SelectionStore.selected_special_topics,
+                    selected_causes: store.getState().SelectionStore.selected_causes,
+                    posting_days: this.getDays(),
+                    time_code: store.getState().PlanStore.time_code
                 },
                 engagement_mix: store.getState().OptionStore.engagement_mix,
                 engagement_tone: store.getState().OptionStore.engagement_tone,
@@ -137,6 +137,16 @@
             }
         },
         methods: {
+            getDays() {
+                let days = store.getState().OptionStore.days;
+                let selected_days = [];
+                for(let day of days) {
+                    if(store.getState().PlanStore[day.code]) {
+                        selected_days.push(day)
+                    }
+                }
+                return selected_days;
+            },
             previous() {
                 store.dispatch({ type: 'SET_OUTREACH', data: this.properties });
                 this.$router.push({ name: 'Coverage' });

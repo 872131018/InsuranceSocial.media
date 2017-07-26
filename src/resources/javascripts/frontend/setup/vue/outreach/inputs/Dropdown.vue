@@ -23,11 +23,23 @@
             },
             options: {
                 type: Array
+            },
+            default: {
+                type: String
             }
         },
         data() {
             return {
-                selected: {code:'00', desc:'Options'}
+                selected: { 'code': 0, 'desc': 'Options' }
+            }
+        },
+        mounted() {
+            if(this.default) {
+                for(let option of this.options) {
+                    if(option.code == this.default) {
+                        this.selected = option;
+                    }
+                }
             }
         },
         methods: {

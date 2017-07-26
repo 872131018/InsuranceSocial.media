@@ -45,7 +45,7 @@ class LocationController extends Controller
     public function store(Request $request)
     {
         $user = Auth::user();
-        $agency = Agency::find($user->agency->id);
+        $agency = $user->agency;
         $agency->address_1 = $request->input('address_1');
         $agency->address_2 = $request->input('address_2');
         $agency->city = $request->input('city');
@@ -54,28 +54,34 @@ class LocationController extends Controller
         $agency->update();
 
         $selected = [];
-        foreach ($request->input('marketing_regions') as $region) {
+        foreach ($request->input('selected_regions') as $region) {
             $selectedRegion = new SelectedRegion();
             $selectedRegion->email = $user->email;
-            $selectedRegion->region_code = $region['code'];
+            $selectedRegion->state_code = $region['state_code'];
+            $selectedRegion->code = $region['code'];
+            $selectedRegion->desc = $region['desc'];
             array_push($selected, $selectedRegion);
         }
         $user->regions()->saveMany($selected);
 
         $selected = [];
-        foreach ($request->input('marketing_states') as $state) {
+        foreach ($request->input('selected_states') as $state) {
             $selectedState = new SelectedState();
             $selectedState->email = $user->email;
-            $selectedState->state_code = $state['code'];
+            $selectedState->state_code = $state['state_code'];
+            $selectedState->code = $state['code'];
+            $selectedState->desc = $state['desc'];
             array_push($selected, $selectedState);
         }
         $user->states()->saveMany($selected);
 
         $selected = [];
-        foreach ($request->input('marketing_counties') as $county) {
+        foreach ($request->input('selected_counties') as $county) {
             $selectedCounty = new SelectedCounty();
             $selectedCounty->email = $user->email;
-            $selectedCounty->county_code = $county['code'];
+            $selectedCounty->state_code = $county['state_code'];
+            $selectedCounty->code = $county['code'];
+            $selectedCounty->desc = $county['desc'];
             array_push($selected, $selectedCounty);
         }
         $user->counties()->saveMany($selected);
