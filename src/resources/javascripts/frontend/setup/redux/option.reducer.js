@@ -119,6 +119,7 @@ export default function(options = initialState, action) {
                 options['industry_currents'].push(industry);
                 options['industry_targets'].push(industry);
             }
+            break;
         case 'SET_CAUSES':
             for(let cause of action.data) {
                 options['causes'].push(cause);
