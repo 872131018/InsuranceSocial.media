@@ -9,7 +9,7 @@
         <div class="w3-container w3-card-2 form">
             <div class="w3-panel">
                 <h3>Where are we?</h3>
-                <h5>Please complete this information for geographic service marketing.</h5>
+                <h5>Please complete this information to receive content pertaining to your marketing areas.</h5>
             </div>
             <div class="w3-panel">
                 <Field

@@ -55,7 +55,7 @@ const initialState = {
     industry_targets: [],
     engagement_mix: [
         {"code": "EO", "desc":"Existing Clients Only"},
-        {"code": "ME", "desc":"Mostly Existinig Clients"},
+        {"code": "ME", "desc":"Mostly Existing Clients"},
         {"code": "EN", "desc":"Existing and New Clients Equally"},
         {"code": "MN", "desc":"Mostly New Clients"},
         {"code": "NO", "desc":"New Clients Only"}

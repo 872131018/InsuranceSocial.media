@@ -16594,7 +16594,7 @@ var initialState = {
     coverage_targets: [],
     industry_currents: [],
     industry_targets: [],
-    engagement_mix: [{ "code": "EO", "desc": "Existing Clients Only" }, { "code": "ME", "desc": "Mostly Existinig Clients" }, { "code": "EN", "desc": "Existing and New Clients Equally" }, { "code": "MN", "desc": "Mostly New Clients" }, { "code": "NO", "desc": "New Clients Only" }],
+    engagement_mix: [{ "code": "EO", "desc": "Existing Clients Only" }, { "code": "ME", "desc": "Mostly Existing Clients" }, { "code": "EN", "desc": "Existing and New Clients Equally" }, { "code": "MN", "desc": "Mostly New Clients" }, { "code": "NO", "desc": "New Clients Only" }],
     engagement_tone: [{ "code": "I", "desc": "Simply Informative" }, { "code": "C", "desc": "Conversational" }, { "code": "E", "desc": "Entertainingly Informative" }],
     special_topics: [{ "code": "NH", "desc": "Recognition of National Holidays" }, { "code": "IH", "desc": "Insurance Humor" }, { "code": "CN", "desc": "Current News" }],
     causes: [],
@@ -19327,7 +19327,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "w3-panel"
-  }, [_c('h3', [_vm._v("Where are we?")]), _vm._v(" "), _c('h5', [_vm._v("Please complete this information for geographic service marketing.")])])
+  }, [_c('h3', [_vm._v("Where are we?")]), _vm._v(" "), _c('h5', [_vm._v("Please complete this information to receive content pertaining to your marketing areas.")])])
 }]}
 module.exports.render._withStripped = true
 if (false) {
@@ -21835,7 +21835,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     })])
   }))]), _vm._v(" "), _c('div', {
     staticClass: "w3-panel"
-  }, [_c('div', [_vm._v("Times to post(all times PST)")]), _vm._v(" "), _c('Radio', {
+  }, [_c('div', [_vm._v("Times to post (all times PST)")]), _vm._v(" "), _c('Radio', {
     attrs: {
       "options": _vm.times,
       "default": _vm.properties.time_code

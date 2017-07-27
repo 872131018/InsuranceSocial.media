@@ -32590,7 +32590,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 
 
@@ -32603,8 +32602,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     data: function data() {
         return {
             plan: {},
-            startDate: new __WEBPACK_IMPORTED_MODULE_0_moment___default.a().startOf('month').add(1, 'month').format('MM-DD-YYYY'),
-            billingDate: new __WEBPACK_IMPORTED_MODULE_0_moment___default.a().startOf('month').add(2, 'months').format('MM-DD-YYYY'),
+            billingDate: new __WEBPACK_IMPORTED_MODULE_0_moment___default.a().startOf('month').add(1, 'months').format('MM-DD-YYYY'),
             properties: {
                 card: '',
                 month: '',
@@ -33746,7 +33744,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "w3-container w3-card-2 form"
   }, [_c('div', {
     staticClass: "w3-panel"
-  }, [_c('h3', [_vm._v("Plan Information")]), _vm._v(" "), _c('h5', [_vm._v("\n            You have selected the following plan.  If you register now your free trial will begin\n            "), _c('b', [_vm._v(_vm._s(_vm.startDate))]), _vm._v(" and billing will begin "), _c('b', [_vm._v(_vm._s(_vm.billingDate) + ".")])])]), _vm._v(" "), _c('div', {
+  }, [_c('h3', [_vm._v("Plan Information")]), _vm._v(" "), _c('h5', [_vm._v("\n            You have selected the following plan. If you register now your billing cycle will begin "), _c('b', [_vm._v(_vm._s(_vm.billingDate) + ".")])])]), _vm._v(" "), _c('div', {
     staticClass: "w3-panel"
   }, [(_vm.plan.name) ? _c('Plan', {
     attrs: {

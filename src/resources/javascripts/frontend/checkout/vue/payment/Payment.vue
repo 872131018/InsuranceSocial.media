@@ -3,8 +3,7 @@
         <div class="w3-panel">
             <h3>Plan Information</h3>
             <h5>
-                You have selected the following plan.  If you register now your free trial will begin
-                <b>{{ startDate}}</b> and billing will begin <b>{{ billingDate }}.</b>
+                You have selected the following plan. If you register now your billing cycle will begin <b>{{ billingDate }}.</b>
             </h5>
         </div>
         <div class="w3-panel">
@@ -52,8 +51,7 @@
         data() {
             return {
                 plan: {},
-                startDate: new Moment().startOf('month').add(1, 'month').format('MM-DD-YYYY'),
-                billingDate: new Moment().startOf('month').add(2, 'months').format('MM-DD-YYYY'),
+                billingDate: new Moment().startOf('month').add(1, 'months').format('MM-DD-YYYY'),
                 properties: {
                     card: '',
                     month: '',

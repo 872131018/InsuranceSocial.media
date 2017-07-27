@@ -79,17 +79,19 @@ use App\SelectedCause;
      return response()->json(Cause::all());
  });
  Route::get('/api/selections', function (Request $request) {
+     $user = Auth::user();
+
      return response()->json([
-        'selected_regions' => SelectedRegion::all(),
-        'selected_states' => SelectedState::all(),
-        'selected_counties' => SelectedCounty::all(),
-        'selected_carriers' => SelectedCarrier::all(),
-        'selected_commercial_coverages' => SelectedCommercialCoverage::all(),
-        'selected_personal_coverages' => SelectedPersonalCoverage::all(),
-        'selected_benefit_coverages' => SelectedBenefitCoverage::all(),
-        'selected_current_industries' => SelectedCurrentIndustry::all(),
-        'selected_target_industries' => SelectedTargetIndustry::all(),
-        'selected_special_topics' => SelectedSpecialTopic::all(),
-        'selected_causes' => SelectedCause::all()
+        'selected_regions' => $user->regions,
+        'selected_states' => $user->states,
+        'selected_counties' => $user->counties,
+        'selected_carriers' => $user->carriers,
+        'selected_commercial_coverages' => $user->commercialCoverages,
+        'selected_personal_coverages' => $user->personalCoverages,
+        'selected_benefit_coverages' => $user->benefitCoverages,
+        'selected_current_industries' => $user->currentIndustries,
+        'selected_target_industries' => $user->targetIndustries,
+        'selected_special_topics' => $user->specialTopics,
+        'selected_causes' => $user->causes
      ]);
  });
