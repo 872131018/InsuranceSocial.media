@@ -49,7 +49,7 @@
                         }
                         break;
                     case 'PHONE':
-                        if(this.value != '' && this.value.length == 10) {
+                        if(this.value != '' && this.value.length == 12) {
                             this.isValid = true;
                         } else {
                             this.isValid = false;

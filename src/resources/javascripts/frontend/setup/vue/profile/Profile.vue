@@ -24,7 +24,7 @@
                     v-on:setValue="(value) => properties.email = value">
                 </Field>
                 <Field
-                    v-bind:label="'Cell Phone'"
+                    v-bind:label="'Cell Phone (e.g. 555-555-1234)'"
                     v-bind:validation="'PHONE'"
                     v-bind:default="properties.cell_phone"
                     v-on:setValue="(value) => properties.cell_phone = value">
@@ -65,7 +65,7 @@
                     v-on:setOption="(option) => properties.size = option.code">
                 </Dropdown>
                 <Field
-                    v-bind:label="'Founding Year'"
+                    v-bind:label="'Founding Year (e.g. 19XX)'"
                     v-bind:validation="'YEAR'"
                     v-bind:default="properties.established"
                     v-on:setValue="(value) => properties.established = value">

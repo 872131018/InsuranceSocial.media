@@ -4,6 +4,7 @@ const initialState = {
     selected_counties: [],
     selected_carriers: [],
     selected_commercial_coverages: [],
+    selected_crop_coverages: [],
     selected_personal_coverages: [],
     selected_benefit_coverages: [],
     selected_current_industries: [],

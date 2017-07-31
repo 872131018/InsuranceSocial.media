@@ -3,7 +3,7 @@ const initialState = {
         {"code":"OW","desc":"Owner"},
         {"code":"OM","desc":"Operations Manager"},
         {"code":"MM","desc":"Marketing Manager"},
-        {"code":"PR","desc":"Principle"},
+        {"code":"PR","desc":"Principal"},
         {"code":"SM","desc":"Sales Manager"},
         {"code":"OT","desc":"Other"}
     ],
@@ -18,7 +18,7 @@ const initialState = {
         {"code": "N", "desc":"No"},
         {"code": "2", "desc":"2nd"},
         {"code": "3", "desc":"3rd"},
-        {"code": "4", "desc":"5th"},
+        {"code": "4", "desc":"4th"},
         {"code": "5", "desc":"5th"}
     ],
     frequencies: [
@@ -53,6 +53,10 @@ const initialState = {
     coverage_targets: [],
     industry_currents: [],
     industry_targets: [],
+    crop_coverages: [
+        {"code": "YES", "desc":"Yes I write Crop coverages"},
+        {"code": "NO", "desc":"No I do not write Crop coverages"},
+    ],
     engagement_mix: [
         {"code": "EO", "desc":"Existing Clients Only"},
         {"code": "ME", "desc":"Mostly Existing Clients"},

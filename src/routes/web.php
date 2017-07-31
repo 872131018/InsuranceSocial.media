@@ -38,6 +38,7 @@ Route::middleware(['auth'])->group(function() {
             'states' => $user->states,
             'counties' => $user->carriers,
             'commercialCoverages' => $user->commercialCoverages,
+            'cropCoverages' => $user->cropCoverages,
             'personalCoverages' => $user->personalCoverages,
             'benefitCoverages' => $user->benefitCoverages,
             'currentIndustries' => $user->currentIndustries,

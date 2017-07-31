@@ -16574,9 +16574,9 @@ module.exports = function () {
 
 "use strict";
 var initialState = {
-    titles: [{ "code": "OW", "desc": "Owner" }, { "code": "OM", "desc": "Operations Manager" }, { "code": "MM", "desc": "Marketing Manager" }, { "code": "PR", "desc": "Principle" }, { "code": "SM", "desc": "Sales Manager" }, { "code": "OT", "desc": "Other" }],
+    titles: [{ "code": "OW", "desc": "Owner" }, { "code": "OM", "desc": "Operations Manager" }, { "code": "MM", "desc": "Marketing Manager" }, { "code": "PR", "desc": "Principal" }, { "code": "SM", "desc": "Sales Manager" }, { "code": "OT", "desc": "Other" }],
     sizes: [{ "code": "SP", "desc": "Sole Proprietor" }, { "code": "2-5", "desc": "2-5 Employees" }, { "code": "6-10", "desc": "6-10 Employees" }, { "code": "11-15", "desc": "11-15 Employees" }, { "code": "16+", "desc": "16+ Employees" }],
-    generations: [{ "code": "N", "desc": "No" }, { "code": "2", "desc": "2nd" }, { "code": "3", "desc": "3rd" }, { "code": "4", "desc": "5th" }, { "code": "5", "desc": "5th" }],
+    generations: [{ "code": "N", "desc": "No" }, { "code": "2", "desc": "2nd" }, { "code": "3", "desc": "3rd" }, { "code": "4", "desc": "4th" }, { "code": "5", "desc": "5th" }],
     frequencies: [{ "code": "D", "desc": "Daily" }, { "code": "W", "desc": "Weekly" }, { "code": "M", "desc": "Monthly" }, { "code": "Q", "desc": "Quarterly" }, { "code": "N", "desc": "Never" }],
     regions: [],
     states: [],
@@ -16594,6 +16594,7 @@ var initialState = {
     coverage_targets: [],
     industry_currents: [],
     industry_targets: [],
+    crop_coverages: [{ "code": "YES", "desc": "Yes I write Crop coverages" }, { "code": "NO", "desc": "No I do not write Crop coverages" }],
     engagement_mix: [{ "code": "EO", "desc": "Existing Clients Only" }, { "code": "ME", "desc": "Mostly Existing Clients" }, { "code": "EN", "desc": "Existing and New Clients Equally" }, { "code": "MN", "desc": "Mostly New Clients" }, { "code": "NO", "desc": "New Clients Only" }],
     engagement_tone: [{ "code": "I", "desc": "Simply Informative" }, { "code": "C", "desc": "Conversational" }, { "code": "E", "desc": "Entertainingly Informative" }],
     special_topics: [{ "code": "NH", "desc": "Recognition of National Holidays" }, { "code": "IH", "desc": "Insurance Humor" }, { "code": "CN", "desc": "Current News" }],
@@ -16786,6 +16787,7 @@ var initialState = {
     selected_counties: [],
     selected_carriers: [],
     selected_commercial_coverages: [],
+    selected_crop_coverages: [],
     selected_personal_coverages: [],
     selected_benefit_coverages: [],
     selected_current_industries: [],
@@ -17355,7 +17357,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     }
                     break;
                 case 'PHONE':
-                    if (this.value != '' && this.value.length == 10) {
+                    if (this.value != '' && this.value.length == 12) {
                         this.isValid = true;
                     } else {
                         this.isValid = false;
@@ -18055,7 +18057,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }), _vm._v(" "), _c('Field', {
     attrs: {
-      "label": 'Cell Phone',
+      "label": 'Cell Phone (e.g. 555-555-1234)',
       "validation": 'PHONE',
       "default": _vm.properties.cell_phone
     },
@@ -18115,7 +18117,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }), _vm._v(" "), _c('Field', {
     attrs: {
-      "label": 'Founding Year',
+      "label": 'Founding Year (e.g. 19XX)',
       "validation": 'YEAR',
       "default": _vm.properties.established
     },
@@ -18240,6 +18242,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__inputs_Checkbox___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__inputs_Checkbox__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__Errors__ = __webpack_require__(399);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__Errors___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__Errors__);
+//
+//
+//
 //
 //
 //
@@ -18926,7 +18931,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           _vm.setSelected(option)
         }
       }
-    }, [_vm._v("\n                " + _vm._s(option.desc)), (option.stateCd) ? _c('span', [_vm._v(" - " + _vm._s(option.stateCd))]) : _vm._e()])
+    }, [_vm._v("\n                " + _vm._s(option.desc)), (option.state_code) ? _c('span', [_vm._v(" - " + _vm._s(option.state_code))]) : _vm._e()])
   }))])])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
@@ -19234,13 +19239,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "w3-section"
   }, [_c('Dropdown', {
     attrs: {
-      "label": 'Marketing Regions',
+      "label": 'Marketing Regions (Select all that apply)',
       "options": _vm.regions
     },
     on: {
       "setOption": function (region) { return _vm.properties.selected_regions.push(region); }
     }
-  })], 1), _vm._v(" "), _c('div', {
+  })], 1), _vm._v(" "), (_vm.properties.selected_regions.length > 0) ? _c('div', {
     staticClass: "w3-section"
   }, [_c('div', [_vm._v("Selected Regions (click to remove)")]), _vm._v(" "), _c('ul', {
     staticClass: "w3-ul w3-hoverable"
@@ -19253,11 +19258,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }, [_vm._v("\n                            " + _vm._s(region.desc) + "\n                            "), _c('i', {
       staticClass: "fa fa-times w3-margin-left"
     })])
-  }))])]) : _vm._e(), _vm._v(" "), (_vm.target.code == 'S') ? _c('div', [_c('div', {
+  }))]) : _vm._e()]) : _vm._e(), _vm._v(" "), (_vm.target.code == 'S') ? _c('div', [_c('div', {
     staticClass: "w3-section"
   }, [_c('Dropdown', {
     attrs: {
-      "label": 'Marketing State',
+      "label": 'Marketing States (Select all that apply)',
       "options": _vm.states
     },
     on: {
@@ -19265,7 +19270,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.setState($event)
       }
     }
-  })], 1), _vm._v(" "), _c('div', {
+  })], 1), _vm._v(" "), (_vm.properties.selected_states.length > 0) ? _c('div', {
     staticClass: "w3-section"
   }, [_c('div', [_vm._v("Selected States (click to remove)")]), _vm._v(" "), _c('ul', {
     staticClass: "w3-ul w3-hoverable"
@@ -19278,17 +19283,17 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }, [_vm._v("\n                            " + _vm._s(state.desc) + "\n                            "), _c('i', {
       staticClass: "fa fa-times w3-margin-left"
     })])
-  }))]), _vm._v(" "), _c('div', {
+  }))]) : _vm._e(), _vm._v(" "), _c('div', {
     staticClass: "w3-section"
   }, [_c('Dropdown', {
     attrs: {
-      "label": 'Marketing Counties',
+      "label": 'Marketing Counties (Select all that apply)',
       "options": _vm.counties
     },
     on: {
       "setOption": function (county) { return _vm.properties.selected_counties.push(county); }
     }
-  })], 1), _vm._v(" "), _c('div', {
+  })], 1), _vm._v(" "), (_vm.properties.selected_counties.length > 0) ? _c('div', {
     staticClass: "w3-section"
   }, [_c('div', [_vm._v("Selected Counties (click to remove)")]), _vm._v(" "), _c('ul', {
     staticClass: "w3-ul w3-hoverable"
@@ -19301,7 +19306,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }, [_vm._v("\n                            " + _vm._s(counties.desc) + " - " + _vm._s(counties.state_code) + "\n                            "), _c('i', {
       staticClass: "fa fa-times w3-margin-left"
     })])
-  }))])]) : _vm._e()], 1), _vm._v(" "), (_vm.errors.length) ? _c('div', {
+  }))]) : _vm._e()]) : _vm._e()], 1), _vm._v(" "), (_vm.errors.length) ? _c('div', {
     staticClass: "w3-panel"
   }, [_c('Errors', {
     attrs: {
@@ -19545,6 +19550,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -19560,6 +19579,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             properties: {
                 selected_carriers: store.getState().SelectionStore.selected_carriers,
                 selected_commercial_coverages: store.getState().SelectionStore.selected_commercial_coverages,
+                selected_crop_coverages: store.getState().SelectionStore.selected_crop_coverages,
                 selected_personal_coverages: store.getState().SelectionStore.selected_personal_coverages,
                 selected_benefit_coverages: store.getState().SelectionStore.selected_benefit_coverages,
                 selected_current_industries: store.getState().SelectionStore.selected_current_industries,
@@ -19569,6 +19589,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             },
             carriers: store.getState().OptionStore.carriers,
             coverage_lines: store.getState().OptionStore.coverage_lines,
+            crop_coverages: store.getState().OptionStore.crop_coverages,
             coverage_targets: store.getState().OptionStore.coverage_targets,
             industry_currents: store.getState().OptionStore.industry_currents,
             industry_targets: store.getState().OptionStore.industry_targets,
@@ -20440,13 +20461,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "w3-section"
   }, [_c('Dropdown', {
     attrs: {
-      "label": 'Carriers',
+      "label": 'Carriers (Select all that apply)',
       "options": _vm.carriers
     },
     on: {
       "setOption": function (carriers) { return _vm.properties.selected_carriers.push(carriers); }
     }
-  })], 1), _vm._v(" "), _c('div', {
+  })], 1), _vm._v(" "), (_vm.properties.selected_carriers.length > 0) ? _c('div', {
     staticClass: "w3-section"
   }, [_c('div', [_vm._v("Selected Carriers (click to remove)")]), _vm._v(" "), _c('ul', {
     staticClass: "w3-ul w3-hoverable"
@@ -20459,17 +20480,17 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }, [_vm._v("\n                        " + _vm._s(carrier.desc) + "\n                        "), _c('i', {
       staticClass: "fa fa-times w3-margin-left"
     })])
-  }))]), _vm._v(" "), _c('div', {
+  }))]) : _vm._e(), _vm._v(" "), _c('div', {
     staticClass: "w3-section"
   }, [_c('Dropdown', {
     attrs: {
-      "label": 'Commercial Lines of Coverage',
+      "label": 'Commercial Lines of Coverage (Select all that apply)',
       "options": _vm.coverage_targets
     },
     on: {
       "setOption": function (coverage) { return _vm.properties.selected_commercial_coverages.push(coverage); }
     }
-  })], 1), _vm._v(" "), _c('div', {
+  })], 1), _vm._v(" "), (_vm.properties.selected_commercial_coverages.length > 0) ? _c('div', {
     staticClass: "w3-section"
   }, [_c('div', [_vm._v("Selected Coverage Lines (click to remove)")]), _vm._v(" "), _c('ul', {
     staticClass: "w3-ul w3-hoverable"
@@ -20482,17 +20503,28 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }, [_vm._v("\n                        " + _vm._s(coverage.desc) + "\n                        "), _c('i', {
       staticClass: "fa fa-times w3-margin-left"
     })])
-  }))]), _vm._v(" "), _c('div', {
+  }))]) : _vm._e(), _vm._v(" "), _c('div', {
     staticClass: "w3-section"
   }, [_c('Dropdown', {
     attrs: {
-      "label": 'Personal Lines of Coverage',
+      "label": 'Crop Coverage',
+      "options": _vm.crop_coverages,
+      "default": _vm.properties.crop_coverages
+    },
+    on: {
+      "setOption": function (option) { return _vm.properties.selected_crop_coverages = option.code; }
+    }
+  })], 1), _vm._v(" "), _c('div', {
+    staticClass: "w3-section"
+  }, [_c('Dropdown', {
+    attrs: {
+      "label": 'Personal Lines of Coverage (Select all that apply)',
       "options": _vm.coverage_targets
     },
     on: {
       "setOption": function (coverage) { return _vm.properties.selected_personal_coverages.push(coverage); }
     }
-  })], 1), _vm._v(" "), _c('div', {
+  })], 1), _vm._v(" "), (_vm.properties.selected_personal_coverages.length > 0) ? _c('div', {
     staticClass: "w3-section"
   }, [_c('div', [_vm._v("Selected Coverage Lines (click to remove)")]), _vm._v(" "), _c('ul', {
     staticClass: "w3-ul w3-hoverable"
@@ -20505,17 +20537,17 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }, [_vm._v("\n                        " + _vm._s(coverage.desc) + "\n                        "), _c('i', {
       staticClass: "fa fa-times w3-margin-left"
     })])
-  }))]), _vm._v(" "), _c('div', {
+  }))]) : _vm._e(), _vm._v(" "), _c('div', {
     staticClass: "w3-section"
   }, [_c('Dropdown', {
     attrs: {
-      "label": 'Benefit Lines of Coverage',
+      "label": 'Benefit Lines of Coverage (Select all that apply)',
       "options": _vm.coverage_targets
     },
     on: {
       "setOption": function (coverage) { return _vm.properties.selected_benefit_coverages.push(coverage); }
     }
-  })], 1), _vm._v(" "), _c('div', {
+  })], 1), _vm._v(" "), (_vm.properties.selected_benefit_coverages.length > 0) ? _c('div', {
     staticClass: "w3-section"
   }, [_c('div', [_vm._v("Selected Coverage Lines (click to remove)")]), _vm._v(" "), _c('ul', {
     staticClass: "w3-ul w3-hoverable"
@@ -20528,17 +20560,17 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }, [_vm._v("\n                        " + _vm._s(coverage.desc) + "\n                        "), _c('i', {
       staticClass: "fa fa-times w3-margin-left"
     })])
-  }))]), _vm._v(" "), _c('div', {
+  }))]) : _vm._e(), _vm._v(" "), _c('div', {
     staticClass: "w3-section"
   }, [_c('Dropdown', {
     attrs: {
-      "label": 'Current industries you market to',
+      "label": 'Current industries you market to (Select all that apply)',
       "options": _vm.industry_currents
     },
     on: {
       "setOption": function (industry) { return _vm.properties.selected_current_industries.push(industry); }
     }
-  })], 1), _vm._v(" "), _c('div', {
+  })], 1), _vm._v(" "), (_vm.properties.selected_current_industries.length > 0) ? _c('div', {
     staticClass: "w3-section"
   }, [_c('div', [_vm._v("Selected Industries (click to remove)")]), _vm._v(" "), _c('ul', {
     staticClass: "w3-ul w3-hoverable"
@@ -20551,17 +20583,17 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }, [_vm._v("\n                        " + _vm._s(industry.desc) + "\n                        "), _c('i', {
       staticClass: "fa fa-times w3-margin-left"
     })])
-  }))]), _vm._v(" "), _c('div', {
+  }))]) : _vm._e(), _vm._v(" "), _c('div', {
     staticClass: "w3-section"
   }, [_c('Dropdown', {
     attrs: {
-      "label": 'Target industries for future marketing',
+      "label": 'Target industries for future marketing (Select all that apply)',
       "options": _vm.industry_targets
     },
     on: {
       "setOption": function (industry) { return _vm.properties.selected_target_industries.push(industry); }
     }
-  })], 1), _vm._v(" "), _c('div', {
+  })], 1), _vm._v(" "), (_vm.properties.selected_target_industries.length > 0) ? _c('div', {
     staticClass: "w3-section"
   }, [_c('div', [_vm._v(" Selected Industries (click to remove)")]), _vm._v(" "), _c('ul', {
     staticClass: "w3-ul w3-hoverable"
@@ -20574,7 +20606,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }, [_vm._v("\n                        " + _vm._s(industry.desc) + "\n                        "), _c('i', {
       staticClass: "fa fa-times w3-margin-left"
     })])
-  }))]), _vm._v(" "), _c('div', {
+  }))]) : _vm._e(), _vm._v(" "), _c('div', {
     staticClass: "w3-section"
   }, [_c('Ratio', {
     attrs: {
@@ -20791,6 +20823,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 
 
@@ -20815,6 +20850,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             engagement_tone: store.getState().OptionStore.engagement_tone,
             special_topics: store.getState().OptionStore.special_topics,
             causes: store.getState().OptionStore.causes,
+            day_label: this.getLabel(),
             days: store.getState().OptionStore.days,
             times: store.getState().OptionStore.times,
             errors: []
@@ -20822,6 +20858,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
 
     methods: {
+        getLabel: function getLabel() {
+            if (store.getState().PlanStore.plan_code == 1) {
+                return 'Days to Post (Select 3)';
+            } else {
+                return 'Days to Post (Select 5)';
+            }
+        },
         getDays: function getDays() {
             var days = store.getState().OptionStore.days;
             var selected_days = [];
@@ -21768,13 +21811,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "w3-panel"
   }, [_c('Dropdown', {
     attrs: {
-      "label": 'Special Post Topics',
+      "label": 'Special Post Topics (Select all that apply)',
       "options": _vm.special_topics
     },
     on: {
       "setOption": function (topic) { return _vm.properties.selected_special_topics.push(topic); }
     }
-  })], 1), _vm._v(" "), _c('div', {
+  })], 1), _vm._v(" "), (_vm.properties.selected_special_topics.length > 0) ? _c('div', {
     staticClass: "w3-panel"
   }, [_c('div', [_vm._v("Selected Topics (click to remove)")]), _vm._v(" "), _c('ul', {
     staticClass: "w3-ul w3-hoverable"
@@ -21787,17 +21830,17 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }, [_vm._v("\n                    " + _vm._s(topic.desc) + "\n                    "), _c('i', {
       staticClass: "fa fa-times w3-margin-left"
     })])
-  }))]), _vm._v(" "), _c('div', {
+  }))]) : _vm._e(), _vm._v(" "), _c('div', {
     staticClass: "w3-panel"
   }, [_c('Dropdown', {
     attrs: {
-      "label": 'Supported Causes',
+      "label": 'Supported Causes (Select all that apply)',
       "options": _vm.causes
     },
     on: {
       "setOption": function (cause) { return _vm.properties.selected_causes.push(cause); }
     }
-  })], 1), _vm._v(" "), _c('div', {
+  })], 1), _vm._v(" "), (_vm.properties.selected_causes.length > 0) ? _c('div', {
     staticClass: "w3-panel"
   }, [_c('div', [_vm._v("Selected Causes (click to remove)")]), _vm._v(" "), _c('ul', {
     staticClass: "w3-ul w3-hoverable"
@@ -21810,17 +21853,17 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }, [_vm._v("\n                    " + _vm._s(cause.desc) + "\n                    "), _c('i', {
       staticClass: "fa fa-times w3-margin-left"
     })])
-  }))]), _vm._v(" "), _c('div', {
+  }))]) : _vm._e(), _vm._v(" "), _c('div', {
     staticClass: "w3-panel"
   }, [_c('Dropdown', {
     attrs: {
-      "label": 'Days to Post',
+      "label": _vm.day_label,
       "options": _vm.days
     },
     on: {
       "setOption": function (day) { return _vm.properties.posting_days.push(day); }
     }
-  })], 1), _vm._v(" "), _c('div', {
+  })], 1), _vm._v(" "), (_vm.properties.posting_days.length > 0) ? _c('div', {
     staticClass: "w3-panel"
   }, [_c('div', [_vm._v("Selected Posting Days (click to remove)")]), _vm._v(" "), _c('ul', {
     staticClass: "w3-ul w3-hoverable"
@@ -21833,7 +21876,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }, [_vm._v("\n                    " + _vm._s(day.desc) + "\n                    "), _c('i', {
       staticClass: "fa fa-times w3-margin-left"
     })])
-  }))]), _vm._v(" "), _c('div', {
+  }))]) : _vm._e(), _vm._v(" "), _c('div', {
     staticClass: "w3-panel"
   }, [_c('div', [_vm._v("Times to post (all times PST)")]), _vm._v(" "), _c('Radio', {
     attrs: {

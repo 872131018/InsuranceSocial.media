@@ -9,7 +9,7 @@
                 <div class="w3-bar-item w3-button"
                     v-for="option in options"
                     v-on:click="setSelected(option)">
-                    {{ option.desc }}<span v-if="option.stateCd"> - {{ option.stateCd }}</span>
+                    {{ option.desc }}<span v-if="option.state_code"> - {{ option.state_code}}</span>
                 </div>
             </div>
         </div>

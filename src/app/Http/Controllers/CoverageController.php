@@ -10,6 +10,8 @@ use App\SelectedCarrier;
 
 use App\SelectedCommercialCoverage;
 
+use App\SelectedCropCoverage;
+
 use App\SelectedPersonalCoverage;
 
 use App\SelectedBenefitCoverage;
@@ -69,6 +71,21 @@ class CoverageController extends Controller
             array_push($selected, $selectedCoverage);
         }
         $user->commercialCoverages()->saveMany($selected);
+
+
+        if($request->input('selected_crop_coverages') == 'YES') {
+            $selectedCoverage = new SelectedCropCoverage();
+            $selectedCoverage->email = $user->email;
+            $selectedCoverage->code = 'YES';
+            $selectedCoverage->desc = 'I write Crop coverages';
+            $user->cropCoverages()->save($selectedCoverage);
+        } else {
+            $selectedCoverage = new SelectedCropCoverage();
+            $selectedCoverage->email = $user->email;
+            $selectedCoverage->code = 'NO';
+            $selectedCoverage->desc = 'I do not write Crop coverages';
+            $user->cropCoverages()->save($selectedCoverage);
+        }
 
         $selected = [];
         foreach ($request->input('selected_personal_coverages') as $coverage) {

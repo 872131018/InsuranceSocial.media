@@ -25,20 +25,6 @@ services:
             - DB_USERNAME=
             - DB_PASSWORD=
             - REDIS_HOST=redis
-    supervisor:
-        container_name: supervisor
-        build:
-            context: ./supervisor
-        links:
-            - mysql
-            - redis
-        volumes:
-            - ./src:/var/www/html
-        environment:
-            - DB_HOST=mysql
-            - DB_USERNAME=
-            - DB_PASSWORD=
-            - REDIS_HOST=redis
     mysql:
         container_name: mysql
         image: mysql:latest

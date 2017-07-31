@@ -29,12 +29,13 @@
             </div>
             <div class="w3-panel">
                 <Dropdown
-                    v-bind:label="'Special Post Topics'"
+                    v-bind:label="'Special Post Topics (Select all that apply)'"
                     v-bind:options="special_topics"
                     v-on:setOption="(topic) => properties.selected_special_topics.push(topic)">
                 </Dropdown>
             </div>
-            <div class="w3-panel">
+            <div class="w3-panel"
+                v-if="properties.selected_special_topics.length > 0">
                 <div>Selected Topics (click to remove)</div>
                 <ul class="w3-ul w3-hoverable">
                     <li class="w3-section"
@@ -47,12 +48,13 @@
             </div>
             <div class="w3-panel">
                 <Dropdown
-                    v-bind:label="'Supported Causes'"
+                    v-bind:label="'Supported Causes (Select all that apply)'"
                     v-bind:options="causes"
                     v-on:setOption="(cause) => properties.selected_causes.push(cause)">
                 </Dropdown>
             </div>
-            <div class="w3-panel">
+            <div class="w3-panel"
+                v-if="properties.selected_causes.length > 0">
                 <div>Selected Causes (click to remove)</div>
                 <ul class="w3-ul w3-hoverable">
                     <li class="w3-section"
@@ -65,12 +67,13 @@
             </div>
             <div class="w3-panel">
                 <Dropdown
-                    v-bind:label="'Days to Post'"
+                    v-bind:label="day_label"
                     v-bind:options="days"
                     v-on:setOption="(day) => properties.posting_days.push(day)">
                 </Dropdown>
             </div>
-            <div class="w3-panel">
+            <div class="w3-panel"
+                v-if="properties.posting_days.length > 0">
                 <div>Selected Posting Days (click to remove)</div>
                 <ul class="w3-ul w3-hoverable">
                     <li class="w3-section"
@@ -131,12 +134,20 @@
                 engagement_tone: store.getState().OptionStore.engagement_tone,
                 special_topics: store.getState().OptionStore.special_topics,
                 causes: store.getState().OptionStore.causes,
+                day_label: this.getLabel(),
                 days: store.getState().OptionStore.days,
                 times: store.getState().OptionStore.times,
                 errors: []
             }
         },
         methods: {
+            getLabel() {
+                if(store.getState().PlanStore.plan_code == 1) {
+                    return 'Days to Post (Select 3)';
+                } else {
+                    return 'Days to Post (Select 5)';
+                }
+            },
             getDays() {
                 let days = store.getState().OptionStore.days;
                 let selected_days = [];

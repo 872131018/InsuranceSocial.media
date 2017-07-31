@@ -47,12 +47,13 @@
                 <div v-if="target.code == 'R'">
                     <div class="w3-section">
                         <Dropdown
-                            v-bind:label="'Marketing Regions'"
+                            v-bind:label="'Marketing Regions (Select all that apply)'"
                             v-bind:options="regions"
                             v-on:setOption="(region) => properties.selected_regions.push(region)">
                         </Dropdown>
                     </div>
-                    <div class="w3-section">
+                    <div class="w3-section"
+                        v-if="properties.selected_regions.length > 0">
                         <div>Selected Regions (click to remove)</div>
                         <ul class="w3-ul w3-hoverable">
                             <li class="w3-section"
@@ -67,12 +68,13 @@
                 <div v-if="target.code == 'S'">
                     <div class="w3-section">
                         <Dropdown
-                            v-bind:label="'Marketing State'"
+                            v-bind:label="'Marketing States (Select all that apply)'"
                             v-bind:options="states"
                             v-on:setOption="setState($event)">
                         </Dropdown>
                     </div>
-                    <div class="w3-section">
+                    <div class="w3-section"
+                        v-if="properties.selected_states.length > 0">
                         <div>Selected States (click to remove)</div>
                         <ul class="w3-ul w3-hoverable">
                             <li class="w3-section"
@@ -85,12 +87,13 @@
                     </div>
                     <div class="w3-section">
                         <Dropdown
-                            v-bind:label="'Marketing Counties'"
+                            v-bind:label="'Marketing Counties (Select all that apply)'"
                             v-bind:options="counties"
                             v-on:setOption="(county) => properties.selected_counties.push(county)">
                         </Dropdown>
                     </div>
-                    <div class="w3-section">
+                    <div class="w3-section"
+                        v-if="properties.selected_counties.length > 0">
                         <div>Selected Counties (click to remove)</div>
                         <ul class="w3-ul w3-hoverable">
                             <li class="w3-section"
