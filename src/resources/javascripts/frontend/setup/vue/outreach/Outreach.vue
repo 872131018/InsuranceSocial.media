@@ -170,9 +170,9 @@
                 if(this.properties.selected_causes.length > 5) {
                     this.errors.push('You may only select up to 5 causes.');
                 }
-                if(store.getState().PlanStore.plan_code == 1 && this.properties.selected_days.length > 3) {
+                if(store.getState().PlanStore.plan_code == 1 && this.properties.posting_days.length > 3) {
                     this.errors.push('You may only select up to 3 posting days.');
-                } else if(store.getState().PlanStore.plan_code > 1 && this.properties.selected_days.length > 5) {
+                } else if(store.getState().PlanStore.plan_code > 1 && this.properties.posting_days.length > 5) {
                     this.errors.push('You may only select up to 5 posting days.');
                 }
                 if(this.errors.length == 0) {
