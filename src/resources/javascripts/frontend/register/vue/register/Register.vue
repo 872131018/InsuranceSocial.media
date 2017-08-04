@@ -106,7 +106,7 @@
                         }
                     }).catch(error => {
                         if(error.email) {
-                            this.errors.push('That email is already used, please try another');
+                            this.errors.push('That email has already been used, please use another');
                         } else {
                             this.errors.push('An error has occured, please contact support.');
                         }

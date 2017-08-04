@@ -6,7 +6,7 @@
             v-model="value"
             v-on:keyup="validate()">
         <Check v-if="isValid"></Check>
-        <Cross v-else></Cross>
+        <Cross v-else-if="!isValid && value != ''"></Cross>
     </div>
 </template>
 

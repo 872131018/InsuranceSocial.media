@@ -17076,7 +17076,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         }
     },
     components: {
-        Progress: __WEBPACK_IMPORTED_MODULE_0__Progress___default.a,
+        ProgressBar: __WEBPACK_IMPORTED_MODULE_0__Progress___default.a,
         QuickNavigation: __WEBPACK_IMPORTED_MODULE_1__QuickNavigation___default.a,
         Field: __WEBPACK_IMPORTED_MODULE_2__inputs_Field___default.a,
         Dropdown: __WEBPACK_IMPORTED_MODULE_3__inputs_Dropdown___default.a,
@@ -17562,7 +17562,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.value = $event.target.value
       }
     }
-  }), _vm._v(" "), (_vm.isValid) ? _c('Check') : _c('Cross')], 1)
+  }), _vm._v(" "), (_vm.isValid) ? _c('Check') : (!_vm.isValid && _vm.value != '') ? _c('Cross') : _vm._e()], 1)
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
@@ -18024,7 +18024,7 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('Progress', {
+  return _c('div', [_c('ProgressBar', {
     attrs: {
       "progress": 67
     }
@@ -18456,7 +18456,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.counties = filtered_counties;
         },
         previous: function previous() {
-            store.dispatch({ type: 'SET_LOCATION', data: this.properties });
+            store.dispatch({ type: 'SET_AGENCY', data: this.properties });
             this.$router.push({ name: 'Profile' });
         },
         update: function update(route) {
@@ -18475,7 +18475,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         }
     },
     components: {
-        Progress: __WEBPACK_IMPORTED_MODULE_0__Progress___default.a,
+        ProgressBar: __WEBPACK_IMPORTED_MODULE_0__Progress___default.a,
         QuickNavigation: __WEBPACK_IMPORTED_MODULE_1__QuickNavigation___default.a,
         Field: __WEBPACK_IMPORTED_MODULE_2__inputs_Field___default.a,
         Dropdown: __WEBPACK_IMPORTED_MODULE_3__inputs_Dropdown___default.a,
@@ -18777,7 +18777,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.value = $event.target.value
       }
     }
-  }), _vm._v(" "), (_vm.isValid) ? _c('Check') : _c('Cross')], 1)
+  }), _vm._v(" "), (_vm.isValid) ? _c('Check') : (!_vm.isValid && _vm.value != '') ? _c('Cross') : _vm._e()], 1)
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
@@ -19171,7 +19171,7 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('Progress', {
+  return _c('div', [_c('ProgressBar', {
     attrs: {
       "progress": 67
     }
@@ -19610,6 +19610,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var _this = this;
 
             this.errors = [];
+            if (this.properties.selected_carriers.length > 5) {
+                this.errors.push('You may only select up to 5 carriers.');
+            }
+            if (this.properties.selected_commercial_coverages.length > 5) {
+                this.errors.push('You may only select up to 5 commercial coverages.');
+            }
+            if (this.properties.selected_personal_coverages.length > 5) {
+                this.errors.push('You may only select up to 5 personal coverages.');
+            }
+            if (this.properties.selected_benefit_coverages.length > 5) {
+                this.errors.push('You may only select up to 5 benefit coverages.');
+            }
+            if (this.properties.selected_current_industries.length > 5) {
+                this.errors.push('You may only select up to 5 current industries.');
+            }
+            if (this.properties.selected_target_industries.length > 5) {
+                this.errors.push('You may only select up to 5 target industries.');
+            }
             if (this.errors.length == 0) {
                 axios.post(window.location, this.properties).then(function (response) {
                     store.dispatch({ type: 'SET_COVERAGE', data: response.data });
@@ -19621,7 +19639,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         }
     },
     components: {
-        Progress: __WEBPACK_IMPORTED_MODULE_0__Progress___default.a,
+        ProgressBar: __WEBPACK_IMPORTED_MODULE_0__Progress___default.a,
         QuickNavigation: __WEBPACK_IMPORTED_MODULE_1__QuickNavigation___default.a,
         Field: __WEBPACK_IMPORTED_MODULE_2__inputs_Field___default.a,
         Dropdown: __WEBPACK_IMPORTED_MODULE_3__inputs_Dropdown___default.a,
@@ -20443,7 +20461,7 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('Progress', {
+  return _c('div', [_c('ProgressBar', {
     attrs: {
       "progress": 67
     }
@@ -20905,6 +20923,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var _this = this;
 
             this.errors = [];
+            if (this.properties.selected_special_topics.length > 5) {
+                this.errors.push('You may only select up to 5  post topics.');
+            }
+            if (this.properties.selected_causes.length > 5) {
+                this.errors.push('You may only select up to 5 causes.');
+            }
+            if (store.getState().PlanStore.plan_code == 1 && this.properties.selected_days.length > 3) {
+                this.errors.push('You may only select up to 3 posting days.');
+            } else if (store.getState().PlanStore.plan_code > 1 && this.properties.selected_days.length > 5) {
+                this.errors.push('You may only select up to 5 posting days.');
+            }
             if (this.errors.length == 0) {
                 axios.post(window.location, this.properties).then(function (response) {
                     if (route == 'Done') {
@@ -20919,7 +20948,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         }
     },
     components: {
-        Progress: __WEBPACK_IMPORTED_MODULE_0__Progress___default.a,
+        ProgressBar: __WEBPACK_IMPORTED_MODULE_0__Progress___default.a,
         QuickNavigation: __WEBPACK_IMPORTED_MODULE_1__QuickNavigation___default.a,
         Field: __WEBPACK_IMPORTED_MODULE_2__inputs_Field___default.a,
         Dropdown: __WEBPACK_IMPORTED_MODULE_3__inputs_Dropdown___default.a,
@@ -21775,7 +21804,7 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('Progress', {
+  return _c('div', [_c('ProgressBar', {
     attrs: {
       "progress": 67
     }

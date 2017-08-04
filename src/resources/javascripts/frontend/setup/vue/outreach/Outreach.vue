@@ -1,8 +1,8 @@
 <template>
     <div>
-        <Progress
+        <ProgressBar
             v-bind:progress="67">
-        </Progress>
+        </ProgressBar>
         <QuickNavigation
             v-on:route="update($event)">
         </QuickNavigation>
@@ -111,7 +111,7 @@
 </template>
 
 <script>
-    import Progress from '../Progress';
+    import ProgressBar from '../Progress';
     import QuickNavigation from '../QuickNavigation';
     import Field from './inputs/Field';
     import Dropdown from './inputs/Dropdown';
@@ -164,6 +164,17 @@
             },
             update(route) {
                 this.errors = [];
+                if(this.properties.selected_special_topics.length > 5) {
+                    this.errors.push('You may only select up to 5  post topics.');
+                }
+                if(this.properties.selected_causes.length > 5) {
+                    this.errors.push('You may only select up to 5 causes.');
+                }
+                if(store.getState().PlanStore.plan_code == 1 && this.properties.selected_days.length > 3) {
+                    this.errors.push('You may only select up to 3 posting days.');
+                } else if(store.getState().PlanStore.plan_code > 1 && this.properties.selected_days.length > 5) {
+                    this.errors.push('You may only select up to 5 posting days.');
+                }
                 if(this.errors.length == 0) {
                     axios.post(window.location, this.properties).then(response => {
                         if(route == 'Done') {
@@ -178,7 +189,7 @@
             }
         },
         components: {
-            Progress,
+            ProgressBar,
             QuickNavigation,
             Field,
             Dropdown,

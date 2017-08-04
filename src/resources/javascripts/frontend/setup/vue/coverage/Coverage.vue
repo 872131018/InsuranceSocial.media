@@ -1,8 +1,8 @@
 <template>
     <div>
-        <Progress
+        <ProgressBar
             v-bind:progress="67">
-        </Progress>
+        </ProgressBar>
         <QuickNavigation
             v-on:route="update($event)">
         </QuickNavigation>
@@ -161,7 +161,7 @@
 </template>
 
 <script>
-    import Progress from '../Progress';
+    import ProgressBar from '../Progress';
     import QuickNavigation from '../QuickNavigation';
     import Field from './inputs/Field';
     import Dropdown from './inputs/Dropdown';
@@ -203,6 +203,24 @@
             },
             update(route) {
                 this.errors = [];
+                if(this.properties.selected_carriers.length > 5) {
+                    this.errors.push('You may only select up to 5 carriers.');
+                }
+                if(this.properties.selected_commercial_coverages.length > 5) {
+                    this.errors.push('You may only select up to 5 commercial coverages.');
+                }
+                if(this.properties.selected_personal_coverages.length > 5) {
+                    this.errors.push('You may only select up to 5 personal coverages.');
+                }
+                if(this.properties.selected_benefit_coverages.length > 5) {
+                    this.errors.push('You may only select up to 5 benefit coverages.');
+                }
+                if(this.properties.selected_current_industries.length > 5) {
+                    this.errors.push('You may only select up to 5 current industries.');
+                }
+                if(this.properties.selected_target_industries.length > 5) {
+                    this.errors.push('You may only select up to 5 target industries.');
+                }
                 if(this.errors.length == 0) {
                     axios.post(window.location, this.properties).then(response => {
                         store.dispatch({ type: 'SET_COVERAGE', data: response.data });
@@ -214,7 +232,7 @@
             }
         },
         components: {
-            Progress,
+            ProgressBar,
             QuickNavigation,
             Field,
             Dropdown,

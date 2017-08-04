@@ -31,6 +31,10 @@
         <div class="w3-panel">
             <Name v-on:setName="(name) => properties.name = name"></Name>
         </div>
+        <div class="w3-panel"
+            v-if="errors.length">
+            <Errors v-bind:errors="errors"></Errors>
+        </div>
         <div class="w3-panel">
             <button class="w3-button w3-text-white primary"
                 v-on:click="sendPaymentDataToAnet()">Complete
@@ -46,6 +50,7 @@
     import Expiration from './Expiration';
     import CCV from './inputs/CCV';
     import Name from './inputs/Name';
+    import Errors from './Errors';
 
     export default {
         data() {
@@ -60,7 +65,8 @@
                     name: '',
                     apiLoginID: '',
                     clientKey: ''
-                }
+                },
+                errors: []
             }
         },
         mounted() {
@@ -73,6 +79,7 @@
         },
         methods: {
             sendPaymentDataToAnet() {
+                this.errors = [];
                 const secureData = {
                     cardData: {
                         cardNumber: this.properties.card,
@@ -87,17 +94,24 @@
                 };
 
                 Accept.dispatchData(secureData, (response) => {
-                    const transaction = {
-                        total: '1.00',
-                        dataDescriptor: response.opaqueData.dataDescriptor,
-                        dataValue: response.opaqueData.dataValue,
-                        customerData: store.getState().UserStore
-                    };
+                    if (response.messages.resultCode === "Error") {
+                        for(let error of response.messages.message) {
+                            this.errors.push(error.text);
+                        }
+                    } else {
+                        const transaction = {
+                            total: '1.00',
+                            dataDescriptor: response.opaqueData.dataDescriptor,
+                            dataValue: response.opaqueData.dataValue,
+                            customerData: store.getState().UserStore
+                        };
 
-                    axios.post(window.location, transaction).then(response => {
-                        window.location = `${ window.base_url }/welcome`;
-                    });
-
+                        axios.post(window.location, transaction).then(response => {
+                            window.location = `${ window.base_url }/welcome`;
+                        }).catch((error) => {
+                            this.errors.push('An Error has occured. Please contact support.');
+                        });
+                    }
                 });
 
             },
@@ -107,7 +121,8 @@
             Card,
             Expiration,
             CCV,
-            Name
+            Name,
+            Errors
         }
     }
 </script>

@@ -1,8 +1,8 @@
 <template>
     <div>
-        <Progress
+        <ProgressBar
             v-bind:progress="67">
-        </Progress>
+        </ProgressBar>
         <QuickNavigation
             v-on:route="update($event)">
         </QuickNavigation>
@@ -108,7 +108,7 @@
 </template>
 
 <script>
-    import Progress from '../Progress';
+    import ProgressBar from '../Progress';
     import QuickNavigation from '../QuickNavigation';
     import Field from './inputs/Field';
     import Dropdown from './inputs/Dropdown';
@@ -165,7 +165,7 @@
             }
         },
         components: {
-            Progress,
+            ProgressBar,
             QuickNavigation,
             Field,
             Dropdown,
