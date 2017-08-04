@@ -31598,7 +31598,10 @@ __WEBPACK_IMPORTED_MODULE_1_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_2_vue_
 
 var router = new __WEBPACK_IMPORTED_MODULE_2_vue_router__["a" /* default */]({
     mode: 'history',
-    routes: __WEBPACK_IMPORTED_MODULE_3__routes__["a" /* default */]
+    routes: __WEBPACK_IMPORTED_MODULE_3__routes__["a" /* default */],
+    scrollBehavior: function scrollBehavior(to, from, savedPosition) {
+        return { x: 0, y: 0 };
+    }
 });
 
 var Site = new __WEBPACK_IMPORTED_MODULE_1_vue___default.a({

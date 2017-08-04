@@ -19,14 +19,16 @@
     <div id="app">
         <App></App>
     </div>
-    <!-- Footer -->
-    <!--
-    <footer class="w3-center w3-dark-grey w3-padding-24 w3-hover-black">
-        <p>Powered by <a href="http://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-opacity">w3.css</a></p>
-    </footer>
-    -->
     <!-- Scripts -->
+    <script type="text/javascript">
+        window.__lc = window.__lc || {};
+        window.__lc.license = 6649691;
+        (function() {
+          var lc = document.createElement('script'); lc.type = 'text/javascript'; lc.async = true;
+          lc.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'cdn.livechatinc.com/tracking.js';
+          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(lc, s);
+        })();
+    </script>
     <script type="text/javascript" src="{{ url('javascripts/social.index.js') }}"></script>
-    <script type="text/javascript" src="https://jstest.authorize.net/v1/Accept.js" charset="utf-8"></script>
 </body>
 </html>

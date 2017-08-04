@@ -1,8 +1,8 @@
 <template>
     <div>
-        <Progress
+        <ProgressBar
             v-bind:progress="33">
-        </Progress>
+        </ProgressBar>
         <div class="w3-container w3-card-2 form">
             <div class="w3-panel">
                 <h3>Corporate Page Preferences</h3>
@@ -33,7 +33,7 @@
 </template>
 
 <script>
-    import Progress from '../Progress';
+    import ProgressBar from '../Progress';
     import Field from './inputs/Field';
     import Radio from './inputs/Radio';
 
@@ -72,7 +72,7 @@
             }
         },
         components: {
-            Progress,
+            ProgressBar,
             Field,
             Radio
         }

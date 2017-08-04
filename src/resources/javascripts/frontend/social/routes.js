@@ -3,7 +3,6 @@ import Facebook from './vue/facebook/Facebook';
 import Create from './vue/create/Create';
 import Page from './vue/page/Page';
 import Twitter from './vue/twitter/Twitter';
-import Payment from './vue/payment/Payment';
 
 export default [
     {
@@ -30,10 +29,5 @@ export default [
         path: '/twitter',
         name: 'Twitter',
         component: Twitter
-    },
-    {
-        path: '/payment',
-        name: 'Payment',
-        component: Payment
     }
 ];
