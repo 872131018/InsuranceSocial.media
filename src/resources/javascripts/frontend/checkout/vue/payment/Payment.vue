@@ -26,7 +26,12 @@
                 v-on:setYear="(year) => properties.year = year"
                 v-on:setCode="(code) => properties.code = code">
             </Expiration>
-            <div>Expiration Month and Year(YYYY) with Securty Code</div>
+            <div>Expiration Month and Year(YYYY) with Securty Code
+                <i class="fa fa-question-circle-o w3-tooltip">
+                    <img class="w3-text" style="position:absolute;bottom:-20px"
+                        v-bind:src="tooltipImage">
+                </i>
+            </div>
         </div>
         <div class="w3-panel">
             <Name v-on:setName="(name) => properties.name = name"></Name>
@@ -40,6 +45,11 @@
                 v-on:click="sendPaymentDataToAnet()">Complete
             </button>
         </div>
+        <Modal
+            v-if="response"
+            v-bind:response="response"
+            v-on:setModal="navigate()">
+        </Modal>
     </div>
 </template>
 
@@ -51,6 +61,7 @@
     import CCV from './inputs/CCV';
     import Name from './inputs/Name';
     import Errors from './Errors';
+    import Modal from './Modal/Modal';
 
     export default {
         data() {
@@ -66,7 +77,9 @@
                     apiLoginID: '',
                     clientKey: ''
                 },
-                errors: []
+                errors: [],
+                tooltipImage: `${ window.base_url }/images/creditcards_cvv.png`,
+                response: null
             }
         },
         mounted() {
@@ -107,7 +120,7 @@
                         };
 
                         axios.post(window.location, transaction).then(response => {
-                            window.location = `${ window.base_url }/welcome`;
+                            this.response = response.data.transaction;
                         }).catch((error) => {
                             this.errors.push('An Error has occured. Please contact support.');
                         });
@@ -115,6 +128,9 @@
                 });
 
             },
+            navigate() {
+                window.location = `${ window.base_url }/welcome`;
+            }
         },
         components: {
             Plan,
@@ -122,7 +138,8 @@
             Expiration,
             CCV,
             Name,
-            Errors
+            Errors,
+            Modal
         }
     }
 </script>

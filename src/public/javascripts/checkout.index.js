@@ -31570,7 +31570,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_router__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__routes__ = __webpack_require__(232);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__vue_App__ = __webpack_require__(281);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__vue_App__ = __webpack_require__(284);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__vue_App___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__vue_App__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__global_navigation_Navigation__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__global_navigation_Navigation___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__global_navigation_Navigation__);
@@ -32503,7 +32503,7 @@ var Component = __webpack_require__(1)(
   /* script */
   __webpack_require__(252),
   /* template */
-  __webpack_require__(280),
+  __webpack_require__(283),
   /* styles */
   null,
   /* scopeId */
@@ -32554,6 +32554,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__inputs_Name___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__inputs_Name__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__Errors__ = __webpack_require__(277);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__Errors___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__Errors__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__Modal_Modal__ = __webpack_require__(280);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__Modal_Modal___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__Modal_Modal__);
 //
 //
 //
@@ -32599,6 +32601,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 
 
 
@@ -32622,7 +32635,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 apiLoginID: '',
                 clientKey: ''
             },
-            errors: []
+            errors: [],
+            tooltipImage: window.base_url + '/images/creditcards_cvv.png',
+            response: null
         };
     },
     mounted: function mounted() {
@@ -32689,12 +32704,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     };
 
                     axios.post(window.location, transaction).then(function (response) {
-                        window.location = window.base_url + '/welcome';
+                        _this2.response = response.data.transaction;
                     }).catch(function (error) {
                         _this2.errors.push('An Error has occured. Please contact support.');
                     });
                 }
             });
+        },
+        navigate: function navigate() {
+            window.location = window.base_url + '/welcome';
         }
     },
     components: {
@@ -32703,7 +32721,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         Expiration: __WEBPACK_IMPORTED_MODULE_3__Expiration___default.a,
         CCV: __WEBPACK_IMPORTED_MODULE_4__inputs_CCV___default.a,
         Name: __WEBPACK_IMPORTED_MODULE_5__inputs_Name___default.a,
-        Errors: __WEBPACK_IMPORTED_MODULE_6__Errors___default.a
+        Errors: __WEBPACK_IMPORTED_MODULE_6__Errors___default.a,
+        Modal: __WEBPACK_IMPORTED_MODULE_7__Modal_Modal___default.a
     }
 });
 
@@ -33199,11 +33218,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
-            card: ''
+            card: '',
+            cardImage: window.base_url + '/images/credit-card-icon-set.png'
         };
     }
 });
@@ -33215,7 +33236,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "w3-section"
-  }, [_c('input', {
+  }, [_c('img', {
+    attrs: {
+      "src": _vm.cardImage
+    }
+  }), _vm._v(" "), _c('input', {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -33871,6 +33896,122 @@ if (false) {
 /* 280 */
 /***/ (function(module, exports, __webpack_require__) {
 
+var disposed = false
+var Component = __webpack_require__(1)(
+  /* script */
+  __webpack_require__(281),
+  /* template */
+  __webpack_require__(282),
+  /* styles */
+  null,
+  /* scopeId */
+  null,
+  /* moduleIdentifier (server only) */
+  null
+)
+Component.options.__file = "/Users/johnhuffman/Sites/InsuranceSocial.media/src/resources/javascripts/frontend/checkout/vue/payment/Modal/Modal.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] Modal.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-204fe39e", Component.options)
+  } else {
+    hotAPI.reload("data-v-204fe39e", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 281 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: {
+        response: {
+            type: Object
+        }
+    }
+});
+
+/***/ }),
+/* 282 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "w3-modal w3-show",
+    on: {
+      "click": function($event) {
+        _vm.$emit('setModal')
+      }
+    }
+  }, [_c('div', {
+    staticClass: "w3-modal-content w3-card-4"
+  }, [_vm._m(0), _vm._v(" "), _c('div', {
+    staticClass: "w3-container"
+  }, [_c('div', {
+    staticClass: "w3-content"
+  }, [_vm._v("\n                Amount: " + _vm._s(_vm.response.amount)), _c('br'), _vm._v("\n                Transaction ID: " + _vm._s(_vm.response.transactionId)), _c('br'), _vm._v("\n                Authorization Code: " + _vm._s(_vm.response.auth_code) + "\n            ")])]), _vm._v(" "), _vm._m(1)])])
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('header', {
+    staticClass: "w3-container w3-center primary"
+  }, [_c('h2', {
+    staticClass: "w3-text-white"
+  }, [_vm._v("Payment Success")])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('footer', {
+    staticClass: "w3-container w3-text-white primary"
+  }, [_c('p', {
+    staticClass: "w3-center"
+  }, [_vm._v("Click anywhere to continue and configure your social media accounts")])])
+}]}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-204fe39e", module.exports)
+  }
+}
+
+/***/ }),
+/* 283 */
+/***/ (function(module, exports, __webpack_require__) {
+
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "w3-container w3-card-2 form"
@@ -33896,7 +34037,18 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "setYear": function (year) { return _vm.properties.year = year; },
       "setCode": function (code) { return _vm.properties.code = code; }
     }
-  }), _vm._v(" "), _c('div', [_vm._v("Expiration Month and Year(YYYY) with Securty Code")])], 1), _vm._v(" "), _c('div', {
+  }), _vm._v(" "), _c('div', [_vm._v("Expiration Month and Year(YYYY) with Securty Code\n            "), _c('i', {
+    staticClass: "fa fa-question-circle-o w3-tooltip"
+  }, [_c('img', {
+    staticClass: "w3-text",
+    staticStyle: {
+      "position": "absolute",
+      "bottom": "-20px"
+    },
+    attrs: {
+      "src": _vm.tooltipImage
+    }
+  })])])], 1), _vm._v(" "), _c('div', {
     staticClass: "w3-panel"
   }, [_c('Name', {
     on: {
@@ -33917,7 +34069,16 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.sendPaymentDataToAnet()
       }
     }
-  }, [_vm._v("Complete\n        ")])])])
+  }, [_vm._v("Complete\n        ")])]), _vm._v(" "), (_vm.response) ? _c('Modal', {
+    attrs: {
+      "response": _vm.response
+    },
+    on: {
+      "setModal": function($event) {
+        _vm.navigate()
+      }
+    }
+  }) : _vm._e()], 1)
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "w3-panel"
@@ -33932,15 +34093,15 @@ if (false) {
 }
 
 /***/ }),
-/* 281 */
+/* 284 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var Component = __webpack_require__(1)(
   /* script */
-  __webpack_require__(282),
+  __webpack_require__(285),
   /* template */
-  __webpack_require__(283),
+  __webpack_require__(286),
   /* styles */
   null,
   /* scopeId */
@@ -33972,7 +34133,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 282 */
+/* 285 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -34009,7 +34170,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 283 */
+/* 286 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;

@@ -54,7 +54,6 @@
                 <div style="height: 22px; width: 127px">Register</div>
             </button>
         </div>
-        </div>
     </div>
 </template>
 

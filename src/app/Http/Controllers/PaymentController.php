@@ -157,7 +157,14 @@ class PaymentController extends Controller
             $payment->auth_code = $auth_code;
             $user->payments()->save($payment);
 
-            return response()->json($user);
+            return response()->json([
+                'transaction' => [
+                    'amount' => 0.00,
+                    'transactionId' => $transactionId,
+                    'auth_code' => $auth_code
+                ],
+                'user' => $user
+            ]);
         }
     }
 
