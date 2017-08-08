@@ -1,0 +1,52 @@
+{
+    "coverages": [
+        {
+           "code":11003,
+           "desc":"Annuities"
+        },
+        {
+           "code":11018,
+           "desc":"Dental Insurance"
+        },
+        {
+           "code":11020,
+           "desc":"Disability Insurance - Long-term"
+        },
+        {
+           "code":11021,
+           "desc":"Disability Insurance - Short-term"
+        },
+        {
+           "code":11027,
+           "desc":"Health Insurance - Group"
+        },
+        {
+           "code":11028,
+           "desc":"Health Insurance - Individual"
+        },
+        {
+           "code":11031,
+           "desc":"Individual Retirement Accounts"
+        },
+        {
+           "code":11033,
+           "desc":"Life Insurance - Group"
+        },
+        {
+           "code":11034,
+           "desc":"Life Insurance - Individual"
+        },
+        {
+           "code":11035,
+           "desc":"Long-term Care"
+        },
+        {
+           "code":11039,
+           "desc":"Mutual Funds"
+        },
+        {
+           "code":11049,
+           "desc":"Vision Insurance"
+        }
+    ]
+}

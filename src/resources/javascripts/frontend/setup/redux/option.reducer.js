@@ -50,7 +50,9 @@ const initialState = {
         {"code": "I", "desc":"IMT Group"},
         {"code": "P", "desc":"Plymouth Rock Assurance"},
     ],
-    coverage_targets: [],
+    commercial_coverage_lines: [],
+    personal_coverage_lines: [],
+    benefit_coverage_lines: [],
     industry_currents: [],
     industry_targets: [],
     crop_coverages: [
@@ -114,8 +116,14 @@ export default function(options = initialState, action) {
             }
             break;
         case 'SET_COVERAGES':
-            for(let coverage of action.data) {
-                options['coverage_targets'].push(coverage);
+            for(let coverage of action.data.commercial) {
+                options['commercial_coverage_lines'].push(coverage);
+            }
+            for(let coverage of action.data.personal) {
+                options['personal_coverage_lines'].push(coverage);
+            }
+            for(let coverage of action.data.benefit) {
+                options['benefit_coverage_lines'].push(coverage);
             }
             break;
         case 'SET_INDUSTRIES':

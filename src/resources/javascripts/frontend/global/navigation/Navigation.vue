@@ -1,5 +1,5 @@
 <template>
-    <nav class="w3-container w3-bar w3-card-2 w3-xlarge w3-text-white w3-padding-16 primary header-logo">
+    <nav class="w3-container w3-bar w3-card-2 w3-xlarge w3-text-white primary header">
         <div class="w3-hide-small">
             <Desktop></Desktop>
         </div>

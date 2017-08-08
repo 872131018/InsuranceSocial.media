@@ -13612,8 +13612,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   return _vm._m(0)
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', [_c('a', {
-    staticClass: "w3-bar-item w3-button w3-hover-white"
-  }, [_vm._v("Home")])])
+    staticClass: "w3-bar-item w3-button w3-hover-white header-logo"
+  }, [_vm._v("Insurance Social Media")])])
 }]}
 module.exports.render._withStripped = true
 if (false) {
@@ -13693,7 +13693,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "w3-bar"
   }, [_c('a', {
     staticClass: "w3-bar-item w3-button"
-  }, [_vm._v("Home")])])])
+  }, [_vm._v("Insurance Social Media")])])])
 }]}
 module.exports.render._withStripped = true
 if (false) {
@@ -13709,7 +13709,7 @@ if (false) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('nav', {
-    staticClass: "w3-container w3-bar w3-card-2 w3-xlarge w3-text-white w3-padding-16 primary header-logo"
+    staticClass: "w3-container w3-bar w3-card-2 w3-xlarge w3-text-white primary header"
   }, [_c('div', {
     staticClass: "w3-hide-small"
   }, [_c('Desktop')], 1), _vm._v(" "), _c('div', {
@@ -13789,6 +13789,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     components: {
@@ -13804,25 +13805,51 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   return _vm._m(0)
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('footer', {
-    staticClass: "w3-container w3-bar w3-medium w3-text-white w3-padding-16 secondary footer-logo"
-  }, [_c('div', {
-    staticClass: "w3-right"
+    staticClass: "w3-container w3-bar w3-medium w3-text-white w3-padding-16 footer"
   }, [_c('a', {
-    staticClass: "w3-button w3-circle w3-large w3-hover-white primary"
-  }, [_c('i', {
-    staticClass: "fa fa-twitter"
+    staticClass: "w3-bar-item w3-button footer-logo"
+  }, [_vm._v("Insurance Social Media")]), _vm._v(" "), _c('div', {
+    staticClass: "w3-right social"
+  }, [_c('a', {
+    attrs: {
+      "href": "https://www.twitter.com/insurancesmm"
+    }
+  }, [_c('img', {
+    attrs: {
+      "src": "images/icon-twitter.png",
+      "height": "36",
+      "width": "36"
+    }
   })]), _vm._v(" "), _c('a', {
-    staticClass: "w3-button w3-circle w3-large w3-hover-white primary"
-  }, [_c('i', {
-    staticClass: "fa fa-facebook"
+    attrs: {
+      "href": "https://www.facebook.com/insurancesocialdotmedia/"
+    }
+  }, [_c('img', {
+    attrs: {
+      "src": "images/icon-facebook.png",
+      "height": "36",
+      "width": "36"
+    }
   })]), _vm._v(" "), _c('a', {
-    staticClass: "w3-button w3-circle w3-large w3-hover-white primary"
-  }, [_c('i', {
-    staticClass: "fa fa-instagram"
+    attrs: {
+      "href": "https://www.instagram.com/insurancesocial.media/"
+    }
+  }, [_c('img', {
+    attrs: {
+      "src": "images/icon-instagram.png",
+      "height": "36",
+      "width": "36"
+    }
   })]), _vm._v(" "), _c('a', {
-    staticClass: "w3-button w3-circle w3-large w3-hover-white primary"
-  }, [_c('i', {
-    staticClass: "fa fa-linkedin"
+    attrs: {
+      "href": "https://www.linkedin.com/company/insurancesocial-media"
+    }
+  }, [_c('img', {
+    attrs: {
+      "src": "images/icon-linkedin.png",
+      "height": "36",
+      "width": "36"
+    }
   })])])])
 }]}
 module.exports.render._withStripped = true
@@ -16576,7 +16603,9 @@ var initialState = {
         "desc": "State and Counties"
     }],
     carriers: [{ "code": "C", "desc": "Carrier" }, { "code": "F", "desc": "Farmer\'s Mutual Hail" }, { "code": "G", "desc": "Grinnell Mutual" }, { "code": "I", "desc": "IMT Group" }, { "code": "P", "desc": "Plymouth Rock Assurance" }],
-    coverage_targets: [],
+    commercial_coverage_lines: [],
+    personal_coverage_lines: [],
+    benefit_coverage_lines: [],
     industry_currents: [],
     industry_targets: [],
     crop_coverages: [{ "code": "YES", "desc": "Yes I write Crop coverages" }, { "code": "NO", "desc": "No I do not write Crop coverages" }],
@@ -16680,10 +16709,10 @@ var initialState = {
             var _iteratorError4 = undefined;
 
             try {
-                for (var _iterator4 = action.data[Symbol.iterator](), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
+                for (var _iterator4 = action.data.commercial[Symbol.iterator](), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
                     var coverage = _step4.value;
 
-                    options['coverage_targets'].push(coverage);
+                    options['commercial_coverage_lines'].push(coverage);
                 }
             } catch (err) {
                 _didIteratorError4 = true;
@@ -16700,18 +16729,15 @@ var initialState = {
                 }
             }
 
-            break;
-        case 'SET_INDUSTRIES':
             var _iteratorNormalCompletion5 = true;
             var _didIteratorError5 = false;
             var _iteratorError5 = undefined;
 
             try {
-                for (var _iterator5 = action.data[Symbol.iterator](), _step5; !(_iteratorNormalCompletion5 = (_step5 = _iterator5.next()).done); _iteratorNormalCompletion5 = true) {
-                    var industry = _step5.value;
+                for (var _iterator5 = action.data.personal[Symbol.iterator](), _step5; !(_iteratorNormalCompletion5 = (_step5 = _iterator5.next()).done); _iteratorNormalCompletion5 = true) {
+                    var _coverage = _step5.value;
 
-                    options['industry_currents'].push(industry);
-                    options['industry_targets'].push(industry);
+                    options['personal_coverage_lines'].push(_coverage);
                 }
             } catch (err) {
                 _didIteratorError5 = true;
@@ -16728,17 +16754,15 @@ var initialState = {
                 }
             }
 
-            break;
-        case 'SET_CAUSES':
             var _iteratorNormalCompletion6 = true;
             var _didIteratorError6 = false;
             var _iteratorError6 = undefined;
 
             try {
-                for (var _iterator6 = action.data[Symbol.iterator](), _step6; !(_iteratorNormalCompletion6 = (_step6 = _iterator6.next()).done); _iteratorNormalCompletion6 = true) {
-                    var cause = _step6.value;
+                for (var _iterator6 = action.data.benefit[Symbol.iterator](), _step6; !(_iteratorNormalCompletion6 = (_step6 = _iterator6.next()).done); _iteratorNormalCompletion6 = true) {
+                    var _coverage2 = _step6.value;
 
-                    options['causes'].push(cause);
+                    options['benefit_coverage_lines'].push(_coverage2);
                 }
             } catch (err) {
                 _didIteratorError6 = true;
@@ -16751,6 +16775,61 @@ var initialState = {
                 } finally {
                     if (_didIteratorError6) {
                         throw _iteratorError6;
+                    }
+                }
+            }
+
+            break;
+        case 'SET_INDUSTRIES':
+            var _iteratorNormalCompletion7 = true;
+            var _didIteratorError7 = false;
+            var _iteratorError7 = undefined;
+
+            try {
+                for (var _iterator7 = action.data[Symbol.iterator](), _step7; !(_iteratorNormalCompletion7 = (_step7 = _iterator7.next()).done); _iteratorNormalCompletion7 = true) {
+                    var industry = _step7.value;
+
+                    options['industry_currents'].push(industry);
+                    options['industry_targets'].push(industry);
+                }
+            } catch (err) {
+                _didIteratorError7 = true;
+                _iteratorError7 = err;
+            } finally {
+                try {
+                    if (!_iteratorNormalCompletion7 && _iterator7.return) {
+                        _iterator7.return();
+                    }
+                } finally {
+                    if (_didIteratorError7) {
+                        throw _iteratorError7;
+                    }
+                }
+            }
+
+            break;
+        case 'SET_CAUSES':
+            var _iteratorNormalCompletion8 = true;
+            var _didIteratorError8 = false;
+            var _iteratorError8 = undefined;
+
+            try {
+                for (var _iterator8 = action.data[Symbol.iterator](), _step8; !(_iteratorNormalCompletion8 = (_step8 = _iterator8.next()).done); _iteratorNormalCompletion8 = true) {
+                    var cause = _step8.value;
+
+                    options['causes'].push(cause);
+                }
+            } catch (err) {
+                _didIteratorError8 = true;
+                _iteratorError8 = err;
+            } finally {
+                try {
+                    if (!_iteratorNormalCompletion8 && _iterator8.return) {
+                        _iterator8.return();
+                    }
+                } finally {
+                    if (_didIteratorError8) {
+                        throw _iteratorError8;
                     }
                 }
             }
@@ -19573,9 +19652,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 personal_mix: store.getState().UserStore.personal_mix
             },
             carriers: store.getState().OptionStore.carriers,
-            coverage_lines: store.getState().OptionStore.coverage_lines,
+            commercial_coverage_lines: store.getState().OptionStore.commercial_coverage_lines,
+            personal_coverage_lines: store.getState().OptionStore.personal_coverage_lines,
+            benefit_coverage_lines: store.getState().OptionStore.benefit_coverage_lines,
             crop_coverages: store.getState().OptionStore.crop_coverages,
-            coverage_targets: store.getState().OptionStore.coverage_targets,
             industry_currents: store.getState().OptionStore.industry_currents,
             industry_targets: store.getState().OptionStore.industry_targets,
             errors: []
@@ -20488,7 +20568,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('Dropdown', {
     attrs: {
       "label": 'Commercial Lines of Coverage (Select all that apply)',
-      "options": _vm.coverage_targets
+      "options": _vm.commercial_coverage_lines
     },
     on: {
       "setOption": function (coverage) { return _vm.properties.selected_commercial_coverages.push(coverage); }
@@ -20522,7 +20602,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('Dropdown', {
     attrs: {
       "label": 'Personal Lines of Coverage (Select all that apply)',
-      "options": _vm.coverage_targets
+      "options": _vm.personal_coverage_lines
     },
     on: {
       "setOption": function (coverage) { return _vm.properties.selected_personal_coverages.push(coverage); }
@@ -20545,7 +20625,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('Dropdown', {
     attrs: {
       "label": 'Benefit Lines of Coverage (Select all that apply)',
-      "options": _vm.coverage_targets
+      "options": _vm.benefit_coverage_lines
     },
     on: {
       "setOption": function (coverage) { return _vm.properties.selected_benefit_coverages.push(coverage); }

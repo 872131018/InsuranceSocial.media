@@ -1,0 +1,96 @@
+{
+    "coverages": [
+        {
+           "code":11004,
+           "desc":"Auto Insurance - Commercial"
+        },
+        {
+           "code":11008,
+           "desc":"Boiler and Machinery Insurance"
+        },
+        {
+           "code":11009,
+           "desc":"Builder's Risk Insurance"
+        },
+        {
+           "code":11010,
+           "desc":"Business Interruption Insurance"
+        },
+        {
+           "code":11011,
+           "desc":"Business Owners Policy"
+        },
+        {
+           "code":11012,
+           "desc":"Church Insurance"
+        },
+        {
+           "code":11264,
+           "desc":"Commercial Property Insurance"
+        },
+        {
+           "code":11015,
+           "desc":"Crime Insurance"
+        },
+        {
+           "code":11016,
+           "desc":"Crop Insurance"
+        },
+        {
+           "code":11017,
+           "desc":"Cyber Liability Insurance"
+        },
+        {
+           "code":11019,
+           "desc":"Directors and Officers Insurance"
+        },
+        {
+           "code":11263,
+           "desc":"Dwelling\/ Fire Insurance"
+        },
+        {
+           "code":11243,
+           "desc":"Employment Practices Liability"
+        },
+        {
+           "code":11023,
+           "desc":"Errors and Omissions Insurance"
+        },
+        {
+           "code":11270,
+           "desc":"Farm Insurance"
+        },
+        {
+           "code":11024,
+           "desc":"Fidelity Bond"
+        },
+        {
+           "code":11260,
+           "desc":"General Liability Insurance"
+        },
+        {
+           "code":11037,
+           "desc":"Marine Cargo Insurance"
+        },
+        {
+           "code":11041,
+           "desc":"Professional Liability Insurance"
+        },
+        {
+           "code":11042,
+           "desc":"Public Liability Insurance"
+        },
+        {
+           "code":11046,
+           "desc":"Surety Bond"
+        },
+        {
+           "code":11050,
+           "desc":"Workers' Compensation"
+        },
+        {
+           "code":11285,
+           "desc":"Youth Sports Protection Insurance"
+        }
+    ]
+}

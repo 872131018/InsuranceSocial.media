@@ -18081,8 +18081,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   return _vm._m(0)
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', [_c('a', {
-    staticClass: "w3-bar-item w3-button w3-hover-white"
-  }, [_vm._v("Home")])])
+    staticClass: "w3-bar-item w3-button w3-hover-white header-logo"
+  }, [_vm._v("Insurance Social Media")])])
 }]}
 module.exports.render._withStripped = true
 if (false) {
@@ -18162,7 +18162,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "w3-bar"
   }, [_c('a', {
     staticClass: "w3-bar-item w3-button"
-  }, [_vm._v("Home")])])])
+  }, [_vm._v("Insurance Social Media")])])])
 }]}
 module.exports.render._withStripped = true
 if (false) {
@@ -18178,7 +18178,7 @@ if (false) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('nav', {
-    staticClass: "w3-container w3-bar w3-card-2 w3-xlarge w3-text-white w3-padding-16 primary header-logo"
+    staticClass: "w3-container w3-bar w3-card-2 w3-xlarge w3-text-white primary header"
   }, [_c('div', {
     staticClass: "w3-hide-small"
   }, [_c('Desktop')], 1), _vm._v(" "), _c('div', {
@@ -18258,6 +18258,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     components: {
@@ -18273,25 +18274,51 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   return _vm._m(0)
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('footer', {
-    staticClass: "w3-container w3-bar w3-medium w3-text-white w3-padding-16 secondary footer-logo"
-  }, [_c('div', {
-    staticClass: "w3-right"
+    staticClass: "w3-container w3-bar w3-medium w3-text-white w3-padding-16 footer"
   }, [_c('a', {
-    staticClass: "w3-button w3-circle w3-large w3-hover-white primary"
-  }, [_c('i', {
-    staticClass: "fa fa-twitter"
+    staticClass: "w3-bar-item w3-button footer-logo"
+  }, [_vm._v("Insurance Social Media")]), _vm._v(" "), _c('div', {
+    staticClass: "w3-right social"
+  }, [_c('a', {
+    attrs: {
+      "href": "https://www.twitter.com/insurancesmm"
+    }
+  }, [_c('img', {
+    attrs: {
+      "src": "images/icon-twitter.png",
+      "height": "36",
+      "width": "36"
+    }
   })]), _vm._v(" "), _c('a', {
-    staticClass: "w3-button w3-circle w3-large w3-hover-white primary"
-  }, [_c('i', {
-    staticClass: "fa fa-facebook"
+    attrs: {
+      "href": "https://www.facebook.com/insurancesocialdotmedia/"
+    }
+  }, [_c('img', {
+    attrs: {
+      "src": "images/icon-facebook.png",
+      "height": "36",
+      "width": "36"
+    }
   })]), _vm._v(" "), _c('a', {
-    staticClass: "w3-button w3-circle w3-large w3-hover-white primary"
-  }, [_c('i', {
-    staticClass: "fa fa-instagram"
+    attrs: {
+      "href": "https://www.instagram.com/insurancesocial.media/"
+    }
+  }, [_c('img', {
+    attrs: {
+      "src": "images/icon-instagram.png",
+      "height": "36",
+      "width": "36"
+    }
   })]), _vm._v(" "), _c('a', {
-    staticClass: "w3-button w3-circle w3-large w3-hover-white primary"
-  }, [_c('i', {
-    staticClass: "fa fa-linkedin"
+    attrs: {
+      "href": "https://www.linkedin.com/company/insurancesocial-media"
+    }
+  }, [_c('img', {
+    attrs: {
+      "src": "images/icon-linkedin.png",
+      "height": "36",
+      "width": "36"
+    }
   })])])])
 }]}
 module.exports.render._withStripped = true

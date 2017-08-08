@@ -1,0 +1,84 @@
+{
+    "coverages": [
+        {
+           "code":11005,
+           "desc":"Auto Insurance - Personal"
+        },
+        {
+           "code":11006,
+           "desc":"Aviation Insurance"
+        },
+        {
+           "code":11007,
+           "desc":"Boat Insurance"
+        },
+        {
+           "code":11284,
+           "desc":"Cancer Insurance"
+        },
+        {
+           "code":11013,
+           "desc":"Classic Car Insurance"
+        },
+        {
+           "code":11014,
+           "desc":"Condo Insurance"
+        },
+        {
+           "code":11022,
+           "desc":"Earthquake Insurance"
+        },
+        {
+           "code":11025,
+           "desc":"Flood Insurance"
+        },
+        {
+           "code":11026,
+           "desc":"Gap Insurance"
+        },
+        {
+           "code":11029,
+           "desc":"Homeowners Insurance"
+        },
+        {
+           "code":11030,
+           "desc":"Identity Theft Insurance"
+        },
+        {
+          "code":11032,
+          "desc":"Landlord Insurance"
+        },
+        {
+           "code":11036,
+           "desc":"Medicare Supplement Insurance"
+        },
+        {
+           "code":11262,
+           "desc":"Mobile Home Insurance"
+        },
+        {
+           "code":11038,
+           "desc":"Motorcycle Insurance"
+        },
+        {
+           "code":11043,
+           "desc":"Renters Insurance"
+        },
+        {
+           "code":11044,
+           "desc":"RV Insurance"
+        },
+        {
+           "code":11045,
+           "desc":"Snowmobile Insurance"
+        },
+        {
+          "code":11047,
+          "desc":"Travel Insurance"
+        },
+        {
+           "code":11048,
+           "desc":"Umbrella Insurance"
+        }
+    ]
+}

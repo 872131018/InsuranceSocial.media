@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCoveragesTable extends Migration
+class CreateBenefitCoveragesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateCoveragesTable extends Migration
      */
     public function up()
     {
-        Schema::create('coverages', function (Blueprint $table) {
+        Schema::create('benefit_coverages', function (Blueprint $table) {
             $table->increments('id');
             $table->string('code');
             $table->string('desc');
@@ -30,6 +30,6 @@ class CreateCoveragesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('coverages');
+        Schema::dropIfExists('benefit_coverages');
     }
 }

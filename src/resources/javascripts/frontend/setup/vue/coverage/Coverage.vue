@@ -34,7 +34,7 @@
                 <div class="w3-section">
                     <Dropdown
                         v-bind:label="'Commercial Lines of Coverage (Select all that apply)'"
-                        v-bind:options="coverage_targets"
+                        v-bind:options="commercial_coverage_lines"
                         v-on:setOption="(coverage) => properties.selected_commercial_coverages.push(coverage)">
                     </Dropdown>
                 </div>
@@ -61,7 +61,7 @@
                 <div class="w3-section">
                     <Dropdown
                         v-bind:label="'Personal Lines of Coverage (Select all that apply)'"
-                        v-bind:options="coverage_targets"
+                        v-bind:options="personal_coverage_lines"
                         v-on:setOption="(coverage) => properties.selected_personal_coverages.push(coverage)">
                     </Dropdown>
                 </div>
@@ -80,7 +80,7 @@
                 <div class="w3-section">
                     <Dropdown
                         v-bind:label="'Benefit Lines of Coverage (Select all that apply)'"
-                        v-bind:options="coverage_targets"
+                        v-bind:options="benefit_coverage_lines"
                         v-on:setOption="(coverage) => properties.selected_benefit_coverages.push(coverage)">
                     </Dropdown>
                 </div>
@@ -184,9 +184,10 @@
                     personal_mix: store.getState().UserStore.personal_mix
                 },
                 carriers: store.getState().OptionStore.carriers,
-                coverage_lines: store.getState().OptionStore.coverage_lines,
+                commercial_coverage_lines: store.getState().OptionStore.commercial_coverage_lines,
+                personal_coverage_lines: store.getState().OptionStore.personal_coverage_lines,
+                benefit_coverage_lines: store.getState().OptionStore.benefit_coverage_lines,
                 crop_coverages: store.getState().OptionStore.crop_coverages,
-                coverage_targets: store.getState().OptionStore.coverage_targets,
                 industry_currents: store.getState().OptionStore.industry_currents,
                 industry_targets: store.getState().OptionStore.industry_targets,
                 errors: []

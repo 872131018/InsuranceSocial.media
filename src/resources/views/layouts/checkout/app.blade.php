@@ -10,6 +10,11 @@
     <link href="//fonts.googleapis.com/css?family=Lato" type="text/css" rel="stylesheet">
     <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css" rel="stylesheet">
     <link href="{{ url('stylesheets/checkout.css') }}" type="text/css" rel="stylesheet">
+    <style>
+        *:not('fa') {
+            font-family:Roboto !important;
+        }
+    </style>
     <!-- Apply base url so the JS can reference it -->
     <script>
         window.base_url = "{{ url('/') }}"

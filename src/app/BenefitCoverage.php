@@ -5,7 +5,7 @@ use Illuminate\Database\Eloquent\Model;
 
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Coverage extends Model
+class BenefitCoverage extends Model
 {
     use SoftDeletes;
     /**

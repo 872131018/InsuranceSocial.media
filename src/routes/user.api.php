@@ -7,7 +7,11 @@ use App\State;
 
 use App\County;
 
-use App\Coverage;
+use App\CommercialCoverage;
+
+use App\PersonalCoverage;
+
+use App\BenefitCoverage;
 
 use App\Industry;
 
@@ -20,12 +24,6 @@ use App\SelectedState;
 use App\SelectedCounty;
 
 use App\SelectedCarrier;
-
-use App\SelectedCommercialCoverage;
-
-use App\SelectedPersonalCoverage;
-
-use App\SelectedBenefitCoverage;
 
 use App\SelectedCurrentIndustry;
 
@@ -70,7 +68,11 @@ use App\SelectedCause;
      return response()->json(County::all());
  });
  Route::get('/api/coverages', function (Request $request) {
-     return response()->json(Coverage::all());
+     return response()->json([
+         'commercial' => CommercialCoverage::all(),
+         'personal' => PersonalCoverage::all(),
+         'benefit' => BenefitCoverage::all()
+     ]);
  });
  Route::get('/api/industries', function (Request $request) {
      return response()->json(Industry::all());
