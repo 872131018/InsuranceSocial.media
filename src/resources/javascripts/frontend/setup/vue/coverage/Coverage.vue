@@ -33,33 +33,6 @@
                 </div>
                 <div class="w3-section">
                     <Dropdown
-                        v-bind:label="'Commercial Lines of Coverage (Select all that apply)'"
-                        v-bind:options="commercial_coverage_lines"
-                        v-on:setOption="(coverage) => properties.selected_commercial_coverages.push(coverage)">
-                    </Dropdown>
-                </div>
-                <div class="w3-section"
-                    v-if="properties.selected_commercial_coverages.length > 0">
-                    <div>Selected Coverage Lines (click to remove)</div>
-                    <ul class="w3-ul w3-hoverable">
-                        <li class="w3-section"
-                            v-for="(coverage, index) in properties.selected_commercial_coverages"
-                            v-on:click="(coverage) => properties.selected_commercial_coverages.splice(index, 1)">
-                            {{ coverage.desc }}
-                            <i class="fa fa-times w3-margin-left"></i>
-                        </li>
-                    </ul>
-                </div>
-                <div class="w3-section">
-                    <Dropdown
-                        v-bind:label="'Crop Coverage'"
-                        v-bind:options="crop_coverages"
-                        v-bind:default="properties.crop_coverages"
-                        v-on:setOption="(option) => properties.selected_crop_coverages = option.code">
-                    </Dropdown>
-                </div>
-                <div class="w3-section">
-                    <Dropdown
                         v-bind:label="'Personal Lines of Coverage (Select all that apply)'"
                         v-bind:options="personal_coverage_lines"
                         v-on:setOption="(coverage) => properties.selected_personal_coverages.push(coverage)">
@@ -79,10 +52,22 @@
                 </div>
                 <div class="w3-section">
                     <Dropdown
-                        v-bind:label="'Benefit Lines of Coverage (Select all that apply)'"
-                        v-bind:options="benefit_coverage_lines"
-                        v-on:setOption="(coverage) => properties.selected_benefit_coverages.push(coverage)">
+                        v-bind:label="'Commercial Lines of Coverage (Select all that apply)'"
+                        v-bind:options="commercial_coverage_lines"
+                        v-on:setOption="(coverage) => properties.selected_commercial_coverages.push(coverage)">
                     </Dropdown>
+                </div>
+                <div class="w3-section"
+                    v-if="properties.selected_commercial_coverages.length > 0">
+                    <div>Selected Coverage Lines (click to remove)</div>
+                    <ul class="w3-ul w3-hoverable">
+                        <li class="w3-section"
+                            v-for="(coverage, index) in properties.selected_commercial_coverages"
+                            v-on:click="(coverage) => properties.selected_commercial_coverages.splice(index, 1)">
+                            {{ coverage.desc }}
+                            <i class="fa fa-times w3-margin-left"></i>
+                        </li>
+                    </ul>
                 </div>
                 <div class="w3-section"
                     v-if="properties.selected_benefit_coverages.length > 0">
@@ -101,6 +86,21 @@
                         v-bind:label="'Current industries you market to (Select all that apply)'"
                         v-bind:options="industry_currents"
                         v-on:setOption="(industry) => properties.selected_current_industries.push(industry)">
+                    </Dropdown>
+                </div>
+                <div class="w3-section">
+                    <Dropdown
+                        v-bind:label="'Crop Coverage'"
+                        v-bind:options="crop_coverages"
+                        v-bind:default="properties.crop_coverages"
+                        v-on:setOption="(option) => properties.selected_crop_coverages = option.code">
+                    </Dropdown>
+                </div>
+                <div class="w3-section">
+                    <Dropdown
+                        v-bind:label="'Benefit Lines of Coverage (Select all that apply)'"
+                        v-bind:options="benefit_coverage_lines"
+                        v-on:setOption="(coverage) => properties.selected_benefit_coverages.push(coverage)">
                     </Dropdown>
                 </div>
                 <div class="w3-section"

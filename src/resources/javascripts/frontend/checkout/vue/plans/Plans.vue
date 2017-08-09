@@ -2,7 +2,7 @@
     <div class="w3-container w3-card-2 form">
         <div class="w3-panel">
             <h3>Plan Selection</h3>
-            <h5>You may add additional features to your account.</h5>
+            <h5>Choose your plan.</h5>
         </div>
         <div class="w3-panel">
             <Plan
@@ -14,7 +14,6 @@
             </Plan>
         </div>
         <div class="w3-panel">
-            <h5>Next you will select your social media preferences.</h5>
             <button class="w3-button w3-text-white primary"
                 v-on:click="update()">Continue
             </button>

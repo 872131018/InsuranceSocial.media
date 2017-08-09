@@ -16586,10 +16586,10 @@ module.exports = function () {
 
 "use strict";
 var initialState = {
-    titles: [{ "code": "OW", "desc": "Owner" }, { "code": "OM", "desc": "Operations Manager" }, { "code": "MM", "desc": "Marketing Manager" }, { "code": "PR", "desc": "Principal" }, { "code": "SM", "desc": "Sales Manager" }, { "code": "OT", "desc": "Other" }],
+    titles: [{ "code": "OW", "desc": "Owner" }, { "code": "OM", "desc": "Operations Manager" }, { "code": "MM", "desc": "Marketing Manager" }, { "code": "SM", "desc": "Sales Manager" }, { "code": "OT", "desc": "Other" }],
     sizes: [{ "code": "SP", "desc": "Sole Proprietor" }, { "code": "2-5", "desc": "2-5 Employees" }, { "code": "6-10", "desc": "6-10 Employees" }, { "code": "11-15", "desc": "11-15 Employees" }, { "code": "16+", "desc": "16+ Employees" }],
     generations: [{ "code": "N", "desc": "No" }, { "code": "2", "desc": "2nd" }, { "code": "3", "desc": "3rd" }, { "code": "4", "desc": "4th" }, { "code": "5", "desc": "5th" }],
-    frequencies: [{ "code": "D", "desc": "Daily" }, { "code": "W", "desc": "Weekly" }, { "code": "M", "desc": "Monthly" }, { "code": "Q", "desc": "Quarterly" }, { "code": "N", "desc": "Never" }],
+    frequencies: [{ "code": "D", "desc": "Daily" }, { "code": "W", "desc": "Weekly" }, { "code": "M", "desc": "Monthly" }, { "code": "Q", "desc": "Quarterly" }],
     regions: [],
     states: [],
     counties: [],
@@ -17128,6 +17128,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             if (this.properties.cell_phone == '') {
                 this.errors.push('You must enter your cell phone.');
             }
+            if (this.properties.notify_frequency == '') {
+                this.errors.push('You must select a notification frequency and method.');
+            }
+            if (this.properties.notify_email == '') {
+                this.errors.push('You must select a notification frequency and method.');
+            }
+            if (this.properties.notify_text == '') {
+                this.errors.push('You must select a notification frequency and method.');
+            }
             if (this.errors.length == 0) {
                 axios.post(window.location, this.properties).then(function (response) {
                     store.dispatch({ type: 'SET_USER', data: response.data.user });
@@ -17276,7 +17285,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.$emit('route', 'Profile')
       }
     }
-  }, [_vm._v("Profile\n    ")]), _vm._v(" "), _c('div', {
+  }, [_vm._v("Our Business\n    ")]), _vm._v(" "), _c('div', {
     class: [{
       'primary': _vm.isActive('location')
     }, {
@@ -18121,7 +18130,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }), _vm._v(" "), _c('Field', {
     attrs: {
-      "label": 'Cell Phone (e.g. 555-555-1234)',
+      "label": 'Phone (e.g. 555-555-1234)',
       "validation": 'PHONE',
       "default": _vm.properties.cell_phone
     },
@@ -18137,7 +18146,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "setOption": function (option) { return _vm.properties.title_code = option.code; }
     }
-  }), _vm._v(" "), (_vm.properties.title_code != 'PR' && _vm.properties.title_code != '') ? _c('div', [_c('Field', {
+  }), _vm._v(" "), (_vm.properties.title_code != 'OW' && _vm.properties.title_code != '') ? _c('div', [_c('Field', {
     attrs: {
       "label": 'Principal Name',
       "default": _vm.properties.principal_name
@@ -20567,40 +20576,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "w3-section"
   }, [_c('Dropdown', {
     attrs: {
-      "label": 'Commercial Lines of Coverage (Select all that apply)',
-      "options": _vm.commercial_coverage_lines
-    },
-    on: {
-      "setOption": function (coverage) { return _vm.properties.selected_commercial_coverages.push(coverage); }
-    }
-  })], 1), _vm._v(" "), (_vm.properties.selected_commercial_coverages.length > 0) ? _c('div', {
-    staticClass: "w3-section"
-  }, [_c('div', [_vm._v("Selected Coverage Lines (click to remove)")]), _vm._v(" "), _c('ul', {
-    staticClass: "w3-ul w3-hoverable"
-  }, _vm._l((_vm.properties.selected_commercial_coverages), function(coverage, index) {
-    return _c('li', {
-      staticClass: "w3-section",
-      on: {
-        "click": function (coverage) { return _vm.properties.selected_commercial_coverages.splice(index, 1); }
-      }
-    }, [_vm._v("\n                        " + _vm._s(coverage.desc) + "\n                        "), _c('i', {
-      staticClass: "fa fa-times w3-margin-left"
-    })])
-  }))]) : _vm._e(), _vm._v(" "), _c('div', {
-    staticClass: "w3-section"
-  }, [_c('Dropdown', {
-    attrs: {
-      "label": 'Crop Coverage',
-      "options": _vm.crop_coverages,
-      "default": _vm.properties.crop_coverages
-    },
-    on: {
-      "setOption": function (option) { return _vm.properties.selected_crop_coverages = option.code; }
-    }
-  })], 1), _vm._v(" "), _c('div', {
-    staticClass: "w3-section"
-  }, [_c('Dropdown', {
-    attrs: {
       "label": 'Personal Lines of Coverage (Select all that apply)',
       "options": _vm.personal_coverage_lines
     },
@@ -20624,13 +20599,26 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "w3-section"
   }, [_c('Dropdown', {
     attrs: {
-      "label": 'Benefit Lines of Coverage (Select all that apply)',
-      "options": _vm.benefit_coverage_lines
+      "label": 'Commercial Lines of Coverage (Select all that apply)',
+      "options": _vm.commercial_coverage_lines
     },
     on: {
-      "setOption": function (coverage) { return _vm.properties.selected_benefit_coverages.push(coverage); }
+      "setOption": function (coverage) { return _vm.properties.selected_commercial_coverages.push(coverage); }
     }
-  })], 1), _vm._v(" "), (_vm.properties.selected_benefit_coverages.length > 0) ? _c('div', {
+  })], 1), _vm._v(" "), (_vm.properties.selected_commercial_coverages.length > 0) ? _c('div', {
+    staticClass: "w3-section"
+  }, [_c('div', [_vm._v("Selected Coverage Lines (click to remove)")]), _vm._v(" "), _c('ul', {
+    staticClass: "w3-ul w3-hoverable"
+  }, _vm._l((_vm.properties.selected_commercial_coverages), function(coverage, index) {
+    return _c('li', {
+      staticClass: "w3-section",
+      on: {
+        "click": function (coverage) { return _vm.properties.selected_commercial_coverages.splice(index, 1); }
+      }
+    }, [_vm._v("\n                        " + _vm._s(coverage.desc) + "\n                        "), _c('i', {
+      staticClass: "fa fa-times w3-margin-left"
+    })])
+  }))]) : _vm._e(), _vm._v(" "), (_vm.properties.selected_benefit_coverages.length > 0) ? _c('div', {
     staticClass: "w3-section"
   }, [_c('div', [_vm._v("Selected Coverage Lines (click to remove)")]), _vm._v(" "), _c('ul', {
     staticClass: "w3-ul w3-hoverable"
@@ -20652,6 +20640,27 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     },
     on: {
       "setOption": function (industry) { return _vm.properties.selected_current_industries.push(industry); }
+    }
+  })], 1), _vm._v(" "), _c('div', {
+    staticClass: "w3-section"
+  }, [_c('Dropdown', {
+    attrs: {
+      "label": 'Crop Coverage',
+      "options": _vm.crop_coverages,
+      "default": _vm.properties.crop_coverages
+    },
+    on: {
+      "setOption": function (option) { return _vm.properties.selected_crop_coverages = option.code; }
+    }
+  })], 1), _vm._v(" "), _c('div', {
+    staticClass: "w3-section"
+  }, [_c('Dropdown', {
+    attrs: {
+      "label": 'Benefit Lines of Coverage (Select all that apply)',
+      "options": _vm.benefit_coverage_lines
+    },
+    on: {
+      "setOption": function (coverage) { return _vm.properties.selected_benefit_coverages.push(coverage); }
     }
   })], 1), _vm._v(" "), (_vm.properties.selected_current_industries.length > 0) ? _c('div', {
     staticClass: "w3-section"
@@ -21988,7 +21997,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   })], 1) : _vm._e(), _vm._v(" "), _c('div', {
     staticClass: "w3-panel"
-  }, [_c('h5', [_vm._v("Congratulations! You have completed your profile. Click continue to go to your dashboard.")]), _vm._v(" "), _c('button', {
+  }, [_c('h5', [_vm._v("TODO convert to popup!  Congratulations! You have completed your profile. Click continue to go to your dashboard.")]), _vm._v(" "), _c('button', {
     staticClass: "w3-button w3-text-white primary",
     on: {
       "click": function($event) {
@@ -22002,7 +22011,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.update('Done')
       }
     }
-  }, [_vm._v("Continue\n            ")])])])], 1)
+  }, [_vm._v("Finish\n            ")])])])], 1)
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "w3-panel"

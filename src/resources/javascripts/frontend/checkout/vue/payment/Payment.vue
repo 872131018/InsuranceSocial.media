@@ -1,12 +1,6 @@
 <template>
     <div class="w3-container w3-card-2 form">
         <div class="w3-panel">
-            <h3>Plan Information</h3>
-            <h5>
-                You have selected the following plan. If you register now your billing cycle will begin <b>{{ billingDate }}.</b>
-            </h5>
-        </div>
-        <div class="w3-panel">
             <Plan
                 v-if="plan.name"
                 v-bind:plan="plan">
@@ -15,7 +9,7 @@
         <div class="w3-panel">
             <h3>Payment Method</h3>
             <h5>Please enter a form of payment to complete registration.</h5>
-            <p>The first 30 days of the Insurance Social Media Essential plan are free. We ask for your credit card to prevent any service interruption should you keep your account open after the trial period. Your card will not be charged for the trial period. After the trial, you will be charged for each month. You can cancel at any time.</p>
+            <p>Your Insurance Social Media Essential Plan trial period is free. We ask for your credit card to prevent any service interruption should you keep your account open after the trial period. Your card will not be charged for the trial period. After the trial, you will be charged for each month. You can cancel at any time.</p>
         </div>
         <div class="w3-panel">
             <Card v-on:setCard="(card) => properties.card = card"></Card>
@@ -26,10 +20,9 @@
                 v-on:setYear="(year) => properties.year = year"
                 v-on:setCode="(code) => properties.code = code">
             </Expiration>
-            <div>Expiration Month and Year(YYYY) with Securty Code
+            <div>Expiration Month and Year(YYYY) with Security Code
                 <i class="fa fa-question-circle-o w3-tooltip">
-                    <img class="w3-text" style="position:absolute;bottom:-20px"
-                        v-bind:src="tooltipImage">
+                    <img class="w3-text" style="position:absolute;bottom:-20px" src="images/creditcards_cvv.png">
                 </i>
             </div>
         </div>
@@ -67,7 +60,6 @@
         data() {
             return {
                 plan: {},
-                billingDate: new Moment().startOf('month').add(1, 'months').format('MM-DD-YYYY'),
                 properties: {
                     card: '',
                     month: '',
@@ -78,7 +70,6 @@
                     clientKey: ''
                 },
                 errors: [],
-                tooltipImage: `${ window.base_url }/images/creditcards_cvv.png`,
                 response: null
             }
         },

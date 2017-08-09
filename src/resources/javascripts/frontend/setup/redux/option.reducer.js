@@ -3,7 +3,6 @@ const initialState = {
         {"code":"OW","desc":"Owner"},
         {"code":"OM","desc":"Operations Manager"},
         {"code":"MM","desc":"Marketing Manager"},
-        {"code":"PR","desc":"Principal"},
         {"code":"SM","desc":"Sales Manager"},
         {"code":"OT","desc":"Other"}
     ],
@@ -25,8 +24,7 @@ const initialState = {
         {"code": "D", "desc":"Daily"},
         {"code": "W", "desc":"Weekly"},
         {"code": "M", "desc":"Monthly"},
-        {"code": "Q", "desc":"Quarterly"},
-        {"code": "N", "desc":"Never"}
+        {"code": "Q", "desc":"Quarterly"}
     ],
     regions: [],
     states: [],

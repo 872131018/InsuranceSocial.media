@@ -30,7 +30,7 @@
                 </div>
             </div>
             <div class="w3-section">
-                <h5>We look forward to working with you. Please click continue to finish setting up your account.</h5>
+                <h5>Almost Done.</h5>
                 <button class="w3-button w3-text-white primary"
                     v-on:click="update()">Continue
                 </button>

@@ -24,7 +24,7 @@
                     v-on:setValue="(value) => properties.email = value">
                 </Field>
                 <Field
-                    v-bind:label="'Cell Phone (e.g. 555-555-1234)'"
+                    v-bind:label="'Phone (e.g. 555-555-1234)'"
                     v-bind:validation="'PHONE'"
                     v-bind:default="properties.cell_phone"
                     v-on:setValue="(value) => properties.cell_phone = value">
@@ -35,7 +35,7 @@
                     v-bind:default="properties.title_code"
                     v-on:setOption="(option) => properties.title_code = option.code">
                 </Dropdown>
-                <div v-if="properties.title_code != 'PR' && properties.title_code != ''">
+                <div v-if="properties.title_code != 'OW' && properties.title_code != ''">
                     <Field
                         v-bind:label="'Principal Name'"
                         v-bind:default="properties.principal_name"
@@ -152,6 +152,15 @@
                 }
                 if(this.properties.cell_phone == '') {
                     this.errors.push('You must enter your cell phone.');
+                }
+                if(this.properties.notify_frequency == '') {
+                    this.errors.push('You must select a notification frequency and method.');
+                }
+                if(this.properties.notify_email == '') {
+                    this.errors.push('You must select a notification frequency and method.');
+                }
+                if(this.properties.notify_text == '') {
+                    this.errors.push('You must select a notification frequency and method.');
                 }
                 if(this.errors.length == 0) {
                     axios.post(window.location, this.properties).then(response => {

@@ -97,12 +97,12 @@
                 <Errors v-bind:errors="errors"></Errors>
             </div>
             <div class="w3-panel">
-                <h5>Congratulations! You have completed your profile. Click continue to go to your dashboard.</h5>
+                <h5>TODO convert to popup!  Congratulations! You have completed your profile. Click continue to go to your dashboard.</h5>
                 <button class="w3-button w3-text-white primary"
                     v-on:click="previous()">Previous
                 </button>
                 <button class="w3-button w3-text-white primary"
-                    v-on:click="update('Done')">Continue
+                    v-on:click="update('Done')">Finish
                 </button>
             </div>
             </div>
