@@ -322,6 +322,11 @@ hr{border:0;border-top:1px solid #eee;margin:20px 0}
     max-height: 260px;
     overflow: scroll;
 }
+img[alt="Authorize.Net Merchant - Click to Verify"] {
+    position:relative;
+    bottom: 9.25rem;
+    left:32rem;
+}
 
 label span {
   width: 25px;

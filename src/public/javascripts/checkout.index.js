@@ -32630,6 +32630,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -34032,13 +34042,15 @@ if (false) {
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "w3-container w3-card-2 form"
-  }, [_c('div', {
+  }, [_c('h3', [_vm._v("You have selected the following plan.")]), _vm._v(" "), _c('div', {
     staticClass: "w3-panel"
   }, [(_vm.plan.name) ? _c('Plan', {
     attrs: {
       "plan": _vm.plan
     }
-  }) : _vm._e()], 1), _vm._v(" "), _vm._m(0), _vm._v(" "), _c('div', {
+  }) : _vm._e()], 1), _vm._v(" "), _c('div', {
+    staticClass: "w3-panel"
+  }, [_c('h3', [_vm._v("Payment Method")]), _vm._v(" "), _c('h5', [_vm._v("Please enter a form of payment to complete registration.")]), _vm._v(" "), (_vm.plan.tier == 1) ? _c('p', [_vm._v("\n            Your Insurance Social Media Essential Plan trial period is free.\n            We ask for your credit card to prevent any service interruption should you keep your account open after the trial period.\n            Your card will not be charged for the trial period.\n            After the trial, you will be charged for each month.\n            You can cancel at any time.\n        ")]) : _vm._e()]), _vm._v(" "), _c('div', {
     staticClass: "w3-panel"
   }, [_c('Card', {
     on: {
@@ -34052,7 +34064,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "setYear": function (year) { return _vm.properties.year = year; },
       "setCode": function (code) { return _vm.properties.code = code; }
     }
-  }), _vm._v(" "), _vm._m(1)], 1), _vm._v(" "), _c('div', {
+  }), _vm._v(" "), _vm._m(0)], 1), _vm._v(" "), _c('div', {
     staticClass: "w3-panel"
   }, [_c('Name', {
     on: {
@@ -34082,12 +34094,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.navigate()
       }
     }
-  }) : _vm._e()], 1)
+  }) : _vm._e(), _vm._v(" "), _vm._m(1)], 1)
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "w3-panel"
-  }, [_c('h3', [_vm._v("Payment Method")]), _vm._v(" "), _c('h5', [_vm._v("Please enter a form of payment to complete registration.")]), _vm._v(" "), _c('p', [_vm._v("Your Insurance Social Media Essential Plan trial period is free. We ask for your credit card to prevent any service interruption should you keep your account open after the trial period. Your card will not be charged for the trial period. After the trial, you will be charged for each month. You can cancel at any time.")])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', [_vm._v("Expiration Month and Year(YYYY) with Security Code\n            "), _c('i', {
     staticClass: "fa fa-question-circle-o w3-tooltip"
   }, [_c('img', {
@@ -34100,6 +34108,16 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "src": "images/creditcards_cvv.png"
     }
   })])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "AuthorizeNetSeal"
+  }, [_c('a', {
+    attrs: {
+      "href": "http://www.authorize.net/",
+      "id": "AuthorizeNetText",
+      "target": "_blank"
+    }
+  }, [_vm._v("Electronic Check Processing")])])
 }]}
 module.exports.render._withStripped = true
 if (false) {

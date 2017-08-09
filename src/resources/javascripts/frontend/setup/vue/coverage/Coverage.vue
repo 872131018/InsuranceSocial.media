@@ -1,7 +1,7 @@
 <template>
     <div>
         <ProgressBar
-            v-bind:progress="67">
+            v-bind:progress="84">
         </ProgressBar>
         <QuickNavigation
             v-on:route="update($event)">

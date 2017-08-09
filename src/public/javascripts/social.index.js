@@ -16507,7 +16507,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     style: ({
       width: (_vm.progress + "%")
     })
-  }, [_vm._v(_vm._s(_vm.progress) + "%")])]), _vm._v(" "), (_vm.progress == 33) ? _c('div', {
+  }, [_vm._v(_vm._s(_vm.progress) + "%")])]), _vm._v(" "), (_vm.progress >= 33 && _vm.progress < 67) ? _c('div', {
     staticClass: "w3-section w3-row w3-center"
   }, [_c('div', {
     staticClass: "secondary w3-col l4 m4 s12 w3-padding-large w3-text-white"
@@ -17608,7 +17608,7 @@ if (false) {
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', [_c('ProgressBar', {
     attrs: {
-      "progress": 33
+      "progress": 44
     }
   }), _vm._v(" "), _c('div', {
     staticClass: "w3-container w3-card-2 form"
@@ -17921,7 +17921,7 @@ if (false) {
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', [_c('ProgressBar', {
     attrs: {
-      "progress": 33
+      "progress": 44
     }
   }), _vm._v(" "), _c('div', {
     staticClass: "w3-container w3-card-2 form"
@@ -18090,7 +18090,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', [_c('ProgressBar', {
     attrs: {
-      "progress": 33
+      "progress": 56
     }
   }), _vm._v(" "), _c('div', {
     staticClass: "w3-container w3-card-2 form"

@@ -17209,7 +17209,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     style: ({
       width: (_vm.progress + "%")
     })
-  }, [_vm._v(_vm._s(_vm.progress) + "%")])]), _vm._v(" "), (_vm.progress == 33) ? _c('div', {
+  }, [_vm._v(_vm._s(_vm.progress) + "%")])]), _vm._v(" "), (_vm.progress >= 33 && _vm.progress < 67) ? _c('div', {
     staticClass: "w3-section w3-row w3-center"
   }, [_c('div', {
     staticClass: "secondary w3-col l4 m4 s12 w3-padding-large w3-text-white"
@@ -17217,7 +17217,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "primary w3-col l4 m4 s12 w3-padding-large w3-text-white"
   }, [_vm._v("Social Media")]), _vm._v(" "), _c('div', {
     staticClass: "primary w3-col l4 m4 s12 w3-padding-large w3-text-white"
-  }, [_vm._v("Profile")])]) : _vm._e(), _vm._v(" "), (_vm.progress == 67) ? _c('div', {
+  }, [_vm._v("Profile")])]) : _vm._e(), _vm._v(" "), (_vm.progress >= 67) ? _c('div', {
     staticClass: "w3-section w3-row w3-center"
   }, [_c('div', {
     staticClass: "secondary w3-col l4 m4 s12 w3-padding-large w3-text-white"
@@ -19246,7 +19246,7 @@ if (false) {
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', [_c('ProgressBar', {
     attrs: {
-      "progress": 67
+      "progress": 72
     }
   }), _vm._v(" "), _c('QuickNavigation', {
     on: {
@@ -20537,7 +20537,7 @@ if (false) {
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', [_c('ProgressBar', {
     attrs: {
-      "progress": 67
+      "progress": 84
     }
   }), _vm._v(" "), _c('QuickNavigation', {
     on: {
@@ -21880,7 +21880,7 @@ if (false) {
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', [_c('ProgressBar', {
     attrs: {
-      "progress": 67
+      "progress": 96
     }
   }), _vm._v(" "), _c('QuickNavigation', {
     on: {

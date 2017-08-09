@@ -1,7 +1,7 @@
 <template>
     <div>
         <ProgressBar
-            v-bind:progress="33">
+            v-bind:progress="56">
         </ProgressBar>
         <div class="w3-container w3-card-2 form">
             <div class="w3-panel">

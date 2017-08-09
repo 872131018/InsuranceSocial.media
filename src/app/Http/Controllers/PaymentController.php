@@ -121,7 +121,7 @@ class PaymentController extends Controller
         /**
         * Create customer profile from transaction
         */
-        $controller = new AnetController\CreateCustomerProfileFromTransactionController($this->paymentService->createProfile(Auth::user(), $transactionId));
+        $controller = new AnetController\CreateCustomerProfileFromTransactionController($this->paymentService->createProfileFromTransaction(Auth::user(), $transactionId));
         $response = $controller->executeWithApiResponse(\net\authorize\api\constants\ANetEnvironment::SANDBOX);
         /**
         * Error problem creating customer payment profile

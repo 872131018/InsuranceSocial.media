@@ -1,5 +1,6 @@
 <template>
     <div class="w3-container w3-card-2 form">
+        <h3>You have selected the following plan.</h3>
         <div class="w3-panel">
             <Plan
                 v-if="plan.name"
@@ -9,7 +10,13 @@
         <div class="w3-panel">
             <h3>Payment Method</h3>
             <h5>Please enter a form of payment to complete registration.</h5>
-            <p>Your Insurance Social Media Essential Plan trial period is free. We ask for your credit card to prevent any service interruption should you keep your account open after the trial period. Your card will not be charged for the trial period. After the trial, you will be charged for each month. You can cancel at any time.</p>
+            <p v-if="plan.tier == 1">
+                Your Insurance Social Media Essential Plan trial period is free.
+                We ask for your credit card to prevent any service interruption should you keep your account open after the trial period.
+                Your card will not be charged for the trial period.
+                After the trial, you will be charged for each month.
+                You can cancel at any time.
+            </p>
         </div>
         <div class="w3-panel">
             <Card v-on:setCard="(card) => properties.card = card"></Card>
@@ -43,6 +50,9 @@
             v-bind:response="response"
             v-on:setModal="navigate()">
         </Modal>
+        <div class="AuthorizeNetSeal">
+            <a href="http://www.authorize.net/" id="AuthorizeNetText" target="_blank">Electronic Check Processing</a>
+        </div>
     </div>
 </template>
 

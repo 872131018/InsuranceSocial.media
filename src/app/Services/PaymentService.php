@@ -20,6 +20,12 @@ use net\authorize\api\contract\v1\CustomerProfileBaseType;
 
 use net\authorize\api\contract\v1\CreateCustomerProfileFromTransactionRequest;
 
+use net\authorize\api\contract\v1\CreateCustomerProfileRequest;
+
+use net\authorize\api\contract\v1\CustomerProfileType;
+
+use net\authorize\api\contract\v1\CustomerPaymentProfileType;
+
 class PaymentService
 {
     protected $merchantAuthenticationType;
@@ -37,9 +43,10 @@ class PaymentService
 
     public function getTransactionRequest($payment = [], $user = null) {
         $requestType = new TransactionRequestType();
-        $requestType->setTransactionType("authCaptureTransaction");
-        $requestType->setAmount($payment['amount']);
         if($payment['type'] == 'new') {
+            $requestType->setTransactionType("authOnlyTransaction");
+            $requestType->setAmount($payment['amount']);
+
             $op = new OpaqueDataType();
             $op->setDataDescriptor($payment['dataDescriptor']);
             $op->setDataValue($payment['dataValue']);
@@ -49,6 +56,9 @@ class PaymentService
 
             $requestType->setPayment($payment);
         } else {
+            $requestType->setTransactionType("authCaptureTransaction");
+            $requestType->setAmount($payment['amount']);
+
             $profileToCharge = new CustomerProfilePaymentType();
             $profileToCharge->setCustomerProfileId($user->customer_profile_id);
 
@@ -59,14 +69,14 @@ class PaymentService
             $requestType->setProfile($profileToCharge);
         }
 
-        $transactionRequest = new CreateTransactionRequest();
-        $transactionRequest->setMerchantAuthentication($this->merchantAuthenticationType);
-        $transactionRequest->setRefId('ref'.time());
-        $transactionRequest->setTransactionRequest($requestType);
-        return $transactionRequest;
+        $request = new CreateTransactionRequest();
+        $request->setMerchantAuthentication($this->merchantAuthenticationType);
+        $request->setRefId('ref'.time());
+        $request->setTransactionRequest($requestType);
+        return $request;
     }
 
-    public function createProfile($user = null, $transId = 0) {
+    public function createProfileFromTransaction($user = null, $transId = 0) {
         $customerProfile = new CustomerProfileBaseType();
         $customerProfile->setMerchantCustomerId(time());
         $customerProfile->setEmail($user->email);
