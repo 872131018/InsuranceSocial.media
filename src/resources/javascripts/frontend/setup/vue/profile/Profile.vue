@@ -26,8 +26,8 @@
                 <Field
                     v-bind:label="'Phone (e.g. 555-555-1234)'"
                     v-bind:validation="'PHONE'"
-                    v-bind:default="properties.cell_phone"
-                    v-on:setValue="(value) => properties.cell_phone = value">
+                    v-bind:default="properties.phone"
+                    v-on:setValue="(value) => properties.phone = value">
                 </Field>
                 <Dropdown
                     v-bind:label="'What is your title?'"
@@ -121,7 +121,7 @@
                 properties: {
                     name: store.getState().UserStore.name,
                     email: store.getState().UserStore.email,
-                    cell_phone: store.getState().UserStore.cell_phone,
+                    phone: store.getState().UserStore.phone,
                     title_code: store.getState().UserStore.title_code,
                     principal_name: store.getState().AgencyStore.principal_name,
                     principal_email: store.getState().AgencyStore.principal_email,
@@ -150,17 +150,32 @@
                 if(this.properties.email == '') {
                     this.errors.push('You must enter your email.');
                 }
-                if(this.properties.cell_phone == '') {
-                    this.errors.push('You must enter your cell phone.');
+                if(this.properties.phone == '') {
+                    this.errors.push('You must enter your phone number.');
+                }
+                if(this.properties.title_code == '') {
+                    this.errors.push('You must enter your title.');
+                }
+                if(this.properties.agency_name == '') {
+                    this.errors.push('You must enter your agency name.');
+                }
+                if(this.properties.website == '') {
+                    this.errors.push('You must enter your agency website.');
+                }
+                if(this.properties.size == '') {
+                    this.errors.push('You must enter your agency size.');
+                }
+                if(this.properties.established == '') {
+                    this.errors.push('You must enter your agency\'s founding year.');
+                }
+                if(this.properties.multigenerational == '') {
+                    this.errors.push('You must declare if your agency is multigenerational.');
                 }
                 if(this.properties.notify_frequency == '') {
-                    this.errors.push('You must select a notification frequency and method.');
+                    this.errors.push('You must enter how often you would like to be contact.');
                 }
-                if(this.properties.notify_email == '') {
-                    this.errors.push('You must select a notification frequency and method.');
-                }
-                if(this.properties.notify_text == '') {
-                    this.errors.push('You must select a notification frequency and method.');
+                if(this.properties.notify_email == '' || this.properties.notify_text == '') {
+                    this.errors.push('You must select a notification method.');
                 }
                 if(this.errors.length == 0) {
                     axios.post(window.location, this.properties).then(response => {

@@ -1,27 +1,27 @@
 const initialState = {
-    id:null,
-    user_id:null,
-    email:null,
-    principal_name:null,
-    principal_email:null,
-    name:null,
-    website:null,
-    size:null,
-    established:null,
-    multigenerational:null,
-    address_1:null,
-    address_2:null,
-    city:null,
-    state:null,
-    zip:null,
-    latitude:null,
-    longitude:null
+    id:'',
+    user_id:'',
+    email:'',
+    principal_name:'',
+    principal_email:'',
+    name:'',
+    website:'',
+    size:'',
+    established:'',
+    multigenerational:'',
+    address_1:'',
+    address_2:'',
+    city:'',
+    state:'',
+    zip:'',
+    latitude:'',
+    longitude:''
 };
 
 module.exports = function(agency = initialState, action) {
     switch(action.type) {
         case 'SET_AGENCY':
-            for(let property in agency) {
+            for(let property in action.data) {
                 agency[property] = action.data[property];
             }
             break;

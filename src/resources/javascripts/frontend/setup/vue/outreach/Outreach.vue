@@ -27,6 +27,18 @@
                     v-on:setChecked="(option) => properties.engagement_tone = option">
                 </Radio>
             </div>
+            <div class="w3-panel"
+                v-if="properties.selected_special_topics.length > 0">
+                <div>Selected Topics (click to remove)</div>
+                <ul class="w3-ul w3-hoverable">
+                    <li class="w3-section w3-show-inline-block w3-border-0 w3-padding"
+                        v-for="(topic, index) in properties.selected_special_topics"
+                        v-on:click="(topic) => properties.selected_special_topics.splice(index, 1)">
+                        {{ topic.desc }}
+                        <i class="fa fa-times w3-margin-left"></i>
+                    </li>
+                </ul>
+            </div>
             <div class="w3-panel">
                 <Dropdown
                     v-bind:label="'Special Post Topics (Select all that apply)'"
@@ -35,13 +47,13 @@
                 </Dropdown>
             </div>
             <div class="w3-panel"
-                v-if="properties.selected_special_topics.length > 0">
-                <div>Selected Topics (click to remove)</div>
+                v-if="properties.selected_causes.length > 0">
+                <div>Selected Causes (click to remove)</div>
                 <ul class="w3-ul w3-hoverable">
-                    <li class="w3-section"
-                        v-for="(topic, index) in properties.selected_special_topics"
-                        v-on:click="(topic) => properties.selected_special_topics.splice(index, 1)">
-                        {{ topic.desc }}
+                    <li class="w3-section w3-show-inline-block w3-border-0 w3-padding"
+                        v-for="(cause, index) in properties.selected_causes"
+                        v-on:click="(cause) => properties.selected_causes.splice(index, 1)">
+                        {{ cause.desc }}
                         <i class="fa fa-times w3-margin-left"></i>
                     </li>
                 </ul>
@@ -54,13 +66,13 @@
                 </Dropdown>
             </div>
             <div class="w3-panel"
-                v-if="properties.selected_causes.length > 0">
-                <div>Selected Causes (click to remove)</div>
+                v-if="properties.posting_days.length > 0">
+                <div>Selected Posting Days (click to remove)</div>
                 <ul class="w3-ul w3-hoverable">
-                    <li class="w3-section"
-                        v-for="(cause, index) in properties.selected_causes"
-                        v-on:click="(cause) => properties.selected_causes.splice(index, 1)">
-                        {{ cause.desc }}
+                    <li class="w3-section w3-show-inline-block w3-border-0 w3-padding"
+                        v-for="(day, index) in properties.posting_days"
+                        v-on:click="(day) => properties.posting_days.splice(index, 1)">
+                        {{ day.desc }}
                         <i class="fa fa-times w3-margin-left"></i>
                     </li>
                 </ul>
@@ -71,18 +83,6 @@
                     v-bind:options="days"
                     v-on:setOption="(day) => properties.posting_days.push(day)">
                 </Dropdown>
-            </div>
-            <div class="w3-panel"
-                v-if="properties.posting_days.length > 0">
-                <div>Selected Posting Days (click to remove)</div>
-                <ul class="w3-ul w3-hoverable">
-                    <li class="w3-section"
-                        v-for="(day, index) in properties.posting_days"
-                        v-on:click="(day) => properties.posting_days.splice(index, 1)">
-                        {{ day.desc }}
-                        <i class="fa fa-times w3-margin-left"></i>
-                    </li>
-                </ul>
             </div>
             <div class="w3-panel">
                 <div>Times to post (all times PST)</div>

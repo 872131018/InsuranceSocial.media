@@ -42,7 +42,7 @@
         </div>
         <div class="w3-panel">
             <button class="w3-button w3-text-white primary"
-                v-on:click="sendPaymentDataToAnet()">Complete
+                v-on:click="sendPaymentDataToAnet()">Submit
             </button>
         </div>
         <Modal
@@ -50,7 +50,7 @@
             v-bind:response="response"
             v-on:setModal="navigate()">
         </Modal>
-        <div class="AuthorizeNetSeal">
+        <div class="AuthorizeNetSeal" style="display:none">
             <a href="http://www.authorize.net/" id="AuthorizeNetText" target="_blank">Electronic Check Processing</a>
         </div>
     </div>

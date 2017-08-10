@@ -51,12 +51,12 @@ const initialState = {
     commercial_coverage_lines: [],
     personal_coverage_lines: [],
     benefit_coverage_lines: [],
-    industry_currents: [],
-    industry_targets: [],
-    crop_coverages: [
+    crop_coverage_lines: [
         {"code": "YES", "desc":"Yes I write Crop coverages"},
         {"code": "NO", "desc":"No I do not write Crop coverages"},
     ],
+    industry_currents: [],
+    industry_targets: [],
     engagement_mix: [
         {"code": "EO", "desc":"Existing Clients Only"},
         {"code": "ME", "desc":"Mostly Existing Clients"},

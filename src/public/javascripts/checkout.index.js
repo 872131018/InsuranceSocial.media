@@ -34085,7 +34085,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.sendPaymentDataToAnet()
       }
     }
-  }, [_vm._v("Complete\n        ")])]), _vm._v(" "), (_vm.response) ? _c('Modal', {
+  }, [_vm._v("Submit\n        ")])]), _vm._v(" "), (_vm.response) ? _c('Modal', {
     attrs: {
       "response": _vm.response
     },
@@ -34110,7 +34110,10 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   })])])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
-    staticClass: "AuthorizeNetSeal"
+    staticClass: "AuthorizeNetSeal",
+    staticStyle: {
+      "display": "none"
+    }
   }, [_c('a', {
     attrs: {
       "href": "http://www.authorize.net/",

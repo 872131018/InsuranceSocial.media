@@ -1,18 +1,18 @@
 const initialState = {
-    id:null,
-    user_id:null,
-    email:null,
-    plan_code:null,
-    engagement_mix:null,
-    engagement_tone:null,
-    monday:null,
-    tuesday:null,
-    wednesday:null,
-    thursday:null,
-    friday:null,
-    saturday:null,
-    sunday:null,
-    time_code:null
+    id:'',
+    user_id:'',
+    email:'',
+    plan_code:'',
+    engagement_mix:'',
+    engagement_tone:'',
+    monday:'',
+    tuesday:'',
+    wednesday:'',
+    thursday:'',
+    friday:'',
+    saturday:'',
+    sunday:'',
+    time_code:''
 };
 
 module.exports = function(plan = initialState, action) {

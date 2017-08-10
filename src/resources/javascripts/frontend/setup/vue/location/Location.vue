@@ -39,24 +39,15 @@
                     v-bind:default="properties.zip"
                     v-on:setValue="(value) => properties.zip = value">
                 </Field>
-                <Dropdown
-                    v-bind:label="'Marketing Geography'"
-                    v-bind:options="targets"
-                    v-on:setOption="(option) => target = option">
-                </Dropdown>
-                <div v-if="target.code == 'R'">
-                    <div class="w3-section">
-                        <Dropdown
-                            v-bind:label="'Marketing Regions (Select all that apply)'"
-                            v-bind:options="regions"
-                            v-on:setOption="(region) => properties.selected_regions.push(region)">
-                        </Dropdown>
-                    </div>
+                <Marketing
+                    v-on:setMarketing="(market) => target = market">
+                </Marketing>
+                <div v-if="target == 'R'">
                     <div class="w3-section"
                         v-if="properties.selected_regions.length > 0">
                         <div>Selected Regions (click to remove)</div>
                         <ul class="w3-ul w3-hoverable">
-                            <li class="w3-section"
+                            <li class="w3-section w3-show-inline-block w3-border-0 w3-padding"
                                 v-for="(region, index) in properties.selected_regions"
                                 v-on:click="(region) => properties.selected_regions.splice(index, 1)">
                                 {{ region.desc }}
@@ -64,20 +55,20 @@
                             </li>
                         </ul>
                     </div>
-                </div>
-                <div v-if="target.code == 'S'">
                     <div class="w3-section">
                         <Dropdown
-                            v-bind:label="'Marketing States (Select all that apply)'"
-                            v-bind:options="states"
-                            v-on:setOption="setState($event)">
+                            v-bind:label="'Marketing Regions (Select up to 5)'"
+                            v-bind:options="regions"
+                            v-on:setOption="(region) => properties.selected_regions.push(region)">
                         </Dropdown>
                     </div>
+                </div>
+                <div v-if="target == 'S'">
                     <div class="w3-section"
                         v-if="properties.selected_states.length > 0">
                         <div>Selected States (click to remove)</div>
                         <ul class="w3-ul w3-hoverable">
-                            <li class="w3-section"
+                            <li class="w3-section w3-show-inline-block w3-border-0 w3-padding"
                                 v-for="(state, index) in properties.selected_states"
                                 v-on:click="(state) => properties.selected_states.splice(index, 1)">
                                 {{ state.desc }}
@@ -87,22 +78,29 @@
                     </div>
                     <div class="w3-section">
                         <Dropdown
-                            v-bind:label="'Marketing Counties (Select all that apply)'"
+                            v-bind:label="'Marketing States (Select up to 5)'"
+                            v-bind:options="states"
+                            v-on:setOption="setState($event)">
+                        </Dropdown>
+                    </div>
+                    <div class="w3-section">
+                        <div class="w3-section"
+                            v-if="properties.selected_counties.length > 0">
+                            <div>Selected Counties (click to remove)</div>
+                            <ul class="w3-ul w3-hoverable">
+                                <li class="w3-section w3-show-inline-block w3-border-0 w3-padding"
+                                    v-for="(counties, index) in properties.selected_counties"
+                                    v-on:click="(county) => properties.selected_counties.splice(index, 1)">
+                                    {{ counties.desc }} - {{ counties.state_code }}
+                                    <i class="fa fa-times w3-margin-left"></i>
+                                </li>
+                            </ul>
+                        </div>
+                        <Dropdown
+                            v-bind:label="'Marketing Counties (No selection is all counties)'"
                             v-bind:options="counties"
                             v-on:setOption="(county) => properties.selected_counties.push(county)">
                         </Dropdown>
-                    </div>
-                    <div class="w3-section"
-                        v-if="properties.selected_counties.length > 0">
-                        <div>Selected Counties (click to remove)</div>
-                        <ul class="w3-ul w3-hoverable">
-                            <li class="w3-section"
-                                v-for="(counties, index) in properties.selected_counties"
-                                v-on:click="(county) => properties.selected_counties.splice(index, 1)">
-                                {{ counties.desc }} - {{ counties.state_code }}
-                                <i class="fa fa-times w3-margin-left"></i>
-                            </li>
-                        </ul>
                     </div>
                 </div>
             </div>
@@ -130,6 +128,7 @@
     import Field from './inputs/Field';
     import Dropdown from './inputs/Dropdown';
     import Checkbox from './inputs/Checkbox';
+    import Marketing from './Marketing';
     import Errors from './Errors';
 
     export default {
@@ -173,6 +172,22 @@
             },
             update(route) {
                 this.errors = [];
+                if(this.properties.address_1 == '') {
+                    this.errors.push('You must enter an address.');
+                }
+                if(this.properties.city == '') {
+                    this.errors.push('You must enter your city.');
+                }
+                if(this.properties.state == '') {
+                    this.errors.push('You must enter your state.');
+                }
+                if(this.properties.zip == '') {
+                    this.errors.push('You must enter your zip code.');
+                }
+                if(this.properties.selected_regions.length == 0 &&
+                    (this.properties.selected_states.length == 0 && this.properties.selected_counties.length == 0) ) {
+                    this.errors.push('You must enter either marketing regions or states and counties.');
+                }
                 if(this.errors.length == 0) {
                     axios.post(window.location, this.properties).then(response => {
                         store.dispatch({ type: 'SET_USER', data: response.data.user });
@@ -190,6 +205,7 @@
             Field,
             Dropdown,
             Checkbox,
+            Marketing,
             Errors
         }
     }
