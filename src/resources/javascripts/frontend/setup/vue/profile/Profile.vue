@@ -92,6 +92,13 @@
                     v-on:setEmail="(email) => properties.notify_email = email"
                     v-on:setText="(text) => properties.notify_text = text">
                 </Notification>
+                <Field
+                    v-if="properties.notify_text"
+                    v-bind:label="'Cell Phone (e.g. 555-555-1234)'"
+                    v-bind:validation="'PHONE'"
+                    v-bind:default="properties.cell_phone"
+                    v-on:setValue="(value) => properties.cell_phone = value">
+                </Field>
             </div>
             <div class="w3-panel"
                 v-if="errors.length">
@@ -132,7 +139,8 @@
                     multigenerational: store.getState().AgencyStore.multigenerational,
                     notify_frequency: store.getState().UserStore.notify_frequency,
                     notify_email: store.getState().UserStore.notify_email,
-                    notify_text: store.getState().UserStore.notify_text
+                    notify_text: store.getState().UserStore.notify_text,
+                    cell_phone: store.getState().UserStore.cell_phone
                 },
                 titles: store.getState().OptionStore.titles,
                 sizes: store.getState().OptionStore.sizes,

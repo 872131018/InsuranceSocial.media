@@ -21,6 +21,7 @@ class CreateUsersTable extends Migration
             $table->char('status', 1)->nullable();
             $table->char('role', 1)->nullable();
             $table->string('phone')->nullable();
+            $table->string('cell_phone')->nullable();
             $table->string('title_code')->nullable();
             $table->date('effective_date')->nullable();
             $table->date('expiration_date')->nullable();

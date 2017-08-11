@@ -40,6 +40,7 @@ class ProfileController extends Controller
     {
         $user = Auth::user();
         $user->phone = $request->input('phone');
+        $user->cell_phone = $request->input('cell_phone');
         $user->title_code = $request->input('title_code');
         $user->notify_frequency = $request->input('notify_frequency');
         $user->notify_email = $request->input('notify_email');

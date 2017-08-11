@@ -34,34 +34,75 @@
                 <Personal
                     v-on:setOption="(option) => personal_coverage = option">
                 </Personal>
-                <Commercial
-                    v-on:setOption="(option) => commercial_coverage = option">
-                </Commercial>
-                <Benefit
-                    v-on:setOption="(option) => benefit_coverage = option">
-                </Benefit>
-                <Crop
-                    v-on:setOption="(option) => crop_coverage = option">
-                </Crop>
                 <div class="w3-section"
-                    v-if="selected_coverages.length > 0">
+                    v-if="properties.selected_personal_coverages.length > 0">
                     <div>Selected Coverages (Click to remove)</div>
                     <ul class="w3-ul w3-hoverable">
                         <li class="w3-section w3-show-inline-block w3-border-0 w3-padding"
-                            v-for="(coverage, index) in selected_coverages"
-                            v-on:click="(coverage) => selected_coverages.splice(index, 1)">
+                            v-for="(coverage, index) in properties.selected_personal_coverages"
+                            v-on:click="(coverage) => properties.selected_personal_coverages.splice(index, 1)">
                             {{ coverage.desc }}
                             <i class="fa fa-times w3-margin-left"></i>
                         </li>
                     </ul>
                 </div>
-                <div class="w3-section">
+                <div class="w3-section"
+                    v-if="personal_coverage == 'Y'">
                     <Dropdown
-                        v-bind:label="'Coverages (Select up to 5)'"
-                        v-bind:options="coverages"
-                        v-on:setOption="(coverage) => selected_coverages.push(coverage)">
+                        v-bind:label="'Personal Coverages (Select up to 5)'"
+                        v-bind:options="personal_coverage_lines"
+                        v-on:setOption="(coverage) => properties.selected_personal_coverages.push(coverage)">
                     </Dropdown>
                 </div>
+                <Commercial
+                    v-on:setOption="(option) => commercial_coverage = option">
+                </Commercial>
+                <div class="w3-section"
+                    v-if="properties.selected_commercial_coverages.length > 0">
+                    <div>Selected Coverages (Click to remove)</div>
+                    <ul class="w3-ul w3-hoverable">
+                        <li class="w3-section w3-show-inline-block w3-border-0 w3-padding"
+                            v-for="(coverage, index) in properties.selected_commercial_coverages"
+                            v-on:click="(coverage) => properties.selected_commercial_coverages.splice(index, 1)">
+                            {{ coverage.desc }}
+                            <i class="fa fa-times w3-margin-left"></i>
+                        </li>
+                    </ul>
+                </div>
+                <div class="w3-section"
+                    v-if="commercial_coverage == 'Y'">
+                    <Dropdown
+                        v-bind:label="'Commercial Coverages (Select up to 5)'"
+                        v-bind:options="commercial_coverage_lines"
+                        v-on:setOption="(coverage) => properties.selected_commercial_coverages.push(coverage)">
+                    </Dropdown>
+                </div>
+                <Benefit
+                    v-on:setOption="(option) => benefit_coverage = option">
+                </Benefit>
+                <div class="w3-section"
+                    v-if="properties.selected_benefit_coverages.length > 0">
+                    <div>Selected Coverages (Click to remove)</div>
+                    <ul class="w3-ul w3-hoverable">
+                        <li class="w3-section w3-show-inline-block w3-border-0 w3-padding"
+                            v-for="(coverage, index) in properties.selected_benefit_coverages"
+                            v-on:click="(coverage) => properties.selected_benefit_coverages.splice(index, 1)">
+                            {{ coverage.desc }}
+                            <i class="fa fa-times w3-margin-left"></i>
+                        </li>
+                    </ul>
+                </div>
+                <div class="w3-section"
+                    v-if="benefit_coverage == 'Y'">
+                    <Dropdown
+                        v-bind:label="'Benefit Coverages (Select up to 5)'"
+                        v-bind:options="benefit_coverage_lines"
+                        v-on:setOption="(coverage) => properties.selected_benefit_coverages.push(coverage)">
+                    </Dropdown>
+                </div>
+                <Crop
+                    v-on:setOption="(option) => crop_coverage = option">
+                </Crop>
                 <div class="w3-section"
                     v-if="properties.selected_current_industries.length > 0">
                     <div>Selected Industries (click to remove)</div>
@@ -74,7 +115,8 @@
                         </li>
                     </ul>
                 </div>
-                <div class="w3-section">
+                <div class="w3-section"
+                    v-if="commercial_coverage">
                     <Dropdown
                         v-bind:label="'Current industries for marketing (Select up to 5)'"
                         v-bind:options="industry_currents"
@@ -93,7 +135,8 @@
                         </li>
                     </ul>
                 </div>
-                <div class="w3-section">
+                <div class="w3-section"
+                    v-if="commercial_coverage">
                     <Dropdown
                         v-bind:label="'Target industries for future marketing (Select up to 5)'"
                         v-bind:options="industry_targets"
@@ -164,33 +207,7 @@
                 commercial_coverage: '',
                 benefit_coverage: '',
                 crop_coverage: '',
-                selected_coverages: [],
                 errors: []
-            }
-        },
-        computed: {
-            coverages() {
-                let coverages = [];
-                if(this.personal_coverage == 'Y') {
-                    coverages = coverages.concat(this.personal_coverage_lines);
-                }
-                if(this.commercial_coverage == 'Y') {
-                    coverages = coverages.concat(this.commercial_coverage_lines);
-                }
-                if(this.benefit_coverage == 'Y') {
-                    coverages = coverages.concat(this.benefit_coverage_lines);
-                }
-                if(this.crop_coverage == 'Y') {
-                    coverages = coverages.concat(this.crop_coverage_lines);
-                }
-                if(coverages.length == 0) {
-                    coverages = coverages.concat(this.personal_coverage_lines);
-                    coverages = coverages.concat(this.commercial_coverage_lines);
-                    coverages = coverages.concat(this.benefit_coverage_lines);
-                    coverages = coverages.concat(this.crop_coverage_lines);
-                }
-
-                return coverages;
             }
         },
         methods: {
@@ -223,32 +240,6 @@
                     this.errors.push('You may only select up to 5 target industries.');
                 }
                 if(this.errors.length == 0) {
-                    for(let coverage of this.selected_coverages) {
-                        for(let option of this.personal_coverage_lines) {
-                            if(coverage.code == option.code) {
-                                this.properties.selected_personal_coverages.push(coverage);
-                                break;
-                            }
-                        }
-                        for(let option of this.commercial_coverage_lines) {
-                            if(coverage.code == option.code) {
-                                this.properties.selected_commercial_coverages.push(coverage);
-                                break;
-                            }
-                        }
-                        for(let option of this.benefit_coverage_lines) {
-                            if(coverage.code == option.code) {
-                                this.properties.selected_benefit_coverages.push(coverage);
-                                break;
-                            }
-                        }
-                        for(let option of this.crop_coverage_lines) {
-                            if(coverage.code == option.code) {
-                                this.properties.selected_crop_coverages.push(coverage);
-                                break;
-                            }
-                        }
-                    }
                     axios.post(window.location, this.properties).then(response => {
                         store.dispatch({ type: 'SET_COVERAGE', data: response.data });
                         this.$router.push({ name: route });

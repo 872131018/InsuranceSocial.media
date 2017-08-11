@@ -5,6 +5,7 @@ const initialState = {
     status:'',
     role:'',
     phone:'',
+    cell_phone: '',
     title_code:'',
     effective_date:'',
     expiration_date:'',
