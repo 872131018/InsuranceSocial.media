@@ -239,6 +239,11 @@
                 if(this.properties.selected_target_industries.length > 5) {
                     this.errors.push('You may only select up to 5 target industries.');
                 }
+                if(this.crop_coverage) {
+                    this.properties.selected_crop_coverages.push({"code": "YES", "desc":"Yes I write Crop coverages"});
+                } else {
+                    this.properties.selected_crop_coverages.push({"code": "NO", "desc":"No I do not write Crop coverages"});
+                }
                 if(this.errors.length == 0) {
                     axios.post(window.location, this.properties).then(response => {
                         store.dispatch({ type: 'SET_COVERAGE', data: response.data });

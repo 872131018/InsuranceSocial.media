@@ -19943,6 +19943,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             if (this.properties.selected_target_industries.length > 5) {
                 this.errors.push('You may only select up to 5 target industries.');
             }
+            if (this.crop_coverage) {
+                this.properties.selected_crop_coverages.push({ "code": "YES", "desc": "Yes I write Crop coverages" });
+            } else {
+                this.properties.selected_crop_coverages.push({ "code": "NO", "desc": "No I do not write Crop coverages" });
+            }
             if (this.errors.length == 0) {
                 axios.post(window.location, this.properties).then(function (response) {
                     store.dispatch({ type: 'SET_COVERAGE', data: response.data });
@@ -21241,10 +21246,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: {
-        commercial_mix: {
+        personal_mix: {
             type: String
         },
-        personal_mix: {
+        commercial_mix: {
             type: String
         }
     },

@@ -28,10 +28,10 @@
 
     export default {
         props: {
-            commercial_mix: {
+            personal_mix: {
                 type: String
             },
-            personal_mix: {
+            commercial_mix: {
                 type: String
             }
         },
