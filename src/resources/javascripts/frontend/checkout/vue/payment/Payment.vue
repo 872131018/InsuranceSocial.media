@@ -17,6 +17,7 @@
                 After the trial, you will be charged for each month.
                 You can cancel at any time.
             </p>
+            <p v-else>Your credit card will be charged a pro-rated amount for this month’s subscription fee. You will be charged for next month’s service during the last week of this month.</p>
         </div>
         <div class="w3-panel">
             <Card v-on:setCard="(card) => properties.card = card"></Card>
@@ -130,7 +131,7 @@
 
             },
             navigate() {
-                window.location = `${ window.base_url }/welcome`;
+                window.location = `${ window.base_url }/facebook`;
             }
         },
         components: {

@@ -6,7 +6,7 @@
         <div class="w3-container w3-card-2 form">
             <div class="w3-panel">
                 <h3>Link your Facebook</h3>
-                <h5>Please log in to Facebook<i class="fa fa-facebook-official fa-2x w3-margin-left w3-margin-right w3-text-blue v-align"></i> in order to recieve our Facebook services.</h5>
+                <h5>Please log in to Facebook in order to recieve our Facebook services.</h5>
             </div>
             <div class="w3-section">
                 <div class="w3-panel">
@@ -49,8 +49,14 @@
                 </div>
             </div>
             <div class="w3-section">
-                <h5>We look forward to working with you. Please click continue to finish setting up your account.</h5>
+                <h5 v-if="properties.has_facebook == false && properties.create_facebook == false">One in five page views in the United States is on Facebook! Are you sure you don’t want to make Facebook part of your social media marketing?</h5>
+                <h5 v-else>We look forward to working with you. Please click continue to finish setting up your account.</h5>
                 <button class="w3-button w3-text-white primary"
+                    v-if="properties.has_facebook == false && properties.create_facebook == false"
+                    v-on:click="update()">Yes, I'm sure
+                </button>
+                <button class="w3-button w3-text-white primary"
+                    v-else
                     v-on:click="update()">Continue
                 </button>
             </div>

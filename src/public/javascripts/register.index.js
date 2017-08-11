@@ -16521,6 +16521,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     //
@@ -16539,23 +16542,27 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "w3-ul w3-card-2 w3-white w3-center"
   }, [_c('li', {
     staticClass: "w3-padding w3-text-white primary"
-  }, [_c('h6', [_vm._v("Why you'll "), _c('em', [_vm._v("love")]), _vm._v(" Insurance Social Media...")])]), _vm._v(" "), _c('li', {
+  }, [_c('h6', [_c('b', [_vm._v("Why you'll "), _c('em', [_vm._v("love")]), _vm._v(" Insurance Social Media...")])])]), _vm._v(" "), _c('li', {
     staticClass: "w3-padding"
   }, [_c('div', {
     staticClass: "w3-panel"
-  }, [_vm._v("A great reason for using here!")])]), _vm._v(" "), _c('li', {
+  }, [_vm._v("Content customized to your marketing goals")])]), _vm._v(" "), _c('li', {
     staticClass: "w3-padding"
   }, [_c('div', {
     staticClass: "w3-panel"
-  }, [_vm._v("Another great reason for signing up")])]), _vm._v(" "), _c('li', {
+  }, [_vm._v("Community content to engage followers")])]), _vm._v(" "), _c('li', {
     staticClass: "w3-padding"
   }, [_c('div', {
     staticClass: "w3-panel"
-  }, [_vm._v("How could you possibly afford not to join?")])]), _vm._v(" "), _c('li', {
+  }, [_vm._v("Referral function to boost sales")])]), _vm._v(" "), _c('li', {
     staticClass: "w3-padding"
   }, [_c('div', {
     staticClass: "w3-panel"
-  }, [_vm._v("This is going to help you achieve success!")])]), _vm._v(" "), _c('li', {
+  }, [_vm._v("Set it & forget it, or jump into the conversation!")])]), _vm._v(" "), _c('li', {
+    staticClass: "w3-padding"
+  }, [_c('div', {
+    staticClass: "w3-panel"
+  }, [_vm._v("We’re the insurance social media marketing leader.")])]), _vm._v(" "), _c('li', {
     staticClass: "w3-padding w3-text-white secondary"
   }, [_c('h6', [_vm._v("Join Insurance Social Media and get started today!")])])])])
 }]}

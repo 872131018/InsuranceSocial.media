@@ -6,7 +6,7 @@
         <div class="w3-container w3-card-2 form">
             <div class="w3-panel">
                 <h3>Link your Twitter Account</h3>
-                <h5>Please log in to Twitter<i class="fa fa-twitter fa-2x w3-margin-left w3-margin-right w3-text-blue v-align"></i>in order to recieve our Twitter services.</h5>
+                <h5>Please log in to Twitter in order to recieve our Twitter services.</h5>
             </div>
             <div class="w3-section">
                 <div class="w3-panel">
@@ -29,6 +29,12 @@
                     </div>
                 </div>
             </div>
+            <div class="w3-section"
+                v-if="properties.has_twitter == false">
+                <a href="https://twitter.com/signup" target="_blank">
+                    <h5>Don’t have a Twitter account? Setting one up will take you about 30 seconds—and we can start posting to it right away. Click here to create your account.</h5>
+                </a>
+            </div>
             <div class="w3-section">
                 <h5>Almost done.</h5>
                 <button class="w3-button w3-text-white primary"
@@ -46,8 +52,7 @@
         data() {
             return {
                 properties: {
-                    has_twitter: false,
-                    create_twitter: false
+                    has_twitter: false
                 },
                 redirectUrl: ''
             }

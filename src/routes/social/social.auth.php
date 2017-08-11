@@ -18,7 +18,6 @@ use Illuminate\Http\Request;
  * @return \Illuminate\Http\Response
  */
 
- Route::get('/welcome', 'SocialController@index');
 
  Route::get('/facebook', 'SocialController@index');
 
