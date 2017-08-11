@@ -8,8 +8,7 @@
             <div class="w3-container">
                 <div class="w3-content">
                     Amount: {{ response.amount }}<br>
-                    Transaction ID: {{ response.transactionId }}<br>
-                    Authorization Code: {{ response.auth_code }}
+                    Transaction ID: {{ response.transactionId }}
                 </div>
             </div>
             <footer class="w3-container w3-text-white primary">

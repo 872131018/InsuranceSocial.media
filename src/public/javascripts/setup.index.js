@@ -18262,7 +18262,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "w3-panel"
-  }, [_c('h3', [_vm._v("Who are we?")]), _vm._v(" "), _c('h5', [_vm._v("Please complete this information so we may provide you the best service.")])])
+  }, [_c('h3', [_vm._v("Who are you?")]), _vm._v(" "), _c('h5', [_vm._v("Please complete this information so we may provide you the best service.")])])
 }]}
 module.exports.render._withStripped = true
 if (false) {
@@ -19603,7 +19603,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "w3-panel"
-  }, [_c('h3', [_vm._v("Where are we?")]), _vm._v(" "), _c('h5', [_vm._v("Please complete this information to receive content pertaining to your marketing areas.")])])
+  }, [_c('h3', [_vm._v("Where are you?")]), _vm._v(" "), _c('h5', [_vm._v("Please complete this information to receive content pertaining to your marketing areas.")])])
 }]}
 module.exports.render._withStripped = true
 if (false) {
@@ -21719,7 +21719,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "w3-panel"
-  }, [_c('h3', [_vm._v("What do we write?")]), _vm._v(" "), _c('h5', [_vm._v("Please tell us about the lines of coverage you write and any industries you market to.")])])
+  }, [_c('h3', [_vm._v("What do you write?")]), _vm._v(" "), _c('h5', [_vm._v("Please tell us about the lines of coverage you write and any industries you market to.")])])
 }]}
 module.exports.render._withStripped = true
 if (false) {
@@ -22998,7 +22998,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "w3-panel"
-  }, [_c('h3', [_vm._v("How do we reach our customers?")]), _vm._v(" "), _c('h5', [_vm._v("Please set your preferences for the type of outreach you would like.")])])
+  }, [_c('h3', [_vm._v("How do we reach your customers?")]), _vm._v(" "), _c('h5', [_vm._v("Please set your preferences for the type of outreach you would like.")])])
 }]}
 module.exports.render._withStripped = true
 if (false) {

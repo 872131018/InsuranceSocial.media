@@ -6,11 +6,10 @@
         <div class="w3-container w3-card-2 form">
             <div class="w3-panel">
                 <h3>Link your Facebook</h3>
-                <h5>Please log in to Facebook in order to recieve our Facebook services.</h5>
             </div>
             <div class="w3-section">
                 <div class="w3-panel">
-                    <div>Do you have a corporate Facebook Page?</div>
+                    <div>Do you have a corporate Facebook Page? If so, please log in to Facebook in order to recieve our Facebook services.</div>
                     <div class="w3-panel">
                         <input class="v-align" type="radio" id="facebook_yes"
                             v-bind:value="true"
@@ -49,7 +48,9 @@
                 </div>
             </div>
             <div class="w3-section">
-                <h5 v-if="properties.has_facebook == false && properties.create_facebook == false">One in five page views in the United States is on Facebook! Are you sure you don’t want to make Facebook part of your social media marketing?</h5>
+                <h5 class="w3-text-orange"
+                    v-if="properties.has_facebook == false && properties.create_facebook == false">One in five page views in the United States is on Facebook! Are you sure you don’t want to make Facebook part of your social media marketing?
+                </h5>
                 <h5 v-else>We look forward to working with you. Please click continue to finish setting up your account.</h5>
                 <button class="w3-button w3-text-white primary"
                     v-if="properties.has_facebook == false && properties.create_facebook == false"

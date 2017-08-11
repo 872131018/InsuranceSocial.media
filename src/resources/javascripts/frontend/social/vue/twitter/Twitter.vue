@@ -6,11 +6,10 @@
         <div class="w3-container w3-card-2 form">
             <div class="w3-panel">
                 <h3>Link your Twitter Account</h3>
-                <h5>Please log in to Twitter in order to recieve our Twitter services.</h5>
             </div>
             <div class="w3-section">
                 <div class="w3-panel">
-                    <div>Do you have a Twitter account?</div>
+                    <div>Do you have a Twitter account? If so, please log in to Twitter in order to recieve our Twitter services.</div>
                     <div class="w3-panel">
                         <input class="v-align" type="radio" id="twitter_yes"
                             v-bind:value="true"
@@ -31,12 +30,13 @@
             </div>
             <div class="w3-section"
                 v-if="properties.has_twitter == false">
+                <p>Don’t have a Twitter account? Setting one up will take you about 30 seconds—and we can start posting to it right away.</p>
                 <a href="https://twitter.com/signup" target="_blank">
-                    <h5>Don’t have a Twitter account? Setting one up will take you about 30 seconds—and we can start posting to it right away. Click here to create your account.</h5>
+                    <h5>Click here to create your account.</h5>
                 </a>
             </div>
             <div class="w3-section">
-                <h5>Almost done.</h5>
+                <h5 v-if="properties.has_twitter == true">Almost done.</h5>
                 <button class="w3-button w3-text-white primary"
                     v-on:click="update()">Continue
                 </button>

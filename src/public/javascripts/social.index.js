@@ -14348,6 +14348,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 
@@ -14403,7 +14404,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "w3-section"
   }, [_c('div', {
     staticClass: "w3-panel"
-  }, [_c('div', [_vm._v("Do you have a corporate Facebook Page?")]), _vm._v(" "), _c('div', {
+  }, [_c('div', [_vm._v("Do you have a corporate Facebook Page? If so, please log in to Facebook in order to recieve our Facebook services.")]), _vm._v(" "), _c('div', {
     staticClass: "w3-panel"
   }, [_c('input', {
     directives: [{
@@ -14497,7 +14498,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }), _vm._v(" "), _vm._m(5)])]) : _vm._e()]), _vm._v(" "), _c('div', {
     staticClass: "w3-section"
-  }, [(_vm.properties.has_facebook == false && _vm.properties.create_facebook == false) ? _c('h5', [_vm._v("One in five page views in the United States is on Facebook! Are you sure you don’t want to make Facebook part of your social media marketing?")]) : _c('h5', [_vm._v("We look forward to working with you. Please click continue to finish setting up your account.")]), _vm._v(" "), (_vm.properties.has_facebook == false && _vm.properties.create_facebook == false) ? _c('button', {
+  }, [(_vm.properties.has_facebook == false && _vm.properties.create_facebook == false) ? _c('h5', {
+    staticClass: "w3-text-orange"
+  }, [_vm._v("One in five page views in the United States is on Facebook! Are you sure you don’t want to make Facebook part of your social media marketing?\n            ")]) : _c('h5', [_vm._v("We look forward to working with you. Please click continue to finish setting up your account.")]), _vm._v(" "), (_vm.properties.has_facebook == false && _vm.properties.create_facebook == false) ? _c('button', {
     staticClass: "w3-button w3-text-white primary",
     on: {
       "click": function($event) {
@@ -14515,7 +14518,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "w3-panel"
-  }, [_c('h3', [_vm._v("Link your Facebook")]), _vm._v(" "), _c('h5', [_vm._v("Please log in to Facebook in order to recieve our Facebook services.")])])
+  }, [_c('h3', [_vm._v("Link your Facebook")])])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('label', {
     attrs: {
@@ -15844,7 +15847,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "w3-section"
   }, [_c('div', {
     staticClass: "w3-panel"
-  }, [_c('div', [_vm._v("Do you have a Twitter account?")]), _vm._v(" "), _c('div', {
+  }, [_c('div', [_vm._v("Do you have a Twitter account? If so, please log in to Twitter in order to recieve our Twitter services.")]), _vm._v(" "), _c('div', {
     staticClass: "w3-panel"
   }, [_c('input', {
     directives: [{
@@ -15892,9 +15895,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }), _vm._v(" "), _vm._m(2)])])]), _vm._v(" "), (_vm.properties.has_twitter == false) ? _c('div', {
     staticClass: "w3-section"
-  }, [_vm._m(3)]) : _vm._e(), _vm._v(" "), _c('div', {
+  }, [_c('p', [_vm._v("Don’t have a Twitter account? Setting one up will take you about 30 seconds—and we can start posting to it right away.")]), _vm._v(" "), _vm._m(3)]) : _vm._e(), _vm._v(" "), _c('div', {
     staticClass: "w3-section"
-  }, [_c('h5', [_vm._v("Almost done.")]), _vm._v(" "), _c('button', {
+  }, [(_vm.properties.has_twitter == true) ? _c('h5', [_vm._v("Almost done.")]) : _vm._e(), _vm._v(" "), _c('button', {
     staticClass: "w3-button w3-text-white primary",
     on: {
       "click": function($event) {
@@ -15905,7 +15908,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "w3-panel"
-  }, [_c('h3', [_vm._v("Link your Twitter Account")]), _vm._v(" "), _c('h5', [_vm._v("Please log in to Twitter in order to recieve our Twitter services.")])])
+  }, [_c('h3', [_vm._v("Link your Twitter Account")])])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('label', {
     attrs: {
@@ -15928,7 +15931,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "href": "https://twitter.com/signup",
       "target": "_blank"
     }
-  }, [_c('h5', [_vm._v("Don’t have a Twitter account? Setting one up will take you about 30 seconds—and we can start posting to it right away. Click here to create your account.")])])
+  }, [_c('h5', [_vm._v("Click here to create your account.")])])
 }]}
 module.exports.render._withStripped = true
 if (false) {

@@ -8,7 +8,7 @@
         </QuickNavigation>
         <div class="w3-container w3-card-2 form">
             <div class="w3-panel">
-                <h3>How do we reach our customers?</h3>
+                <h3>How do we reach your customers?</h3>
                 <h5>Please set your preferences for the type of outreach you would like.</h5>
             </div>
             <div class="w3-panel">
