@@ -3,7 +3,7 @@
         <ul class="w3-ul w3-card-2 w3-white w3-center"
             v-if="$route.path =='/facebook'">
             <li class="w3-padding w3-text-white primary">
-                <h6><b>Why you'll <em>love</em> Insurance Social Media...</b></h6>
+                <h6>Make Facebook work for you!</h6>
             </li>
             <li class="w3-padding">
                 <div class="w3-panel">Connecting your Facebook account is simplest if you’re already logged in to it.</div>
@@ -21,13 +21,13 @@
                 <div class="w3-panel">Need help? Click Chat Now in the box below! </div>
             </li>
             <li class="w3-padding w3-text-white secondary">
-                <h6>Join Insurance Social Media and get started today!</h6>
+                <h6>Next step: connect your Twitter account!</h6>
             </li>
         </ul>
         <ul class="w3-ul w3-card-2 w3-white w3-center"
             v-if="$route.path =='/twitter'">
             <li class="w3-padding w3-text-white primary">
-                <h6><b>Why you'll <em>love</em> Insurance Social Media...</b></h6>
+                <h6>The power of Twitter</h6>
             </li>
             <li class="w3-padding">
                 <div class="w3-panel">Why use Twitter? It has 320 million users—and the largest user group is millennials (36% of US internet users!).</div>
@@ -45,7 +45,7 @@
                 <div class="w3-panel">Need help? Click Chat Now in the box below! </div>
             </li>
             <li class="w3-padding w3-text-white secondary">
-                <h6>Join Insurance Social Media and get started today!</h6>
+                <h6>Social media connection complete!</h6>
             </li>
         </ul>
     </div>

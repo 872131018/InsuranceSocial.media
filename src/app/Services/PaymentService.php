@@ -55,6 +55,18 @@ class PaymentService
             $payment->setOpaqueData($op);
 
             $requestType->setPayment($payment);
+        } else if($payment['type'] == 'prorate') {
+            $requestType->setTransactionType("authCaptureTransaction");
+            $requestType->setAmount($payment['amount']);
+
+            $op = new OpaqueDataType();
+            $op->setDataDescriptor($payment['dataDescriptor']);
+            $op->setDataValue($payment['dataValue']);
+
+            $payment = new PaymentType();
+            $payment->setOpaqueData($op);
+
+            $requestType->setPayment($payment);
         } else {
             $requestType->setTransactionType("authCaptureTransaction");
             $requestType->setAmount($payment['amount']);

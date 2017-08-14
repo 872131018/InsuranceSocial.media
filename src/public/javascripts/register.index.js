@@ -16524,6 +16524,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     //
@@ -16558,11 +16560,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "w3-padding"
   }, [_c('div', {
     staticClass: "w3-panel"
-  }, [_vm._v("Set it & forget it, or jump into the conversation!")])]), _vm._v(" "), _c('li', {
+  }, [_vm._v("Set it & forget it, or jump into the conversation")])]), _vm._v(" "), _c('li', {
     staticClass: "w3-padding"
   }, [_c('div', {
     staticClass: "w3-panel"
-  }, [_vm._v("We’re the insurance social media marketing leader.")])]), _vm._v(" "), _c('li', {
+  }, [_vm._v("We’re the insurance social media marketing leader!")])]), _vm._v(" "), _c('div', {
+    staticClass: "w3-panel"
+  }, [_vm._v("We can’t wait for you to reap the benefits!")]), _vm._v(" "), _c('li', {
     staticClass: "w3-padding w3-text-white secondary"
   }, [_c('h6', [_vm._v("Join Insurance Social Media and get started today!")])])])])
 }]}

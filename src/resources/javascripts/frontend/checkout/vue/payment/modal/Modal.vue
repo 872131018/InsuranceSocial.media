@@ -6,9 +6,11 @@
                 <h2 class="w3-text-white">Payment Success</h2>
             </header>
             <div class="w3-container">
-                <div class="w3-content">
-                    Amount: {{ response.amount }}<br>
-                    Transaction ID: {{ response.transactionId }}
+                <div class="w3-content w3-center">
+                    <p>Plan Cost: {{ response.planCost }}</p>
+                    <p v-if="response.charged != '1'">Prorated Charge: {{ response.charged }}<p>
+                    <p v-if="response.discount">Discount: {{ response.discount }}</p>
+                    <p>Transaction ID: {{ response.transactionId }}</p>
                 </div>
             </div>
             <footer class="w3-container w3-text-white primary">
@@ -24,6 +26,9 @@
             response: {
                 type: Object
             }
+        },
+        mounted() {
+            console.log(this.response.charged)
         }
     }
 </script>

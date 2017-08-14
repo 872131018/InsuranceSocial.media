@@ -17,7 +17,14 @@
                 After the trial, you will be charged for each month.
                 You can cancel at any time.
             </p>
-            <p v-else>Your credit card will be charged a pro-rated amount for this month’s subscription fee. You will be charged for next month’s service during the last week of this month.</p>
+            <div v-else>
+                <p>
+                    Your credit card will be charged a pro-rated amount for this month’s subscription fee. You will be charged for next month’s service during the last week of this month.
+                </p>
+                <h3>
+                    Pro rated charge: <b>${{ properties.prorate }}</b>
+                </h3>
+            </div>
         </div>
         <div class="w3-panel">
             <Card v-on:setCard="(card) => properties.card = card"></Card>
@@ -78,7 +85,8 @@
                     code: '',
                     name: '',
                     apiLoginID: '',
-                    clientKey: ''
+                    clientKey: '',
+                    prorate: 1.00
                 },
                 errors: [],
                 response: null
@@ -91,6 +99,17 @@
             });
 
             this.plan = store.getState().UserStore.plan;
+
+            if(this.plan.tier > 1) {
+                const today = new Moment();
+                const firstDay = new Moment().startOf('month');
+                const lastDay = new Moment().endOf('month');
+                const numDays = lastDay.diff(firstDay, 'days');
+                const rate = (parseInt(this.plan.price) / numDays).toFixed(2);
+                const prorate = (rate * lastDay.diff(today, 'days')).toFixed(2);
+
+                this.properties.prorate = prorate;
+            }
         },
         methods: {
             sendPaymentDataToAnet() {
@@ -115,14 +134,18 @@
                         }
                     } else {
                         const transaction = {
-                            total: '1.00',
+                            total: this.properties.prorate,
                             dataDescriptor: response.opaqueData.dataDescriptor,
                             dataValue: response.opaqueData.dataValue,
                             customerData: store.getState().UserStore
                         };
 
                         axios.post(window.location, transaction).then(response => {
-                            this.response = response.data.transaction;
+                            this.response = {
+                                planCost: this.plan.price,
+                                charged: response.data.transaction.amount,
+                                transactionId: response.data.transaction.transactionId
+                            };
                         }).catch((error) => {
                             this.errors.push('An Error has occured. Please contact support.');
                         });

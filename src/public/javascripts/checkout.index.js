@@ -32641,6 +32641,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -32662,7 +32669,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 code: '',
                 name: '',
                 apiLoginID: '',
-                clientKey: ''
+                clientKey: '',
+                prorate: 1.00
             },
             errors: [],
             response: null
@@ -32677,6 +32685,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         });
 
         this.plan = store.getState().UserStore.plan;
+
+        if (this.plan.tier > 1) {
+            var today = new __WEBPACK_IMPORTED_MODULE_0_moment___default.a();
+            var firstDay = new __WEBPACK_IMPORTED_MODULE_0_moment___default.a().startOf('month');
+            var lastDay = new __WEBPACK_IMPORTED_MODULE_0_moment___default.a().endOf('month');
+            var numDays = lastDay.diff(firstDay, 'days');
+            var rate = (parseInt(this.plan.price) / numDays).toFixed(2);
+            var prorate = (rate * lastDay.diff(today, 'days')).toFixed(2);
+
+            this.properties.prorate = prorate;
+        }
     },
 
     methods: {
@@ -32725,14 +32744,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     }
                 } else {
                     var transaction = {
-                        total: '1.00',
+                        total: _this2.properties.prorate,
                         dataDescriptor: response.opaqueData.dataDescriptor,
                         dataValue: response.opaqueData.dataValue,
                         customerData: store.getState().UserStore
                     };
 
                     axios.post(window.location, transaction).then(function (response) {
-                        _this2.response = response.data.transaction;
+                        _this2.response = {
+                            planCost: _this2.plan.price,
+                            charged: response.data.transaction.amount,
+                            transactionId: response.data.transaction.transactionId
+                        };
                     }).catch(function (error) {
                         _this2.errors.push('An Error has occured. Please contact support.');
                     });
@@ -33987,12 +34010,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: {
         response: {
             type: Object
         }
+    },
+    mounted: function mounted() {
+        console.log(this.response.charged);
     }
 });
 
@@ -34013,8 +34040,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_vm._m(0), _vm._v(" "), _c('div', {
     staticClass: "w3-container"
   }, [_c('div', {
-    staticClass: "w3-content"
-  }, [_vm._v("\n                Amount: " + _vm._s(_vm.response.amount)), _c('br'), _vm._v("\n                Transaction ID: " + _vm._s(_vm.response.transactionId)), _c('br'), _vm._v("\n                Authorization Code: " + _vm._s(_vm.response.auth_code) + "\n            ")])]), _vm._v(" "), _vm._m(1)])])
+    staticClass: "w3-content w3-center"
+  }, [_c('p', [_vm._v("Plan Cost: " + _vm._s(_vm.response.planCost))]), _vm._v(" "), (_vm.response.charged != '1') ? _c('p', [_vm._v("Prorated Charge: " + _vm._s(_vm.response.charged))]) : _vm._e(), _c('p'), (_vm.response.discount) ? _c('p', [_vm._v("Discount: " + _vm._s(_vm.response.discount))]) : _vm._e(), _vm._v(" "), _c('p', [_vm._v("Transaction ID: " + _vm._s(_vm.response.transactionId))])])]), _vm._v(" "), _vm._m(1)])])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('header', {
     staticClass: "w3-container w3-center primary"
@@ -34051,7 +34078,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }) : _vm._e()], 1), _vm._v(" "), _c('div', {
     staticClass: "w3-panel"
-  }, [_c('h3', [_vm._v("Payment Method")]), _vm._v(" "), _c('h5', [_vm._v("Please enter a form of payment to complete registration.")]), _vm._v(" "), (_vm.plan.tier == 1) ? _c('p', [_vm._v("\n            Your Insurance Social Media Essential Plan trial period is free.\n            We ask for your credit card to prevent any service interruption should you keep your account open after the trial period.\n            Your card will not be charged for the trial period.\n            After the trial, you will be charged for each month.\n            You can cancel at any time.\n        ")]) : _c('p', [_vm._v("Your credit card will be charged a pro-rated amount for this month’s subscription fee. You will be charged for next month’s service during the last week of this month.")])]), _vm._v(" "), _c('div', {
+  }, [_c('h3', [_vm._v("Payment Method")]), _vm._v(" "), _c('h5', [_vm._v("Please enter a form of payment to complete registration.")]), _vm._v(" "), (_vm.plan.tier == 1) ? _c('p', [_vm._v("\n            Your Insurance Social Media Essential Plan trial period is free.\n            We ask for your credit card to prevent any service interruption should you keep your account open after the trial period.\n            Your card will not be charged for the trial period.\n            After the trial, you will be charged for each month.\n            You can cancel at any time.\n        ")]) : _c('div', [_c('p', [_vm._v("\n                Your credit card will be charged a pro-rated amount for this month’s subscription fee. You will be charged for next month’s service during the last week of this month.\n            ")]), _vm._v(" "), _c('h3', [_vm._v("\n                Pro rated charge: "), _c('b', [_vm._v("$" + _vm._s(_vm.properties.prorate))])])])]), _vm._v(" "), _c('div', {
     staticClass: "w3-panel"
   }, [_c('Card', {
     on: {
@@ -34140,7 +34167,7 @@ var Component = __webpack_require__(1)(
   /* script */
   __webpack_require__(285),
   /* template */
-  __webpack_require__(286),
+  __webpack_require__(289),
   /* styles */
   null,
   /* scopeId */
@@ -34177,7 +34204,7 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Tips__ = __webpack_require__(449);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Tips__ = __webpack_require__(286);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Tips___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Tips__);
 //
 //
@@ -34221,191 +34248,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* 286 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('Navigation'), _vm._v(" "), _c('Tips'), _vm._v(" "), (_vm.loading == 0) ? _c('div', {
-    staticClass: "w3-container w3-padding-32 bgimg2"
-  }, [_c('router-view')], 1) : _vm._e(), _vm._v(" "), _c('Foot')], 1)
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-1afb54b0", module.exports)
-  }
-}
-
-/***/ }),
-/* 287 */,
-/* 288 */,
-/* 289 */,
-/* 290 */,
-/* 291 */,
-/* 292 */,
-/* 293 */,
-/* 294 */,
-/* 295 */,
-/* 296 */,
-/* 297 */,
-/* 298 */,
-/* 299 */,
-/* 300 */,
-/* 301 */,
-/* 302 */,
-/* 303 */,
-/* 304 */,
-/* 305 */,
-/* 306 */,
-/* 307 */,
-/* 308 */,
-/* 309 */,
-/* 310 */,
-/* 311 */,
-/* 312 */,
-/* 313 */,
-/* 314 */,
-/* 315 */,
-/* 316 */,
-/* 317 */,
-/* 318 */,
-/* 319 */,
-/* 320 */,
-/* 321 */,
-/* 322 */,
-/* 323 */,
-/* 324 */,
-/* 325 */,
-/* 326 */,
-/* 327 */,
-/* 328 */,
-/* 329 */,
-/* 330 */,
-/* 331 */,
-/* 332 */,
-/* 333 */,
-/* 334 */,
-/* 335 */,
-/* 336 */,
-/* 337 */,
-/* 338 */,
-/* 339 */,
-/* 340 */,
-/* 341 */,
-/* 342 */,
-/* 343 */,
-/* 344 */,
-/* 345 */,
-/* 346 */,
-/* 347 */,
-/* 348 */,
-/* 349 */,
-/* 350 */,
-/* 351 */,
-/* 352 */,
-/* 353 */,
-/* 354 */,
-/* 355 */,
-/* 356 */,
-/* 357 */,
-/* 358 */,
-/* 359 */,
-/* 360 */,
-/* 361 */,
-/* 362 */,
-/* 363 */,
-/* 364 */,
-/* 365 */,
-/* 366 */,
-/* 367 */,
-/* 368 */,
-/* 369 */,
-/* 370 */,
-/* 371 */,
-/* 372 */,
-/* 373 */,
-/* 374 */,
-/* 375 */,
-/* 376 */,
-/* 377 */,
-/* 378 */,
-/* 379 */,
-/* 380 */,
-/* 381 */,
-/* 382 */,
-/* 383 */,
-/* 384 */,
-/* 385 */,
-/* 386 */,
-/* 387 */,
-/* 388 */,
-/* 389 */,
-/* 390 */,
-/* 391 */,
-/* 392 */,
-/* 393 */,
-/* 394 */,
-/* 395 */,
-/* 396 */,
-/* 397 */,
-/* 398 */,
-/* 399 */,
-/* 400 */,
-/* 401 */,
-/* 402 */,
-/* 403 */,
-/* 404 */,
-/* 405 */,
-/* 406 */,
-/* 407 */,
-/* 408 */,
-/* 409 */,
-/* 410 */,
-/* 411 */,
-/* 412 */,
-/* 413 */,
-/* 414 */,
-/* 415 */,
-/* 416 */,
-/* 417 */,
-/* 418 */,
-/* 419 */,
-/* 420 */,
-/* 421 */,
-/* 422 */,
-/* 423 */,
-/* 424 */,
-/* 425 */,
-/* 426 */,
-/* 427 */,
-/* 428 */,
-/* 429 */,
-/* 430 */,
-/* 431 */,
-/* 432 */,
-/* 433 */,
-/* 434 */,
-/* 435 */,
-/* 436 */,
-/* 437 */,
-/* 438 */,
-/* 439 */,
-/* 440 */,
-/* 441 */,
-/* 442 */,
-/* 443 */,
-/* 444 */,
-/* 445 */,
-/* 446 */,
-/* 447 */,
-/* 448 */,
-/* 449 */
-/***/ (function(module, exports, __webpack_require__) {
-
 var disposed = false
 var Component = __webpack_require__(1)(
   /* script */
-  __webpack_require__(450),
+  __webpack_require__(287),
   /* template */
-  __webpack_require__(451),
+  __webpack_require__(288),
   /* styles */
   null,
   /* scopeId */
@@ -34437,11 +34285,34 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 450 */
+/* 287 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -34454,15 +34325,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 451 */
+/* 288 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _vm._m(0)
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "w3-padding-32 w3-hide-small tips"
-  }, [_c('iframe', {
+  }, [(_vm.$route.path == '/plans') ? _c('iframe', {
     staticClass: "sproutvideo-player",
     attrs: {
       "src": "//videos.sproutvideo.com/embed/a49ad8b41c1ce6c12c/ac167611861914e3?playerTheme=dark&playerColor=",
@@ -34471,13 +34340,64 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "frameborder": "0",
       "allowfullscreen": ""
     }
-  })])
+  }) : _vm._e(), _vm._v(" "), (_vm.$route.path == '/payment') ? _c('ul', {
+    staticClass: "w3-ul w3-card-2 w3-white w3-center"
+  }, [_vm._m(0), _vm._v(" "), _vm._m(1), _vm._v(" "), _vm._m(2), _vm._v(" "), _vm._m(3), _vm._v(" "), _vm._m(4), _vm._v(" "), _vm._m(5)]) : _vm._e()])
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('li', {
+    staticClass: "w3-padding w3-text-white primary"
+  }, [_c('h6', [_vm._v("We care about your security!")])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('li', {
+    staticClass: "w3-padding"
+  }, [_c('div', {
+    staticClass: "w3-panel"
+  }, [_vm._v("We don’t store your credit card information.")])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('li', {
+    staticClass: "w3-padding"
+  }, [_c('div', {
+    staticClass: "w3-panel"
+  }, [_vm._v("We don’t store your social media account log-in information.")])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('li', {
+    staticClass: "w3-padding"
+  }, [_c('div', {
+    staticClass: "w3-panel"
+  }, [_vm._v("Our system is secure, and so is your account!")])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('li', {
+    staticClass: "w3-padding"
+  }, [_c('div', {
+    staticClass: "w3-panel"
+  }, [_vm._v("Next step: connect your social media platforms!")])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('li', {
+    staticClass: "w3-padding w3-text-white secondary"
+  }, [_c('h6', [_vm._v("Join Insurance Social Media and get started today!")])])
 }]}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
      require("vue-hot-reload-api").rerender("data-v-e8f4cf8e", module.exports)
+  }
+}
+
+/***/ }),
+/* 289 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', [_c('Navigation'), _vm._v(" "), _c('Tips'), _vm._v(" "), (_vm.loading == 0) ? _c('div', {
+    staticClass: "w3-container w3-padding-32 bgimg2"
+  }, [_c('router-view')], 1) : _vm._e(), _vm._v(" "), _c('Foot')], 1)
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-1afb54b0", module.exports)
   }
 }
 

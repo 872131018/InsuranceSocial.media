@@ -52,13 +52,24 @@ class PaymentController extends Controller
      */
     public function store(Request $request)
     {
-        $transactionRequest = $this->paymentService->getTransactionRequest([
-            'type' => 'new',
-            'amount' => '1.00',
-            'dataDescriptor' => $request->input('dataDescriptor'),
-            'dataValue' => $request->input('dataValue')
-            ],
-            Auth::user());
+        $transactionRequest = '';
+        if($request->input('total') == '1.00'){
+            $transactionRequest = $this->paymentService->getTransactionRequest([
+                'type' => 'new',
+                'amount' => $request->input('total'),
+                'dataDescriptor' => $request->input('dataDescriptor'),
+                'dataValue' => $request->input('dataValue')
+                ],
+                Auth::user());
+        } else {
+            $transactionRequest = $this->paymentService->getTransactionRequest([
+                'type' => 'prorate',
+                'amount' => $request->input('total'),
+                'dataDescriptor' => $request->input('dataDescriptor'),
+                'dataValue' => $request->input('dataValue')
+                ],
+                Auth::user());
+        }
         $controller = new AnetController\CreateTransactionController($transactionRequest);
         $response = $controller->executeWithApiResponse(\net\authorize\api\constants\ANetEnvironment::SANDBOX);
         /**
@@ -159,7 +170,7 @@ class PaymentController extends Controller
 
             return response()->json([
                 'transaction' => [
-                    'amount' => 0.00,
+                    'amount' => $request->input('total'),
                     'transactionId' => $transactionId,
                     'auth_code' => $auth_code
                 ],

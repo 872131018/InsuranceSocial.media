@@ -22969,7 +22969,7 @@ var Component = __webpack_require__(1)(
   /* script */
   __webpack_require__(447),
   /* template */
-  __webpack_require__(448),
+  __webpack_require__(451),
   /* styles */
   null,
   /* scopeId */
@@ -23006,7 +23006,7 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Tips__ = __webpack_require__(455);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Tips__ = __webpack_require__(448);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Tips___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Tips__);
 //
 //
@@ -23094,35 +23094,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* 448 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('Navigation'), _vm._v(" "), _c('Tips'), _vm._v(" "), (_vm.loading == 0) ? _c('div', {
-    staticClass: "w3-container w3-padding-32 bgimg2"
-  }, [_c('router-view')], 1) : _vm._e(), _vm._v(" "), _c('Foot')], 1)
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-2326cd96", module.exports)
-  }
-}
-
-/***/ }),
-/* 449 */,
-/* 450 */,
-/* 451 */,
-/* 452 */,
-/* 453 */,
-/* 454 */,
-/* 455 */
-/***/ (function(module, exports, __webpack_require__) {
-
 var disposed = false
 var Component = __webpack_require__(1)(
   /* script */
-  __webpack_require__(456),
+  __webpack_require__(449),
   /* template */
-  __webpack_require__(457),
+  __webpack_require__(450),
   /* styles */
   null,
   /* scopeId */
@@ -23154,11 +23131,53 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 456 */
+/* 449 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -23194,7 +23213,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 457 */
+/* 450 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -23211,17 +23230,21 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }) : _vm._e(), _vm._v(" "), (_vm.$route.path == '/location') ? _c('ul', {
     staticClass: "w3-ul w3-card-2 w3-white w3-center"
-  }, [_vm._m(0), _vm._v(" "), _vm._m(1), _vm._v(" "), _vm._m(2), _vm._v(" "), _vm._m(3), _vm._v(" "), _vm._m(4), _vm._v(" "), _vm._m(5)]) : _vm._e()])
+  }, [_vm._m(0), _vm._v(" "), _vm._m(1), _vm._v(" "), _vm._m(2), _vm._v(" "), _vm._m(3), _vm._v(" "), _vm._m(4), _vm._v(" "), _vm._m(5)]) : _vm._e(), _vm._v(" "), (_vm.$route.path == '/coverage') ? _c('ul', {
+    staticClass: "w3-ul w3-card-2 w3-white w3-center"
+  }, [_vm._m(6), _vm._v(" "), _vm._m(7), _vm._v(" "), _vm._m(8), _vm._v(" "), _vm._m(9), _vm._v(" "), _vm._m(10), _vm._v(" "), _vm._m(11)]) : _vm._e(), _vm._v(" "), (_vm.$route.path == '/outreach') ? _c('ul', {
+    staticClass: "w3-ul w3-card-2 w3-white w3-center"
+  }, [_vm._m(12), _vm._v(" "), _vm._m(13), _vm._v(" "), _vm._m(14), _vm._v(" "), _vm._m(15), _vm._v(" "), _vm._m(16), _vm._v(" "), _vm._m(17)]) : _vm._e()])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('li', {
     staticClass: "w3-padding w3-text-white primary"
-  }, [_c('h6', [_c('b', [_vm._v("Why you'll "), _c('em', [_vm._v("love")]), _vm._v(" Insurance Social Media...")])])])
+  }, [_c('h6', [_vm._v("The power of the profile")])])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('li', {
     staticClass: "w3-padding"
   }, [_c('div', {
     staticClass: "w3-panel"
-  }, [_vm._v("Geography matters!")])])
+  }, [_vm._v("Where you are matters!")])])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('li', {
     staticClass: "w3-padding"
@@ -23243,13 +23266,94 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('li', {
     staticClass: "w3-padding w3-text-white secondary"
-  }, [_c('h6', [_vm._v("Join Insurance Social Media and get started today!")])])
+  }, [_c('h6', [_vm._v("Your profile determines your social media content!")])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('li', {
+    staticClass: "w3-padding w3-text-white primary"
+  }, [_c('h6', [_vm._v("The power of the profile")])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('li', {
+    staticClass: "w3-padding"
+  }, [_c('div', {
+    staticClass: "w3-panel"
+  }, [_vm._v("This section is the heart of your profile.")])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('li', {
+    staticClass: "w3-padding"
+  }, [_c('div', {
+    staticClass: "w3-panel"
+  }, [_vm._v("The coverages you write will impact the social media content we post for you.")])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('li', {
+    staticClass: "w3-padding"
+  }, [_c('div', {
+    staticClass: "w3-panel"
+  }, [_vm._v("Do you write business lines? Our industry-focused content will show off your expertise to current and future clients.")])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('li', {
+    staticClass: "w3-padding"
+  }, [_c('div', {
+    staticClass: "w3-panel"
+  }, [_vm._v("Interested in seeing more carriers added to our system? Send your request to support@insurancesocial.media.")])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('li', {
+    staticClass: "w3-padding w3-text-white secondary"
+  }, [_c('h6', [_vm._v("Your profile determines your social media content!")])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('li', {
+    staticClass: "w3-padding w3-text-white primary"
+  }, [_c('h6', [_vm._v("The power of the profile")])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('li', {
+    staticClass: "w3-padding"
+  }, [_c('div', {
+    staticClass: "w3-panel"
+  }, [_vm._v("What tone do you want for your social media content?")])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('li', {
+    staticClass: "w3-padding"
+  }, [_c('div', {
+    staticClass: "w3-panel"
+  }, [_vm._v("Do you want to include insurance humor?")])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('li', {
+    staticClass: "w3-padding"
+  }, [_c('div', {
+    staticClass: "w3-panel"
+  }, [_vm._v("Do you want to recognize national holidays?")])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('li', {
+    staticClass: "w3-padding"
+  }, [_c('div', {
+    staticClass: "w3-panel"
+  }, [_vm._v("Note any causes your agency supports—it will help your followers get to know you better!")])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('li', {
+    staticClass: "w3-padding w3-text-white secondary"
+  }, [_c('h6', [_vm._v("Your profile determines your social media content!")])])
 }]}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
      require("vue-hot-reload-api").rerender("data-v-263ce454", module.exports)
+  }
+}
+
+/***/ }),
+/* 451 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', [_c('Navigation'), _vm._v(" "), _c('Tips'), _vm._v(" "), (_vm.loading == 0) ? _c('div', {
+    staticClass: "w3-container w3-padding-32 bgimg2"
+  }, [_c('router-view')], 1) : _vm._e(), _vm._v(" "), _c('Foot')], 1)
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-2326cd96", module.exports)
   }
 }
 

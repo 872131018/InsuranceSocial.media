@@ -14,10 +14,12 @@
                 <div class="w3-panel">Referral function to boost sales</div>
             </li>
             <li class="w3-padding">
-                <div class="w3-panel">Set it & forget it, or jump into the conversation!</div>
+                <div class="w3-panel">Set it & forget it, or jump into the conversation</div>
             </li>
             <li class="w3-padding">
-                <div class="w3-panel">We’re the insurance social media marketing leader.</div>
+                <div class="w3-panel">We’re the insurance social media marketing leader!</div>
+            </li>
+                <div class="w3-panel">We can’t wait for you to reap the benefits!</div>
             </li>
             <li class="w3-padding w3-text-white secondary">
                 <h6>Join Insurance Social Media and get started today!</h6>
