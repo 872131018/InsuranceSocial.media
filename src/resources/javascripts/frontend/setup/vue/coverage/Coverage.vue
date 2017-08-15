@@ -116,7 +116,7 @@
                     </ul>
                 </div>
                 <div class="w3-section"
-                    v-if="commercial_coverage">
+                    v-if="commercial_coverage == 'Y'">
                     <Dropdown
                         v-bind:label="'Current industries for marketing (Select up to 5)'"
                         v-bind:options="industry_currents"
@@ -136,7 +136,7 @@
                     </ul>
                 </div>
                 <div class="w3-section"
-                    v-if="commercial_coverage">
+                    v-if="commercial_coverage == 'Y'">
                     <Dropdown
                         v-bind:label="'Target industries for future marketing (Select up to 5)'"
                         v-bind:options="industry_targets"

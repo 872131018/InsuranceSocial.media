@@ -87,6 +87,11 @@
                 this.loading--;
             });
             this.loading++;
+            axios.get(`${ window.base_url }/api/carriers`).then(response => {
+                store.dispatch({ type: 'SET_CARRIERS', data: response.data });
+                this.loading--;
+            });
+            this.loading++;
             axios.get(`${ window.base_url }/api/selections`).then(response => {
                 store.dispatch({ type: 'SET_SELECTIONS', data: response.data });
                 this.loading--;

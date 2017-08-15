@@ -16944,6 +16944,33 @@ var initialState = {
             }
 
             break;
+        case 'SET_CARRIERS':
+            var _iteratorNormalCompletion13 = true;
+            var _didIteratorError13 = false;
+            var _iteratorError13 = undefined;
+
+            try {
+                for (var _iterator13 = action.data[Symbol.iterator](), _step13; !(_iteratorNormalCompletion13 = (_step13 = _iterator13.next()).done); _iteratorNormalCompletion13 = true) {
+                    var carrier = _step13.value;
+
+                    options['carriers'].push(carrier);
+                }
+            } catch (err) {
+                _didIteratorError13 = true;
+                _iteratorError13 = err;
+            } finally {
+                try {
+                    if (!_iteratorNormalCompletion13 && _iterator13.return) {
+                        _iterator13.return();
+                    }
+                } finally {
+                    if (_didIteratorError13) {
+                        throw _iteratorError13;
+                    }
+                }
+            }
+
+            break;
         default:
             break;
     }
@@ -21708,7 +21735,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }, [_vm._v("\n                        " + _vm._s(industry.desc) + "\n                        "), _c('i', {
       staticClass: "fa fa-times w3-margin-left"
     })])
-  }))]) : _vm._e(), _vm._v(" "), (_vm.commercial_coverage) ? _c('div', {
+  }))]) : _vm._e(), _vm._v(" "), (_vm.commercial_coverage == 'Y') ? _c('div', {
     staticClass: "w3-section"
   }, [_c('Dropdown', {
     attrs: {
@@ -21731,7 +21758,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }, [_vm._v("\n                        " + _vm._s(industry.desc) + "\n                        "), _c('i', {
       staticClass: "fa fa-times w3-margin-left"
     })])
-  }))]) : _vm._e(), _vm._v(" "), (_vm.commercial_coverage) ? _c('div', {
+  }))]) : _vm._e(), _vm._v(" "), (_vm.commercial_coverage == 'Y') ? _c('div', {
     staticClass: "w3-section"
   }, [_c('Dropdown', {
     attrs: {
@@ -23204,6 +23231,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         this.loading++;
         axios.get(window.base_url + '/api/frequencies').then(function (response) {
             store.dispatch({ type: 'SET_FREQUENCIES', data: response.data });
+            _this.loading--;
+        });
+        this.loading++;
+        axios.get(window.base_url + '/api/carriers').then(function (response) {
+            store.dispatch({ type: 'SET_CARRIERS', data: response.data });
             _this.loading--;
         });
         this.loading++;

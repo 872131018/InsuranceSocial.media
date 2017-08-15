@@ -26,5 +26,6 @@ class DatabaseSeeder extends Seeder
         $this->call(SizesTableSeeder::class);
         $this->call(GenerationsTableSeeder::class);
         $this->call(FrequenciesTableSeeder::class);
+        $this->call(CarriersTableSeeder::class);
     }
 }

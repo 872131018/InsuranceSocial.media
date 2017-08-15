@@ -25,6 +25,8 @@ use App\Generation;
 
 use App\Frequency;
 
+use App\Carrier;
+
 use App\SelectedRegion;
 
 use App\SelectedState;
@@ -99,6 +101,9 @@ use App\SelectedCause;
  });
  Route::get('/api/frequencies', function (Request $request) {
      return response()->json(Frequency::all());
+ });
+ Route::get('/api/carriers', function (Request $request) {
+     return response()->json(Carrier::all());
  });
  Route::get('/api/selections', function (Request $request) {
      $user = Auth::user();

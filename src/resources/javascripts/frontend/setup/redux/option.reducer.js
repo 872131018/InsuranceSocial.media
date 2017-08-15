@@ -126,6 +126,11 @@ export default function(options = initialState, action) {
                 options['frequencies'].push(frequency);
             }
             break;
+        case 'SET_CARRIERS':
+            for(let carrier of action.data) {
+                options['carriers'].push(carrier);
+            }
+            break;
         default:
             break;
     }
