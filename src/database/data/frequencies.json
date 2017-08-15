@@ -1,0 +1,8 @@
+{
+    "frequencies":[
+        {"code": "D", "desc":"Daily"},
+        {"code": "W", "desc":"Weekly"},
+        {"code": "M", "desc":"Monthly"},
+        {"code": "Q", "desc":"Quarterly"}
+    ]
+}

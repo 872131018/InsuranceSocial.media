@@ -1,0 +1,9 @@
+{
+    "generations":[
+        {"code": "N", "desc":"No"},
+        {"code": "2", "desc":"2nd"},
+        {"code": "3", "desc":"3rd"},
+        {"code": "4", "desc":"4th"},
+        {"code": "5", "desc":"5th"}
+    ]
+}

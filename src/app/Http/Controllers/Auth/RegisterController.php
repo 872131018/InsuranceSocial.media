@@ -75,7 +75,7 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         if(!isset($data['discount'])) {
-            $data['discount'] = '';
+            $data['discount'] = 'none';
         }
 
         return User::create([

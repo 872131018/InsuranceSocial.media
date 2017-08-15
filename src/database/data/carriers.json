@@ -1,0 +1,9 @@
+{
+    "carriers":[
+        {"code": "C", "desc":"Carrier"},
+        {"code": "F", "desc":"Farmer\'s Mutual Hail"},
+        {"code": "G", "desc":"Grinnell Mutual"},
+        {"code": "I", "desc":"IMT Group"},
+        {"code": "P", "desc":"Plymouth Rock Assurance"},
+    ]
+}

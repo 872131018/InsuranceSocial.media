@@ -18,12 +18,8 @@
                 You can cancel at any time.
             </p>
             <div v-else>
-                <p>
-                    Your credit card will be charged a pro-rated amount for this month’s subscription fee. You will be charged for next month’s service during the last week of this month.
-                </p>
-                <h3>
-                    Pro rated charge: <b>${{ properties.prorate }}</b>
-                </h3>
+                <p>Your credit card will be charged a pro-rated amount for this month’s subscription fee. You will be charged for next month’s service during the last week of this month.</p>
+                <h3>Pro rated charge: <b>${{ properties.prorate }}</b></h3>
             </div>
         </div>
         <div class="w3-panel">
@@ -88,6 +84,7 @@
                     clientKey: '',
                     prorate: 1.00
                 },
+                discount: '',
                 errors: [],
                 response: null
             }
@@ -143,7 +140,8 @@
                         axios.post(window.location, transaction).then(response => {
                             this.response = {
                                 planCost: this.plan.price,
-                                charged: response.data.transaction.amount,
+                                coupon_code: store.getState().UserStore.coupon_code,
+                                amount_charged: response.data.transaction.amount,
                                 transactionId: response.data.transaction.transactionId
                             };
                         }).catch((error) => {

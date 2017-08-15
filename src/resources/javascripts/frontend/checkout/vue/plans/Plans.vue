@@ -37,6 +37,9 @@
                 if(store.getState().UserStore.plan) {
                     this.selected = store.getState().UserStore.plan;
                 }
+                if(store.getState().UserStore.coupon_code == 'ISMFreeTrial') {
+                    this.selected = this.plans[0];
+                }
             });
         },
         methods: {

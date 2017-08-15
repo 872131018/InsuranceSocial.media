@@ -67,6 +67,26 @@
                 this.loading--;
             });
             this.loading++;
+            axios.get(`${ window.base_url }/api/titles`).then(response => {
+                store.dispatch({ type: 'SET_TITLES', data: response.data });
+                this.loading--;
+            });
+            this.loading++;
+            axios.get(`${ window.base_url }/api/sizes`).then(response => {
+                store.dispatch({ type: 'SET_SIZES', data: response.data });
+                this.loading--;
+            });
+            this.loading++;
+            axios.get(`${ window.base_url }/api/generations`).then(response => {
+                store.dispatch({ type: 'SET_GENERATIONS', data: response.data });
+                this.loading--;
+            });
+            this.loading++;
+            axios.get(`${ window.base_url }/api/frequencies`).then(response => {
+                store.dispatch({ type: 'SET_FREQUENCIES', data: response.data });
+                this.loading--;
+            });
+            this.loading++;
             axios.get(`${ window.base_url }/api/selections`).then(response => {
                 store.dispatch({ type: 'SET_SELECTIONS', data: response.data });
                 this.loading--;

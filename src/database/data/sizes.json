@@ -1,0 +1,9 @@
+{
+    "sizes":[
+        {"code": "SP", "desc":"Sole Proprietor"},
+        {"code": "2-5", "desc":"2-5 Employees"},
+        {"code": "6-10", "desc":"6-10 Employees"},
+        {"code": "11-15", "desc":"11-15 Employees"},
+        {"code": "16+", "desc":"16+ Employees"}
+    ]
+}

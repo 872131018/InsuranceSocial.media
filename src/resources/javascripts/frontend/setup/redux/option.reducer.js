@@ -1,31 +1,8 @@
 const initialState = {
-    titles: [
-        {"code":"OW","desc":"Owner"},
-        {"code":"OM","desc":"Operations Manager"},
-        {"code":"MM","desc":"Marketing Manager"},
-        {"code":"SM","desc":"Sales Manager"},
-        {"code":"OT","desc":"Other"}
-    ],
-    sizes: [
-        {"code": "SP", "desc":"Sole Proprietor"},
-        {"code": "2-5", "desc":"2-5 Employees"},
-        {"code": "6-10", "desc":"6-10 Employees"},
-        {"code": "11-15", "desc":"11-15 Employees"},
-        {"code": "16+", "desc":"16+ Employees"}
-    ],
-    generations: [
-        {"code": "N", "desc":"No"},
-        {"code": "2", "desc":"2nd"},
-        {"code": "3", "desc":"3rd"},
-        {"code": "4", "desc":"4th"},
-        {"code": "5", "desc":"5th"}
-    ],
-    frequencies: [
-        {"code": "D", "desc":"Daily"},
-        {"code": "W", "desc":"Weekly"},
-        {"code": "M", "desc":"Monthly"},
-        {"code": "Q", "desc":"Quarterly"}
-    ],
+    titles: [],
+    sizes: [],
+    generations: [],
+    frequencies: [],
     regions: [],
     states: [],
     counties: [],
@@ -41,13 +18,7 @@ const initialState = {
           "desc":"State and Counties"
         }
     ],
-    carriers: [
-        {"code": "C", "desc":"Carrier"},
-        {"code": "F", "desc":"Farmer\'s Mutual Hail"},
-        {"code": "G", "desc":"Grinnell Mutual"},
-        {"code": "I", "desc":"IMT Group"},
-        {"code": "P", "desc":"Plymouth Rock Assurance"},
-    ],
+    carriers: [],
     commercial_coverage_lines: [],
     personal_coverage_lines: [],
     benefit_coverage_lines: [],
@@ -133,6 +104,26 @@ export default function(options = initialState, action) {
         case 'SET_CAUSES':
             for(let cause of action.data) {
                 options['causes'].push(cause);
+            }
+            break;
+        case 'SET_TITLES':
+            for(let title of action.data) {
+                options['titles'].push(title);
+            }
+            break;
+        case 'SET_SIZES':
+            for(let size of action.data) {
+                options['sizes'].push(size);
+            }
+            break;
+        case 'SET_GENERATIONS':
+            for(let generation of action.data) {
+                options['generations'].push(generation);
+            }
+            break;
+        case 'SET_FREQUENCIES':
+            for(let frequency of action.data) {
+                options['frequencies'].push(frequency);
             }
             break;
         default:

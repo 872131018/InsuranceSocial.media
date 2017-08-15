@@ -16587,10 +16587,10 @@ module.exports = function () {
 
 "use strict";
 var initialState = {
-    titles: [{ "code": "OW", "desc": "Owner" }, { "code": "OM", "desc": "Operations Manager" }, { "code": "MM", "desc": "Marketing Manager" }, { "code": "SM", "desc": "Sales Manager" }, { "code": "OT", "desc": "Other" }],
-    sizes: [{ "code": "SP", "desc": "Sole Proprietor" }, { "code": "2-5", "desc": "2-5 Employees" }, { "code": "6-10", "desc": "6-10 Employees" }, { "code": "11-15", "desc": "11-15 Employees" }, { "code": "16+", "desc": "16+ Employees" }],
-    generations: [{ "code": "N", "desc": "No" }, { "code": "2", "desc": "2nd" }, { "code": "3", "desc": "3rd" }, { "code": "4", "desc": "4th" }, { "code": "5", "desc": "5th" }],
-    frequencies: [{ "code": "D", "desc": "Daily" }, { "code": "W", "desc": "Weekly" }, { "code": "M", "desc": "Monthly" }, { "code": "Q", "desc": "Quarterly" }],
+    titles: [],
+    sizes: [],
+    generations: [],
+    frequencies: [],
     regions: [],
     states: [],
     counties: [],
@@ -16603,7 +16603,7 @@ var initialState = {
         "code": "S",
         "desc": "State and Counties"
     }],
-    carriers: [{ "code": "C", "desc": "Carrier" }, { "code": "F", "desc": "Farmer\'s Mutual Hail" }, { "code": "G", "desc": "Grinnell Mutual" }, { "code": "I", "desc": "IMT Group" }, { "code": "P", "desc": "Plymouth Rock Assurance" }],
+    carriers: [],
     commercial_coverage_lines: [],
     personal_coverage_lines: [],
     benefit_coverage_lines: [],
@@ -16831,6 +16831,114 @@ var initialState = {
                 } finally {
                     if (_didIteratorError8) {
                         throw _iteratorError8;
+                    }
+                }
+            }
+
+            break;
+        case 'SET_TITLES':
+            var _iteratorNormalCompletion9 = true;
+            var _didIteratorError9 = false;
+            var _iteratorError9 = undefined;
+
+            try {
+                for (var _iterator9 = action.data[Symbol.iterator](), _step9; !(_iteratorNormalCompletion9 = (_step9 = _iterator9.next()).done); _iteratorNormalCompletion9 = true) {
+                    var title = _step9.value;
+
+                    options['titles'].push(title);
+                }
+            } catch (err) {
+                _didIteratorError9 = true;
+                _iteratorError9 = err;
+            } finally {
+                try {
+                    if (!_iteratorNormalCompletion9 && _iterator9.return) {
+                        _iterator9.return();
+                    }
+                } finally {
+                    if (_didIteratorError9) {
+                        throw _iteratorError9;
+                    }
+                }
+            }
+
+            break;
+        case 'SET_SIZES':
+            var _iteratorNormalCompletion10 = true;
+            var _didIteratorError10 = false;
+            var _iteratorError10 = undefined;
+
+            try {
+                for (var _iterator10 = action.data[Symbol.iterator](), _step10; !(_iteratorNormalCompletion10 = (_step10 = _iterator10.next()).done); _iteratorNormalCompletion10 = true) {
+                    var size = _step10.value;
+
+                    options['sizes'].push(size);
+                }
+            } catch (err) {
+                _didIteratorError10 = true;
+                _iteratorError10 = err;
+            } finally {
+                try {
+                    if (!_iteratorNormalCompletion10 && _iterator10.return) {
+                        _iterator10.return();
+                    }
+                } finally {
+                    if (_didIteratorError10) {
+                        throw _iteratorError10;
+                    }
+                }
+            }
+
+            break;
+        case 'SET_GENERATIONS':
+            var _iteratorNormalCompletion11 = true;
+            var _didIteratorError11 = false;
+            var _iteratorError11 = undefined;
+
+            try {
+                for (var _iterator11 = action.data[Symbol.iterator](), _step11; !(_iteratorNormalCompletion11 = (_step11 = _iterator11.next()).done); _iteratorNormalCompletion11 = true) {
+                    var generation = _step11.value;
+
+                    options['generations'].push(generation);
+                }
+            } catch (err) {
+                _didIteratorError11 = true;
+                _iteratorError11 = err;
+            } finally {
+                try {
+                    if (!_iteratorNormalCompletion11 && _iterator11.return) {
+                        _iterator11.return();
+                    }
+                } finally {
+                    if (_didIteratorError11) {
+                        throw _iteratorError11;
+                    }
+                }
+            }
+
+            break;
+        case 'SET_FREQUENCIES':
+            var _iteratorNormalCompletion12 = true;
+            var _didIteratorError12 = false;
+            var _iteratorError12 = undefined;
+
+            try {
+                for (var _iterator12 = action.data[Symbol.iterator](), _step12; !(_iteratorNormalCompletion12 = (_step12 = _iterator12.next()).done); _iteratorNormalCompletion12 = true) {
+                    var frequency = _step12.value;
+
+                    options['frequencies'].push(frequency);
+                }
+            } catch (err) {
+                _didIteratorError12 = true;
+                _iteratorError12 = err;
+            } finally {
+                try {
+                    if (!_iteratorNormalCompletion12 && _iterator12.return) {
+                        _iterator12.return();
+                    }
+                } finally {
+                    if (_didIteratorError12) {
+                        throw _iteratorError12;
                     }
                 }
             }
@@ -23076,6 +23184,26 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         this.loading++;
         axios.get(window.base_url + '/api/causes').then(function (response) {
             store.dispatch({ type: 'SET_CAUSES', data: response.data });
+            _this.loading--;
+        });
+        this.loading++;
+        axios.get(window.base_url + '/api/titles').then(function (response) {
+            store.dispatch({ type: 'SET_TITLES', data: response.data });
+            _this.loading--;
+        });
+        this.loading++;
+        axios.get(window.base_url + '/api/sizes').then(function (response) {
+            store.dispatch({ type: 'SET_SIZES', data: response.data });
+            _this.loading--;
+        });
+        this.loading++;
+        axios.get(window.base_url + '/api/generations').then(function (response) {
+            store.dispatch({ type: 'SET_GENERATIONS', data: response.data });
+            _this.loading--;
+        });
+        this.loading++;
+        axios.get(window.base_url + '/api/frequencies').then(function (response) {
+            store.dispatch({ type: 'SET_FREQUENCIES', data: response.data });
             _this.loading--;
         });
         this.loading++;

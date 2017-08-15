@@ -17,6 +17,14 @@ use App\Industry;
 
 use App\Cause;
 
+use App\Title;
+
+use App\Size;
+
+use App\Generation;
+
+use App\Frequency;
+
 use App\SelectedRegion;
 
 use App\SelectedState;
@@ -79,6 +87,18 @@ use App\SelectedCause;
  });
  Route::get('/api/causes', function (Request $request) {
      return response()->json(Cause::all());
+ });
+ Route::get('/api/titles', function (Request $request) {
+     return response()->json(Title::all());
+ });
+ Route::get('/api/sizes', function (Request $request) {
+     return response()->json(Size::all());
+ });
+ Route::get('/api/generations', function (Request $request) {
+     return response()->json(Generation::all());
+ });
+ Route::get('/api/frequencies', function (Request $request) {
+     return response()->json(Frequency::all());
  });
  Route::get('/api/selections', function (Request $request) {
      $user = Auth::user();

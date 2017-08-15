@@ -71,6 +71,7 @@
     background-size: cover;
     //background-image: url("../images/stock2.jpg");
     background-color: #c4daff;
+    min-height: 900px;
 }
 .login-form {
     float: right;

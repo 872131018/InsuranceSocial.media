@@ -98,7 +98,7 @@
                 }
                 if(this.errors.length == 0) {
                     axios.post(window.location, this.properties).then(response => {
-                        if(response.data.discount) {
+                        if(response.data.discount && response.data.discount != 'ISMFreeTrial') {
                             window.location = `${ window.base_url }/corporate`;
                         } else {
                             window.location = `${ window.base_url }/plans`;
