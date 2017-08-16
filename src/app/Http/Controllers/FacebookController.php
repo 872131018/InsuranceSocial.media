@@ -22,6 +22,12 @@ use App\Payment;
 
 use net\authorize\api\controller as AnetController;
 
+use App\Mail\NoFacebook;
+
+use App\Mail\HasFacebook;
+
+use Illuminate\Support\Facades\Mail;
+
 class FacebookController extends Controller
 {
 
@@ -146,7 +152,7 @@ class FacebookController extends Controller
             if ($response->getTransactionResponse() != null && $response->getTransactionResponse()->getMessages() != null) {
                 $transactionId = $response->getTransactionResponse()->getTransId();
                 $auth_code = $response->getTransactionResponse()->getAuthCode();
-                
+
                 $payment = new Payment();
                 $payment->email = $user->email;
                 $payment->transaction_id = $transactionId;
@@ -154,6 +160,8 @@ class FacebookController extends Controller
                 $user->payments()->save($payment);
             }
         }
+
+        Mail::to($user->email)->send(new NoFacebook($user));
 
         return response()->json($user);
     }
@@ -183,6 +191,8 @@ class FacebookController extends Controller
         $facebook->page_name = $request->page_name;
         $facebook->page_token = $request->page_access_token;
         $facebook->update();
+
+        Mail::to($user->email)->send(new HasFacebook($user));
 
         return response()->json($facebook);
     }
