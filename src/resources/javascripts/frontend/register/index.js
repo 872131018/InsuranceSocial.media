@@ -15,6 +15,7 @@ Vue.component('Foot', Foot);
 Vue.use(VueRouter);
 
 const router = new VueRouter({
+  base: `${ window.base_url }`,
   mode: 'history',
   routes
 });
