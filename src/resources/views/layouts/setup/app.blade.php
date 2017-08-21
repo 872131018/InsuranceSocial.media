@@ -17,7 +17,8 @@
     </style>
     <!-- Apply base url so the JS can reference it -->
     <script>
-        window.base_url = "{{ url('/') }}"
+        window.base_url = "{{ env('APP_URL') }}"
+        window.vue_base = "{{ env('BASE_URL') }}"
     </script>
 </head>
 <body>
