@@ -42,7 +42,7 @@
                 <Marketing
                     v-on:setMarketing="(market) => target = market">
                 </Marketing>
-                <div v-if="target == 'R'">
+                <div v-show="target == 'R'">
                     <div class="w3-section"
                         v-if="properties.selected_regions.length > 0">
                         <div>Selected Regions (click to remove)</div>
@@ -63,7 +63,7 @@
                         </Dropdown>
                     </div>
                 </div>
-                <div v-if="target == 'S'">
+                <div v-show="target == 'S'">
                     <div class="w3-section"
                         v-if="properties.selected_states.length > 0">
                         <div>Selected States (click to remove)</div>

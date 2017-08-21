@@ -8,6 +8,7 @@
             <div class="w3-dropdown-content w3-bar-block w3-border dropdown">
                 <div class="w3-bar-item w3-button"
                     v-for="option in options"
+                    v-bind:key="option.id"
                     v-on:click="setSelected(option)">
                     {{ option.desc }}<span v-if="option.state_code"> - {{ option.state_code}}</span>
                 </div>

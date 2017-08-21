@@ -17,11 +17,8 @@
             <li class="w3-padding">
                 <div class="w3-panel">Our system is secure, and so is your account!</div>
             </li>
-            <li class="w3-padding">
-                <div class="w3-panel">Next step: connect your social media platforms!</div>
-            </li>
             <li class="w3-padding w3-text-white secondary">
-                <h6>Join Insurance Social Media and get started today!</h6>
+                <h6>Next step: connect your social media platforms!</h6>
             </li>
         </ul>
     </div>

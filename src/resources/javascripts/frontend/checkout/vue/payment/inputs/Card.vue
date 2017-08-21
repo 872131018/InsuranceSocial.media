@@ -1,6 +1,7 @@
 <template>
     <div class="w3-section">
-        <img v-bind:src="cardImage">
+        <img class="w3-show-block"
+            v-bind:src="cardImage">
         <input class="w3-input w3-show-inline-block eighty" type="text"
             v-model="card"
             v-on:keyup="$emit('setCard', card)">

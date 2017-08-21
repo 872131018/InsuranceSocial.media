@@ -33273,6 +33273,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -33291,6 +33292,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   return _c('div', {
     staticClass: "w3-section"
   }, [_c('img', {
+    staticClass: "w3-show-block",
     attrs: {
       "src": _vm.cardImage
     }
@@ -34317,9 +34319,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     //
@@ -34343,7 +34342,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }) : _vm._e(), _vm._v(" "), (_vm.$route.path == '/payment') ? _c('ul', {
     staticClass: "w3-ul w3-card-2 w3-white w3-center"
-  }, [_vm._m(0), _vm._v(" "), _vm._m(1), _vm._v(" "), _vm._m(2), _vm._v(" "), _vm._m(3), _vm._v(" "), _vm._m(4), _vm._v(" "), _vm._m(5)]) : _vm._e()])
+  }, [_vm._m(0), _vm._v(" "), _vm._m(1), _vm._v(" "), _vm._m(2), _vm._v(" "), _vm._m(3), _vm._v(" "), _vm._m(4)]) : _vm._e()])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('li', {
     staticClass: "w3-padding w3-text-white primary"
@@ -34368,14 +34367,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_vm._v("Our system is secure, and so is your account!")])])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('li', {
-    staticClass: "w3-padding"
-  }, [_c('div', {
-    staticClass: "w3-panel"
-  }, [_vm._v("Next step: connect your social media platforms!")])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('li', {
     staticClass: "w3-padding w3-text-white secondary"
-  }, [_c('h6', [_vm._v("Join Insurance Social Media and get started today!")])])
+  }, [_c('h6', [_vm._v("Next step: connect your social media platforms!")])])
 }]}
 module.exports.render._withStripped = true
 if (false) {

@@ -60,7 +60,7 @@
             </div>
             <div class="w3-panel">
                 <Dropdown
-                    v-bind:label="'Supported Causes (Select all that apply)'"
+                    v-bind:label="'Supported Causes (Select up to 5)'"
                     v-bind:options="causes"
                     v-on:setOption="(cause) => properties.selected_causes.push(cause)">
                 </Dropdown>
@@ -167,13 +167,22 @@
                 if(this.properties.selected_special_topics.length > 5) {
                     this.errors.push('You may only select up to 5  post topics.');
                 }
+                if(this.properties.selected_special_topics.length == 0) {
+                    this.errors.push('You must select at least 1 posting topic.');
+                }
                 if(this.properties.selected_causes.length > 5) {
                     this.errors.push('You may only select up to 5 causes.');
+                }
+                if(this.properties.selected_causes.length == 0) {
+                    this.errors.push('You must select at least 1 cause to support.');
                 }
                 if(store.getState().PlanStore.plan_code == 1 && this.properties.posting_days.length > 3) {
                     this.errors.push('You may only select up to 3 posting days.');
                 } else if(store.getState().PlanStore.plan_code > 1 && this.properties.posting_days.length > 5) {
                     this.errors.push('You may only select up to 5 posting days.');
+                }
+                if(this.properties.posting_days.length == 0) {
+                    this.errors.push('You must select days for posting content.');
                 }
                 if(this.errors.length == 0) {
                     axios.post(window.location, this.properties).then(response => {

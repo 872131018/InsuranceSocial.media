@@ -18234,7 +18234,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "w3-padding"
   }, [_c('div', {
     staticClass: "w3-panel"
-  }, [_vm._v("Need help? Click Chat Now in the box below! ")])])
+  }, [_vm._v("Need help? Click the chat box below!")])])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('li', {
     staticClass: "w3-padding w3-text-white secondary"
@@ -18272,7 +18272,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "w3-padding"
   }, [_c('div', {
     staticClass: "w3-panel"
-  }, [_vm._v("Need help? Click Chat Now in the box below! ")])])
+  }, [_vm._v("Need help? Click the chat box below!")])])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('li', {
     staticClass: "w3-padding w3-text-white secondary"

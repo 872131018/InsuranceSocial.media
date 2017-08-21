@@ -19109,6 +19109,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: {
@@ -19183,6 +19184,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "w3-dropdown-content w3-bar-block w3-border dropdown"
   }, _vm._l((_vm.options), function(option) {
     return _c('div', {
+      key: option.id,
       staticClass: "w3-bar-item w3-button",
       on: {
         "click": function($event) {
@@ -19659,7 +19661,14 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "setMarketing": function (market) { return _vm.target = market; }
     }
-  }), _vm._v(" "), (_vm.target == 'R') ? _c('div', [(_vm.properties.selected_regions.length > 0) ? _c('div', {
+  }), _vm._v(" "), _c('div', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (_vm.target == 'R'),
+      expression: "target == 'R'"
+    }]
+  }, [(_vm.properties.selected_regions.length > 0) ? _c('div', {
     staticClass: "w3-section"
   }, [_c('div', [_vm._v("Selected Regions (click to remove)")]), _vm._v(" "), _c('ul', {
     staticClass: "w3-ul w3-hoverable"
@@ -19682,7 +19691,14 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "setOption": function (region) { return _vm.properties.selected_regions.push(region); }
     }
-  })], 1)]) : _vm._e(), _vm._v(" "), (_vm.target == 'S') ? _c('div', [(_vm.properties.selected_states.length > 0) ? _c('div', {
+  })], 1)]), _vm._v(" "), _c('div', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (_vm.target == 'S'),
+      expression: "target == 'S'"
+    }]
+  }, [(_vm.properties.selected_states.length > 0) ? _c('div', {
     staticClass: "w3-section"
   }, [_c('div', [_vm._v("Selected States (click to remove)")]), _vm._v(" "), _c('ul', {
     staticClass: "w3-ul w3-hoverable"
@@ -19730,7 +19746,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "setOption": function (county) { return _vm.properties.selected_counties.push(county); }
     }
-  })], 1)]) : _vm._e()], 1), _vm._v(" "), (_vm.errors.length) ? _c('div', {
+  })], 1)])], 1), _vm._v(" "), (_vm.errors.length) ? _c('div', {
     staticClass: "w3-panel"
   }, [_c('Errors', {
     attrs: {
@@ -20062,6 +20078,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.errors = [];
             if (this.properties.selected_carriers.length > 5) {
                 this.errors.push('You may only select up to 5 carriers.');
+            }
+            if (this.properties.selected_carriers.length == 0) {
+                this.errors.push('You must select at least 1 carrier');
             }
             if (this.properties.selected_commercial_coverages.length > 5) {
                 this.errors.push('You may only select up to 5 commercial coverages.');
@@ -20765,7 +20784,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "w3-section"
   }, [_c('span', {
     staticClass: "w3-large"
-  }, [_vm._v("Do I write benefit coverage?")]), _vm._v(" "), _c('div', {
+  }, [_vm._v("Do I write benefits?")]), _vm._v(" "), _c('div', {
     staticClass: "w3-show-inline-block w3-margin-left"
   }, [_c('input', {
     directives: [{
@@ -22070,13 +22089,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             if (this.properties.selected_special_topics.length > 5) {
                 this.errors.push('You may only select up to 5  post topics.');
             }
+            if (this.properties.selected_special_topics.length == 0) {
+                this.errors.push('You must select at least 1 posting topic.');
+            }
             if (this.properties.selected_causes.length > 5) {
                 this.errors.push('You may only select up to 5 causes.');
+            }
+            if (this.properties.selected_causes.length == 0) {
+                this.errors.push('You must select at least 1 cause to support.');
             }
             if (store.getState().PlanStore.plan_code == 1 && this.properties.posting_days.length > 3) {
                 this.errors.push('You may only select up to 3 posting days.');
             } else if (store.getState().PlanStore.plan_code > 1 && this.properties.posting_days.length > 5) {
                 this.errors.push('You may only select up to 5 posting days.');
+            }
+            if (this.properties.posting_days.length == 0) {
+                this.errors.push('You must select days for posting content.');
             }
             if (this.errors.length == 0) {
                 axios.post(window.location, this.properties).then(function (response) {
@@ -23020,7 +23048,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "w3-panel"
   }, [_c('Dropdown', {
     attrs: {
-      "label": 'Supported Causes (Select all that apply)',
+      "label": 'Supported Causes (Select up to 5)',
       "options": _vm.causes
     },
     on: {

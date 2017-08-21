@@ -1,6 +1,6 @@
 <template>
     <div class="w3-section">
-        <span class="w3-large">Do I write benefit coverage?</span>
+        <span class="w3-large">Do I write benefits?</span>
         <div class="w3-show-inline-block w3-margin-left">
             <input type="radio" id="benefit_yes" value="Y"
                 v-model="option"

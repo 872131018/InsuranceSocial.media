@@ -18,7 +18,7 @@
                 <div class="w3-panel">Don’t have a corporate Facebook page? We’ll set one up for you!</div>
             </li>
             <li class="w3-padding">
-                <div class="w3-panel">Need help? Click Chat Now in the box below! </div>
+                <div class="w3-panel">Need help? Click the chat box below!</div>
             </li>
             <li class="w3-padding w3-text-white secondary">
                 <h6>Next step: connect your Twitter account!</h6>
@@ -42,7 +42,7 @@
                 <div class="w3-panel">75% of Twitter users say they feel better about an SMB after reading its tweets.</div>
             </li>
             <li class="w3-padding">
-                <div class="w3-panel">Need help? Click Chat Now in the box below! </div>
+                <div class="w3-panel">Need help? Click the chat box below!</div>
             </li>
             <li class="w3-padding w3-text-white secondary">
                 <h6>Social media connection complete!</h6>
