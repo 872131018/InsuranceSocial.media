@@ -25,7 +25,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        //return view('home');
-        return response()->json(Auth::user());
+        return view('layouts.dashboard.app')->with('api_token', Auth::user()->api_token);
     }
 }

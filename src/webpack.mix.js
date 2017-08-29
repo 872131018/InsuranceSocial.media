@@ -63,6 +63,14 @@ mix.combine([
 ], 'public/stylesheets/setup.css');
 
 /**
+* Dashboard Styles
+*/
+mix.combine([
+    'node_modules/w3-css/w3.css',
+    'resources/stylesheets/frontend/frontend.styles.css'
+], 'public/stylesheets/dashboard.css');
+
+/**
 * Login SPA
 */
 mix.js('resources/javascripts/frontend/login/index.js', 'public/javascripts/login.index.js');
@@ -86,3 +94,8 @@ mix.js('resources/javascripts/frontend/social/index.js', 'public/javascripts/soc
 * Setup SPA
 */
 mix.js('resources/javascripts/frontend/setup/index.js', 'public/javascripts/setup.index.js');
+
+/**
+* Dashboard SPA
+*/
+mix.js('resources/javascripts/frontend/dashboard/index.js', 'public/javascripts/dashboard.index.js');
