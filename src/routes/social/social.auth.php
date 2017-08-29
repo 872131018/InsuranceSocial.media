@@ -30,3 +30,7 @@ use Illuminate\Http\Request;
  Route::get('/twitter', 'SocialController@index');
 
  Route::get('/twitter/return', 'TwitterController@update');
+
+ Route::get('/linkedin', 'SocialController@index');
+
+ Route::get('/linkedin/return', 'LinkedInController@update');

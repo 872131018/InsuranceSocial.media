@@ -9,6 +9,7 @@
         "abraham/twitteroauth": "^0.7.4",
         "authorizenet/authorizenet": "^1.9",
         "facebook/graph-sdk": "^5.5",
+        "guzzlehttp/guzzle": "~6.0",
         "laravel/framework": "5.4.*",
         "laravel/tinker": "~1.0",
         "predis/predis": "^1.1"

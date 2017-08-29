@@ -62,6 +62,14 @@ class User extends Authenticatable
     }
 
     /**
+     * Get the linkedin record associated with the user.
+     */
+    public function linkedin()
+    {
+        return $this->hasOne('App\LinkedInAccount');
+    }
+
+    /**
      * Get the agency record associated with the user.
      */
     public function agency()

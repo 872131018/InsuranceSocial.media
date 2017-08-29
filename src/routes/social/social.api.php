@@ -30,3 +30,5 @@ use Illuminate\Http\Request;
  Route::post('/page', 'FacebookController@edit');
 
  Route::get('/api/twitter', 'TwitterController@index');
+
+ Route::get('/api/linkedin', 'LinkedInController@index');

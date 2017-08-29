@@ -16340,6 +16340,9 @@ module.exports = function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__vue_page_Page___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__vue_page_Page__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__vue_twitter_Twitter__ = __webpack_require__(321);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__vue_twitter_Twitter___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__vue_twitter_Twitter__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__vue_linkedin_LinkedIn__ = __webpack_require__(452);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__vue_linkedin_LinkedIn___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__vue_linkedin_LinkedIn__);
+
 
 
 
@@ -16361,6 +16364,10 @@ module.exports = function () {
     path: '/twitter',
     name: 'Twitter',
     component: __WEBPACK_IMPORTED_MODULE_3__vue_twitter_Twitter___default.a
+}, {
+    path: '/linkedin',
+    name: 'LinkedIn',
+    component: __WEBPACK_IMPORTED_MODULE_4__vue_linkedin_LinkedIn___default.a
 }]);
 
 /***/ }),
@@ -18300,6 +18307,366 @@ if (false) {
   module.hot.accept()
   if (module.hot.data) {
      require("vue-hot-reload-api").rerender("data-v-6b17e297", module.exports)
+  }
+}
+
+/***/ }),
+/* 330 */,
+/* 331 */,
+/* 332 */,
+/* 333 */,
+/* 334 */,
+/* 335 */,
+/* 336 */,
+/* 337 */,
+/* 338 */,
+/* 339 */,
+/* 340 */,
+/* 341 */,
+/* 342 */,
+/* 343 */,
+/* 344 */,
+/* 345 */,
+/* 346 */,
+/* 347 */,
+/* 348 */,
+/* 349 */,
+/* 350 */,
+/* 351 */,
+/* 352 */,
+/* 353 */,
+/* 354 */,
+/* 355 */,
+/* 356 */,
+/* 357 */,
+/* 358 */,
+/* 359 */,
+/* 360 */,
+/* 361 */,
+/* 362 */,
+/* 363 */,
+/* 364 */,
+/* 365 */,
+/* 366 */,
+/* 367 */,
+/* 368 */,
+/* 369 */,
+/* 370 */,
+/* 371 */,
+/* 372 */,
+/* 373 */,
+/* 374 */,
+/* 375 */,
+/* 376 */,
+/* 377 */,
+/* 378 */,
+/* 379 */,
+/* 380 */,
+/* 381 */,
+/* 382 */,
+/* 383 */,
+/* 384 */,
+/* 385 */,
+/* 386 */,
+/* 387 */,
+/* 388 */,
+/* 389 */,
+/* 390 */,
+/* 391 */,
+/* 392 */,
+/* 393 */,
+/* 394 */,
+/* 395 */,
+/* 396 */,
+/* 397 */,
+/* 398 */,
+/* 399 */,
+/* 400 */,
+/* 401 */,
+/* 402 */,
+/* 403 */,
+/* 404 */,
+/* 405 */,
+/* 406 */,
+/* 407 */,
+/* 408 */,
+/* 409 */,
+/* 410 */,
+/* 411 */,
+/* 412 */,
+/* 413 */,
+/* 414 */,
+/* 415 */,
+/* 416 */,
+/* 417 */,
+/* 418 */,
+/* 419 */,
+/* 420 */,
+/* 421 */,
+/* 422 */,
+/* 423 */,
+/* 424 */,
+/* 425 */,
+/* 426 */,
+/* 427 */,
+/* 428 */,
+/* 429 */,
+/* 430 */,
+/* 431 */,
+/* 432 */,
+/* 433 */,
+/* 434 */,
+/* 435 */,
+/* 436 */,
+/* 437 */,
+/* 438 */,
+/* 439 */,
+/* 440 */,
+/* 441 */,
+/* 442 */,
+/* 443 */,
+/* 444 */,
+/* 445 */,
+/* 446 */,
+/* 447 */,
+/* 448 */,
+/* 449 */,
+/* 450 */,
+/* 451 */,
+/* 452 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var Component = __webpack_require__(1)(
+  /* script */
+  __webpack_require__(453),
+  /* template */
+  __webpack_require__(454),
+  /* styles */
+  null,
+  /* scopeId */
+  null,
+  /* moduleIdentifier (server only) */
+  null
+)
+Component.options.__file = "/Users/johnhuffman/Sites/InsuranceSocial.media/src/resources/javascripts/frontend/social/vue/linkedin/LinkedIn.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] LinkedIn.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-6a793776", Component.options)
+  } else {
+    hotAPI.reload("data-v-6a793776", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 453 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Progress__ = __webpack_require__(65);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Progress___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Progress__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            properties: {
+                has_linkedin: false
+            },
+            redirectUrl: ''
+        };
+    },
+    mounted: function mounted() {
+        var _this = this;
+
+        axios.get(window.base_url + '/api/linkedin').then(function (response) {
+            _this.redirectUrl = response.data;
+        });
+    },
+
+    methods: {
+        update: function update() {
+            if (this.properties.has_linkedin) {
+                window.location = this.redirectUrl;
+            } else {
+                window.location = window.base_url + '/profile';
+            }
+        }
+    },
+    components: {
+        ProgressBar: __WEBPACK_IMPORTED_MODULE_0__Progress___default.a
+    }
+});
+
+/***/ }),
+/* 454 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', [_c('ProgressBar', {
+    attrs: {
+      "progress": 56
+    }
+  }), _vm._v(" "), _c('div', {
+    staticClass: "w3-container w3-card-2 form"
+  }, [_vm._m(0), _vm._v(" "), _c('div', {
+    staticClass: "w3-section"
+  }, [_c('div', {
+    staticClass: "w3-panel"
+  }, [_c('div', [_vm._v("Do you have a LinkedIn account? If so, please log in to LinkedIn in order to recieve our LinkedIn services.")]), _vm._v(" "), _c('div', {
+    staticClass: "w3-panel"
+  }, [_c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.properties.has_linkedin),
+      expression: "properties.has_linkedin"
+    }],
+    staticClass: "v-align",
+    attrs: {
+      "type": "radio",
+      "id": "linkedin_yes"
+    },
+    domProps: {
+      "value": true,
+      "checked": _vm.properties.has_linkedin,
+      "checked": _vm._q(_vm.properties.has_linkedin, true)
+    },
+    on: {
+      "__c": function($event) {
+        _vm.properties.has_linkedin = true
+      }
+    }
+  }), _vm._v(" "), _vm._m(1), _vm._v(" "), _c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.properties.has_linkedin),
+      expression: "properties.has_linkedin"
+    }],
+    staticClass: "v-align",
+    attrs: {
+      "type": "radio",
+      "id": "linkedin_no"
+    },
+    domProps: {
+      "value": false,
+      "checked": _vm.properties.has_linkedin,
+      "checked": _vm._q(_vm.properties.has_linkedin, false)
+    },
+    on: {
+      "__c": function($event) {
+        _vm.properties.has_linkedin = false
+      }
+    }
+  }), _vm._v(" "), _vm._m(2)])])]), _vm._v(" "), (_vm.properties.has_linkin == false) ? _c('div', {
+    staticClass: "w3-section"
+  }, [_c('p', [_vm._v("Don’t have a LinkedIn account? Setting one up will take you about 30 seconds—and we can start posting to it right away.")]), _vm._v(" "), _vm._m(3)]) : _vm._e(), _vm._v(" "), _c('div', {
+    staticClass: "w3-section"
+  }, [(_vm.properties.has_linkedin == true) ? _c('h5', [_vm._v("Almost done.")]) : _vm._e(), _vm._v(" "), _c('button', {
+    staticClass: "w3-button w3-text-white primary",
+    on: {
+      "click": function($event) {
+        _vm.update()
+      }
+    }
+  }, [_vm._v("Continue\n            ")])])])], 1)
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "w3-panel"
+  }, [_c('h3', [_vm._v("Link your LinkedIn Account")])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('label', {
+    attrs: {
+      "for": "linkedin_yes"
+    }
+  }, [_c('span', {
+    staticClass: "w3-show-inline-block w3-margin v-align"
+  }), _vm._v("Yes\n                    ")])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('label', {
+    attrs: {
+      "for": "linkedin_no"
+    }
+  }, [_c('span', {
+    staticClass: "w3-show-inline-block w3-margin v-align"
+  }), _vm._v("No\n                    ")])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('a', {
+    attrs: {
+      "href": "https://www.linkedin.com/m/login",
+      "target": "_blank"
+    }
+  }, [_c('h5', [_vm._v("Click here to create your account.")])])
+}]}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-6a793776", module.exports)
   }
 }
 
