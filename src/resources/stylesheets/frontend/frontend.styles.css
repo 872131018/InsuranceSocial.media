@@ -118,3 +118,13 @@ img[alt="Authorize.Net Merchant - Click to Verify"] {
     bottom: 9.25rem;
     left:32rem;
 }
+.dashboard {
+    margin: auto;
+    width: 80%;
+    min-width: 400px;
+    background: rgba(250, 250, 250, 0.9);
+
+}
+.bold {
+    font-weight: bold;
+}
