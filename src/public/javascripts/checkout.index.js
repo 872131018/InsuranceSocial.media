@@ -32690,13 +32690,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         if (this.plan.tier > 1) {
             var today = new __WEBPACK_IMPORTED_MODULE_0_moment___default.a();
-            var firstDay = new __WEBPACK_IMPORTED_MODULE_0_moment___default.a().startOf('month');
-            var lastDay = new __WEBPACK_IMPORTED_MODULE_0_moment___default.a().endOf('month');
-            var numDays = lastDay.diff(firstDay, 'days');
-            var rate = (parseInt(this.plan.price) / numDays).toFixed(2);
-            var prorate = (rate * lastDay.diff(today, 'days')).toFixed(2);
-
-            this.properties.prorate = prorate;
+            if (today.format('MM/DD/YYYY') == new __WEBPACK_IMPORTED_MODULE_0_moment___default.a().startOf('month').format('MM/DD/YYYY')) {
+                this.properties.prorate = this.plan.price;
+            } else {
+                var firstDay = new __WEBPACK_IMPORTED_MODULE_0_moment___default.a().startOf('month');
+                var lastDay = new __WEBPACK_IMPORTED_MODULE_0_moment___default.a().endOf('month');
+                var rate = (parseInt(this.plan.price) / lastDay.diff(firstDay, 'days')).toFixed(2);
+                var prorate = (rate * lastDay.diff(today, 'days')).toFixed(2);
+                this.properties.prorate = prorate;
+            }
         }
     },
 
@@ -34044,7 +34046,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "w3-container"
   }, [_c('div', {
     staticClass: "w3-content w3-center"
-  }, [_c('p', [_vm._v("Plan Cost: $" + _vm._s(_vm.response.planCost))]), _vm._v(" "), (_vm.response.coupon_code == 'ISMFreeTrial') ? _c('p', [_vm._v("Discount: $" + _vm._s(_vm.response.planCost))]) : _vm._e(), _vm._v(" "), (_vm.response.amount_charged != '1') ? _c('p', [_vm._v("Prorated Charge: $" + _vm._s(_vm.response.amount_charged))]) : _vm._e(), _c('p'), (_vm.response.coupon_code == 'ISMFreeTrial') ? _c('p', [_vm._v("Total: $0.00")]) : _vm._e(), _vm._v(" "), _c('p', [_vm._v("Transaction ID: " + _vm._s(_vm.response.transactionId))])])]), _vm._v(" "), _vm._m(1)])])
+  }, [_c('p', [_vm._v("Plan Cost: $" + _vm._s(_vm.response.planCost))]), _vm._v(" "), (_vm.response.coupon_code == 'ISMFreeTrial') ? _c('p', [_vm._v("Discount: $" + _vm._s(_vm.response.planCost))]) : _vm._e(), _vm._v(" "), (_vm.response.amount_charged != '1') ? _c('p', [_vm._v("Total Charged: $" + _vm._s(_vm.response.amount_charged))]) : _vm._e(), _c('p'), (_vm.response.coupon_code == 'ISMFreeTrial') ? _c('p', [_vm._v("Total: $0.00")]) : _vm._e(), _vm._v(" "), _c('p', [_vm._v("Transaction ID: " + _vm._s(_vm.response.transactionId))])])]), _vm._v(" "), _vm._m(1)])])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('header', {
     staticClass: "w3-container w3-center primary"
@@ -34081,7 +34083,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }) : _vm._e()], 1), _vm._v(" "), _c('div', {
     staticClass: "w3-panel"
-  }, [_c('h3', [_vm._v("Payment Method")]), _vm._v(" "), _c('h5', [_vm._v("Please enter a form of payment to complete registration.")]), _vm._v(" "), (_vm.plan.tier == 1) ? _c('p', [_vm._v("\n            Your Insurance Social Media Essential Plan trial period is free.\n            We ask for your credit card to prevent any service interruption should you keep your account open after the trial period.\n            Your card will not be charged for the trial period.\n            After the trial, you will be charged for each month.\n            You can cancel at any time.\n        ")]) : _c('div', [_c('p', [_vm._v("Your credit card will be charged a pro-rated amount for this month’s subscription fee. You will be charged for next month’s service during the last week of this month.")]), _vm._v(" "), _c('h3', [_vm._v("Pro rated charge: "), _c('b', [_vm._v("$" + _vm._s(_vm.properties.prorate))])])])]), _vm._v(" "), _c('div', {
+  }, [_c('h3', [_vm._v("Payment Method")]), _vm._v(" "), _c('h5', [_vm._v("Please enter a form of payment to complete registration.")]), _vm._v(" "), (_vm.plan.tier == 1) ? _c('p', [_vm._v("\n            Your Insurance Social Media Essential Plan trial period is free.\n            We ask for your credit card to prevent any service interruption should you keep your account open after the trial period.\n            Your card will not be charged for the trial period.\n            After the trial, you will be charged for each month.\n            You can cancel at any time.\n        ")]) : _c('div', [_c('p', [_vm._v("Your credit card will be charged a pro-rated amount for this month’s subscription fee. You will be charged for next month’s service during the last week of this month.")]), _vm._v(" "), _c('h3', [_vm._v("Total Charges: "), _c('b', [_vm._v("$" + _vm._s(_vm.properties.prorate))])])])]), _vm._v(" "), _c('div', {
     staticClass: "w3-panel"
   }, [_c('Card', {
     on: {

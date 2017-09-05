@@ -95,7 +95,7 @@
                 <div class="w3-section"
                     v-if="benefit_coverage == 'Y'">
                     <Dropdown
-                        v-bind:label="'Benefit Coverages (Select up to 5)'"
+                        v-bind:label="'Benefits (Select up to 5)'"
                         v-bind:options="benefit_coverage_lines"
                         v-on:setOption="(coverage) => properties.selected_benefit_coverages.push(coverage)">
                     </Dropdown>
@@ -164,8 +164,14 @@
                     v-on:click="update('Outreach')">Continue
                 </button>
             </div>
-            </div>
         </div>
+        <Modal
+            v-if="modal"
+            v-bind:personal_coverage="personal_coverage"
+            v-bind:commercial_coverage="commercial_coverage"
+            v-bind:benefit_coverage="benefit_coverage"
+            v-on:setModal="navigate()">
+        </Modal>
     </div>
 </template>
 
@@ -180,6 +186,7 @@
     import Dropdown from './inputs/Dropdown';
     import Checkbox from './inputs/Checkbox';
     import Ratio from './Ratio';
+    import Modal from './modal/Modal';
     import Errors from './Errors';
 
     export default {
@@ -207,7 +214,9 @@
                 commercial_coverage: '',
                 benefit_coverage: '',
                 crop_coverage: '',
-                errors: []
+                errors: [],
+                modal: false,
+                modal_content: {}
             }
         },
         methods: {
@@ -247,6 +256,16 @@
                 } else {
                     this.properties.selected_crop_coverages.push({"code": "NO", "desc":"No I do not write Crop coverages"});
                 }
+                if((this.personal_coverage && this.properties.selected_personal_coverages.length == 0) ||
+                    (this.commercial_coverage && this.properties.selected_commercial_coverages.length == 0) ||
+                    (this.benefit_coverage && this.properties.selected_benefit_coverages.length == 0)) {
+                    this.modal = true;
+                }
+                if(this.personal_coverage == '' &&
+                    this.commercial_coverage == '' &&
+                    this.benefit_coverage == '') {
+                        this.errors.push('You must select at least 1 type of coverage.')
+                }
                 if(this.errors.length == 0) {
                     axios.post(window.location, this.properties).then(response => {
                         store.dispatch({ type: 'SET_COVERAGE', data: response.data });
@@ -268,6 +287,7 @@
             Dropdown,
             Checkbox,
             Ratio,
+            Modal,
             Errors
         }
     }

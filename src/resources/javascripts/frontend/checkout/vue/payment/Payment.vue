@@ -19,7 +19,7 @@
             </p>
             <div v-else>
                 <p>Your credit card will be charged a pro-rated amount for this month’s subscription fee. You will be charged for next month’s service during the last week of this month.</p>
-                <h3>Pro rated charge: <b>${{ properties.prorate }}</b></h3>
+                <h3>Total Charges: <b>${{ properties.prorate }}</b></h3>
             </div>
         </div>
         <div class="w3-panel">
@@ -99,13 +99,15 @@
 
             if(this.plan.tier > 1) {
                 const today = new Moment();
-                const firstDay = new Moment().startOf('month');
-                const lastDay = new Moment().endOf('month');
-                const numDays = lastDay.diff(firstDay, 'days');
-                const rate = (parseInt(this.plan.price) / numDays).toFixed(2);
-                const prorate = (rate * lastDay.diff(today, 'days')).toFixed(2);
-
-                this.properties.prorate = prorate;
+                if(today.format('MM/DD/YYYY') == new Moment().startOf('month').format('MM/DD/YYYY')) {
+                    this.properties.prorate = this.plan.price;
+                } else {
+                    const firstDay = new Moment().startOf('month');
+                    const lastDay = new Moment().endOf('month');
+                    const rate = (parseInt(this.plan.price) / lastDay.diff(firstDay, 'days')).toFixed(2);
+                    const prorate = (rate * lastDay.diff(today, 'days')).toFixed(2);
+                    this.properties.prorate = prorate;
+                }
             }
         },
         methods: {
