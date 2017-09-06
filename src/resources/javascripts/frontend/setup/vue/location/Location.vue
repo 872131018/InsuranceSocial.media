@@ -188,6 +188,15 @@
                     (this.properties.selected_states.length == 0 && this.properties.selected_counties.length == 0) ) {
                     this.errors.push('You must enter either marketing regions or states and counties.');
                 }
+                if(this.properties.selected_regions.length > 5) {
+                    this.errors.push('You may only select up to 5 regions.');
+                }
+                if(this.properties.selected_states.length > 5) {
+                    this.errors.push('You may only select up to 5 states.');
+                }
+                if(this.properties.selected_counties.length > 5) {
+                    this.errors.push('You may only select up to 5 counties.');
+                }
                 if(this.errors.length == 0) {
                     axios.post(window.location, this.properties).then(response => {
                         store.dispatch({ type: 'SET_USER', data: response.data.user });

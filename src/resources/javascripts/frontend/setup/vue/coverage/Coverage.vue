@@ -233,9 +233,6 @@
                 if(this.properties.selected_carriers.length > 5) {
                     this.errors.push('You may only select up to 5 carriers.');
                 }
-                if(this.properties.selected_carriers.length == 0) {
-                    this.errors.push('You must select at least 1 carrier');
-                }
                 if(this.properties.selected_commercial_coverages.length > 5) {
                     this.errors.push('You may only select up to 5 commercial coverages.');
                 }

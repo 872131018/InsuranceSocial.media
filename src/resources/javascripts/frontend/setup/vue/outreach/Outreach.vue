@@ -97,7 +97,6 @@
                 <Errors v-bind:errors="errors"></Errors>
             </div>
             <div class="w3-panel">
-                <h5>TODO convert to popup!  Congratulations! You have completed your profile. Click continue to go to your dashboard.</h5>
                 <button class="w3-button w3-text-white primary"
                     v-on:click="previous()">Previous
                 </button>
@@ -167,14 +166,14 @@
                 if(this.properties.selected_special_topics.length > 5) {
                     this.errors.push('You may only select up to 5  post topics.');
                 }
-                if(this.properties.selected_special_topics.length == 0) {
-                    this.errors.push('You must select at least 1 posting topic.');
-                }
                 if(this.properties.selected_causes.length > 5) {
                     this.errors.push('You may only select up to 5 causes.');
                 }
-                if(this.properties.selected_causes.length == 0) {
-                    this.errors.push('You must select at least 1 cause to support.');
+                if(!this.properties.engagement_mix) {
+                    this.errors.push('You must select your desired engagement mix.');
+                }
+                if(!this.properties.engagement_tone) {
+                    this.errors.push('You must select your desired engagement tone.');
                 }
                 if(store.getState().PlanStore.plan_code == 1 && this.properties.posting_days.length > 3) {
                     this.errors.push('You may only select up to 3 posting days.');
@@ -187,6 +186,7 @@
                 if(this.errors.length == 0) {
                     axios.post(window.location, this.properties).then(response => {
                         if(route == 'Done') {
+                            alert('Congratulations! You have completed your profile. Click continue to go to your dashboard.');
                             window.location = `${ window.base_url }/file`;
                         } else {
                             this.$router.push({ name: route });

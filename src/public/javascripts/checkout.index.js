@@ -34019,6 +34019,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: {
@@ -34046,7 +34047,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "w3-container"
   }, [_c('div', {
     staticClass: "w3-content w3-center"
-  }, [_c('p', [_vm._v("Plan Cost: $" + _vm._s(_vm.response.planCost))]), _vm._v(" "), (_vm.response.coupon_code == 'ISMFreeTrial') ? _c('p', [_vm._v("Discount: $" + _vm._s(_vm.response.planCost))]) : _vm._e(), _vm._v(" "), (_vm.response.amount_charged != '1') ? _c('p', [_vm._v("Total Charged: $" + _vm._s(_vm.response.amount_charged))]) : _vm._e(), _c('p'), (_vm.response.coupon_code == 'ISMFreeTrial') ? _c('p', [_vm._v("Total: $0.00")]) : _vm._e(), _vm._v(" "), _c('p', [_vm._v("Transaction ID: " + _vm._s(_vm.response.transactionId))])])]), _vm._v(" "), _vm._m(1)])])
+  }, [_c('p', [_vm._v("Plan Cost: $" + _vm._s(_vm.response.planCost))]), _vm._v(" "), (_vm.response.coupon_code == 'ISMFreeTrial') ? _c('p', [_vm._v("Discount: $" + _vm._s(_vm.response.planCost))]) : _vm._e(), _vm._v(" "), (_vm.response.amount_charged != 1) ? _c('p', [_vm._v("Total Charged: $" + _vm._s(_vm.response.amount_charged))]) : _vm._e(), _c('p'), (_vm.response.amount_charged == 1) ? _c('p', [_vm._v("Total Charged: $0.00")]) : _vm._e(), _c('p'), (_vm.response.coupon_code == 'ISMFreeTrial') ? _c('p', [_vm._v("Total: $0.00")]) : _vm._e(), _vm._v(" "), _c('p', [_vm._v("Transaction ID: " + _vm._s(_vm.response.transactionId))])])]), _vm._v(" "), _vm._m(1)])])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('header', {
     staticClass: "w3-container w3-center primary"

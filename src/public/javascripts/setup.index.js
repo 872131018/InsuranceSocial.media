@@ -18723,6 +18723,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             if (this.properties.selected_regions.length == 0 && this.properties.selected_states.length == 0 && this.properties.selected_counties.length == 0) {
                 this.errors.push('You must enter either marketing regions or states and counties.');
             }
+            if (this.properties.selected_regions.length > 5) {
+                this.errors.push('You may only select up to 5 regions.');
+            }
+            if (this.properties.selected_states.length > 5) {
+                this.errors.push('You may only select up to 5 states.');
+            }
+            if (this.properties.selected_counties.length > 5) {
+                this.errors.push('You may only select up to 5 counties.');
+            }
             if (this.errors.length == 0) {
                 axios.post(window.location, this.properties).then(function (response) {
                     store.dispatch({ type: 'SET_USER', data: response.data.user });
@@ -20092,9 +20101,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.errors = [];
             if (this.properties.selected_carriers.length > 5) {
                 this.errors.push('You may only select up to 5 carriers.');
-            }
-            if (this.properties.selected_carriers.length == 0) {
-                this.errors.push('You must select at least 1 carrier');
             }
             if (this.properties.selected_commercial_coverages.length > 5) {
                 this.errors.push('You may only select up to 5 commercial coverages.');
@@ -22180,7 +22186,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 
 
@@ -22263,14 +22268,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             if (this.properties.selected_special_topics.length > 5) {
                 this.errors.push('You may only select up to 5  post topics.');
             }
-            if (this.properties.selected_special_topics.length == 0) {
-                this.errors.push('You must select at least 1 posting topic.');
-            }
             if (this.properties.selected_causes.length > 5) {
                 this.errors.push('You may only select up to 5 causes.');
             }
-            if (this.properties.selected_causes.length == 0) {
-                this.errors.push('You must select at least 1 cause to support.');
+            if (!this.properties.engagement_mix) {
+                this.errors.push('You must select your desired engagement mix.');
+            }
+            if (!this.properties.engagement_tone) {
+                this.errors.push('You must select your desired engagement tone.');
             }
             if (store.getState().PlanStore.plan_code == 1 && this.properties.posting_days.length > 3) {
                 this.errors.push('You may only select up to 3 posting days.');
@@ -22283,6 +22288,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             if (this.errors.length == 0) {
                 axios.post(window.location, this.properties).then(function (response) {
                     if (route == 'Done') {
+                        alert('Congratulations! You have completed your profile. Click continue to go to your dashboard.');
                         window.location = window.base_url + '/file';
                     } else {
                         _this.$router.push({ name: route });
@@ -23269,7 +23275,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   })], 1) : _vm._e(), _vm._v(" "), _c('div', {
     staticClass: "w3-panel"
-  }, [_c('h5', [_vm._v("TODO convert to popup!  Congratulations! You have completed your profile. Click continue to go to your dashboard.")]), _vm._v(" "), _c('button', {
+  }, [_c('button', {
     staticClass: "w3-button w3-text-white primary",
     on: {
       "click": function($event) {

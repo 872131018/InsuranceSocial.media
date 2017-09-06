@@ -24,6 +24,10 @@
             </div>
             <div class="w3-section">
                 <h5>By clicking continue, your Facebook Page will be queued for creation. You will be charged a one-time fee of $25.  You will also receive an email within 24 hours with further instructions. Please follow these instructions to complete the set-up of your business Facebook Page.</h5>
+                <div class="w3-panel"
+                    v-if="errors.length">
+                    <Errors v-bind:errors="errors"></Errors>
+                </div>
                 <button class="w3-button w3-text-white primary"
                     v-on:click="update('Twitter')">Continue
                 </button>
@@ -36,6 +40,7 @@
     import ProgressBar from '../Progress';
     import Field from './inputs/Field';
     import Radio from './inputs/Radio';
+    import Errors from './Errors';
 
     export default {
         data() {
@@ -55,12 +60,19 @@
                     {'id':'8', 'name':'Pen', 'src':'images/pen.jpg'},
                     {'id':'9', 'name':'Plan', 'src':'images/plan.jpg'},
                     {'id':'10', 'name':'Tree', 'src':'images/tree.jpg'}
-                ]
+                ],
+                errors: []
             }
         },
         methods: {
             update(route) {
                 this.errors = [];
+                if(this.properties.name == '') {
+                    this.errors.push('You must enter a name for your page.');
+                }
+                if(!this.properties.image.id) {
+                    this.errors.push('You must select an image for your page.');
+                }
                 if(this.errors.length == 0) {
                     axios.post(window.location, this.properties).then(response => {
                         //store.dispatch({ type: 'SET_TEMPLATE', data: response.data });
@@ -74,7 +86,8 @@
         components: {
             ProgressBar,
             Field,
-            Radio
+            Radio,
+            Errors
         }
     }
 </script>
