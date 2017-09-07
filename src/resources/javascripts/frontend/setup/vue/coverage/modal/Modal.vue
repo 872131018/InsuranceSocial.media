@@ -1,6 +1,5 @@
 <template>
-    <div class="w3-modal w3-show"
-        v-on:click="$emit('setModal')">
+    <div class="w3-modal w3-show">
         <div class="w3-modal-content w3-card-4">
             <header class="w3-container w3-center primary">
                 <h2 class="w3-text-white">Attention</h2>
@@ -28,8 +27,12 @@
                     <p>The core coverages are as follows:</p>
                 </div>
             </div>
-            <footer class="w3-container w3-text-white primary">
-                <p class="w3-center">By continuing you accept these coverages. They can be changed at a later time.</p>
+            <footer class="w3-container w3-text-white primary w3-center">
+                <p>By continuing you accept these coverages. They can be changed at a later time.</p>
+                <div class="w3-half w3-padding"
+                    v-on:click="$emit('closeModal')">Select different coverages</div>
+                <div class="w3-half w3-padding w3-green"
+                    v-on:click="$emit('continue')">Continue with core coverages</div>
             </footer>
         </div>
     </div>

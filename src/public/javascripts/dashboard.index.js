@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 458);
+/******/ 	return __webpack_require__(__webpack_require__.s = 461);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -14990,25 +14990,47 @@ module.exports = function isAbsoluteURL(url) {
 
 /***/ }),
 
-/***/ 458:
+/***/ 46:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(459);
+"use strict";
+
+
+/**
+ * Creates a new URL by combining the specified URLs
+ *
+ * @param {string} baseURL The base URL
+ * @param {string} relativeURL The relative URL
+ * @returns {string} The combined URL
+ */
+module.exports = function combineURLs(baseURL, relativeURL) {
+  return relativeURL
+    ? baseURL.replace(/\/+$/, '') + '/' + relativeURL.replace(/^\/+/, '')
+    : baseURL;
+};
 
 
 /***/ }),
 
-/***/ 459:
+/***/ 461:
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(462);
+
+
+/***/ }),
+
+/***/ 462:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__root_redux__ = __webpack_require__(460);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__root_redux__ = __webpack_require__(463);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_router__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__routes__ = __webpack_require__(466);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__vue_App__ = __webpack_require__(483);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__routes__ = __webpack_require__(469);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__vue_App__ = __webpack_require__(486);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__vue_App___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__vue_App__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__global_navigation_Navigation__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__global_navigation_Navigation___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__global_navigation_Navigation__);
@@ -15052,41 +15074,19 @@ var Site = new __WEBPACK_IMPORTED_MODULE_1_vue___default.a({
 
 /***/ }),
 
-/***/ 46:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-/**
- * Creates a new URL by combining the specified URLs
- *
- * @param {string} baseURL The base URL
- * @param {string} relativeURL The relative URL
- * @returns {string} The combined URL
- */
-module.exports = function combineURLs(baseURL, relativeURL) {
-  return relativeURL
-    ? baseURL.replace(/\/+$/, '') + '/' + relativeURL.replace(/^\/+/, '')
-    : baseURL;
-};
-
-
-/***/ }),
-
-/***/ 460:
+/***/ 463:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_redux__ = __webpack_require__(50);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__redux_user_reducer__ = __webpack_require__(461);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__redux_user_reducer__ = __webpack_require__(464);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__redux_user_reducer___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__redux_user_reducer__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__redux_plan_reducer__ = __webpack_require__(462);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__redux_plan_reducer__ = __webpack_require__(465);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__redux_plan_reducer___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__redux_plan_reducer__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__redux_agency_reducer__ = __webpack_require__(463);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__redux_agency_reducer__ = __webpack_require__(466);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__redux_agency_reducer___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__redux_agency_reducer__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__redux_option_reducer__ = __webpack_require__(464);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__redux_selection_reducer__ = __webpack_require__(465);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__redux_option_reducer__ = __webpack_require__(467);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__redux_selection_reducer__ = __webpack_require__(468);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__redux_selection_reducer___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__redux_selection_reducer__);
 
 
@@ -15107,7 +15107,7 @@ var reducers = Object(__WEBPACK_IMPORTED_MODULE_0_redux__["a" /* combineReducers
 
 /***/ }),
 
-/***/ 461:
+/***/ 464:
 /***/ (function(module, exports) {
 
 var _initialState;
@@ -15156,7 +15156,7 @@ module.exports = function () {
 
 /***/ }),
 
-/***/ 462:
+/***/ 465:
 /***/ (function(module, exports) {
 
 var initialState = {
@@ -15194,7 +15194,7 @@ module.exports = function () {
 
 /***/ }),
 
-/***/ 463:
+/***/ 466:
 /***/ (function(module, exports) {
 
 var initialState = {
@@ -15235,7 +15235,7 @@ module.exports = function () {
 
 /***/ }),
 
-/***/ 464:
+/***/ 467:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -15632,7 +15632,7 @@ var initialState = {
 
 /***/ }),
 
-/***/ 465:
+/***/ 468:
 /***/ (function(module, exports) {
 
 var initialState = {
@@ -15668,11 +15668,11 @@ module.exports = function () {
 
 /***/ }),
 
-/***/ 466:
+/***/ 469:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__vue_dashboard_Dashboard__ = __webpack_require__(467);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__vue_dashboard_Dashboard__ = __webpack_require__(470);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__vue_dashboard_Dashboard___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__vue_dashboard_Dashboard__);
 
 
@@ -15684,15 +15684,80 @@ module.exports = function () {
 
 /***/ }),
 
-/***/ 467:
+/***/ 47:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var Cancel = __webpack_require__(9);
+
+/**
+ * A `CancelToken` is an object that can be used to request cancellation of an operation.
+ *
+ * @class
+ * @param {Function} executor The executor function.
+ */
+function CancelToken(executor) {
+  if (typeof executor !== 'function') {
+    throw new TypeError('executor must be a function.');
+  }
+
+  var resolvePromise;
+  this.promise = new Promise(function promiseExecutor(resolve) {
+    resolvePromise = resolve;
+  });
+
+  var token = this;
+  executor(function cancel(message) {
+    if (token.reason) {
+      // Cancellation has already been requested
+      return;
+    }
+
+    token.reason = new Cancel(message);
+    resolvePromise(token.reason);
+  });
+}
+
+/**
+ * Throws a `Cancel` if cancellation has been requested.
+ */
+CancelToken.prototype.throwIfRequested = function throwIfRequested() {
+  if (this.reason) {
+    throw this.reason;
+  }
+};
+
+/**
+ * Returns an object that contains a new `CancelToken` and a function that, when called,
+ * cancels the `CancelToken`.
+ */
+CancelToken.source = function source() {
+  var cancel;
+  var token = new CancelToken(function executor(c) {
+    cancel = c;
+  });
+  return {
+    token: token,
+    cancel: cancel
+  };
+};
+
+module.exports = CancelToken;
+
+
+/***/ }),
+
+/***/ 470:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var Component = __webpack_require__(0)(
   /* script */
-  __webpack_require__(468),
+  __webpack_require__(471),
   /* template */
-  __webpack_require__(482),
+  __webpack_require__(485),
   /* styles */
   null,
   /* scopeId */
@@ -15725,20 +15790,20 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 468:
+/***/ 471:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__FacebookPerformance__ = __webpack_require__(469);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__FacebookPerformance__ = __webpack_require__(472);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__FacebookPerformance___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__FacebookPerformance__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__TwitterPerformance__ = __webpack_require__(472);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__TwitterPerformance__ = __webpack_require__(475);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__TwitterPerformance___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__TwitterPerformance__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__TopPosts__ = __webpack_require__(475);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__TopPosts__ = __webpack_require__(478);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__TopPosts___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__TopPosts__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__MostEngaged__ = __webpack_require__(478);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__MostEngaged__ = __webpack_require__(481);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__MostEngaged___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__MostEngaged__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_chartist__ = __webpack_require__(481);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_chartist__ = __webpack_require__(484);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_chartist___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_chartist__);
 //
 //
@@ -15831,15 +15896,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 469:
+/***/ 472:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var Component = __webpack_require__(0)(
   /* script */
-  __webpack_require__(470),
+  __webpack_require__(473),
   /* template */
-  __webpack_require__(471),
+  __webpack_require__(474),
   /* styles */
   null,
   /* scopeId */
@@ -15872,222 +15937,21 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 47:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var Cancel = __webpack_require__(9);
-
-/**
- * A `CancelToken` is an object that can be used to request cancellation of an operation.
- *
- * @class
- * @param {Function} executor The executor function.
- */
-function CancelToken(executor) {
-  if (typeof executor !== 'function') {
-    throw new TypeError('executor must be a function.');
-  }
-
-  var resolvePromise;
-  this.promise = new Promise(function promiseExecutor(resolve) {
-    resolvePromise = resolve;
-  });
-
-  var token = this;
-  executor(function cancel(message) {
-    if (token.reason) {
-      // Cancellation has already been requested
-      return;
-    }
-
-    token.reason = new Cancel(message);
-    resolvePromise(token.reason);
-  });
-}
-
-/**
- * Throws a `Cancel` if cancellation has been requested.
- */
-CancelToken.prototype.throwIfRequested = function throwIfRequested() {
-  if (this.reason) {
-    throw this.reason;
-  }
-};
-
-/**
- * Returns an object that contains a new `CancelToken` and a function that, when called,
- * cancels the `CancelToken`.
- */
-CancelToken.source = function source() {
-  var cancel;
-  var token = new CancelToken(function executor(c) {
-    cancel = c;
-  });
-  return {
-    token: token,
-    cancel: cancel
-  };
-};
-
-module.exports = CancelToken;
-
-
-/***/ }),
-
-/***/ 470:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    data: function data() {
-        return {
-            //
-        };
-    },
-
-    methods: {
-        //
-    }
-});
-
-/***/ }),
-
-/***/ 471:
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _vm._m(0)
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('table', {
-    staticClass: "w3-table-all w3-half"
-  }, [_c('tr', [_c('td', [_vm._v("Reach")]), _vm._v(" "), _c('td', {
-    staticClass: "bold"
-  }, [_vm._v("241")]), _vm._v(" "), _c('td', {
-    staticClass: "w3-text-green"
-  }, [_vm._v("+3%")])]), _vm._v(" "), _c('tr', [_c('td', [_vm._v("Clicks")]), _vm._v(" "), _c('td', {
-    staticClass: "bold"
-  }, [_vm._v("45")]), _vm._v(" "), _c('td', {
-    staticClass: "w3-text-red"
-  }, [_vm._v("-9%")])]), _vm._v(" "), _c('tr', [_c('td', [_vm._v("Likes")]), _vm._v(" "), _c('td', {
-    staticClass: "bold"
-  }, [_vm._v("60")]), _vm._v(" "), _c('td', {
-    staticClass: "w3-text-green"
-  }, [_vm._v("+12%")])])]), _vm._v(" "), _c('table', {
-    staticClass: "w3-table-all w3-half"
-  }, [_c('tr', [_c('td', [_vm._v("Engagement")]), _vm._v(" "), _c('td', {
-    staticClass: "bold"
-  }, [_vm._v("172")]), _vm._v(" "), _c('td', {
-    staticClass: "w3-text-green"
-  }, [_vm._v("+13%")])]), _vm._v(" "), _c('tr', [_c('td', [_vm._v("Shares")]), _vm._v(" "), _c('td', {
-    staticClass: "bold"
-  }, [_vm._v("4")]), _vm._v(" "), _c('td', {
-    staticClass: "w3-text-green"
-  }, [_vm._v("+25%")])]), _vm._v(" "), _c('tr', [_c('td', [_vm._v("Comments")]), _vm._v(" "), _c('td', {
-    staticClass: "bold"
-  }, [_vm._v("3")]), _vm._v(" "), _c('td', {
-    staticClass: "w3-text-red"
-  }, [_vm._v("-17%")])])])])
-}]}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-43d559fa", module.exports)
-  }
-}
-
-/***/ }),
-
-/***/ 472:
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var Component = __webpack_require__(0)(
-  /* script */
-  __webpack_require__(473),
-  /* template */
-  __webpack_require__(474),
-  /* styles */
-  null,
-  /* scopeId */
-  null,
-  /* moduleIdentifier (server only) */
-  null
-)
-Component.options.__file = "/Users/johnhuffman/Sites/InsuranceSocial.media/src/resources/javascripts/frontend/dashboard/vue/dashboard/TwitterPerformance.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] TwitterPerformance.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-36e2b1fd", Component.options)
-  } else {
-    hotAPI.reload("data-v-36e2b1fd", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-
 /***/ 473:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -16140,31 +16004,39 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', [_c('table', {
     staticClass: "w3-table-all w3-half"
-  }, [_c('tr', [_c('td', [_vm._v("Followers")]), _vm._v(" "), _c('td', {
+  }, [_c('tr', [_c('td', [_vm._v("Reach")]), _vm._v(" "), _c('td', {
     staticClass: "bold"
-  }, [_vm._v("168")]), _vm._v(" "), _c('td', {
+  }, [_vm._v("241")]), _vm._v(" "), _c('td', {
     staticClass: "w3-text-green"
-  }, [_vm._v("+3%")])]), _vm._v(" "), _c('tr', [_c('td', [_vm._v("Mentions")]), _vm._v(" "), _c('td', {
+  }, [_vm._v("+3%")])]), _vm._v(" "), _c('tr', [_c('td', [_vm._v("Clicks")]), _vm._v(" "), _c('td', {
     staticClass: "bold"
-  }, [_vm._v("21")]), _vm._v(" "), _c('td', {
+  }, [_vm._v("45")]), _vm._v(" "), _c('td', {
     staticClass: "w3-text-red"
-  }, [_vm._v("-28%")])])]), _vm._v(" "), _c('table', {
+  }, [_vm._v("-9%")])]), _vm._v(" "), _c('tr', [_c('td', [_vm._v("Likes")]), _vm._v(" "), _c('td', {
+    staticClass: "bold"
+  }, [_vm._v("60")]), _vm._v(" "), _c('td', {
+    staticClass: "w3-text-green"
+  }, [_vm._v("+12%")])])]), _vm._v(" "), _c('table', {
     staticClass: "w3-table-all w3-half"
-  }, [_c('tr', [_c('td', [_vm._v("Retweets")]), _vm._v(" "), _c('td', {
+  }, [_c('tr', [_c('td', [_vm._v("Engagement")]), _vm._v(" "), _c('td', {
     staticClass: "bold"
-  }, [_vm._v("7")]), _vm._v(" "), _c('td', {
-    staticClass: "w3-text-red"
-  }, [_vm._v("-33%")])]), _vm._v(" "), _c('tr', [_c('td', [_vm._v("Favorites")]), _vm._v(" "), _c('td', {
-    staticClass: "bold"
-  }, [_vm._v("67")]), _vm._v(" "), _c('td', {
+  }, [_vm._v("172")]), _vm._v(" "), _c('td', {
     staticClass: "w3-text-green"
-  }, [_vm._v("+39%")])])])])
+  }, [_vm._v("+13%")])]), _vm._v(" "), _c('tr', [_c('td', [_vm._v("Shares")]), _vm._v(" "), _c('td', {
+    staticClass: "bold"
+  }, [_vm._v("4")]), _vm._v(" "), _c('td', {
+    staticClass: "w3-text-green"
+  }, [_vm._v("+25%")])]), _vm._v(" "), _c('tr', [_c('td', [_vm._v("Comments")]), _vm._v(" "), _c('td', {
+    staticClass: "bold"
+  }, [_vm._v("3")]), _vm._v(" "), _c('td', {
+    staticClass: "w3-text-red"
+  }, [_vm._v("-17%")])])])])
 }]}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-36e2b1fd", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-43d559fa", module.exports)
   }
 }
 
@@ -16186,9 +16058,9 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/johnhuffman/Sites/InsuranceSocial.media/src/resources/javascripts/frontend/dashboard/vue/dashboard/TopPosts.vue"
+Component.options.__file = "/Users/johnhuffman/Sites/InsuranceSocial.media/src/resources/javascripts/frontend/dashboard/vue/dashboard/TwitterPerformance.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] TopPosts.vue: functional components are not supported with templates, they should use render functions.")}
+if (Component.options.functional) {console.error("[vue-loader] TwitterPerformance.vue: functional components are not supported with templates, they should use render functions.")}
 
 /* hot reload */
 if (false) {(function () {
@@ -16197,9 +16069,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-f8f98984", Component.options)
+    hotAPI.createRecord("data-v-36e2b1fd", Component.options)
   } else {
-    hotAPI.reload("data-v-f8f98984", Component.options)
+    hotAPI.reload("data-v-36e2b1fd", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -16216,14 +16088,6 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -16276,13 +16140,31 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', [_c('table', {
     staticClass: "w3-table-all w3-half"
-  }, [_c('tr', [_c('td', [_vm._v("#")]), _vm._v(" "), _c('td', [_vm._v("Post Content")]), _vm._v(" "), _c('td', [_vm._v("Engagement %")])]), _vm._v(" "), _c('tr', [_c('td', [_vm._v("1")]), _vm._v(" "), _c('td', [_vm._v("Enjoy your visit to...")]), _vm._v(" "), _c('td', [_vm._v("67.5%")])]), _vm._v(" "), _c('tr', [_c('td', [_vm._v("2")]), _vm._v(" "), _c('td', [_vm._v("#SocialInsuranceMedia...")]), _vm._v(" "), _c('td', [_vm._v("63.1%")])]), _vm._v(" "), _c('tr', [_c('td', [_vm._v("3")]), _vm._v(" "), _c('td', [_vm._v("Drainage is critical...")]), _vm._v(" "), _c('td', [_vm._v("62.7%")])]), _vm._v(" "), _c('tr', [_c('td', [_vm._v("4")]), _vm._v(" "), _c('td', [_vm._v("Pack your snow...")]), _vm._v(" "), _c('td', [_vm._v("60.9%")])]), _vm._v(" "), _c('tr', [_c('td', [_vm._v("5")]), _vm._v(" "), _c('td', [_vm._v("Seatbelts reduce...")]), _vm._v(" "), _c('td', [_vm._v("57.7%")])])])])
+  }, [_c('tr', [_c('td', [_vm._v("Followers")]), _vm._v(" "), _c('td', {
+    staticClass: "bold"
+  }, [_vm._v("168")]), _vm._v(" "), _c('td', {
+    staticClass: "w3-text-green"
+  }, [_vm._v("+3%")])]), _vm._v(" "), _c('tr', [_c('td', [_vm._v("Mentions")]), _vm._v(" "), _c('td', {
+    staticClass: "bold"
+  }, [_vm._v("21")]), _vm._v(" "), _c('td', {
+    staticClass: "w3-text-red"
+  }, [_vm._v("-28%")])])]), _vm._v(" "), _c('table', {
+    staticClass: "w3-table-all w3-half"
+  }, [_c('tr', [_c('td', [_vm._v("Retweets")]), _vm._v(" "), _c('td', {
+    staticClass: "bold"
+  }, [_vm._v("7")]), _vm._v(" "), _c('td', {
+    staticClass: "w3-text-red"
+  }, [_vm._v("-33%")])]), _vm._v(" "), _c('tr', [_c('td', [_vm._v("Favorites")]), _vm._v(" "), _c('td', {
+    staticClass: "bold"
+  }, [_vm._v("67")]), _vm._v(" "), _c('td', {
+    staticClass: "w3-text-green"
+  }, [_vm._v("+39%")])])])])
 }]}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-f8f98984", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-36e2b1fd", module.exports)
   }
 }
 
@@ -16304,9 +16186,9 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/johnhuffman/Sites/InsuranceSocial.media/src/resources/javascripts/frontend/dashboard/vue/dashboard/MostEngaged.vue"
+Component.options.__file = "/Users/johnhuffman/Sites/InsuranceSocial.media/src/resources/javascripts/frontend/dashboard/vue/dashboard/TopPosts.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] MostEngaged.vue: functional components are not supported with templates, they should use render functions.")}
+if (Component.options.functional) {console.error("[vue-loader] TopPosts.vue: functional components are not supported with templates, they should use render functions.")}
 
 /* hot reload */
 if (false) {(function () {
@@ -16315,9 +16197,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-51063590", Component.options)
+    hotAPI.createRecord("data-v-f8f98984", Component.options)
   } else {
-    hotAPI.reload("data-v-51063590", Component.options)
+    hotAPI.reload("data-v-f8f98984", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -16429,6 +16311,124 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', [_c('table', {
     staticClass: "w3-table-all w3-half"
+  }, [_c('tr', [_c('td', [_vm._v("#")]), _vm._v(" "), _c('td', [_vm._v("Post Content")]), _vm._v(" "), _c('td', [_vm._v("Engagement %")])]), _vm._v(" "), _c('tr', [_c('td', [_vm._v("1")]), _vm._v(" "), _c('td', [_vm._v("Enjoy your visit to...")]), _vm._v(" "), _c('td', [_vm._v("67.5%")])]), _vm._v(" "), _c('tr', [_c('td', [_vm._v("2")]), _vm._v(" "), _c('td', [_vm._v("#SocialInsuranceMedia...")]), _vm._v(" "), _c('td', [_vm._v("63.1%")])]), _vm._v(" "), _c('tr', [_c('td', [_vm._v("3")]), _vm._v(" "), _c('td', [_vm._v("Drainage is critical...")]), _vm._v(" "), _c('td', [_vm._v("62.7%")])]), _vm._v(" "), _c('tr', [_c('td', [_vm._v("4")]), _vm._v(" "), _c('td', [_vm._v("Pack your snow...")]), _vm._v(" "), _c('td', [_vm._v("60.9%")])]), _vm._v(" "), _c('tr', [_c('td', [_vm._v("5")]), _vm._v(" "), _c('td', [_vm._v("Seatbelts reduce...")]), _vm._v(" "), _c('td', [_vm._v("57.7%")])])])])
+}]}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-f8f98984", module.exports)
+  }
+}
+
+/***/ }),
+
+/***/ 481:
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var Component = __webpack_require__(0)(
+  /* script */
+  __webpack_require__(482),
+  /* template */
+  __webpack_require__(483),
+  /* styles */
+  null,
+  /* scopeId */
+  null,
+  /* moduleIdentifier (server only) */
+  null
+)
+Component.options.__file = "/Users/johnhuffman/Sites/InsuranceSocial.media/src/resources/javascripts/frontend/dashboard/vue/dashboard/MostEngaged.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] MostEngaged.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-51063590", Component.options)
+  } else {
+    hotAPI.reload("data-v-51063590", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ 482:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            //
+        };
+    },
+
+    methods: {
+        //
+    }
+});
+
+/***/ }),
+
+/***/ 483:
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _vm._m(0)
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', [_c('table', {
+    staticClass: "w3-table-all w3-half"
   }, [_c('tr', [_c('td', [_vm._v("#")]), _vm._v(" "), _c('td', [_vm._v("Username")]), _vm._v(" "), _c('td', [_vm._v("Platform")])]), _vm._v(" "), _c('tr', [_c('td', [_vm._v("1")]), _vm._v(" "), _c('td', [_vm._v("Zack Wheatley")]), _vm._v(" "), _c('td', [_vm._v("Facebook")])]), _vm._v(" "), _c('tr', [_c('td', [_vm._v("2")]), _vm._v(" "), _c('td', [_vm._v("Nate Self")]), _vm._v(" "), _c('td', [_vm._v("Twitter")])]), _vm._v(" "), _c('tr', [_c('td', [_vm._v("3")]), _vm._v(" "), _c('td', [_vm._v("Nathan Smith")]), _vm._v(" "), _c('td', [_vm._v("Facebook")])]), _vm._v(" "), _c('tr', [_c('td', [_vm._v("4")]), _vm._v(" "), _c('td', [_vm._v("Jesse Jackson")]), _vm._v(" "), _c('td', [_vm._v("Facebook")])]), _vm._v(" "), _c('tr', [_c('td', [_vm._v("5")]), _vm._v(" "), _c('td', [_vm._v("Sathya Annacopa")]), _vm._v(" "), _c('td', [_vm._v("Twitter")])])])])
 }]}
 module.exports.render._withStripped = true
@@ -16441,7 +16441,7 @@ if (false) {
 
 /***/ }),
 
-/***/ 481:
+/***/ 484:
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;(function (root, factory) {
@@ -20937,7 +20937,7 @@ return Chartist;
 
 /***/ }),
 
-/***/ 482:
+/***/ 485:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -20983,15 +20983,15 @@ if (false) {
 
 /***/ }),
 
-/***/ 483:
+/***/ 486:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var Component = __webpack_require__(0)(
   /* script */
-  __webpack_require__(484),
+  __webpack_require__(487),
   /* template */
-  __webpack_require__(485),
+  __webpack_require__(488),
   /* styles */
   null,
   /* scopeId */
@@ -21024,7 +21024,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 484:
+/***/ 487:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -21131,7 +21131,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 485:
+/***/ 488:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;

@@ -170,7 +170,8 @@
             v-bind:personal_coverage="personal_coverage"
             v-bind:commercial_coverage="commercial_coverage"
             v-bind:benefit_coverage="benefit_coverage"
-            v-on:setModal="navigate()">
+            v-on:closeModal="() => modal = false"
+            v-on:continue="useDefaults()">
         </Modal>
     </div>
 </template>
@@ -228,6 +229,43 @@
                 store.dispatch({ type: 'SET_COVERAGE', data: this.properties });
                 this.$router.push({ name: 'Location' });
             },
+            useDefaults() {
+                if(this.personal_coverage) {
+                    this.properties.selected_personal_coverages.push({
+                         "id":1,
+                         "code":"11005",
+                         "desc":"Auto Insurance - Personal"
+                    });
+                    this.properties.selected_personal_coverages.push({
+                         "id":6,
+                         "code":"11014",
+                         "desc":"Condo Insurance"
+                    });
+                    this.properties.selected_personal_coverages.push({
+                        "id":10,
+                        "code":"11029",
+                        "desc":"Homeowners Insurance"
+                    });
+                }
+                if(this.commercial_coverage) {
+                    this.properties.selected_commercial_coverages.push({
+                        "id":5,
+                        "code":"11011",
+                        "desc":"Business Owners Policy",
+                    });
+                    this.properties.selected_commercial_coverages.push({
+                        "id":7,
+                        "code":"11264",
+                        "desc":"Commercial Property Insurance"
+                    });
+                    this.properties.selected_commercial_coverages.push({
+                        "id":17,
+                        "code":"11260",
+                        "desc":"General Liability Insurance"
+                    });
+                }
+                this.update('Outreach');
+            },
             update(route) {
                 this.errors = [];
                 if(this.properties.selected_carriers.length > 5) {
@@ -253,23 +291,24 @@
                 } else {
                     this.properties.selected_crop_coverages.push({"code": "NO", "desc":"No I do not write Crop coverages"});
                 }
-                if((this.personal_coverage && this.properties.selected_personal_coverages.length == 0) ||
-                    (this.commercial_coverage && this.properties.selected_commercial_coverages.length == 0) ||
-                    (this.benefit_coverage && this.properties.selected_benefit_coverages.length == 0)) {
-                    this.modal = true;
-                }
                 if(this.personal_coverage == '' &&
                     this.commercial_coverage == '' &&
                     this.benefit_coverage == '') {
                         this.errors.push('You must select at least 1 type of coverage.')
                 }
                 if(this.errors.length == 0) {
-                    axios.post(window.location, this.properties).then(response => {
-                        store.dispatch({ type: 'SET_COVERAGE', data: response.data });
-                        this.$router.push({ name: route });
-                    }).catch(error => {
-                        this.errors.push('An error has occured, please contact support.');
-                    });
+                    if((this.personal_coverage && this.properties.selected_personal_coverages.length == 0) ||
+                        (this.commercial_coverage && this.properties.selected_commercial_coverages.length == 0) ||
+                        (this.benefit_coverage && this.properties.selected_benefit_coverages.length == 0)) {
+                        this.modal = true;
+                    } else {
+                        axios.post(window.location, this.properties).then(response => {
+                            store.dispatch({ type: 'SET_COVERAGE', data: response.data });
+                            this.$router.push({ name: route });
+                        }).catch(error => {
+                            this.errors.push('An error has occured, please contact support.');
+                        });
+                    }
                 }
             }
         },
