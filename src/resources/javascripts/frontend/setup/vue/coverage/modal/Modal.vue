@@ -21,11 +21,6 @@
                     <p>General Liability Insurance</p>
                     <p>Commercial Property Insurance</p>
                 </div>
-                <div class="w3-content w3-center"
-                    v-if="benefit_coverage">
-                    <p>You haven't selected any benefits, would you like to use our core coverages?</p>
-                    <p>The core coverages are as follows:</p>
-                </div>
             </div>
             <footer class="w3-container w3-text-white primary w3-center">
                 <p>By continuing you accept these coverages. They can be changed at a later time.</p>

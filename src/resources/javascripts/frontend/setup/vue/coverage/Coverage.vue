@@ -32,7 +32,7 @@
                     </Dropdown>
                 </div>
                 <Personal
-                    v-on:setOption="(option) => personal_coverage = option">
+                    v-on:setOption="setPersonal($event)">
                 </Personal>
                 <div class="w3-section"
                     v-if="properties.selected_personal_coverages.length > 0">
@@ -55,7 +55,7 @@
                     </Dropdown>
                 </div>
                 <Commercial
-                    v-on:setOption="(option) => commercial_coverage = option">
+                    v-on:setOption="setCommercial($event)">
                 </Commercial>
                 <div class="w3-section"
                     v-if="properties.selected_commercial_coverages.length > 0">
@@ -78,7 +78,7 @@
                     </Dropdown>
                 </div>
                 <Benefit
-                    v-on:setOption="(option) => benefit_coverage = option">
+                    v-on:setOption="setBenefit($event)">
                 </Benefit>
                 <div class="w3-section"
                     v-if="properties.selected_benefit_coverages.length > 0">
@@ -169,7 +169,6 @@
             v-if="modal"
             v-bind:personal_coverage="personal_coverage"
             v-bind:commercial_coverage="commercial_coverage"
-            v-bind:benefit_coverage="benefit_coverage"
             v-on:closeModal="() => modal = false"
             v-on:continue="useDefaults()">
         </Modal>
@@ -221,6 +220,24 @@
             }
         },
         methods: {
+            setPersonal(option) {
+                if(option == 'N') {
+                    this.properties.selected_personal_coverages = [];
+                }
+                this.personal_coverage = option;
+            },
+            setCommercial(option) {
+                if(option == 'N') {
+                    this.properties.selected_commercial_coverages = [];
+                }
+                this.commercial_coverage = option;
+            },
+            setBenefit(option) {
+                if(option == 'N') {
+                    this.properties.selected_benefit_coverages = [];
+                }
+                this.benefit_coverage = option;
+            },
             setRatio(ratio) {
                 this.properties.commercial_mix = ratio.commercial;
                 this.properties.personal_mix = ratio.personal;
@@ -296,10 +313,14 @@
                     this.benefit_coverage == '') {
                         this.errors.push('You must select at least 1 type of coverage.')
                 }
+                if(this.personal_coverage == 'N' &&
+                    this.commercial_coverage == 'N' &&
+                    this.benefit_coverage == 'N') {
+                        this.errors.push('You must select at least 1 type of coverage.')
+                }
                 if(this.errors.length == 0) {
-                    if((this.personal_coverage && this.properties.selected_personal_coverages.length == 0) ||
-                        (this.commercial_coverage && this.properties.selected_commercial_coverages.length == 0) ||
-                        (this.benefit_coverage && this.properties.selected_benefit_coverages.length == 0)) {
+                    if((this.personal_coverage == 'Y' && this.properties.selected_personal_coverages.length == 0) ||
+                        (this.commercial_coverage == 'Y' && this.properties.selected_commercial_coverages.length == 0)) {
                         this.modal = true;
                     } else {
                         axios.post(window.location, this.properties).then(response => {

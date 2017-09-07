@@ -20044,7 +20044,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 
 
@@ -20091,6 +20090,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
 
     methods: {
+        setPersonal: function setPersonal(option) {
+            if (option == 'N') {
+                this.properties.selected_personal_coverages = [];
+            }
+            this.personal_coverage = option;
+        },
+        setCommercial: function setCommercial(option) {
+            if (option == 'N') {
+                this.properties.selected_commercial_coverages = [];
+            }
+            this.commercial_coverage = option;
+        },
+        setBenefit: function setBenefit(option) {
+            if (option == 'N') {
+                this.properties.selected_benefit_coverages = [];
+            }
+            this.benefit_coverage = option;
+        },
         setRatio: function setRatio(ratio) {
             this.properties.commercial_mix = ratio.commercial;
             this.properties.personal_mix = ratio.personal;
@@ -20166,8 +20183,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             if (this.personal_coverage == '' && this.commercial_coverage == '' && this.benefit_coverage == '') {
                 this.errors.push('You must select at least 1 type of coverage.');
             }
+            if (this.personal_coverage == 'N' && this.commercial_coverage == 'N' && this.benefit_coverage == 'N') {
+                this.errors.push('You must select at least 1 type of coverage.');
+            }
             if (this.errors.length == 0) {
-                if (this.personal_coverage && this.properties.selected_personal_coverages.length == 0 || this.commercial_coverage && this.properties.selected_commercial_coverages.length == 0 || this.benefit_coverage && this.properties.selected_benefit_coverages.length == 0) {
+                if (this.personal_coverage == 'Y' && this.properties.selected_personal_coverages.length == 0 || this.commercial_coverage == 'Y' && this.properties.selected_commercial_coverages.length == 0) {
                     this.modal = true;
                 } else {
                     axios.post(window.location, this.properties).then(function (response) {
@@ -21676,11 +21696,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: {
@@ -21711,9 +21726,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "w3-content w3-center"
   }, [_c('p', [_vm._v("You haven't selected any personal coverages, would you like to use our core coverages?")]), _vm._v(" "), _c('p', [_vm._v("The core coverages are as follows:")]), _vm._v(" "), _c('p', [_vm._v("Condo Insurance")]), _vm._v(" "), _c('p', [_vm._v("Homeowners Insurance")]), _vm._v(" "), _c('p', [_vm._v("Renters Insurance")])]) : _vm._e(), _vm._v(" "), (_vm.commercial_coverage) ? _c('div', {
     staticClass: "w3-content w3-center"
-  }, [_c('p', [_vm._v("You haven't selected any commercial coverages, would you like to use our core coverages?")]), _vm._v(" "), _c('p', [_vm._v("The core coverages are as follows:")]), _vm._v(" "), _c('p', [_vm._v("Business Owner's Policy")]), _vm._v(" "), _c('p', [_vm._v("General Liability Insurance")]), _vm._v(" "), _c('p', [_vm._v("Commercial Property Insurance")])]) : _vm._e(), _vm._v(" "), (_vm.benefit_coverage) ? _c('div', {
-    staticClass: "w3-content w3-center"
-  }, [_c('p', [_vm._v("You haven't selected any benefits, would you like to use our core coverages?")]), _vm._v(" "), _c('p', [_vm._v("The core coverages are as follows:")])]) : _vm._e()]), _vm._v(" "), _c('footer', {
+  }, [_c('p', [_vm._v("You haven't selected any commercial coverages, would you like to use our core coverages?")]), _vm._v(" "), _c('p', [_vm._v("The core coverages are as follows:")]), _vm._v(" "), _c('p', [_vm._v("Business Owner's Policy")]), _vm._v(" "), _c('p', [_vm._v("General Liability Insurance")]), _vm._v(" "), _c('p', [_vm._v("Commercial Property Insurance")])]) : _vm._e()]), _vm._v(" "), _c('footer', {
     staticClass: "w3-container w3-text-white primary w3-center"
   }, [_c('p', [_vm._v("By continuing you accept these coverages. They can be changed at a later time.")]), _vm._v(" "), _c('div', {
     staticClass: "w3-half w3-padding",
@@ -21877,7 +21890,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   })], 1), _vm._v(" "), _c('Personal', {
     on: {
-      "setOption": function (option) { return _vm.personal_coverage = option; }
+      "setOption": function($event) {
+        _vm.setPersonal($event)
+      }
     }
   }), _vm._v(" "), (_vm.properties.selected_personal_coverages.length > 0) ? _c('div', {
     staticClass: "w3-section"
@@ -21904,7 +21919,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   })], 1) : _vm._e(), _vm._v(" "), _c('Commercial', {
     on: {
-      "setOption": function (option) { return _vm.commercial_coverage = option; }
+      "setOption": function($event) {
+        _vm.setCommercial($event)
+      }
     }
   }), _vm._v(" "), (_vm.properties.selected_commercial_coverages.length > 0) ? _c('div', {
     staticClass: "w3-section"
@@ -21931,7 +21948,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   })], 1) : _vm._e(), _vm._v(" "), _c('Benefit', {
     on: {
-      "setOption": function (option) { return _vm.benefit_coverage = option; }
+      "setOption": function($event) {
+        _vm.setBenefit($event)
+      }
     }
   }), _vm._v(" "), (_vm.properties.selected_benefit_coverages.length > 0) ? _c('div', {
     staticClass: "w3-section"
@@ -22043,8 +22062,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_vm._v("Continue\n            ")])])]), _vm._v(" "), (_vm.modal) ? _c('Modal', {
     attrs: {
       "personal_coverage": _vm.personal_coverage,
-      "commercial_coverage": _vm.commercial_coverage,
-      "benefit_coverage": _vm.benefit_coverage
+      "commercial_coverage": _vm.commercial_coverage
     },
     on: {
       "closeModal": function () { return _vm.modal = false; },
