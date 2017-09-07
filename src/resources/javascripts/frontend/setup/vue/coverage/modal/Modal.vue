@@ -6,7 +6,7 @@
             </header>
             <div class="w3-container">
                 <div class="w3-content w3-center"
-                    v-if="personal_coverage">
+                    v-if="personal_coverage == 'Y'">
                     <p>You haven't selected any personal coverages, would you like to use our core coverages?</p>
                     <p>The core coverages are as follows:</p>
                     <p>Condo Insurance</p>
@@ -14,7 +14,7 @@
                     <p>Renters Insurance</p>
                 </div>
                 <div class="w3-content w3-center"
-                    v-if="commercial_coverage">
+                    v-if="commercial_coverage == 'Y'">
                     <p>You haven't selected any commercial coverages, would you like to use our core coverages?</p>
                     <p>The core coverages are as follows:</p>
                     <p>Business Owner's Policy</p>

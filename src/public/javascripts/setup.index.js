@@ -21722,9 +21722,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "w3-modal-content w3-card-4"
   }, [_vm._m(0), _vm._v(" "), _c('div', {
     staticClass: "w3-container"
-  }, [(_vm.personal_coverage) ? _c('div', {
+  }, [(_vm.personal_coverage == 'Y') ? _c('div', {
     staticClass: "w3-content w3-center"
-  }, [_c('p', [_vm._v("You haven't selected any personal coverages, would you like to use our core coverages?")]), _vm._v(" "), _c('p', [_vm._v("The core coverages are as follows:")]), _vm._v(" "), _c('p', [_vm._v("Condo Insurance")]), _vm._v(" "), _c('p', [_vm._v("Homeowners Insurance")]), _vm._v(" "), _c('p', [_vm._v("Renters Insurance")])]) : _vm._e(), _vm._v(" "), (_vm.commercial_coverage) ? _c('div', {
+  }, [_c('p', [_vm._v("You haven't selected any personal coverages, would you like to use our core coverages?")]), _vm._v(" "), _c('p', [_vm._v("The core coverages are as follows:")]), _vm._v(" "), _c('p', [_vm._v("Condo Insurance")]), _vm._v(" "), _c('p', [_vm._v("Homeowners Insurance")]), _vm._v(" "), _c('p', [_vm._v("Renters Insurance")])]) : _vm._e(), _vm._v(" "), (_vm.commercial_coverage == 'Y') ? _c('div', {
     staticClass: "w3-content w3-center"
   }, [_c('p', [_vm._v("You haven't selected any commercial coverages, would you like to use our core coverages?")]), _vm._v(" "), _c('p', [_vm._v("The core coverages are as follows:")]), _vm._v(" "), _c('p', [_vm._v("Business Owner's Policy")]), _vm._v(" "), _c('p', [_vm._v("General Liability Insurance")]), _vm._v(" "), _c('p', [_vm._v("Commercial Property Insurance")])]) : _vm._e()]), _vm._v(" "), _c('footer', {
     staticClass: "w3-container w3-text-white primary w3-center"
