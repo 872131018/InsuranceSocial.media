@@ -15,7 +15,8 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Auth::routes();
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/user/dashboard', 'HomeController@index')->name('home');
+Route::get('/user/profile', 'HomeController@index')->name('home');
 
 /**
 * All requirements for user having logged in

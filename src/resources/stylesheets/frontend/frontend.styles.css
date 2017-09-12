@@ -34,6 +34,19 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
+.header-link {
+    font-family: "Raleway","Helvetica",sans-serif !important;
+    position: relative;
+    top: 3.5rem;
+    font-size: .875rem;
+    font-weight: 700;
+    letter-spacing: .125rem;
+    padding: 1.375rem 0 0;
+    text-decoration: none;
+    text-transform: uppercase;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
 .footer {
     height: 10.5rem;
     background-image: url('../images/talk-bubble-color.png');

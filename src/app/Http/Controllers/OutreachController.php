@@ -42,6 +42,7 @@ class OutreachController extends Controller
      */
     public function store(Request $request)
     {
+        die($request->input('engagement_mix'));
         $user = Auth::user();
         $plan = $user->plan;
         $plan->engagement_mix = $request->input('engagement_mix');

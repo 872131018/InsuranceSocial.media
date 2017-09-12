@@ -1,6 +1,6 @@
 import Corporate from './vue/corporate/Corporate';
-import Plans from './vue/plans/Plans';
-import Payment from './vue/payment/Payment';
+import Plans from './vue/plans/Index';
+import Payment from './vue/payment/Index';
 
 export default [
     {

@@ -59,6 +59,6 @@ class LoginController extends Controller
      */
     protected function authenticated(Request $request, $user)
     {
-        return redirect('/home');
+        return redirect('/user/dashboard');
     }
 }

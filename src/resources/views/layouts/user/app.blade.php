@@ -9,7 +9,7 @@
     <meta name="api-token" content="{{ $api_token }}">
     <link href="//fonts.googleapis.com/css?family=Lato" type="text/css" rel="stylesheet">
     <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css" rel="stylesheet">
-    <link href="{{ url('stylesheets/dashboard.css') }}" type="text/css" rel="stylesheet">
+    <link href="{{ url('stylesheets/user.css') }}" type="text/css" rel="stylesheet">
     <style>
         *:not('fa') {
             font-family:Roboto !important;
@@ -25,6 +25,6 @@
         <App></App>
     </div>
     <!-- Scripts -->
-    <script type="text/javascript" src="{{ url('javascripts/dashboard.index.js') }}"></script>
+    <script type="text/javascript" src="{{ url('javascripts/user.index.js') }}"></script>
 </body>
 </html>

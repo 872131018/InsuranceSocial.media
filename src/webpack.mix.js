@@ -63,13 +63,13 @@ mix.combine([
 ], 'public/stylesheets/setup.css');
 
 /**
-* Dashboard Styles
+* User Styles
 */
 mix.combine([
     'node_modules/w3-css/w3.css',
     'node_modules/chartist/dist/chartist.min.css',
     'resources/stylesheets/frontend/frontend.styles.css'
-], 'public/stylesheets/dashboard.css');
+], 'public/stylesheets/user.css');
 
 /**
 * Login SPA
@@ -97,6 +97,6 @@ mix.js('resources/javascripts/frontend/social/index.js', 'public/javascripts/soc
 mix.js('resources/javascripts/frontend/setup/index.js', 'public/javascripts/setup.index.js');
 
 /**
-* Dashboard SPA
+* User SPA
 */
-mix.js('resources/javascripts/frontend/dashboard/index.js', 'public/javascripts/dashboard.index.js');
+mix.js('resources/javascripts/frontend/user/index.js', 'public/javascripts/user.index.js');

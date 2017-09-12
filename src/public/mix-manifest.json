@@ -2,7 +2,7 @@
     "/javascripts/checkout.index.js": "/javascripts/checkout.index.js",
     "/javascripts/setup.index.js": "/javascripts/setup.index.js",
     "/javascripts/social.index.js": "/javascripts/social.index.js",
-    "/javascripts/dashboard.index.js": "/javascripts/dashboard.index.js",
+    "/javascripts/user.index.js": "/javascripts/user.index.js",
     "/javascripts/register.index.js": "/javascripts/register.index.js",
     "/javascripts/login.index.js": "/javascripts/login.index.js",
     "/stylesheets/login.css": "/stylesheets/login.css",
@@ -10,5 +10,5 @@
     "/stylesheets/checkout.css": "/stylesheets/checkout.css",
     "/stylesheets/social.css": "/stylesheets/social.css",
     "/stylesheets/setup.css": "/stylesheets/setup.css",
-    "/stylesheets/dashboard.css": "/stylesheets/dashboard.css"
+    "/stylesheets/user.css": "/stylesheets/user.css"
 }

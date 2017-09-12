@@ -53,6 +53,9 @@ class CoverageController extends Controller
         $user = Auth::user();
 
         $selected = [];
+        foreach($user->carriers as $carrier) {
+            $carrier->delete();
+        }
         foreach ($request->input('selected_carriers') as $carrier) {
             $selectedCarrier = new SelectedCarrier();
             $selectedCarrier->email = $user->email;
@@ -63,6 +66,9 @@ class CoverageController extends Controller
         $user->carriers()->saveMany($selected);
 
         $selected = [];
+        foreach($user->commercialCoverages as $coverage) {
+            $coverage->delete();
+        }
         foreach ($request->input('selected_commercial_coverages') as $coverage) {
             $selectedCoverage = new SelectedCommercialCoverage();
             $selectedCoverage->email = $user->email;
@@ -88,6 +94,9 @@ class CoverageController extends Controller
         }
 
         $selected = [];
+        foreach($user->personalCoverages as $coverage) {
+            $coverage->delete();
+        }
         foreach ($request->input('selected_personal_coverages') as $coverage) {
             $selectedCoverage = new SelectedPersonalCoverage();
             $selectedCoverage->email = $user->email;
@@ -98,6 +107,9 @@ class CoverageController extends Controller
         $user->personalCoverages()->saveMany($selected);
 
         $selected = [];
+        foreach($user->benefitCoverages as $coverage) {
+            $coverage->delete();
+        }
         foreach ($request->input('selected_benefit_coverages') as $coverage) {
             $selectedCoverage = new SelectedBenefitCoverage();
             $selectedCoverage->email = $user->email;
@@ -108,6 +120,9 @@ class CoverageController extends Controller
         $user->benefitCoverages()->saveMany($selected);
 
         $selected = [];
+        foreach($user->currentIndustries as $industry) {
+            $industry->delete();
+        }
         foreach ($request->input('selected_current_industries') as $industry) {
             $selectedIndustry = new SelectedCurrentIndustry();
             $selectedIndustry->email = $user->email;
@@ -118,6 +133,9 @@ class CoverageController extends Controller
         $user->currentIndustries()->saveMany($selected);
 
         $selected = [];
+        foreach($user->targetIndustries as $industry) {
+            $industry->delete();
+        }
         foreach ($request->input('selected_target_industries') as $industry) {
             $selectedIndustry = new SelectedTargetIndustry();
             $selectedIndustry->email = $user->email;

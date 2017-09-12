@@ -1,4 +1,4 @@
-import Register from './vue/register/Register';
+import Register from './vue/register/Index';
 
 export default [
     {
