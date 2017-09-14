@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
 */
 
 /**
- * Deliver the registration SPA and handle posts
+ * Deliver the checkout SPA and handle posts
  *
  * @return \Illuminate\Http\Response
  */

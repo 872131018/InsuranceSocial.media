@@ -43,7 +43,7 @@
                 <Dropdown
                     v-bind:label="'Special Post Topics (Select all that apply)'"
                     v-bind:options="special_topics"
-                    v-on:setOption="(topic) => properties.selected_special_topics.push(topic)">
+                    v-on:setOption="pushSpecialTopic($event)">
                 </Dropdown>
             </div>
             <div class="w3-panel"
@@ -62,7 +62,7 @@
                 <Dropdown
                     v-bind:label="'Supported Causes (Select up to 5)'"
                     v-bind:options="causes"
-                    v-on:setOption="(cause) => properties.selected_causes.push(cause)">
+                    v-on:setOption="pushSelectedCause($event)">
                 </Dropdown>
             </div>
             <div class="w3-panel"
@@ -81,7 +81,7 @@
                 <Dropdown
                     v-bind:label="day_label"
                     v-bind:options="days"
-                    v-on:setOption="(day) => properties.posting_days.push(day)">
+                    v-on:setOption="pushPostingDay($event)">
                 </Dropdown>
             </div>
             <div class="w3-panel">
@@ -140,6 +140,30 @@
             }
         },
         methods: {
+            pushSpecialTopic(topic) {
+                for(let selected_topic of this.properties.selected_special_topics) {
+                    if(selected_topic.code == topic.code) {
+                        return
+                    }
+                }
+                this.properties.selected_special_topics.push(topic);
+            },
+            pushSelectedCause(cause) {
+                for(let selected_cause of this.properties.selected_causes) {
+                    if(selected_cause.code == cause.code) {
+                        return
+                    }
+                }
+                this.properties.selected_causes.push(cause);
+            },
+            pushPostingDay(day) {
+                for(let selected_day of this.properties.posting_days) {
+                    if(selected_day.code == day.code) {
+                        return
+                    }
+                }
+                this.properties.posting_days.push(day);
+            },
             getLabel() {
                 if(store.getState().PlanStore.plan_code == 1) {
                     return 'Days to Post (Select 3)';

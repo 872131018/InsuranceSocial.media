@@ -9,8 +9,9 @@
                     v-if="personal_coverage == 'Y'">
                     <p>You haven't selected any personal coverages, would you like to use our core coverages?</p>
                     <p>The core coverages are as follows:</p>
+                    <p>Personal Auto Insurance</p>
                     <p>Condo Insurance</p>
-                    <p>Homeowners Insurance</p>
+                    <p>Homeowner's Insurance</p>
                     <p>Renters Insurance</p>
                 </div>
                 <div class="w3-content w3-center"

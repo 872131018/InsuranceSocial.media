@@ -29,7 +29,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/setup/welcome';
+    protected $redirectTo = '/plans';
 
     /**
      * Create a new controller instance.
@@ -85,17 +85,5 @@ class RegisterController extends Controller
                 'api_token' => str_random(60),
                 'coupon_code' => $data['discount']
             ]);
-    }
-
-    /**
-     * The user has been registered.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  mixed  $user
-     * @return mixed
-     */
-    protected function registered(Request $request, $user)
-    {
-        return response()->json($user);
     }
 }

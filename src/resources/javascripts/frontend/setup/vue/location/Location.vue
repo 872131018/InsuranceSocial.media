@@ -59,7 +59,7 @@
                         <Dropdown
                             v-bind:label="'Marketing Regions (Select up to 5)'"
                             v-bind:options="regions"
-                            v-on:setOption="(region) => properties.selected_regions.push(region)">
+                            v-on:setOption="pushRegion($event)">
                         </Dropdown>
                     </div>
                 </div>
@@ -165,6 +165,14 @@
                     }
                 }
                 this.counties = filtered_counties;
+            },
+            pushRegion(region) {
+                for(let selected_region of this.properties.selected_regions) {
+                    if(selected_region.code == region.code) {
+                        return
+                    }
+                }
+                this.properties.selected_regions.push(region);
             },
             previous() {
                 store.dispatch({ type: 'SET_AGENCY', data: this.properties });

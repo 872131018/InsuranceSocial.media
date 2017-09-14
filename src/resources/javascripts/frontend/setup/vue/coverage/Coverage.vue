@@ -28,7 +28,7 @@
                     <Dropdown
                         v-bind:label="'Carriers (Select up to 5)'"
                         v-bind:options="carriers"
-                        v-on:setOption="(carriers) => properties.selected_carriers.push(carriers)">
+                        v-on:setOption="pushCarrier($event)">
                     </Dropdown>
                 </div>
                 <Personal
@@ -51,7 +51,7 @@
                     <Dropdown
                         v-bind:label="'Personal Coverages (Select up to 5)'"
                         v-bind:options="personal_coverage_lines"
-                        v-on:setOption="(coverage) => properties.selected_personal_coverages.push(coverage)">
+                        v-on:setOption="pushPersonalCoverage($event)">
                     </Dropdown>
                 </div>
                 <Commercial
@@ -74,7 +74,7 @@
                     <Dropdown
                         v-bind:label="'Commercial Coverages (Select up to 5)'"
                         v-bind:options="commercial_coverage_lines"
-                        v-on:setOption="(coverage) => properties.selected_commercial_coverages.push(coverage)">
+                        v-on:setOption="pushCommercialCoverage($event)">
                     </Dropdown>
                 </div>
                 <Benefit
@@ -97,7 +97,7 @@
                     <Dropdown
                         v-bind:label="'Benefits (Select up to 5)'"
                         v-bind:options="benefit_coverage_lines"
-                        v-on:setOption="(coverage) => properties.selected_benefit_coverages.push(coverage)">
+                        v-on:setOption="pushBenefitCoverage($event)">
                     </Dropdown>
                 </div>
                 <Crop
@@ -120,7 +120,7 @@
                     <Dropdown
                         v-bind:label="'Current industries for marketing (Select up to 5)'"
                         v-bind:options="industry_currents"
-                        v-on:setOption="(industry) => properties.selected_current_industries.push(industry)">
+                        v-on:setOption="pushCurrentIndustry($event)">
                     </Dropdown>
                 </div>
                 <div class="w3-section"
@@ -140,7 +140,7 @@
                     <Dropdown
                         v-bind:label="'Target industries for future marketing (Select up to 5)'"
                         v-bind:options="industry_targets"
-                        v-on:setOption="(industry) => properties.selected_target_industries.push(industry)">
+                        v-on:setOption="pushTargetIndustry($event)">
                     </Dropdown>
                 </div>
                 <div class="w3-section">
@@ -220,6 +220,54 @@
             }
         },
         methods: {
+            pushCarrier(carrier) {
+                for(let selected_carrier of this.properties.selected_carriers) {
+                    if(selected_carrier.code == carrier.code) {
+                        return
+                    }
+                }
+                this.properties.selected_carriers.push(carrier);
+            },
+            pushPersonalCoverage(coverage) {
+                for(let selected_coverage of this.properties.selected_personal_coverages) {
+                    if(selected_coverage.code == coverage.code) {
+                        return
+                    }
+                }
+                this.properties.selected_personal_coverages.push(coverage);
+            },
+            pushCommercialCoverage(coverage) {
+                for(let selected_coverage of this.properties.selected_commercial_coverages) {
+                    if(selected_coverage.code == coverage.code) {
+                        return
+                    }
+                }
+                this.properties.selected_commercial_coverages.push(coverage);
+            },
+            pushBenefitCoverage(coverage) {
+                for(let selected_coverage of this.properties.selected_benefit_coverages) {
+                    if(selected_coverage.code == coverage.code) {
+                        return
+                    }
+                }
+                this.properties.selected_benefit_coverages.push(coverage);
+            },
+            pushCurrentIndustry(industry) {
+                for(let selected_industry of this.properties.selected_current_industries) {
+                    if(selected_industry.code == industry.code) {
+                        return
+                    }
+                }
+                this.properties.selected_current_industries.push(industry);
+            },
+            pushTargetIndustry(industry) {
+                for(let selected_industry of this.properties.selected_target_industries) {
+                    if(selected_industry.code == industry.code) {
+                        return
+                    }
+                }
+                this.properties.selected_target_industries.push(industry);
+            },
             setPersonal(option) {
                 if(option == 'N') {
                     this.properties.selected_personal_coverages = [];
@@ -261,7 +309,7 @@
                     this.properties.selected_personal_coverages.push({
                         "id":10,
                         "code":"11029",
-                        "desc":"Homeowners Insurance"
+                        "desc":"Homeowner's Insurance"
                     });
                 }
                 if(this.commercial_coverage) {

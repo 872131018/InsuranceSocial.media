@@ -1,0 +1,384 @@
+{
+    "user": {
+        "id": 18,
+        "name": "asdfasdfasdf",
+        "email": "12341234@12341.com",
+        "status": "N",
+        "role": "A",
+        "phone": "123-123-1234",
+        "cell_phone": null,
+        "title_code": "OM",
+        "effective_date": "2017-10-01",
+        "expiration_date": null,
+        "coupon_code": "none",
+        "termination_reason": null,
+        "termination_comment": null,
+        "customer_profile_id": "1813044586",
+        "customer_payment_profile_id": "1807675970",
+        "notify_email": 1,
+        "notify_text": null,
+        "notify_frequency": "D",
+        "commercial_mix": "10",
+        "personal_mix": "90",
+        "api_token": "pK2qthEIxjmaKjmuGTJ4Y7hFzVYFiE5PHir2nO2xEpUB1DQ1gsO0MwTCaWpA",
+        "created_at": "2017-09-14 19:23:29",
+        "updated_at": "2017-09-14 21:26:45",
+        "deleted_at": null,
+        "plan": {
+            "id": 1,
+            "user_id": "18",
+            "email": "12341234@12341.com",
+            "plan_code": "2",
+            "engagement_mix": null,
+            "engagement_tone": null,
+            "monday": null,
+            "tuesday": null,
+            "wednesday": null,
+            "thursday": null,
+            "friday": null,
+            "saturday": null,
+            "sunday": null,
+            "time_code": null,
+            "created_at": "2017-09-14 19:25:08",
+            "updated_at": "2017-09-14 19:25:08",
+            "deleted_at": null
+        },
+        "facebook": null,
+        "template": null,
+        "twitter": null,
+        "agency": {
+            "id": 1,
+            "user_id": "18",
+            "email": "12341234@12341.com",
+            "principal_name": "asdfasdf",
+            "principal_email": "asdf@asdf.com",
+            "phone": null,
+            "name": "asdfasdf",
+            "website": "asdfasdf.com",
+            "size": "2-5",
+            "established": "2333",
+            "multigenerational": "2",
+            "address_1": "123 asdfasdf",
+            "address_2": "asdf",
+            "city": "ASDFASDF",
+            "state": "11168",
+            "zip": "12345",
+            "latitude": null,
+            "longitude": null,
+            "created_at": "2017-09-14 21:03:18",
+            "updated_at": "2017-09-14 21:03:38",
+            "deleted_at": null
+        },
+        "regions": [
+            {
+                "id": 1,
+                "user_id": "18",
+                "email": "12341234@12341.com",
+                "state_code": null,
+                "code": "11054",
+                "desc": "Middle Atlantic",
+                "created_at": "2017-09-14 21:03:38",
+                "updated_at": "2017-09-14 21:03:38",
+                "deleted_at": null
+            },
+            {
+                "id": 2,
+                "user_id": "18",
+                "email": "12341234@12341.com",
+                "state_code": null,
+                "code": "11054",
+                "desc": "Middle Atlantic",
+                "created_at": "2017-09-14 21:11:40",
+                "updated_at": "2017-09-14 21:11:40",
+                "deleted_at": null
+            },
+            {
+                "id": 3,
+                "user_id": "18",
+                "email": "12341234@12341.com",
+                "state_code": null,
+                "code": "11055",
+                "desc": "Midwest",
+                "created_at": "2017-09-14 21:11:40",
+                "updated_at": "2017-09-14 21:11:40",
+                "deleted_at": null
+            },
+            {
+                "id": 4,
+                "user_id": "18",
+                "email": "12341234@12341.com",
+                "state_code": null,
+                "code": "11056",
+                "desc": "New England",
+                "created_at": "2017-09-14 21:11:40",
+                "updated_at": "2017-09-14 21:11:40",
+                "deleted_at": null
+            }
+        ],
+        "states": [],
+        "carriers": [
+            {
+                "id": 1,
+                "user_id": "18",
+                "email": "12341234@12341.com",
+                "code": "C",
+                "desc": "Carrier",
+                "created_at": "2017-09-14 21:26:45",
+                "updated_at": "2017-09-14 21:26:45",
+                "deleted_at": null
+            }
+        ],
+        "commercial_coverages": [
+            {
+                "id": 1,
+                "user_id": "18",
+                "email": "12341234@12341.com",
+                "code": "11004",
+                "desc": "Auto Insurance - Commercial",
+                "created_at": "2017-09-14 21:26:45",
+                "updated_at": "2017-09-14 21:26:45",
+                "deleted_at": null
+            }
+        ],
+        "crop_coverages": [
+            {
+                "id": 1,
+                "user_id": "18",
+                "email": "12341234@12341.com",
+                "code": "NO",
+                "desc": "I do not write Crop coverages",
+                "created_at": "2017-09-14 21:26:45",
+                "updated_at": "2017-09-14 21:26:45",
+                "deleted_at": null
+            }
+        ],
+        "personal_coverages": [
+            {
+                "id": 1,
+                "user_id": "18",
+                "email": "12341234@12341.com",
+                "code": "11005",
+                "desc": "Auto Insurance - Personal",
+                "created_at": "2017-09-14 21:26:45",
+                "updated_at": "2017-09-14 21:26:45",
+                "deleted_at": null
+            }
+        ],
+        "benefit_coverages": [
+            {
+                "id": 1,
+                "user_id": "18",
+                "email": "12341234@12341.com",
+                "code": "11003",
+                "desc": "Annuities",
+                "created_at": "2017-09-14 21:26:45",
+                "updated_at": "2017-09-14 21:26:45",
+                "deleted_at": null
+            }
+        ],
+        "current_industries": [
+            {
+                "id": 1,
+                "user_id": "18",
+                "email": "12341234@12341.com",
+                "code": "11228",
+                "desc": "Agribusiness",
+                "created_at": "2017-09-14 21:26:45",
+                "updated_at": "2017-09-14 21:26:45",
+                "deleted_at": null
+            }
+        ],
+        "target_industries": [
+            {
+                "id": 1,
+                "user_id": "18",
+                "email": "12341234@12341.com",
+                "code": "11229",
+                "desc": "Barber and beauty",
+                "created_at": "2017-09-14 21:26:45",
+                "updated_at": "2017-09-14 21:26:45",
+                "deleted_at": null
+            }
+        ],
+        "special_topics": [],
+        "causes": []
+    },
+    "plan": {
+        "id": 1,
+        "user_id": "18",
+        "email": "12341234@12341.com",
+        "plan_code": "2",
+        "engagement_mix": null,
+        "engagement_tone": null,
+        "monday": null,
+        "tuesday": null,
+        "wednesday": null,
+        "thursday": null,
+        "friday": null,
+        "saturday": null,
+        "sunday": null,
+        "time_code": null,
+        "created_at": "2017-09-14 19:25:08",
+        "updated_at": "2017-09-14 19:25:08",
+        "deleted_at": null
+    },
+    "facebook_account": null,
+    "template": null,
+    "twitter": null,
+    "agency": {
+        "id": 1,
+        "user_id": "18",
+        "email": "12341234@12341.com",
+        "principal_name": "asdfasdf",
+        "principal_email": "asdf@asdf.com",
+        "phone": null,
+        "name": "asdfasdf",
+        "website": "asdfasdf.com",
+        "size": "2-5",
+        "established": "2333",
+        "multigenerational": "2",
+        "address_1": "123 asdfasdf",
+        "address_2": "asdf",
+        "city": "ASDFASDF",
+        "state": "11168",
+        "zip": "12345",
+        "latitude": null,
+        "longitude": null,
+        "created_at": "2017-09-14 21:03:18",
+        "updated_at": "2017-09-14 21:03:38",
+        "deleted_at": null
+    },
+    "regions": [
+        {
+            "id": 1,
+            "user_id": "18",
+            "email": "12341234@12341.com",
+            "state_code": null,
+            "code": "11054",
+            "desc": "Middle Atlantic",
+            "created_at": "2017-09-14 21:03:38",
+            "updated_at": "2017-09-14 21:03:38",
+            "deleted_at": null
+        },
+        {
+            "id": 2,
+            "user_id": "18",
+            "email": "12341234@12341.com",
+            "state_code": null,
+            "code": "11054",
+            "desc": "Middle Atlantic",
+            "created_at": "2017-09-14 21:11:40",
+            "updated_at": "2017-09-14 21:11:40",
+            "deleted_at": null
+        },
+        {
+            "id": 3,
+            "user_id": "18",
+            "email": "12341234@12341.com",
+            "state_code": null,
+            "code": "11055",
+            "desc": "Midwest",
+            "created_at": "2017-09-14 21:11:40",
+            "updated_at": "2017-09-14 21:11:40",
+            "deleted_at": null
+        },
+        {
+            "id": 4,
+            "user_id": "18",
+            "email": "12341234@12341.com",
+            "state_code": null,
+            "code": "11056",
+            "desc": "New England",
+            "created_at": "2017-09-14 21:11:40",
+            "updated_at": "2017-09-14 21:11:40",
+            "deleted_at": null
+        }
+    ],
+    "states": [],
+    "counties": [
+        {
+            "id": 1,
+            "user_id": "18",
+            "email": "12341234@12341.com",
+            "code": "C",
+            "desc": "Carrier",
+            "created_at": "2017-09-14 21:26:45",
+            "updated_at": "2017-09-14 21:26:45",
+            "deleted_at": null
+        }
+    ],
+    "commercialCoverages": [
+        {
+            "id": 1,
+            "user_id": "18",
+            "email": "12341234@12341.com",
+            "code": "11004",
+            "desc": "Auto Insurance - Commercial",
+            "created_at": "2017-09-14 21:26:45",
+            "updated_at": "2017-09-14 21:26:45",
+            "deleted_at": null
+        }
+    ],
+    "cropCoverages": [
+        {
+            "id": 1,
+            "user_id": "18",
+            "email": "12341234@12341.com",
+            "code": "NO",
+            "desc": "I do not write Crop coverages",
+            "created_at": "2017-09-14 21:26:45",
+            "updated_at": "2017-09-14 21:26:45",
+            "deleted_at": null
+        }
+    ],
+    "personalCoverages": [
+        {
+            "id": 1,
+            "user_id": "18",
+            "email": "12341234@12341.com",
+            "code": "11005",
+            "desc": "Auto Insurance - Personal",
+            "created_at": "2017-09-14 21:26:45",
+            "updated_at": "2017-09-14 21:26:45",
+            "deleted_at": null
+        }
+    ],
+    "benefitCoverages": [
+        {
+            "id": 1,
+            "user_id": "18",
+            "email": "12341234@12341.com",
+            "code": "11003",
+            "desc": "Annuities",
+            "created_at": "2017-09-14 21:26:45",
+            "updated_at": "2017-09-14 21:26:45",
+            "deleted_at": null
+        }
+    ],
+    "currentIndustries": [
+        {
+            "id": 1,
+            "user_id": "18",
+            "email": "12341234@12341.com",
+            "code": "11228",
+            "desc": "Agribusiness",
+            "created_at": "2017-09-14 21:26:45",
+            "updated_at": "2017-09-14 21:26:45",
+            "deleted_at": null
+        }
+    ],
+    "targetIndustries": [
+        {
+            "id": 1,
+            "user_id": "18",
+            "email": "12341234@12341.com",
+            "code": "11229",
+            "desc": "Barber and beauty",
+            "created_at": "2017-09-14 21:26:45",
+            "updated_at": "2017-09-14 21:26:45",
+            "deleted_at": null
+        }
+    ],
+    "specialTopics": [],
+    "causes": []
+}
