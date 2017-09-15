@@ -4,7 +4,8 @@ const initialState = {
     email: '',
     api_token: '',
     coupon_code: '',
-    plan: {}
+    plan: {},
+    status: ''
 };
 
 module.exports = function(user = initialState, action) {
@@ -17,6 +18,9 @@ module.exports = function(user = initialState, action) {
                 api_token: action.data.api_token,
                 coupon_code: action.data.coupon_code
             };
+            if(action.data.status) {
+                user.status = action.data.status;
+            }
             break;
         case 'SET_PLAN':
             user.plan = action.data;

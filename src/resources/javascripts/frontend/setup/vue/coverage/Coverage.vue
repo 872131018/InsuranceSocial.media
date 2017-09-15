@@ -311,6 +311,11 @@
                         "code":"11029",
                         "desc":"Homeowner's Insurance"
                     });
+                    this.properties.selected_personal_coverages.push({
+                        "id":16,
+                        "code":"11043",
+                        "desc":"Renters Insurance"
+                    });
                 }
                 if(this.commercial_coverage) {
                     this.properties.selected_commercial_coverages.push({

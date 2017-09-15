@@ -1,13 +1,15 @@
 <template>
     <div class="w3-container w3-card-2 form">
         <h3>You have selected the following plan.</h3>
-        <div class="w3-panel">
+        <div class="w3-panel"
+            v-if="!expired">
             <Plan
                 v-if="plan.name"
                 v-bind:plan="plan">
             </Plan>
         </div>
-        <div class="w3-panel">
+        <div class="w3-panel"
+            v-if="!expired">
             <h3>Payment Method</h3>
             <h5>Please enter a form of payment to complete registration.</h5>
             <p v-if="plan.tier == 1">
@@ -22,10 +24,12 @@
                 <h3>Total Charges: <b>${{ properties.prorate }}</b></h3>
             </div>
         </div>
-        <div class="w3-panel">
+        <div class="w3-panel"
+            v-if="!expired">
             <Card v-on:setCard="(card) => properties.card = card"></Card>
         </div>
-        <div class="w3-panel">
+        <div class="w3-panel"
+            v-if="!expired">
             <Expiration
                 v-on:setMonth="(month) => properties.month = month.value"
                 v-on:setYear="(year) => properties.year = year"
@@ -37,14 +41,16 @@
                 </i>
             </div>
         </div>
-        <div class="w3-panel">
+        <div class="w3-panel"
+            v-if="!expired">
             <Name v-on:setName="(name) => properties.name = name"></Name>
         </div>
         <div class="w3-panel"
             v-if="errors.length">
             <Errors v-bind:errors="errors"></Errors>
         </div>
-        <div class="w3-panel">
+        <div class="w3-panel"
+            v-if="!expired">
             <button class="w3-button w3-text-white primary"
                 v-on:click="sendPaymentDataToAnet()">Submit
             </button>
@@ -57,6 +63,10 @@
         <div class="AuthorizeNetSeal" style="display:none">
             <a href="http://www.authorize.net/" id="AuthorizeNetText" target="_blank">Electronic Check Processing</a>
         </div>
+        <Expired
+            v-if="expired"
+            v-on:setModal="">
+        </Expired>
     </div>
 </template>
 
@@ -68,7 +78,8 @@
     import CCV from './inputs/CCV';
     import Name from './inputs/Name';
     import Errors from './Errors';
-    import Modal from './Modal/Modal';
+    import Modal from './modal/Modal';
+    import Expired from './expired/Expired';
 
     export default {
         data() {
@@ -86,7 +97,8 @@
                 },
                 discount: '',
                 errors: [],
-                response: null
+                response: null,
+                expired: false
             }
         },
         mounted() {
@@ -94,9 +106,12 @@
                 this.properties.apiLoginID = response.data.apiLoginID;
                 this.properties.clientKey = response.data.clientKey;
             });
-
-            this.plan = store.getState().UserStore.plan;
-
+            if(store.getState().UserStore.status == 'N') {
+                this.expired = true;
+            }
+            if(store.getState().UserStore.plan) {
+                this.plan = store.getState().UserStore.plan;
+            }
             if(this.plan.tier > 1) {
                 const today = new Moment();
                 if(today.format('MM/DD/YYYY') == new Moment().startOf('month').format('MM/DD/YYYY')) {
@@ -164,7 +179,8 @@
             CCV,
             Name,
             Errors,
-            Modal
+            Modal,
+            Expired
         }
     }
 </script>

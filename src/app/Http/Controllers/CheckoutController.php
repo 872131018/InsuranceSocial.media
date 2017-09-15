@@ -13,12 +13,7 @@ class CheckoutController extends Controller
      */
     public function index()
     {
-        $user = Auth::user();
-        if($user->role == 'A') {
-            return redirect('/profile');
-        } else {
-            return view('layouts.checkout.app')->with('api_token', Auth::user()->api_token);
-        }
+        return view('layouts.checkout.app')->with('api_token', Auth::user()->api_token);
     }
 
     /**
