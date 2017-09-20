@@ -1,12 +1,18 @@
 <template>
     <div>
         <div class="w3-container w3-card-2 dashboard">
-            <div class="w3-panel w3-center">
-                <h1>Overall Performance</h1>
-                    <FacebookPerformance></FacebookPerformance>
-                    <TwitterPerformance></TwitterPerformance/>
+            <div class="w3-half w3-padding">
+                <div class="w3-padding primary">
+                    <b>Overall Performance</b>
+                    <i class="fa fa-cog w3-right" style="font-size:24px"
+                        v-on:click="update()"></i>
+                </div>
+                <FacebookPerformance
+                    v-bind:facebookPerformance="facebookPerformance">
+                </FacebookPerformance>
+                <TwitterPerformance></TwitterPerformance/>
             </div>
-            <div class="w3-panel w3-center">
+            <div class="w3-half w3-center">
                 <h1>Content Insights</h1>
                 <div class="w3-half">
                     <div class="pie-chart"></div>
@@ -42,7 +48,14 @@
     export default {
         data() {
             return {
-                //
+                facebookPerformance: {
+                    reach: '',
+                    clicks: '',
+                    likes: '',
+                    shares: '',
+                    comments: '',
+                    engagement: ''
+                }
             }
         },
         mounted() {
@@ -78,8 +91,12 @@
         },
         methods: {
             update() {
-                //this.$router.push({ name: 'Facebook' });
-                console.log("here")
+                this.loading++;
+                axios.get(`${ window.base_url }/api/dashboard/performance`).then(response => {
+                    this.facebookPerformance = response.data;
+                    console.log(response.data)
+                    this.loading--;
+                });
             }
         },
         components: {

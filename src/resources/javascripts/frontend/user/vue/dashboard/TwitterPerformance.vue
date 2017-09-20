@@ -1,5 +1,8 @@
 <template>
     <div>
+        <div class="w3-light-blue w3-text-white">
+            <i class="fa fa-twitter w3-padding"></i>
+        </div>
         <table class="w3-table-all w3-half">
             <tr>
                 <td>Followers</td>

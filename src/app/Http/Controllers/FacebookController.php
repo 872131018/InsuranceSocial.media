@@ -8,10 +8,6 @@ use Illuminate\Support\Facades\Auth;
 
 use Facebook\Facebook;
 
-use Facebook\FacebookRequest;
-
-use Facebook\GraphUser;
-
 use App\FacebookAccount;
 
 use App\FacebookTemplate;
@@ -19,8 +15,6 @@ use App\FacebookTemplate;
 use App\Services\PaymentService;
 
 use App\Payment;
-
-use net\authorize\api\controller as AnetController;
 
 use App\Mail\NoFacebook;
 
@@ -59,7 +53,7 @@ class FacebookController extends Controller
     public function index(Request $request)
     {
         $helper = $this->facebook->getRedirectLoginHelper();
-        $permissions = ['email', 'pages_show_list', 'manage_pages']; // optional
+        $permissions = ['email', 'pages_show_list', 'manage_pages', 'read_insights']; // optional
         $url = env('APP_URL');
         $loginUrl = $helper->getLoginUrl("{$url}/facebook/return", $permissions);
 

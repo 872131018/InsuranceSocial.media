@@ -104,6 +104,12 @@ class RouteServiceProvider extends ServiceProvider
             ->group(function ($router) {
                 require base_path('routes/user.api.php');
             });
+
+        Route::middleware(['web','auth:api'])
+            ->namespace($this->namespace)
+            ->group(function ($router) {
+                require base_path('routes/dashboard.api.php');
+            });
     }
 
     /**
