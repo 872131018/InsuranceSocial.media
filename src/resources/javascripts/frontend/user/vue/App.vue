@@ -29,6 +29,11 @@
                 this.loading--;
             });
             this.loading++;
+            axios.get(`${ window.base_url }/api/recent`).then(response => {
+                store.dispatch({ type: 'SET_RECENT', data: response.data });
+                this.loading--;
+            });
+            this.loading++;
             axios.get(`${ window.base_url }/api/agency`).then(response => {
                 store.dispatch({ type: 'SET_AGENCY', data: response.data });
                 this.loading--;

@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 199);
+/******/ 	return __webpack_require__(__webpack_require__.s = 200);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -872,7 +872,7 @@ module.exports = Cancel;
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(global) {/*!
- * Vue.js v2.4.2
+ * Vue.js v2.4.4
  * (c) 2014-2017 Evan You
  * Released under the MIT License.
  */
@@ -1037,12 +1037,9 @@ var capitalize = cached(function (str) {
 /**
  * Hyphenate a camelCase string.
  */
-var hyphenateRE = /([^-])([A-Z])/g;
+var hyphenateRE = /\B([A-Z])/g;
 var hyphenate = cached(function (str) {
-  return str
-    .replace(hyphenateRE, '$1-$2')
-    .replace(hyphenateRE, '$1-$2')
-    .toLowerCase()
+  return str.replace(hyphenateRE, '-$1').toLowerCase()
 });
 
 /**
@@ -1461,7 +1458,7 @@ var isAndroid = UA && UA.indexOf('android') > 0;
 var isIOS = UA && /iphone|ipad|ipod|ios/.test(UA);
 var isChrome = UA && /chrome\/\d+/.test(UA) && !isEdge;
 
-// Firefix has a "watch" function on Object.prototype...
+// Firefox has a "watch" function on Object.prototype...
 var nativeWatch = ({}).watch;
 
 var supportsPassive = false;
@@ -1543,13 +1540,13 @@ var nextTick = (function () {
       // "force" the microtask queue to be flushed by adding an empty timer.
       if (isIOS) { setTimeout(noop); }
     };
-  } else if (typeof MutationObserver !== 'undefined' && (
+  } else if (!isIE && typeof MutationObserver !== 'undefined' && (
     isNative(MutationObserver) ||
     // PhantomJS and iOS 7.x
     MutationObserver.toString() === '[object MutationObserverConstructor]'
   )) {
     // use MutationObserver where native Promise is not available,
-    // e.g. PhantomJS IE11, iOS7, Android 4.4
+    // e.g. PhantomJS, iOS7, Android 4.4
     var counter = 1;
     var observer = new MutationObserver(nextTickHandler);
     var textNode = document.createTextNode(String(counter));
@@ -1849,9 +1846,9 @@ function defineReactive$$1 (
         dep.depend();
         if (childOb) {
           childOb.dep.depend();
-        }
-        if (Array.isArray(value)) {
-          dependArray(value);
+          if (Array.isArray(value)) {
+            dependArray(value);
+          }
         }
       }
       return value
@@ -2028,7 +2025,7 @@ function mergeDataOrFn (
         : childVal;
       var defaultData = typeof parentVal === 'function'
         ? parentVal.call(vm)
-        : undefined;
+        : parentVal;
       if (instanceData) {
         return mergeData(instanceData, defaultData)
       } else {
@@ -2431,7 +2428,12 @@ function assertType (value, type) {
   var valid;
   var expectedType = getType(type);
   if (simpleCheckRE.test(expectedType)) {
-    valid = typeof value === expectedType.toLowerCase();
+    var t = typeof value;
+    valid = t === expectedType.toLowerCase();
+    // for primitive wrapper objects
+    if (!valid && t === 'object') {
+      valid = value instanceof type;
+    }
   } else if (expectedType === 'Object') {
     valid = isPlainObject(value);
   } else if (expectedType === 'Array') {
@@ -2629,7 +2631,7 @@ function createTextVNode (val) {
 // used for static nodes and slot nodes because they may be reused across
 // multiple renders, cloning them avoids errors when DOM manipulations rely
 // on their elm reference.
-function cloneVNode (vnode) {
+function cloneVNode (vnode, deep) {
   var cloned = new VNode(
     vnode.tag,
     vnode.data,
@@ -2645,14 +2647,17 @@ function cloneVNode (vnode) {
   cloned.key = vnode.key;
   cloned.isComment = vnode.isComment;
   cloned.isCloned = true;
+  if (deep && vnode.children) {
+    cloned.children = cloneVNodes(vnode.children);
+  }
   return cloned
 }
 
-function cloneVNodes (vnodes) {
+function cloneVNodes (vnodes, deep) {
   var len = vnodes.length;
   var res = new Array(len);
   for (var i = 0; i < len; i++) {
-    res[i] = cloneVNode(vnodes[i]);
+    res[i] = cloneVNode(vnodes[i], deep);
   }
   return res
 }
@@ -2666,8 +2671,10 @@ var normalizeEvent = cached(function (name) {
   name = once$$1 ? name.slice(1) : name;
   var capture = name.charAt(0) === '!';
   name = capture ? name.slice(1) : name;
+  var plain = !(passive || once$$1 || capture);
   return {
     name: name,
+    plain: plain,
     once: once$$1,
     capture: capture,
     passive: passive
@@ -2693,6 +2700,11 @@ function createFnInvoker (fns) {
   return invoker
 }
 
+// #6552
+function prioritizePlainEvents (a, b) {
+  return a.plain ? -1 : b.plain ? 1 : 0
+}
+
 function updateListeners (
   on,
   oldOn,
@@ -2701,10 +2713,13 @@ function updateListeners (
   vm
 ) {
   var name, cur, old, event;
+  var toAdd = [];
+  var hasModifier = false;
   for (name in on) {
     cur = on[name];
     old = oldOn[name];
     event = normalizeEvent(name);
+    if (!event.plain) { hasModifier = true; }
     if (isUndef(cur)) {
       "development" !== 'production' && warn(
         "Invalid handler for event \"" + (event.name) + "\": got " + String(cur),
@@ -2714,10 +2729,18 @@ function updateListeners (
       if (isUndef(cur.fns)) {
         cur = on[name] = createFnInvoker(cur);
       }
-      add(event.name, cur, event.once, event.capture, event.passive);
+      event.handler = cur;
+      toAdd.push(event);
     } else if (cur !== old) {
       old.fns = cur;
       on[name] = old;
+    }
+  }
+  if (toAdd.length) {
+    if (hasModifier) { toAdd.sort(prioritizePlainEvents); }
+    for (var i = 0; i < toAdd.length; i++) {
+      var event$1 = toAdd[i];
+      add(event$1.name, event$1.handler, event$1.once, event$1.capture, event$1.passive);
     }
   }
   for (name in oldOn) {
@@ -3034,11 +3057,17 @@ function resolveAsyncComponent (
 
 /*  */
 
+function isAsyncPlaceholder (node) {
+  return node.isComment && node.asyncFactory
+}
+
+/*  */
+
 function getFirstComponentChild (children) {
   if (Array.isArray(children)) {
     for (var i = 0; i < children.length; i++) {
       var c = children[i];
-      if (isDef(c) && isDef(c.componentOptions)) {
+      if (isDef(c) && (isDef(c.componentOptions) || isAsyncPlaceholder(c))) {
         return c
       }
     }
@@ -3125,8 +3154,8 @@ function eventsMixin (Vue) {
     }
     // array of events
     if (Array.isArray(event)) {
-      for (var i$1 = 0, l = event.length; i$1 < l; i$1++) {
-        this$1.$off(event[i$1], fn);
+      for (var i = 0, l = event.length; i < l; i++) {
+        this$1.$off(event[i], fn);
       }
       return vm
     }
@@ -3139,14 +3168,16 @@ function eventsMixin (Vue) {
       vm._events[event] = null;
       return vm
     }
-    // specific handler
-    var cb;
-    var i = cbs.length;
-    while (i--) {
-      cb = cbs[i];
-      if (cb === fn || cb.fn === fn) {
-        cbs.splice(i, 1);
-        break
+    if (fn) {
+      // specific handler
+      var cb;
+      var i$1 = cbs.length;
+      while (i$1--) {
+        cb = cbs[i$1];
+        if (cb === fn || cb.fn === fn) {
+          cbs.splice(i$1, 1);
+          break
+        }
       }
     }
     return vm
@@ -3198,10 +3229,15 @@ function resolveSlots (
   var defaultSlot = [];
   for (var i = 0, l = children.length; i < l; i++) {
     var child = children[i];
+    var data = child.data;
+    // remove slot attribute if the node is resolved as a Vue slot node
+    if (data && data.attrs && data.attrs.slot) {
+      delete data.attrs.slot;
+    }
     // named slots should only be respected if the vnode was rendered in the
     // same context.
     if ((child.context === context || child.functionalContext === context) &&
-      child.data && child.data.slot != null
+      data && data.slot != null
     ) {
       var name = child.data.slot;
       var slot = (slots[name] || (slots[name] = []));
@@ -3454,11 +3490,11 @@ function updateChildComponent (
   }
   vm.$options._renderChildren = renderChildren;
 
-  // update $attrs and $listensers hash
+  // update $attrs and $listeners hash
   // these are also reactive so they may trigger child update if the child
   // used them during render
-  vm.$attrs = parentVnode.data && parentVnode.data.attrs;
-  vm.$listeners = listeners;
+  vm.$attrs = (parentVnode.data && parentVnode.data.attrs) || emptyObject;
+  vm.$listeners = listeners || emptyObject;
 
   // update props
   if (propsData && vm.$options.props) {
@@ -4045,7 +4081,7 @@ function initData (vm) {
     if (true) {
       if (methods && hasOwn(methods, key)) {
         warn(
-          ("method \"" + key + "\" has already been defined as a data property."),
+          ("Method \"" + key + "\" has already been defined as a data property."),
           vm
         );
       }
@@ -4078,6 +4114,8 @@ var computedWatcherOptions = { lazy: true };
 function initComputed (vm, computed) {
   "development" !== 'production' && checkOptionType(vm, 'computed');
   var watchers = vm._computedWatchers = Object.create(null);
+  // computed properties are just getters during SSR
+  var isSSR = isServerRendering();
 
   for (var key in computed) {
     var userDef = computed[key];
@@ -4088,8 +4126,16 @@ function initComputed (vm, computed) {
         vm
       );
     }
-    // create internal watcher for the computed property.
-    watchers[key] = new Watcher(vm, getter || noop, noop, computedWatcherOptions);
+
+    if (!isSSR) {
+      // create internal watcher for the computed property.
+      watchers[key] = new Watcher(
+        vm,
+        getter || noop,
+        noop,
+        computedWatcherOptions
+      );
+    }
 
     // component-defined computed properties are already defined on the
     // component prototype. We only need to define computed properties defined
@@ -4106,13 +4152,20 @@ function initComputed (vm, computed) {
   }
 }
 
-function defineComputed (target, key, userDef) {
+function defineComputed (
+  target,
+  key,
+  userDef
+) {
+  var shouldCache = !isServerRendering();
   if (typeof userDef === 'function') {
-    sharedPropertyDefinition.get = createComputedGetter(key);
+    sharedPropertyDefinition.get = shouldCache
+      ? createComputedGetter(key)
+      : userDef;
     sharedPropertyDefinition.set = noop;
   } else {
     sharedPropertyDefinition.get = userDef.get
-      ? userDef.cache !== false
+      ? shouldCache && userDef.cache !== false
         ? createComputedGetter(key)
         : userDef.get
       : noop;
@@ -4151,22 +4204,28 @@ function initMethods (vm, methods) {
   "development" !== 'production' && checkOptionType(vm, 'methods');
   var props = vm.$options.props;
   for (var key in methods) {
-    vm[key] = methods[key] == null ? noop : bind(methods[key], vm);
     if (true) {
       if (methods[key] == null) {
         warn(
-          "method \"" + key + "\" has an undefined value in the component definition. " +
+          "Method \"" + key + "\" has an undefined value in the component definition. " +
           "Did you reference the function correctly?",
           vm
         );
       }
       if (props && hasOwn(props, key)) {
         warn(
-          ("method \"" + key + "\" has already been defined as a prop."),
+          ("Method \"" + key + "\" has already been defined as a prop."),
           vm
         );
       }
+      if ((key in vm) && isReserved(key)) {
+        warn(
+          "Method \"" + key + "\" conflicts with an existing Vue instance method. " +
+          "Avoid defining component methods that start with _ or $."
+        );
+      }
     }
+    vm[key] = methods[key] == null ? noop : bind(methods[key], vm);
   }
 }
 
@@ -4286,7 +4345,10 @@ function resolveInject (inject, vm) {
     // inject is :any because flow is not smart enough to figure out cached
     var result = Object.create(null);
     var keys = hasSymbol
-        ? Reflect.ownKeys(inject)
+        ? Reflect.ownKeys(inject).filter(function (key) {
+          /* istanbul ignore next */
+          return Object.getOwnPropertyDescriptor(inject, key).enumerable
+        })
         : Object.keys(inject);
 
     for (var i = 0; i < keys.length; i++) {
@@ -4321,7 +4383,7 @@ function createFunctionalComponent (
   var propOptions = Ctor.options.props;
   if (isDef(propOptions)) {
     for (var key in propOptions) {
-      props[key] = validateProp(key, propOptions, propsData || {});
+      props[key] = validateProp(key, propOptions, propsData || emptyObject);
     }
   } else {
     if (isDef(data.attrs)) { mergeProps(props, data.attrs); }
@@ -4336,7 +4398,7 @@ function createFunctionalComponent (
     props: props,
     children: children,
     parent: context,
-    listeners: data.on || {},
+    listeners: data.on || emptyObject,
     injections: resolveInject(Ctor.options.inject, context),
     slots: function () { return resolveSlots(children, context); }
   });
@@ -4660,7 +4722,7 @@ function _createElement (
   var vnode, ns;
   if (typeof tag === 'string') {
     var Ctor;
-    ns = config.getTagNamespace(tag);
+    ns = (context.$vnode && context.$vnode.ns) || config.getTagNamespace(tag);
     if (config.isReservedTag(tag)) {
       // platform built-in elements
       vnode = new VNode(
@@ -4956,17 +5018,18 @@ function initRender (vm) {
   // $attrs & $listeners are exposed for easier HOC creation.
   // they need to be reactive so that HOCs using them are always updated
   var parentData = parentVnode && parentVnode.data;
+
   /* istanbul ignore else */
   if (true) {
-    defineReactive$$1(vm, '$attrs', parentData && parentData.attrs, function () {
+    defineReactive$$1(vm, '$attrs', parentData && parentData.attrs || emptyObject, function () {
       !isUpdatingChildComponent && warn("$attrs is readonly.", vm);
     }, true);
-    defineReactive$$1(vm, '$listeners', vm.$options._parentListeners, function () {
+    defineReactive$$1(vm, '$listeners', vm.$options._parentListeners || emptyObject, function () {
       !isUpdatingChildComponent && warn("$listeners is readonly.", vm);
     }, true);
   } else {
-    defineReactive$$1(vm, '$attrs', parentData && parentData.attrs, null, true);
-    defineReactive$$1(vm, '$listeners', vm.$options._parentListeners, null, true);
+    defineReactive$$1(vm, '$attrs', parentData && parentData.attrs || emptyObject, null, true);
+    defineReactive$$1(vm, '$listeners', vm.$options._parentListeners || emptyObject, null, true);
   }
 }
 
@@ -4983,9 +5046,13 @@ function renderMixin (Vue) {
     var _parentVnode = ref._parentVnode;
 
     if (vm._isMounted) {
-      // clone slot nodes on re-renders
+      // if the parent didn't update, the slot nodes will be the ones from
+      // last render. They need to be cloned to ensure "freshness" for this render.
       for (var key in vm.$slots) {
-        vm.$slots[key] = cloneVNodes(vm.$slots[key]);
+        var slot = vm.$slots[key];
+        if (slot._rendered) {
+          vm.$slots[key] = cloneVNodes(slot, true /* deep */);
+        }
       }
     }
 
@@ -5530,7 +5597,7 @@ Object.defineProperty(Vue$3.prototype, '$ssrContext', {
   }
 });
 
-Vue$3.version = '2.4.2';
+Vue$3.version = '2.4.4';
 
 /*  */
 
@@ -5539,7 +5606,7 @@ Vue$3.version = '2.4.2';
 var isReservedAttr = makeMap('style,class');
 
 // attributes that should be using props for binding
-var acceptValue = makeMap('input,textarea,option,select');
+var acceptValue = makeMap('input,textarea,option,select,progress');
 var mustUseProp = function (tag, type, attr) {
   return (
     (attr === 'value' && acceptValue(tag)) && type !== 'button' ||
@@ -5728,6 +5795,8 @@ function isUnknownElement (tag) {
   }
 }
 
+var isTextInputType = makeMap('text,number,password,search,email,tel,url');
+
 /*  */
 
 /**
@@ -5874,8 +5943,6 @@ function registerRef (vnode, isRemoval) {
  *
  * modified by Evan You (@yyx990803)
  *
-
-/*
  * Not type-checking this because this file is perf-critical and the cost
  * of making flow understand it is not worth it.
  */
@@ -5901,14 +5968,12 @@ function sameVnode (a, b) {
   )
 }
 
-// Some browsers do not support dynamically changing type for <input>
-// so they need to be treated as different nodes
 function sameInputType (a, b) {
   if (a.tag !== 'input') { return true }
   var i;
   var typeA = isDef(i = a.data) && isDef(i = i.attrs) && i.type;
   var typeB = isDef(i = b.data) && isDef(i = i.attrs) && i.type;
-  return typeA === typeB
+  return typeA === typeB || isTextInputType(typeA) && isTextInputType(typeB)
 }
 
 function createKeyToOldIdx (children, beginIdx, endIdx) {
@@ -6240,10 +6305,11 @@ function createPatchFunction (backend) {
         newStartVnode = newCh[++newStartIdx];
       } else {
         if (isUndef(oldKeyToIdx)) { oldKeyToIdx = createKeyToOldIdx(oldCh, oldStartIdx, oldEndIdx); }
-        idxInOld = isDef(newStartVnode.key) ? oldKeyToIdx[newStartVnode.key] : null;
+        idxInOld = isDef(newStartVnode.key)
+          ? oldKeyToIdx[newStartVnode.key]
+          : findIdxInOld(newStartVnode, oldCh, oldStartIdx, oldEndIdx);
         if (isUndef(idxInOld)) { // New element
           createElm(newStartVnode, insertedVnodeQueue, parentElm, oldStartVnode.elm);
-          newStartVnode = newCh[++newStartIdx];
         } else {
           elmToMove = oldCh[idxInOld];
           /* istanbul ignore if */
@@ -6257,13 +6323,12 @@ function createPatchFunction (backend) {
             patchVnode(elmToMove, newStartVnode, insertedVnodeQueue);
             oldCh[idxInOld] = undefined;
             canMove && nodeOps.insertBefore(parentElm, elmToMove.elm, oldStartVnode.elm);
-            newStartVnode = newCh[++newStartIdx];
           } else {
             // same key but different element. treat as new element
             createElm(newStartVnode, insertedVnodeQueue, parentElm, oldStartVnode.elm);
-            newStartVnode = newCh[++newStartIdx];
           }
         }
+        newStartVnode = newCh[++newStartIdx];
       }
     }
     if (oldStartIdx > oldEndIdx) {
@@ -6271,6 +6336,13 @@ function createPatchFunction (backend) {
       addVnodes(parentElm, refElm, newCh, newStartIdx, newEndIdx, insertedVnodeQueue);
     } else if (newStartIdx > newEndIdx) {
       removeVnodes(parentElm, oldCh, oldStartIdx, oldEndIdx);
+    }
+  }
+
+  function findIdxInOld (node, oldCh, start, end) {
+    for (var i = start; i < end; i++) {
+      var c = oldCh[i];
+      if (isDef(c) && sameVnode(node, c)) { return i }
     }
   }
 
@@ -6381,27 +6453,46 @@ function createPatchFunction (backend) {
         if (!elm.hasChildNodes()) {
           createChildren(vnode, children, insertedVnodeQueue);
         } else {
-          var childrenMatch = true;
-          var childNode = elm.firstChild;
-          for (var i$1 = 0; i$1 < children.length; i$1++) {
-            if (!childNode || !hydrate(childNode, children[i$1], insertedVnodeQueue)) {
-              childrenMatch = false;
-              break
+          // v-html and domProps: innerHTML
+          if (isDef(i = data) && isDef(i = i.domProps) && isDef(i = i.innerHTML)) {
+            if (i !== elm.innerHTML) {
+              /* istanbul ignore if */
+              if ("development" !== 'production' &&
+                typeof console !== 'undefined' &&
+                !bailed
+              ) {
+                bailed = true;
+                console.warn('Parent: ', elm);
+                console.warn('server innerHTML: ', i);
+                console.warn('client innerHTML: ', elm.innerHTML);
+              }
+              return false
             }
-            childNode = childNode.nextSibling;
-          }
-          // if childNode is not null, it means the actual childNodes list is
-          // longer than the virtual children list.
-          if (!childrenMatch || childNode) {
-            if ("development" !== 'production' &&
-              typeof console !== 'undefined' &&
-              !bailed
-            ) {
-              bailed = true;
-              console.warn('Parent: ', elm);
-              console.warn('Mismatching childNodes vs. VNodes: ', elm.childNodes, children);
+          } else {
+            // iterate and compare children lists
+            var childrenMatch = true;
+            var childNode = elm.firstChild;
+            for (var i$1 = 0; i$1 < children.length; i$1++) {
+              if (!childNode || !hydrate(childNode, children[i$1], insertedVnodeQueue)) {
+                childrenMatch = false;
+                break
+              }
+              childNode = childNode.nextSibling;
             }
-            return false
+            // if childNode is not null, it means the actual childNodes list is
+            // longer than the virtual children list.
+            if (!childrenMatch || childNode) {
+              /* istanbul ignore if */
+              if ("development" !== 'production' &&
+                typeof console !== 'undefined' &&
+                !bailed
+              ) {
+                bailed = true;
+                console.warn('Parent: ', elm);
+                console.warn('Mismatching childNodes vs. VNodes: ', elm.childNodes, children);
+              }
+              return false
+            }
           }
         }
       }
@@ -6492,14 +6583,28 @@ function createPatchFunction (backend) {
           // component root element replaced.
           // update parent placeholder node element, recursively
           var ancestor = vnode.parent;
+          var patchable = isPatchable(vnode);
           while (ancestor) {
-            ancestor.elm = vnode.elm;
-            ancestor = ancestor.parent;
-          }
-          if (isPatchable(vnode)) {
-            for (var i = 0; i < cbs.create.length; ++i) {
-              cbs.create[i](emptyNode, vnode.parent);
+            for (var i = 0; i < cbs.destroy.length; ++i) {
+              cbs.destroy[i](ancestor);
             }
+            ancestor.elm = vnode.elm;
+            if (patchable) {
+              for (var i$1 = 0; i$1 < cbs.create.length; ++i$1) {
+                cbs.create[i$1](emptyNode, ancestor);
+              }
+              // #6513
+              // invoke insert hooks that may have been merged by create hooks.
+              // e.g. for directives that uses the "inserted" hook.
+              var insert = ancestor.data.hook.insert;
+              if (insert.merged) {
+                // start at index 1 to avoid re-invoking component mounted hook
+                for (var i$2 = 1; i$2 < insert.fns.length; i$2++) {
+                  insert.fns[i$2]();
+                }
+              }
+            }
+            ancestor = ancestor.parent;
           }
         }
 
@@ -6683,7 +6788,12 @@ function setAttr (el, key, value) {
     if (isFalsyAttrValue(value)) {
       el.removeAttribute(key);
     } else {
-      el.setAttribute(key, key);
+      // technically allowfullscreen is a boolean attribute for <iframe>,
+      // but Flash expects a value of "true" when used on <embed> tag
+      value = key === 'allowfullscreen' && el.tagName === 'EMBED'
+        ? 'true'
+        : key;
+      el.setAttribute(key, value);
     }
   } else if (isEnumeratedAttr(key)) {
     el.setAttribute(key, isFalsyAttrValue(value) || value === 'false' ? 'false' : 'true');
@@ -7190,7 +7300,7 @@ function genCheckboxModel (
     'if(Array.isArray($$a)){' +
       "var $$v=" + (number ? '_n(' + valueBinding + ')' : valueBinding) + "," +
           '$$i=_i($$a,$$v);' +
-      "if($$el.checked){$$i<0&&(" + value + "=$$a.concat($$v))}" +
+      "if($$el.checked){$$i<0&&(" + value + "=$$a.concat([$$v]))}" +
       "else{$$i>-1&&(" + value + "=$$a.slice(0,$$i).concat($$a.slice($$i+1)))}" +
     "}else{" + (genAssignmentCode(value, '$$c')) + "}",
     null, true
@@ -7559,7 +7669,7 @@ function updateStyle (oldVnode, vnode) {
   var style = normalizeStyleBinding(vnode.data.style) || {};
 
   // store normalized style under a different key for next diff
-  // make sure to clone it if it's reactive, since the user likley wants
+  // make sure to clone it if it's reactive, since the user likely wants
   // to mutate it.
   vnode.data.normalizedStyle = isDef(style.__ob__)
     ? extend({}, style)
@@ -8164,8 +8274,6 @@ var patch = createPatchFunction({ nodeOps: nodeOps, modules: modules });
  * properties to Elements.
  */
 
-var isTextInputType = makeMap('text,number,password,search,email,tel,url');
-
 /* istanbul ignore if */
 if (isIE9) {
   // http://www.matts411.com/post/internet-explorer-9-oninput/
@@ -8180,14 +8288,7 @@ if (isIE9) {
 var model$1 = {
   inserted: function inserted (el, binding, vnode) {
     if (vnode.tag === 'select') {
-      var cb = function () {
-        setSelected(el, binding, vnode.context);
-      };
-      cb();
-      /* istanbul ignore if */
-      if (isIE || isEdge) {
-        setTimeout(cb, 0);
-      }
+      setSelected(el, binding, vnode.context);
       el._vOptions = [].map.call(el.options, getValue);
     } else if (vnode.tag === 'textarea' || isTextInputType(el.type)) {
       el._vModifiers = binding.modifiers;
@@ -8218,13 +8319,30 @@ var model$1 = {
       var prevOptions = el._vOptions;
       var curOptions = el._vOptions = [].map.call(el.options, getValue);
       if (curOptions.some(function (o, i) { return !looseEqual(o, prevOptions[i]); })) {
-        trigger(el, 'change');
+        // trigger change event if
+        // no matching option found for at least one value
+        var needReset = el.multiple
+          ? binding.value.some(function (v) { return hasNoMatchingOption(v, curOptions); })
+          : binding.value !== binding.oldValue && hasNoMatchingOption(binding.value, curOptions);
+        if (needReset) {
+          trigger(el, 'change');
+        }
       }
     }
   }
 };
 
 function setSelected (el, binding, vm) {
+  actuallySetSelected(el, binding, vm);
+  /* istanbul ignore if */
+  if (isIE || isEdge) {
+    setTimeout(function () {
+      actuallySetSelected(el, binding, vm);
+    }, 0);
+  }
+}
+
+function actuallySetSelected (el, binding, vm) {
   var value = binding.value;
   var isMultiple = el.multiple;
   if (isMultiple && !Array.isArray(value)) {
@@ -8255,6 +8373,10 @@ function setSelected (el, binding, vm) {
   if (!isMultiple) {
     el.selectedIndex = -1;
   }
+}
+
+function hasNoMatchingOption (value, options) {
+  return options.every(function (o) { return !looseEqual(o, value); })
 }
 
 function getValue (option) {
@@ -8417,10 +8539,6 @@ function hasParentTransition (vnode) {
 
 function isSameChild (child, oldChild) {
   return oldChild.key === child.key && oldChild.tag === child.tag
-}
-
-function isAsyncPlaceholder (node) {
-  return node.isComment && node.asyncFactory
 }
 
 var Transition = {
@@ -8990,29 +9108,14 @@ var he = {
  */
 
 // Regular Expressions for parsing tags and attributes
-var singleAttrIdentifier = /([^\s"'<>/=]+)/;
-var singleAttrAssign = /(?:=)/;
-var singleAttrValues = [
-  // attr value double quotes
-  /"([^"]*)"+/.source,
-  // attr value, single quotes
-  /'([^']*)'+/.source,
-  // attr value, no quotes
-  /([^\s"'=<>`]+)/.source
-];
-var attribute = new RegExp(
-  '^\\s*' + singleAttrIdentifier.source +
-  '(?:\\s*(' + singleAttrAssign.source + ')' +
-  '\\s*(?:' + singleAttrValues.join('|') + '))?'
-);
-
+var attribute = /^\s*([^\s"'<>\/=]+)(?:\s*(=)\s*(?:"([^"]*)"+|'([^']*)'+|([^\s"'=<>`]+)))?/;
 // could use https://www.w3.org/TR/1999/REC-xml-names-19990114/#NT-QName
 // but for Vue templates we can enforce a simple charset
 var ncname = '[a-zA-Z_][\\w\\-\\.]*';
-var qnameCapture = '((?:' + ncname + '\\:)?' + ncname + ')';
-var startTagOpen = new RegExp('^<' + qnameCapture);
+var qnameCapture = "((?:" + ncname + "\\:)?" + ncname + ")";
+var startTagOpen = new RegExp(("^<" + qnameCapture));
 var startTagClose = /^\s*(\/?)>/;
-var endTag = new RegExp('^<\\/' + qnameCapture + '[^>]*>');
+var endTag = new RegExp(("^<\\/" + qnameCapture + "[^>]*>"));
 var doctype = /^<!DOCTYPE [^>]+>/i;
 var comment = /^<!--/;
 var conditionalComment = /^<!\[/;
@@ -9712,6 +9815,8 @@ function processSlot (el) {
     var slotTarget = getBindingAttr(el, 'slot');
     if (slotTarget) {
       el.slotTarget = slotTarget === '""' ? '"default"' : slotTarget;
+      // preserve slot as an attribute for native shadow DOM compat
+      addAttr(el, 'slot', slotTarget);
     }
     if (el.tag === 'template') {
       el.slotScope = getAndRemoveAttr(el, 'scope');
@@ -10248,7 +10353,7 @@ function genOnce (el, state) {
       );
       return genElement(el, state)
     }
-    return ("_o(" + (genElement(el, state)) + "," + (state.onceId++) + (key ? ("," + key) : "") + ")")
+    return ("_o(" + (genElement(el, state)) + "," + (state.onceId++) + "," + key + ")")
   } else {
     return genStatic(el, state)
   }
@@ -13478,19 +13583,25 @@ if (inBrowser && window.Vue) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var Component = __webpack_require__(0)(
-  /* script */
-  __webpack_require__(13),
-  /* template */
-  __webpack_require__(14),
-  /* styles */
-  null,
-  /* scopeId */
-  null,
-  /* moduleIdentifier (server only) */
-  null
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(13)
+/* template */
+var __vue_template__ = __webpack_require__(14)
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
 )
-Component.options.__file = "/home/johnhuffman/Sites/InsuranceSocial.media/src/resources/javascripts/frontend/global/foot/Foot.vue"
+Component.options.__file = "resources/javascripts/frontend/global/foot/Foot.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Foot.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -13550,58 +13661,99 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
   return _vm._m(0)
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('footer', {
-    staticClass: "w3-container w3-bar w3-medium w3-text-white w3-padding-16 footer"
-  }, [_c('a', {
-    staticClass: "w3-bar-item w3-button footer-logo"
-  }, [_vm._v("Insurance Social Media")]), _vm._v(" "), _c('div', {
-    staticClass: "w3-right social"
-  }, [_c('a', {
-    attrs: {
-      "href": "https://www.twitter.com/insurancesmm"
-    }
-  }, [_c('img', {
-    attrs: {
-      "src": "images/icon-twitter.png",
-      "height": "36",
-      "width": "36"
-    }
-  })]), _vm._v(" "), _c('a', {
-    attrs: {
-      "href": "https://www.facebook.com/insurancesocialdotmedia/"
-    }
-  }, [_c('img', {
-    attrs: {
-      "src": "images/icon-facebook.png",
-      "height": "36",
-      "width": "36"
-    }
-  })]), _vm._v(" "), _c('a', {
-    attrs: {
-      "href": "https://www.instagram.com/insurancesocial.media/"
-    }
-  }, [_c('img', {
-    attrs: {
-      "src": "images/icon-instagram.png",
-      "height": "36",
-      "width": "36"
-    }
-  })]), _vm._v(" "), _c('a', {
-    attrs: {
-      "href": "https://www.linkedin.com/company/insurancesocial-media"
-    }
-  }, [_c('img', {
-    attrs: {
-      "src": "images/icon-linkedin.png",
-      "height": "36",
-      "width": "36"
-    }
-  })])])])
-}]}
-module.exports.render._withStripped = true
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "footer",
+      {
+        staticClass:
+          "w3-container w3-bar w3-medium w3-text-white w3-padding-16 footer"
+      },
+      [
+        _c("a", { staticClass: "w3-bar-item w3-button footer-logo" }, [
+          _vm._v("Insurance Social Media")
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "w3-right social" }, [
+          _c("a", { attrs: { href: "https://www.twitter.com/insurancesmm" } }, [
+            _c("img", {
+              attrs: {
+                src: "images/icon-twitter.png",
+                height: "36",
+                width: "36"
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c(
+            "a",
+            {
+              attrs: {
+                href: "https://www.facebook.com/insurancesocialdotmedia/"
+              }
+            },
+            [
+              _c("img", {
+                attrs: {
+                  src: "images/icon-facebook.png",
+                  height: "36",
+                  width: "36"
+                }
+              })
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "a",
+            {
+              attrs: {
+                href: "https://www.instagram.com/insurancesocial.media/"
+              }
+            },
+            [
+              _c("img", {
+                attrs: {
+                  src: "images/icon-instagram.png",
+                  height: "36",
+                  width: "36"
+                }
+              })
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "a",
+            {
+              attrs: {
+                href: "https://www.linkedin.com/company/insurancesocial-media"
+              }
+            },
+            [
+              _c("img", {
+                attrs: {
+                  src: "images/icon-linkedin.png",
+                  height: "36",
+                  width: "36"
+                }
+              })
+            ]
+          )
+        ])
+      ]
+    )
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
@@ -13619,19 +13771,25 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var Component = __webpack_require__(0)(
-  /* script */
-  __webpack_require__(21),
-  /* template */
-  __webpack_require__(28),
-  /* styles */
-  null,
-  /* scopeId */
-  null,
-  /* moduleIdentifier (server only) */
-  null
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(21)
+/* template */
+var __vue_template__ = __webpack_require__(28)
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
 )
-Component.options.__file = "/home/johnhuffman/Sites/InsuranceSocial.media/src/resources/javascripts/frontend/global/navigation/Navigation.vue"
+Component.options.__file = "resources/javascripts/frontend/global/navigation/Navigation.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Navigation.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -13691,19 +13849,25 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var Component = __webpack_require__(0)(
-  /* script */
-  __webpack_require__(23),
-  /* template */
-  __webpack_require__(24),
-  /* styles */
-  null,
-  /* scopeId */
-  null,
-  /* moduleIdentifier (server only) */
-  null
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(23)
+/* template */
+var __vue_template__ = __webpack_require__(24)
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
 )
-Component.options.__file = "/home/johnhuffman/Sites/InsuranceSocial.media/src/resources/javascripts/frontend/global/navigation/Desktop.vue"
+Component.options.__file = "resources/javascripts/frontend/global/navigation/Desktop.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Desktop.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -13749,14 +13913,28 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
   return _vm._m(0)
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('a', {
-    staticClass: "w3-bar-item w3-button w3-hover-white header-logo"
-  }, [_vm._v("Insurance Social Media")])])
-}]}
-module.exports.render._withStripped = true
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [
+      _c(
+        "a",
+        { staticClass: "w3-bar-item w3-button w3-hover-white header-logo" },
+        [_vm._v("Insurance Social Media")]
+      )
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
@@ -13769,19 +13947,25 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var Component = __webpack_require__(0)(
-  /* script */
-  __webpack_require__(26),
-  /* template */
-  __webpack_require__(27),
-  /* styles */
-  null,
-  /* scopeId */
-  null,
-  /* moduleIdentifier (server only) */
-  null
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(26)
+/* template */
+var __vue_template__ = __webpack_require__(27)
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
 )
-Component.options.__file = "/home/johnhuffman/Sites/InsuranceSocial.media/src/resources/javascripts/frontend/global/navigation/Mobile.vue"
+Component.options.__file = "resources/javascripts/frontend/global/navigation/Mobile.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Mobile.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -13827,16 +14011,28 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
   return _vm._m(0)
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('div', {
-    staticClass: "w3-bar"
-  }, [_c('a', {
-    staticClass: "w3-bar-item w3-button"
-  }, [_vm._v("Insurance Social Media")])])])
-}]}
-module.exports.render._withStripped = true
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [
+      _c("div", { staticClass: "w3-bar" }, [
+        _c("a", { staticClass: "w3-bar-item w3-button" }, [
+          _vm._v("Insurance Social Media")
+        ])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
@@ -13848,16 +14044,31 @@ if (false) {
 /* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('nav', {
-    staticClass: "w3-container w3-bar w3-card-2 w3-xlarge w3-text-white primary header"
-  }, [_c('div', {
-    staticClass: "w3-hide-small"
-  }, [_c('Desktop')], 1), _vm._v(" "), _c('div', {
-    staticClass: "w3-hide-medium w3-hide-large"
-  }, [_c('Mobile')], 1)])
-},staticRenderFns: []}
-module.exports.render._withStripped = true
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "nav",
+    {
+      staticClass:
+        "w3-container w3-bar w3-card-2 w3-xlarge w3-text-white primary header"
+    },
+    [
+      _c("div", { staticClass: "w3-hide-small" }, [_c("Desktop")], 1),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "w3-hide-medium w3-hide-large" },
+        [_c("Mobile")],
+        1
+      )
+    ]
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
@@ -14949,23 +15160,30 @@ module.exports = function spread(callback) {
 /* 65 */,
 /* 66 */,
 /* 67 */,
-/* 68 */
+/* 68 */,
+/* 69 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var Component = __webpack_require__(0)(
-  /* script */
-  __webpack_require__(206),
-  /* template */
-  __webpack_require__(207),
-  /* styles */
-  null,
-  /* scopeId */
-  null,
-  /* moduleIdentifier (server only) */
-  null
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(207)
+/* template */
+var __vue_template__ = __webpack_require__(208)
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
 )
-Component.options.__file = "/home/johnhuffman/Sites/InsuranceSocial.media/src/resources/javascripts/frontend/register/vue/register/inputs/Check.vue"
+Component.options.__file = "resources/javascripts/frontend/register/vue/register/inputs/Check.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Check.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -14989,23 +15207,29 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 69 */
+/* 70 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var Component = __webpack_require__(0)(
-  /* script */
-  __webpack_require__(208),
-  /* template */
-  __webpack_require__(209),
-  /* styles */
-  null,
-  /* scopeId */
-  null,
-  /* moduleIdentifier (server only) */
-  null
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(209)
+/* template */
+var __vue_template__ = __webpack_require__(210)
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
 )
-Component.options.__file = "/home/johnhuffman/Sites/InsuranceSocial.media/src/resources/javascripts/frontend/register/vue/register/inputs/Cross.vue"
+Component.options.__file = "resources/javascripts/frontend/register/vue/register/inputs/Cross.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Cross.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -15029,7 +15253,6 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 70 */,
 /* 71 */,
 /* 72 */,
 /* 73 */,
@@ -15158,14 +15381,15 @@ module.exports = Component.exports
 /* 196 */,
 /* 197 */,
 /* 198 */,
-/* 199 */
+/* 199 */,
+/* 200 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(200);
+module.exports = __webpack_require__(201);
 
 
 /***/ }),
-/* 200 */
+/* 201 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -15173,8 +15397,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_router__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__routes__ = __webpack_require__(201);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__vue_App__ = __webpack_require__(224);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__routes__ = __webpack_require__(202);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__vue_App__ = __webpack_require__(225);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__vue_App___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__vue_App__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__global_navigation_Navigation__ = __webpack_require__(20);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__global_navigation_Navigation___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__global_navigation_Navigation__);
@@ -15210,11 +15434,11 @@ var Site = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
 }).$mount('#app');
 
 /***/ }),
-/* 201 */
+/* 202 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__vue_register_Index__ = __webpack_require__(202);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__vue_register_Index__ = __webpack_require__(203);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__vue_register_Index___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__vue_register_Index__);
 
 
@@ -15229,23 +15453,29 @@ var Site = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
 }]);
 
 /***/ }),
-/* 202 */
+/* 203 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var Component = __webpack_require__(0)(
-  /* script */
-  __webpack_require__(203),
-  /* template */
-  __webpack_require__(223),
-  /* styles */
-  null,
-  /* scopeId */
-  null,
-  /* moduleIdentifier (server only) */
-  null
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(204)
+/* template */
+var __vue_template__ = __webpack_require__(224)
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
 )
-Component.options.__file = "/home/johnhuffman/Sites/InsuranceSocial.media/src/resources/javascripts/frontend/register/vue/register/Index.vue"
+Component.options.__file = "resources/javascripts/frontend/register/vue/register/Index.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Index.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -15269,18 +15499,18 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 203 */
+/* 204 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__inputs_Field__ = __webpack_require__(204);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__inputs_Field__ = __webpack_require__(205);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__inputs_Field___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__inputs_Field__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__inputs_PasswordField__ = __webpack_require__(211);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__inputs_PasswordField__ = __webpack_require__(212);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__inputs_PasswordField___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__inputs_PasswordField__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__inputs_Terms__ = __webpack_require__(214);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__inputs_Terms__ = __webpack_require__(215);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__inputs_Terms___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__inputs_Terms__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Errors__ = __webpack_require__(220);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Errors__ = __webpack_require__(221);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Errors___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__Errors__);
 //
 //
@@ -15409,23 +15639,29 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 204 */
+/* 205 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var Component = __webpack_require__(0)(
-  /* script */
-  __webpack_require__(205),
-  /* template */
-  __webpack_require__(210),
-  /* styles */
-  null,
-  /* scopeId */
-  null,
-  /* moduleIdentifier (server only) */
-  null
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(206)
+/* template */
+var __vue_template__ = __webpack_require__(211)
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
 )
-Component.options.__file = "/home/johnhuffman/Sites/InsuranceSocial.media/src/resources/javascripts/frontend/register/vue/register/inputs/Field.vue"
+Component.options.__file = "resources/javascripts/frontend/register/vue/register/inputs/Field.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Field.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -15449,14 +15685,14 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 205 */
+/* 206 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Check__ = __webpack_require__(68);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Check__ = __webpack_require__(69);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Check___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Check__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Cross__ = __webpack_require__(69);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Cross__ = __webpack_require__(70);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Cross___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__Cross__);
 //
 //
@@ -15566,7 +15802,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 206 */
+/* 207 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -15581,15 +15817,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 207 */
+/* 208 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('i', {
-    staticClass: "fa fa-check fa-3x w3-show-inline-block w3-margin-left w3-text-green v-align"
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("i", {
+    staticClass:
+      "fa fa-check fa-3x w3-show-inline-block w3-margin-left w3-text-green v-align"
   })
-},staticRenderFns: []}
-module.exports.render._withStripped = true
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
@@ -15598,7 +15840,7 @@ if (false) {
 }
 
 /***/ }),
-/* 208 */
+/* 209 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -15613,15 +15855,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 209 */
+/* 210 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('i', {
-    staticClass: "fa fa-times fa-3x w3-show-inline-block w3-margin-left w3-text-red v-align"
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("i", {
+    staticClass:
+      "fa fa-times fa-3x w3-show-inline-block w3-margin-left w3-text-red v-align"
   })
-},staticRenderFns: []}
-module.exports.render._withStripped = true
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
@@ -15630,40 +15878,56 @@ if (false) {
 }
 
 /***/ }),
-/* 210 */
+/* 211 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "w3-section"
-  }, [_c('label', {
-    staticClass: "w3-show-block"
-  }, [_vm._v(_vm._s(_vm.label))]), _vm._v(" "), _c('input', {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: (_vm.value),
-      expression: "value"
-    }],
-    staticClass: "w3-input w3-show-inline-block eighty",
-    attrs: {
-      "type": "text"
-    },
-    domProps: {
-      "value": (_vm.value)
-    },
-    on: {
-      "keyup": function($event) {
-        _vm.validate()
-      },
-      "input": function($event) {
-        if ($event.target.composing) { return; }
-        _vm.value = $event.target.value
-      }
-    }
-  }), _vm._v(" "), (_vm.isValid) ? _c('Check') : (!_vm.isValid && _vm.value != '') ? _c('Cross') : _vm._e()], 1)
-},staticRenderFns: []}
-module.exports.render._withStripped = true
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "w3-section" },
+    [
+      _c("label", { staticClass: "w3-show-block" }, [
+        _vm._v(_vm._s(_vm.label))
+      ]),
+      _vm._v(" "),
+      _c("input", {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.value,
+            expression: "value"
+          }
+        ],
+        staticClass: "w3-input w3-show-inline-block eighty",
+        attrs: { type: "text" },
+        domProps: { value: _vm.value },
+        on: {
+          keyup: function($event) {
+            _vm.validate()
+          },
+          input: function($event) {
+            if ($event.target.composing) {
+              return
+            }
+            _vm.value = $event.target.value
+          }
+        }
+      }),
+      _vm._v(" "),
+      _vm.isValid
+        ? _c("Check")
+        : !_vm.isValid && _vm.value != "" ? _c("Cross") : _vm._e()
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
@@ -15672,23 +15936,29 @@ if (false) {
 }
 
 /***/ }),
-/* 211 */
+/* 212 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var Component = __webpack_require__(0)(
-  /* script */
-  __webpack_require__(212),
-  /* template */
-  __webpack_require__(213),
-  /* styles */
-  null,
-  /* scopeId */
-  null,
-  /* moduleIdentifier (server only) */
-  null
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(213)
+/* template */
+var __vue_template__ = __webpack_require__(214)
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
 )
-Component.options.__file = "/home/johnhuffman/Sites/InsuranceSocial.media/src/resources/javascripts/frontend/register/vue/register/inputs/PasswordField.vue"
+Component.options.__file = "resources/javascripts/frontend/register/vue/register/inputs/PasswordField.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] PasswordField.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -15712,14 +15982,14 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 212 */
+/* 213 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Check__ = __webpack_require__(68);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Check__ = __webpack_require__(69);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Check___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Check__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Cross__ = __webpack_require__(69);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Cross__ = __webpack_require__(70);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Cross___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__Cross__);
 //
 //
@@ -15806,42 +16076,62 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 213 */
+/* 214 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "w3-section"
-  }, [_c('label', {
-    staticClass: "w3-show-block"
-  }, [_vm._v(_vm._s(_vm.label))]), _vm._v(" "), _c('div', {
-    staticClass: "w3-small"
-  }, [_vm._v("Must contain min 8 characters, 1 number, and 1 special character")]), _vm._v(" "), _c('input', {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: (_vm.value),
-      expression: "value"
-    }],
-    staticClass: "w3-input w3-show-inline-block eighty",
-    attrs: {
-      "type": "password"
-    },
-    domProps: {
-      "value": (_vm.value)
-    },
-    on: {
-      "keyup": function($event) {
-        _vm.validate()
-      },
-      "input": function($event) {
-        if ($event.target.composing) { return; }
-        _vm.value = $event.target.value
-      }
-    }
-  }), _vm._v(" "), (_vm.isValid) ? _c('Check') : (!_vm.isValid && _vm.value != '') ? _c('Cross') : _vm._e()], 1)
-},staticRenderFns: []}
-module.exports.render._withStripped = true
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "w3-section" },
+    [
+      _c("label", { staticClass: "w3-show-block" }, [
+        _vm._v(_vm._s(_vm.label))
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "w3-small" }, [
+        _vm._v(
+          "Must contain min 8 characters, 1 number, and 1 special character"
+        )
+      ]),
+      _vm._v(" "),
+      _c("input", {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.value,
+            expression: "value"
+          }
+        ],
+        staticClass: "w3-input w3-show-inline-block eighty",
+        attrs: { type: "password" },
+        domProps: { value: _vm.value },
+        on: {
+          keyup: function($event) {
+            _vm.validate()
+          },
+          input: function($event) {
+            if ($event.target.composing) {
+              return
+            }
+            _vm.value = $event.target.value
+          }
+        }
+      }),
+      _vm._v(" "),
+      _vm.isValid
+        ? _c("Check")
+        : !_vm.isValid && _vm.value != "" ? _c("Cross") : _vm._e()
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
@@ -15850,23 +16140,29 @@ if (false) {
 }
 
 /***/ }),
-/* 214 */
+/* 215 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var Component = __webpack_require__(0)(
-  /* script */
-  __webpack_require__(215),
-  /* template */
-  __webpack_require__(219),
-  /* styles */
-  null,
-  /* scopeId */
-  null,
-  /* moduleIdentifier (server only) */
-  null
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(216)
+/* template */
+var __vue_template__ = __webpack_require__(220)
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
 )
-Component.options.__file = "/home/johnhuffman/Sites/InsuranceSocial.media/src/resources/javascripts/frontend/register/vue/register/inputs/Terms.vue"
+Component.options.__file = "resources/javascripts/frontend/register/vue/register/inputs/Terms.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Terms.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -15890,12 +16186,12 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 215 */
+/* 216 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__modal_Modal__ = __webpack_require__(216);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__modal_Modal__ = __webpack_require__(217);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__modal_Modal___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__modal_Modal__);
 //
 //
@@ -15937,23 +16233,29 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 216 */
+/* 217 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var Component = __webpack_require__(0)(
-  /* script */
-  __webpack_require__(217),
-  /* template */
-  __webpack_require__(218),
-  /* styles */
-  null,
-  /* scopeId */
-  null,
-  /* moduleIdentifier (server only) */
-  null
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(218)
+/* template */
+var __vue_template__ = __webpack_require__(219)
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
 )
-Component.options.__file = "/home/johnhuffman/Sites/InsuranceSocial.media/src/resources/javascripts/frontend/register/vue/register/modal/Modal.vue"
+Component.options.__file = "resources/javascripts/frontend/register/vue/register/modal/Modal.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Modal.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -15977,7 +16279,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 217 */
+/* 218 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -16074,38 +16376,139 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 218 */
+/* 219 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "w3-modal w3-show",
-    on: {
-      "click": function($event) {
-        _vm.$emit('setModal')
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    {
+      staticClass: "w3-modal w3-show",
+      on: {
+        click: function($event) {
+          _vm.$emit("setModal")
+        }
       }
-    }
-  }, [_vm._m(0)])
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "w3-modal-content w3-card-4"
-  }, [_c('header', {
-    staticClass: "w3-container w3-center primary"
-  }, [_c('i', {
-    staticClass: "fa fa-times fa-3x w3-display-topright w3-padding w3-text-white"
-  }), _vm._v(" "), _c('h2', {
-    staticClass: "w3-text-white"
-  }, [_vm._v("Terms of Service")]), _vm._v(" "), _c('p', {
-    staticClass: "w3-text-white"
-  }, [_vm._v("Last modified September 17, 2015")])]), _vm._v(" "), _c('div', {
-    staticClass: "w3-container"
-  }, [_c('p', [_vm._v("Welcome to InsuranceSocial.Media. These terms and conditions (“Terms of Service” or “Agreement”) govern your access to and use of Serious Social Media, Inc.’s (“Serious Social Media”) services and website accessible via www.InsuranceSocial.Media, including successor domain names or sites (the “Site”), and any and all information, text, graphics, photos, or other materials uploaded, downloaded, or appearing on the Services (as defined below).\nBY ACCESSING AND USING THE SERVICES IN ANY MANNER, YOU ARE \"ACCEPTING\" AND AGREEING TO BE BOUND BY THESE TERMS OF SERVICE TO THE EXCLUSION OF ALL OTHER TERMS. IF YOU DO NOT UNCONDITIONALLY ACCEPT THESE TERMS IN THEIR ENTIRETY, YOU SHALL NOT (AND SHALL HAVE NO RIGHT TO) ACCESS OR USE THE SERVICES. IF THE TERMS OF THIS AGREEMENT ARE CONSIDERED AN OFFER, ACCEPTANCE IS EXPRESSLY LIMITED TO SUCH TERMS. THESE TERMS SHOULD BE READ IN CONJUNCTION WITH THE INSURANCESOCIAL.MEDIA PRIVACY POLICY.\nWherever used in these Terms of Service, “you,” “your,” “Customer,” or similar terms means the person or legal entity accessing or using the Services. If you are accessing and using the Services on behalf of a company (such as your employer) or other legal entity, you represent and warrant that you have the authority to bind that company or other legal entity to these Terms of Service.\nSerious Social Media reserves the right, at any time, to update and change any or all of these Terms of Service, in its sole discretion, including but not limited to the fees and charges associated with the use of the Services. If Serious Social Media does so, it will post the modified Terms of Service on the Site, though we will notify you of any changes that, in our sole discretion, materially impact these Terms of Service. Continued use of the Services after any such changes have been made shall constitute your consent to such changes. You are responsible for regularly reviewing the most current version of the Terms of Service, which are currently available at: www.InsuranceSocial. Media/terms. When Serious Social Media changes these Terms of Service, Serious Social Media will modify the \"Last Modified\" date above.")]), _vm._v(" "), _c('p', [_c('b', [_vm._v("1. Definitions")])]), _vm._v(" "), _c('p', [_vm._v("“Authorization Form” means a document issued by Serious Social Media and executed or otherwise agreed upon by authorized representatives of the Parties which specifies, among other things, a description of the Services, the Fees (as defined below), the Term (as defined below), and any other details specifically related to the Services. “Authorized Users” means individuals who are directly accessing the Services via an online sign-up process, or individual users authorized by you to use the Services and to whom you have supplied user identifications and passwords. Authorized Users may include your employees, consultants, contractors, agents, or your other designees, but shall not include any employee or agent of any Serious Social Media competitor.\n“Customer Content” means all information and data (including text, images, photos, videos, audio, and documents) or any other content in any media and format provided or made available to Serious Social Media by or on your behalf in relation to the use of the Services.\n“Fair Use Policy” means the limits placed on usage as described in Section 2.6.\n“Mentions” means the information, including links, posts, and excerpts, that has been made publicly available and obtained by Serious Social Media on your behalf from the Internet, and data derived therefrom, including reports, summaries, graphs, and charts.\n“Query” means a search string that an Authorized User uses to define what words and phrases must be present in a Mention for that Mention to be included in the applicable stream.\n“Seat” means a single subscription associated with a single log-in to the Site, assigned to one Authorized User.\n“Services” means the Serious Social Media services made available via Serious Social Media’s proprietary software delivered through the Site and mobile applications that provide for a single log-in, centralized web pages that enable you and Authorized Users to manage and create a user profile and customize your desired social media marketing, access reporting, and publish social media content to multiple Supported Platforms, including any modifications or Updates (as defined below), and the social media content created and posted by InsuranceSocial.Media on behalf of Authorized Users.\n“Supported Platform(s)” means the social networking site(s) currently supported by the Services, including Twitter, Facebook, and Google+.\n“Taxes” means all taxes, assessments, charges, fees, and levies that may be levied or based upon the sale or license of goods and/or services, as the case may be, including all sales, use, goods and services, value added, and excise taxes, custom duties, and assessments together with any installments with respect thereto, and any interest, fines, and penalties with respect thereto, imposed by any governmental authority (including federal, state, provincial, municipal, and foreign governmental authorities).")]), _vm._v(" "), _c('p', [_c('b', [_vm._v("2. Serious Social Media Services")])]), _vm._v(" "), _c('p', [_vm._v("2.1 Updates and Functionalities\nYou acknowledge that from time to time Serious Social Media may apply updates to the Services and that such updates may result in changes in the appearance and/or functionality of the Services (including the addition, modification, or removal of functionality, features, or content). Excluding the addition of wholly new products, Serious Social Media shall provide, implement, configure, install, support, and maintain at its own cost any and all updates, upgrades, enhancements, improvements, releases, corrections, bug fixes, patches, and modifications to the Services (collectively, the “Updates”). You acknowledge that the Services interoperate with several Supported Platforms, and that the Services provided are highly dependent on the availability of such Supported Platforms. If at any time any Supported Platforms cease to make their programs available to Serious Social Media on reasonable terms, Serious Social Media may cease to provide such features to you without entitling you to refund, credit, or other compensation.\n2.2 Acceptable Use. You shall (i) be responsible for your and your Authorized Users’ compliance with these Terms of Service, including the Fair Use Policy; (ii) be solely responsible for the accuracy, quality, integrity, and legality of Customer Content and of the means by which you acquired or generated Customer Content; (iii) use commercially reasonable efforts to prevent unauthorized access to or use of the Services, including keeping you password and user name confidential and not permitting any third party to access or use your user name, password, or account for the Services; (iv) be solely responsible and liable for all activity conducted through your account in connection with the Services; (v) promptly notify Serious Social Media if you become aware of or reasonably suspect any security breach, including any loss, theft, or unauthorized disclosure or use of your (or any Authorized User’s) user name, password, or account; (vi) use the Services only in accordance with applicable laws and government regulations; (vii) comply in all respects with all applicable terms of the Third-Party Services that you subscribe to or otherwise access in connection with your use of the Services. \nYou must not (a) make the Services available to anyone other than to your Authorized Users; (b) allow more than one individual Authorized User to use a Seat; (c) sell, trade, or otherwise transfer your Seats to another party; (d) use the Services to store or transmit any content, including Customer Content, that may be infringing, defamatory, threatening, harmful, or otherwise unlawful, including any content that may violate intellectual property, privacy, rights of publicity, or other laws, or send spam or other unsolicited messages in violation of applicable law; (e) upload to, or transmit from, the Services any data, file, software, or link that contains or redirects to a virus, Trojan horse, worm, or other harmful component; (f) attempt to reverse engineer, de-compile, hack, disable, interfere with, disassemble, copy, or disrupt the integrity or the performance of the Services, any third-party use of the Services, or any third-party data contained therein (except to the extent such restrictions are prohibited by applicable law); (g) access the Services in order to build a competitive product or service or copy any ideas, features, functions, or graphics of the Services; (h) attempt to gain unauthorized access to the Services or its related systems or networks; or (i) authorize, permit, or encourage any third party to do any of the above.\n2.3 Mentions. You understand that by using the Services you may be exposed to third-party content, information, and Mentions that might be unlawful, offensive, harmful, inaccurate or otherwise inappropriate. Serious Social Media does not own, control, or review Mentions, and unless Customer creates the content of Mentions, Mentions shall not be considered “Customer Content” under any circumstances. Mentions may be indecent, offensive, inaccurate, unlawful, or otherwise objectionable. Serious Social Media has no obligation to preview, verify, flag, modify, filter, or remove any Mentions, even if requested to do so, although Serious Social Media may do so in its sole discretion. Your use of Mentions is at your sole risk, and Serious Social Media shall not be liable to you or any third party in relation to Mentions.\n2.4 Fair Use Policy. Serious Social Media may suspend your access to the Services for abusive practices that degrade the performance of the Services for you and/or other customers of Serious Social Media.\n2.5 Third-Party Products and Services. You acknowledge that the Services may enable or assist you to access, interact with, and/or purchase services from Supported Platforms and other third parties via third-party websites or applications (collectively, the “Third-Party Services”). When you access the Third-Party Services, you will do so at your own risk. Any use of Third-Party Services is governed solely by the terms and conditions of such Third-Party Services (and you shall comply with all such terms and conditions), and any contract entered into, or any transaction completed via any Third-Party Services, is between you and the relevant third party, and not Serious Social Media. Serious Social Media makes no representation and shall have no liability or obligation whatsoever in relation to the content or use of, or correspondence with, any such Third-Party Services or any transactions completed and any contract entered into by you with any such third party.\n2.6 Non-Exclusivity. You acknowledge that the rights granted to you under this Agreement are non-exclusive and that nothing in this Agreement will be interpreted or construed to prohibit or in any way restrict Serious Social Media’s right to license, sell, or otherwise make available the Services to any third party or perform any services for any third party.\n")]), _vm._v(" "), _c('p', [_c('b', [_vm._v("3. Intellectual Property")])]), _vm._v(" "), _c('p', [_vm._v("3.1 Serious Social Media Services. As between you and Serious Social Media, Serious Social Media retains all right, title, and interest in and to the Services. Nothing herein shall be construed to restrict, impair, encumber, alter, deprive, or adversely affect the Services or any of Serious Social Media’s rights or interests therein or any other Serious Social Media intellectual property, brands, information, content, processes, methodologies, products, goods, services, materials, or rights, tangible or intangible. All rights, title, and interest in and to the Services not expressly granted in this Agreement are reserved by Serious Social Media. You may from time to time provide suggestions, comments or other feedback to Serious Social Media with respect to the Services (“Feedback”). Feedback, even if designated as confidential by you, shall not create any confidentiality obligation for Serious Social Media notwithstanding anything else. You shall, and hereby do, grant to Serious Social Media a non-exclusive, worldwide, perpetual, irrevocable, transferable, sublicensable, royalty-free, fully paid-up license to use and exploit the Feedback for any purpose.\n3.2 Customer Content. You grant Serious Social Media a limited, worldwide, non-exclusive, non-transferable (except as set forth in Section 9.1) license, without a right of sublicense, to access, use, reproduce, electronically distribute, transmit, perform, format, display, store, archive, and index the Customer Content for the purpose of supporting your use of the Services and providing Services to you. Serious Social Media may also use Customer Content for the purpose of supporting and developing the Site, provided that when doing so, Serious Social Media shall only use Customer Content in an anonymized and aggregated way. Subject only to the limited license expressly granted herein, you and your Authorized Users shall retain all right, title and interest in and to the Customer Content and all intellectual property rights therein. Nothing in this Agreement will confer on Serious Social Media any right of ownership or interest in the Customer Content or the intellectual property rights there.\n3.3 Responsibility for Customer Content and Mentions. You are solely responsible for the Customer Content that you or Authorized Users upload, publish, display, link to, or otherwise make available via the Services, and you agree that Serious Social Media is only acting as a passive conduit for the online distribution and publication of the Customer Content and the online display of Queries and Mentions. Serious Social Media will not review, share, distribute, or reference any Customer Content or Mentions except as provided herein, as provided in Serious Social Media’s privacy policy , or as may be required by law. Notwithstanding the foregoing, Serious Social Media retains the authority to remove any Customer Content uploaded that it deems in violation of this Agreement, at its sole discretion.\n3.4 Responsibility for Serious Social Media content. Content created and posted by Serious Social Media on behalf of the Customer is the sole property of Serious Social Media, and may not be sublicensed, reproduced, electronically distributed, stored, archived, or indexed by the Customer except insofar as the content is posted on social media outlets, and may be viewed and shared by other users of those outlets (such as in the Facebook function “Share”). ")]), _vm._v(" "), _c('p', [_c('b', [_vm._v("4. Serious Social Media Products and Fees")])]), _vm._v(" "), _c('p', [_vm._v("4.1 Purchases By Credit Card. You agree to a thirty (30) day contract minimum beginning upon receipt of credit card payment. Exact contract duration is decided upon at sign-up. You agree that all charges and fees associated with your account are your sole responsibility.\n4.2 You must provide Serious Social Media with a valid credit card to pay for Services. You authorize Serious Social Media to charge the credit card for the recurring subscription, as per the auto renewal terms below. In addition, you agree that Serious Social Media has permission to retain and/or share with financial institutions and payment processing firms (including any institutions or firms Serious Social Media retains in the future) your submitted payment information in order to process your purchase. Subscription to InsuranceSocial.Media are billed in advance on a monthly basis and are non-refundable for the subscription period they are purchased for. Serious Social Media does not support all payment methods, currencies, or locations for payment. If the payment method you use with us, such as a credit card, reaches its expiration date and you do not edit your payment method information or cancel, you authorize Serious Social Media to continue billing your credit card and you remain responsible for any uncollected amounts. Your obligation to pay fees continues through to the end of the subscription period during which you cancel your subscription. All applicable taxes are calculated based on the billing information you provide us at the time of purchase.\n4.3 Auto-renewal and Cancellation. Serious Social Media Services are for subscriptions that renew automatically, such as monthly. You agree that Serious Social Media may process your credit card on each monthly renewal term, on the calendar day corresponding to the first day you subscribed to a paid subscription. If your paid subscription to Paid Services began on a day not contained in a subsequent month (e.g., your service began on January 30 and there is no February 30), Serious Social Media will process your payment on the last day of such month. \n4.4 Late Payment. If any amounts due hereunder are not received by Serious Social Media by the due date, then at Serious Social Media’s discretion, such charges may accrue late interest at the rate of 12% per year or the maximum rate permitted by law, whichever is lower, from the date such payment was due until the date paid. In addition, upon 10 days' written notice, Serious Social Media may suspend your access to the Services if Serious Social Media does not receive the amounts invoiced hereunder at the expiration of such period.\n4.5 Taxes and Withholdings. You are responsible for paying all Taxes associated with the subscription to the Services. If Serious Social Media has the legal obligation to pay or collect Taxes for which you are responsible under this Section, the appropriate amount shall be invoiced to and paid by you, unless you provide Serious Social Media with a valid tax exemption certificate authorized by the appropriate taxing authority. Any and all payments by or on account of the compensation payable under this Agreement shall be made free and clear of and without deduction or withholding for any Taxes. If you are required to deduct or withhold any Taxes from such payments, then the sum payable shall be increased as necessary so that, after making all required deductions or withholdings, Serious Social Media receives an amount equal to the sum it would have received had no such deduction or withholding been made.")]), _vm._v(" "), _c('p', [_c('b', [_vm._v("5. Term and Termination")])]), _vm._v(" "), _c('p', [_vm._v("5.1 This Agreement shall commence on the day you access the Services for the first time and shall continue until your account is cancelled and you cease using our Services.\n5.2 Termination. If you violate the letter or spirit of these Terms of Service, abuse the Services, or otherwise create risk or possible legal exposure to Serious Social Media, Serious Social Media can terminate or suspend your InsuranceSocial.Media Account at our sole discretion. Serious Social Media will notify you by email or at the next time you attempt to access your account. You may cancel your InsuranceSocial.Media account at any time. For cancellation procedure, and for further assistance, see the instructions published on the InsuranceSocial.Media website.\n5.3 Effects of Termination. Upon termination of this Agreement for any reason, (i) you will immediately cease all use of the Services; (ii) you will have no further access to your accounts provided by Serious Social Media; and (iii) you will pay Serious Social Media all unpaid amounts owing to Serious Social Media.\n5.4 Survival. Any provision of this Agreement which, either by its terms or to give effect to its meaning, must survive, and such other provisions which expressly, or by their nature, are intended to survive termination shall survive the expiration or termination of this Agreement.")]), _vm._v(" "), _c('p', [_c('b', [_vm._v("6. Warranty Disclaimer")])]), _vm._v(" "), _c('p', [_vm._v("EXCEPT AS EXPRESSLY PROVIDED HEREIN, TO THE GREATEST EXTENT PERMITTED BY APPLICABLE LAW, SERIOUS SOCIAL MEDIA EXPRESSLY EXCLUDES AND DISCLAIMS ALL WARRANTIES OF ANY KIND, WHETHER EXPRESS, IMPLIED, STATUTORY, OR OTHERWISE. WITHOUT LIMITING THE GENERALITY OF THE FOREGOING, SERIOUS SOCIAL MEDIA SPECIFICALLY DISCLAIMS ALL EXPRESS OR IMPLIED WARRANTIES OF DESIGN, MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE, QUALITY, AND NONINFRINGEMENT, THAT ITS SERVICES WILL MEET YOUR REQUIREMENTS, OR THAT ITS SERVICES WILL ALWAYS BE AVAILABLE, ACCESSIBLE, UNINTERRUPTED, TIMELY, SECURE, ACCURATE, COMPLETE, OR ERROR-FREE. IN ADDITION, SERIOUS SOCIAL MEDIA DOES NOT WARRANT ANY CONNECTION TO OR TRANSMISSION FROM THE INTERNET. NO ADVICE OR INFORMATION, WHETHER ORAL OR WRITTEN, OBTAINED FROM SERIOUS SOCIAL MEDIA OR ELSEWHERE WILL CREATE ANY WARRANTY OR CONDITION NOT EXPRESSLY STATED IN THIS AGREEMENT. EXCEPT AS EXPRESSLY PROVIDED HEREIN, THE SERVICES ARE PROVIDED ON AN “AS IS” AND “AS AVAILABLE” BASIS. THESE LIMITATIONS SHALL APPLY NOTWITHSTANDING THE FAILURE OF ESSENTIAL PURPOSE OF ANY LIMITED REMEDY PROVIDED HEREIN. SERIOUS SOCIAL MEDIA DISCLAIMS ANY AND ALL RESPONSIBILITY OR LIABILITY IN RELATION TO THE CONTENT MADE AVAILABLE THROUGH THE SERVICES, INCLUDING THE CUSTOMER CONTENT AND MENTIONS, OR ANY CONTENT OR SERVICES PROVIDED BY THIRD PARTIES. SERIOUS SOCIAL MEDIA DOES NOT CONTROL OR VET CUSTOMER CONTENT OR MENTIONS AND IS NOT RESPONSIBLE FOR WHAT USERS POST, TRANSMIT, OR SHARE ON OR THROUGH THE SERVICES. SERIOUS SOCIAL MEDIA IS NOT RESPONSIBLE OR LIABLE IN ANY MANNER FOR ANY THIRD-PARTY SERVICES OR SUPPORTED PLATFORMS ASSOCIATED WITH OR UTILIZED IN CONNECTION WITH THE SERVICES, INCLUDING THE FAILURE OF ANY SUCH THIRD-PARTY SERVICES OR SUPPORTED PLATFORMS. SERIOUS SOCIAL MEDIA EXPRESSLY DENIES ANY RESPONSIBILITY RESULTING FROM HACKING, TAMPERING, OR OTHER UNAUTHORIZED ACCESS OR USE OF THE SERVICES OR YOUR ACCOUNT OR THE INFORMATION CONTAINED THEREIN. IF YOU ARE DISSATISFIED OR HARMED BY SERIOUS SOCIAL MEDIA OR ANYTHING RELATED TO SERIOUS SOCIAL MEDIA, YOU MAY CANCEL YOUR INSURANCESOCIAL.MEDIA ACCOUNT AND TERMINATE THIS AGREEMENT IN ACCORDANCE WITH SECTION 4.4 (AUTO-RENEWAL AND CANCELLATION) OR SECTION 5.2 (TERMINATION), AS APPLICABLE, AND SUCH TERMINATION SHALL BE YOUR SOLE AND EXCLUSIVE REMEDY (AND SERIOUS SOCIAL MEDIA’S SOLE AND EXCLUSIVE LIABILITY).")]), _vm._v(" "), _c('p', [_c('b', [_vm._v("7. Indemnification")])]), _vm._v(" "), _c('p', [_vm._v("7.1 Your Indemnification. You shall defend, indemnify, and hold harmless Serious Social Media, its affiliates, directors, officers, employees, and agents from and against all claims, losses, damages, penalties, liability, and costs, including reasonable attorneys’ fees, of any kind or nature which are in connection with or arising out of a claim (a) alleging that the Customer Content or your use of the Services infringes or violates the intellectual property rights, privacy rights, or other rights of a third party or violates applicable law; (b) relating to, or arising from, Customer Content, or your breach of Section 2.3 or Section 2.6; or (c) relating to, or arising from, Third-Party Services.")]), _vm._v(" "), _c('p', [_c('b', [_vm._v("8. Limitation of Liability")])]), _vm._v(" "), _c('p', [_vm._v("TO THE MAXIMUM EXTENT PERMITTED BY LAW, IN NO EVENT SHALL SERIOUS SOCIAL MEDIA’S AGGREGATE LIABILITY FOR ALL CLAIMS OF ANY KIND, INCLUDING ANY CLAIMS ARISING OUT OF OR RELATED TO THIS AGREEMENT, WHETHER BY STATUTE, CONTRACT, TORT, OR UNDER ANY OTHER THEORY OF LIABILITY, EXCEED THE GREATER OF (A) THE FEES PAID BY YOU FOR THE SERVICES HEREUNDER DURING THE THREE (3) MONTH PERIOD IMMEDIATELY PRECEDING THE DATE ON WHICH THE CAUSE OF ACTION AROSE AND (B) US$500. SERIOUS SOCIAL MEDIA DOES NOT OFFER ANY WARRANTY OR REMEDIES FOR THE INTERRUPTION OR CESSATION OF ACCESS OR TRANSMISSION TO OR FROM THE SERVICES.\nTO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, IN NO EVENT SHALL SERIOUS SOCIAL MEDIA, ITS DIRECTORS, EMPLOYEES, AGENTS, OR LICENSORS BE LIABLE FOR ANY INDIRECT, PUNITIVE, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR EXEMPLARY DAMAGES, INCLUDING DAMAGES FOR LOSS OF PROFITS, GOODWILL USE, OR DATA OR OTHER INTANGIBLE LOSSES, THAT RESULT FROM THE USE OF, OR INABILITY TO USE, THE SERVICES OR ANY OTHER ASPECT OF THIS AGREEMENT. UNDER NO CIRCUMSTANCES WILL SERIOUS SOCIAL MEDIA BE RESPONSIBLE FOR ANY DAMAGE, LOSS, OR INJURY RESULTING FROM HACKING, TAMPERING, OR OTHER UNAUTHORIZED ACCESS OR USE OF THE SERVICES OR YOUR ACCOUNT OR THE INFORMATION CONTAINED THEREIN.\nTHE PARTIES ACKNOWLEDGE AND AGREE THAT THE ESSENTIAL PURPOSE OF THIS SECTION IS TO ALLOCATE THE RISKS UNDER THESE TERMS BETWEEN THE PARTIES AND LIMIT THEIR POTENTIAL LIABILITY GIVEN THE FEES CHARGED UNDER THIS AGREEMENT, WHICH WOULD HAVE BEEN SUBSTANTIALLY HIGHER IF SERIOUS SOCIAL MEDIA WERE TO ASSUME ANY FURTHER LIABILITY OTHER THAN AS SET FORTH HEREIN. THE PARTIES HAVE RELIED ON THESE LIMITATIONS IN DETERMINING WHETHER TO ENTER INTO THESE TERMS. NOTHING IN THIS AGREEMENT IS INTENDED TO EXCLUDE OR RESTRICT OR SHALL BE CONSTRUED AS EXCLUDING OR RESTRICTING THE LIABILITY OF SERIOUS SOCIAL MEDIA FOR (I) DEATH OR PERSONAL INJURY CAUSED BY THE NEGLIGENCE OF SERIOUS SOCIAL MEDIA, ITS EMPLOYEES, OR ITS AGENTS; (II) WILLFUL MISCONDUCT OF SERIOUS SOCIAL MEDIA; OR (III) ANY LIABILITY WHICH CANNOT BE LIMITED OR EXCLUDED BY APPLICABLE LAW.")]), _vm._v(" "), _c('p', [_c('b', [_vm._v("8. Limitation of Liability")])]), _vm._v(" "), _c('p', [_vm._v("9.1 Assignment. You may not assign or otherwise transfer any of your rights or obligations hereunder, whether by merger, sale of assets, change of control, operation of law or otherwise, without the prior written consent of Serious Social Media (not to be unreasonably withheld), and any attempted assignment or transfer without such consent will be void. Serious Social Media may freely assign or delegate all rights and obligations under this Agreement, fully or partially without notice to you. Serious Social Media may also substitute, by way of unilateral novation, effective upon notice to you, Serious Social Media for any third party that assumes our rights and obligations under this Agreement.\n9.2 Amendment. Serious Social Media reserves the right to modify, supplement, or replace the terms of this Agreement, effective upon posting on the InsuranceSocial.Media website or notifying you otherwise. Your continued use of the Services after the effectiveness of that update will be deemed to represent your agreement with, and consent to be bound by, the new terms. Except for changes made by Serious Social Media as described here, no other amendment or modification of this Agreement shall be effective unless set forth in a written agreement bearing a written signature by Serious Social Media and you.\n9.3 Severability. Each provision of this Agreement is severable. If any provision of this Agreement is or becomes illegal, invalid, or unenforceable in any jurisdiction, the illegality, invalidity, or unenforceability of that provision will not affect the legality, validity, or enforceability of the remaining provisions of this Agreement or of that provision in any other jurisdiction.\n9.4 Notices. For purposes of service messages and notices about the Services, Serious Social Media may place a banner notice across its pages to alert you to certain changes such as modifications to this Agreement. Alternatively, notice may consist of an email from Serious Social Media to an email address associated with your account, even if Serious Social Media has other contact information. You also agree that Serious Social Media may communicate with you through your InsuranceSocial.Media account or through other means including email, mobile number, telephone, or delivery services including the postal service about your Serious Social Media account or services associated with Serious Social Media. You acknowledge and agree that Serious Social Media shall have no liability associated with or arising from your failure to do so maintain accurate contact or other information, including, but not limited to, your failure to receive critical information about the Services. You may provide legal notice to Serious Social Media via registered mail to Serious Social Media, Inc., 3419 E Chapman Ave., #107, Orange, CA 92869; Attention: General Counsel. \n9.5 Waivers. No waiver of any provision of this Agreement is binding unless it is in writing and signed by all parties to this Agreement, except that any provision which does not give rights or benefits to particular parties may be waived in writing, signed only by those parties who have rights under, or hold the benefit of, the provision being waived if those parties promptly send a copy of the executed waiver to all other parties. No failure to exercise, and no delay in exercising, any right or remedy under this Agreement will be deemed to be a waiver of that right or remedy. No waiver of any breach of any provision of this Agreement will be deemed to be a waiver of any subsequent breach of that provision or of any similar provision. 9.6 Nature of Relationship. No agency, partnership, joint venture, or employment relationship is created as a result of this Agreement and neither party has any authority of any kind to bind the other in any respect.\n9.7 Force Majeure. Except for payment obligations, neither party shall be liable for any failure to perform its obligations hereunder where such failure results from any cause beyond such party’s reasonable control, including the elements; fire; flood; severe weather; earthquake; vandalism; accidents; sabotage; power failure; denial of service attacks or similar attacks; Internet failure; acts of God and the public enemy; acts of war; acts of terrorism; riots; civil or public disturbances; strikes, lock-outs, or labor disruptions; and any laws, orders, rules, regulations, acts, or restraints of any government or governmental body or authority, civil or military, including the orders and judgments of courts.\n9.8 Governing Law. This Agreement and your relationship with Serious Social Media shall be governed exclusively by, and will be enforced, construed, and interpreted exclusively in accordance with, the laws applicable in the State of California, and shall be considered to have been made and accepted in California without regard to its conflict of law provisions. All disputes under this Agreement will be resolved by the courts of California. In any action or proceeding to enforce rights under this Agreement, the prevailing party shall be entitled to recover costs and attorneys’ fees.\n9.9 Entire Agreement. The terms of this Agreement, together with any applicable Authorization Form, all exhibits, and Serious Social Media’s privacy policy, constitute the entire agreement between the parties with respect to the use of the Services and supersede any prior or inconsistent agreements, negotiations, representations, and promises, written or oral, with respect to the subject matter and is binding upon the parties and their permitted successors and assigns. In the event of any conflict between this Agreement and the terms of an Authorization Form, the provisions of the Authorization Form shall prevail. The terms of this Agreement will apply to all orders you submit to Serious Social Media and shall supersede any additional terms, which may be incorporated in a purchase order form, or any other form you generate. Any such terms shall be null and void.")])]), _vm._v(" "), _c('footer', {
-    staticClass: "w3-container w3-text-white primary"
-  }, [_c('p', {
-    staticClass: "w3-center"
-  }, [_vm._v("Click anywhere to close")])])])
-}]}
-module.exports.render._withStripped = true
+    },
+    [_vm._m(0)]
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "w3-modal-content w3-card-4" }, [
+      _c("header", { staticClass: "w3-container w3-center primary" }, [
+        _c("i", {
+          staticClass:
+            "fa fa-times fa-3x w3-display-topright w3-padding w3-text-white"
+        }),
+        _vm._v(" "),
+        _c("h2", { staticClass: "w3-text-white" }, [
+          _vm._v("Terms of Service")
+        ]),
+        _vm._v(" "),
+        _c("p", { staticClass: "w3-text-white" }, [
+          _vm._v("Last modified September 17, 2015")
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "w3-container" }, [
+        _c("p", [
+          _vm._v(
+            'Welcome to InsuranceSocial.Media. These terms and conditions (“Terms of Service” or “Agreement”) govern your access to and use of Serious Social Media, Inc.’s (“Serious Social Media”) services and website accessible via www.InsuranceSocial.Media, including successor domain names or sites (the “Site”), and any and all information, text, graphics, photos, or other materials uploaded, downloaded, or appearing on the Services (as defined below).\nBY ACCESSING AND USING THE SERVICES IN ANY MANNER, YOU ARE "ACCEPTING" AND AGREEING TO BE BOUND BY THESE TERMS OF SERVICE TO THE EXCLUSION OF ALL OTHER TERMS. IF YOU DO NOT UNCONDITIONALLY ACCEPT THESE TERMS IN THEIR ENTIRETY, YOU SHALL NOT (AND SHALL HAVE NO RIGHT TO) ACCESS OR USE THE SERVICES. IF THE TERMS OF THIS AGREEMENT ARE CONSIDERED AN OFFER, ACCEPTANCE IS EXPRESSLY LIMITED TO SUCH TERMS. THESE TERMS SHOULD BE READ IN CONJUNCTION WITH THE INSURANCESOCIAL.MEDIA PRIVACY POLICY.\nWherever used in these Terms of Service, “you,” “your,” “Customer,” or similar terms means the person or legal entity accessing or using the Services. If you are accessing and using the Services on behalf of a company (such as your employer) or other legal entity, you represent and warrant that you have the authority to bind that company or other legal entity to these Terms of Service.\nSerious Social Media reserves the right, at any time, to update and change any or all of these Terms of Service, in its sole discretion, including but not limited to the fees and charges associated with the use of the Services. If Serious Social Media does so, it will post the modified Terms of Service on the Site, though we will notify you of any changes that, in our sole discretion, materially impact these Terms of Service. Continued use of the Services after any such changes have been made shall constitute your consent to such changes. You are responsible for regularly reviewing the most current version of the Terms of Service, which are currently available at: www.InsuranceSocial. Media/terms. When Serious Social Media changes these Terms of Service, Serious Social Media will modify the "Last Modified" date above.'
+          )
+        ]),
+        _vm._v(" "),
+        _c("p", [_c("b", [_vm._v("1. Definitions")])]),
+        _vm._v(" "),
+        _c("p", [
+          _vm._v(
+            "“Authorization Form” means a document issued by Serious Social Media and executed or otherwise agreed upon by authorized representatives of the Parties which specifies, among other things, a description of the Services, the Fees (as defined below), the Term (as defined below), and any other details specifically related to the Services. “Authorized Users” means individuals who are directly accessing the Services via an online sign-up process, or individual users authorized by you to use the Services and to whom you have supplied user identifications and passwords. Authorized Users may include your employees, consultants, contractors, agents, or your other designees, but shall not include any employee or agent of any Serious Social Media competitor.\n“Customer Content” means all information and data (including text, images, photos, videos, audio, and documents) or any other content in any media and format provided or made available to Serious Social Media by or on your behalf in relation to the use of the Services.\n“Fair Use Policy” means the limits placed on usage as described in Section 2.6.\n“Mentions” means the information, including links, posts, and excerpts, that has been made publicly available and obtained by Serious Social Media on your behalf from the Internet, and data derived therefrom, including reports, summaries, graphs, and charts.\n“Query” means a search string that an Authorized User uses to define what words and phrases must be present in a Mention for that Mention to be included in the applicable stream.\n“Seat” means a single subscription associated with a single log-in to the Site, assigned to one Authorized User.\n“Services” means the Serious Social Media services made available via Serious Social Media’s proprietary software delivered through the Site and mobile applications that provide for a single log-in, centralized web pages that enable you and Authorized Users to manage and create a user profile and customize your desired social media marketing, access reporting, and publish social media content to multiple Supported Platforms, including any modifications or Updates (as defined below), and the social media content created and posted by InsuranceSocial.Media on behalf of Authorized Users.\n“Supported Platform(s)” means the social networking site(s) currently supported by the Services, including Twitter, Facebook, and Google+.\n“Taxes” means all taxes, assessments, charges, fees, and levies that may be levied or based upon the sale or license of goods and/or services, as the case may be, including all sales, use, goods and services, value added, and excise taxes, custom duties, and assessments together with any installments with respect thereto, and any interest, fines, and penalties with respect thereto, imposed by any governmental authority (including federal, state, provincial, municipal, and foreign governmental authorities)."
+          )
+        ]),
+        _vm._v(" "),
+        _c("p", [_c("b", [_vm._v("2. Serious Social Media Services")])]),
+        _vm._v(" "),
+        _c("p", [
+          _vm._v(
+            "2.1 Updates and Functionalities\nYou acknowledge that from time to time Serious Social Media may apply updates to the Services and that such updates may result in changes in the appearance and/or functionality of the Services (including the addition, modification, or removal of functionality, features, or content). Excluding the addition of wholly new products, Serious Social Media shall provide, implement, configure, install, support, and maintain at its own cost any and all updates, upgrades, enhancements, improvements, releases, corrections, bug fixes, patches, and modifications to the Services (collectively, the “Updates”). You acknowledge that the Services interoperate with several Supported Platforms, and that the Services provided are highly dependent on the availability of such Supported Platforms. If at any time any Supported Platforms cease to make their programs available to Serious Social Media on reasonable terms, Serious Social Media may cease to provide such features to you without entitling you to refund, credit, or other compensation.\n2.2 Acceptable Use. You shall (i) be responsible for your and your Authorized Users’ compliance with these Terms of Service, including the Fair Use Policy; (ii) be solely responsible for the accuracy, quality, integrity, and legality of Customer Content and of the means by which you acquired or generated Customer Content; (iii) use commercially reasonable efforts to prevent unauthorized access to or use of the Services, including keeping you password and user name confidential and not permitting any third party to access or use your user name, password, or account for the Services; (iv) be solely responsible and liable for all activity conducted through your account in connection with the Services; (v) promptly notify Serious Social Media if you become aware of or reasonably suspect any security breach, including any loss, theft, or unauthorized disclosure or use of your (or any Authorized User’s) user name, password, or account; (vi) use the Services only in accordance with applicable laws and government regulations; (vii) comply in all respects with all applicable terms of the Third-Party Services that you subscribe to or otherwise access in connection with your use of the Services. \nYou must not (a) make the Services available to anyone other than to your Authorized Users; (b) allow more than one individual Authorized User to use a Seat; (c) sell, trade, or otherwise transfer your Seats to another party; (d) use the Services to store or transmit any content, including Customer Content, that may be infringing, defamatory, threatening, harmful, or otherwise unlawful, including any content that may violate intellectual property, privacy, rights of publicity, or other laws, or send spam or other unsolicited messages in violation of applicable law; (e) upload to, or transmit from, the Services any data, file, software, or link that contains or redirects to a virus, Trojan horse, worm, or other harmful component; (f) attempt to reverse engineer, de-compile, hack, disable, interfere with, disassemble, copy, or disrupt the integrity or the performance of the Services, any third-party use of the Services, or any third-party data contained therein (except to the extent such restrictions are prohibited by applicable law); (g) access the Services in order to build a competitive product or service or copy any ideas, features, functions, or graphics of the Services; (h) attempt to gain unauthorized access to the Services or its related systems or networks; or (i) authorize, permit, or encourage any third party to do any of the above.\n2.3 Mentions. You understand that by using the Services you may be exposed to third-party content, information, and Mentions that might be unlawful, offensive, harmful, inaccurate or otherwise inappropriate. Serious Social Media does not own, control, or review Mentions, and unless Customer creates the content of Mentions, Mentions shall not be considered “Customer Content” under any circumstances. Mentions may be indecent, offensive, inaccurate, unlawful, or otherwise objectionable. Serious Social Media has no obligation to preview, verify, flag, modify, filter, or remove any Mentions, even if requested to do so, although Serious Social Media may do so in its sole discretion. Your use of Mentions is at your sole risk, and Serious Social Media shall not be liable to you or any third party in relation to Mentions.\n2.4 Fair Use Policy. Serious Social Media may suspend your access to the Services for abusive practices that degrade the performance of the Services for you and/or other customers of Serious Social Media.\n2.5 Third-Party Products and Services. You acknowledge that the Services may enable or assist you to access, interact with, and/or purchase services from Supported Platforms and other third parties via third-party websites or applications (collectively, the “Third-Party Services”). When you access the Third-Party Services, you will do so at your own risk. Any use of Third-Party Services is governed solely by the terms and conditions of such Third-Party Services (and you shall comply with all such terms and conditions), and any contract entered into, or any transaction completed via any Third-Party Services, is between you and the relevant third party, and not Serious Social Media. Serious Social Media makes no representation and shall have no liability or obligation whatsoever in relation to the content or use of, or correspondence with, any such Third-Party Services or any transactions completed and any contract entered into by you with any such third party.\n2.6 Non-Exclusivity. You acknowledge that the rights granted to you under this Agreement are non-exclusive and that nothing in this Agreement will be interpreted or construed to prohibit or in any way restrict Serious Social Media’s right to license, sell, or otherwise make available the Services to any third party or perform any services for any third party.\n"
+          )
+        ]),
+        _vm._v(" "),
+        _c("p", [_c("b", [_vm._v("3. Intellectual Property")])]),
+        _vm._v(" "),
+        _c("p", [
+          _vm._v(
+            "3.1 Serious Social Media Services. As between you and Serious Social Media, Serious Social Media retains all right, title, and interest in and to the Services. Nothing herein shall be construed to restrict, impair, encumber, alter, deprive, or adversely affect the Services or any of Serious Social Media’s rights or interests therein or any other Serious Social Media intellectual property, brands, information, content, processes, methodologies, products, goods, services, materials, or rights, tangible or intangible. All rights, title, and interest in and to the Services not expressly granted in this Agreement are reserved by Serious Social Media. You may from time to time provide suggestions, comments or other feedback to Serious Social Media with respect to the Services (“Feedback”). Feedback, even if designated as confidential by you, shall not create any confidentiality obligation for Serious Social Media notwithstanding anything else. You shall, and hereby do, grant to Serious Social Media a non-exclusive, worldwide, perpetual, irrevocable, transferable, sublicensable, royalty-free, fully paid-up license to use and exploit the Feedback for any purpose.\n3.2 Customer Content. You grant Serious Social Media a limited, worldwide, non-exclusive, non-transferable (except as set forth in Section 9.1) license, without a right of sublicense, to access, use, reproduce, electronically distribute, transmit, perform, format, display, store, archive, and index the Customer Content for the purpose of supporting your use of the Services and providing Services to you. Serious Social Media may also use Customer Content for the purpose of supporting and developing the Site, provided that when doing so, Serious Social Media shall only use Customer Content in an anonymized and aggregated way. Subject only to the limited license expressly granted herein, you and your Authorized Users shall retain all right, title and interest in and to the Customer Content and all intellectual property rights therein. Nothing in this Agreement will confer on Serious Social Media any right of ownership or interest in the Customer Content or the intellectual property rights there.\n3.3 Responsibility for Customer Content and Mentions. You are solely responsible for the Customer Content that you or Authorized Users upload, publish, display, link to, or otherwise make available via the Services, and you agree that Serious Social Media is only acting as a passive conduit for the online distribution and publication of the Customer Content and the online display of Queries and Mentions. Serious Social Media will not review, share, distribute, or reference any Customer Content or Mentions except as provided herein, as provided in Serious Social Media’s privacy policy , or as may be required by law. Notwithstanding the foregoing, Serious Social Media retains the authority to remove any Customer Content uploaded that it deems in violation of this Agreement, at its sole discretion.\n3.4 Responsibility for Serious Social Media content. Content created and posted by Serious Social Media on behalf of the Customer is the sole property of Serious Social Media, and may not be sublicensed, reproduced, electronically distributed, stored, archived, or indexed by the Customer except insofar as the content is posted on social media outlets, and may be viewed and shared by other users of those outlets (such as in the Facebook function “Share”). "
+          )
+        ]),
+        _vm._v(" "),
+        _c("p", [
+          _c("b", [_vm._v("4. Serious Social Media Products and Fees")])
+        ]),
+        _vm._v(" "),
+        _c("p", [
+          _vm._v(
+            "4.1 Purchases By Credit Card. You agree to a thirty (30) day contract minimum beginning upon receipt of credit card payment. Exact contract duration is decided upon at sign-up. You agree that all charges and fees associated with your account are your sole responsibility.\n4.2 You must provide Serious Social Media with a valid credit card to pay for Services. You authorize Serious Social Media to charge the credit card for the recurring subscription, as per the auto renewal terms below. In addition, you agree that Serious Social Media has permission to retain and/or share with financial institutions and payment processing firms (including any institutions or firms Serious Social Media retains in the future) your submitted payment information in order to process your purchase. Subscription to InsuranceSocial.Media are billed in advance on a monthly basis and are non-refundable for the subscription period they are purchased for. Serious Social Media does not support all payment methods, currencies, or locations for payment. If the payment method you use with us, such as a credit card, reaches its expiration date and you do not edit your payment method information or cancel, you authorize Serious Social Media to continue billing your credit card and you remain responsible for any uncollected amounts. Your obligation to pay fees continues through to the end of the subscription period during which you cancel your subscription. All applicable taxes are calculated based on the billing information you provide us at the time of purchase.\n4.3 Auto-renewal and Cancellation. Serious Social Media Services are for subscriptions that renew automatically, such as monthly. You agree that Serious Social Media may process your credit card on each monthly renewal term, on the calendar day corresponding to the first day you subscribed to a paid subscription. If your paid subscription to Paid Services began on a day not contained in a subsequent month (e.g., your service began on January 30 and there is no February 30), Serious Social Media will process your payment on the last day of such month. \n4.4 Late Payment. If any amounts due hereunder are not received by Serious Social Media by the due date, then at Serious Social Media’s discretion, such charges may accrue late interest at the rate of 12% per year or the maximum rate permitted by law, whichever is lower, from the date such payment was due until the date paid. In addition, upon 10 days' written notice, Serious Social Media may suspend your access to the Services if Serious Social Media does not receive the amounts invoiced hereunder at the expiration of such period.\n4.5 Taxes and Withholdings. You are responsible for paying all Taxes associated with the subscription to the Services. If Serious Social Media has the legal obligation to pay or collect Taxes for which you are responsible under this Section, the appropriate amount shall be invoiced to and paid by you, unless you provide Serious Social Media with a valid tax exemption certificate authorized by the appropriate taxing authority. Any and all payments by or on account of the compensation payable under this Agreement shall be made free and clear of and without deduction or withholding for any Taxes. If you are required to deduct or withhold any Taxes from such payments, then the sum payable shall be increased as necessary so that, after making all required deductions or withholdings, Serious Social Media receives an amount equal to the sum it would have received had no such deduction or withholding been made."
+          )
+        ]),
+        _vm._v(" "),
+        _c("p", [_c("b", [_vm._v("5. Term and Termination")])]),
+        _vm._v(" "),
+        _c("p", [
+          _vm._v(
+            "5.1 This Agreement shall commence on the day you access the Services for the first time and shall continue until your account is cancelled and you cease using our Services.\n5.2 Termination. If you violate the letter or spirit of these Terms of Service, abuse the Services, or otherwise create risk or possible legal exposure to Serious Social Media, Serious Social Media can terminate or suspend your InsuranceSocial.Media Account at our sole discretion. Serious Social Media will notify you by email or at the next time you attempt to access your account. You may cancel your InsuranceSocial.Media account at any time. For cancellation procedure, and for further assistance, see the instructions published on the InsuranceSocial.Media website.\n5.3 Effects of Termination. Upon termination of this Agreement for any reason, (i) you will immediately cease all use of the Services; (ii) you will have no further access to your accounts provided by Serious Social Media; and (iii) you will pay Serious Social Media all unpaid amounts owing to Serious Social Media.\n5.4 Survival. Any provision of this Agreement which, either by its terms or to give effect to its meaning, must survive, and such other provisions which expressly, or by their nature, are intended to survive termination shall survive the expiration or termination of this Agreement."
+          )
+        ]),
+        _vm._v(" "),
+        _c("p", [_c("b", [_vm._v("6. Warranty Disclaimer")])]),
+        _vm._v(" "),
+        _c("p", [
+          _vm._v(
+            "EXCEPT AS EXPRESSLY PROVIDED HEREIN, TO THE GREATEST EXTENT PERMITTED BY APPLICABLE LAW, SERIOUS SOCIAL MEDIA EXPRESSLY EXCLUDES AND DISCLAIMS ALL WARRANTIES OF ANY KIND, WHETHER EXPRESS, IMPLIED, STATUTORY, OR OTHERWISE. WITHOUT LIMITING THE GENERALITY OF THE FOREGOING, SERIOUS SOCIAL MEDIA SPECIFICALLY DISCLAIMS ALL EXPRESS OR IMPLIED WARRANTIES OF DESIGN, MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE, QUALITY, AND NONINFRINGEMENT, THAT ITS SERVICES WILL MEET YOUR REQUIREMENTS, OR THAT ITS SERVICES WILL ALWAYS BE AVAILABLE, ACCESSIBLE, UNINTERRUPTED, TIMELY, SECURE, ACCURATE, COMPLETE, OR ERROR-FREE. IN ADDITION, SERIOUS SOCIAL MEDIA DOES NOT WARRANT ANY CONNECTION TO OR TRANSMISSION FROM THE INTERNET. NO ADVICE OR INFORMATION, WHETHER ORAL OR WRITTEN, OBTAINED FROM SERIOUS SOCIAL MEDIA OR ELSEWHERE WILL CREATE ANY WARRANTY OR CONDITION NOT EXPRESSLY STATED IN THIS AGREEMENT. EXCEPT AS EXPRESSLY PROVIDED HEREIN, THE SERVICES ARE PROVIDED ON AN “AS IS” AND “AS AVAILABLE” BASIS. THESE LIMITATIONS SHALL APPLY NOTWITHSTANDING THE FAILURE OF ESSENTIAL PURPOSE OF ANY LIMITED REMEDY PROVIDED HEREIN. SERIOUS SOCIAL MEDIA DISCLAIMS ANY AND ALL RESPONSIBILITY OR LIABILITY IN RELATION TO THE CONTENT MADE AVAILABLE THROUGH THE SERVICES, INCLUDING THE CUSTOMER CONTENT AND MENTIONS, OR ANY CONTENT OR SERVICES PROVIDED BY THIRD PARTIES. SERIOUS SOCIAL MEDIA DOES NOT CONTROL OR VET CUSTOMER CONTENT OR MENTIONS AND IS NOT RESPONSIBLE FOR WHAT USERS POST, TRANSMIT, OR SHARE ON OR THROUGH THE SERVICES. SERIOUS SOCIAL MEDIA IS NOT RESPONSIBLE OR LIABLE IN ANY MANNER FOR ANY THIRD-PARTY SERVICES OR SUPPORTED PLATFORMS ASSOCIATED WITH OR UTILIZED IN CONNECTION WITH THE SERVICES, INCLUDING THE FAILURE OF ANY SUCH THIRD-PARTY SERVICES OR SUPPORTED PLATFORMS. SERIOUS SOCIAL MEDIA EXPRESSLY DENIES ANY RESPONSIBILITY RESULTING FROM HACKING, TAMPERING, OR OTHER UNAUTHORIZED ACCESS OR USE OF THE SERVICES OR YOUR ACCOUNT OR THE INFORMATION CONTAINED THEREIN. IF YOU ARE DISSATISFIED OR HARMED BY SERIOUS SOCIAL MEDIA OR ANYTHING RELATED TO SERIOUS SOCIAL MEDIA, YOU MAY CANCEL YOUR INSURANCESOCIAL.MEDIA ACCOUNT AND TERMINATE THIS AGREEMENT IN ACCORDANCE WITH SECTION 4.4 (AUTO-RENEWAL AND CANCELLATION) OR SECTION 5.2 (TERMINATION), AS APPLICABLE, AND SUCH TERMINATION SHALL BE YOUR SOLE AND EXCLUSIVE REMEDY (AND SERIOUS SOCIAL MEDIA’S SOLE AND EXCLUSIVE LIABILITY)."
+          )
+        ]),
+        _vm._v(" "),
+        _c("p", [_c("b", [_vm._v("7. Indemnification")])]),
+        _vm._v(" "),
+        _c("p", [
+          _vm._v(
+            "7.1 Your Indemnification. You shall defend, indemnify, and hold harmless Serious Social Media, its affiliates, directors, officers, employees, and agents from and against all claims, losses, damages, penalties, liability, and costs, including reasonable attorneys’ fees, of any kind or nature which are in connection with or arising out of a claim (a) alleging that the Customer Content or your use of the Services infringes or violates the intellectual property rights, privacy rights, or other rights of a third party or violates applicable law; (b) relating to, or arising from, Customer Content, or your breach of Section 2.3 or Section 2.6; or (c) relating to, or arising from, Third-Party Services."
+          )
+        ]),
+        _vm._v(" "),
+        _c("p", [_c("b", [_vm._v("8. Limitation of Liability")])]),
+        _vm._v(" "),
+        _c("p", [
+          _vm._v(
+            "TO THE MAXIMUM EXTENT PERMITTED BY LAW, IN NO EVENT SHALL SERIOUS SOCIAL MEDIA’S AGGREGATE LIABILITY FOR ALL CLAIMS OF ANY KIND, INCLUDING ANY CLAIMS ARISING OUT OF OR RELATED TO THIS AGREEMENT, WHETHER BY STATUTE, CONTRACT, TORT, OR UNDER ANY OTHER THEORY OF LIABILITY, EXCEED THE GREATER OF (A) THE FEES PAID BY YOU FOR THE SERVICES HEREUNDER DURING THE THREE (3) MONTH PERIOD IMMEDIATELY PRECEDING THE DATE ON WHICH THE CAUSE OF ACTION AROSE AND (B) US$500. SERIOUS SOCIAL MEDIA DOES NOT OFFER ANY WARRANTY OR REMEDIES FOR THE INTERRUPTION OR CESSATION OF ACCESS OR TRANSMISSION TO OR FROM THE SERVICES.\nTO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, IN NO EVENT SHALL SERIOUS SOCIAL MEDIA, ITS DIRECTORS, EMPLOYEES, AGENTS, OR LICENSORS BE LIABLE FOR ANY INDIRECT, PUNITIVE, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR EXEMPLARY DAMAGES, INCLUDING DAMAGES FOR LOSS OF PROFITS, GOODWILL USE, OR DATA OR OTHER INTANGIBLE LOSSES, THAT RESULT FROM THE USE OF, OR INABILITY TO USE, THE SERVICES OR ANY OTHER ASPECT OF THIS AGREEMENT. UNDER NO CIRCUMSTANCES WILL SERIOUS SOCIAL MEDIA BE RESPONSIBLE FOR ANY DAMAGE, LOSS, OR INJURY RESULTING FROM HACKING, TAMPERING, OR OTHER UNAUTHORIZED ACCESS OR USE OF THE SERVICES OR YOUR ACCOUNT OR THE INFORMATION CONTAINED THEREIN.\nTHE PARTIES ACKNOWLEDGE AND AGREE THAT THE ESSENTIAL PURPOSE OF THIS SECTION IS TO ALLOCATE THE RISKS UNDER THESE TERMS BETWEEN THE PARTIES AND LIMIT THEIR POTENTIAL LIABILITY GIVEN THE FEES CHARGED UNDER THIS AGREEMENT, WHICH WOULD HAVE BEEN SUBSTANTIALLY HIGHER IF SERIOUS SOCIAL MEDIA WERE TO ASSUME ANY FURTHER LIABILITY OTHER THAN AS SET FORTH HEREIN. THE PARTIES HAVE RELIED ON THESE LIMITATIONS IN DETERMINING WHETHER TO ENTER INTO THESE TERMS. NOTHING IN THIS AGREEMENT IS INTENDED TO EXCLUDE OR RESTRICT OR SHALL BE CONSTRUED AS EXCLUDING OR RESTRICTING THE LIABILITY OF SERIOUS SOCIAL MEDIA FOR (I) DEATH OR PERSONAL INJURY CAUSED BY THE NEGLIGENCE OF SERIOUS SOCIAL MEDIA, ITS EMPLOYEES, OR ITS AGENTS; (II) WILLFUL MISCONDUCT OF SERIOUS SOCIAL MEDIA; OR (III) ANY LIABILITY WHICH CANNOT BE LIMITED OR EXCLUDED BY APPLICABLE LAW."
+          )
+        ]),
+        _vm._v(" "),
+        _c("p", [_c("b", [_vm._v("8. Limitation of Liability")])]),
+        _vm._v(" "),
+        _c("p", [
+          _vm._v(
+            "9.1 Assignment. You may not assign or otherwise transfer any of your rights or obligations hereunder, whether by merger, sale of assets, change of control, operation of law or otherwise, without the prior written consent of Serious Social Media (not to be unreasonably withheld), and any attempted assignment or transfer without such consent will be void. Serious Social Media may freely assign or delegate all rights and obligations under this Agreement, fully or partially without notice to you. Serious Social Media may also substitute, by way of unilateral novation, effective upon notice to you, Serious Social Media for any third party that assumes our rights and obligations under this Agreement.\n9.2 Amendment. Serious Social Media reserves the right to modify, supplement, or replace the terms of this Agreement, effective upon posting on the InsuranceSocial.Media website or notifying you otherwise. Your continued use of the Services after the effectiveness of that update will be deemed to represent your agreement with, and consent to be bound by, the new terms. Except for changes made by Serious Social Media as described here, no other amendment or modification of this Agreement shall be effective unless set forth in a written agreement bearing a written signature by Serious Social Media and you.\n9.3 Severability. Each provision of this Agreement is severable. If any provision of this Agreement is or becomes illegal, invalid, or unenforceable in any jurisdiction, the illegality, invalidity, or unenforceability of that provision will not affect the legality, validity, or enforceability of the remaining provisions of this Agreement or of that provision in any other jurisdiction.\n9.4 Notices. For purposes of service messages and notices about the Services, Serious Social Media may place a banner notice across its pages to alert you to certain changes such as modifications to this Agreement. Alternatively, notice may consist of an email from Serious Social Media to an email address associated with your account, even if Serious Social Media has other contact information. You also agree that Serious Social Media may communicate with you through your InsuranceSocial.Media account or through other means including email, mobile number, telephone, or delivery services including the postal service about your Serious Social Media account or services associated with Serious Social Media. You acknowledge and agree that Serious Social Media shall have no liability associated with or arising from your failure to do so maintain accurate contact or other information, including, but not limited to, your failure to receive critical information about the Services. You may provide legal notice to Serious Social Media via registered mail to Serious Social Media, Inc., 3419 E Chapman Ave., #107, Orange, CA 92869; Attention: General Counsel. \n9.5 Waivers. No waiver of any provision of this Agreement is binding unless it is in writing and signed by all parties to this Agreement, except that any provision which does not give rights or benefits to particular parties may be waived in writing, signed only by those parties who have rights under, or hold the benefit of, the provision being waived if those parties promptly send a copy of the executed waiver to all other parties. No failure to exercise, and no delay in exercising, any right or remedy under this Agreement will be deemed to be a waiver of that right or remedy. No waiver of any breach of any provision of this Agreement will be deemed to be a waiver of any subsequent breach of that provision or of any similar provision. 9.6 Nature of Relationship. No agency, partnership, joint venture, or employment relationship is created as a result of this Agreement and neither party has any authority of any kind to bind the other in any respect.\n9.7 Force Majeure. Except for payment obligations, neither party shall be liable for any failure to perform its obligations hereunder where such failure results from any cause beyond such party’s reasonable control, including the elements; fire; flood; severe weather; earthquake; vandalism; accidents; sabotage; power failure; denial of service attacks or similar attacks; Internet failure; acts of God and the public enemy; acts of war; acts of terrorism; riots; civil or public disturbances; strikes, lock-outs, or labor disruptions; and any laws, orders, rules, regulations, acts, or restraints of any government or governmental body or authority, civil or military, including the orders and judgments of courts.\n9.8 Governing Law. This Agreement and your relationship with Serious Social Media shall be governed exclusively by, and will be enforced, construed, and interpreted exclusively in accordance with, the laws applicable in the State of California, and shall be considered to have been made and accepted in California without regard to its conflict of law provisions. All disputes under this Agreement will be resolved by the courts of California. In any action or proceeding to enforce rights under this Agreement, the prevailing party shall be entitled to recover costs and attorneys’ fees.\n9.9 Entire Agreement. The terms of this Agreement, together with any applicable Authorization Form, all exhibits, and Serious Social Media’s privacy policy, constitute the entire agreement between the parties with respect to the use of the Services and supersede any prior or inconsistent agreements, negotiations, representations, and promises, written or oral, with respect to the subject matter and is binding upon the parties and their permitted successors and assigns. In the event of any conflict between this Agreement and the terms of an Authorization Form, the provisions of the Authorization Form shall prevail. The terms of this Agreement will apply to all orders you submit to Serious Social Media and shall supersede any additional terms, which may be incorporated in a purchase order form, or any other form you generate. Any such terms shall be null and void."
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _c("footer", { staticClass: "w3-container w3-text-white primary" }, [
+        _c("p", { staticClass: "w3-center" }, [
+          _vm._v("Click anywhere to close")
+        ])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
@@ -16114,75 +16517,107 @@ if (false) {
 }
 
 /***/ }),
-/* 219 */
+/* 220 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('div', {
-    staticClass: "w3-section alt-checkbox sixty"
-  }, [_c('input', {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: (_vm.checked),
-      expression: "checked"
-    }],
-    staticClass: "v-align",
-    attrs: {
-      "type": "checkbox",
-      "id": "terms"
-    },
-    domProps: {
-      "checked": Array.isArray(_vm.checked) ? _vm._i(_vm.checked, null) > -1 : (_vm.checked)
-    },
-    on: {
-      "change": function($event) {
-        _vm.$emit('setTerms', _vm.checked)
-      },
-      "__c": function($event) {
-        var $$a = _vm.checked,
-          $$el = $event.target,
-          $$c = $$el.checked ? (true) : (false);
-        if (Array.isArray($$a)) {
-          var $$v = null,
-            $$i = _vm._i($$a, $$v);
-          if ($$el.checked) {
-            $$i < 0 && (_vm.checked = $$a.concat($$v))
-          } else {
-            $$i > -1 && (_vm.checked = $$a.slice(0, $$i).concat($$a.slice($$i + 1)))
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    [
+      _c("div", { staticClass: "w3-section alt-checkbox sixty" }, [
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.checked,
+              expression: "checked"
+            }
+          ],
+          staticClass: "v-align",
+          attrs: { type: "checkbox", id: "terms" },
+          domProps: {
+            checked: Array.isArray(_vm.checked)
+              ? _vm._i(_vm.checked, null) > -1
+              : _vm.checked
+          },
+          on: {
+            change: function($event) {
+              _vm.$emit("setTerms", _vm.checked)
+            },
+            __c: function($event) {
+              var $$a = _vm.checked,
+                $$el = $event.target,
+                $$c = $$el.checked ? true : false
+              if (Array.isArray($$a)) {
+                var $$v = null,
+                  $$i = _vm._i($$a, $$v)
+                if ($$el.checked) {
+                  $$i < 0 && (_vm.checked = $$a.concat([$$v]))
+                } else {
+                  $$i > -1 &&
+                    (_vm.checked = $$a.slice(0, $$i).concat($$a.slice($$i + 1)))
+                }
+              } else {
+                _vm.checked = $$c
+              }
+            }
           }
-        } else {
-          _vm.checked = $$c
-        }
-      }
-    }
-  }), _vm._v(" "), _c('label', {
-    staticClass: "v-align check-box",
-    attrs: {
-      "for": "terms"
-    }
-  }), _vm._v(" "), _vm._m(0)]), _vm._v(" "), _c('div', {
-    staticClass: "w3-section"
-  }, [_c('button', {
-    staticClass: "w3-button w3-text-white secondary",
-    on: {
-      "click": function($event) {
-        _vm.modal = !_vm.modal
-      }
-    }
-  }, [_vm._v("Terms of Service\n        ")])]), _vm._v(" "), (_vm.modal) ? _c('Modal', {
-    on: {
-      "setModal": function($event) {
-        _vm.modal = !_vm.modal
-      }
-    }
-  }) : _vm._e()], 1)
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('span', {
-    staticClass: "w3-large w3-margin-left"
-  }, [_vm._v("By clicking here, I agree to the\n            "), _c('b', [_vm._v("Insurance Social Media")]), _vm._v(" Terms of Service.\n        ")])
-}]}
-module.exports.render._withStripped = true
+        }),
+        _vm._v(" "),
+        _c("label", {
+          staticClass: "v-align check-box",
+          attrs: { for: "terms" }
+        }),
+        _vm._v(" "),
+        _vm._m(0)
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "w3-section" }, [
+        _c(
+          "button",
+          {
+            staticClass: "w3-button w3-text-white secondary",
+            on: {
+              click: function($event) {
+                _vm.modal = !_vm.modal
+              }
+            }
+          },
+          [_vm._v("Terms of Service\n        ")]
+        )
+      ]),
+      _vm._v(" "),
+      _vm.modal
+        ? _c("Modal", {
+            on: {
+              setModal: function($event) {
+                _vm.modal = !_vm.modal
+              }
+            }
+          })
+        : _vm._e()
+    ],
+    1
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "w3-large w3-margin-left" }, [
+      _vm._v("By clicking here, I agree to the\n            "),
+      _c("b", [_vm._v("Insurance Social Media")]),
+      _vm._v(" Terms of Service.\n        ")
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
@@ -16191,23 +16626,29 @@ if (false) {
 }
 
 /***/ }),
-/* 220 */
+/* 221 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var Component = __webpack_require__(0)(
-  /* script */
-  __webpack_require__(221),
-  /* template */
-  __webpack_require__(222),
-  /* styles */
-  null,
-  /* scopeId */
-  null,
-  /* moduleIdentifier (server only) */
-  null
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(222)
+/* template */
+var __vue_template__ = __webpack_require__(223)
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
 )
-Component.options.__file = "/home/johnhuffman/Sites/InsuranceSocial.media/src/resources/javascripts/frontend/register/vue/register/Errors.vue"
+Component.options.__file = "resources/javascripts/frontend/register/vue/register/Errors.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Errors.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -16231,7 +16672,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 221 */
+/* 222 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -16256,21 +16697,30 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 222 */
+/* 223 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "w3-panel"
-  }, [(_vm.errors.length) ? _c('ul', {
-    staticClass: "w3-ul"
-  }, _vm._l((_vm.errors), function(error) {
-    return _c('li', {
-      staticClass: "w3-text-red"
-    }, [_vm._v(_vm._s(error))])
-  })) : _vm._e()])
-},staticRenderFns: []}
-module.exports.render._withStripped = true
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "w3-panel" }, [
+    _vm.errors.length
+      ? _c(
+          "ul",
+          { staticClass: "w3-ul" },
+          _vm._l(_vm.errors, function(error) {
+            return _c("li", { staticClass: "w3-text-red" }, [
+              _vm._v(_vm._s(error))
+            ])
+          })
+        )
+      : _vm._e()
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
@@ -16279,100 +16729,156 @@ if (false) {
 }
 
 /***/ }),
-/* 223 */
+/* 224 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "w3-container w3-card-2 form"
-  }, [_vm._m(0), _vm._v(" "), _c('div', {
-    staticClass: "w3-panel"
-  }, [_c('Field', {
-    attrs: {
-      "label": 'Full Name'
-    },
-    on: {
-      "setValue": function (value) { return _vm.properties.name = value; },
-      "valid": function () { return _vm.name_confirmed = true; },
-      "invalid": function () { return _vm.name_confirmed = false; }
-    }
-  }), _vm._v(" "), _c('Field', {
-    attrs: {
-      "label": 'Email',
-      "validation": 'EMAIL'
-    },
-    on: {
-      "setValue": function (value) { return _vm.properties.email = value; }
-    }
-  }), _vm._v(" "), _c('Field', {
-    attrs: {
-      "label": 'Confirm Email',
-      "validation": 'CONFIRM',
-      "confirmation": _vm.properties.email
-    },
-    on: {
-      "setValue": function (value) { return _vm.properties.email_confirmation = value; },
-      "valid": function () { return _vm.email_confirmed = true; },
-      "invalid": function () { return _vm.email_confirmed = false; }
-    }
-  }), _vm._v(" "), _c('PasswordField', {
-    attrs: {
-      "label": 'Password',
-      "validation": 'PASSWORD'
-    },
-    on: {
-      "setValue": function (value) { return _vm.properties.password = value; }
-    }
-  }), _vm._v(" "), _c('PasswordField', {
-    attrs: {
-      "label": 'Confirm Password',
-      "validation": 'CONFIRM',
-      "confirmation": _vm.properties.password
-    },
-    on: {
-      "setValue": function (value) { return _vm.properties.password_confirmation = value; },
-      "valid": function () { return _vm.password_confirmed = true; },
-      "invalid": function () { return _vm.password_confirmed = false; }
-    }
-  }), _vm._v(" "), _c('Field', {
-    attrs: {
-      "label": 'Discount Code',
-      "default": _vm.properties.discount
-    },
-    on: {
-      "setValue": function (value) { return _vm.properties.discount = value; }
-    }
-  }), _vm._v(" "), _c('Terms', {
-    on: {
-      "setTerms": function (terms) { return _vm.properties.terms = terms; }
-    }
-  })], 1), _vm._v(" "), (_vm.errors.length) ? _c('div', {
-    staticClass: "w3-panel"
-  }, [_c('Errors', {
-    attrs: {
-      "errors": _vm.errors
-    }
-  })], 1) : _vm._e(), _vm._v(" "), _c('div', {
-    staticClass: "w3-panel"
-  }, [_c('button', {
-    staticClass: "w3-button w3-text-white primary",
-    on: {
-      "click": function($event) {
-        _vm.register()
-      }
-    }
-  }, [_c('div', {
-    staticStyle: {
-      "height": "22px",
-      "width": "127px"
-    }
-  }, [_vm._v("Register")])])])])
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "w3-panel"
-  }, [_c('h3', [_vm._v("Create an Account")]), _vm._v(" "), _c('h5', [_vm._v("Please complete required fields to complete registration.")])])
-}]}
-module.exports.render._withStripped = true
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "w3-container w3-card-2 form" }, [
+    _vm._m(0),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "w3-panel" },
+      [
+        _c("Field", {
+          attrs: { label: "Full Name" },
+          on: {
+            setValue: function(value) {
+              return (_vm.properties.name = value)
+            },
+            valid: function() {
+              return (_vm.name_confirmed = true)
+            },
+            invalid: function() {
+              return (_vm.name_confirmed = false)
+            }
+          }
+        }),
+        _vm._v(" "),
+        _c("Field", {
+          attrs: { label: "Email", validation: "EMAIL" },
+          on: {
+            setValue: function(value) {
+              return (_vm.properties.email = value)
+            }
+          }
+        }),
+        _vm._v(" "),
+        _c("Field", {
+          attrs: {
+            label: "Confirm Email",
+            validation: "CONFIRM",
+            confirmation: _vm.properties.email
+          },
+          on: {
+            setValue: function(value) {
+              return (_vm.properties.email_confirmation = value)
+            },
+            valid: function() {
+              return (_vm.email_confirmed = true)
+            },
+            invalid: function() {
+              return (_vm.email_confirmed = false)
+            }
+          }
+        }),
+        _vm._v(" "),
+        _c("PasswordField", {
+          attrs: { label: "Password", validation: "PASSWORD" },
+          on: {
+            setValue: function(value) {
+              return (_vm.properties.password = value)
+            }
+          }
+        }),
+        _vm._v(" "),
+        _c("PasswordField", {
+          attrs: {
+            label: "Confirm Password",
+            validation: "CONFIRM",
+            confirmation: _vm.properties.password
+          },
+          on: {
+            setValue: function(value) {
+              return (_vm.properties.password_confirmation = value)
+            },
+            valid: function() {
+              return (_vm.password_confirmed = true)
+            },
+            invalid: function() {
+              return (_vm.password_confirmed = false)
+            }
+          }
+        }),
+        _vm._v(" "),
+        _c("Field", {
+          attrs: { label: "Discount Code", default: _vm.properties.discount },
+          on: {
+            setValue: function(value) {
+              return (_vm.properties.discount = value)
+            }
+          }
+        }),
+        _vm._v(" "),
+        _c("Terms", {
+          on: {
+            setTerms: function(terms) {
+              return (_vm.properties.terms = terms)
+            }
+          }
+        })
+      ],
+      1
+    ),
+    _vm._v(" "),
+    _vm.errors.length
+      ? _c(
+          "div",
+          { staticClass: "w3-panel" },
+          [_c("Errors", { attrs: { errors: _vm.errors } })],
+          1
+        )
+      : _vm._e(),
+    _vm._v(" "),
+    _c("div", { staticClass: "w3-panel" }, [
+      _c(
+        "button",
+        {
+          staticClass: "w3-button w3-text-white primary",
+          on: {
+            click: function($event) {
+              _vm.register()
+            }
+          }
+        },
+        [
+          _c("div", { staticStyle: { height: "22px", width: "127px" } }, [
+            _vm._v("Register")
+          ])
+        ]
+      )
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "w3-panel" }, [
+      _c("h3", [_vm._v("Create an Account")]),
+      _vm._v(" "),
+      _c("h5", [
+        _vm._v("Please complete required fields to complete registration.")
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
@@ -16381,23 +16887,29 @@ if (false) {
 }
 
 /***/ }),
-/* 224 */
+/* 225 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var Component = __webpack_require__(0)(
-  /* script */
-  __webpack_require__(225),
-  /* template */
-  __webpack_require__(229),
-  /* styles */
-  null,
-  /* scopeId */
-  null,
-  /* moduleIdentifier (server only) */
-  null
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(226)
+/* template */
+var __vue_template__ = __webpack_require__(230)
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
 )
-Component.options.__file = "/home/johnhuffman/Sites/InsuranceSocial.media/src/resources/javascripts/frontend/register/vue/App.vue"
+Component.options.__file = "resources/javascripts/frontend/register/vue/App.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] App.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -16421,12 +16933,12 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 225 */
+/* 226 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Tips__ = __webpack_require__(226);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Tips__ = __webpack_require__(227);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Tips___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Tips__);
 //
 //
@@ -16453,23 +16965,29 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 226 */
+/* 227 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var Component = __webpack_require__(0)(
-  /* script */
-  __webpack_require__(227),
-  /* template */
-  __webpack_require__(228),
-  /* styles */
-  null,
-  /* scopeId */
-  null,
-  /* moduleIdentifier (server only) */
-  null
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(228)
+/* template */
+var __vue_template__ = __webpack_require__(229)
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
 )
-Component.options.__file = "/home/johnhuffman/Sites/InsuranceSocial.media/src/resources/javascripts/frontend/register/vue/Tips.vue"
+Component.options.__file = "resources/javascripts/frontend/register/vue/Tips.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Tips.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -16493,7 +17011,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 227 */
+/* 228 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -16534,45 +17052,77 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 228 */
+/* 229 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
   return _vm._m(0)
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "w3-padding-32 w3-hide-small tips"
-  }, [_c('ul', {
-    staticClass: "w3-ul w3-card-2 w3-white w3-center"
-  }, [_c('li', {
-    staticClass: "w3-padding w3-text-white primary"
-  }, [_c('h6', [_c('b', [_vm._v("Why you'll "), _c('em', [_vm._v("love")]), _vm._v(" Insurance Social Media...")])])]), _vm._v(" "), _c('li', {
-    staticClass: "w3-padding"
-  }, [_c('div', {
-    staticClass: "w3-panel"
-  }, [_vm._v("Content customized to your marketing goals")])]), _vm._v(" "), _c('li', {
-    staticClass: "w3-padding"
-  }, [_c('div', {
-    staticClass: "w3-panel"
-  }, [_vm._v("Community content to engage followers")])]), _vm._v(" "), _c('li', {
-    staticClass: "w3-padding"
-  }, [_c('div', {
-    staticClass: "w3-panel"
-  }, [_vm._v("Referral function to boost sales")])]), _vm._v(" "), _c('li', {
-    staticClass: "w3-padding"
-  }, [_c('div', {
-    staticClass: "w3-panel"
-  }, [_vm._v("Set it & forget it, or jump into the conversation")])]), _vm._v(" "), _c('li', {
-    staticClass: "w3-padding"
-  }, [_c('div', {
-    staticClass: "w3-panel"
-  }, [_vm._v("We’re the insurance social media marketing leader!")])]), _vm._v(" "), _c('div', {
-    staticClass: "w3-panel"
-  }, [_vm._v("We can’t wait for you to reap the benefits!")]), _vm._v(" "), _c('li', {
-    staticClass: "w3-padding w3-text-white secondary"
-  }, [_c('h6', [_vm._v("Join Insurance Social Media and get started today!")])])])])
-}]}
-module.exports.render._withStripped = true
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "w3-padding-32 w3-hide-small tips" }, [
+      _c("ul", { staticClass: "w3-ul w3-card-2 w3-white w3-center" }, [
+        _c("li", { staticClass: "w3-padding w3-text-white primary" }, [
+          _c("h6", [
+            _c("b", [
+              _vm._v("Why you'll "),
+              _c("em", [_vm._v("love")]),
+              _vm._v(" Insurance Social Media...")
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("li", { staticClass: "w3-padding" }, [
+          _c("div", { staticClass: "w3-panel" }, [
+            _vm._v("Content customized to your marketing goals")
+          ])
+        ]),
+        _vm._v(" "),
+        _c("li", { staticClass: "w3-padding" }, [
+          _c("div", { staticClass: "w3-panel" }, [
+            _vm._v("Community content to engage followers")
+          ])
+        ]),
+        _vm._v(" "),
+        _c("li", { staticClass: "w3-padding" }, [
+          _c("div", { staticClass: "w3-panel" }, [
+            _vm._v("Referral function to boost sales")
+          ])
+        ]),
+        _vm._v(" "),
+        _c("li", { staticClass: "w3-padding" }, [
+          _c("div", { staticClass: "w3-panel" }, [
+            _vm._v("Set it & forget it, or jump into the conversation")
+          ])
+        ]),
+        _vm._v(" "),
+        _c("li", { staticClass: "w3-padding" }, [
+          _c("div", { staticClass: "w3-panel" }, [
+            _vm._v("We’re the insurance social media marketing leader!")
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "w3-panel" }, [
+          _vm._v("We can’t wait for you to reap the benefits!")
+        ]),
+        _vm._v(" "),
+        _c("li", { staticClass: "w3-padding w3-text-white secondary" }, [
+          _c("h6", [
+            _vm._v("Join Insurance Social Media and get started today!")
+          ])
+        ])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
@@ -16581,15 +17131,35 @@ if (false) {
 }
 
 /***/ }),
-/* 229 */
+/* 230 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('Navigation'), _vm._v(" "), _c('Tips'), _vm._v(" "), _c('div', {
-    staticClass: "w3-container w3-padding-32 bgimg2"
-  }, [_c('router-view')], 1), _vm._v(" "), _c('Foot')], 1)
-},staticRenderFns: []}
-module.exports.render._withStripped = true
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    [
+      _c("Navigation"),
+      _vm._v(" "),
+      _c("Tips"),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "w3-container w3-padding-32 bgimg2" },
+        [_c("router-view")],
+        1
+      ),
+      _vm._v(" "),
+      _c("Foot")
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {

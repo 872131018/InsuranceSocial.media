@@ -15,7 +15,16 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Auth::routes();
-Route::get('/user/dashboard', 'HomeController@index')->name('home');
+
+Route::get('/user/recent', 'HomeController@index')->name('home');
+
+Route::get('/user/reports/facebook', 'HomeController@index')->name('home');
+
+Route::get('/user/reports/twitter', 'HomeController@index')->name('home');
+
+
+
+
 Route::get('/user/profile', 'HomeController@index')->name('home');
 
 /**
@@ -54,7 +63,6 @@ Route::middleware(['auth'])->group(function() {
 
         chown($user->email.".json", 'www-data');
 
-        $response = "<a href=".$user->email.".json"." download=".$user->email.".json".">Download</a>";
-        return response($response);
+        return redirect('/user/recent');
     });
 });

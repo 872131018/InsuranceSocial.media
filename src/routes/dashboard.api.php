@@ -17,4 +17,16 @@ use Illuminate\Http\Request;
  *
  * @return \Illuminate\Http\Response
  */
- Route::get('/api/dashboard/performance', 'DashboardController@index');
+ Route::get('/api/dashboard/insights', 'DashboardController@indexInsights');
+
+ Route::get('/api/reports/facebook/performance', 'DashboardController@indexFacebookPerformance');
+
+ Route::get('/api/reports/facebook/interaction', 'DashboardController@indexFacebookInteraction');
+
+ Route::get('/api/reports/facebook/posts', 'DashboardController@indexFacebookPosts');
+
+ Route::get('/api/reports/twitter/performance', 'DashboardController@indexTwitterPerformance');
+
+ Route::get('/api/reports/twitter/interaction', 'DashboardController@indexTwitterInteraction');
+
+ Route::get('/api/reports/twitter/posts', 'DashboardController@indexTwitterPosts');

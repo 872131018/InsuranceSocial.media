@@ -1,4 +1,6 @@
-import Dashboard from './vue/dashboard/Dashboard';
+import Recent from './vue/recent/Recent';
+import ReportsFacebook from './vue/reports/facebook/Reports';
+import ReportsTwitter from './vue/reports/twitter/Reports';
 import Profile from './vue/profile/Profile';
 import Location from './vue/location/Location';
 import Coverage from './vue/coverage/Coverage';
@@ -6,9 +8,19 @@ import Outreach from './vue/outreach/Outreach';
 
 export default [
     {
-        path: '/user/dashboard',
-        name: 'Dashboard',
-        component: Dashboard
+        path: '/user/recent',
+        name: 'Recent',
+        component: Recent
+    },
+    {
+        path: '/user/reports/facebook',
+        name: 'ReportsFacebook',
+        component: ReportsFacebook
+    },
+    {
+        path: '/user/reports/twitter',
+        name: 'ReportsTwitter',
+        component: ReportsTwitter
     },
     {
         path: '/user/profile',

@@ -43,6 +43,12 @@ use App\SelectedSpecialTopic;
 
 use App\SelectedCause;
 
+use Facebook\Facebook;
+
+use Abraham\TwitterOAuth\TwitterOAuth;
+
+use Illuminate\Support\Facades\Log;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -122,4 +128,45 @@ use App\SelectedCause;
         'selected_special_topics' => $user->specialTopics,
         'selected_causes' => $user->causes
      ]);
+ });
+ Route::get('/api/recent', function (Request $request) {
+     $user = Auth::user();
+
+     $facebook = new Facebook([
+         'app_id' => env('APP_ID'),
+         'app_secret' => env('APP_SECRET'),
+         'default_graph_version' => env('DEFAULT_GRAPH_VERSION')
+     ]);
+     $facebook->setDefaultAccessToken($user->facebook->access_token);
+
+     $this->twitter = new TwitterOAuth(
+         env('CONSUMER_KEY'),
+         env('CONSUMER_SECRET'),
+         $user->twitter->access_token,
+         $user->twitter->secret_token
+     );
+
+     $data  = [
+         'facebook_page' => $user->facebook->page_name,
+         'twitter_handle' => $user->twitter->screen_name,
+         'facebook_posts' => [],
+         'twitter_posts' => []
+     ];
+
+     try {
+         $batch = [
+             'posts' => $facebook->request('GET', '/'.$user->facebook->page_id.'/feed?fields=permalink_url')
+         ];
+         $responses = $facebook->sendBatchRequest($batch);
+     } catch(Facebook\Exceptions\FacebookResponseException $e) {
+         return response()->json($e->getMessage(), 502);
+     } catch(Facebook\Exceptions\FacebookSDKException $e) {
+         return response()->json($e->getMessage(), 502);
+     }
+     $responses = json_decode($responses->getBody());
+
+     $posts = json_decode($responses[0]->body);
+     $data['facebook_posts'] = array_slice($posts->data, 0, 5);
+
+     return response()->json($data);
  });

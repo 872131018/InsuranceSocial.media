@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 295);
+/******/ 	return __webpack_require__(__webpack_require__.s = 296);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -872,7 +872,7 @@ module.exports = Cancel;
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(global) {/*!
- * Vue.js v2.4.2
+ * Vue.js v2.4.4
  * (c) 2014-2017 Evan You
  * Released under the MIT License.
  */
@@ -1037,12 +1037,9 @@ var capitalize = cached(function (str) {
 /**
  * Hyphenate a camelCase string.
  */
-var hyphenateRE = /([^-])([A-Z])/g;
+var hyphenateRE = /\B([A-Z])/g;
 var hyphenate = cached(function (str) {
-  return str
-    .replace(hyphenateRE, '$1-$2')
-    .replace(hyphenateRE, '$1-$2')
-    .toLowerCase()
+  return str.replace(hyphenateRE, '-$1').toLowerCase()
 });
 
 /**
@@ -1461,7 +1458,7 @@ var isAndroid = UA && UA.indexOf('android') > 0;
 var isIOS = UA && /iphone|ipad|ipod|ios/.test(UA);
 var isChrome = UA && /chrome\/\d+/.test(UA) && !isEdge;
 
-// Firefix has a "watch" function on Object.prototype...
+// Firefox has a "watch" function on Object.prototype...
 var nativeWatch = ({}).watch;
 
 var supportsPassive = false;
@@ -1543,13 +1540,13 @@ var nextTick = (function () {
       // "force" the microtask queue to be flushed by adding an empty timer.
       if (isIOS) { setTimeout(noop); }
     };
-  } else if (typeof MutationObserver !== 'undefined' && (
+  } else if (!isIE && typeof MutationObserver !== 'undefined' && (
     isNative(MutationObserver) ||
     // PhantomJS and iOS 7.x
     MutationObserver.toString() === '[object MutationObserverConstructor]'
   )) {
     // use MutationObserver where native Promise is not available,
-    // e.g. PhantomJS IE11, iOS7, Android 4.4
+    // e.g. PhantomJS, iOS7, Android 4.4
     var counter = 1;
     var observer = new MutationObserver(nextTickHandler);
     var textNode = document.createTextNode(String(counter));
@@ -1849,9 +1846,9 @@ function defineReactive$$1 (
         dep.depend();
         if (childOb) {
           childOb.dep.depend();
-        }
-        if (Array.isArray(value)) {
-          dependArray(value);
+          if (Array.isArray(value)) {
+            dependArray(value);
+          }
         }
       }
       return value
@@ -2028,7 +2025,7 @@ function mergeDataOrFn (
         : childVal;
       var defaultData = typeof parentVal === 'function'
         ? parentVal.call(vm)
-        : undefined;
+        : parentVal;
       if (instanceData) {
         return mergeData(instanceData, defaultData)
       } else {
@@ -2431,7 +2428,12 @@ function assertType (value, type) {
   var valid;
   var expectedType = getType(type);
   if (simpleCheckRE.test(expectedType)) {
-    valid = typeof value === expectedType.toLowerCase();
+    var t = typeof value;
+    valid = t === expectedType.toLowerCase();
+    // for primitive wrapper objects
+    if (!valid && t === 'object') {
+      valid = value instanceof type;
+    }
   } else if (expectedType === 'Object') {
     valid = isPlainObject(value);
   } else if (expectedType === 'Array') {
@@ -2629,7 +2631,7 @@ function createTextVNode (val) {
 // used for static nodes and slot nodes because they may be reused across
 // multiple renders, cloning them avoids errors when DOM manipulations rely
 // on their elm reference.
-function cloneVNode (vnode) {
+function cloneVNode (vnode, deep) {
   var cloned = new VNode(
     vnode.tag,
     vnode.data,
@@ -2645,14 +2647,17 @@ function cloneVNode (vnode) {
   cloned.key = vnode.key;
   cloned.isComment = vnode.isComment;
   cloned.isCloned = true;
+  if (deep && vnode.children) {
+    cloned.children = cloneVNodes(vnode.children);
+  }
   return cloned
 }
 
-function cloneVNodes (vnodes) {
+function cloneVNodes (vnodes, deep) {
   var len = vnodes.length;
   var res = new Array(len);
   for (var i = 0; i < len; i++) {
-    res[i] = cloneVNode(vnodes[i]);
+    res[i] = cloneVNode(vnodes[i], deep);
   }
   return res
 }
@@ -2666,8 +2671,10 @@ var normalizeEvent = cached(function (name) {
   name = once$$1 ? name.slice(1) : name;
   var capture = name.charAt(0) === '!';
   name = capture ? name.slice(1) : name;
+  var plain = !(passive || once$$1 || capture);
   return {
     name: name,
+    plain: plain,
     once: once$$1,
     capture: capture,
     passive: passive
@@ -2693,6 +2700,11 @@ function createFnInvoker (fns) {
   return invoker
 }
 
+// #6552
+function prioritizePlainEvents (a, b) {
+  return a.plain ? -1 : b.plain ? 1 : 0
+}
+
 function updateListeners (
   on,
   oldOn,
@@ -2701,10 +2713,13 @@ function updateListeners (
   vm
 ) {
   var name, cur, old, event;
+  var toAdd = [];
+  var hasModifier = false;
   for (name in on) {
     cur = on[name];
     old = oldOn[name];
     event = normalizeEvent(name);
+    if (!event.plain) { hasModifier = true; }
     if (isUndef(cur)) {
       "development" !== 'production' && warn(
         "Invalid handler for event \"" + (event.name) + "\": got " + String(cur),
@@ -2714,10 +2729,18 @@ function updateListeners (
       if (isUndef(cur.fns)) {
         cur = on[name] = createFnInvoker(cur);
       }
-      add(event.name, cur, event.once, event.capture, event.passive);
+      event.handler = cur;
+      toAdd.push(event);
     } else if (cur !== old) {
       old.fns = cur;
       on[name] = old;
+    }
+  }
+  if (toAdd.length) {
+    if (hasModifier) { toAdd.sort(prioritizePlainEvents); }
+    for (var i = 0; i < toAdd.length; i++) {
+      var event$1 = toAdd[i];
+      add(event$1.name, event$1.handler, event$1.once, event$1.capture, event$1.passive);
     }
   }
   for (name in oldOn) {
@@ -3034,11 +3057,17 @@ function resolveAsyncComponent (
 
 /*  */
 
+function isAsyncPlaceholder (node) {
+  return node.isComment && node.asyncFactory
+}
+
+/*  */
+
 function getFirstComponentChild (children) {
   if (Array.isArray(children)) {
     for (var i = 0; i < children.length; i++) {
       var c = children[i];
-      if (isDef(c) && isDef(c.componentOptions)) {
+      if (isDef(c) && (isDef(c.componentOptions) || isAsyncPlaceholder(c))) {
         return c
       }
     }
@@ -3125,8 +3154,8 @@ function eventsMixin (Vue) {
     }
     // array of events
     if (Array.isArray(event)) {
-      for (var i$1 = 0, l = event.length; i$1 < l; i$1++) {
-        this$1.$off(event[i$1], fn);
+      for (var i = 0, l = event.length; i < l; i++) {
+        this$1.$off(event[i], fn);
       }
       return vm
     }
@@ -3139,14 +3168,16 @@ function eventsMixin (Vue) {
       vm._events[event] = null;
       return vm
     }
-    // specific handler
-    var cb;
-    var i = cbs.length;
-    while (i--) {
-      cb = cbs[i];
-      if (cb === fn || cb.fn === fn) {
-        cbs.splice(i, 1);
-        break
+    if (fn) {
+      // specific handler
+      var cb;
+      var i$1 = cbs.length;
+      while (i$1--) {
+        cb = cbs[i$1];
+        if (cb === fn || cb.fn === fn) {
+          cbs.splice(i$1, 1);
+          break
+        }
       }
     }
     return vm
@@ -3198,10 +3229,15 @@ function resolveSlots (
   var defaultSlot = [];
   for (var i = 0, l = children.length; i < l; i++) {
     var child = children[i];
+    var data = child.data;
+    // remove slot attribute if the node is resolved as a Vue slot node
+    if (data && data.attrs && data.attrs.slot) {
+      delete data.attrs.slot;
+    }
     // named slots should only be respected if the vnode was rendered in the
     // same context.
     if ((child.context === context || child.functionalContext === context) &&
-      child.data && child.data.slot != null
+      data && data.slot != null
     ) {
       var name = child.data.slot;
       var slot = (slots[name] || (slots[name] = []));
@@ -3454,11 +3490,11 @@ function updateChildComponent (
   }
   vm.$options._renderChildren = renderChildren;
 
-  // update $attrs and $listensers hash
+  // update $attrs and $listeners hash
   // these are also reactive so they may trigger child update if the child
   // used them during render
-  vm.$attrs = parentVnode.data && parentVnode.data.attrs;
-  vm.$listeners = listeners;
+  vm.$attrs = (parentVnode.data && parentVnode.data.attrs) || emptyObject;
+  vm.$listeners = listeners || emptyObject;
 
   // update props
   if (propsData && vm.$options.props) {
@@ -4045,7 +4081,7 @@ function initData (vm) {
     if (true) {
       if (methods && hasOwn(methods, key)) {
         warn(
-          ("method \"" + key + "\" has already been defined as a data property."),
+          ("Method \"" + key + "\" has already been defined as a data property."),
           vm
         );
       }
@@ -4078,6 +4114,8 @@ var computedWatcherOptions = { lazy: true };
 function initComputed (vm, computed) {
   "development" !== 'production' && checkOptionType(vm, 'computed');
   var watchers = vm._computedWatchers = Object.create(null);
+  // computed properties are just getters during SSR
+  var isSSR = isServerRendering();
 
   for (var key in computed) {
     var userDef = computed[key];
@@ -4088,8 +4126,16 @@ function initComputed (vm, computed) {
         vm
       );
     }
-    // create internal watcher for the computed property.
-    watchers[key] = new Watcher(vm, getter || noop, noop, computedWatcherOptions);
+
+    if (!isSSR) {
+      // create internal watcher for the computed property.
+      watchers[key] = new Watcher(
+        vm,
+        getter || noop,
+        noop,
+        computedWatcherOptions
+      );
+    }
 
     // component-defined computed properties are already defined on the
     // component prototype. We only need to define computed properties defined
@@ -4106,13 +4152,20 @@ function initComputed (vm, computed) {
   }
 }
 
-function defineComputed (target, key, userDef) {
+function defineComputed (
+  target,
+  key,
+  userDef
+) {
+  var shouldCache = !isServerRendering();
   if (typeof userDef === 'function') {
-    sharedPropertyDefinition.get = createComputedGetter(key);
+    sharedPropertyDefinition.get = shouldCache
+      ? createComputedGetter(key)
+      : userDef;
     sharedPropertyDefinition.set = noop;
   } else {
     sharedPropertyDefinition.get = userDef.get
-      ? userDef.cache !== false
+      ? shouldCache && userDef.cache !== false
         ? createComputedGetter(key)
         : userDef.get
       : noop;
@@ -4151,22 +4204,28 @@ function initMethods (vm, methods) {
   "development" !== 'production' && checkOptionType(vm, 'methods');
   var props = vm.$options.props;
   for (var key in methods) {
-    vm[key] = methods[key] == null ? noop : bind(methods[key], vm);
     if (true) {
       if (methods[key] == null) {
         warn(
-          "method \"" + key + "\" has an undefined value in the component definition. " +
+          "Method \"" + key + "\" has an undefined value in the component definition. " +
           "Did you reference the function correctly?",
           vm
         );
       }
       if (props && hasOwn(props, key)) {
         warn(
-          ("method \"" + key + "\" has already been defined as a prop."),
+          ("Method \"" + key + "\" has already been defined as a prop."),
           vm
         );
       }
+      if ((key in vm) && isReserved(key)) {
+        warn(
+          "Method \"" + key + "\" conflicts with an existing Vue instance method. " +
+          "Avoid defining component methods that start with _ or $."
+        );
+      }
     }
+    vm[key] = methods[key] == null ? noop : bind(methods[key], vm);
   }
 }
 
@@ -4286,7 +4345,10 @@ function resolveInject (inject, vm) {
     // inject is :any because flow is not smart enough to figure out cached
     var result = Object.create(null);
     var keys = hasSymbol
-        ? Reflect.ownKeys(inject)
+        ? Reflect.ownKeys(inject).filter(function (key) {
+          /* istanbul ignore next */
+          return Object.getOwnPropertyDescriptor(inject, key).enumerable
+        })
         : Object.keys(inject);
 
     for (var i = 0; i < keys.length; i++) {
@@ -4321,7 +4383,7 @@ function createFunctionalComponent (
   var propOptions = Ctor.options.props;
   if (isDef(propOptions)) {
     for (var key in propOptions) {
-      props[key] = validateProp(key, propOptions, propsData || {});
+      props[key] = validateProp(key, propOptions, propsData || emptyObject);
     }
   } else {
     if (isDef(data.attrs)) { mergeProps(props, data.attrs); }
@@ -4336,7 +4398,7 @@ function createFunctionalComponent (
     props: props,
     children: children,
     parent: context,
-    listeners: data.on || {},
+    listeners: data.on || emptyObject,
     injections: resolveInject(Ctor.options.inject, context),
     slots: function () { return resolveSlots(children, context); }
   });
@@ -4660,7 +4722,7 @@ function _createElement (
   var vnode, ns;
   if (typeof tag === 'string') {
     var Ctor;
-    ns = config.getTagNamespace(tag);
+    ns = (context.$vnode && context.$vnode.ns) || config.getTagNamespace(tag);
     if (config.isReservedTag(tag)) {
       // platform built-in elements
       vnode = new VNode(
@@ -4956,17 +5018,18 @@ function initRender (vm) {
   // $attrs & $listeners are exposed for easier HOC creation.
   // they need to be reactive so that HOCs using them are always updated
   var parentData = parentVnode && parentVnode.data;
+
   /* istanbul ignore else */
   if (true) {
-    defineReactive$$1(vm, '$attrs', parentData && parentData.attrs, function () {
+    defineReactive$$1(vm, '$attrs', parentData && parentData.attrs || emptyObject, function () {
       !isUpdatingChildComponent && warn("$attrs is readonly.", vm);
     }, true);
-    defineReactive$$1(vm, '$listeners', vm.$options._parentListeners, function () {
+    defineReactive$$1(vm, '$listeners', vm.$options._parentListeners || emptyObject, function () {
       !isUpdatingChildComponent && warn("$listeners is readonly.", vm);
     }, true);
   } else {
-    defineReactive$$1(vm, '$attrs', parentData && parentData.attrs, null, true);
-    defineReactive$$1(vm, '$listeners', vm.$options._parentListeners, null, true);
+    defineReactive$$1(vm, '$attrs', parentData && parentData.attrs || emptyObject, null, true);
+    defineReactive$$1(vm, '$listeners', vm.$options._parentListeners || emptyObject, null, true);
   }
 }
 
@@ -4983,9 +5046,13 @@ function renderMixin (Vue) {
     var _parentVnode = ref._parentVnode;
 
     if (vm._isMounted) {
-      // clone slot nodes on re-renders
+      // if the parent didn't update, the slot nodes will be the ones from
+      // last render. They need to be cloned to ensure "freshness" for this render.
       for (var key in vm.$slots) {
-        vm.$slots[key] = cloneVNodes(vm.$slots[key]);
+        var slot = vm.$slots[key];
+        if (slot._rendered) {
+          vm.$slots[key] = cloneVNodes(slot, true /* deep */);
+        }
       }
     }
 
@@ -5530,7 +5597,7 @@ Object.defineProperty(Vue$3.prototype, '$ssrContext', {
   }
 });
 
-Vue$3.version = '2.4.2';
+Vue$3.version = '2.4.4';
 
 /*  */
 
@@ -5539,7 +5606,7 @@ Vue$3.version = '2.4.2';
 var isReservedAttr = makeMap('style,class');
 
 // attributes that should be using props for binding
-var acceptValue = makeMap('input,textarea,option,select');
+var acceptValue = makeMap('input,textarea,option,select,progress');
 var mustUseProp = function (tag, type, attr) {
   return (
     (attr === 'value' && acceptValue(tag)) && type !== 'button' ||
@@ -5728,6 +5795,8 @@ function isUnknownElement (tag) {
   }
 }
 
+var isTextInputType = makeMap('text,number,password,search,email,tel,url');
+
 /*  */
 
 /**
@@ -5874,8 +5943,6 @@ function registerRef (vnode, isRemoval) {
  *
  * modified by Evan You (@yyx990803)
  *
-
-/*
  * Not type-checking this because this file is perf-critical and the cost
  * of making flow understand it is not worth it.
  */
@@ -5901,14 +5968,12 @@ function sameVnode (a, b) {
   )
 }
 
-// Some browsers do not support dynamically changing type for <input>
-// so they need to be treated as different nodes
 function sameInputType (a, b) {
   if (a.tag !== 'input') { return true }
   var i;
   var typeA = isDef(i = a.data) && isDef(i = i.attrs) && i.type;
   var typeB = isDef(i = b.data) && isDef(i = i.attrs) && i.type;
-  return typeA === typeB
+  return typeA === typeB || isTextInputType(typeA) && isTextInputType(typeB)
 }
 
 function createKeyToOldIdx (children, beginIdx, endIdx) {
@@ -6240,10 +6305,11 @@ function createPatchFunction (backend) {
         newStartVnode = newCh[++newStartIdx];
       } else {
         if (isUndef(oldKeyToIdx)) { oldKeyToIdx = createKeyToOldIdx(oldCh, oldStartIdx, oldEndIdx); }
-        idxInOld = isDef(newStartVnode.key) ? oldKeyToIdx[newStartVnode.key] : null;
+        idxInOld = isDef(newStartVnode.key)
+          ? oldKeyToIdx[newStartVnode.key]
+          : findIdxInOld(newStartVnode, oldCh, oldStartIdx, oldEndIdx);
         if (isUndef(idxInOld)) { // New element
           createElm(newStartVnode, insertedVnodeQueue, parentElm, oldStartVnode.elm);
-          newStartVnode = newCh[++newStartIdx];
         } else {
           elmToMove = oldCh[idxInOld];
           /* istanbul ignore if */
@@ -6257,13 +6323,12 @@ function createPatchFunction (backend) {
             patchVnode(elmToMove, newStartVnode, insertedVnodeQueue);
             oldCh[idxInOld] = undefined;
             canMove && nodeOps.insertBefore(parentElm, elmToMove.elm, oldStartVnode.elm);
-            newStartVnode = newCh[++newStartIdx];
           } else {
             // same key but different element. treat as new element
             createElm(newStartVnode, insertedVnodeQueue, parentElm, oldStartVnode.elm);
-            newStartVnode = newCh[++newStartIdx];
           }
         }
+        newStartVnode = newCh[++newStartIdx];
       }
     }
     if (oldStartIdx > oldEndIdx) {
@@ -6271,6 +6336,13 @@ function createPatchFunction (backend) {
       addVnodes(parentElm, refElm, newCh, newStartIdx, newEndIdx, insertedVnodeQueue);
     } else if (newStartIdx > newEndIdx) {
       removeVnodes(parentElm, oldCh, oldStartIdx, oldEndIdx);
+    }
+  }
+
+  function findIdxInOld (node, oldCh, start, end) {
+    for (var i = start; i < end; i++) {
+      var c = oldCh[i];
+      if (isDef(c) && sameVnode(node, c)) { return i }
     }
   }
 
@@ -6381,27 +6453,46 @@ function createPatchFunction (backend) {
         if (!elm.hasChildNodes()) {
           createChildren(vnode, children, insertedVnodeQueue);
         } else {
-          var childrenMatch = true;
-          var childNode = elm.firstChild;
-          for (var i$1 = 0; i$1 < children.length; i$1++) {
-            if (!childNode || !hydrate(childNode, children[i$1], insertedVnodeQueue)) {
-              childrenMatch = false;
-              break
+          // v-html and domProps: innerHTML
+          if (isDef(i = data) && isDef(i = i.domProps) && isDef(i = i.innerHTML)) {
+            if (i !== elm.innerHTML) {
+              /* istanbul ignore if */
+              if ("development" !== 'production' &&
+                typeof console !== 'undefined' &&
+                !bailed
+              ) {
+                bailed = true;
+                console.warn('Parent: ', elm);
+                console.warn('server innerHTML: ', i);
+                console.warn('client innerHTML: ', elm.innerHTML);
+              }
+              return false
             }
-            childNode = childNode.nextSibling;
-          }
-          // if childNode is not null, it means the actual childNodes list is
-          // longer than the virtual children list.
-          if (!childrenMatch || childNode) {
-            if ("development" !== 'production' &&
-              typeof console !== 'undefined' &&
-              !bailed
-            ) {
-              bailed = true;
-              console.warn('Parent: ', elm);
-              console.warn('Mismatching childNodes vs. VNodes: ', elm.childNodes, children);
+          } else {
+            // iterate and compare children lists
+            var childrenMatch = true;
+            var childNode = elm.firstChild;
+            for (var i$1 = 0; i$1 < children.length; i$1++) {
+              if (!childNode || !hydrate(childNode, children[i$1], insertedVnodeQueue)) {
+                childrenMatch = false;
+                break
+              }
+              childNode = childNode.nextSibling;
             }
-            return false
+            // if childNode is not null, it means the actual childNodes list is
+            // longer than the virtual children list.
+            if (!childrenMatch || childNode) {
+              /* istanbul ignore if */
+              if ("development" !== 'production' &&
+                typeof console !== 'undefined' &&
+                !bailed
+              ) {
+                bailed = true;
+                console.warn('Parent: ', elm);
+                console.warn('Mismatching childNodes vs. VNodes: ', elm.childNodes, children);
+              }
+              return false
+            }
           }
         }
       }
@@ -6492,14 +6583,28 @@ function createPatchFunction (backend) {
           // component root element replaced.
           // update parent placeholder node element, recursively
           var ancestor = vnode.parent;
+          var patchable = isPatchable(vnode);
           while (ancestor) {
-            ancestor.elm = vnode.elm;
-            ancestor = ancestor.parent;
-          }
-          if (isPatchable(vnode)) {
-            for (var i = 0; i < cbs.create.length; ++i) {
-              cbs.create[i](emptyNode, vnode.parent);
+            for (var i = 0; i < cbs.destroy.length; ++i) {
+              cbs.destroy[i](ancestor);
             }
+            ancestor.elm = vnode.elm;
+            if (patchable) {
+              for (var i$1 = 0; i$1 < cbs.create.length; ++i$1) {
+                cbs.create[i$1](emptyNode, ancestor);
+              }
+              // #6513
+              // invoke insert hooks that may have been merged by create hooks.
+              // e.g. for directives that uses the "inserted" hook.
+              var insert = ancestor.data.hook.insert;
+              if (insert.merged) {
+                // start at index 1 to avoid re-invoking component mounted hook
+                for (var i$2 = 1; i$2 < insert.fns.length; i$2++) {
+                  insert.fns[i$2]();
+                }
+              }
+            }
+            ancestor = ancestor.parent;
           }
         }
 
@@ -6683,7 +6788,12 @@ function setAttr (el, key, value) {
     if (isFalsyAttrValue(value)) {
       el.removeAttribute(key);
     } else {
-      el.setAttribute(key, key);
+      // technically allowfullscreen is a boolean attribute for <iframe>,
+      // but Flash expects a value of "true" when used on <embed> tag
+      value = key === 'allowfullscreen' && el.tagName === 'EMBED'
+        ? 'true'
+        : key;
+      el.setAttribute(key, value);
     }
   } else if (isEnumeratedAttr(key)) {
     el.setAttribute(key, isFalsyAttrValue(value) || value === 'false' ? 'false' : 'true');
@@ -7190,7 +7300,7 @@ function genCheckboxModel (
     'if(Array.isArray($$a)){' +
       "var $$v=" + (number ? '_n(' + valueBinding + ')' : valueBinding) + "," +
           '$$i=_i($$a,$$v);' +
-      "if($$el.checked){$$i<0&&(" + value + "=$$a.concat($$v))}" +
+      "if($$el.checked){$$i<0&&(" + value + "=$$a.concat([$$v]))}" +
       "else{$$i>-1&&(" + value + "=$$a.slice(0,$$i).concat($$a.slice($$i+1)))}" +
     "}else{" + (genAssignmentCode(value, '$$c')) + "}",
     null, true
@@ -7559,7 +7669,7 @@ function updateStyle (oldVnode, vnode) {
   var style = normalizeStyleBinding(vnode.data.style) || {};
 
   // store normalized style under a different key for next diff
-  // make sure to clone it if it's reactive, since the user likley wants
+  // make sure to clone it if it's reactive, since the user likely wants
   // to mutate it.
   vnode.data.normalizedStyle = isDef(style.__ob__)
     ? extend({}, style)
@@ -8164,8 +8274,6 @@ var patch = createPatchFunction({ nodeOps: nodeOps, modules: modules });
  * properties to Elements.
  */
 
-var isTextInputType = makeMap('text,number,password,search,email,tel,url');
-
 /* istanbul ignore if */
 if (isIE9) {
   // http://www.matts411.com/post/internet-explorer-9-oninput/
@@ -8180,14 +8288,7 @@ if (isIE9) {
 var model$1 = {
   inserted: function inserted (el, binding, vnode) {
     if (vnode.tag === 'select') {
-      var cb = function () {
-        setSelected(el, binding, vnode.context);
-      };
-      cb();
-      /* istanbul ignore if */
-      if (isIE || isEdge) {
-        setTimeout(cb, 0);
-      }
+      setSelected(el, binding, vnode.context);
       el._vOptions = [].map.call(el.options, getValue);
     } else if (vnode.tag === 'textarea' || isTextInputType(el.type)) {
       el._vModifiers = binding.modifiers;
@@ -8218,13 +8319,30 @@ var model$1 = {
       var prevOptions = el._vOptions;
       var curOptions = el._vOptions = [].map.call(el.options, getValue);
       if (curOptions.some(function (o, i) { return !looseEqual(o, prevOptions[i]); })) {
-        trigger(el, 'change');
+        // trigger change event if
+        // no matching option found for at least one value
+        var needReset = el.multiple
+          ? binding.value.some(function (v) { return hasNoMatchingOption(v, curOptions); })
+          : binding.value !== binding.oldValue && hasNoMatchingOption(binding.value, curOptions);
+        if (needReset) {
+          trigger(el, 'change');
+        }
       }
     }
   }
 };
 
 function setSelected (el, binding, vm) {
+  actuallySetSelected(el, binding, vm);
+  /* istanbul ignore if */
+  if (isIE || isEdge) {
+    setTimeout(function () {
+      actuallySetSelected(el, binding, vm);
+    }, 0);
+  }
+}
+
+function actuallySetSelected (el, binding, vm) {
   var value = binding.value;
   var isMultiple = el.multiple;
   if (isMultiple && !Array.isArray(value)) {
@@ -8255,6 +8373,10 @@ function setSelected (el, binding, vm) {
   if (!isMultiple) {
     el.selectedIndex = -1;
   }
+}
+
+function hasNoMatchingOption (value, options) {
+  return options.every(function (o) { return !looseEqual(o, value); })
 }
 
 function getValue (option) {
@@ -8417,10 +8539,6 @@ function hasParentTransition (vnode) {
 
 function isSameChild (child, oldChild) {
   return oldChild.key === child.key && oldChild.tag === child.tag
-}
-
-function isAsyncPlaceholder (node) {
-  return node.isComment && node.asyncFactory
 }
 
 var Transition = {
@@ -8990,29 +9108,14 @@ var he = {
  */
 
 // Regular Expressions for parsing tags and attributes
-var singleAttrIdentifier = /([^\s"'<>/=]+)/;
-var singleAttrAssign = /(?:=)/;
-var singleAttrValues = [
-  // attr value double quotes
-  /"([^"]*)"+/.source,
-  // attr value, single quotes
-  /'([^']*)'+/.source,
-  // attr value, no quotes
-  /([^\s"'=<>`]+)/.source
-];
-var attribute = new RegExp(
-  '^\\s*' + singleAttrIdentifier.source +
-  '(?:\\s*(' + singleAttrAssign.source + ')' +
-  '\\s*(?:' + singleAttrValues.join('|') + '))?'
-);
-
+var attribute = /^\s*([^\s"'<>\/=]+)(?:\s*(=)\s*(?:"([^"]*)"+|'([^']*)'+|([^\s"'=<>`]+)))?/;
 // could use https://www.w3.org/TR/1999/REC-xml-names-19990114/#NT-QName
 // but for Vue templates we can enforce a simple charset
 var ncname = '[a-zA-Z_][\\w\\-\\.]*';
-var qnameCapture = '((?:' + ncname + '\\:)?' + ncname + ')';
-var startTagOpen = new RegExp('^<' + qnameCapture);
+var qnameCapture = "((?:" + ncname + "\\:)?" + ncname + ")";
+var startTagOpen = new RegExp(("^<" + qnameCapture));
 var startTagClose = /^\s*(\/?)>/;
-var endTag = new RegExp('^<\\/' + qnameCapture + '[^>]*>');
+var endTag = new RegExp(("^<\\/" + qnameCapture + "[^>]*>"));
 var doctype = /^<!DOCTYPE [^>]+>/i;
 var comment = /^<!--/;
 var conditionalComment = /^<!\[/;
@@ -9712,6 +9815,8 @@ function processSlot (el) {
     var slotTarget = getBindingAttr(el, 'slot');
     if (slotTarget) {
       el.slotTarget = slotTarget === '""' ? '"default"' : slotTarget;
+      // preserve slot as an attribute for native shadow DOM compat
+      addAttr(el, 'slot', slotTarget);
     }
     if (el.tag === 'template') {
       el.slotScope = getAndRemoveAttr(el, 'scope');
@@ -10248,7 +10353,7 @@ function genOnce (el, state) {
       );
       return genElement(el, state)
     }
-    return ("_o(" + (genElement(el, state)) + "," + (state.onceId++) + (key ? ("," + key) : "") + ")")
+    return ("_o(" + (genElement(el, state)) + "," + (state.onceId++) + "," + key + ")")
   } else {
     return genStatic(el, state)
   }
@@ -13478,19 +13583,25 @@ if (inBrowser && window.Vue) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var Component = __webpack_require__(0)(
-  /* script */
-  __webpack_require__(13),
-  /* template */
-  __webpack_require__(14),
-  /* styles */
-  null,
-  /* scopeId */
-  null,
-  /* moduleIdentifier (server only) */
-  null
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(13)
+/* template */
+var __vue_template__ = __webpack_require__(14)
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
 )
-Component.options.__file = "/home/johnhuffman/Sites/InsuranceSocial.media/src/resources/javascripts/frontend/global/foot/Foot.vue"
+Component.options.__file = "resources/javascripts/frontend/global/foot/Foot.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Foot.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -13550,58 +13661,99 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
   return _vm._m(0)
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('footer', {
-    staticClass: "w3-container w3-bar w3-medium w3-text-white w3-padding-16 footer"
-  }, [_c('a', {
-    staticClass: "w3-bar-item w3-button footer-logo"
-  }, [_vm._v("Insurance Social Media")]), _vm._v(" "), _c('div', {
-    staticClass: "w3-right social"
-  }, [_c('a', {
-    attrs: {
-      "href": "https://www.twitter.com/insurancesmm"
-    }
-  }, [_c('img', {
-    attrs: {
-      "src": "images/icon-twitter.png",
-      "height": "36",
-      "width": "36"
-    }
-  })]), _vm._v(" "), _c('a', {
-    attrs: {
-      "href": "https://www.facebook.com/insurancesocialdotmedia/"
-    }
-  }, [_c('img', {
-    attrs: {
-      "src": "images/icon-facebook.png",
-      "height": "36",
-      "width": "36"
-    }
-  })]), _vm._v(" "), _c('a', {
-    attrs: {
-      "href": "https://www.instagram.com/insurancesocial.media/"
-    }
-  }, [_c('img', {
-    attrs: {
-      "src": "images/icon-instagram.png",
-      "height": "36",
-      "width": "36"
-    }
-  })]), _vm._v(" "), _c('a', {
-    attrs: {
-      "href": "https://www.linkedin.com/company/insurancesocial-media"
-    }
-  }, [_c('img', {
-    attrs: {
-      "src": "images/icon-linkedin.png",
-      "height": "36",
-      "width": "36"
-    }
-  })])])])
-}]}
-module.exports.render._withStripped = true
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "footer",
+      {
+        staticClass:
+          "w3-container w3-bar w3-medium w3-text-white w3-padding-16 footer"
+      },
+      [
+        _c("a", { staticClass: "w3-bar-item w3-button footer-logo" }, [
+          _vm._v("Insurance Social Media")
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "w3-right social" }, [
+          _c("a", { attrs: { href: "https://www.twitter.com/insurancesmm" } }, [
+            _c("img", {
+              attrs: {
+                src: "images/icon-twitter.png",
+                height: "36",
+                width: "36"
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c(
+            "a",
+            {
+              attrs: {
+                href: "https://www.facebook.com/insurancesocialdotmedia/"
+              }
+            },
+            [
+              _c("img", {
+                attrs: {
+                  src: "images/icon-facebook.png",
+                  height: "36",
+                  width: "36"
+                }
+              })
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "a",
+            {
+              attrs: {
+                href: "https://www.instagram.com/insurancesocial.media/"
+              }
+            },
+            [
+              _c("img", {
+                attrs: {
+                  src: "images/icon-instagram.png",
+                  height: "36",
+                  width: "36"
+                }
+              })
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "a",
+            {
+              attrs: {
+                href: "https://www.linkedin.com/company/insurancesocial-media"
+              }
+            },
+            [
+              _c("img", {
+                attrs: {
+                  src: "images/icon-linkedin.png",
+                  height: "36",
+                  width: "36"
+                }
+              })
+            ]
+          )
+        ])
+      ]
+    )
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
@@ -14026,19 +14178,25 @@ function compose() {
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var Component = __webpack_require__(0)(
-  /* script */
-  __webpack_require__(21),
-  /* template */
-  __webpack_require__(28),
-  /* styles */
-  null,
-  /* scopeId */
-  null,
-  /* moduleIdentifier (server only) */
-  null
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(21)
+/* template */
+var __vue_template__ = __webpack_require__(28)
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
 )
-Component.options.__file = "/home/johnhuffman/Sites/InsuranceSocial.media/src/resources/javascripts/frontend/global/navigation/Navigation.vue"
+Component.options.__file = "resources/javascripts/frontend/global/navigation/Navigation.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Navigation.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -14098,19 +14256,25 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var Component = __webpack_require__(0)(
-  /* script */
-  __webpack_require__(23),
-  /* template */
-  __webpack_require__(24),
-  /* styles */
-  null,
-  /* scopeId */
-  null,
-  /* moduleIdentifier (server only) */
-  null
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(23)
+/* template */
+var __vue_template__ = __webpack_require__(24)
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
 )
-Component.options.__file = "/home/johnhuffman/Sites/InsuranceSocial.media/src/resources/javascripts/frontend/global/navigation/Desktop.vue"
+Component.options.__file = "resources/javascripts/frontend/global/navigation/Desktop.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Desktop.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -14156,14 +14320,28 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
   return _vm._m(0)
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('a', {
-    staticClass: "w3-bar-item w3-button w3-hover-white header-logo"
-  }, [_vm._v("Insurance Social Media")])])
-}]}
-module.exports.render._withStripped = true
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [
+      _c(
+        "a",
+        { staticClass: "w3-bar-item w3-button w3-hover-white header-logo" },
+        [_vm._v("Insurance Social Media")]
+      )
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
@@ -14176,19 +14354,25 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var Component = __webpack_require__(0)(
-  /* script */
-  __webpack_require__(26),
-  /* template */
-  __webpack_require__(27),
-  /* styles */
-  null,
-  /* scopeId */
-  null,
-  /* moduleIdentifier (server only) */
-  null
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(26)
+/* template */
+var __vue_template__ = __webpack_require__(27)
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
 )
-Component.options.__file = "/home/johnhuffman/Sites/InsuranceSocial.media/src/resources/javascripts/frontend/global/navigation/Mobile.vue"
+Component.options.__file = "resources/javascripts/frontend/global/navigation/Mobile.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Mobile.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -14234,16 +14418,28 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
   return _vm._m(0)
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('div', {
-    staticClass: "w3-bar"
-  }, [_c('a', {
-    staticClass: "w3-bar-item w3-button"
-  }, [_vm._v("Insurance Social Media")])])])
-}]}
-module.exports.render._withStripped = true
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [
+      _c("div", { staticClass: "w3-bar" }, [
+        _c("a", { staticClass: "w3-bar-item w3-button" }, [
+          _vm._v("Insurance Social Media")
+        ])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
@@ -14255,16 +14451,31 @@ if (false) {
 /* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('nav', {
-    staticClass: "w3-container w3-bar w3-card-2 w3-xlarge w3-text-white primary header"
-  }, [_c('div', {
-    staticClass: "w3-hide-small"
-  }, [_c('Desktop')], 1), _vm._v(" "), _c('div', {
-    staticClass: "w3-hide-medium w3-hide-large"
-  }, [_c('Mobile')], 1)])
-},staticRenderFns: []}
-module.exports.render._withStripped = true
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "nav",
+    {
+      staticClass:
+        "w3-container w3-bar w3-card-2 w3-xlarge w3-text-white primary header"
+    },
+    [
+      _c("div", { staticClass: "w3-hide-small" }, [_c("Desktop")], 1),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "w3-hide-medium w3-hide-large" },
+        [_c("Mobile")],
+        1
+      )
+    ]
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
@@ -15944,23 +16155,30 @@ function applyMiddleware() {
 }
 
 /***/ }),
-/* 65 */
+/* 65 */,
+/* 66 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var Component = __webpack_require__(0)(
-  /* script */
-  __webpack_require__(302),
-  /* template */
-  __webpack_require__(303),
-  /* styles */
-  null,
-  /* scopeId */
-  null,
-  /* moduleIdentifier (server only) */
-  null
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(303)
+/* template */
+var __vue_template__ = __webpack_require__(304)
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
 )
-Component.options.__file = "/home/johnhuffman/Sites/InsuranceSocial.media/src/resources/javascripts/frontend/social/vue/Progress.vue"
+Component.options.__file = "resources/javascripts/frontend/social/vue/Progress.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Progress.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -15984,7 +16202,6 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 66 */,
 /* 67 */,
 /* 68 */,
 /* 69 */,
@@ -16213,24 +16430,25 @@ module.exports = Component.exports
 /* 292 */,
 /* 293 */,
 /* 294 */,
-/* 295 */
+/* 295 */,
+/* 296 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(296);
+module.exports = __webpack_require__(297);
 
 
 /***/ }),
-/* 296 */
+/* 297 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__root_redux__ = __webpack_require__(297);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__root_redux__ = __webpack_require__(298);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_router__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__routes__ = __webpack_require__(299);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__vue_App__ = __webpack_require__(335);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__routes__ = __webpack_require__(300);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__vue_App__ = __webpack_require__(336);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__vue_App___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__vue_App__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__global_navigation_Navigation__ = __webpack_require__(20);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__global_navigation_Navigation___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__global_navigation_Navigation__);
@@ -16273,12 +16491,12 @@ var Site = new __WEBPACK_IMPORTED_MODULE_1_vue___default.a({
 }).$mount('#app');
 
 /***/ }),
-/* 297 */
+/* 298 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_redux__ = __webpack_require__(50);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__redux_user_reducer__ = __webpack_require__(298);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__redux_user_reducer__ = __webpack_require__(299);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__redux_user_reducer___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__redux_user_reducer__);
 
 
@@ -16290,7 +16508,7 @@ var reducers = Object(__WEBPACK_IMPORTED_MODULE_0_redux__["a" /* combineReducers
 /* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_0_redux__["b" /* createStore */])(reducers));
 
 /***/ }),
-/* 298 */
+/* 299 */
 /***/ (function(module, exports) {
 
 var initialState = {
@@ -16333,19 +16551,19 @@ module.exports = function () {
 };
 
 /***/ }),
-/* 299 */
+/* 300 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__vue_facebook_Facebook__ = __webpack_require__(300);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__vue_facebook_Facebook__ = __webpack_require__(301);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__vue_facebook_Facebook___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__vue_facebook_Facebook__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__vue_create_Create__ = __webpack_require__(305);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__vue_create_Create__ = __webpack_require__(306);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__vue_create_Create___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__vue_create_Create__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__vue_page_Page__ = __webpack_require__(323);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__vue_page_Page__ = __webpack_require__(324);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__vue_page_Page___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__vue_page_Page__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__vue_twitter_Twitter__ = __webpack_require__(329);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__vue_twitter_Twitter__ = __webpack_require__(330);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__vue_twitter_Twitter___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__vue_twitter_Twitter__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__vue_linkedin_LinkedIn__ = __webpack_require__(332);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__vue_linkedin_LinkedIn__ = __webpack_require__(333);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__vue_linkedin_LinkedIn___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__vue_linkedin_LinkedIn__);
 
 
@@ -16376,23 +16594,29 @@ module.exports = function () {
 }]);
 
 /***/ }),
-/* 300 */
+/* 301 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var Component = __webpack_require__(0)(
-  /* script */
-  __webpack_require__(301),
-  /* template */
-  __webpack_require__(304),
-  /* styles */
-  null,
-  /* scopeId */
-  null,
-  /* moduleIdentifier (server only) */
-  null
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(302)
+/* template */
+var __vue_template__ = __webpack_require__(305)
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
 )
-Component.options.__file = "/home/johnhuffman/Sites/InsuranceSocial.media/src/resources/javascripts/frontend/social/vue/facebook/Facebook.vue"
+Component.options.__file = "resources/javascripts/frontend/social/vue/facebook/Facebook.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Facebook.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -16416,12 +16640,12 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 301 */
+/* 302 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Progress__ = __webpack_require__(65);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Progress__ = __webpack_require__(66);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Progress___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Progress__);
 //
 //
@@ -16530,7 +16754,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 302 */
+/* 303 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -16567,38 +16791,91 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 303 */
+/* 304 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "progress"
-  }, [_c('div', {
-    staticClass: "w3-section w3-light-gray"
-  }, [_c('div', {
-    staticClass: "secondary w3-center w3-padding w3-text-white",
-    style: ({
-      width: (_vm.progress + "%")
-    })
-  }, [_vm._v(_vm._s(_vm.progress) + "%")])]), _vm._v(" "), (_vm.progress >= 33 && _vm.progress < 67) ? _c('div', {
-    staticClass: "w3-section w3-row w3-center"
-  }, [_c('div', {
-    staticClass: "secondary w3-col l4 m4 s12 w3-padding-large w3-text-white"
-  }, [_vm._v("Registration")]), _vm._v(" "), _c('div', {
-    staticClass: "primary w3-col l4 m4 s12 w3-padding-large w3-text-white"
-  }, [_vm._v("Social Media")]), _vm._v(" "), _c('div', {
-    staticClass: "primary w3-col l4 m4 s12 w3-padding-large w3-text-white"
-  }, [_vm._v("Profile")])]) : _vm._e(), _vm._v(" "), (_vm.progress == 67) ? _c('div', {
-    staticClass: "w3-section w3-row w3-center"
-  }, [_c('div', {
-    staticClass: "secondary w3-col l4 m4 s12 w3-padding-large w3-text-white"
-  }, [_vm._v("Registration")]), _vm._v(" "), _c('div', {
-    staticClass: "secondary w3-col l4 m4 s12 w3-padding-large w3-text-white"
-  }, [_vm._v("Social Media")]), _vm._v(" "), _c('div', {
-    staticClass: "primary w3-col l4 m4 s12 w3-padding-large w3-text-white"
-  }, [_vm._v("Profile")])]) : _vm._e()])
-},staticRenderFns: []}
-module.exports.render._withStripped = true
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "progress" }, [
+    _c("div", { staticClass: "w3-section w3-light-gray" }, [
+      _c(
+        "div",
+        {
+          staticClass: "secondary w3-center w3-padding w3-text-white",
+          style: { width: _vm.progress + "%" }
+        },
+        [_vm._v(_vm._s(_vm.progress) + "%")]
+      )
+    ]),
+    _vm._v(" "),
+    _vm.progress >= 33 && _vm.progress < 67
+      ? _c("div", { staticClass: "w3-section w3-row w3-center" }, [
+          _c(
+            "div",
+            {
+              staticClass:
+                "secondary w3-col l4 m4 s12 w3-padding-large w3-text-white"
+            },
+            [_vm._v("Registration")]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass:
+                "primary w3-col l4 m4 s12 w3-padding-large w3-text-white"
+            },
+            [_vm._v("Social Media")]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass:
+                "primary w3-col l4 m4 s12 w3-padding-large w3-text-white"
+            },
+            [_vm._v("Profile")]
+          )
+        ])
+      : _vm._e(),
+    _vm._v(" "),
+    _vm.progress == 67
+      ? _c("div", { staticClass: "w3-section w3-row w3-center" }, [
+          _c(
+            "div",
+            {
+              staticClass:
+                "secondary w3-col l4 m4 s12 w3-padding-large w3-text-white"
+            },
+            [_vm._v("Registration")]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass:
+                "secondary w3-col l4 m4 s12 w3-padding-large w3-text-white"
+            },
+            [_vm._v("Social Media")]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass:
+                "primary w3-col l4 m4 s12 w3-padding-large w3-text-white"
+            },
+            [_vm._v("Profile")]
+          )
+        ])
+      : _vm._e()
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
@@ -16607,171 +16884,247 @@ if (false) {
 }
 
 /***/ }),
-/* 304 */
+/* 305 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('ProgressBar', {
-    attrs: {
-      "progress": 33
-    }
-  }), _vm._v(" "), _c('div', {
-    staticClass: "w3-container w3-card-2 form"
-  }, [_vm._m(0), _vm._v(" "), _c('div', {
-    staticClass: "w3-section"
-  }, [_c('div', {
-    staticClass: "w3-panel"
-  }, [_c('div', [_vm._v("Do you have a corporate Facebook Page? If so, please log in to Facebook in order to recieve our Facebook services.")]), _vm._v(" "), _c('div', {
-    staticClass: "w3-panel"
-  }, [_c('input', {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: (_vm.properties.has_facebook),
-      expression: "properties.has_facebook"
-    }],
-    staticClass: "v-align",
-    attrs: {
-      "type": "radio",
-      "id": "facebook_yes"
-    },
-    domProps: {
-      "value": true,
-      "checked": _vm.properties.has_facebook,
-      "checked": _vm._q(_vm.properties.has_facebook, true)
-    },
-    on: {
-      "__c": function($event) {
-        _vm.properties.has_facebook = true
-      }
-    }
-  }), _vm._v(" "), _vm._m(1), _vm._v(" "), _c('input', {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: (_vm.properties.has_facebook),
-      expression: "properties.has_facebook"
-    }],
-    staticClass: "v-align",
-    attrs: {
-      "type": "radio",
-      "id": "facebook_no"
-    },
-    domProps: {
-      "value": false,
-      "checked": _vm.properties.has_facebook,
-      "checked": _vm._q(_vm.properties.has_facebook, false)
-    },
-    on: {
-      "__c": function($event) {
-        _vm.properties.has_facebook = false
-      }
-    }
-  }), _vm._v(" "), _vm._m(2)])]), _vm._v(" "), (_vm.properties.has_facebook == false) ? _c('div', {
-    staticClass: "w3-panel"
-  }, [_c('div', [_vm._v("Do you want InsuranceSocial.Media to setup a corporate Facebook Page for you?")]), _vm._v(" "), _vm._m(3), _vm._v(" "), _c('div', {
-    staticClass: "w3-panel"
-  }, [_c('input', {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: (_vm.properties.create_facebook),
-      expression: "properties.create_facebook"
-    }],
-    staticClass: "v-align",
-    attrs: {
-      "type": "radio",
-      "id": "create_yes"
-    },
-    domProps: {
-      "value": true,
-      "checked": _vm._q(_vm.properties.create_facebook, true)
-    },
-    on: {
-      "__c": function($event) {
-        _vm.properties.create_facebook = true
-      }
-    }
-  }), _vm._v(" "), _vm._m(4), _vm._v(" "), _c('input', {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: (_vm.properties.create_facebook),
-      expression: "properties.create_facebook"
-    }],
-    staticClass: "v-align",
-    attrs: {
-      "type": "radio",
-      "id": "create_no"
-    },
-    domProps: {
-      "value": false,
-      "checked": _vm._q(_vm.properties.create_facebook, false)
-    },
-    on: {
-      "__c": function($event) {
-        _vm.properties.create_facebook = false
-      }
-    }
-  }), _vm._v(" "), _vm._m(5)])]) : _vm._e()]), _vm._v(" "), _c('div', {
-    staticClass: "w3-section"
-  }, [(_vm.properties.has_facebook == false && _vm.properties.create_facebook == false) ? _c('h5', {
-    staticClass: "w3-text-orange"
-  }, [_vm._v("One in five page views in the United States is on Facebook! Are you sure you don’t want to make Facebook part of your social media marketing?\n            ")]) : _c('h5', [_vm._v("We look forward to working with you. Please click continue to finish setting up your account.")]), _vm._v(" "), (_vm.properties.has_facebook == false && _vm.properties.create_facebook == false) ? _c('button', {
-    staticClass: "w3-button w3-text-white primary",
-    on: {
-      "click": function($event) {
-        _vm.update()
-      }
-    }
-  }, [_vm._v("Yes, I'm sure\n            ")]) : _c('button', {
-    staticClass: "w3-button w3-text-white primary",
-    on: {
-      "click": function($event) {
-        _vm.update()
-      }
-    }
-  }, [_vm._v("Continue\n            ")])])])], 1)
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "w3-panel"
-  }, [_c('h3', [_vm._v("Link your Facebook")])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('label', {
-    attrs: {
-      "for": "facebook_yes"
-    }
-  }, [_c('span', {
-    staticClass: "w3-show-inline-block w3-margin v-align"
-  }), _vm._v("Yes\n                    ")])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('label', {
-    attrs: {
-      "for": "facebook_no"
-    }
-  }, [_c('span', {
-    staticClass: "w3-show-inline-block w3-margin v-align"
-  }), _vm._v("No\n                    ")])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('em', [_vm._v("(Note: A one-time $25 fee will apply)")])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('label', {
-    attrs: {
-      "for": "create_yes"
-    }
-  }, [_c('span', {
-    staticClass: "w3-show-inline-block w3-margin v-align"
-  }), _vm._v("Yes\n                    ")])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('label', {
-    attrs: {
-      "for": "create_no"
-    }
-  }, [_c('span', {
-    staticClass: "w3-show-inline-block w3-margin v-align"
-  }), _vm._v("No\n                    ")])
-}]}
-module.exports.render._withStripped = true
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    [
+      _c("ProgressBar", { attrs: { progress: 33 } }),
+      _vm._v(" "),
+      _c("div", { staticClass: "w3-container w3-card-2 form" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c("div", { staticClass: "w3-section" }, [
+          _c("div", { staticClass: "w3-panel" }, [
+            _c("div", [
+              _vm._v(
+                "Do you have a corporate Facebook Page? If so, please log in to Facebook in order to recieve our Facebook services."
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "w3-panel" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.properties.has_facebook,
+                    expression: "properties.has_facebook"
+                  }
+                ],
+                staticClass: "v-align",
+                attrs: { type: "radio", id: "facebook_yes" },
+                domProps: {
+                  value: true,
+                  checked: _vm.properties.has_facebook,
+                  checked: _vm._q(_vm.properties.has_facebook, true)
+                },
+                on: {
+                  __c: function($event) {
+                    _vm.properties.has_facebook = true
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _vm._m(1),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.properties.has_facebook,
+                    expression: "properties.has_facebook"
+                  }
+                ],
+                staticClass: "v-align",
+                attrs: { type: "radio", id: "facebook_no" },
+                domProps: {
+                  value: false,
+                  checked: _vm.properties.has_facebook,
+                  checked: _vm._q(_vm.properties.has_facebook, false)
+                },
+                on: {
+                  __c: function($event) {
+                    _vm.properties.has_facebook = false
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _vm._m(2)
+            ])
+          ]),
+          _vm._v(" "),
+          _vm.properties.has_facebook == false
+            ? _c("div", { staticClass: "w3-panel" }, [
+                _c("div", [
+                  _vm._v(
+                    "Do you want InsuranceSocial.Media to setup a corporate Facebook Page for you?"
+                  )
+                ]),
+                _vm._v(" "),
+                _vm._m(3),
+                _vm._v(" "),
+                _c("div", { staticClass: "w3-panel" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.properties.create_facebook,
+                        expression: "properties.create_facebook"
+                      }
+                    ],
+                    staticClass: "v-align",
+                    attrs: { type: "radio", id: "create_yes" },
+                    domProps: {
+                      value: true,
+                      checked: _vm._q(_vm.properties.create_facebook, true)
+                    },
+                    on: {
+                      __c: function($event) {
+                        _vm.properties.create_facebook = true
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _vm._m(4),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.properties.create_facebook,
+                        expression: "properties.create_facebook"
+                      }
+                    ],
+                    staticClass: "v-align",
+                    attrs: { type: "radio", id: "create_no" },
+                    domProps: {
+                      value: false,
+                      checked: _vm._q(_vm.properties.create_facebook, false)
+                    },
+                    on: {
+                      __c: function($event) {
+                        _vm.properties.create_facebook = false
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _vm._m(5)
+                ])
+              ])
+            : _vm._e()
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "w3-section" }, [
+          _vm.properties.has_facebook == false &&
+          _vm.properties.create_facebook == false
+            ? _c("h5", { staticClass: "w3-text-orange" }, [
+                _vm._v(
+                  "One in five page views in the United States is on Facebook! Are you sure you don’t want to make Facebook part of your social media marketing?\n            "
+                )
+              ])
+            : _c("h5", [
+                _vm._v(
+                  "We look forward to working with you. Please click continue to finish setting up your account."
+                )
+              ]),
+          _vm._v(" "),
+          _vm.properties.has_facebook == false &&
+          _vm.properties.create_facebook == false
+            ? _c(
+                "button",
+                {
+                  staticClass: "w3-button w3-text-white primary",
+                  on: {
+                    click: function($event) {
+                      _vm.update()
+                    }
+                  }
+                },
+                [_vm._v("Yes, I'm sure\n            ")]
+              )
+            : _c(
+                "button",
+                {
+                  staticClass: "w3-button w3-text-white primary",
+                  on: {
+                    click: function($event) {
+                      _vm.update()
+                    }
+                  }
+                },
+                [_vm._v("Continue\n            ")]
+              )
+        ])
+      ])
+    ],
+    1
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "w3-panel" }, [
+      _c("h3", [_vm._v("Link your Facebook")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", { attrs: { for: "facebook_yes" } }, [
+      _c("span", { staticClass: "w3-show-inline-block w3-margin v-align" }),
+      _vm._v("Yes\n                    ")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", { attrs: { for: "facebook_no" } }, [
+      _c("span", { staticClass: "w3-show-inline-block w3-margin v-align" }),
+      _vm._v("No\n                    ")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [
+      _c("em", [_vm._v("(Note: A one-time $25 fee will apply)")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", { attrs: { for: "create_yes" } }, [
+      _c("span", { staticClass: "w3-show-inline-block w3-margin v-align" }),
+      _vm._v("Yes\n                    ")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", { attrs: { for: "create_no" } }, [
+      _c("span", { staticClass: "w3-show-inline-block w3-margin v-align" }),
+      _vm._v("No\n                    ")
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
@@ -16780,23 +17133,29 @@ if (false) {
 }
 
 /***/ }),
-/* 305 */
+/* 306 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var Component = __webpack_require__(0)(
-  /* script */
-  __webpack_require__(306),
-  /* template */
-  __webpack_require__(322),
-  /* styles */
-  null,
-  /* scopeId */
-  null,
-  /* moduleIdentifier (server only) */
-  null
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(307)
+/* template */
+var __vue_template__ = __webpack_require__(323)
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
 )
-Component.options.__file = "/home/johnhuffman/Sites/InsuranceSocial.media/src/resources/javascripts/frontend/social/vue/create/Create.vue"
+Component.options.__file = "resources/javascripts/frontend/social/vue/create/Create.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Create.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -16820,18 +17179,18 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 306 */
+/* 307 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Progress__ = __webpack_require__(65);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Progress__ = __webpack_require__(66);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Progress___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Progress__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__inputs_Field__ = __webpack_require__(307);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__inputs_Field__ = __webpack_require__(308);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__inputs_Field___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__inputs_Field__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__inputs_Radio__ = __webpack_require__(316);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__inputs_Radio__ = __webpack_require__(317);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__inputs_Radio___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__inputs_Radio__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Errors__ = __webpack_require__(319);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Errors__ = __webpack_require__(320);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Errors___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__Errors__);
 //
 //
@@ -16919,23 +17278,29 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 307 */
+/* 308 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var Component = __webpack_require__(0)(
-  /* script */
-  __webpack_require__(308),
-  /* template */
-  __webpack_require__(315),
-  /* styles */
-  null,
-  /* scopeId */
-  null,
-  /* moduleIdentifier (server only) */
-  null
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(309)
+/* template */
+var __vue_template__ = __webpack_require__(316)
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
 )
-Component.options.__file = "/home/johnhuffman/Sites/InsuranceSocial.media/src/resources/javascripts/frontend/social/vue/create/inputs/Field.vue"
+Component.options.__file = "resources/javascripts/frontend/social/vue/create/inputs/Field.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Field.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -16959,14 +17324,14 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 308 */
+/* 309 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Check__ = __webpack_require__(309);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Check__ = __webpack_require__(310);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Check___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Check__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Cross__ = __webpack_require__(312);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Cross__ = __webpack_require__(313);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Cross___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__Cross__);
 //
 //
@@ -17076,23 +17441,29 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 309 */
+/* 310 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var Component = __webpack_require__(0)(
-  /* script */
-  __webpack_require__(310),
-  /* template */
-  __webpack_require__(311),
-  /* styles */
-  null,
-  /* scopeId */
-  null,
-  /* moduleIdentifier (server only) */
-  null
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(311)
+/* template */
+var __vue_template__ = __webpack_require__(312)
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
 )
-Component.options.__file = "/home/johnhuffman/Sites/InsuranceSocial.media/src/resources/javascripts/frontend/social/vue/create/inputs/Check.vue"
+Component.options.__file = "resources/javascripts/frontend/social/vue/create/inputs/Check.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Check.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -17116,7 +17487,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 310 */
+/* 311 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -17131,15 +17502,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 311 */
+/* 312 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('i', {
-    staticClass: "fa fa-check fa-3x w3-show-inline-block w3-margin-left w3-text-green v-align"
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("i", {
+    staticClass:
+      "fa fa-check fa-3x w3-show-inline-block w3-margin-left w3-text-green v-align"
   })
-},staticRenderFns: []}
-module.exports.render._withStripped = true
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
@@ -17148,23 +17525,29 @@ if (false) {
 }
 
 /***/ }),
-/* 312 */
+/* 313 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var Component = __webpack_require__(0)(
-  /* script */
-  __webpack_require__(313),
-  /* template */
-  __webpack_require__(314),
-  /* styles */
-  null,
-  /* scopeId */
-  null,
-  /* moduleIdentifier (server only) */
-  null
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(314)
+/* template */
+var __vue_template__ = __webpack_require__(315)
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
 )
-Component.options.__file = "/home/johnhuffman/Sites/InsuranceSocial.media/src/resources/javascripts/frontend/social/vue/create/inputs/Cross.vue"
+Component.options.__file = "resources/javascripts/frontend/social/vue/create/inputs/Cross.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Cross.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -17188,7 +17571,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 313 */
+/* 314 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -17203,15 +17586,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 314 */
+/* 315 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('i', {
-    staticClass: "fa fa-times fa-3x w3-show-inline-block w3-margin-left w3-text-red v-align"
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("i", {
+    staticClass:
+      "fa fa-times fa-3x w3-show-inline-block w3-margin-left w3-text-red v-align"
   })
-},staticRenderFns: []}
-module.exports.render._withStripped = true
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
@@ -17220,40 +17609,56 @@ if (false) {
 }
 
 /***/ }),
-/* 315 */
+/* 316 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "w3-section"
-  }, [_c('label', {
-    staticClass: "w3-show-block"
-  }, [_vm._v(_vm._s(_vm.label))]), _vm._v(" "), _c('input', {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: (_vm.value),
-      expression: "value"
-    }],
-    staticClass: "w3-input w3-show-inline-block eighty",
-    attrs: {
-      "type": "text"
-    },
-    domProps: {
-      "value": (_vm.value)
-    },
-    on: {
-      "keyup": function($event) {
-        _vm.validate()
-      },
-      "input": function($event) {
-        if ($event.target.composing) { return; }
-        _vm.value = $event.target.value
-      }
-    }
-  }), _vm._v(" "), (_vm.isValid) ? _c('Check') : (!_vm.isValid && _vm.value != '') ? _c('Cross') : _vm._e()], 1)
-},staticRenderFns: []}
-module.exports.render._withStripped = true
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "w3-section" },
+    [
+      _c("label", { staticClass: "w3-show-block" }, [
+        _vm._v(_vm._s(_vm.label))
+      ]),
+      _vm._v(" "),
+      _c("input", {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.value,
+            expression: "value"
+          }
+        ],
+        staticClass: "w3-input w3-show-inline-block eighty",
+        attrs: { type: "text" },
+        domProps: { value: _vm.value },
+        on: {
+          keyup: function($event) {
+            _vm.validate()
+          },
+          input: function($event) {
+            if ($event.target.composing) {
+              return
+            }
+            _vm.value = $event.target.value
+          }
+        }
+      }),
+      _vm._v(" "),
+      _vm.isValid
+        ? _c("Check")
+        : !_vm.isValid && _vm.value != "" ? _c("Cross") : _vm._e()
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
@@ -17262,23 +17667,29 @@ if (false) {
 }
 
 /***/ }),
-/* 316 */
+/* 317 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var Component = __webpack_require__(0)(
-  /* script */
-  __webpack_require__(317),
-  /* template */
-  __webpack_require__(318),
-  /* styles */
-  null,
-  /* scopeId */
-  null,
-  /* moduleIdentifier (server only) */
-  null
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(318)
+/* template */
+var __vue_template__ = __webpack_require__(319)
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
 )
-Component.options.__file = "/home/johnhuffman/Sites/InsuranceSocial.media/src/resources/javascripts/frontend/social/vue/create/inputs/Radio.vue"
+Component.options.__file = "resources/javascripts/frontend/social/vue/create/inputs/Radio.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Radio.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -17302,7 +17713,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 317 */
+/* 318 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -17361,69 +17772,74 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 });
 
 /***/ }),
-/* 318 */
+/* 319 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('ul', {
-    staticClass: "w3-ul w3-hoverable",
-    staticStyle: {
-      "display": "table"
-    }
-  }, _vm._l((_vm.options), function(option, index) {
-    return _c('li', {
-      staticClass: "w3-section",
-      staticStyle: {
-        "display": "table-row"
-      }
-    }, [_c('div', {
-      staticStyle: {
-        "display": "table-cell"
-      }
-    }, [_c('input', {
-      directives: [{
-        name: "model",
-        rawName: "v-model",
-        value: (_vm.selected),
-        expression: "selected"
-      }],
-      attrs: {
-        "type": "radio",
-        "id": ("" + (option.id) + index)
-      },
-      domProps: {
-        "value": option.id,
-        "checked": _vm._q(_vm.selected, option.id)
-      },
-      on: {
-        "change": function($event) {
-          _vm.$emit('setChecked', option)
-        },
-        "__c": function($event) {
-          _vm.selected = option.id
-        }
-      }
-    }), _vm._v(" "), _c('label', {
-      attrs: {
-        "for": ("" + (option.id) + index)
-      }
-    }, [_c('span', {
-      staticClass: "w3-show-inline-block w3-margin-right v-align"
-    }), _vm._v(_vm._s(option.name) + "\n            ")])]), _vm._v(" "), _c('div', {
-      staticStyle: {
-        "display": "table-cell"
-      }
-    }, [(option.src) ? _c('img', {
-      staticClass: "v-align",
-      attrs: {
-        "height": "180",
-        "width": "180",
-        "src": _vm.getSrc(option)
-      }
-    }) : _vm._e()])])
-  }))
-},staticRenderFns: []}
-module.exports.render._withStripped = true
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "ul",
+    { staticClass: "w3-ul w3-hoverable", staticStyle: { display: "table" } },
+    _vm._l(_vm.options, function(option, index) {
+      return _c(
+        "li",
+        { staticClass: "w3-section", staticStyle: { display: "table-row" } },
+        [
+          _c("div", { staticStyle: { display: "table-cell" } }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.selected,
+                  expression: "selected"
+                }
+              ],
+              attrs: { type: "radio", id: "" + option.id + index },
+              domProps: {
+                value: option.id,
+                checked: _vm._q(_vm.selected, option.id)
+              },
+              on: {
+                change: function($event) {
+                  _vm.$emit("setChecked", option)
+                },
+                __c: function($event) {
+                  _vm.selected = option.id
+                }
+              }
+            }),
+            _vm._v(" "),
+            _c("label", { attrs: { for: "" + option.id + index } }, [
+              _c("span", {
+                staticClass: "w3-show-inline-block w3-margin-right v-align"
+              }),
+              _vm._v(_vm._s(option.name) + "\n            ")
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticStyle: { display: "table-cell" } }, [
+            option.src
+              ? _c("img", {
+                  staticClass: "v-align",
+                  attrs: {
+                    height: "180",
+                    width: "180",
+                    src: _vm.getSrc(option)
+                  }
+                })
+              : _vm._e()
+          ])
+        ]
+      )
+    })
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
@@ -17432,23 +17848,29 @@ if (false) {
 }
 
 /***/ }),
-/* 319 */
+/* 320 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var Component = __webpack_require__(0)(
-  /* script */
-  __webpack_require__(320),
-  /* template */
-  __webpack_require__(321),
-  /* styles */
-  null,
-  /* scopeId */
-  null,
-  /* moduleIdentifier (server only) */
-  null
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(321)
+/* template */
+var __vue_template__ = __webpack_require__(322)
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
 )
-Component.options.__file = "/home/johnhuffman/Sites/InsuranceSocial.media/src/resources/javascripts/frontend/social/vue/create/Errors.vue"
+Component.options.__file = "resources/javascripts/frontend/social/vue/create/Errors.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Errors.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -17472,7 +17894,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 320 */
+/* 321 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -17497,21 +17919,30 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 321 */
+/* 322 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "w3-panel"
-  }, [(_vm.errors.length) ? _c('ul', {
-    staticClass: "w3-ul"
-  }, _vm._l((_vm.errors), function(error) {
-    return _c('li', {
-      staticClass: "w3-text-red"
-    }, [_vm._v(_vm._s(error))])
-  })) : _vm._e()])
-},staticRenderFns: []}
-module.exports.render._withStripped = true
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "w3-panel" }, [
+    _vm.errors.length
+      ? _c(
+          "ul",
+          { staticClass: "w3-ul" },
+          _vm._l(_vm.errors, function(error) {
+            return _c("li", { staticClass: "w3-text-red" }, [
+              _vm._v(_vm._s(error))
+            ])
+          })
+        )
+      : _vm._e()
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
@@ -17520,56 +17951,117 @@ if (false) {
 }
 
 /***/ }),
-/* 322 */
+/* 323 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('ProgressBar', {
-    attrs: {
-      "progress": 44
-    }
-  }), _vm._v(" "), _c('div', {
-    staticClass: "w3-container w3-card-2 form"
-  }, [_vm._m(0), _vm._v(" "), _c('div', {
-    staticClass: "w3-section"
-  }, [_c('Field', {
-    attrs: {
-      "label": 'Preferred Page Name'
-    },
-    on: {
-      "setValue": function (value) { return _vm.properties.name = value; }
-    }
-  }), _vm._v(" "), _c('div', [_vm._v("Note: Your desired Page name may not be available. InsuranceSocial.Media will strive to get a Page name as close to your desired name as possible.")])], 1), _vm._v(" "), _c('div', {
-    staticClass: "w3-section"
-  }, [_c('h5', [_vm._v("Please select an image to use as your Facebook background and profile picture. Note, you will be able to change this later.")]), _vm._v(" "), _c('Radio', {
-    attrs: {
-      "options": _vm.images
-    },
-    on: {
-      "setChecked": function (image) { return _vm.properties.image = image; }
-    }
-  })], 1), _vm._v(" "), _c('div', {
-    staticClass: "w3-section"
-  }, [_c('h5', [_vm._v("By clicking continue, your Facebook Page will be queued for creation. You will be charged a one-time fee of $25.  You will also receive an email within 24 hours with further instructions. Please follow these instructions to complete the set-up of your business Facebook Page.")]), _vm._v(" "), (_vm.errors.length) ? _c('div', {
-    staticClass: "w3-panel"
-  }, [_c('Errors', {
-    attrs: {
-      "errors": _vm.errors
-    }
-  })], 1) : _vm._e(), _vm._v(" "), _c('button', {
-    staticClass: "w3-button w3-text-white primary",
-    on: {
-      "click": function($event) {
-        _vm.update('Twitter')
-      }
-    }
-  }, [_vm._v("Continue\n            ")])])])], 1)
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "w3-panel"
-  }, [_c('h3', [_vm._v("Corporate Page Preferences")]), _vm._v(" "), _c('h5', [_vm._v("Please select your preferences for your corporate Facebook page.")])])
-}]}
-module.exports.render._withStripped = true
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    [
+      _c("ProgressBar", { attrs: { progress: 44 } }),
+      _vm._v(" "),
+      _c("div", { staticClass: "w3-container w3-card-2 form" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "w3-section" },
+          [
+            _c("Field", {
+              attrs: { label: "Preferred Page Name" },
+              on: {
+                setValue: function(value) {
+                  return (_vm.properties.name = value)
+                }
+              }
+            }),
+            _vm._v(" "),
+            _c("div", [
+              _vm._v(
+                "Note: Your desired Page name may not be available. InsuranceSocial.Media will strive to get a Page name as close to your desired name as possible."
+              )
+            ])
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "w3-section" },
+          [
+            _c("h5", [
+              _vm._v(
+                "Please select an image to use as your Facebook background and profile picture. Note, you will be able to change this later."
+              )
+            ]),
+            _vm._v(" "),
+            _c("Radio", {
+              attrs: { options: _vm.images },
+              on: {
+                setChecked: function(image) {
+                  return (_vm.properties.image = image)
+                }
+              }
+            })
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "w3-section" }, [
+          _c("h5", [
+            _vm._v(
+              "By clicking continue, your Facebook Page will be queued for creation. You will be charged a one-time fee of $25.  You will also receive an email within 24 hours with further instructions. Please follow these instructions to complete the set-up of your business Facebook Page."
+            )
+          ]),
+          _vm._v(" "),
+          _vm.errors.length
+            ? _c(
+                "div",
+                { staticClass: "w3-panel" },
+                [_c("Errors", { attrs: { errors: _vm.errors } })],
+                1
+              )
+            : _vm._e(),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "w3-button w3-text-white primary",
+              on: {
+                click: function($event) {
+                  _vm.update("Twitter")
+                }
+              }
+            },
+            [_vm._v("Continue\n            ")]
+          )
+        ])
+      ])
+    ],
+    1
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "w3-panel" }, [
+      _c("h3", [_vm._v("Corporate Page Preferences")]),
+      _vm._v(" "),
+      _c("h5", [
+        _vm._v(
+          "Please select your preferences for your corporate Facebook page."
+        )
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
@@ -17578,23 +18070,29 @@ if (false) {
 }
 
 /***/ }),
-/* 323 */
+/* 324 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var Component = __webpack_require__(0)(
-  /* script */
-  __webpack_require__(324),
-  /* template */
-  __webpack_require__(328),
-  /* styles */
-  null,
-  /* scopeId */
-  null,
-  /* moduleIdentifier (server only) */
-  null
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(325)
+/* template */
+var __vue_template__ = __webpack_require__(329)
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
 )
-Component.options.__file = "/home/johnhuffman/Sites/InsuranceSocial.media/src/resources/javascripts/frontend/social/vue/page/Page.vue"
+Component.options.__file = "resources/javascripts/frontend/social/vue/page/Page.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Page.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -17618,14 +18116,14 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 324 */
+/* 325 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Progress__ = __webpack_require__(65);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Progress__ = __webpack_require__(66);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Progress___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Progress__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__inputs_Radio__ = __webpack_require__(325);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__inputs_Radio__ = __webpack_require__(326);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__inputs_Radio___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__inputs_Radio__);
 //
 //
@@ -17703,23 +18201,29 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 325 */
+/* 326 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var Component = __webpack_require__(0)(
-  /* script */
-  __webpack_require__(326),
-  /* template */
-  __webpack_require__(327),
-  /* styles */
-  null,
-  /* scopeId */
-  null,
-  /* moduleIdentifier (server only) */
-  null
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(327)
+/* template */
+var __vue_template__ = __webpack_require__(328)
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
 )
-Component.options.__file = "/home/johnhuffman/Sites/InsuranceSocial.media/src/resources/javascripts/frontend/social/vue/page/inputs/Radio.vue"
+Component.options.__file = "resources/javascripts/frontend/social/vue/page/inputs/Radio.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Radio.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -17743,7 +18247,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 326 */
+/* 327 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -17789,48 +18293,55 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 });
 
 /***/ }),
-/* 327 */
+/* 328 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('ul', {
-    staticClass: "w3-ul w3-hoverable"
-  }, _vm._l((_vm.options), function(option, index) {
-    return _c('li', {
-      staticClass: "w3-section"
-    }, [_c('input', {
-      directives: [{
-        name: "model",
-        rawName: "v-model",
-        value: (_vm.selected),
-        expression: "selected"
-      }],
-      attrs: {
-        "type": "radio",
-        "id": ("" + (option.id) + index)
-      },
-      domProps: {
-        "value": option.id,
-        "checked": _vm._q(_vm.selected, option.id)
-      },
-      on: {
-        "change": function($event) {
-          _vm.$emit('setChecked', option)
-        },
-        "__c": function($event) {
-          _vm.selected = option.id
-        }
-      }
-    }), _vm._v(" "), _c('label', {
-      attrs: {
-        "for": ("" + (option.id) + index)
-      }
-    }, [_c('span', {
-      staticClass: "w3-show-inline-block w3-margin-right v-align"
-    }), _vm._v(_vm._s(option.name) + "\n        ")])])
-  }))
-},staticRenderFns: []}
-module.exports.render._withStripped = true
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "ul",
+    { staticClass: "w3-ul w3-hoverable" },
+    _vm._l(_vm.options, function(option, index) {
+      return _c("li", { staticClass: "w3-section" }, [
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.selected,
+              expression: "selected"
+            }
+          ],
+          attrs: { type: "radio", id: "" + option.id + index },
+          domProps: {
+            value: option.id,
+            checked: _vm._q(_vm.selected, option.id)
+          },
+          on: {
+            change: function($event) {
+              _vm.$emit("setChecked", option)
+            },
+            __c: function($event) {
+              _vm.selected = option.id
+            }
+          }
+        }),
+        _vm._v(" "),
+        _c("label", { attrs: { for: "" + option.id + index } }, [
+          _c("span", {
+            staticClass: "w3-show-inline-block w3-margin-right v-align"
+          }),
+          _vm._v(_vm._s(option.name) + "\n        ")
+        ])
+      ])
+    })
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
@@ -17839,43 +18350,74 @@ if (false) {
 }
 
 /***/ }),
-/* 328 */
+/* 329 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('ProgressBar', {
-    attrs: {
-      "progress": 44
-    }
-  }), _vm._v(" "), _c('div', {
-    staticClass: "w3-container w3-card-2 form"
-  }, [_vm._m(0), _vm._v(" "), _c('div', {
-    staticClass: "w3-panel"
-  }, [_c('Radio', {
-    attrs: {
-      "options": _vm.pages
-    },
-    on: {
-      "setChecked": function($event) {
-        _vm.setPage($event)
-      }
-    }
-  })], 1), _vm._v(" "), _c('div', {
-    staticClass: "w3-section"
-  }, [_c('h5', [_vm._v("Click continue to set up your Twitter account.")]), _vm._v(" "), _c('button', {
-    staticClass: "w3-button w3-text-white primary",
-    on: {
-      "click": function($event) {
-        _vm.update('Twitter')
-      }
-    }
-  }, [_vm._v("Continue\n            ")])])])], 1)
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "w3-panel"
-  }, [_c('h3', [_vm._v("Select a Corporate Facebook Page")]), _vm._v(" "), _c('h5', [_vm._v("This is the page Insurance Social Media will post content to.")])])
-}]}
-module.exports.render._withStripped = true
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    [
+      _c("ProgressBar", { attrs: { progress: 44 } }),
+      _vm._v(" "),
+      _c("div", { staticClass: "w3-container w3-card-2 form" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "w3-panel" },
+          [
+            _c("Radio", {
+              attrs: { options: _vm.pages },
+              on: {
+                setChecked: function($event) {
+                  _vm.setPage($event)
+                }
+              }
+            })
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "w3-section" }, [
+          _c("h5", [_vm._v("Click continue to set up your Twitter account.")]),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "w3-button w3-text-white primary",
+              on: {
+                click: function($event) {
+                  _vm.update("Twitter")
+                }
+              }
+            },
+            [_vm._v("Continue\n            ")]
+          )
+        ])
+      ])
+    ],
+    1
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "w3-panel" }, [
+      _c("h3", [_vm._v("Select a Corporate Facebook Page")]),
+      _vm._v(" "),
+      _c("h5", [
+        _vm._v("This is the page Insurance Social Media will post content to.")
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
@@ -17884,23 +18426,29 @@ if (false) {
 }
 
 /***/ }),
-/* 329 */
+/* 330 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var Component = __webpack_require__(0)(
-  /* script */
-  __webpack_require__(330),
-  /* template */
-  __webpack_require__(331),
-  /* styles */
-  null,
-  /* scopeId */
-  null,
-  /* moduleIdentifier (server only) */
-  null
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(331)
+/* template */
+var __vue_template__ = __webpack_require__(332)
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
 )
-Component.options.__file = "/home/johnhuffman/Sites/InsuranceSocial.media/src/resources/javascripts/frontend/social/vue/twitter/Twitter.vue"
+Component.options.__file = "resources/javascripts/frontend/social/vue/twitter/Twitter.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Twitter.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -17924,12 +18472,12 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 330 */
+/* 331 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Progress__ = __webpack_require__(65);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Progress__ = __webpack_require__(66);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Progress___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Progress__);
 //
 //
@@ -18013,107 +18561,158 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 331 */
+/* 332 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('ProgressBar', {
-    attrs: {
-      "progress": 56
-    }
-  }), _vm._v(" "), _c('div', {
-    staticClass: "w3-container w3-card-2 form"
-  }, [_vm._m(0), _vm._v(" "), _c('div', {
-    staticClass: "w3-section"
-  }, [_c('div', {
-    staticClass: "w3-panel"
-  }, [_c('div', [_vm._v("Do you have a Twitter account? If so, please log in to Twitter in order to recieve our Twitter services.")]), _vm._v(" "), _c('div', {
-    staticClass: "w3-panel"
-  }, [_c('input', {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: (_vm.properties.has_twitter),
-      expression: "properties.has_twitter"
-    }],
-    staticClass: "v-align",
-    attrs: {
-      "type": "radio",
-      "id": "twitter_yes"
-    },
-    domProps: {
-      "value": true,
-      "checked": _vm.properties.has_twitter,
-      "checked": _vm._q(_vm.properties.has_twitter, true)
-    },
-    on: {
-      "__c": function($event) {
-        _vm.properties.has_twitter = true
-      }
-    }
-  }), _vm._v(" "), _vm._m(1), _vm._v(" "), _c('input', {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: (_vm.properties.has_twitter),
-      expression: "properties.has_twitter"
-    }],
-    staticClass: "v-align",
-    attrs: {
-      "type": "radio",
-      "id": "twitter_no"
-    },
-    domProps: {
-      "value": false,
-      "checked": _vm.properties.has_twitter,
-      "checked": _vm._q(_vm.properties.has_twitter, false)
-    },
-    on: {
-      "__c": function($event) {
-        _vm.properties.has_twitter = false
-      }
-    }
-  }), _vm._v(" "), _vm._m(2)])])]), _vm._v(" "), (_vm.properties.has_twitter == false) ? _c('div', {
-    staticClass: "w3-section"
-  }, [_c('p', [_vm._v("Don’t have a Twitter account? Setting one up will take you about 30 seconds—and we can start posting to it right away.")]), _vm._v(" "), _vm._m(3)]) : _vm._e(), _vm._v(" "), _c('div', {
-    staticClass: "w3-section"
-  }, [(_vm.properties.has_twitter == true) ? _c('h5', [_vm._v("Almost done.")]) : _vm._e(), _vm._v(" "), _c('button', {
-    staticClass: "w3-button w3-text-white primary",
-    on: {
-      "click": function($event) {
-        _vm.update()
-      }
-    }
-  }, [_vm._v("Continue\n            ")])])])], 1)
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "w3-panel"
-  }, [_c('h3', [_vm._v("Link your Twitter Account")])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('label', {
-    attrs: {
-      "for": "twitter_yes"
-    }
-  }, [_c('span', {
-    staticClass: "w3-show-inline-block w3-margin v-align"
-  }), _vm._v("Yes\n                    ")])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('label', {
-    attrs: {
-      "for": "twitter_no"
-    }
-  }, [_c('span', {
-    staticClass: "w3-show-inline-block w3-margin v-align"
-  }), _vm._v("No\n                    ")])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('a', {
-    attrs: {
-      "href": "https://twitter.com/signup",
-      "target": "_blank"
-    }
-  }, [_c('h5', [_vm._v("Click here to create your account.")])])
-}]}
-module.exports.render._withStripped = true
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    [
+      _c("ProgressBar", { attrs: { progress: 56 } }),
+      _vm._v(" "),
+      _c("div", { staticClass: "w3-container w3-card-2 form" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c("div", { staticClass: "w3-section" }, [
+          _c("div", { staticClass: "w3-panel" }, [
+            _c("div", [
+              _vm._v(
+                "Do you have a Twitter account? If so, please log in to Twitter in order to recieve our Twitter services."
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "w3-panel" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.properties.has_twitter,
+                    expression: "properties.has_twitter"
+                  }
+                ],
+                staticClass: "v-align",
+                attrs: { type: "radio", id: "twitter_yes" },
+                domProps: {
+                  value: true,
+                  checked: _vm.properties.has_twitter,
+                  checked: _vm._q(_vm.properties.has_twitter, true)
+                },
+                on: {
+                  __c: function($event) {
+                    _vm.properties.has_twitter = true
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _vm._m(1),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.properties.has_twitter,
+                    expression: "properties.has_twitter"
+                  }
+                ],
+                staticClass: "v-align",
+                attrs: { type: "radio", id: "twitter_no" },
+                domProps: {
+                  value: false,
+                  checked: _vm.properties.has_twitter,
+                  checked: _vm._q(_vm.properties.has_twitter, false)
+                },
+                on: {
+                  __c: function($event) {
+                    _vm.properties.has_twitter = false
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _vm._m(2)
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _vm.properties.has_twitter == false
+          ? _c("div", { staticClass: "w3-section" }, [
+              _c("p", [
+                _vm._v(
+                  "Don’t have a Twitter account? Setting one up will take you about 30 seconds—and we can start posting to it right away."
+                )
+              ]),
+              _vm._v(" "),
+              _vm._m(3)
+            ])
+          : _vm._e(),
+        _vm._v(" "),
+        _c("div", { staticClass: "w3-section" }, [
+          _vm.properties.has_twitter == true
+            ? _c("h5", [_vm._v("Almost done.")])
+            : _vm._e(),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "w3-button w3-text-white primary",
+              on: {
+                click: function($event) {
+                  _vm.update()
+                }
+              }
+            },
+            [_vm._v("Continue\n            ")]
+          )
+        ])
+      ])
+    ],
+    1
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "w3-panel" }, [
+      _c("h3", [_vm._v("Link your Twitter Account")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", { attrs: { for: "twitter_yes" } }, [
+      _c("span", { staticClass: "w3-show-inline-block w3-margin v-align" }),
+      _vm._v("Yes\n                    ")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", { attrs: { for: "twitter_no" } }, [
+      _c("span", { staticClass: "w3-show-inline-block w3-margin v-align" }),
+      _vm._v("No\n                    ")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "a",
+      { attrs: { href: "https://twitter.com/signup", target: "_blank" } },
+      [_c("h5", [_vm._v("Click here to create your account.")])]
+    )
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
@@ -18122,23 +18721,29 @@ if (false) {
 }
 
 /***/ }),
-/* 332 */
+/* 333 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var Component = __webpack_require__(0)(
-  /* script */
-  __webpack_require__(333),
-  /* template */
-  __webpack_require__(334),
-  /* styles */
-  null,
-  /* scopeId */
-  null,
-  /* moduleIdentifier (server only) */
-  null
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(334)
+/* template */
+var __vue_template__ = __webpack_require__(335)
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
 )
-Component.options.__file = "/home/johnhuffman/Sites/InsuranceSocial.media/src/resources/javascripts/frontend/social/vue/linkedin/LinkedIn.vue"
+Component.options.__file = "resources/javascripts/frontend/social/vue/linkedin/LinkedIn.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] LinkedIn.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -18162,12 +18767,12 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 333 */
+/* 334 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Progress__ = __webpack_require__(65);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Progress__ = __webpack_require__(66);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Progress___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Progress__);
 //
 //
@@ -18251,107 +18856,158 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 334 */
+/* 335 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('ProgressBar', {
-    attrs: {
-      "progress": 56
-    }
-  }), _vm._v(" "), _c('div', {
-    staticClass: "w3-container w3-card-2 form"
-  }, [_vm._m(0), _vm._v(" "), _c('div', {
-    staticClass: "w3-section"
-  }, [_c('div', {
-    staticClass: "w3-panel"
-  }, [_c('div', [_vm._v("Do you have a LinkedIn account? If so, please log in to LinkedIn in order to recieve our LinkedIn services.")]), _vm._v(" "), _c('div', {
-    staticClass: "w3-panel"
-  }, [_c('input', {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: (_vm.properties.has_linkedin),
-      expression: "properties.has_linkedin"
-    }],
-    staticClass: "v-align",
-    attrs: {
-      "type": "radio",
-      "id": "linkedin_yes"
-    },
-    domProps: {
-      "value": true,
-      "checked": _vm.properties.has_linkedin,
-      "checked": _vm._q(_vm.properties.has_linkedin, true)
-    },
-    on: {
-      "__c": function($event) {
-        _vm.properties.has_linkedin = true
-      }
-    }
-  }), _vm._v(" "), _vm._m(1), _vm._v(" "), _c('input', {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: (_vm.properties.has_linkedin),
-      expression: "properties.has_linkedin"
-    }],
-    staticClass: "v-align",
-    attrs: {
-      "type": "radio",
-      "id": "linkedin_no"
-    },
-    domProps: {
-      "value": false,
-      "checked": _vm.properties.has_linkedin,
-      "checked": _vm._q(_vm.properties.has_linkedin, false)
-    },
-    on: {
-      "__c": function($event) {
-        _vm.properties.has_linkedin = false
-      }
-    }
-  }), _vm._v(" "), _vm._m(2)])])]), _vm._v(" "), (_vm.properties.has_linkin == false) ? _c('div', {
-    staticClass: "w3-section"
-  }, [_c('p', [_vm._v("Don’t have a LinkedIn account? Setting one up will take you about 30 seconds—and we can start posting to it right away.")]), _vm._v(" "), _vm._m(3)]) : _vm._e(), _vm._v(" "), _c('div', {
-    staticClass: "w3-section"
-  }, [(_vm.properties.has_linkedin == true) ? _c('h5', [_vm._v("Almost done.")]) : _vm._e(), _vm._v(" "), _c('button', {
-    staticClass: "w3-button w3-text-white primary",
-    on: {
-      "click": function($event) {
-        _vm.update()
-      }
-    }
-  }, [_vm._v("Continue\n            ")])])])], 1)
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "w3-panel"
-  }, [_c('h3', [_vm._v("Link your LinkedIn Account")])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('label', {
-    attrs: {
-      "for": "linkedin_yes"
-    }
-  }, [_c('span', {
-    staticClass: "w3-show-inline-block w3-margin v-align"
-  }), _vm._v("Yes\n                    ")])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('label', {
-    attrs: {
-      "for": "linkedin_no"
-    }
-  }, [_c('span', {
-    staticClass: "w3-show-inline-block w3-margin v-align"
-  }), _vm._v("No\n                    ")])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('a', {
-    attrs: {
-      "href": "https://www.linkedin.com/m/login",
-      "target": "_blank"
-    }
-  }, [_c('h5', [_vm._v("Click here to create your account.")])])
-}]}
-module.exports.render._withStripped = true
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    [
+      _c("ProgressBar", { attrs: { progress: 56 } }),
+      _vm._v(" "),
+      _c("div", { staticClass: "w3-container w3-card-2 form" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c("div", { staticClass: "w3-section" }, [
+          _c("div", { staticClass: "w3-panel" }, [
+            _c("div", [
+              _vm._v(
+                "Do you have a LinkedIn account? If so, please log in to LinkedIn in order to recieve our LinkedIn services."
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "w3-panel" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.properties.has_linkedin,
+                    expression: "properties.has_linkedin"
+                  }
+                ],
+                staticClass: "v-align",
+                attrs: { type: "radio", id: "linkedin_yes" },
+                domProps: {
+                  value: true,
+                  checked: _vm.properties.has_linkedin,
+                  checked: _vm._q(_vm.properties.has_linkedin, true)
+                },
+                on: {
+                  __c: function($event) {
+                    _vm.properties.has_linkedin = true
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _vm._m(1),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.properties.has_linkedin,
+                    expression: "properties.has_linkedin"
+                  }
+                ],
+                staticClass: "v-align",
+                attrs: { type: "radio", id: "linkedin_no" },
+                domProps: {
+                  value: false,
+                  checked: _vm.properties.has_linkedin,
+                  checked: _vm._q(_vm.properties.has_linkedin, false)
+                },
+                on: {
+                  __c: function($event) {
+                    _vm.properties.has_linkedin = false
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _vm._m(2)
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _vm.properties.has_linkin == false
+          ? _c("div", { staticClass: "w3-section" }, [
+              _c("p", [
+                _vm._v(
+                  "Don’t have a LinkedIn account? Setting one up will take you about 30 seconds—and we can start posting to it right away."
+                )
+              ]),
+              _vm._v(" "),
+              _vm._m(3)
+            ])
+          : _vm._e(),
+        _vm._v(" "),
+        _c("div", { staticClass: "w3-section" }, [
+          _vm.properties.has_linkedin == true
+            ? _c("h5", [_vm._v("Almost done.")])
+            : _vm._e(),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "w3-button w3-text-white primary",
+              on: {
+                click: function($event) {
+                  _vm.update()
+                }
+              }
+            },
+            [_vm._v("Continue\n            ")]
+          )
+        ])
+      ])
+    ],
+    1
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "w3-panel" }, [
+      _c("h3", [_vm._v("Link your LinkedIn Account")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", { attrs: { for: "linkedin_yes" } }, [
+      _c("span", { staticClass: "w3-show-inline-block w3-margin v-align" }),
+      _vm._v("Yes\n                    ")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", { attrs: { for: "linkedin_no" } }, [
+      _c("span", { staticClass: "w3-show-inline-block w3-margin v-align" }),
+      _vm._v("No\n                    ")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "a",
+      { attrs: { href: "https://www.linkedin.com/m/login", target: "_blank" } },
+      [_c("h5", [_vm._v("Click here to create your account.")])]
+    )
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
@@ -18360,23 +19016,29 @@ if (false) {
 }
 
 /***/ }),
-/* 335 */
+/* 336 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var Component = __webpack_require__(0)(
-  /* script */
-  __webpack_require__(336),
-  /* template */
-  __webpack_require__(340),
-  /* styles */
-  null,
-  /* scopeId */
-  null,
-  /* moduleIdentifier (server only) */
-  null
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(337)
+/* template */
+var __vue_template__ = __webpack_require__(341)
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
 )
-Component.options.__file = "/home/johnhuffman/Sites/InsuranceSocial.media/src/resources/javascripts/frontend/social/vue/App.vue"
+Component.options.__file = "resources/javascripts/frontend/social/vue/App.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] App.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -18400,12 +19062,12 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 336 */
+/* 337 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Tips__ = __webpack_require__(337);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Tips__ = __webpack_require__(338);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Tips___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Tips__);
 //
 //
@@ -18445,23 +19107,29 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 337 */
+/* 338 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var Component = __webpack_require__(0)(
-  /* script */
-  __webpack_require__(338),
-  /* template */
-  __webpack_require__(339),
-  /* styles */
-  null,
-  /* scopeId */
-  null,
-  /* moduleIdentifier (server only) */
-  null
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(339)
+/* template */
+var __vue_template__ = __webpack_require__(340)
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
 )
-Component.options.__file = "/home/johnhuffman/Sites/InsuranceSocial.media/src/resources/javascripts/frontend/social/vue/Tips.vue"
+Component.options.__file = "resources/javascripts/frontend/social/vue/Tips.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Tips.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -18485,7 +19153,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 338 */
+/* 339 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -18549,95 +19217,201 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 339 */
+/* 340 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "w3-padding-32 w3-hide-small tips"
-  }, [(_vm.$route.path == '/facebook') ? _c('ul', {
-    staticClass: "w3-ul w3-card-2 w3-white w3-center"
-  }, [_vm._m(0), _vm._v(" "), _vm._m(1), _vm._v(" "), _vm._m(2), _vm._v(" "), _vm._m(3), _vm._v(" "), _vm._m(4), _vm._v(" "), _vm._m(5), _vm._v(" "), _vm._m(6)]) : _vm._e(), _vm._v(" "), (_vm.$route.path == '/twitter') ? _c('ul', {
-    staticClass: "w3-ul w3-card-2 w3-white w3-center"
-  }, [_vm._m(7), _vm._v(" "), _vm._m(8), _vm._v(" "), _vm._m(9), _vm._v(" "), _vm._m(10), _vm._v(" "), _vm._m(11), _vm._v(" "), _vm._m(12), _vm._v(" "), _vm._m(13)]) : _vm._e()])
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('li', {
-    staticClass: "w3-padding w3-text-white primary"
-  }, [_c('h6', [_vm._v("Make Facebook work for you!")])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('li', {
-    staticClass: "w3-padding"
-  }, [_c('div', {
-    staticClass: "w3-panel"
-  }, [_vm._v("Connecting your Facebook account is simplest if you’re already logged in to it.")])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('li', {
-    staticClass: "w3-padding"
-  }, [_c('div', {
-    staticClass: "w3-panel"
-  }, [_vm._v("We’ll need you to enter your password to connect your Facebook account to our system, but don’t worry: our platform is secure, and we don’t store that information!")])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('li', {
-    staticClass: "w3-padding"
-  }, [_c('div', {
-    staticClass: "w3-panel"
-  }, [_vm._v("We won’t post to your personal Facebook account, either. This is just a one-time step you need to take to allow us to post to your corporate Facebook page.")])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('li', {
-    staticClass: "w3-padding"
-  }, [_c('div', {
-    staticClass: "w3-panel"
-  }, [_vm._v("Don’t have a corporate Facebook page? We’ll set one up for you!")])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('li', {
-    staticClass: "w3-padding"
-  }, [_c('div', {
-    staticClass: "w3-panel"
-  }, [_vm._v("Need help? Click the chat box below!")])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('li', {
-    staticClass: "w3-padding w3-text-white secondary"
-  }, [_c('h6', [_vm._v("Next step: connect your Twitter account!")])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('li', {
-    staticClass: "w3-padding w3-text-white primary"
-  }, [_c('h6', [_vm._v("The power of Twitter")])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('li', {
-    staticClass: "w3-padding"
-  }, [_c('div', {
-    staticClass: "w3-panel"
-  }, [_vm._v("Why use Twitter? It has 320 million users—and the largest user group is millennials (36% of US internet users!).")])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('li', {
-    staticClass: "w3-padding"
-  }, [_c('div', {
-    staticClass: "w3-panel"
-  }, [_vm._v("66% of Twitter users have discovered a new small-to-medium-sized business on Twitter.")])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('li', {
-    staticClass: "w3-padding"
-  }, [_c('div', {
-    staticClass: "w3-panel"
-  }, [_vm._v("94% plan to purchase from an SMB they follow.")])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('li', {
-    staticClass: "w3-padding"
-  }, [_c('div', {
-    staticClass: "w3-panel"
-  }, [_vm._v("75% of Twitter users say they feel better about an SMB after reading its tweets.")])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('li', {
-    staticClass: "w3-padding"
-  }, [_c('div', {
-    staticClass: "w3-panel"
-  }, [_vm._v("Need help? Click the chat box below!")])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('li', {
-    staticClass: "w3-padding w3-text-white secondary"
-  }, [_c('h6', [_vm._v("Social media connection complete!")])])
-}]}
-module.exports.render._withStripped = true
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "w3-padding-32 w3-hide-small tips" }, [
+    _vm.$route.path == "/facebook"
+      ? _c("ul", { staticClass: "w3-ul w3-card-2 w3-white w3-center" }, [
+          _vm._m(0),
+          _vm._v(" "),
+          _vm._m(1),
+          _vm._v(" "),
+          _vm._m(2),
+          _vm._v(" "),
+          _vm._m(3),
+          _vm._v(" "),
+          _vm._m(4),
+          _vm._v(" "),
+          _vm._m(5),
+          _vm._v(" "),
+          _vm._m(6)
+        ])
+      : _vm._e(),
+    _vm._v(" "),
+    _vm.$route.path == "/twitter"
+      ? _c("ul", { staticClass: "w3-ul w3-card-2 w3-white w3-center" }, [
+          _vm._m(7),
+          _vm._v(" "),
+          _vm._m(8),
+          _vm._v(" "),
+          _vm._m(9),
+          _vm._v(" "),
+          _vm._m(10),
+          _vm._v(" "),
+          _vm._m(11),
+          _vm._v(" "),
+          _vm._m(12),
+          _vm._v(" "),
+          _vm._m(13)
+        ])
+      : _vm._e()
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", { staticClass: "w3-padding w3-text-white primary" }, [
+      _c("h6", [_vm._v("Make Facebook work for you!")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", { staticClass: "w3-padding" }, [
+      _c("div", { staticClass: "w3-panel" }, [
+        _vm._v(
+          "Connecting your Facebook account is simplest if you’re already logged in to it."
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", { staticClass: "w3-padding" }, [
+      _c("div", { staticClass: "w3-panel" }, [
+        _vm._v(
+          "We’ll need you to enter your password to connect your Facebook account to our system, but don’t worry: our platform is secure, and we don’t store that information!"
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", { staticClass: "w3-padding" }, [
+      _c("div", { staticClass: "w3-panel" }, [
+        _vm._v(
+          "We won’t post to your personal Facebook account, either. This is just a one-time step you need to take to allow us to post to your corporate Facebook page."
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", { staticClass: "w3-padding" }, [
+      _c("div", { staticClass: "w3-panel" }, [
+        _vm._v(
+          "Don’t have a corporate Facebook page? We’ll set one up for you!"
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", { staticClass: "w3-padding" }, [
+      _c("div", { staticClass: "w3-panel" }, [
+        _vm._v("Need help? Click the chat box below!")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", { staticClass: "w3-padding w3-text-white secondary" }, [
+      _c("h6", [_vm._v("Next step: connect your Twitter account!")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", { staticClass: "w3-padding w3-text-white primary" }, [
+      _c("h6", [_vm._v("The power of Twitter")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", { staticClass: "w3-padding" }, [
+      _c("div", { staticClass: "w3-panel" }, [
+        _vm._v(
+          "Why use Twitter? It has 320 million users—and the largest user group is millennials (36% of US internet users!)."
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", { staticClass: "w3-padding" }, [
+      _c("div", { staticClass: "w3-panel" }, [
+        _vm._v(
+          "66% of Twitter users have discovered a new small-to-medium-sized business on Twitter."
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", { staticClass: "w3-padding" }, [
+      _c("div", { staticClass: "w3-panel" }, [
+        _vm._v("94% plan to purchase from an SMB they follow.")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", { staticClass: "w3-padding" }, [
+      _c("div", { staticClass: "w3-panel" }, [
+        _vm._v(
+          "75% of Twitter users say they feel better about an SMB after reading its tweets."
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", { staticClass: "w3-padding" }, [
+      _c("div", { staticClass: "w3-panel" }, [
+        _vm._v("Need help? Click the chat box below!")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", { staticClass: "w3-padding w3-text-white secondary" }, [
+      _c("h6", [_vm._v("Social media connection complete!")])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
@@ -18646,15 +19420,37 @@ if (false) {
 }
 
 /***/ }),
-/* 340 */
+/* 341 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('Navigation'), _vm._v(" "), _c('Tips'), _vm._v(" "), (_vm.loading == 0) ? _c('div', {
-    staticClass: "w3-container w3-padding-32 bgimg2"
-  }, [_c('router-view')], 1) : _vm._e(), _vm._v(" "), _c('Foot')], 1)
-},staticRenderFns: []}
-module.exports.render._withStripped = true
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    [
+      _c("Navigation"),
+      _vm._v(" "),
+      _c("Tips"),
+      _vm._v(" "),
+      _vm.loading == 0
+        ? _c(
+            "div",
+            { staticClass: "w3-container w3-padding-32 bgimg2" },
+            [_c("router-view")],
+            1
+          )
+        : _vm._e(),
+      _vm._v(" "),
+      _c("Foot")
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {

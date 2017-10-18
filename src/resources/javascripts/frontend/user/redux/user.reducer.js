@@ -21,7 +21,7 @@ const initialState = {
     personal_mix:'',
     api_token:'',
     commercial_mix:'',
-    personal_mix:''
+    personal_mix:'',
 };
 
 module.exports = function(user = initialState, action) {

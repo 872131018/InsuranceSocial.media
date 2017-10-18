@@ -10,6 +10,8 @@ use Abraham\TwitterOAuth\TwitterOAuth;
 
 use App\TwitterAccount;
 
+use Illuminate\Support\Facades\Log;
+
 class TwitterController extends Controller
 {
     /**
@@ -99,12 +101,22 @@ class TwitterController extends Controller
         $access_token = $connection->oauth("oauth/access_token", ["oauth_verifier" => $request->input('oauth_verifier')]);
 
         if(isset($access_token)) {
-          $user = Auth::user();
-          $twitterAccount = new TwitterAccount();
-          $twitterAccount->email = $user->email;
-          $twitterAccount->access_token = $access_token['oauth_token'];
-          $twitterAccount->secret_token = $access_token['oauth_token_secret'];
-          $user->twitter()->save($twitterAccount);
+            $connection = new TwitterOAuth(
+                env('CONSUMER_KEY'),
+                env('CONSUMER_SECRET'),
+                $access_token['oauth_token'],
+                $access_token['oauth_token_secret']
+            );
+            $response = $connection->get('account/verify_credentials');
+
+            $user = Auth::user();
+            $twitterAccount = new TwitterAccount();
+            $twitterAccount->email = $user->email;
+            $twitterAccount->access_token = $access_token['oauth_token'];
+            $twitterAccount->secret_token = $access_token['oauth_token_secret'];
+            $twitterAccount->screen_name = $response->screen_name;
+            $twitterAccount->twitter_id = $response->id;
+            $user->twitter()->save($twitterAccount);
 
            return redirect('profile');
         }

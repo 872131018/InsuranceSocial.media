@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTwitterAccountTable extends Migration
+class CreateFacebookInteractionTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,15 @@ class CreateTwitterAccountTable extends Migration
      */
     public function up()
     {
-        Schema::create('twitter_account', function (Blueprint $table) {
+        Schema::create('facebook_interaction', function (Blueprint $table) {
             $table->increments('id');
             $table->string('user_id');
             $table->string('email');
-            $table->string('access_token');
-            $table->string('secret_token');
-            $table->string('screen_name');
-            $table->string('twitter_id');
+            $table->string('range');
+            $table->text('reach_labels');
+            $table->text('reach_series');
+            $table->text('engagement_labels');
+            $table->text('engagement_series');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -34,6 +35,6 @@ class CreateTwitterAccountTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('twitter_account');
+        Schema::dropIfExists('facebook_interaction');
     }
 }

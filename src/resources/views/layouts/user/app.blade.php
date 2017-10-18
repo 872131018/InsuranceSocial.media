@@ -25,6 +25,7 @@
         <App></App>
     </div>
     <!-- Scripts -->
+    <script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
     <script type="text/javascript" src="{{ url('javascripts/user.index.js') }}"></script>
 </body>
 </html>

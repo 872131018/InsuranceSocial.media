@@ -180,4 +180,36 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Payment');
     }
+
+    /**
+     * Get the causes record associated with the user.
+     */
+    public function facebookPerformance()
+    {
+        return $this->hasMany('App\FacebookPerformance');
+    }
+
+    /**
+     * Get the causes record associated with the user.
+     */
+    public function facebookInteraction()
+    {
+        return $this->hasMany('App\FacebookInteraction');
+    }
+
+    /**
+     * Get the causes record associated with the user.
+     */
+    public function twitterPerformance()
+    {
+        return $this->hasMany('App\TwitterPerformance');
+    }
+
+    /**
+     * Get the causes record associated with the user.
+     */
+    public function twitterInteraction()
+    {
+        return $this->hasMany('App\TwitterInteraction');
+    }
 }
