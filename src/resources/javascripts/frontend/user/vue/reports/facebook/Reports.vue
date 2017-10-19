@@ -74,6 +74,8 @@
                     reach_series: [],
                     engagement_labels: [],
                     engagement_series: [],
+                    ratio_labels: [],
+                    ratio_series: [],
                     last_interaction: ''
                 },
                 posts: {
@@ -137,6 +139,8 @@
                         reach_series:  JSON.parse(response.data.reach_series),
                         engagement_labels: JSON.parse(response.data.engagement_labels),
                         engagement_series:  JSON.parse(response.data.engagement_series),
+                        ratio_labels: JSON.parse(response.data.ratio_labels),
+                        ratio_series:  JSON.parse(response.data.ratio_series),
                         last_interaction: response.data.created_at.slice(0, 10)
                     };
                     this.loading--;

@@ -22,6 +22,8 @@ class CreateFacebookInteractionTable extends Migration
             $table->text('reach_series');
             $table->text('engagement_labels');
             $table->text('engagement_series');
+            $table->text('ratio_labels');
+            $table->text('ratio_series');
             $table->timestamps();
             $table->softDeletes();
         });

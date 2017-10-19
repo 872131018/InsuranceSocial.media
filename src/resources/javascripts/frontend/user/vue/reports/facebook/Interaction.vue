@@ -81,6 +81,16 @@
                         });
                         this.graph = 'engagement';
                         break;
+                    case 'ratio':
+                        new Chartist.Line('.line-chart', {
+                            //labels: this.interaction.ratio_labels,
+                            labels: [],
+                            series: [this.interaction.ratio_series]
+                        }, {
+                            height: '160px'
+                        });
+                        this.graph = 'ratio';
+                        break;
                 }
             }
         }

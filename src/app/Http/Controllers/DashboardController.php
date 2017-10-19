@@ -306,17 +306,18 @@ class DashboardController extends Controller
         try {
             $response = $this->twitter->get('users/show', [
                 'screen_name' => $user->twitter->screen_name,
-                'user_id' => $user->facebook->twitter_id
+                'user_id' => $user->twitter->twitter_id
             ]);
         } catch(Exception $e) {
             return response()->json($e->getMessage(), 502);
         }
+
         $twitter['followers'] = $response->followers_count;
 
         try {
             $response = $this->twitter->get('statuses/user_timeline', [
                 'screen_name' => $user->twitter->screen_name,
-                'user_id' => $user->facebook->twitter_id,
+                'user_id' => $user->twitter->twitter_id,
                 'count' => $request->input('range'),
             ]);
         } catch(Exception $e) {
@@ -333,7 +334,7 @@ class DashboardController extends Controller
         try {
             $response = $this->twitter->get('statuses/user_timeline', [
                 'screen_name' => $user->twitter->screen_name,
-                'user_id' => $user->facebook->twitter_id,
+                'user_id' => $user->twitter->twitter_id,
                 'count' => $request->input('twitter'),
                 'max_id' => $max_id
             ]);
@@ -424,7 +425,9 @@ class DashboardController extends Controller
             'reach_labels' => [],
             'reach_series' => [],
             'engagement_labels' => [],
-            'engagement_series' => []
+            'engagement_series' => [],
+            'ratio_labels' => [],
+            'ratio_series' => []
         ];
         /*
         * REACH
@@ -446,6 +449,14 @@ class DashboardController extends Controller
                 array_push($interaction['engagement_series'], $value->value);
             }
         }
+        /**
+        * RATIO
+        */
+        foreach($interaction['reach_series'] as $key => $value) {
+            array_push($interaction['ratio_labels'], $interaction['reach_series'][$key]);
+            $ratio = (float) number_format($interaction['engagement_series'][$key] / $interaction['reach_series'][$key], 2);
+            array_push($interaction['ratio_series'], $ratio);
+        }
 
         $facebookInteraction = new FacebookInteraction();
         $facebookInteraction->email = $user->email;
@@ -454,6 +465,8 @@ class DashboardController extends Controller
         $facebookInteraction->reach_series = json_encode($interaction['reach_series']);
         $facebookInteraction->engagement_labels = json_encode($interaction['engagement_labels']);
         $facebookInteraction->engagement_series = json_encode($interaction['engagement_series']);
+        $facebookInteraction->ratio_labels = json_encode($interaction['ratio_labels']);
+        $facebookInteraction->ratio_series = json_encode($interaction['ratio_series']);
         $user->facebookInteraction()->save($facebookInteraction);
 
         return response()->json($facebookInteraction);
@@ -487,7 +500,7 @@ class DashboardController extends Controller
         try {
             $response = $this->twitter->get('statuses/user_timeline', [
                 'screen_name' => $user->twitter->screen_name,
-                'user_id' => $user->facebook->twitter_id,
+                'user_id' => $user->twitter->twitter_id,
                 'count' => $request->input('range'),
             ]);
         } catch(Exception $e) {
@@ -609,7 +622,7 @@ class DashboardController extends Controller
         try {
             $response = $this->twitter->get('statuses/user_timeline', [
                 'screen_name' => $user->twitter->screen_name,
-                'user_id' => $user->facebook->twitter_id,
+                'user_id' => $user->twitter->twitter_id,
                 'count' => $request->input('range'),
             ]);
         } catch(Exception $e) {
