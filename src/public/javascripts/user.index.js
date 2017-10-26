@@ -14529,7 +14529,7 @@ var normalizeComponent = __webpack_require__(0)
 /* script */
 var __vue_script__ = __webpack_require__(16)
 /* template */
-var __vue_template__ = __webpack_require__(688)
+var __vue_template__ = __webpack_require__(17)
 /* template functional */
   var __vue_template_functional__ = false
 /* styles */
@@ -14594,7 +14594,103 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 17 */,
+/* 17 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm._m(0)
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "footer",
+      { staticClass: "w3-bar w3-padding-16 w3-medium w3-text-white footer" },
+      [
+        _c("div", { staticClass: "w3-bar-item w3-button footer-logo" }, [
+          _vm._v("Insurance Social Media")
+        ]),
+        _c("div", { staticClass: "w3-right social" }, [
+          _c("a", { attrs: { href: "https://www.twitter.com/insurancesmm" } }, [
+            _c("img", {
+              attrs: {
+                src: "/images/icon-twitter.png",
+                height: "36",
+                width: "36"
+              }
+            })
+          ]),
+          _c(
+            "a",
+            {
+              attrs: {
+                href: "https://www.facebook.com/insurancesocialdotmedia/"
+              }
+            },
+            [
+              _c("img", {
+                attrs: {
+                  src: "/images/icon-facebook.png",
+                  height: "36",
+                  width: "36"
+                }
+              })
+            ]
+          ),
+          _c(
+            "a",
+            {
+              attrs: {
+                href: "https://www.instagram.com/insurancesocial.media/"
+              }
+            },
+            [
+              _c("img", {
+                attrs: {
+                  src: "/images/icon-instagram.png",
+                  height: "36",
+                  width: "36"
+                }
+              })
+            ]
+          ),
+          _c(
+            "a",
+            {
+              attrs: {
+                href: "https://www.linkedin.com/company/insurancesocial-media"
+              }
+            },
+            [
+              _c("img", {
+                attrs: {
+                  src: "/images/icon-linkedin.png",
+                  height: "36",
+                  width: "36"
+                }
+              })
+            ]
+          )
+        ])
+      ]
+    )
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-16ad92a4", module.exports)
+  }
+}
+
+/***/ }),
 /* 18 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -35594,107 +35690,6 @@ if (false) {
   module.hot.accept()
   if (module.hot.data) {
     require("vue-hot-reload-api")      .rerender("data-v-0cfb7d7a", module.exports)
-  }
-}
-
-/***/ }),
-/* 684 */,
-/* 685 */,
-/* 686 */,
-/* 687 */,
-/* 688 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "footer",
-      { staticClass: "w3-bar w3-padding-16 w3-medium w3-text-white footer" },
-      [
-        _c("div", { staticClass: "w3-bar-item w3-button footer-logo" }, [
-          _vm._v("Insurance Social Media")
-        ]),
-        _c("div", { staticClass: "w3-right social" }, [
-          _c("a", { attrs: { href: "https://www.twitter.com/insurancesmm" } }, [
-            _c("img", {
-              attrs: {
-                src: "/images/icon-twitter.png",
-                height: "36",
-                width: "36"
-              }
-            })
-          ]),
-          _c(
-            "a",
-            {
-              attrs: {
-                href: "https://www.facebook.com/insurancesocialdotmedia/"
-              }
-            },
-            [
-              _c("img", {
-                attrs: {
-                  src: "/images/icon-facebook.png",
-                  height: "36",
-                  width: "36"
-                }
-              })
-            ]
-          ),
-          _c(
-            "a",
-            {
-              attrs: {
-                href: "https://www.instagram.com/insurancesocial.media/"
-              }
-            },
-            [
-              _c("img", {
-                attrs: {
-                  src: "/images/icon-instagram.png",
-                  height: "36",
-                  width: "36"
-                }
-              })
-            ]
-          ),
-          _c(
-            "a",
-            {
-              attrs: {
-                href: "https://www.linkedin.com/company/insurancesocial-media"
-              }
-            },
-            [
-              _c("img", {
-                attrs: {
-                  src: "/images/icon-linkedin.png",
-                  height: "36",
-                  width: "36"
-                }
-              })
-            ]
-          )
-        ])
-      ]
-    )
-  }
-]
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-16ad92a4", module.exports)
   }
 }
 

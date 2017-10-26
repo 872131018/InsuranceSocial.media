@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Auth;
 
+use Illuminate\Support\Facades\Mail;
+
+use net\authorize\api\controller as AnetController;
+
 use Facebook\Facebook;
 
 use App\FacebookAccount;
@@ -19,8 +23,6 @@ use App\Payment;
 use App\Mail\NoFacebook;
 
 use App\Mail\HasFacebook;
-
-use Illuminate\Support\Facades\Mail;
 
 class FacebookController extends Controller
 {

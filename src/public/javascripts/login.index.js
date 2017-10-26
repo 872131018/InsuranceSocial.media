@@ -13638,7 +13638,7 @@ var normalizeComponent = __webpack_require__(0)
 /* script */
 var __vue_script__ = __webpack_require__(16)
 /* template */
-var __vue_template__ = __webpack_require__(688)
+var __vue_template__ = __webpack_require__(17)
 /* template functional */
   var __vue_template_functional__ = false
 /* styles */
@@ -13702,6 +13702,104 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
     //
 });
+
+/***/ }),
+
+/***/ 17:
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm._m(0)
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "footer",
+      { staticClass: "w3-bar w3-padding-16 w3-medium w3-text-white footer" },
+      [
+        _c("div", { staticClass: "w3-bar-item w3-button footer-logo" }, [
+          _vm._v("Insurance Social Media")
+        ]),
+        _c("div", { staticClass: "w3-right social" }, [
+          _c("a", { attrs: { href: "https://www.twitter.com/insurancesmm" } }, [
+            _c("img", {
+              attrs: {
+                src: "/images/icon-twitter.png",
+                height: "36",
+                width: "36"
+              }
+            })
+          ]),
+          _c(
+            "a",
+            {
+              attrs: {
+                href: "https://www.facebook.com/insurancesocialdotmedia/"
+              }
+            },
+            [
+              _c("img", {
+                attrs: {
+                  src: "/images/icon-facebook.png",
+                  height: "36",
+                  width: "36"
+                }
+              })
+            ]
+          ),
+          _c(
+            "a",
+            {
+              attrs: {
+                href: "https://www.instagram.com/insurancesocial.media/"
+              }
+            },
+            [
+              _c("img", {
+                attrs: {
+                  src: "/images/icon-instagram.png",
+                  height: "36",
+                  width: "36"
+                }
+              })
+            ]
+          ),
+          _c(
+            "a",
+            {
+              attrs: {
+                href: "https://www.linkedin.com/company/insurancesocial-media"
+              }
+            },
+            [
+              _c("img", {
+                attrs: {
+                  src: "/images/icon-linkedin.png",
+                  height: "36",
+                  width: "36"
+                }
+              })
+            ]
+          )
+        ])
+      ]
+    )
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-16ad92a4", module.exports)
+  }
+}
 
 /***/ }),
 
@@ -13780,7 +13878,7 @@ var normalizeComponent = __webpack_require__(0)
 /* script */
 var __vue_script__ = __webpack_require__(202)
 /* template */
-var __vue_template__ = __webpack_require__(684)
+var __vue_template__ = __webpack_require__(203)
 /* template functional */
   var __vue_template_functional__ = false
 /* styles */
@@ -13860,6 +13958,113 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         }
     }
 });
+
+/***/ }),
+
+/***/ 203:
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "w3-container w3-card-2 w3-row l4 m6 s12 login-form" },
+    [
+      _vm._m(0),
+      _c("div", { staticClass: "w3-section" }, [
+        _c("form", { attrs: { method: "POST", action: "/login" } }, [
+          _vm._m(1),
+          _vm._m(2),
+          _c("input", {
+            attrs: { type: "hidden", name: "_token" },
+            domProps: { value: _vm.getToken() }
+          }),
+          _vm._m(3)
+        ])
+      ]),
+      _c("div", { staticClass: "w3-padding-32" }, [
+        _c("p", { staticClass: "w3-large" }, [_vm._v("Don't have a login?")]),
+        _c(
+          "button",
+          {
+            staticClass: "w3-button w3-text-white secondary",
+            on: {
+              click: function($event) {
+                _vm.register()
+              }
+            }
+          },
+          [_vm._v("Register")]
+        )
+      ])
+    ]
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "w3-padding-32" }, [
+      _c("img", {
+        staticClass: "login-logo",
+        attrs: { src: "/images/talk-bubble-color.png" }
+      }),
+      _c("span", { staticClass: "w3-large" }, [
+        _vm._v("Insurance Social Media")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "w3-section" }, [
+      _c("input", {
+        staticClass: "w3-input eighty",
+        attrs: { type: "text", name: "email" }
+      }),
+      _c("label", [_vm._v("Email")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "w3-section" }, [
+      _c("input", {
+        staticClass: "w3-input eighty",
+        attrs: { type: "password", name: "password" }
+      }),
+      _c("label", [_vm._v("Password")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "w3-section" }, [
+      _c(
+        "button",
+        {
+          staticClass: "w3-button w3-text-white primary",
+          attrs: { type: "submit" }
+        },
+        [_vm._v("Login")]
+      )
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-21b02243", module.exports)
+  }
+}
 
 /***/ }),
 
@@ -13976,7 +14181,7 @@ var normalizeComponent = __webpack_require__(0)
 /* script */
 var __vue_script__ = __webpack_require__(24)
 /* template */
-var __vue_template__ = __webpack_require__(685)
+var __vue_template__ = __webpack_require__(31)
 /* template functional */
   var __vue_template_functional__ = false
 /* styles */
@@ -14055,7 +14260,7 @@ var normalizeComponent = __webpack_require__(0)
 /* script */
 var __vue_script__ = __webpack_require__(26)
 /* template */
-var __vue_template__ = __webpack_require__(686)
+var __vue_template__ = __webpack_require__(27)
 /* template functional */
   var __vue_template_functional__ = false
 /* styles */
@@ -14112,6 +14317,29 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
+/***/ 27:
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "w3-bar-item w3-button header-logo" }, [
+    _vm._v("Insurance Social Media")
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-b39c2888", module.exports)
+  }
+}
+
+/***/ }),
+
 /***/ 28:
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -14120,7 +14348,7 @@ var normalizeComponent = __webpack_require__(0)
 /* script */
 var __vue_script__ = __webpack_require__(29)
 /* template */
-var __vue_template__ = __webpack_require__(687)
+var __vue_template__ = __webpack_require__(30)
 /* template functional */
   var __vue_template_functional__ = false
 /* styles */
@@ -14202,6 +14430,62 @@ try {
 
 module.exports = g;
 
+
+/***/ }),
+
+/***/ 30:
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "w3-bar-item w3-button header-logo" }, [
+    _vm._v("Insurance Social Media")
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-940feb9c", module.exports)
+  }
+}
+
+/***/ }),
+
+/***/ 31:
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "nav",
+    { staticClass: "w3-bar w3-xlarge w3-text-white primary header" },
+    [
+      _c("div", { staticClass: "w3-hide-small" }, [_c("Desktop")], 1),
+      _c(
+        "div",
+        { staticClass: "w3-hide-medium w3-hide-large" },
+        [_c("Mobile")],
+        1
+      )
+    ]
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-dc1e82b8", module.exports)
+  }
+}
 
 /***/ }),
 
@@ -14393,290 +14677,6 @@ process.chdir = function (dir) {
 };
 process.umask = function() { return 0; };
 
-
-/***/ }),
-
-/***/ 684:
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "w3-container w3-card-2 w3-row l4 m6 s12 login-form" },
-    [
-      _vm._m(0),
-      _c("div", { staticClass: "w3-section" }, [
-        _c("form", { attrs: { method: "POST", action: "/login" } }, [
-          _vm._m(1),
-          _vm._m(2),
-          _c("input", {
-            attrs: { type: "hidden", name: "_token" },
-            domProps: { value: _vm.getToken() }
-          }),
-          _vm._m(3)
-        ])
-      ]),
-      _c("div", { staticClass: "w3-padding-32" }, [
-        _c("p", { staticClass: "w3-large" }, [_vm._v("Don't have a login?")]),
-        _c(
-          "button",
-          {
-            staticClass: "w3-button w3-text-white secondary",
-            on: {
-              click: function($event) {
-                _vm.register()
-              }
-            }
-          },
-          [_vm._v("Register")]
-        )
-      ])
-    ]
-  )
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "w3-padding-32" }, [
-      _c("img", {
-        staticClass: "login-logo",
-        attrs: { src: "/images/talk-bubble-color.png" }
-      }),
-      _c("span", { staticClass: "w3-large" }, [
-        _vm._v("Insurance Social Media")
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "w3-section" }, [
-      _c("input", {
-        staticClass: "w3-input eighty",
-        attrs: { type: "text", name: "email" }
-      }),
-      _c("label", [_vm._v("Email")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "w3-section" }, [
-      _c("input", {
-        staticClass: "w3-input eighty",
-        attrs: { type: "password", name: "password" }
-      }),
-      _c("label", [_vm._v("Password")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "w3-section" }, [
-      _c(
-        "button",
-        {
-          staticClass: "w3-button w3-text-white primary",
-          attrs: { type: "submit" }
-        },
-        [_vm._v("Login")]
-      )
-    ])
-  }
-]
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-21b02243", module.exports)
-  }
-}
-
-/***/ }),
-
-/***/ 685:
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "nav",
-    { staticClass: "w3-bar w3-xlarge w3-text-white primary header" },
-    [
-      _c("div", { staticClass: "w3-hide-small" }, [_c("Desktop")], 1),
-      _c(
-        "div",
-        { staticClass: "w3-hide-medium w3-hide-large" },
-        [_c("Mobile")],
-        1
-      )
-    ]
-  )
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-dc1e82b8", module.exports)
-  }
-}
-
-/***/ }),
-
-/***/ 686:
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "w3-bar-item w3-button header-logo" }, [
-    _vm._v("Insurance Social Media")
-  ])
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-b39c2888", module.exports)
-  }
-}
-
-/***/ }),
-
-/***/ 687:
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "w3-bar-item w3-button header-logo" }, [
-    _vm._v("Insurance Social Media")
-  ])
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-940feb9c", module.exports)
-  }
-}
-
-/***/ }),
-
-/***/ 688:
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "footer",
-      { staticClass: "w3-bar w3-padding-16 w3-medium w3-text-white footer" },
-      [
-        _c("div", { staticClass: "w3-bar-item w3-button footer-logo" }, [
-          _vm._v("Insurance Social Media")
-        ]),
-        _c("div", { staticClass: "w3-right social" }, [
-          _c("a", { attrs: { href: "https://www.twitter.com/insurancesmm" } }, [
-            _c("img", {
-              attrs: {
-                src: "/images/icon-twitter.png",
-                height: "36",
-                width: "36"
-              }
-            })
-          ]),
-          _c(
-            "a",
-            {
-              attrs: {
-                href: "https://www.facebook.com/insurancesocialdotmedia/"
-              }
-            },
-            [
-              _c("img", {
-                attrs: {
-                  src: "/images/icon-facebook.png",
-                  height: "36",
-                  width: "36"
-                }
-              })
-            ]
-          ),
-          _c(
-            "a",
-            {
-              attrs: {
-                href: "https://www.instagram.com/insurancesocial.media/"
-              }
-            },
-            [
-              _c("img", {
-                attrs: {
-                  src: "/images/icon-instagram.png",
-                  height: "36",
-                  width: "36"
-                }
-              })
-            ]
-          ),
-          _c(
-            "a",
-            {
-              attrs: {
-                href: "https://www.linkedin.com/company/insurancesocial-media"
-              }
-            },
-            [
-              _c("img", {
-                attrs: {
-                  src: "/images/icon-linkedin.png",
-                  height: "36",
-                  width: "36"
-                }
-              })
-            ]
-          )
-        ])
-      ]
-    )
-  }
-]
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-16ad92a4", module.exports)
-  }
-}
 
 /***/ })
 

@@ -1,13 +1,12 @@
-<template>
-    <div class="w3-section">
-        <label class="w3-show-block">{{ label }}</label>
-        <div class="w3-small">Must contain min 8 characters, 1 number, and 1 special character</div>
-        <input class="w3-input w3-show-inline-block eighty" type="password"
+<template lang="pug">
+    div(class="w3-padding-16")
+        label(class="w3-show-block") {{ label }}
+        div(class="w3-small") Must contain min 8 characters, 1 number, and 1 special character
+        input(class="w3-input w3-show-inline-block eighty" type="password"
             v-model="value"
-            v-on:keyup="validate()">
-        <Check v-if="isValid"></Check>
-        <Cross v-else-if="!isValid && value != ''"></Cross>
-    </div>
+            v-on:keyup="validate()")
+        Check(v-show="isValid")
+        Cross(v-show="!isValid && value != ''")
 </template>
 
 <script>

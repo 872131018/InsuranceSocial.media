@@ -1,60 +1,46 @@
-<template>
-    <div class="w3-container w3-card-2 form">
-        <div class="w3-panel">
-            <h3>Create an Account</h3>
-            <h5>Please complete required fields to complete registration.</h5>
-        </div>
-        <div class="w3-panel">
-            <Field
-                v-bind:label="'Full Name'"
-                v-on:setValue="(value) => properties.name = value"
-                v-on:valid="() => name_confirmed = true"
-                v-on:invalid="() => name_confirmed = false">
-            </Field>
-            <Field
-                v-bind:label="'Email'"
-                v-bind:validation="'EMAIL'"
-                v-on:setValue="(value) => properties.email = value">
-            </Field>
-            <Field
-                v-bind:label="'Confirm Email'"
-                v-bind:validation="'CONFIRM'"
-                v-bind:confirmation="properties.email"
-                v-on:setValue="(value) => properties.email_confirmation = value"
-                v-on:valid="() => email_confirmed = true"
-                v-on:invalid="() => email_confirmed = false">
-            </Field>
-            <PasswordField
-                v-bind:label="'Password'"
-                v-bind:validation="'PASSWORD'"
-                v-on:setValue="(value) => properties.password = value">
-            </PasswordField>
-            <PasswordField
-                v-bind:label="'Confirm Password'"
-                v-bind:validation="'CONFIRM'"
-                v-bind:confirmation="properties.password"
-                v-on:setValue="(value) => properties.password_confirmation = value"
-                v-on:valid="() => password_confirmed = true"
-                v-on:invalid="() => password_confirmed = false">
-            </PasswordField>
-            <Field
-                v-bind:label="'Discount Code'"
-                v-bind:default="properties.discount"
-                v-on:setValue="(value) => properties.discount = value">
-            </Field>
-            <Terms v-on:setTerms="(terms) => properties.terms = terms"></Terms>
-        </div>
-        <div class="w3-panel"
-            v-if="errors.length">
-            <Errors v-bind:errors="errors"></Errors>
-        </div>
-        <div class="w3-panel">
-            <button class="w3-button w3-text-white primary"
-                v-on:click="register()">
-                <div style="height: 22px; width: 127px">Register</div>
-            </button>
-        </div>
-    </div>
+<template lang="pug">
+    div(class="w3-card-2 w3-padding form")
+        h3 Create an Account
+        h5 Please complete required fields to complete registration.
+        Field(
+            :label="'Full Name'"
+            @setValue="(value) => properties.name = value"
+            @valid="name_confirmed = true"
+            @invalid="name_confirmed = false")
+        Field(
+            :label="'Email'"
+            :validation="'EMAIL'"
+            @setValue="(value) => properties.email = value")
+        Field(
+            :label="'Confirm Email'"
+            :validation="'CONFIRM'"
+            :confirmation="properties.email"
+            @setValue="(value) => properties.email_confirmation = value"
+            @valid="email_confirmed = true"
+            @invalid="email_confirmed = false")
+        PasswordField(
+            :label="'Password'"
+            :validation="'PASSWORD'"
+            @setValue="(value) => properties.password = value")
+        PasswordField(
+            :label="'Confirm Password'"
+            :validation="'CONFIRM'"
+            :confirmation="properties.password"
+            @setValue="(value) => properties.password_confirmation = value"
+            @valid="password_confirmed = true"
+            @invalid="password_confirmed = false")
+        Field(
+            :label="'Discount Code'"
+            :default="properties.discount"
+            @setValue="(value) => properties.discount = value")
+        Terms(@setTerms="(terms) => properties.terms = terms")
+        Errors(
+            v-if="errors.length"
+            :errors="errors")
+        div(class="w3-padding-16")
+            button(class="w3-button w3-text-white primary"
+                @click="register()")
+                div(style="height: 22px; width: 127px") Register
 </template>
 
 <script>
@@ -99,9 +85,9 @@
                 if(this.errors.length == 0) {
                     axios.post(window.location, this.properties).then(response => {
                         if(response.data.discount && response.data.discount != 'ISMFreeTrial') {
-                            window.location = `${ window.base_url }/corporate`;
+                            window.location = '/corporate';
                         } else {
-                            window.location = `${ window.base_url }/plans`;
+                            window.location = '/plans';
                         }
                     }).catch(error => {
                         if(error.email) {
