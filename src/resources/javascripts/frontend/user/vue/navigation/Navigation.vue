@@ -88,7 +88,7 @@
                 this.socialMedia = false;
                 this.tools = false;
                 this.selected = 'home';
-                router.push({ name: 'Recent' });
+                this.$router.push({ name: 'Recent' });
             },
             showLinkedInActions() {
                 this.linkedInActions = !this.linkedInActions;

@@ -53,7 +53,7 @@ class FacebookController extends Controller
     public function index(Request $request)
     {
         $helper = $this->facebook->getRedirectLoginHelper();
-        $permissions = ['email', 'pages_show_list', 'manage_pages', 'read_insights']; // optional
+        $permissions = ['email', 'pages_show_list', 'read_insights', 'manage_pages', 'publish_pages']; // optional
         $url = env('APP_URL');
         $loginUrl = $helper->getLoginUrl("{$url}/facebook/return", $permissions);
 

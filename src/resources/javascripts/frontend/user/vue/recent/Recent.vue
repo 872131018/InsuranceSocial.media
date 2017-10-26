@@ -36,7 +36,7 @@
                 <div class="w3-half">
                     <div class="w3-padding w3-margin w3-text-white primary">
                         <i class="fa fa-twitter" style="font-size:24px"></i>
-                        <span>{{ twitter_handle }}</span>
+                        <span>@{{ twitter_handle }}</span>
                     </div>
                     <div class="w3-padding">
                         <TwitterPosts></TwitterPosts>

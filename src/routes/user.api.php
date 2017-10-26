@@ -146,7 +146,7 @@ use Illuminate\Support\Facades\Log;
          $user->twitter->secret_token
      );
 
-     $data  = [
+     $data = [
          'facebook_page' => $user->facebook->page_name,
          'twitter_handle' => $user->twitter->screen_name,
          'facebook_posts' => [],

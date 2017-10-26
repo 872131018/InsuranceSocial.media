@@ -22,6 +22,12 @@ Route::get('/user/reports/facebook', 'HomeController@index')->name('home');
 
 Route::get('/user/reports/twitter', 'HomeController@index')->name('home');
 
+Route::get('/user/facebook/feed', 'HomeController@index')->name('home');
+
+Route::get('/user/facebook/post', 'HomeController@index')->name('home');
+
+Route::get('/user/twitter/feed', 'HomeController@index')->name('home');
+
 
 
 

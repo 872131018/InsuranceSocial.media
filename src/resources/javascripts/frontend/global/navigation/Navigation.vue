@@ -1,12 +1,9 @@
-<template>
-    <nav class="w3-container w3-bar w3-card-2 w3-xlarge w3-text-white primary header">
-        <div class="w3-hide-small">
-            <Desktop></Desktop>
-        </div>
-        <div class="w3-hide-medium w3-hide-large">
-            <Mobile></Mobile>
-        </div>
-    </nav>
+<template lang="pug">
+    nav(class="w3-bar w3-xlarge w3-text-white primary header")
+        div(class="w3-hide-small")
+            Desktop
+        div(class="w3-hide-medium w3-hide-large")
+            Mobile
 </template>
 
 <script>

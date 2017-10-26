@@ -605,6 +605,37 @@ class DashboardController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function indexFacebookFeed(Request $request)
+    {
+        $user = Auth::user();
+        $this->facebook->setDefaultAccessToken($user->facebook->access_token);
+        $posts = [];
+        /**
+        * POSTS
+        */
+        try {
+            $batch = [
+                'posts' => $facebook->request('GET', '/'.$user->facebook->page_id.'/feed?fields=permalink_url')
+            ];
+            $responses = $facebook->sendBatchRequest($batch);
+        } catch(Facebook\Exceptions\FacebookResponseException $e) {
+            return response()->json($e->getMessage(), 502);
+        } catch(Facebook\Exceptions\FacebookSDKException $e) {
+            return response()->json($e->getMessage(), 502);
+        }
+        $responses = json_decode($responses->getBody());
+
+        $posts = json_decode($responses[0]->body);
+        $data['facebook_posts'] = array_slice($posts->data);
+
+        return response()->json($data);
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function indexTwitterPosts(Request $request)
     {
         $user = Auth::user();
@@ -839,6 +870,39 @@ class DashboardController extends Controller
         }
 
         return response()->json($score);
+    }
+
+    /**
+     * Post a facebook entry.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function indexFacebookPost(Request $request)
+    {
+        $user = Auth::user();
+        $this->facebook->setDefaultAccessToken($user->facebook->access_token);
+        /**
+        * POST
+        */
+        try {
+            $batch = [
+                'post' => $this->facebook->request('POST', '/'.$user->facebook->page_id.'/feed',[
+                    'message' => $request->input('message'),
+                    'link' => $request->input('link'),
+                    //'image' => '@'.$request->file->path()
+                ], $user->facebook->page_token)
+            ];
+            $responses = $this->facebook->sendBatchRequest($batch);
+        } catch(Facebook\Exceptions\FacebookResponseException $e) {
+            return response()->json($e->getMessage(), 502);
+        } catch(Facebook\Exceptions\FacebookSDKException $e) {
+            return response()->json($e->getMessage(), 502);
+        }
+        $responses = json_decode($responses->getBody());
+        Log::info(json_encode($responses)); die;
+
+
+        return response()->json('ok');
     }
 
     /**
