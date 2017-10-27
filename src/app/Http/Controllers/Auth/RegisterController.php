@@ -74,8 +74,8 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        if(!isset($data['discount'])) {
-            $data['discount'] = 'none';
+        if(!isset($data['code'])) {
+            $data['code'] = 'none';
         }
 
         return User::create([
@@ -83,7 +83,7 @@ class RegisterController extends Controller
                 'email' => $data['email'],
                 'password' => bcrypt($data['password']),
                 'api_token' => str_random(60),
-                'coupon_code' => $data['discount']
+                'code' => $data['code']
             ]);
     }
 }

@@ -25,7 +25,7 @@ class CreateUsersTable extends Migration
             $table->string('title_code')->nullable();
             $table->date('effective_date')->nullable();
             $table->date('expiration_date')->nullable();
-            $table->string('coupon_code')->nullable();
+            $table->string('code')->nullable();
             $table->string('termination_reason')->nullable();
             $table->text('termination_comment')->nullable();
             $table->string('customer_profile_id')->nullable();

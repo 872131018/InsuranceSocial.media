@@ -1,6 +1,7 @@
+import VueRouter from 'vue-router';
 import Register from './vue/register/Index';
 
-export default [
+const routes = [
     {
         path: '/register',
         name: 'Register',
@@ -12,3 +13,8 @@ export default [
         component: Register
     }
 ];
+
+export default new VueRouter({
+  mode: 'history',
+  routes
+});

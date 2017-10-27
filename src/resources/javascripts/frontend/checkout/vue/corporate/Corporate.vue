@@ -56,7 +56,9 @@
             }
         },
         mounted() {
-            axios.get(`${ window.location }/${store.getState().UserStore.discount}`).then(response => {
+            //axios.get(`${ window.location }/${store.getState().UserStore.discount}`).then(response => {
+            axios.get(`${ window.location }/asdf1234`).then(response => {
+                console.log(response.data)
                 this.logo = response.data.logo;
                 this.company = response.data.company;
                 this.plans = response.data.plans;

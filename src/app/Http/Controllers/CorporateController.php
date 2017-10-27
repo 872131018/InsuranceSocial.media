@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Auth;
+
 use App\Plan;
 
 class CorporateController extends Controller
@@ -51,7 +53,7 @@ class CorporateController extends Controller
             }
             return response()->json($data);
         } else {
-            return view('layouts.checkout.app');
+            return view('layouts.checkout.app')->with('api_token', Auth::user()->api_token);
         }
     }
 

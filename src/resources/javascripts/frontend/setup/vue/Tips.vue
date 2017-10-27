@@ -1,6 +1,6 @@
 <template>
     <div class="w3-padding-32 w3-hide-small tips">
-        <iframe class='sproutvideo-player' src='//videos.sproutvideo.com/embed/a49ad8b41c1ce6c12c/ac167611861914e3?playerTheme=dark&amp;playerColor=' width='315' height='172' frameborder='0' allowfullscreen
+        <iframe class='sproutvideo-player' src='//videos.sproutvideo.com/embed/489addb61c1ee6c3c0/b381ae020a9f6ae2?playerTheme=dark&amp;playerColor=' width='315' height='172' frameborder='0' allowfullscreen
             v-if="$route.path =='/profile'">
         </iframe>
         <ul class="w3-ul w3-card-2 w3-white w3-center"

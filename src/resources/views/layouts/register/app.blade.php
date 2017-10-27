@@ -8,7 +8,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}" />
     <link href="//fonts.googleapis.com/css?family=Roboto" type="text/css" rel="stylesheet">
     <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css" rel="stylesheet">
-    <link href="{{ url('stylesheets/register.css') }}" type="text/css" rel="stylesheet">
+    <link href="{{ url('stylesheets/registration.css') }}" type="text/css" rel="stylesheet">
     <style>
         *:not('fa') {
             font-family:Roboto !important;
@@ -33,6 +33,6 @@
           var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(lc, s);
         })();
     </script>
-    <script type="text/javascript" src="{{ url('javascripts/register.index.js') }}"></script>
+    <script type="text/javascript" src="{{ url('javascripts/registration.index.js') }}"></script>
 </body>
 </html>

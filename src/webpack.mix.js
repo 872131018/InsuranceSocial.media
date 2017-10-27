@@ -24,13 +24,13 @@ mix.combine([
 ], 'public/stylesheets/login.css');
 
 /**
-* Register Styles
+* Registration Styles
 */
 mix.combine([
     'node_modules/w3-css/w3.css',
     'resources/stylesheets/frontend/frontend.styles.css',
     'resources/stylesheets/frontend/checkbox.terms.styles.css',
-], 'public/stylesheets/register.css');
+], 'public/stylesheets/registration.css');
 
 /**
 * Checkout Styles
@@ -79,7 +79,7 @@ mix.js('resources/javascripts/frontend/login/index.js', 'public/javascripts/logi
 /**
 * Registration SPA
 */
-mix.js('resources/javascripts/frontend/register/index.js', 'public/javascripts/register.index.js');
+mix.js('resources/javascripts/frontend/registration/index.js', 'public/javascripts/registration.index.js');
 
 /**
 * Checkout SPA
