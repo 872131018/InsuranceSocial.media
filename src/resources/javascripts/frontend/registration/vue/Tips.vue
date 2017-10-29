@@ -1,5 +1,11 @@
 <template lang="pug">
     div(class="w3-padding-32 w3-hide-small tips")
+        iframe(class='sproutvideo-player' src='//videos.sproutvideo.com/embed/e89addb61c1ee7ca60/50f11a607713876a?playerTheme=dark&amp;playerColor=' width='315' height='172' frameborder='0' allowfullscreen)
+</template>
+
+<script>
+    export default {
+        /*
         ul(class="w3-ul w3-card-2 w3-white w3-center")
             li(class="w3-padding w3-text-white primary")
                 h6: b Why you'll #[em love] Insurance Social Media...
@@ -16,10 +22,6 @@
                 div(class="w3-panel") We can’t wait for you to reap the benefits!
             li(class="w3-padding w3-text-white secondary")
                 h6 Join Insurance Social Media and get started today!
-</template>
-
-<script>
-    export default {
-        //
+        */
     }
 </script>

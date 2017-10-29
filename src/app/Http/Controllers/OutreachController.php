@@ -42,14 +42,14 @@ class OutreachController extends Controller
      */
     public function store(Request $request)
     {
-        die($request->input('engagement_mix'));
         $user = Auth::user();
         $plan = $user->plan;
         $plan->engagement_mix = $request->input('engagement_mix');
         $plan->engagement_tone = $request->input('engagement_tone');
         $plan->time_code = $request->input('time_code');
 
-        foreach($request->input('posting_days') as $day) {
+        $days = $request->input('posting_days');
+        foreach($days as $day) {
             switch($day['code']) {
                 case 'sunday':
                     $plan->sunday = true;
