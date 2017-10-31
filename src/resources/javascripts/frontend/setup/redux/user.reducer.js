@@ -20,8 +20,8 @@ const initialState = {
     commercial_mix:'',
     personal_mix:'',
     api_token:'',
-    commercial_mix:'',
-    personal_mix:''
+    commercial_mix: '0',
+    personal_mix: '0'
 };
 
 module.exports = function(user = initialState, action) {

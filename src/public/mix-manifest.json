@@ -1,9 +1,9 @@
 {
     "/javascripts/user.index.js": "/javascripts/user.index.js",
-    "/javascripts/checkout.index.js": "/javascripts/checkout.index.js",
+    "/javascripts/registration.index.js": "/javascripts/registration.index.js",
     "/javascripts/setup.index.js": "/javascripts/setup.index.js",
     "/javascripts/social.index.js": "/javascripts/social.index.js",
-    "/javascripts/registration.index.js": "/javascripts/registration.index.js",
+    "/javascripts/checkout.index.js": "/javascripts/checkout.index.js",
     "/javascripts/login.index.js": "/javascripts/login.index.js",
     "/stylesheets/login.css": "/stylesheets/login.css",
     "/stylesheets/registration.css": "/stylesheets/registration.css",

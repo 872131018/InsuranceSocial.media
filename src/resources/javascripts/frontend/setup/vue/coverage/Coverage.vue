@@ -145,6 +145,8 @@
                 </div>
                 <div class="w3-section">
                     <Ratio
+                        v-bind:personal_coverage="personal_coverage"
+                        v-bind:commercial_coverage="commercial_coverage"
                         v-bind:commercial_mix="properties.commercial_mix"
                         v-bind:personal_mix="properties.personal_mix"
                         v-on:setRatio="setRatio($event)">

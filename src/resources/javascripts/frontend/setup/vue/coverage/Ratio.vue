@@ -2,7 +2,8 @@
     <div>
         <div class="w3-section">
             <div>Ratio of Commercial to Personal Business</div>
-            <div class="w3-section">
+            <div class="w3-section"
+                v-show="commercial_coverage == 'Y'">
                 <label class="w3-show-block">% Commercial</label>
                 <input class="w3-input w3-show-inline-block eighty" type="text"
                     v-model="commercial"
@@ -10,7 +11,8 @@
                 <Check v-if="isValid"></Check>
                 <Cross v-else></Cross>
             </div>
-            <div class="w3-section">
+            <div class="w3-section"
+                v-show="personal_coverage == 'Y'">
                 <label class="w3-show-block">% Personal</label>
                 <input class="w3-input w3-show-inline-block eighty" type="text"
                     v-model="personal"
@@ -32,6 +34,12 @@
                 type: String
             },
             commercial_mix: {
+                type: String
+            },
+            personal_coverage: {
+                type: String
+            },
+            commercial_coverage: {
                 type: String
             }
         },

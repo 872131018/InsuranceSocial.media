@@ -167,9 +167,6 @@
                 if(this.properties.agency_name == '') {
                     this.errors.push('You must enter your agency name.');
                 }
-                if(this.properties.website == '') {
-                    this.errors.push('You must enter your agency website.');
-                }
                 if(this.properties.size == '') {
                     this.errors.push('You must enter your agency size.');
                 }
