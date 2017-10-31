@@ -21,6 +21,10 @@ Route::get('/register', 'Auth\RegisterController@index')->name('register');
 
 Route::get('/register/{discount?}', 'Auth\RegisterController@index');
 
+Route::get('/plans', 'Auth\RegisterController@index');
+
+Route::get('/payment', 'Auth\RegisterController@index');
+
 Route::post('/register', 'Auth\RegisterController@register');
 
 Route::post('/register/{discount?}', 'Auth\RegisterController@register');

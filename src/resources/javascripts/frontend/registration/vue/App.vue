@@ -13,6 +13,20 @@
     export default {
         mounted() {
             console.log('App mounted.')
+
+            if(this.$route.params.code) {
+                this.$store.commit('setCode', this.$route.params.code);
+            }
+
+            axios.get('/api/plans').then(response => {
+                this.$store.commit('setPlans', response.data);
+                if(this.$route.params.code) {
+                    this.$store.commit('setPlan', response.data[0]);
+                }
+            });
+            axios.get('/api/payment').then(response => {
+                this.$store.commit('setAuthorize', response.data);
+            });
         },
         components: {
             Tips

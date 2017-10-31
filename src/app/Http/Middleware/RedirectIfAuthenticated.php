@@ -19,7 +19,8 @@ class RedirectIfAuthenticated
     {
         if (Auth::guard($guard)->check()) {
             //return redirect('/home');
-            return redirect('/user/recent');
+            //return redirect('/user/recent');
+            return redirect('/facebook');
         }
 
         return $next($request);

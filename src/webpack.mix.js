@@ -30,6 +30,7 @@ mix.combine([
     'node_modules/w3-css/w3.css',
     'resources/stylesheets/frontend/frontend.styles.css',
     'resources/stylesheets/frontend/checkbox.terms.styles.css',
+    'resources/stylesheets/frontend/radio.styles.css',
 ], 'public/stylesheets/registration.css');
 
 /**
@@ -39,7 +40,6 @@ mix.combine([
     'node_modules/w3-css/w3.css',
     'resources/stylesheets/frontend/frontend.styles.css',
     'resources/stylesheets/frontend/checkbox.styles.css',
-    'resources/stylesheets/frontend/radio.styles.css',
 ], 'public/stylesheets/checkout.css');
 
 /**

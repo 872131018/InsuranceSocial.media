@@ -51,7 +51,6 @@
     export default {
         data() {
             return {
-                properties: {},
                 email_confirmed: false,
                 password_confirmed: false,
                 errors: []
@@ -91,7 +90,6 @@
                     this.$store.state.registration.password != '';
             },
             code() {
-                //this.$route.params.discount,
                 return this.$store.state.registration.code;
             },
             codeValid() {
@@ -102,6 +100,8 @@
             register() {
                 this.validate();
                 if(this.errors.length == 0) {
+                    this.$router.push({ name: 'Plans' });
+                    /*
                     axios.post(window.location, this.$store.state.registration).then(response => {
                         if(response.data.discount && response.data.discount != 'ISMFreeTrial') {
                             window.location = '/corporate';
@@ -115,6 +115,7 @@
                             this.errors.push('An error has occured, please contact support.');
                         }
                     });
+                    */
                 }
             },
             validate() {

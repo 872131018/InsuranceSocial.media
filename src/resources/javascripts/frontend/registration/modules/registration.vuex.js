@@ -6,7 +6,8 @@ const Module = {
         password: '',
         password_confirmation: '', //required for laravel validation
         code: '',
-        terms: false
+        terms: false,
+        plan: {}
     },
     mutations: {
         setName(state, value) {
@@ -29,6 +30,9 @@ const Module = {
         },
         setTerms(state, value) {
             state.terms = value;
+        },
+        setPlan(state, value) {
+            state.plan = value;
         }
     }
 }

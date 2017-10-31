@@ -15,7 +15,7 @@ use App\Plan;
 */
 
 /**
- * Deliver the registration SPA and handle posts
+ * Deliver application data from ajax requests
  *
  * @return \Illuminate\Http\Response
  */

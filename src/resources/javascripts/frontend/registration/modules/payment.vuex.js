@@ -1,0 +1,32 @@
+const Module = {
+    state: {
+        card: '',
+        month: '',
+        year: '',
+        cvv: '',
+        name: '',
+        amount: 1.00
+    },
+    mutations: {
+        setCard(state, value) {
+            state.card = value;
+        },
+        setMonth(state, value) {
+            state.month = value;
+        },
+        setYear(state, value) {
+            state.year = value;
+        },
+        setCVV(state, value) {
+            state.cvv = value;
+        },
+        setName(state, value) {
+            state.name = value;
+        },
+        setAmount(state, value) {
+            state.amount = value;
+        }
+    }
+}
+
+export default Module;

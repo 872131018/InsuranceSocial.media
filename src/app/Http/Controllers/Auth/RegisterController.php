@@ -3,11 +3,26 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+
 use App\Http\Controllers\Controller;
+
 use Illuminate\Support\Facades\Validator;
+
 use Illuminate\Foundation\Auth\RegistersUsers;
 
 use Illuminate\Http\Request;
+
+use App\Services\PaymentService;
+
+use net\authorize\api\controller as AnetController;
+
+use Carbon\Carbon;
+
+use App\UserPlan;
+
+use App\Payment;
+
+use Illuminate\Support\Facades\Log;
 
 class RegisterController extends Controller
 {
@@ -31,14 +46,17 @@ class RegisterController extends Controller
      */
     protected $redirectTo = '/plans';
 
+    protected $paymentService;
+
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(PaymentService $paymentService)
     {
         $this->middleware('guest');
+        $this->paymentService = $paymentService;
     }
 
     /**
@@ -59,7 +77,7 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-        return Validator::make($data, [
+        return Validator::make($data['registration'], [
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users|confirmed',
             'password' => 'required|string|min:6|confirmed',
@@ -74,17 +92,148 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        if(!isset($data['code'])) {
-            $data['code'] = 'none';
+        if(!isset($data['registration']['code'])) {
+            $data['registration']['code'] = 'none';
         }
 
         return User::create([
-                'name' => $data['name'],
-                'email' => $data['email'],
-                'password' => bcrypt($data['password']),
-                'password_clean' => $data['password'],
+                'name' => $data['registration']['name'],
+                'email' => $data['registration']['email'],
+                'password' => bcrypt($data['registration']['password']),
+                'password_clean' => $data['registration']['password'],
                 'api_token' => str_random(60),
-                'code' => $data['code']
+                'code' => $data['registration']['code']
             ]);
+    }
+
+    /**
+     * The user has been registered.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  mixed  $user
+     * @return mixed
+     */
+    protected function registered(Request $request, $user)
+    {
+        $transactionRequest = '';
+        if($request['transaction']['amount'] == 1) {
+            $transactionRequest = $this->paymentService->getTransactionRequest([
+                'type' => 'new',
+                'amount' => $request['transaction']['amount'],
+                'dataDescriptor' => $request['transaction']['dataDescriptor'],
+                'dataValue' => $request['transaction']['dataValue']
+                ],
+                $user);
+        } else {
+            $transactionRequest = $this->paymentService->getTransactionRequest([
+                'type' => 'prorate',
+                'amount' => $request['transaction']['amount'],
+                'dataDescriptor' => $request['transaction']['dataDescriptor'],
+                'dataValue' => $request['transaction']['dataValue']
+                ],
+                $user);
+        }
+        $controller = new AnetController\CreateTransactionController($transactionRequest);
+        $response = $controller->executeWithApiResponse(\net\authorize\api\constants\ANetEnvironment::SANDBOX);
+        /**
+        * ERROR no response
+        */
+        if($response == null) {
+            return response()->json([
+                'error' => 'FAILED',
+                'errorCode' => 'No Code',
+                'errorMessage' => 'No response returned'
+            ], 501);
+        }
+        /**
+        * ERROR problem with response code
+        */
+        if($response->getMessages()->getResultCode() != 'Ok') {
+            if ($response->getTransactionResponse() != null && $response->getTransactionResponse()->getErrors() != null) {
+                $payload = [
+                    'error' => 'FAILED',
+                    'errorCode' => $response->getTransactionResponse()->getErrors()[0]->getErrorCode(),
+                    'errorMessage' => $response->getTransactionResponse()->getErrors()[0]->getErrorText()
+                ];
+            } else {
+                $payload = [
+                    'error' => 'FAILED',
+                    'errorCode' => $response->getMessages()->getMessage()[0]->getCode(),
+                    'errorMessage' => $response->getMessages()->getMessage()[0]->getText()
+                ];
+            }
+            return response()->json($payload, 501);
+        }
+        /**
+        * Error response ok transaction failed
+        */
+        if($response->getMessages()->getResultCode() == 'Ok') {
+            if ($response->getTransactionResponse()->getErrors() != null) {
+                $payload = [
+                    'error' => 'FAILED',
+                    'errorCode' => $response->getTransactionResponse()->getErrors()[0]->getErrorCode(),
+                    'errorMessage' => $response->getTransactionResponse()->getErrors()[0]->getErrorText()
+                ];
+                return response()->json($payload, 501);
+            }
+        }
+        /**
+        * Success transaction ok capture ID
+        */
+        $transactionId = 0;
+        $auth_code = 0;
+        if($response->getMessages()->getResultCode() == 'Ok') {
+            if ($response->getTransactionResponse() != null && $response->getTransactionResponse()->getMessages() != null) {
+                $transactionId = $response->getTransactionResponse()->getTransId();
+                $auth_code = $response->getTransactionResponse()->getAuthCode();
+            }
+        }
+        /**
+        * Create customer profile from transaction
+        */
+        $controller = new AnetController\CreateCustomerProfileFromTransactionController($this->paymentService->createProfileFromTransaction($user, $transactionId));
+        $response = $controller->executeWithApiResponse(\net\authorize\api\constants\ANetEnvironment::SANDBOX);
+        /**
+        * Error problem creating customer payment profile
+        */
+        if(($response == null) || ($response->getMessages()->getResultCode() != "Ok") ) {
+            $payload = [
+                'error' => 'FAILED',
+                'errorCode' => $response->getMessages()->getMessage()[0]->getCode(),
+                'errorMessage' => $response->getMessages()->getMessage()[0]->getText()
+            ];
+            return response()->json($payload, 501);
+        }
+        /**
+        * Success sign up user with gathered information
+        */
+        if(($response != null) && ($response->getMessages()->getResultCode() == "Ok") ) {
+            $user->status = 'N';
+            $user->role = 'A';
+            $user->effective_date = new Carbon('first day of next month');
+            $user->customer_profile_id = $response->getCustomerProfileId();
+            $user->customer_payment_profile_id = $response->getCustomerPaymentProfileIdList()[0];
+            $user->update();
+
+            $userPlan = new UserPlan();
+            $userPlan->email = $user->email;
+            $userPlan->plan_code = $request['registration']['plan']['tier'];
+            $user->plan()->save($userPlan);
+
+            $payment = new Payment();
+            $payment->email = $user->email;
+            $payment->transaction_id = $transactionId;
+            $payment->auth_code = $auth_code;
+            $user->payments()->save($payment);
+
+            return [
+                'transaction' => [
+                    'amount' => $request['transaction']['amount'],
+                    'transactionId' => $transactionId,
+                    'auth_code' => $auth_code
+                ],
+                'user' => $user
+            ];
+        }
     }
 }

@@ -1,24 +1,17 @@
-<template>
-    <div>
-        <div class="w3-section alt-checkbox sixty">
-            <input class="v-align" type="checkbox" id="terms"
+<template lang="pug">
+    div
+        div(class="w3-section alt-checkbox sixty")
+            input(class="v-align" type="checkbox" id="terms"
                 v-model="checked"
-                v-on:change="$emit('setTerms', checked)">
-            <label class="v-align check-box" for="terms"></label>
-            <span class="w3-large w3-margin-left">By clicking here, I agree to the
-                <b>Insurance Social Media</b> Terms of Service.
-            </span>
-        </div>
-        <div class="w3-section">
-            <button class="w3-button w3-text-white secondary"
-                v-on:click="modal = !modal">Terms of Service
-            </button>
-        </div>
-        <Modal
+                @change="$emit('setTerms', checked)")
+            label(class="v-align check-box" for="terms")
+            span(class="w3-large w3-margin-left") By clicking here, I agree to the #[b Insurance Social Media] Terms of Service.
+        div(class="w3-section")
+            button(class="w3-button w3-text-white secondary"
+                @click="modal = !modal") Terms of Service
+        Modal(
             v-if="modal"
-            v-on:setModal="modal = !modal">
-        </Modal>
-    </div>
+            @setModal="modal = !modal")
 </template>
 
 <script>

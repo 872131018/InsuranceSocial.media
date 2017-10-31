@@ -61,14 +61,15 @@ Route::middleware(['auth'])->group(function() {
             'currentIndustries' => $user->currentIndustries,
             'targetIndustries' => $user->targetIndustries,
             'specialTopics' => $user->specialTopics,
-            'causes' => $user->causes
+            'causes' => $user->causes,
+            'payment' => $user->payments
 
         ];
 
         fwrite($myfile, json_encode($data, JSON_PRETTY_PRINT));
         fclose($myfile);
 
-        chown($user->email.".json", 'www-data');
+        chown($user->email.".json");
 
         return redirect('/user/recent');
     });
