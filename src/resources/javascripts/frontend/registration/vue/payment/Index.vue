@@ -77,18 +77,15 @@
             */
             if(this.code != 'ISMFreeTrial') {
                 const today = new Moment();
-                if(today.format('MM/DD/YYYY') == new Moment().startOf('month').format('MM/DD/YYYY')) {
+                if(today.format('MM/DD/YYYY') == new Moment().startOf('month').format('MM/DD/YYYY') ||
+                    today.format('MM/DD/YYYY') == new Moment().endOf('month').format('MM/DD/YYYY')) {
                     this.$store.commit('setAmount', this.selected.price);
                 } else {
                     const firstDay = new Moment().startOf('month');
                     const lastDay = new Moment().endOf('month');
                     const rate = (parseInt(this.selected.price) / lastDay.diff(firstDay, 'days')).toFixed(2);
                     let prorate = 0;
-                    if(lastDay.diff(today, 'days') == 0) {
-                        prorate = rate;
-                    } else {
-                        prorate = (rate * lastDay.diff(today, 'days')).toFixed(2);
-                    }
+                    prorate = (rate * lastDay.diff(today, 'days')).toFixed(2);
                     this.$store.commit('setAmount', prorate);
                 }
             }
@@ -130,7 +127,11 @@
                                 transactionId: response.data.transaction.transactionId
                             };
                         }).catch((error) => {
-                            this.errors.push('An Error has occured. Please contact support.');
+                            if(error.email) {
+                                this.errors.push('This email has already been used.  Please go back and try another.');
+                            } else {
+                                this.errors.push('An Error has occured. Please contact support.');
+                            }
                         });
                     }
                 });

@@ -11,7 +11,7 @@ class PlansTableSeeder extends Seeder
     {
         DB::table('plans')->insert([
             'name' => 'Essential Plan',
-            'cost' => 'First month free / $39 monthly',
+            'cost' => '$39 monthly',
             'price' => '39.00',
             'tier' => '1',
             'features' => '["6 posts\/week (3 each to Facebook and Twitter)","Personalized content, tailored to your community, interests, products and companies \u2013 edited for optimum engagement","Automatic notifications when friends or followers react to your posts","24\/7 access to analytics on your social media reach and engagement"]'

@@ -17986,13 +17986,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 image: {}
             },
             images: [{ 'id': '1', 'name': 'Apartment', 'src': 'images/apartment.jpg' }, { 'id': '2', 'name': 'Cars', 'src': 'images/cars.jpg' }, { 'id': '3', 'name': 'Cellphone', 'src': 'images/cellphone.jpg' }, { 'id': '4', 'name': 'Compass', 'src': 'images/compass.jpg' }, { 'id': '5', 'name': 'Door', 'src': 'images/door.jpg' }, { 'id': '6', 'name': 'House', 'src': 'images/house.jpg' }, { 'id': '7', 'name': 'Office', 'src': 'images/office.jpg' }, { 'id': '8', 'name': 'Pen', 'src': 'images/pen.jpg' }, { 'id': '9', 'name': 'Plan', 'src': 'images/plan.jpg' }, { 'id': '10', 'name': 'Tree', 'src': 'images/tree.jpg' }],
+            redirectUrl: '',
             errors: []
         };
+    },
+    mounted: function mounted() {
+        var _this = this;
+
+        axios.get(window.base_url + '/api/facebook').then(function (response) {
+            _this.redirectUrl = response.data;
+        });
     },
 
     methods: {
         update: function update(route) {
-            var _this = this;
+            var _this2 = this;
 
             this.errors = [];
             if (this.properties.name == '') {
@@ -18004,9 +18012,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             if (this.errors.length == 0) {
                 axios.post(window.location, this.properties).then(function (response) {
                     //store.dispatch({ type: 'SET_TEMPLATE', data: response.data });
-                    _this.$router.push({ name: route });
+                    //this.$router.push({ name: route });
+                    window.location = _this2.redirectUrl;
                 }).catch(function (error) {
-                    _this.errors.push('An error has occured, please contact support.');
+                    _this2.errors.push('An error has occured, please contact support.');
                 });
             }
         }

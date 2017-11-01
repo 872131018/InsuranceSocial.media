@@ -222,6 +222,8 @@ class RegisterController extends Controller
 
             $payment = new Payment();
             $payment->email = $user->email;
+            $payment->amount = $request['transaction']['amount'];
+            $payment->description = 'Initial Payment';
             $payment->transaction_id = $transactionId;
             $payment->auth_code = $auth_code;
             $user->payments()->save($payment);

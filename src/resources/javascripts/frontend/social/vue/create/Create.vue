@@ -61,8 +61,14 @@
                     {'id':'9', 'name':'Plan', 'src':'images/plan.jpg'},
                     {'id':'10', 'name':'Tree', 'src':'images/tree.jpg'}
                 ],
+                redirectUrl: '',
                 errors: []
             }
+        },
+        mounted() {
+            axios.get(`${ window.base_url }/api/facebook`).then(response => {
+                this.redirectUrl = response.data
+            });
         },
         methods: {
             update(route) {
@@ -76,7 +82,8 @@
                 if(this.errors.length == 0) {
                     axios.post(window.location, this.properties).then(response => {
                         //store.dispatch({ type: 'SET_TEMPLATE', data: response.data });
-                        this.$router.push({ name: route });
+                        //this.$router.push({ name: route });
+                        window.location = this.redirectUrl;
                     }).catch(error => {
                         this.errors.push('An error has occured, please contact support.');
                     });

@@ -151,6 +151,8 @@ class FacebookController extends Controller
 
                 $payment = new Payment();
                 $payment->email = $user->email;
+                $payment->amount = '25.00';
+                $payment->description = 'Page Create Charge';
                 $payment->transaction_id = $transactionId;
                 $payment->auth_code = $auth_code;
                 $user->payments()->save($payment);
@@ -241,10 +243,12 @@ class FacebookController extends Controller
             foreach($response->getGraphEdge() as $page) {
                 array_push($pages, $page->asArray());
             }
-
-            session(['pages' => json_encode($pages)]);
-
-            return redirect('/page');
+            if(count($pages) != 0) {
+                session(['pages' => json_encode($pages)]);
+                return redirect('/page');
+            } else {
+                return redirect('/twitter');
+            }
         }
     }
 

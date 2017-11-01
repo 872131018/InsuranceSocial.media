@@ -35078,18 +35078,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         */
         if (this.code != 'ISMFreeTrial') {
             var today = new __WEBPACK_IMPORTED_MODULE_0_moment___default.a();
-            if (today.format('MM/DD/YYYY') == new __WEBPACK_IMPORTED_MODULE_0_moment___default.a().startOf('month').format('MM/DD/YYYY')) {
+            if (today.format('MM/DD/YYYY') == new __WEBPACK_IMPORTED_MODULE_0_moment___default.a().startOf('month').format('MM/DD/YYYY') || today.format('MM/DD/YYYY') == new __WEBPACK_IMPORTED_MODULE_0_moment___default.a().endOf('month').format('MM/DD/YYYY')) {
                 this.$store.commit('setAmount', this.selected.price);
             } else {
                 var firstDay = new __WEBPACK_IMPORTED_MODULE_0_moment___default.a().startOf('month');
                 var lastDay = new __WEBPACK_IMPORTED_MODULE_0_moment___default.a().endOf('month');
                 var rate = (parseInt(this.selected.price) / lastDay.diff(firstDay, 'days')).toFixed(2);
                 var prorate = 0;
-                if (lastDay.diff(today, 'days') == 0) {
-                    prorate = rate;
-                } else {
-                    prorate = (rate * lastDay.diff(today, 'days')).toFixed(2);
-                }
+                prorate = (rate * lastDay.diff(today, 'days')).toFixed(2);
                 this.$store.commit('setAmount', prorate);
             }
         }
@@ -35155,7 +35151,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                             transactionId: response.data.transaction.transactionId
                         };
                     }).catch(function (error) {
-                        _this.errors.push('An Error has occured. Please contact support.');
+                        if (error.email) {
+                            _this.errors.push('This email has already been used.  Please go back and try another.');
+                        } else {
+                            _this.errors.push('An Error has occured. Please contact support.');
+                        }
                     });
                 }
             });
