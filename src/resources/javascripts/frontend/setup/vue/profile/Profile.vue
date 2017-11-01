@@ -6,7 +6,8 @@
         <QuickNavigation
             v-on:route="update($event)">
         </QuickNavigation>
-        <div class="w3-container w3-card-2 form">
+        <div class="w3-container w3-padding w3-card-2 form">
+            <div style="position:relative;height:0;padding-bottom:56.25%"><iframe class='sproutvideo-player' src='//videos.sproutvideo.com/embed/489addb61c1ee6c3c0/b381ae020a9f6ae2?bigPlayButton=false' style='position:absolute;width:100%;height:100%;left:0;top:0' frameborder='0' allowfullscreen></iframe></div>
             <div class="w3-panel">
                 <h3>Who are you?</h3>
                 <h5>Please complete this information so we may provide you the best service.</h5>

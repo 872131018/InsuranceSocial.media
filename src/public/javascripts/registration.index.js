@@ -33328,6 +33328,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 
@@ -34400,6 +34401,7 @@ var render = function() {
     "div",
     { staticClass: "w3-card-2 w3-padding form" },
     [
+      _vm._m(0),
       _c("h3", [_vm._v("Create an Account")]),
       _c("h5", [
         _vm._v("Please complete required fields to complete registration.")
@@ -34500,7 +34502,41 @@ var render = function() {
     1
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticStyle: {
+          position: "relative",
+          height: "0",
+          "padding-bottom": "56.25%"
+        }
+      },
+      [
+        _c("iframe", {
+          staticClass: "sproutvideo-player",
+          staticStyle: {
+            position: "absolute",
+            width: "100%",
+            height: "100%",
+            left: "0",
+            top: "0"
+          },
+          attrs: {
+            src:
+              "//videos.sproutvideo.com/embed/e89addb61c1ee7ca60/50f11a607713876a?bigPlayButton=false",
+            frameborder: "0",
+            allowfullscreen: ""
+          }
+        })
+      ]
+    )
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -34566,6 +34602,7 @@ module.exports = Component.exports
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Plan__ = __webpack_require__(241);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Plan___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Plan__);
+//
 //
 //
 //
@@ -34885,6 +34922,7 @@ var render = function() {
     "div",
     { staticClass: "w3-card-2 w3-padding form" },
     [
+      _vm._m(0),
       _c("h3", [_vm._v("Plan Selection")]),
       _c("h6", [_vm._v("Choose your plan.")]),
       _vm._l(_vm.plans, function(plan, index) {
@@ -34916,7 +34954,41 @@ var render = function() {
     2
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticStyle: {
+          position: "relative",
+          height: "0",
+          "padding-bottom": "56.25%"
+        }
+      },
+      [
+        _c("iframe", {
+          staticClass: "sproutvideo-player",
+          staticStyle: {
+            position: "absolute",
+            width: "100%",
+            height: "100%",
+            left: "0",
+            top: "0"
+          },
+          attrs: {
+            src:
+              "//videos.sproutvideo.com/embed/a09addb61c1ee6c128/b95fa49412ad6163?bigPlayButton=false",
+            frameborder: "0",
+            allowfullscreen: ""
+          }
+        })
+      ]
+    )
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -37127,26 +37199,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    /*
-    ul(class="w3-ul w3-card-2 w3-white w3-center")
-        li(class="w3-padding w3-text-white primary")
-            h6: b Why you'll #[em love] Insurance Social Media...
-        li(class="w3-padding")
-            div(class="w3-panel") Content customized to your marketing goals
-        li(class="w3-padding")
-            div(class="w3-panel") Community content to engage followers
-        li(class="w3-padding")
-            div(class="w3-panel") Referral function to boost sales
-        li(class="w3-padding")
-            div(class="w3-panel") Set it & forget it, or jump into the conversation
-        li(class="w3-padding")
-            div(class="w3-panel") We’re the insurance social media marketing leader!
-            div(class="w3-panel") We can’t wait for you to reap the benefits!
-        li(class="w3-padding w3-text-white secondary")
-            h6 Join Insurance Social Media and get started today!
-    */
+    //
 });
 
 /***/ }),
@@ -37165,17 +37235,50 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "w3-padding-32 w3-hide-small tips" }, [
-      _c("iframe", {
-        staticClass: "sproutvideo-player",
-        attrs: {
-          src:
-            "//videos.sproutvideo.com/embed/e89addb61c1ee7ca60/50f11a607713876a?playerTheme=dark&amp;playerColor=",
-          width: "315",
-          height: "172",
-          frameborder: "0",
-          allowfullscreen: "allowfullscreen"
-        }
-      })
+      _c("ul", { staticClass: "w3-ul w3-card-2 w3-white w3-center" }, [
+        _c("li", { staticClass: "w3-padding w3-text-white primary" }, [
+          _c("h6", [
+            _c("b", [
+              _vm._v("Why you'll "),
+              _c("em", [_vm._v("love")]),
+              _vm._v(" Insurance Social Media...")
+            ])
+          ])
+        ]),
+        _c("li", { staticClass: "w3-padding" }, [
+          _c("div", { staticClass: "w3-panel" }, [
+            _vm._v("Content customized to your marketing goals")
+          ])
+        ]),
+        _c("li", { staticClass: "w3-padding" }, [
+          _c("div", { staticClass: "w3-panel" }, [
+            _vm._v("Community content to engage followers")
+          ])
+        ]),
+        _c("li", { staticClass: "w3-padding" }, [
+          _c("div", { staticClass: "w3-panel" }, [
+            _vm._v("Referral function to boost sales")
+          ])
+        ]),
+        _c("li", { staticClass: "w3-padding" }, [
+          _c("div", { staticClass: "w3-panel" }, [
+            _vm._v("Set it & forget it, or jump into the conversation")
+          ])
+        ]),
+        _c("li", { staticClass: "w3-padding" }, [
+          _c("div", { staticClass: "w3-panel" }, [
+            _vm._v("We’re the insurance social media marketing leader!")
+          ]),
+          _c("div", { staticClass: "w3-panel" }, [
+            _vm._v("We can’t wait for you to reap the benefits!")
+          ])
+        ]),
+        _c("li", { staticClass: "w3-padding w3-text-white secondary" }, [
+          _c("h6", [
+            _vm._v("Join Insurance Social Media and get started today!")
+          ])
+        ])
+      ])
     ])
   }
 ]

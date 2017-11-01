@@ -1,10 +1,7 @@
 <template>
     <div class="w3-padding-32 w3-hide-small tips">
-        <iframe class='sproutvideo-player' src='//videos.sproutvideo.com/embed/489addb61c1ee6c3c0/b381ae020a9f6ae2?playerTheme=dark&amp;playerColor=' width='315' height='172' frameborder='0' allowfullscreen
-            v-if="$route.path =='/profile'">
-        </iframe>
         <ul class="w3-ul w3-card-2 w3-white w3-center"
-            v-if="$route.path =='/location'">
+            v-if="$route.path =='/location' || $route.path == '/profile'">
             <li class="w3-padding w3-text-white primary">
                 <h6>The power of the profile</h6>
             </li>

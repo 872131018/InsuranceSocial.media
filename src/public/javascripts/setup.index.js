@@ -18221,6 +18221,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 
@@ -19493,8 +19494,10 @@ var render = function() {
         }
       }),
       _vm._v(" "),
-      _c("div", { staticClass: "w3-container w3-card-2 form" }, [
+      _c("div", { staticClass: "w3-container w3-padding w3-card-2 form" }, [
         _vm._m(0),
+        _vm._v(" "),
+        _vm._m(1),
         _vm._v(" "),
         _c(
           "div",
@@ -19737,6 +19740,39 @@ var render = function() {
   )
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticStyle: {
+          position: "relative",
+          height: "0",
+          "padding-bottom": "56.25%"
+        }
+      },
+      [
+        _c("iframe", {
+          staticClass: "sproutvideo-player",
+          staticStyle: {
+            position: "absolute",
+            width: "100%",
+            height: "100%",
+            left: "0",
+            top: "0"
+          },
+          attrs: {
+            src:
+              "//videos.sproutvideo.com/embed/489addb61c1ee6c3c0/b381ae020a9f6ae2?bigPlayButton=false",
+            frameborder: "0",
+            allowfullscreen: ""
+          }
+        })
+      ]
+    )
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -26553,9 +26589,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     //
@@ -26570,21 +26603,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "w3-padding-32 w3-hide-small tips" }, [
-    _vm.$route.path == "/profile"
-      ? _c("iframe", {
-          staticClass: "sproutvideo-player",
-          attrs: {
-            src:
-              "//videos.sproutvideo.com/embed/489addb61c1ee6c3c0/b381ae020a9f6ae2?playerTheme=dark&playerColor=",
-            width: "315",
-            height: "172",
-            frameborder: "0",
-            allowfullscreen: ""
-          }
-        })
-      : _vm._e(),
-    _vm._v(" "),
-    _vm.$route.path == "/location"
+    _vm.$route.path == "/location" || _vm.$route.path == "/profile"
       ? _c("ul", { staticClass: "w3-ul w3-card-2 w3-white w3-center" }, [
           _vm._m(0),
           _vm._v(" "),
