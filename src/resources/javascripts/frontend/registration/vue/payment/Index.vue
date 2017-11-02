@@ -8,7 +8,7 @@
             v-if="!expired")
             h3 Payment Method
             h6 Please enter a form of payment to complete registration.
-            p(v-if="code == 'ISMFreeTrial'") Your Insurance Social Media Essential Plan trial period is free. We ask for your credit card to prevent any service interruption should you keep your account open after the trial period. Your card will not be charged for the trial period. After the trial, you will be charged for each month. You can cancel at any time.
+            p(v-if="code == 'ISMFreeTrial' && selected.tier == 1") Your Insurance Social Media Essential Plan trial period is free. We ask for your credit card to prevent any service interruption should you keep your account open after the trial period. Your card will not be charged for the trial period. After the trial, you will be charged for each month. You can cancel at any time.
             div(v-else)
                 p Your credit card will be charged a pro-rated amount for this month’s subscription fee. You will be charged for next month’s service during the last week of this month.
                 h3 Total Charges: #[b ${{ amount }}]
@@ -78,7 +78,21 @@
             const today = new Moment();
             switch(this.code) {
                 case 'ISMFreeTrial':
-                    this.$store.commit('setAmount', 0.00);
+                    if(this.selected.tier == 1) {
+                        this.$store.commit('setAmount', 1.00);
+                    } else {
+                        if(today.format('MM/DD/YYYY') == new Moment().startOf('month').format('MM/DD/YYYY') ||
+                            today.format('MM/DD/YYYY') == new Moment().endOf('month').format('MM/DD/YYYY')) {
+                            this.$store.commit('setAmount', parseInt(this.selected.price));
+                        } else {
+                            const firstDay = new Moment().startOf('month');
+                            const lastDay = new Moment().endOf('month');
+                            const rate = (parseInt(this.selected.price) / lastDay.diff(firstDay, 'days')).toFixed(2);
+                            let prorate = 0;
+                            prorate = (rate * lastDay.diff(today, 'days')).toFixed(2);
+                            this.$store.commit('setAmount', prorate);
+                        }
+                    }
                     break;
                 case 'IMTGEM17':
                 case 'FMH17':

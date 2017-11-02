@@ -31,6 +31,9 @@
                 <button class="w3-button w3-text-white primary"
                     v-on:click="update('Twitter')">Continue
                 </button>
+                <button class="w3-button w3-text-white primary"
+                    v-on:click="$router.push({ name: 'Twitter' })">Skip
+                </button>
             </div>
         </div>
     </div>

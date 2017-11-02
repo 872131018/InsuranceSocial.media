@@ -35165,7 +35165,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         var today = new __WEBPACK_IMPORTED_MODULE_0_moment___default.a();
         switch (this.code) {
             case 'ISMFreeTrial':
-                this.$store.commit('setAmount', 0.00);
+                if (this.selected.tier == 1) {
+                    this.$store.commit('setAmount', 1.00);
+                } else {
+                    if (today.format('MM/DD/YYYY') == new __WEBPACK_IMPORTED_MODULE_0_moment___default.a().startOf('month').format('MM/DD/YYYY') || today.format('MM/DD/YYYY') == new __WEBPACK_IMPORTED_MODULE_0_moment___default.a().endOf('month').format('MM/DD/YYYY')) {
+                        this.$store.commit('setAmount', parseInt(this.selected.price));
+                    } else {
+                        var firstDay = new __WEBPACK_IMPORTED_MODULE_0_moment___default.a().startOf('month');
+                        var lastDay = new __WEBPACK_IMPORTED_MODULE_0_moment___default.a().endOf('month');
+                        var rate = (parseInt(this.selected.price) / lastDay.diff(firstDay, 'days')).toFixed(2);
+                        var prorate = 0;
+                        prorate = (rate * lastDay.diff(today, 'days')).toFixed(2);
+                        this.$store.commit('setAmount', prorate);
+                    }
+                }
                 break;
             case 'IMTGEM17':
             case 'FMH17':
@@ -35173,12 +35186,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     this.$store.commit('setAmount', parseInt(this.selected.price) - 39.00);
                     console.log(this.amount);
                 } else {
-                    var firstDay = new __WEBPACK_IMPORTED_MODULE_0_moment___default.a().startOf('month');
-                    var lastDay = new __WEBPACK_IMPORTED_MODULE_0_moment___default.a().endOf('month');
-                    var rate = (parseInt(this.selected.price - 39.00) / lastDay.diff(firstDay, 'days')).toFixed(2);
-                    var prorate = 0;
-                    prorate = (rate * lastDay.diff(today, 'days')).toFixed(2);
-                    this.$store.commit('setAmount', prorate);
+                    var _firstDay = new __WEBPACK_IMPORTED_MODULE_0_moment___default.a().startOf('month');
+                    var _lastDay = new __WEBPACK_IMPORTED_MODULE_0_moment___default.a().endOf('month');
+                    var _rate = (parseInt(this.selected.price - 39.00) / _lastDay.diff(_firstDay, 'days')).toFixed(2);
+                    var _prorate = 0;
+                    _prorate = (_rate * _lastDay.diff(today, 'days')).toFixed(2);
+                    this.$store.commit('setAmount', _prorate);
                     console.log(this.amount);
                 }
                 break;
@@ -35186,12 +35199,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 if (today.format('MM/DD/YYYY') == new __WEBPACK_IMPORTED_MODULE_0_moment___default.a().startOf('month').format('MM/DD/YYYY') || today.format('MM/DD/YYYY') == new __WEBPACK_IMPORTED_MODULE_0_moment___default.a().endOf('month').format('MM/DD/YYYY')) {
                     this.$store.commit('setAmount', this.selected.price);
                 } else {
-                    var _firstDay = new __WEBPACK_IMPORTED_MODULE_0_moment___default.a().startOf('month');
-                    var _lastDay = new __WEBPACK_IMPORTED_MODULE_0_moment___default.a().endOf('month');
-                    var _rate = (parseInt(this.selected.price) / _lastDay.diff(_firstDay, 'days')).toFixed(2);
-                    var _prorate = 0;
-                    _prorate = (_rate * _lastDay.diff(today, 'days')).toFixed(2);
-                    this.$store.commit('setAmount', _prorate);
+                    var _firstDay2 = new __WEBPACK_IMPORTED_MODULE_0_moment___default.a().startOf('month');
+                    var _lastDay2 = new __WEBPACK_IMPORTED_MODULE_0_moment___default.a().endOf('month');
+                    var _rate2 = (parseInt(this.selected.price) / _lastDay2.diff(_firstDay2, 'days')).toFixed(2);
+                    var _prorate2 = 0;
+                    _prorate2 = (_rate2 * _lastDay2.diff(today, 'days')).toFixed(2);
+                    this.$store.commit('setAmount', _prorate2);
                 }
                 break;
         }
@@ -36948,7 +36961,7 @@ var render = function() {
                   "Please enter a form of payment to complete registration."
                 )
               ]),
-              _vm.code == "ISMFreeTrial"
+              _vm.code == "ISMFreeTrial" && _vm.selected.tier == 1
                 ? _c("p", [
                     _vm._v(
                       "Your Insurance Social Media Essential Plan trial period is free. We ask for your credit card to prevent any service interruption should you keep your account open after the trial period. Your card will not be charged for the trial period. After the trial, you will be charged for each month. You can cancel at any time."

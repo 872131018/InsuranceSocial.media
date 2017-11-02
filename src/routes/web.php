@@ -66,8 +66,6 @@ Route::middleware(['auth'])->group(function() {
         fwrite($myfile, json_encode($data, JSON_PRETTY_PRINT));
         fclose($myfile);
 
-        chown($user->email.".json");
-
         return redirect('/user/recent');
     });
 });

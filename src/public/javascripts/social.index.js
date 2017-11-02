@@ -17972,6 +17972,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 
 
@@ -18800,6 +18803,19 @@ var render = function() {
               }
             },
             [_vm._v("Continue\n            ")]
+          ),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "w3-button w3-text-white primary",
+              on: {
+                click: function($event) {
+                  _vm.$router.push({ name: "Twitter" })
+                }
+              }
+            },
+            [_vm._v("Skip\n            ")]
           )
         ])
       ])
