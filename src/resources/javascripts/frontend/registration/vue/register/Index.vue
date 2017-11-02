@@ -95,13 +95,17 @@
             },
             codeValid() {
                 return this.$store.state.registration.code != '';
-            },
+            }
         },
         methods: {
             register() {
                 this.validate();
                 if(this.errors.length == 0) {
-                    this.$router.push({ name: 'Plans' });
+                    if(this.code == 'FMH17' || this.code == 'IMTGEM17') {
+                        this.$router.push({ name: 'Corporate' });
+                    } else {
+                        this.$router.push({ name: 'Plans' });
+                    }
                     /*
                     axios.post(window.location, this.$store.state.registration).then(response => {
                         if(response.data.discount && response.data.discount != 'ISMFreeTrial') {

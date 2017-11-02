@@ -30,15 +30,12 @@ Route::get('/user/twitter/feed', 'HomeController@index')->name('home');
 
 
 
-
 Route::get('/user/profile', 'HomeController@index')->name('home');
 
 /**
 * All requirements for user having logged in
 */
 Route::middleware(['auth'])->group(function() {
-
-    Route::get('/corporate/{discount?}', 'CorporateController@index');
 
     Route::get('/file', function(Request $request) {
         $user = Auth::user();

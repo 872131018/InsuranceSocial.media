@@ -33016,7 +33016,9 @@ var Site = new __WEBPACK_IMPORTED_MODULE_1_vue___default.a({
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__modules_plans_vuex__ = __webpack_require__(212);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__modules_authorize_vuex__ = __webpack_require__(213);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__modules_payment_vuex__ = __webpack_require__(214);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__modules_services_vuex__ = __webpack_require__(215);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__modules_corporate_vuex__ = __webpack_require__(701);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__modules_services_vuex__ = __webpack_require__(215);
+
 
 
 
@@ -33033,7 +33035,8 @@ var store = new __WEBPACK_IMPORTED_MODULE_1_vuex__["a" /* default */].Store({
         plans: __WEBPACK_IMPORTED_MODULE_3__modules_plans_vuex__["a" /* default */],
         authorize: __WEBPACK_IMPORTED_MODULE_4__modules_authorize_vuex__["a" /* default */],
         payment: __WEBPACK_IMPORTED_MODULE_5__modules_payment_vuex__["a" /* default */],
-        services: __WEBPACK_IMPORTED_MODULE_6__modules_services_vuex__["a" /* default */]
+        corporate: __WEBPACK_IMPORTED_MODULE_6__modules_corporate_vuex__["a" /* default */],
+        services: __WEBPACK_IMPORTED_MODULE_7__modules_services_vuex__["a" /* default */]
     }
 });
 
@@ -33194,6 +33197,9 @@ var ServiceModule = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__vue_plans_Index___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__vue_plans_Index__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__vue_payment_Index__ = __webpack_require__(248);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__vue_payment_Index___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__vue_payment_Index__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__vue_corporate_Corporate__ = __webpack_require__(691);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__vue_corporate_Corporate___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__vue_corporate_Corporate__);
+
 
 
 
@@ -33215,6 +33221,10 @@ var routes = [{
     path: '/payment',
     name: 'Payment',
     component: __WEBPACK_IMPORTED_MODULE_3__vue_payment_Index___default.a
+}, {
+    path: '/corporate',
+    name: 'Corporate',
+    component: __WEBPACK_IMPORTED_MODULE_4__vue_corporate_Corporate___default.a
 }];
 
 /* harmony default export */ __webpack_exports__["a"] = (new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
@@ -33388,7 +33398,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         register: function register() {
             this.validate();
             if (this.errors.length == 0) {
-                this.$router.push({ name: 'Plans' });
+                if (this.code == 'FMH17' || this.code == 'IMTGEM17') {
+                    this.$router.push({ name: 'Corporate' });
+                } else {
+                    this.$router.push({ name: 'Plans' });
+                }
                 /*
                 axios.post(window.location, this.$store.state.registration).then(response => {
                     if(response.data.discount && response.data.discount != 'ISMFreeTrial') {
@@ -35148,18 +35162,38 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.expired = true;
         }
         */
-        if (this.code != 'ISMFreeTrial') {
-            var today = new __WEBPACK_IMPORTED_MODULE_0_moment___default.a();
-            if (today.format('MM/DD/YYYY') == new __WEBPACK_IMPORTED_MODULE_0_moment___default.a().startOf('month').format('MM/DD/YYYY') || today.format('MM/DD/YYYY') == new __WEBPACK_IMPORTED_MODULE_0_moment___default.a().endOf('month').format('MM/DD/YYYY')) {
-                this.$store.commit('setAmount', this.selected.price);
-            } else {
-                var firstDay = new __WEBPACK_IMPORTED_MODULE_0_moment___default.a().startOf('month');
-                var lastDay = new __WEBPACK_IMPORTED_MODULE_0_moment___default.a().endOf('month');
-                var rate = (parseInt(this.selected.price) / lastDay.diff(firstDay, 'days')).toFixed(2);
-                var prorate = 0;
-                prorate = (rate * lastDay.diff(today, 'days')).toFixed(2);
-                this.$store.commit('setAmount', prorate);
-            }
+        var today = new __WEBPACK_IMPORTED_MODULE_0_moment___default.a();
+        switch (this.code) {
+            case 'ISMFreeTrial':
+                this.$store.commit('setAmount', 0.00);
+                break;
+            case 'IMTGEM17':
+            case 'FMH17':
+                if (today.format('MM/DD/YYYY') == new __WEBPACK_IMPORTED_MODULE_0_moment___default.a().startOf('month').format('MM/DD/YYYY') || today.format('MM/DD/YYYY') == new __WEBPACK_IMPORTED_MODULE_0_moment___default.a().endOf('month').format('MM/DD/YYYY')) {
+                    this.$store.commit('setAmount', parseInt(this.selected.price) - 39.00);
+                    console.log(this.amount);
+                } else {
+                    var firstDay = new __WEBPACK_IMPORTED_MODULE_0_moment___default.a().startOf('month');
+                    var lastDay = new __WEBPACK_IMPORTED_MODULE_0_moment___default.a().endOf('month');
+                    var rate = (parseInt(this.selected.price - 39.00) / lastDay.diff(firstDay, 'days')).toFixed(2);
+                    var prorate = 0;
+                    prorate = (rate * lastDay.diff(today, 'days')).toFixed(2);
+                    this.$store.commit('setAmount', prorate);
+                    console.log(this.amount);
+                }
+                break;
+            default:
+                if (today.format('MM/DD/YYYY') == new __WEBPACK_IMPORTED_MODULE_0_moment___default.a().startOf('month').format('MM/DD/YYYY') || today.format('MM/DD/YYYY') == new __WEBPACK_IMPORTED_MODULE_0_moment___default.a().endOf('month').format('MM/DD/YYYY')) {
+                    this.$store.commit('setAmount', this.selected.price);
+                } else {
+                    var _firstDay = new __WEBPACK_IMPORTED_MODULE_0_moment___default.a().startOf('month');
+                    var _lastDay = new __WEBPACK_IMPORTED_MODULE_0_moment___default.a().endOf('month');
+                    var _rate = (parseInt(this.selected.price) / _lastDay.diff(_firstDay, 'days')).toFixed(2);
+                    var _prorate = 0;
+                    _prorate = (_rate * _lastDay.diff(today, 'days')).toFixed(2);
+                    this.$store.commit('setAmount', _prorate);
+                }
+                break;
         }
     },
 
@@ -35223,7 +35257,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                             transactionId: response.data.transaction.transactionId
                         };
                     }).catch(function (error) {
-                        if (error.email) {
+                        if (error.response.data.email) {
                             _this.errors.push('This email has already been used.  Please go back and try another.');
                         } else {
                             _this.errors.push('An Error has occured. Please contact support.');
@@ -37324,6 +37358,850 @@ if (false) {
     require("vue-hot-reload-api")      .rerender("data-v-043901ba", module.exports)
   }
 }
+
+/***/ }),
+/* 290 */,
+/* 291 */,
+/* 292 */,
+/* 293 */,
+/* 294 */,
+/* 295 */,
+/* 296 */,
+/* 297 */,
+/* 298 */,
+/* 299 */,
+/* 300 */,
+/* 301 */,
+/* 302 */,
+/* 303 */,
+/* 304 */,
+/* 305 */,
+/* 306 */,
+/* 307 */,
+/* 308 */,
+/* 309 */,
+/* 310 */,
+/* 311 */,
+/* 312 */,
+/* 313 */,
+/* 314 */,
+/* 315 */,
+/* 316 */,
+/* 317 */,
+/* 318 */,
+/* 319 */,
+/* 320 */,
+/* 321 */,
+/* 322 */,
+/* 323 */,
+/* 324 */,
+/* 325 */,
+/* 326 */,
+/* 327 */,
+/* 328 */,
+/* 329 */,
+/* 330 */,
+/* 331 */,
+/* 332 */,
+/* 333 */,
+/* 334 */,
+/* 335 */,
+/* 336 */,
+/* 337 */,
+/* 338 */,
+/* 339 */,
+/* 340 */,
+/* 341 */,
+/* 342 */,
+/* 343 */,
+/* 344 */,
+/* 345 */,
+/* 346 */,
+/* 347 */,
+/* 348 */,
+/* 349 */,
+/* 350 */,
+/* 351 */,
+/* 352 */,
+/* 353 */,
+/* 354 */,
+/* 355 */,
+/* 356 */,
+/* 357 */,
+/* 358 */,
+/* 359 */,
+/* 360 */,
+/* 361 */,
+/* 362 */,
+/* 363 */,
+/* 364 */,
+/* 365 */,
+/* 366 */,
+/* 367 */,
+/* 368 */,
+/* 369 */,
+/* 370 */,
+/* 371 */,
+/* 372 */,
+/* 373 */,
+/* 374 */,
+/* 375 */,
+/* 376 */,
+/* 377 */,
+/* 378 */,
+/* 379 */,
+/* 380 */,
+/* 381 */,
+/* 382 */,
+/* 383 */,
+/* 384 */,
+/* 385 */,
+/* 386 */,
+/* 387 */,
+/* 388 */,
+/* 389 */,
+/* 390 */,
+/* 391 */,
+/* 392 */,
+/* 393 */,
+/* 394 */,
+/* 395 */,
+/* 396 */,
+/* 397 */,
+/* 398 */,
+/* 399 */,
+/* 400 */,
+/* 401 */,
+/* 402 */,
+/* 403 */,
+/* 404 */,
+/* 405 */,
+/* 406 */,
+/* 407 */,
+/* 408 */,
+/* 409 */,
+/* 410 */,
+/* 411 */,
+/* 412 */,
+/* 413 */,
+/* 414 */,
+/* 415 */,
+/* 416 */,
+/* 417 */,
+/* 418 */,
+/* 419 */,
+/* 420 */,
+/* 421 */,
+/* 422 */,
+/* 423 */,
+/* 424 */,
+/* 425 */,
+/* 426 */,
+/* 427 */,
+/* 428 */,
+/* 429 */,
+/* 430 */,
+/* 431 */,
+/* 432 */,
+/* 433 */,
+/* 434 */,
+/* 435 */,
+/* 436 */,
+/* 437 */,
+/* 438 */,
+/* 439 */,
+/* 440 */,
+/* 441 */,
+/* 442 */,
+/* 443 */,
+/* 444 */,
+/* 445 */,
+/* 446 */,
+/* 447 */,
+/* 448 */,
+/* 449 */,
+/* 450 */,
+/* 451 */,
+/* 452 */,
+/* 453 */,
+/* 454 */,
+/* 455 */,
+/* 456 */,
+/* 457 */,
+/* 458 */,
+/* 459 */,
+/* 460 */,
+/* 461 */,
+/* 462 */,
+/* 463 */,
+/* 464 */,
+/* 465 */,
+/* 466 */,
+/* 467 */,
+/* 468 */,
+/* 469 */,
+/* 470 */,
+/* 471 */,
+/* 472 */,
+/* 473 */,
+/* 474 */,
+/* 475 */,
+/* 476 */,
+/* 477 */,
+/* 478 */,
+/* 479 */,
+/* 480 */,
+/* 481 */,
+/* 482 */,
+/* 483 */,
+/* 484 */,
+/* 485 */,
+/* 486 */,
+/* 487 */,
+/* 488 */,
+/* 489 */,
+/* 490 */,
+/* 491 */,
+/* 492 */,
+/* 493 */,
+/* 494 */,
+/* 495 */,
+/* 496 */,
+/* 497 */,
+/* 498 */,
+/* 499 */,
+/* 500 */,
+/* 501 */,
+/* 502 */,
+/* 503 */,
+/* 504 */,
+/* 505 */,
+/* 506 */,
+/* 507 */,
+/* 508 */,
+/* 509 */,
+/* 510 */,
+/* 511 */,
+/* 512 */,
+/* 513 */,
+/* 514 */,
+/* 515 */,
+/* 516 */,
+/* 517 */,
+/* 518 */,
+/* 519 */,
+/* 520 */,
+/* 521 */,
+/* 522 */,
+/* 523 */,
+/* 524 */,
+/* 525 */,
+/* 526 */,
+/* 527 */,
+/* 528 */,
+/* 529 */,
+/* 530 */,
+/* 531 */,
+/* 532 */,
+/* 533 */,
+/* 534 */,
+/* 535 */,
+/* 536 */,
+/* 537 */,
+/* 538 */,
+/* 539 */,
+/* 540 */,
+/* 541 */,
+/* 542 */,
+/* 543 */,
+/* 544 */,
+/* 545 */,
+/* 546 */,
+/* 547 */,
+/* 548 */,
+/* 549 */,
+/* 550 */,
+/* 551 */,
+/* 552 */,
+/* 553 */,
+/* 554 */,
+/* 555 */,
+/* 556 */,
+/* 557 */,
+/* 558 */,
+/* 559 */,
+/* 560 */,
+/* 561 */,
+/* 562 */,
+/* 563 */,
+/* 564 */,
+/* 565 */,
+/* 566 */,
+/* 567 */,
+/* 568 */,
+/* 569 */,
+/* 570 */,
+/* 571 */,
+/* 572 */,
+/* 573 */,
+/* 574 */,
+/* 575 */,
+/* 576 */,
+/* 577 */,
+/* 578 */,
+/* 579 */,
+/* 580 */,
+/* 581 */,
+/* 582 */,
+/* 583 */,
+/* 584 */,
+/* 585 */,
+/* 586 */,
+/* 587 */,
+/* 588 */,
+/* 589 */,
+/* 590 */,
+/* 591 */,
+/* 592 */,
+/* 593 */,
+/* 594 */,
+/* 595 */,
+/* 596 */,
+/* 597 */,
+/* 598 */,
+/* 599 */,
+/* 600 */,
+/* 601 */,
+/* 602 */,
+/* 603 */,
+/* 604 */,
+/* 605 */,
+/* 606 */,
+/* 607 */,
+/* 608 */,
+/* 609 */,
+/* 610 */,
+/* 611 */,
+/* 612 */,
+/* 613 */,
+/* 614 */,
+/* 615 */,
+/* 616 */,
+/* 617 */,
+/* 618 */,
+/* 619 */,
+/* 620 */,
+/* 621 */,
+/* 622 */,
+/* 623 */,
+/* 624 */,
+/* 625 */,
+/* 626 */,
+/* 627 */,
+/* 628 */,
+/* 629 */,
+/* 630 */,
+/* 631 */,
+/* 632 */,
+/* 633 */,
+/* 634 */,
+/* 635 */,
+/* 636 */,
+/* 637 */,
+/* 638 */,
+/* 639 */,
+/* 640 */,
+/* 641 */,
+/* 642 */,
+/* 643 */,
+/* 644 */,
+/* 645 */,
+/* 646 */,
+/* 647 */,
+/* 648 */,
+/* 649 */,
+/* 650 */,
+/* 651 */,
+/* 652 */,
+/* 653 */,
+/* 654 */,
+/* 655 */,
+/* 656 */,
+/* 657 */,
+/* 658 */,
+/* 659 */,
+/* 660 */,
+/* 661 */,
+/* 662 */,
+/* 663 */,
+/* 664 */,
+/* 665 */,
+/* 666 */,
+/* 667 */,
+/* 668 */,
+/* 669 */,
+/* 670 */,
+/* 671 */,
+/* 672 */,
+/* 673 */,
+/* 674 */,
+/* 675 */,
+/* 676 */,
+/* 677 */,
+/* 678 */,
+/* 679 */,
+/* 680 */,
+/* 681 */,
+/* 682 */,
+/* 683 */,
+/* 684 */,
+/* 685 */,
+/* 686 */,
+/* 687 */,
+/* 688 */,
+/* 689 */,
+/* 690 */,
+/* 691 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(692)
+/* template */
+var __vue_template__ = __webpack_require__(700)
+/* template functional */
+  var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/javascripts/frontend/registration/vue/corporate/Corporate.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-e4b0f186", Component.options)
+  } else {
+    hotAPI.reload("data-v-e4b0f186", Component.options)
+' + '  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 692 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Plan__ = __webpack_require__(693);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Plan___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Plan__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    computed: {
+        logo: function logo() {
+            return this.$store.state.corporate.logo;
+        },
+        company: function company() {
+            return this.$store.state.corporate.company;
+        },
+        details: function details() {
+            return this.$store.state.corporate.details;
+        }
+    },
+    mounted: function mounted() {
+        var _this = this;
+
+        axios.get('/api/corporate/' + this.$store.state.registration.code).then(function (response) {
+            _this.$store.commit('setCorporate', response.data);
+        });
+    },
+
+    components: {
+        Plan: __WEBPACK_IMPORTED_MODULE_0__Plan___default.a
+    }
+});
+
+/***/ }),
+/* 693 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(694)
+/* template */
+var __vue_template__ = __webpack_require__(698)
+/* template functional */
+  var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/javascripts/frontend/registration/vue/corporate/Plan.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-4c1e7afe", Component.options)
+  } else {
+    hotAPI.reload("data-v-4c1e7afe", Component.options)
+' + '  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 694 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Features__ = __webpack_require__(695);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Features___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Features__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: {
+        plan: {
+            type: Object
+        },
+        selected: {
+            type: Boolean
+        }
+    },
+    methods: {
+        getId: function getId(name) {
+            return name.replace(' ', '');
+        }
+    },
+    components: {
+        Features: __WEBPACK_IMPORTED_MODULE_0__Features___default.a
+    }
+});
+
+/***/ }),
+/* 695 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(696)
+/* template */
+var __vue_template__ = __webpack_require__(697)
+/* template functional */
+  var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/javascripts/frontend/registration/vue/corporate/Features.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-12abd195", Component.options)
+  } else {
+    hotAPI.reload("data-v-12abd195", Component.options)
+' + '  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 696 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: {
+        features: {
+            type: Array
+        }
+    }
+});
+
+/***/ }),
+/* 697 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "w3-panel" }, [
+    _c(
+      "ul",
+      { staticClass: "w3-ul" },
+      _vm._l(_vm.features, function(feature) {
+        return _c("li", [
+          _c("i", { staticClass: "fa fa-check w3-margin-right w3-text-green" }),
+          _vm._v(_vm._s(feature) + "\n        ")
+        ])
+      })
+    )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-12abd195", module.exports)
+  }
+}
+
+/***/ }),
+/* 698 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "w3-section" }, [
+    _vm.plan.name != "Enterprise Plan"
+      ? _c(
+          "div",
+          [
+            _c("input", {
+              staticClass: "v-align",
+              attrs: { type: "radio", id: _vm.getId(_vm.plan.name) },
+              domProps: { checked: _vm.selected },
+              on: {
+                change: function($event) {
+                  _vm.$emit("setPlan", _vm.plan)
+                }
+              }
+            }),
+            _vm._v(" "),
+            _c("label", { attrs: { for: _vm.getId(_vm.plan.name) } }, [
+              _c("span", {
+                staticClass: "w3-show-inline-block w3-margin-right v-align"
+              })
+            ]),
+            _vm._v(" "),
+            _c("span", { staticClass: "w3-large w3-margin-left" }, [
+              _vm._v(_vm._s(_vm.plan.name))
+            ]),
+            _vm._v(" "),
+            _c(
+              "span",
+              {
+                staticClass:
+                  "w3-large w3-right w3-margin-right w3-padding-right"
+              },
+              [_vm._v(_vm._s(_vm.plan.price) + " Monthly")]
+            ),
+            _vm._v(" "),
+            _c("Features", { attrs: { features: _vm.plan.features } })
+          ],
+          1
+        )
+      : _c(
+          "div",
+          [
+            _c("span", { staticClass: "w3-large w3-text-blue" }, [
+              _vm._v("Contact Us for Enterprise Pricing")
+            ]),
+            _vm._v(" "),
+            _c("Features", { attrs: { features: _vm.plan.features } })
+          ],
+          1
+        )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-4c1e7afe", module.exports)
+  }
+}
+
+/***/ }),
+/* 699 */,
+/* 700 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "w3-card-2 w3-padding form" }, [
+    _c("img", { staticClass: "w3-image", attrs: { src: _vm.logo } }),
+    _c("h6", [
+      _vm._v(
+        "On behalf of " +
+          _vm._s(_vm.company) +
+          ", we’re looking forward to helping you build your strong, growing, personalized social media experience!"
+      )
+    ]),
+    _c("h3", [_vm._v("Plan Description")]),
+    _c("p", [_vm._v(_vm._s(_vm.details))]),
+    _c("h6", [
+      _vm._v(
+        "We look forward to working with you. Please click continue to finish registering your account."
+      )
+    ]),
+    _c("div", { staticClass: "w3-padding-16" }, [
+      _c(
+        "button",
+        {
+          staticClass: "w3-button w3-text-white primary",
+          on: {
+            click: function($event) {
+              _vm.$router.push({ name: "Plans" })
+            }
+          }
+        },
+        [_vm._v("Continue")]
+      )
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-e4b0f186", module.exports)
+  }
+}
+
+/***/ }),
+/* 701 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var Module = {
+    state: {
+        logo: '',
+        company: '',
+        details: ''
+    },
+    mutations: {
+        setCorporate: function setCorporate(state, value) {
+            state.logo = value.logo;
+            state.company = value.company;
+            state.details = value.details;
+        }
+    }
+};
+
+/* harmony default export */ __webpack_exports__["a"] = (Module);
 
 /***/ })
 /******/ ]);

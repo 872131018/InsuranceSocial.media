@@ -75,19 +75,40 @@
                 this.expired = true;
             }
             */
-            if(this.code != 'ISMFreeTrial') {
-                const today = new Moment();
-                if(today.format('MM/DD/YYYY') == new Moment().startOf('month').format('MM/DD/YYYY') ||
-                    today.format('MM/DD/YYYY') == new Moment().endOf('month').format('MM/DD/YYYY')) {
-                    this.$store.commit('setAmount', this.selected.price);
-                } else {
-                    const firstDay = new Moment().startOf('month');
-                    const lastDay = new Moment().endOf('month');
-                    const rate = (parseInt(this.selected.price) / lastDay.diff(firstDay, 'days')).toFixed(2);
-                    let prorate = 0;
-                    prorate = (rate * lastDay.diff(today, 'days')).toFixed(2);
-                    this.$store.commit('setAmount', prorate);
-                }
+            const today = new Moment();
+            switch(this.code) {
+                case 'ISMFreeTrial':
+                    this.$store.commit('setAmount', 0.00);
+                    break;
+                case 'IMTGEM17':
+                case 'FMH17':
+                    if(today.format('MM/DD/YYYY') == new Moment().startOf('month').format('MM/DD/YYYY') ||
+                        today.format('MM/DD/YYYY') == new Moment().endOf('month').format('MM/DD/YYYY')) {
+                        this.$store.commit('setAmount', parseInt(this.selected.price) - 39.00);
+                        console.log(this.amount)
+                    } else {
+                        const firstDay = new Moment().startOf('month');
+                        const lastDay = new Moment().endOf('month');
+                        const rate = (parseInt(this.selected.price - 39.00) / lastDay.diff(firstDay, 'days')).toFixed(2);
+                        let prorate = 0;
+                        prorate = (rate * lastDay.diff(today, 'days')).toFixed(2);
+                        this.$store.commit('setAmount', prorate);
+                        console.log(this.amount)
+                    }
+                    break;
+                default:
+                    if(today.format('MM/DD/YYYY') == new Moment().startOf('month').format('MM/DD/YYYY') ||
+                        today.format('MM/DD/YYYY') == new Moment().endOf('month').format('MM/DD/YYYY')) {
+                        this.$store.commit('setAmount', this.selected.price);
+                    } else {
+                        const firstDay = new Moment().startOf('month');
+                        const lastDay = new Moment().endOf('month');
+                        const rate = (parseInt(this.selected.price) / lastDay.diff(firstDay, 'days')).toFixed(2);
+                        let prorate = 0;
+                        prorate = (rate * lastDay.diff(today, 'days')).toFixed(2);
+                        this.$store.commit('setAmount', prorate);
+                    }
+                    break;
             }
         },
         methods: {
@@ -127,7 +148,7 @@
                                 transactionId: response.data.transaction.transactionId
                             };
                         }).catch((error) => {
-                            if(error.email) {
+                            if(error.response.data.email) {
                                 this.errors.push('This email has already been used.  Please go back and try another.');
                             } else {
                                 this.errors.push('An Error has occured. Please contact support.');
