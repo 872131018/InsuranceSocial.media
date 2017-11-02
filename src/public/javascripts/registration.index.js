@@ -34616,6 +34616,8 @@ module.exports = Component.exports
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Plan__ = __webpack_require__(241);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Plan___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Plan__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Errors__ = __webpack_require__(702);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Errors___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__Errors__);
 //
 //
 //
@@ -34632,10 +34634,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            errors: []
+        };
+    },
+
     computed: {
         plans: function plans() {
             return this.$store.state.plans.plans;
@@ -34644,8 +34656,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             return this.$store.state.registration.plan.name;
         }
     },
+    methods: {
+        next: function next() {
+            this.errors = [];
+            if (!this.selected) {
+                this.errors.push('You must select a plan.');
+            } else {
+                this.$router.push({ name: 'Payment' });
+            }
+        }
+    },
     components: {
-        Plan: __WEBPACK_IMPORTED_MODULE_0__Plan___default.a
+        Plan: __WEBPACK_IMPORTED_MODULE_0__Plan___default.a,
+        Errors: __WEBPACK_IMPORTED_MODULE_1__Errors___default.a
     }
 });
 
@@ -34950,6 +34973,9 @@ var render = function() {
           }
         })
       }),
+      _vm.errors.length
+        ? _c("Errors", { attrs: { errors: _vm.errors } })
+        : _vm._e(),
       _c("div", { staticClass: "w3-padding" }, [
         _c(
           "button",
@@ -34957,7 +34983,7 @@ var render = function() {
             staticClass: "w3-button w3-text-white primary",
             on: {
               click: function($event) {
-                _vm.$router.push({ name: "Payment" })
+                _vm.next()
               }
             }
           },
@@ -38215,6 +38241,104 @@ var Module = {
 };
 
 /* harmony default export */ __webpack_exports__["a"] = (Module);
+
+/***/ }),
+/* 702 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(703)
+/* template */
+var __vue_template__ = __webpack_require__(704)
+/* template functional */
+  var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/javascripts/frontend/registration/vue/plans/Errors.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-4f04ccc4", Component.options)
+  } else {
+    hotAPI.reload("data-v-4f04ccc4", Component.options)
+' + '  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 703 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: {
+        errors: {
+            type: Array
+        }
+    }
+});
+
+/***/ }),
+/* 704 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm.errors.length
+    ? _c(
+        "ul",
+        { staticClass: "w3-ul w3-text-red" },
+        _vm._l(_vm.errors, function(error) {
+          return _c("li", [_vm._v(_vm._s(error))])
+        })
+      )
+    : _vm._e()
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-4f04ccc4", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

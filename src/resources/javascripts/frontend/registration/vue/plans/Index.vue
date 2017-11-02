@@ -9,15 +9,24 @@
             :plan="plan"
             :selected="selected == plan.name"
             @setPlan="(value) => $store.commit('setPlan', value)")
+        Errors(
+            v-if="errors.length"
+            :errors="errors")
         div(class="w3-padding")
             button(class="w3-button w3-text-white primary"
-                @click="$router.push({ name: 'Payment' })") Continue
+                @click="next()") Continue
 </template>
 
 <script>
     import Plan from './Plan';
+    import Errors from './Errors';
 
     export default {
+        data() {
+            return {
+                errors: []
+            }
+        },
         computed: {
             plans() {
                 return this.$store.state.plans.plans;
@@ -26,8 +35,19 @@
                 return this.$store.state.registration.plan.name;
             }
         },
+        methods: {
+            next() {
+                this.errors = [];
+                if(!this.selected) {
+                    this.errors.push('You must select a plan.');
+                } else {
+                    this.$router.push({ name: 'Payment' })
+                }
+            }
+        },
         components: {
-            Plan
+            Plan,
+            Errors
         }
     }
 </script>
