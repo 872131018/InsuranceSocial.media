@@ -29,7 +29,7 @@
         },
         data() {
             return {
-                option: false,
+                option: 'N',
             }
         },
         mounted() {

@@ -94,7 +94,9 @@
                 return this.$store.state.registration.code;
             },
             codeValid() {
-                return this.$store.state.registration.code != '';
+                return this.$store.state.registration.code == 'ISMFreeTrial' ||
+                        this.$store.state.registration.code == 'IMTGEM17' ||
+                        this.$store.state.registration.code == 'FMH17';
             }
         },
         methods: {
@@ -133,6 +135,9 @@
                 }
                 if(!this.passwordValid && !this.passwordConfirmed) {
                     this.errors.push('You must enter and confirm a password.');
+                }
+                if(!this.codeValid) {
+                    this.errors.push('You have an invalid promotion code.');
                 }
                 if(!this.$store.state.registration.terms) {
                     this.errors.push('You must accept the Terms of Service.');

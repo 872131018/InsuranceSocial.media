@@ -35,6 +35,11 @@
                 return this.$store.state.registration.plan.name;
             }
         },
+        mounted() {
+            if(this.$store.state.registration.code == 'ISMFreeTrial') {
+                this.$store.commit('setPlan', this.plans[0]);
+            }
+        },
         methods: {
             next() {
                 this.errors = [];
