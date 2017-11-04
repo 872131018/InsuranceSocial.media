@@ -28,44 +28,4 @@ Route::get('/user/facebook/post', 'HomeController@index')->name('home');
 
 Route::get('/user/twitter/feed', 'HomeController@index')->name('home');
 
-
-
 Route::get('/user/profile', 'HomeController@index')->name('home');
-
-/**
-* All requirements for user having logged in
-*/
-Route::middleware(['auth'])->group(function() {
-
-    Route::get('/file', function(Request $request) {
-        $user = Auth::user();
-        $myfile = fopen($user->email.".json", "w");
-        $data = [
-            'user' => $user,
-            'plan' => $user->plan,
-            'facebook_account' => $user->facebook,
-            'template' => $user->template,
-            'twitter' => $user->twitter,
-            'agency' => $user->agency,
-            'regions' => $user->regions,
-            'states' => $user->states,
-            'counties' => $user->counties,
-            'carriers' => $user->carriers,
-            'commercialCoverages' => $user->commercialCoverages,
-            'cropCoverages' => $user->cropCoverages,
-            'personalCoverages' => $user->personalCoverages,
-            'benefitCoverages' => $user->benefitCoverages,
-            'currentIndustries' => $user->currentIndustries,
-            'targetIndustries' => $user->targetIndustries,
-            'specialTopics' => $user->specialTopics,
-            'causes' => $user->causes,
-            'payment' => $user->payments
-
-        ];
-
-        fwrite($myfile, json_encode($data, JSON_PRETTY_PRINT));
-        fclose($myfile);
-
-        return redirect('/user/recent');
-    });
-});

@@ -96,7 +96,30 @@ class OutreachController extends Controller
         }
         $user->causes()->saveMany($selected);
 
-        return response()->json($user);
+        $data = [
+            'user' => $user,
+            'plan' => $user->plan,
+            'facebook_account' => $user->facebook,
+            'template' => $user->template,
+            'twitter' => $user->twitter,
+            'agency' => $user->agency,
+            'regions' => $user->regions,
+            'states' => $user->states,
+            'counties' => $user->counties,
+            'carriers' => $user->carriers,
+            'commercialCoverages' => $user->commercialCoverages,
+            'cropCoverages' => $user->cropCoverages,
+            'personalCoverages' => $user->personalCoverages,
+            'benefitCoverages' => $user->benefitCoverages,
+            'currentIndustries' => $user->currentIndustries,
+            'targetIndustries' => $user->targetIndustries,
+            'specialTopics' => $user->specialTopics,
+            'causes' => $user->causes,
+            'payment' => $user->payments
+
+        ];
+
+        return response()->json($data);
     }
 
     /**
