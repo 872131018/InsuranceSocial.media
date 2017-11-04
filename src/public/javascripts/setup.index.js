@@ -25011,6 +25011,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 axios.post(window.location, this.properties).then(function (response) {
                     if (route == 'Done') {
                         alert('Congratulations! You have completed your profile. Click continue to go to your dashboard.');
+                        delete axios.defaults.headers.common['X-Requested-With'];
                         delete axios.defaults.headers.common['X-CSRF-TOKEN'];
                         delete axios.defaults.headers.common['Authorization'];
                         axios.post('https://www.staging.insurancesocial.media/api/ismv2/_ismv2_register/', response.data).then(function (response) {
