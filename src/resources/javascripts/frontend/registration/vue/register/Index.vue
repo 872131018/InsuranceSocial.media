@@ -96,7 +96,8 @@
             codeValid() {
                 return this.$store.state.registration.code == 'ISMFreeTrial' ||
                         this.$store.state.registration.code == 'IMTGEM17' ||
-                        this.$store.state.registration.code == 'FMH17';
+                        this.$store.state.registration.code == 'FMH17' ||
+                        this.$store.state.registration.code == '';
             }
         },
         methods: {

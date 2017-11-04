@@ -33413,7 +33413,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             return this.$store.state.registration.code;
         },
         codeValid: function codeValid() {
-            return this.$store.state.registration.code == 'ISMFreeTrial' || this.$store.state.registration.code == 'IMTGEM17' || this.$store.state.registration.code == 'FMH17';
+            return this.$store.state.registration.code == 'ISMFreeTrial' || this.$store.state.registration.code == 'IMTGEM17' || this.$store.state.registration.code == 'FMH17' || this.$store.state.registration.code == '';
         }
     },
     methods: {
