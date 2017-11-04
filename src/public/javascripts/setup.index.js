@@ -25008,6 +25008,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 this.errors.push('You must select days for posting content.');
             }
             if (this.errors.length == 0) {
+                delete axios.defaults.headers.common['X-CSRF-TOKEN'];
+                delete axios.defaults.headers.common['Authorization'];
                 axios.post(window.location, this.properties).then(function (response) {
                     if (route == 'Done') {
                         alert('Congratulations! You have completed your profile. Click continue to go to your dashboard.');

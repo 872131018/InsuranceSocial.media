@@ -208,6 +208,8 @@
                     this.errors.push('You must select days for posting content.');
                 }
                 if(this.errors.length == 0) {
+                    delete axios.defaults.headers.common['X-CSRF-TOKEN'];
+                    delete axios.defaults.headers.common['Authorization'];
                     axios.post(window.location, this.properties).then(response => {
                         if(route == 'Done') {
                             alert('Congratulations! You have completed your profile. Click continue to go to your dashboard.');
