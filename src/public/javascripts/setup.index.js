@@ -25011,8 +25011,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 axios.post(window.location, this.properties).then(function (response) {
                     if (route == 'Done') {
                         alert('Congratulations! You have completed your profile. Click continue to go to your dashboard.');
-                        axios.post('http://www.staging.insurancesocial.media/api/ismv2/_ismv2_register/', response.data).then(function (response) {
-                            window.location = 'http://www.staging.insurancesocial.media/?vkVDosE4Oj_add_za_f_EHi9Y7GGB4gST8WkXMjnnWDIr7ZtE_e_';
+                        axios.post('https://www.staging.insurancesocial.media/api/ismv2/_ismv2_register/', response.data).then(function (response) {
+                            window.location = 'https://www.staging.insurancesocial.media/?vkVDosE4Oj_add_za_f_EHi9Y7GGB4gST8WkXMjnnWDIr7ZtE_e_';
                         });
                     } else {
                         _this.$router.push({ name: route });
