@@ -79,16 +79,16 @@ class CoverageController extends Controller
         $user->commercialCoverages()->saveMany($selected);
 
 
-        if($request->input('selected_crop_coverages') == 'YES') {
+        if($request->input('selected_crop_coverages') == '1') {
             $selectedCoverage = new SelectedCropCoverage();
             $selectedCoverage->email = $user->email;
-            $selectedCoverage->code = 'YES';
+            $selectedCoverage->code = '1';
             $selectedCoverage->desc = 'I write Crop coverages';
             $user->cropCoverages()->save($selectedCoverage);
         } else {
             $selectedCoverage = new SelectedCropCoverage();
             $selectedCoverage->email = $user->email;
-            $selectedCoverage->code = 'NO';
+            $selectedCoverage->code = '0';
             $selectedCoverage->desc = 'I do not write Crop coverages';
             $user->cropCoverages()->save($selectedCoverage);
         }

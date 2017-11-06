@@ -24,8 +24,6 @@ use App\Payment;
 
 use App\Card;
 
-use Illuminate\Support\Facades\Log;
-
 class RegisterController extends Controller
 {
     /*
@@ -213,6 +211,7 @@ class RegisterController extends Controller
             $user->status = 'A';
             $user->role = 'A';
             $user->effective_date = new Carbon('first day of next month');
+            $user->expiration_date = new Carbon('last day of next month');
             $user->customer_profile_id = $response->getCustomerProfileId();
             $user->customer_payment_profile_id = $response->getCustomerPaymentProfileIdList()[0];
             $user->update();

@@ -1,9 +1,10 @@
 {
     "carriers":[
-        {"code": "C", "desc":"Carrier"},
-        {"code": "F", "desc":"Farmer's Mutual Hail"},
-        {"code": "G", "desc":"Grinnell Mutual"},
-        {"code": "I", "desc":"IMT Group"},
-        {"code": "P", "desc":"Plymouth Rock Assurance"}
+        {"code": "11274", "desc":"Carrier"},
+        {"code": "11286", "desc":"Farmer's Mutual Hail"},
+        {"code": "11227", "desc":"Grinnell Mutual"},
+        {"code": "11280", "desc":"IMT Group"},
+        {"code": "11272", "desc":"Plymouth Rock Assurance"},
+        {"code": "36750", "desc":"Merchants Bonding"}
     ]
 }
