@@ -216,7 +216,11 @@
                             delete axios.defaults.headers.common['X-CSRF-TOKEN'];
                             delete axios.defaults.headers.common['Authorization'];
                             axios.post('https://www.staging.insurancesocial.media/api/ismv2/_ismv2_register/', response.data).then(response => {
-                                window.location = 'https://www.staging.insurancesocial.media/?vkVDosE4Oj_add_za_f_EHi9Y7GGB4gST8WkXMjnnWDIr7ZtE_e_';
+                                if(response.data.success = 1) {
+                                    window.location = 'https://www.staging.insurancesocial.media/?vkVDosE4Oj_add_za_f_EHi9Y7GGB4gST8WkXMjnnWDIr7ZtE_e_';
+                                } else {
+                                    console.log(response.data.errors)
+                                }
                             });
                         } else {
                             this.$router.push({ name: route });

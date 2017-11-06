@@ -20,6 +20,9 @@ class CreateUserPlanTable extends Migration
             $table->char('plan_code', 1)->nullable();
             $table->string('engagement_mix')->nullable();
             $table->string('engagement_tone')->nullable();
+            $table->boolean('holidays')->nullable();
+            $table->boolean('humor')->nullable();
+            $table->boolean('news')->nullable();
             $table->boolean('monday')->nullable();
             $table->boolean('tuesday')->nullable();
             $table->boolean('wednesday')->nullable();

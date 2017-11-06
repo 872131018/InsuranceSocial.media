@@ -74,6 +74,17 @@ class OutreachController extends Controller
                     break;
             }
         }
+
+        $topics = $request->input('selected_special_topics');
+        foreach($topics as $topic) {
+            if($topic['code'] == 'NH') {
+                $plan->holidays = true;
+            } else if($topic['code'] == 'IH') {
+                $plan->humor = true;
+            } else if($topic['code'] == 'CN') {
+                $plan->news = true;
+            }
+        }
         $plan->update();
 
         $selected = [];
@@ -96,16 +107,34 @@ class OutreachController extends Controller
         }
         $user->causes()->saveMany($selected);
 
+        $states = [];
+        foreach ($user->states as $state_key => $state_value) {
+            array_push($states, [
+                'code' => $state_value->code,
+                'desc' => $state_value->desc,
+                'state_code' => $state_value->state_code,
+                'counties' => []
+            ]);
+            foreach ($user->counties as $county_key => $county_value) {
+                if($state_value['state_code'] == $county_value['state_code']) {
+                    array_push($states[$state_key]['counties'], [
+                        'code' => $county_value->code,
+                        'desc' => $county_value->desc,
+                        'state_code' => $county_value->state_code,
+                    ]);
+                }
+            }
+        }
+
         $data = [
             'user' => $user,
             'plan' => $user->plan,
-            'facebook_account' => $user->facebook,
+            'facebook' => $user->facebook,
             'template' => $user->template,
             'twitter' => $user->twitter,
             'agency' => $user->agency,
             'regions' => $user->regions,
-            'states' => $user->states,
-            'counties' => $user->counties,
+            'states' => $states,
             'carriers' => $user->carriers,
             'commercialCoverages' => $user->commercialCoverages,
             'cropCoverages' => $user->cropCoverages,

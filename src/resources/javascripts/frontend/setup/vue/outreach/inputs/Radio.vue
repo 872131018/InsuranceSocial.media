@@ -3,11 +3,11 @@
         <li class="w3-section"
             v-for="(option, index) in options">
             <input type="radio"
-                v-bind:id="`${ option.code }${ index }`"
+                v-bind:id="`${ option.desc.substr(0, 5) }${ index }`"
                 v-bind:value="option"
                 v-model="selected"
                 v-on:change="$emit('setChecked', option.code)">
-            <label v-bind:for="`${ option.code }${ index }`">
+            <label v-bind:for="`${ option.desc.substr(0, 5) }${ index }`">
                 <span class="w3-show-inline-block w3-margin-right v-align"></span>{{ option.desc }}
             </label>
         </li>

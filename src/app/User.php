@@ -184,6 +184,14 @@ class User extends Authenticatable
     /**
      * Get the causes record associated with the user.
      */
+    public function cards()
+    {
+        return $this->hasMany('App\Card');
+    }
+
+    /**
+     * Get the causes record associated with the user.
+     */
     public function facebookPerformance()
     {
         return $this->hasMany('App\FacebookPerformance');

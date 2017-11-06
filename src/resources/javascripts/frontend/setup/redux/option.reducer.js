@@ -23,22 +23,22 @@ const initialState = {
     personal_coverage_lines: [],
     benefit_coverage_lines: [],
     crop_coverage_lines: [
-        {"code": "YES", "desc":"Yes I write Crop coverages"},
-        {"code": "NO", "desc":"No I do not write Crop coverages"},
+        {"code": "1", "desc":"Yes I write Crop coverages"},
+        {"code": "0", "desc":"No I do not write Crop coverages"},
     ],
     industry_currents: [],
     industry_targets: [],
     engagement_mix: [
-        {"code": "EO", "desc":"Existing Clients Only"},
-        {"code": "ME", "desc":"Mostly Existing Clients"},
-        {"code": "EN", "desc":"Existing and New Clients Equally"},
-        {"code": "MN", "desc":"Mostly New Clients"},
-        {"code": "NO", "desc":"New Clients Only"}
+        {"code": "1", "desc":"Existing Clients Only"},
+        {"code": "2", "desc":"Mostly Existing Clients"},
+        {"code": "3", "desc":"Existing and New Clients Equally"},
+        {"code": "4", "desc":"Mostly New Clients"},
+        {"code": "5", "desc":"New Clients Only"}
     ],
     engagement_tone: [
-        {"code": "I", "desc":"Simply Informative"},
-        {"code": "C", "desc":"Conversational"},
-        {"code": "E", "desc":"Entertainingly Informative"}
+        {"code": "1", "desc":"Simply Informative"},
+        {"code": "2", "desc":"Conversational"},
+        {"code": "3", "desc":"Entertainingly Informative"}
     ],
     special_topics: [
         {"code": "NH", "desc":"Recognition of National Holidays"},

@@ -17591,11 +17591,11 @@ var initialState = {
     commercial_coverage_lines: [],
     personal_coverage_lines: [],
     benefit_coverage_lines: [],
-    crop_coverage_lines: [{ "code": "YES", "desc": "Yes I write Crop coverages" }, { "code": "NO", "desc": "No I do not write Crop coverages" }],
+    crop_coverage_lines: [{ "code": "1", "desc": "Yes I write Crop coverages" }, { "code": "0", "desc": "No I do not write Crop coverages" }],
     industry_currents: [],
     industry_targets: [],
-    engagement_mix: [{ "code": "EO", "desc": "Existing Clients Only" }, { "code": "ME", "desc": "Mostly Existing Clients" }, { "code": "EN", "desc": "Existing and New Clients Equally" }, { "code": "MN", "desc": "Mostly New Clients" }, { "code": "NO", "desc": "New Clients Only" }],
-    engagement_tone: [{ "code": "I", "desc": "Simply Informative" }, { "code": "C", "desc": "Conversational" }, { "code": "E", "desc": "Entertainingly Informative" }],
+    engagement_mix: [{ "code": "1", "desc": "Existing Clients Only" }, { "code": "2", "desc": "Mostly Existing Clients" }, { "code": "3", "desc": "Existing and New Clients Equally" }, { "code": "4", "desc": "Mostly New Clients" }, { "code": "5", "desc": "New Clients Only" }],
+    engagement_tone: [{ "code": "1", "desc": "Simply Informative" }, { "code": "2", "desc": "Conversational" }, { "code": "3", "desc": "Entertainingly Informative" }],
     special_topics: [{ "code": "NH", "desc": "Recognition of National Holidays" }, { "code": "IH", "desc": "Insurance Humor" }, { "code": "CN", "desc": "Current News" }],
     causes: [],
     days: [{ "code": "sunday", "desc": "Sunday" }, { "code": "monday", "desc": "Monday" }, { "code": "tuesday", "desc": "Tuesday" }, { "code": "wednesday", "desc": "Wednesday" }, { "code": "thursday", "desc": "Thursday" }, { "code": "friday", "desc": "Friday" }, { "code": "saturday", "desc": "Saturday" }],
@@ -25016,7 +25016,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                         delete axios.defaults.headers.common['X-CSRF-TOKEN'];
                         delete axios.defaults.headers.common['Authorization'];
                         axios.post('https://www.staging.insurancesocial.media/api/ismv2/_ismv2_register/', response.data).then(function (response) {
-                            window.location = 'https://www.staging.insurancesocial.media/?vkVDosE4Oj_add_za_f_EHi9Y7GGB4gST8WkXMjnnWDIr7ZtE_e_';
+                            if (response.data.success = 1) {
+                                window.location = 'https://www.staging.insurancesocial.media/?vkVDosE4Oj_add_za_f_EHi9Y7GGB4gST8WkXMjnnWDIr7ZtE_e_';
+                            } else {
+                                console.log(response.data.errors);
+                            }
                         });
                     } else {
                         _this.$router.push({ name: route });
@@ -25863,7 +25867,7 @@ var render = function() {
               expression: "selected"
             }
           ],
-          attrs: { type: "radio", id: "" + option.code + index },
+          attrs: { type: "radio", id: "" + option.desc.substr(0, 5) + index },
           domProps: { value: option, checked: _vm._q(_vm.selected, option) },
           on: {
             change: [
@@ -25877,7 +25881,7 @@ var render = function() {
           }
         }),
         _vm._v(" "),
-        _c("label", { attrs: { for: "" + option.code + index } }, [
+        _c("label", { attrs: { for: "" + option.desc.substr(0, 5) + index } }, [
           _c("span", {
             staticClass: "w3-show-inline-block w3-margin-right v-align"
           }),

@@ -99,7 +99,6 @@
                     if(today.format('MM/DD/YYYY') == new Moment().startOf('month').format('MM/DD/YYYY') ||
                         today.format('MM/DD/YYYY') == new Moment().endOf('month').format('MM/DD/YYYY')) {
                         this.$store.commit('setAmount', parseInt(this.selected.price) - 39.00);
-                        console.log(this.amount)
                     } else {
                         const firstDay = new Moment().startOf('month');
                         const lastDay = new Moment().endOf('month');
@@ -107,7 +106,6 @@
                         let prorate = 0;
                         prorate = (rate * lastDay.diff(today, 'days')).toFixed(2);
                         this.$store.commit('setAmount', prorate);
-                        console.log(this.amount)
                     }
                     break;
                 default:
@@ -144,14 +142,27 @@
                             this.errors.push(error.text);
                         }
                     } else {
-                        const data = {
+                        let data = {
                             registration: this.$store.state.registration,
                             transaction: {
                                 amount: this.$store.state.payment.amount,
                                 dataDescriptor: response.opaqueData.dataDescriptor,
                                 dataValue: response.opaqueData.dataValue,
-                                customerData: this.$store.state.registration
+                                customerData: this.$store.state.registration,
+                                discount: 0.00
+                            },
+                            method: {
+                                name: this.$store.state.payment.name,
+                                month: this.$store.state.payment.month,
+                                year: this.$store.state.payment.year,
+                                number: this.$store.state.payment.card.substr(this.$store.state.payment.card.length - 4),
+                                cvv: this.$store.state.payment.cvv
                             }
+                        }
+                        if(this.code == 'ISMFreeTrial' ||
+                            this.code == 'IMTGEM17' ||
+                            this.code == 'FMH17') {
+                                data.transaction.discount = 39.00;
                         }
 
                         axios.post('/register', data).then(response => {

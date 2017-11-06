@@ -35339,7 +35339,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             case 'FMH17':
                 if (today.format('MM/DD/YYYY') == new __WEBPACK_IMPORTED_MODULE_0_moment___default.a().startOf('month').format('MM/DD/YYYY') || today.format('MM/DD/YYYY') == new __WEBPACK_IMPORTED_MODULE_0_moment___default.a().endOf('month').format('MM/DD/YYYY')) {
                     this.$store.commit('setAmount', parseInt(this.selected.price) - 39.00);
-                    console.log(this.amount);
                 } else {
                     var _firstDay = new __WEBPACK_IMPORTED_MODULE_0_moment___default.a().startOf('month');
                     var _lastDay = new __WEBPACK_IMPORTED_MODULE_0_moment___default.a().endOf('month');
@@ -35347,7 +35346,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     var _prorate = 0;
                     _prorate = (_rate * _lastDay.diff(today, 'days')).toFixed(2);
                     this.$store.commit('setAmount', _prorate);
-                    console.log(this.amount);
                 }
                 break;
             default:
@@ -35413,9 +35411,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                             amount: _this.$store.state.payment.amount,
                             dataDescriptor: response.opaqueData.dataDescriptor,
                             dataValue: response.opaqueData.dataValue,
-                            customerData: _this.$store.state.registration
+                            customerData: _this.$store.state.registration,
+                            discount: 0.00
+                        },
+                        method: {
+                            name: _this.$store.state.payment.name,
+                            month: _this.$store.state.payment.month,
+                            year: _this.$store.state.payment.year,
+                            number: _this.$store.state.payment.card.substr(_this.$store.state.payment.card.length - 4),
+                            cvv: _this.$store.state.payment.cvv
                         }
                     };
+                    if (_this.code == 'ISMFreeTrial' || _this.code == 'IMTGEM17' || _this.code == 'FMH17') {
+                        data.transaction.discount = 39.00;
+                    }
 
                     axios.post('/register', data).then(function (response) {
                         _this.response = {

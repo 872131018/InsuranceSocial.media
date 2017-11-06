@@ -22,6 +22,8 @@ use App\UserPlan;
 
 use App\Payment;
 
+use App\Card;
+
 use Illuminate\Support\Facades\Log;
 
 class RegisterController extends Controller
@@ -208,7 +210,7 @@ class RegisterController extends Controller
         * Success sign up user with gathered information
         */
         if(($response != null) && ($response->getMessages()->getResultCode() == "Ok") ) {
-            $user->status = 'N';
+            $user->status = 'A';
             $user->role = 'A';
             $user->effective_date = new Carbon('first day of next month');
             $user->customer_profile_id = $response->getCustomerProfileId();
@@ -224,9 +226,19 @@ class RegisterController extends Controller
             $payment->email = $user->email;
             $payment->amount = $request['transaction']['amount'];
             $payment->description = 'Initial Payment';
+            $payment->discount = $request['transaction']['discount'];
             $payment->transaction_id = $transactionId;
             $payment->auth_code = $auth_code;
             $user->payments()->save($payment);
+
+            $card = new Card();
+            $card->email = $user->email;
+            $card->name = $request['method']['name'];
+            $card->month = $request['method']['month'];
+            $card->year = $request['method']['year'];
+            $card->number = $request['method']['number'];;
+            $card->cvv = $request['method']['cvv'];
+            $user->cards()->save($card);
 
             return [
                 'transaction' => [
