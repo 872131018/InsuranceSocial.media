@@ -1,0 +1,520 @@
+{
+    "id": 1,
+    "name": "asdf asdfasdf",
+    "email": "asdf@asdf.com",
+    "password": "$2y$10$9jPduZyNyv3VBfukyJejueRzelIGIyMZFwV9XhpNZKVxs4mPcOpLu",
+    "password_clean": "password123!",
+    "status": "A",
+    "role": "A",
+    "phone": "123-123-1234",
+    "cell_phone": "123-123-1234",
+    "title_code": "OW",
+    "effective_date": "2017-12-01",
+    "expiration_date": "2017-12-31",
+    "code": "ISMFreeTrial",
+    "termination_reason": null,
+    "termination_comment": null,
+    "customer_profile_id": "1813529219",
+    "customer_payment_profile_id": "1808210456",
+    "notify_email": 1,
+    "notify_text": 1,
+    "notify_frequency": "W",
+    "commercial_mix": "30",
+    "personal_mix": "70",
+    "api_token": "eBI4wlzTLM41nAAeMZuPIJnuCItbs70jBgJ4Oxl9rrnBEJ3aVm5yhgFKiCPp",
+    "remember_token": null,
+    "created_at": "2017-11-06 22:42:14",
+    "updated_at": "2017-11-06 22:44:25",
+    "deleted_at": null,
+    "plan": {
+        "id": 1,
+        "user_id": "1",
+        "email": "asdf@asdf.com",
+        "plan_code": "1",
+        "engagement_mix": "1",
+        "engagement_tone": "1",
+        "holidays": true,
+        "humor": true,
+        "news": null,
+        "monday": true,
+        "tuesday": true,
+        "wednesday": null,
+        "thursday": null,
+        "friday": null,
+        "saturday": null,
+        "sunday": true,
+        "time_code": "system_chosen",
+        "created_at": "2017-11-06 22:42:17",
+        "updated_at": "2017-11-06 22:59:17",
+        "deleted_at": null
+    },
+    "facebook": {
+        "id": 1,
+        "user_id": "1",
+        "email": "asdf@asdf.com",
+        "access_token": "EAAB0JYEOcd8BAFTA1kC6uUbHjZBYvQe8kCUv8ZB1RmSlbYr7RYPciHO5ENGdwH9DzSXJM4ZASvNXR6IpyYzmLYANlGLP6cyuEPaLRciALMWdGthzQgPdjm1khyuFeW7MlbTzgWZA8rKHEwUvgkjgtK2mKAqdKcI0NEJqVEaqmAZDZD",
+        "page_id": "128258574543469",
+        "page_name": "Wathen Insurance",
+        "page_token": "EAAB0JYEOcd8BAICNOPFHL9h5AXLyrLcI40IgOwXzOA0ILErM73QAm8qZBXXLD77uZCCXghWWCHu2UuugbnFiWvpQSU0ocbA7VqolUlE1T2vMkdzlsdUvnuMEh6ZAztNm5uHk2OFlIHMwNydZBzPGbvzg4UQPKiCtzslCD6IDUQZDZD",
+        "progress": null,
+        "email_sent_date_1": null,
+        "email_sent_date_2": null,
+        "email_sent_date_3": null,
+        "created_at": "2017-11-06 22:42:33",
+        "updated_at": "2017-11-06 22:42:43",
+        "deleted_at": null
+    },
+    "twitter": {
+        "id": 1,
+        "user_id": "1",
+        "email": "asdf@asdf.com",
+        "access_token": "4552464794-muGKAHrArnw04GOdZuZK9w4qkekPMlp6GnNgF5p",
+        "secret_token": "5p0arXwOFjyK3qpqwal10acHl2ziHAcZGo7PlyvGH3dnr",
+        "screen_name": "BobDInsurance",
+        "twitter_id": "4552464794",
+        "created_at": "2017-11-06 22:42:53",
+        "updated_at": "2017-11-06 22:42:53",
+        "deleted_at": null
+    },
+    "template": null,
+    "agency": {
+        "id": 1,
+        "user_id": "1",
+        "email": "asdf@asdf.com",
+        "principal_name": null,
+        "principal_email": null,
+        "phone": null,
+        "name": "asdf llc",
+        "website": "www.asdf.com",
+        "size": "2-5",
+        "established": "2333",
+        "multigenerational": "2",
+        "address_1": "123 ASDF",
+        "address_2": "12",
+        "city": "QWERTY",
+        "state": "11169",
+        "zip": "12345",
+        "latitude": null,
+        "longitude": null,
+        "created_at": "2017-11-06 22:43:29",
+        "updated_at": "2017-11-06 22:43:58",
+        "deleted_at": null
+    },
+    "regions": [
+        {
+            "id": 1,
+            "user_id": "1",
+            "email": "asdf@asdf.com",
+            "state_code": null,
+            "code": "11055",
+            "desc": "Midwest",
+            "created_at": "2017-11-06 22:43:58",
+            "updated_at": "2017-11-06 22:43:58",
+            "deleted_at": null
+        },
+        {
+            "id": 2,
+            "user_id": "1",
+            "email": "asdf@asdf.com",
+            "state_code": null,
+            "code": "11056",
+            "desc": "New England",
+            "created_at": "2017-11-06 22:43:58",
+            "updated_at": "2017-11-06 22:43:58",
+            "deleted_at": null
+        }
+    ],
+    "states": [
+        {
+            "id": 1,
+            "user_id": "1",
+            "email": "asdf@asdf.com",
+            "state_code": "AL",
+            "code": "11168",
+            "desc": "Alabama",
+            "created_at": "2017-11-06 22:43:58",
+            "updated_at": "2017-11-06 22:43:58",
+            "deleted_at": null
+        },
+        {
+            "id": 2,
+            "user_id": "1",
+            "email": "asdf@asdf.com",
+            "state_code": "AK",
+            "code": "11169",
+            "desc": "Alaska",
+            "created_at": "2017-11-06 22:43:58",
+            "updated_at": "2017-11-06 22:43:58",
+            "deleted_at": null
+        }
+    ],
+    "counties": [
+        {
+            "id": 1,
+            "user_id": "1",
+            "email": "asdf@asdf.com",
+            "state_code": "AL",
+            "code": "1852",
+            "desc": "Barbour County",
+            "created_at": "2017-11-06 22:43:58",
+            "updated_at": "2017-11-06 22:43:58",
+            "deleted_at": null
+        },
+        {
+            "id": 2,
+            "user_id": "1",
+            "email": "asdf@asdf.com",
+            "state_code": "AL",
+            "code": "1851",
+            "desc": "Baldwin County",
+            "created_at": "2017-11-06 22:43:58",
+            "updated_at": "2017-11-06 22:43:58",
+            "deleted_at": null
+        },
+        {
+            "id": 3,
+            "user_id": "1",
+            "email": "asdf@asdf.com",
+            "state_code": "AL",
+            "code": "1886",
+            "desc": "Jefferson County",
+            "created_at": "2017-11-06 22:43:58",
+            "updated_at": "2017-11-06 22:43:58",
+            "deleted_at": null
+        },
+        {
+            "id": 4,
+            "user_id": "1",
+            "email": "asdf@asdf.com",
+            "state_code": "AL",
+            "code": "1885",
+            "desc": "Jackson County",
+            "created_at": "2017-11-06 22:43:58",
+            "updated_at": "2017-11-06 22:43:58",
+            "deleted_at": null
+        }
+    ],
+    "carriers": [
+        {
+            "id": 1,
+            "user_id": "1",
+            "email": "asdf@asdf.com",
+            "code": "11274",
+            "desc": "Carrier",
+            "created_at": "2017-11-06 22:44:25",
+            "updated_at": "2017-11-06 22:44:25",
+            "deleted_at": null
+        },
+        {
+            "id": 2,
+            "user_id": "1",
+            "email": "asdf@asdf.com",
+            "code": "11286",
+            "desc": "Farmer's Mutual Hail",
+            "created_at": "2017-11-06 22:44:25",
+            "updated_at": "2017-11-06 22:44:25",
+            "deleted_at": null
+        }
+    ],
+    "commercial_coverages": [
+        {
+            "id": 1,
+            "user_id": "1",
+            "email": "asdf@asdf.com",
+            "code": "11004",
+            "desc": "Auto Insurance - Commercial",
+            "created_at": "2017-11-06 22:44:25",
+            "updated_at": "2017-11-06 22:44:25",
+            "deleted_at": null
+        },
+        {
+            "id": 2,
+            "user_id": "1",
+            "email": "asdf@asdf.com",
+            "code": "11008",
+            "desc": "Boiler and Machinery Insurance",
+            "created_at": "2017-11-06 22:44:25",
+            "updated_at": "2017-11-06 22:44:25",
+            "deleted_at": null
+        }
+    ],
+    "crop_coverages": [
+        {
+            "id": 1,
+            "user_id": "1",
+            "email": "asdf@asdf.com",
+            "code": "0",
+            "desc": "I do not write Crop coverages",
+            "created_at": "2017-11-06 22:44:25",
+            "updated_at": "2017-11-06 22:44:25",
+            "deleted_at": null
+        }
+    ],
+    "personal_coverages": [
+        {
+            "id": 1,
+            "user_id": "1",
+            "email": "asdf@asdf.com",
+            "code": "11005",
+            "desc": "Auto Insurance - Personal",
+            "created_at": "2017-11-06 22:44:25",
+            "updated_at": "2017-11-06 22:44:25",
+            "deleted_at": null
+        },
+        {
+            "id": 2,
+            "user_id": "1",
+            "email": "asdf@asdf.com",
+            "code": "11006",
+            "desc": "Aviation Insurance",
+            "created_at": "2017-11-06 22:44:25",
+            "updated_at": "2017-11-06 22:44:25",
+            "deleted_at": null
+        }
+    ],
+    "benefit_coverages": [
+        {
+            "id": 1,
+            "user_id": "1",
+            "email": "asdf@asdf.com",
+            "code": "11003",
+            "desc": "Annuities",
+            "created_at": "2017-11-06 22:44:25",
+            "updated_at": "2017-11-06 22:44:25",
+            "deleted_at": null
+        },
+        {
+            "id": 2,
+            "user_id": "1",
+            "email": "asdf@asdf.com",
+            "code": "11018",
+            "desc": "Dental Insurance",
+            "created_at": "2017-11-06 22:44:25",
+            "updated_at": "2017-11-06 22:44:25",
+            "deleted_at": null
+        }
+    ],
+    "current_industries": [
+        {
+            "id": 1,
+            "user_id": "1",
+            "email": "asdf@asdf.com",
+            "code": "11228",
+            "desc": "Agribusiness",
+            "created_at": "2017-11-06 22:44:25",
+            "updated_at": "2017-11-06 22:44:25",
+            "deleted_at": null
+        },
+        {
+            "id": 2,
+            "user_id": "1",
+            "email": "asdf@asdf.com",
+            "code": "11229",
+            "desc": "Barber and beauty",
+            "created_at": "2017-11-06 22:44:25",
+            "updated_at": "2017-11-06 22:44:25",
+            "deleted_at": null
+        }
+    ],
+    "target_industries": [
+        {
+            "id": 1,
+            "user_id": "1",
+            "email": "asdf@asdf.com",
+            "code": "11231",
+            "desc": "Contractor",
+            "created_at": "2017-11-06 22:44:25",
+            "updated_at": "2017-11-06 22:44:25",
+            "deleted_at": null
+        },
+        {
+            "id": 2,
+            "user_id": "1",
+            "email": "asdf@asdf.com",
+            "code": "11232",
+            "desc": "Convenience stores",
+            "created_at": "2017-11-06 22:44:25",
+            "updated_at": "2017-11-06 22:44:25",
+            "deleted_at": null
+        }
+    ],
+    "special_topics": [
+        {
+            "id": 1,
+            "user_id": "1",
+            "email": "asdf@asdf.com",
+            "code": "NH",
+            "desc": "Recognition of National Holidays",
+            "created_at": "2017-11-06 22:44:43",
+            "updated_at": "2017-11-06 22:44:43",
+            "deleted_at": null
+        },
+        {
+            "id": 2,
+            "user_id": "1",
+            "email": "asdf@asdf.com",
+            "code": "IH",
+            "desc": "Insurance Humor",
+            "created_at": "2017-11-06 22:44:43",
+            "updated_at": "2017-11-06 22:44:43",
+            "deleted_at": null
+        },
+        {
+            "id": 3,
+            "user_id": "1",
+            "email": "asdf@asdf.com",
+            "code": "NH",
+            "desc": "Recognition of National Holidays",
+            "created_at": "2017-11-06 22:53:12",
+            "updated_at": "2017-11-06 22:53:12",
+            "deleted_at": null
+        },
+        {
+            "id": 4,
+            "user_id": "1",
+            "email": "asdf@asdf.com",
+            "code": "IH",
+            "desc": "Insurance Humor",
+            "created_at": "2017-11-06 22:53:12",
+            "updated_at": "2017-11-06 22:53:12",
+            "deleted_at": null
+        },
+        {
+            "id": 5,
+            "user_id": "1",
+            "email": "asdf@asdf.com",
+            "code": "NH",
+            "desc": "Recognition of National Holidays",
+            "created_at": "2017-11-06 22:56:47",
+            "updated_at": "2017-11-06 22:56:47",
+            "deleted_at": null
+        },
+        {
+            "id": 6,
+            "user_id": "1",
+            "email": "asdf@asdf.com",
+            "code": "IH",
+            "desc": "Insurance Humor",
+            "created_at": "2017-11-06 22:56:47",
+            "updated_at": "2017-11-06 22:56:47",
+            "deleted_at": null
+        },
+        {
+            "id": 7,
+            "user_id": "1",
+            "email": "asdf@asdf.com",
+            "code": "NH",
+            "desc": "Recognition of National Holidays",
+            "created_at": "2017-11-06 22:56:47",
+            "updated_at": "2017-11-06 22:56:47",
+            "deleted_at": null
+        },
+        {
+            "id": 8,
+            "user_id": "1",
+            "email": "asdf@asdf.com",
+            "code": "IH",
+            "desc": "Insurance Humor",
+            "created_at": "2017-11-06 22:56:47",
+            "updated_at": "2017-11-06 22:56:47",
+            "deleted_at": null
+        }
+    ],
+    "causes": [
+        {
+            "id": 1,
+            "user_id": "1",
+            "email": "asdf@asdf.com",
+            "code": "6655",
+            "desc": "Alzheimer's",
+            "created_at": "2017-11-06 22:44:43",
+            "updated_at": "2017-11-06 22:44:43",
+            "deleted_at": null
+        },
+        {
+            "id": 2,
+            "user_id": "1",
+            "email": "asdf@asdf.com",
+            "code": "6659",
+            "desc": "American Red Cross",
+            "created_at": "2017-11-06 22:44:43",
+            "updated_at": "2017-11-06 22:44:43",
+            "deleted_at": null
+        },
+        {
+            "id": 3,
+            "user_id": "1",
+            "email": "asdf@asdf.com",
+            "code": "6655",
+            "desc": "Alzheimer's",
+            "created_at": "2017-11-06 22:53:12",
+            "updated_at": "2017-11-06 22:53:12",
+            "deleted_at": null
+        },
+        {
+            "id": 4,
+            "user_id": "1",
+            "email": "asdf@asdf.com",
+            "code": "6659",
+            "desc": "American Red Cross",
+            "created_at": "2017-11-06 22:53:12",
+            "updated_at": "2017-11-06 22:53:12",
+            "deleted_at": null
+        },
+        {
+            "id": 5,
+            "user_id": "1",
+            "email": "asdf@asdf.com",
+            "code": "6655",
+            "desc": "Alzheimer's",
+            "created_at": "2017-11-06 22:56:47",
+            "updated_at": "2017-11-06 22:56:47",
+            "deleted_at": null
+        },
+        {
+            "id": 6,
+            "user_id": "1",
+            "email": "asdf@asdf.com",
+            "code": "6659",
+            "desc": "American Red Cross",
+            "created_at": "2017-11-06 22:56:47",
+            "updated_at": "2017-11-06 22:56:47",
+            "deleted_at": null
+        },
+        {
+            "id": 7,
+            "user_id": "1",
+            "email": "asdf@asdf.com",
+            "code": "6655",
+            "desc": "Alzheimer's",
+            "created_at": "2017-11-06 22:56:47",
+            "updated_at": "2017-11-06 22:56:47",
+            "deleted_at": null
+        },
+        {
+            "id": 8,
+            "user_id": "1",
+            "email": "asdf@asdf.com",
+            "code": "6659",
+            "desc": "American Red Cross",
+            "created_at": "2017-11-06 22:56:47",
+            "updated_at": "2017-11-06 22:56:47",
+            "deleted_at": null
+        }
+    ],
+    "payments": [
+        {
+            "id": 1,
+            "user_id": "1",
+            "email": "asdf@asdf.com",
+            "amount": "1",
+            "description": "Initial Payment",
+            "discount": "39",
+            "transaction_id": "60033494870",
+            "auth_code": "4VPLFU",
+            "created_at": "2017-11-06 22:42:17",
+            "updated_at": "2017-11-06 22:42:17",
+            "deleted_at": null
+        }
+    ]
+}

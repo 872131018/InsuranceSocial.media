@@ -126,29 +126,7 @@ class OutreachController extends Controller
             }
         }
 
-        $data = [
-            'user' => $user,
-            'plan' => $user->plan,
-            'facebook' => $user->facebook,
-            'template' => $user->template,
-            'twitter' => $user->twitter,
-            'agency' => $user->agency,
-            'regions' => $user->regions,
-            'states' => $states,
-            'carriers' => $user->carriers,
-            'commercialCoverages' => $user->commercialCoverages,
-            'cropCoverages' => $user->cropCoverages,
-            'personalCoverages' => $user->personalCoverages,
-            'benefitCoverages' => $user->benefitCoverages,
-            'currentIndustries' => $user->currentIndustries,
-            'targetIndustries' => $user->targetIndustries,
-            'specialTopics' => $user->specialTopics,
-            'causes' => $user->causes,
-            'payment' => $user->payments
-
-        ];
-
-        return response()->json($data);
+        return response()->json($user);
     }
 
     /**
