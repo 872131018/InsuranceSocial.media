@@ -107,23 +107,40 @@ class OutreachController extends Controller
         }
         $user->causes()->saveMany($selected);
 
+        /**
+        * DATA SCRUBBING STARTS HERE
+        */
+        $carriers = $user->carriers;
+        if(count($carriers) == 0) {
+            $carriers = null;
+        }
+
         $states = [];
-        foreach ($user->states as $state_key => $state_value) {
-            array_push($states, [
-                'code' => $state_value->code,
-                'desc' => $state_value->desc,
-                'state_code' => $state_value->state_code,
-                'counties' => []
-            ]);
-            foreach ($user->counties as $county_key => $county_value) {
-                if($state_value['state_code'] == $county_value['state_code']) {
-                    array_push($states[$state_key]['counties'], [
-                        'code' => $county_value->code,
-                        'desc' => $county_value->desc,
-                        'state_code' => $county_value->state_code,
-                    ]);
+        if(count($user->states) == 0) {
+            $states = null;
+        } else {
+            foreach ($user->states as $state_key => $state_value) {
+                array_push($states, [
+                    'code' => $state_value->code,
+                    'desc' => $state_value->desc,
+                    'state_code' => $state_value->state_code,
+                    'counties' => []
+                ]);
+                foreach ($user->counties as $county_key => $county_value) {
+                    if($state_value['state_code'] == $county_value['state_code']) {
+                        array_push($states[$state_key]['counties'], [
+                            'code' => $county_value->code,
+                            'desc' => $county_value->desc,
+                            'state_code' => $county_value->state_code,
+                        ]);
+                    }
                 }
             }
+        }
+
+        $regions = $user->regions;
+        if(count($regions) == 0) {
+            $regions = null;
         }
 
         $commercialCoverages = $user->commercialCoverages;
@@ -141,6 +158,21 @@ class OutreachController extends Controller
             $personalCoverages = null;
         }
 
+        $cropCoverages = $user->cropCoverages;
+        if(count($cropCoverages) == 0) {
+            $cropCoverages = null;
+        }
+
+        $currentIndustries = $user->currentIndustries;
+        if(count($currentIndustries) == 0) {
+            $currentIndustries = null;
+        }
+
+        $targetIndustries = $user->targetIndustries;
+        if(count($targetIndustries) == 0) {
+            $targetIndustries = null;
+        }
+
         $data = [
             'user' => $user,
             'plan' => $user->plan,
@@ -149,17 +181,15 @@ class OutreachController extends Controller
             'plan' => $user->plan,
             'twitter' => $user->twitter,
             'agency' => $user->agency,
-            'regions' => $user->regions,
+            'regions' => $regions,
             'states' => $states,
-            'counties' => $user->counties,
-            'carriers' => $user->carriers,
+            'carriers' => $carriers,
             'commercialCoverages' => $commercialCoverages,
-            'cropCoverages' => $user->cropCoverages,
+            'cropCoverages' => $cropCoverages,
             'personalCoverages' => $personalCoverages,
             'benefitCoverages' => $benefitCoverages,
-            'currentIndustries' => $user->currentIndustries,
-            'targetIndustries' => $user->targetIndustries,
-            'specialTopics' => $user->specialTopics,
+            'currentIndustries' => $currentIndustries,
+            'targetIndustries' => $targetIndustries,
             'causes' => $user->causes,
             'payments' => $user->payments,
             'cards' => $user->cards

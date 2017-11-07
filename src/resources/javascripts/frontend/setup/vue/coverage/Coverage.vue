@@ -365,12 +365,14 @@
                 }
                 if(this.personal_coverage == '' &&
                     this.commercial_coverage == '' &&
-                    this.benefit_coverage == '') {
+                    this.benefit_coverage == '' &&
+                    this.crop_coverage == '') {
                         this.errors.push('You must select at least 1 type of coverage.')
                 }
                 if(this.personal_coverage == 'N' &&
                     this.commercial_coverage == 'N' &&
-                    this.benefit_coverage == 'N') {
+                    this.benefit_coverage == 'N' &&
+                    this.crop_coverage == 'N') {
                         this.errors.push('You must select at least 1 type of coverage.')
                 }
                 if(this.errors.length == 0) {

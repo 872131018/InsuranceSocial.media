@@ -156,6 +156,9 @@ class FacebookController extends Controller
                 $payment->transaction_id = $transactionId;
                 $payment->auth_code = $auth_code;
                 $user->payments()->save($payment);
+
+                $user->facebook->progress = 2;
+                $user->facebook->update();
             }
         }
 
@@ -188,6 +191,7 @@ class FacebookController extends Controller
         $facebook->page_id = $request->page_id;
         $facebook->page_name = $request->page_name;
         $facebook->page_token = $request->page_access_token;
+        $facebook->progress = 5;
         $facebook->update();
 
         Mail::to($user->email)->send(new HasFacebook($user));
