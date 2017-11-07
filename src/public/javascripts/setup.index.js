@@ -17591,7 +17591,7 @@ var initialState = {
     commercial_coverage_lines: [],
     personal_coverage_lines: [],
     benefit_coverage_lines: [],
-    crop_coverage_lines: [{ "code": "1", "desc": "Yes I write Crop coverages" }, { "code": "0", "desc": "No I do not write Crop coverages" }],
+    crop_coverage_lines: [{ "code": "11016", "desc": "Yes I write Crop coverages" }, { "code": "0", "desc": "No I do not write Crop coverages" }],
     industry_currents: [],
     industry_targets: [],
     engagement_mix: [{ "code": "1", "desc": "Existing Clients Only" }, { "code": "2", "desc": "Mostly Existing Clients" }, { "code": "3", "desc": "Existing and New Clients Equally" }, { "code": "4", "desc": "Mostly New Clients" }, { "code": "5", "desc": "New Clients Only" }],
