@@ -31,9 +31,6 @@
             return {
                 marketing: false,
             }
-        },
-        mounted() {
-            //
         }
     }
 </script>

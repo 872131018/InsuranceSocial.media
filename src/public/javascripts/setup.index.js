@@ -20014,6 +20014,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
 
     methods: {
+        setMarketing: function setMarketing(selection) {
+            if (selection == 'R') {
+                this.properties.selected_states = [];
+                this.properties.selected_counties = [];
+            } else if (selection == 'S') {
+                this.properties.selected_regions = [];
+            }
+            this.target = selection;
+        },
         setState: function setState(state) {
             this.properties.selected_states.push(state);
             var filtered_counties = [];
@@ -20936,9 +20945,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         return {
             marketing: false
         };
-    },
-    mounted: function mounted() {
-        //
     }
 });
 
@@ -21235,8 +21241,8 @@ var render = function() {
             _vm._v(" "),
             _c("Marketing", {
               on: {
-                setMarketing: function(market) {
-                  return (_vm.target = market)
+                setMarketing: function($event) {
+                  _vm.setMarketing($event)
                 }
               }
             }),
@@ -25014,6 +25020,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                         delete axios.defaults.headers.common['X-Requested-With'];
                         delete axios.defaults.headers.common['X-CSRF-TOKEN'];
                         delete axios.defaults.headers.common['Authorization'];
+                        console.log(response.data);return;
                         axios.post('https://www.staging.insurancesocial.media/api/ismv2/_ismv2_register/', response.data).then(function (response) {
                             if (response.data.success) {
                                 window.location = 'https://www.staging.insurancesocial.media/?vkVDosE4Oj_add_za_f_EHi9Y7GGB4gST8WkXMjnnWDIr7ZtE_e_';

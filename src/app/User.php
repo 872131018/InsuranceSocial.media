@@ -30,33 +30,6 @@ class User extends Authenticatable
     ];
 
     /**
-     * The attributes that should be loaded with user
-     *
-     * @var array
-     */
-    protected $with = [
-        'plan',
-        'facebook',
-        'twitter',
-        'template',
-        'twitter',
-        'agency',
-        'regions',
-        'states',
-        'counties',
-        'carriers',
-        'commercialCoverages',
-        'cropCoverages',
-        'personalCoverages',
-        'benefitCoverages',
-        'currentIndustries',
-        'targetIndustries',
-        'specialTopics',
-        'causes',
-        'payments'
-    ];
-
-    /**
      * Get the plan record associated with the user.
      */
     public function plan()

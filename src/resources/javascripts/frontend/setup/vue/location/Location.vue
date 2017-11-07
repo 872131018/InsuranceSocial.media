@@ -40,7 +40,7 @@
                     v-on:setValue="(value) => properties.zip = value">
                 </Field>
                 <Marketing
-                    v-on:setMarketing="(market) => target = market">
+                    v-on:setMarketing="setMarketing($event)">
                 </Marketing>
                 <div v-show="target == 'R'">
                     <div class="w3-section"
@@ -153,6 +153,15 @@
             }
         },
         methods: {
+            setMarketing(selection) {
+                if(selection == 'R') {
+                    this.properties.selected_states = [];
+                    this.properties.selected_counties = [];
+                } else if(selection == 'S') {
+                    this.properties.selected_regions = [];
+                }
+                this.target = selection;
+            },
             setState(state) {
                 this.properties.selected_states.push(state);
                 let filtered_counties = [];
