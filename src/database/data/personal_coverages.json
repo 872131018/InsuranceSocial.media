@@ -61,6 +61,14 @@
            "desc":"Motorcycle Insurance"
         },
         {
+           "code":11261,
+           "desc":"Personal Identity Theft Insurance"
+        },
+        {
+          "code":11040,
+          "desc":"Pet Insurance"
+        },
+        {
            "code":11043,
            "desc":"Renters Insurance"
         },
