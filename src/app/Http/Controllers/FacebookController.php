@@ -153,6 +153,7 @@ class FacebookController extends Controller
                 $payment->email = $user->email;
                 $payment->amount = '25.00';
                 $payment->description = 'Page Create Charge';
+                $payment->discount = '0';
                 $payment->transaction_id = $transactionId;
                 $payment->auth_code = $auth_code;
                 $user->payments()->save($payment);
