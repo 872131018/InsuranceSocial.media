@@ -78,20 +78,14 @@ class CoverageController extends Controller
         }
         $user->commercialCoverages()->saveMany($selected);
 
-
-        if($request->input('selected_crop_coverages') == '1') {
+        foreach ($request->input('selected_crop_coverages') as $coverage) {
             $selectedCoverage = new SelectedCropCoverage();
             $selectedCoverage->email = $user->email;
-            $selectedCoverage->code = '1';
-            $selectedCoverage->desc = 'I write Crop coverages';
-            $user->cropCoverages()->save($selectedCoverage);
-        } else {
-            $selectedCoverage = new SelectedCropCoverage();
-            $selectedCoverage->email = $user->email;
-            $selectedCoverage->code = '0';
-            $selectedCoverage->desc = 'I do not write Crop coverages';
-            $user->cropCoverages()->save($selectedCoverage);
+            $selectedCoverage->code = $coverage['code'];
+            $selectedCoverage->desc = $coverage['desc'];
+            array_push($selected, $selectedCoverage);
         }
+        $user->cropCoverages()->save($selectedCoverage);
 
         $selected = [];
         foreach($user->personalCoverages as $coverage) {

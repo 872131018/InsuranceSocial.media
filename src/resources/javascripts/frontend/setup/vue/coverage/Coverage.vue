@@ -359,9 +359,7 @@
                     this.errors.push('You may only select up to 5 target industries.');
                 }
                 if(this.crop_coverage) {
-                    this.properties.selected_crop_coverages.push({"code": "YES", "desc":"Yes I write Crop coverages"});
-                } else {
-                    this.properties.selected_crop_coverages.push({"code": "NO", "desc":"No I do not write Crop coverages"});
+                    this.properties.selected_crop_coverages.push({"code": "11016", "desc":"Yes I write Crop coverages"});
                 }
                 if(this.personal_coverage == '' &&
                     this.commercial_coverage == '' &&

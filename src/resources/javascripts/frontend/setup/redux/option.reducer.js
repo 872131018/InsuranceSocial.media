@@ -23,8 +23,7 @@ const initialState = {
     personal_coverage_lines: [],
     benefit_coverage_lines: [],
     crop_coverage_lines: [
-        {"code": "11016", "desc":"Yes I write Crop coverages"},
-        {"code": "0", "desc":"No I do not write Crop coverages"},
+        {"code": "11016", "desc":"Yes I write Crop coverages"}
     ],
     industry_currents: [],
     industry_targets: [],

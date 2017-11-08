@@ -17591,7 +17591,7 @@ var initialState = {
     commercial_coverage_lines: [],
     personal_coverage_lines: [],
     benefit_coverage_lines: [],
-    crop_coverage_lines: [{ "code": "11016", "desc": "Yes I write Crop coverages" }, { "code": "0", "desc": "No I do not write Crop coverages" }],
+    crop_coverage_lines: [{ "code": "11016", "desc": "Yes I write Crop coverages" }],
     industry_currents: [],
     industry_targets: [],
     engagement_mix: [{ "code": "1", "desc": "Existing Clients Only" }, { "code": "2", "desc": "Mostly Existing Clients" }, { "code": "3", "desc": "Existing and New Clients Equally" }, { "code": "4", "desc": "Mostly New Clients" }, { "code": "5", "desc": "New Clients Only" }],
@@ -22109,9 +22109,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 this.errors.push('You may only select up to 5 target industries.');
             }
             if (this.crop_coverage) {
-                this.properties.selected_crop_coverages.push({ "code": "YES", "desc": "Yes I write Crop coverages" });
-            } else {
-                this.properties.selected_crop_coverages.push({ "code": "NO", "desc": "No I do not write Crop coverages" });
+                this.properties.selected_crop_coverages.push({ "code": "11016", "desc": "Yes I write Crop coverages" });
             }
             if (this.personal_coverage == '' && this.commercial_coverage == '' && this.benefit_coverage == '' && this.crop_coverage == '') {
                 this.errors.push('You must select at least 1 type of coverage.');
