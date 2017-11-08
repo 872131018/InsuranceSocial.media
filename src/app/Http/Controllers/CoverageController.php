@@ -78,6 +78,10 @@ class CoverageController extends Controller
         }
         $user->commercialCoverages()->saveMany($selected);
 
+        $selected = [];
+        foreach($user->cropCoverages as $coverage) {
+            $coverage->delete();
+        }
         foreach ($request->input('selected_crop_coverages') as $coverage) {
             $selectedCoverage = new SelectedCropCoverage();
             $selectedCoverage->email = $user->email;
