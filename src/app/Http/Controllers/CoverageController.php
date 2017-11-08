@@ -89,7 +89,7 @@ class CoverageController extends Controller
             $selectedCoverage->desc = $coverage['desc'];
             array_push($selected, $selectedCoverage);
         }
-        $user->cropCoverages()->saveMany($selectedCoverage);
+        $user->cropCoverages()->saveMany($selected);
 
         $selected = [];
         foreach($user->personalCoverages as $coverage) {
