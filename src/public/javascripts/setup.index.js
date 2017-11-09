@@ -25022,7 +25022,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                             if (response.data.success) {
                                 window.location = 'https://www.staging.insurancesocial.media/?vkVDosE4Oj_add_za_f_EHi9Y7GGB4gST8WkXMjnnWDIr7ZtE_e_';
                             } else {
-                                console.log(response.data.errors);
+                                _this.errors.push(response.data.errors);
                             }
                         });
                     } else {

@@ -218,7 +218,7 @@
                                 if(response.data.success) {
                                     window.location = 'https://www.staging.insurancesocial.media/?vkVDosE4Oj_add_za_f_EHi9Y7GGB4gST8WkXMjnnWDIr7ZtE_e_';
                                 } else {
-                                    console.log(response.data.errors)
+                                    this.errors.push(response.data.errors);
                                 }
                             });
                         } else {
