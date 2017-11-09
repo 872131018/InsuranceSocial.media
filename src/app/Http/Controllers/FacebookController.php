@@ -158,8 +158,9 @@ class FacebookController extends Controller
                 $payment->auth_code = $auth_code;
                 $user->payments()->save($payment);
 
-                $user->facebook->progress = 2;
-                $user->facebook->update();
+                $facebook = FacebookAccount::find($user->facebook->id);
+                $facebook->progress = 2;
+                $facebook->update();
             }
         }
 
