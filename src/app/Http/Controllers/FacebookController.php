@@ -160,7 +160,7 @@ class FacebookController extends Controller
 
                 $facebookAccount = new FacebookAccount();
                 $facebookAccount->email = $user->email;
-                $facebook->progress = '2';
+                $facebookAccount->progress = '2';
                 $user->facebook()->save($facebookAccount);
             }
         }
