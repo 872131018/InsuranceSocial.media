@@ -33,7 +33,10 @@
             }
         },
         mounted() {
-            //
+            if(this.default) {
+                this.option = this.default;
+                this.$emit('setOption', this.option);
+            }
         }
     }
 </script>

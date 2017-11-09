@@ -1,5 +1,8 @@
 <template>
     <div>
+        <Loader
+            v-if="loading">
+        </Loader>
         <ProgressBar
             v-bind:progress="96">
         </ProgressBar>
@@ -110,6 +113,7 @@
 </template>
 
 <script>
+    import Loader from './Loader';
     import ProgressBar from '../Progress';
     import QuickNavigation from '../QuickNavigation';
     import Field from './inputs/Field';
@@ -136,7 +140,8 @@
                 day_label: this.getLabel(),
                 days: store.getState().OptionStore.days,
                 times: store.getState().OptionStore.times,
-                errors: []
+                errors: [],
+                loading: false
             }
         },
         methods: {
@@ -211,11 +216,13 @@
                     axios.post(window.location, this.properties).then(response => {
                         if(route == 'Done') {
                             alert('Congratulations! You have completed your profile. Click continue to go to your dashboard.');
+                            this.loading = true;
                             delete axios.defaults.headers.common['X-Requested-With'];
                             delete axios.defaults.headers.common['X-CSRF-TOKEN'];
                             delete axios.defaults.headers.common['Authorization'];
                             axios.post('https://www.staging.insurancesocial.media/api/ismv2/_ismv2_register/', response.data).then(response => {
                                 if(response.data.success) {
+                                    this.loading = false;
                                     window.location = 'https://www.staging.insurancesocial.media/?vkVDosE4Oj_add_za_f_EHi9Y7GGB4gST8WkXMjnnWDIr7ZtE_e_';
                                 } else {
                                     this.errors.push(response.data.errors);
@@ -231,6 +238,7 @@
             }
         },
         components: {
+            Loader,
             ProgressBar,
             QuickNavigation,
             Field,

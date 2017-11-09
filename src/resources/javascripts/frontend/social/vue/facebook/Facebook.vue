@@ -9,7 +9,7 @@
             </div>
             <div class="w3-section">
                 <div class="w3-panel">
-                    <div>Do you have a corporate Facebook Page? If so, please log in to Facebook in order to recieve our Facebook services.</div>
+                    <div>Do you have a Facebook account? If so, please log in to Facebook in order to recieve our Facebook services.</div>
                     <div class="w3-panel">
                         <input class="v-align" type="radio" id="facebook_yes"
                             v-bind:value="true"
@@ -27,8 +27,27 @@
                         </label>
                     </div>
                 </div>
+                <div class="w3-panel">
+                    <div>Do you have a corporate Facebook Page?</div>
+                    <div class="w3-panel">
+                        <input class="v-align" type="radio" id="page_yes"
+                            v-bind:value="true"
+                            v-bind:checked="properties.has_page"
+                            v-model="properties.has_page">
+                        <label for="page_yes">
+                            <span class="w3-show-inline-block w3-margin v-align"></span>Yes
+                        </label>
+                        <input class="v-align" type="radio" id="page_no"
+                            v-bind:value="false"
+                            v-bind:checked="properties.has_page"
+                            v-model="properties.has_page">
+                        <label for="page_no">
+                            <span class="w3-show-inline-block w3-margin v-align"></span>No
+                        </label>
+                    </div>
+                </div>
                 <div class="w3-panel"
-                    v-if="properties.has_facebook == false">
+                    v-if="properties.has_page == false">
                     <div>Do you want InsuranceSocial.Media to setup a corporate Facebook Page for you?</div>
                     <div><em>(Note: A one-time $25 fee will apply)</em></div>
                     <div class="w3-panel">
@@ -49,11 +68,11 @@
             </div>
             <div class="w3-section">
                 <h5 class="w3-text-orange"
-                    v-if="properties.has_facebook == false && properties.create_facebook == false">One in five page views in the United States is on Facebook! Are you sure you don’t want to make Facebook part of your social media marketing?
+                    v-if="properties.has_page == false && properties.create_facebook == false">One in five page views in the United States is on Facebook! Are you sure you don’t want to make Facebook part of your social media marketing?
                 </h5>
                 <h5 v-else>We look forward to working with you. Please click continue to finish setting up your account.</h5>
                 <button class="w3-button w3-text-white primary"
-                    v-if="properties.has_facebook == false && properties.create_facebook == false"
+                    v-if="properties.has_page == false && properties.create_facebook == false"
                     v-on:click="update()">Yes, I'm sure
                 </button>
                 <button class="w3-button w3-text-white primary"
@@ -72,7 +91,8 @@
         data() {
             return {
                 properties: {
-                    has_facebook: false,
+                    has_facebook: true,
+                    has_page: false,
                     create_facebook: true
                 },
                 redirectUrl: ''

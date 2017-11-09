@@ -17447,6 +17447,25 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -17454,7 +17473,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     data: function data() {
         return {
             properties: {
-                has_facebook: false,
+                has_facebook: true,
+                has_page: false,
                 create_facebook: true
             },
             redirectUrl: ''
@@ -17636,7 +17656,7 @@ var render = function() {
           _c("div", { staticClass: "w3-panel" }, [
             _c("div", [
               _vm._v(
-                "Do you have a corporate Facebook Page? If so, please log in to Facebook in order to recieve our Facebook services."
+                "Do you have a Facebook account? If so, please log in to Facebook in order to recieve our Facebook services."
               )
             ]),
             _vm._v(" "),
@@ -17693,7 +17713,63 @@ var render = function() {
             ])
           ]),
           _vm._v(" "),
-          _vm.properties.has_facebook == false
+          _c("div", { staticClass: "w3-panel" }, [
+            _c("div", [_vm._v("Do you have a corporate Facebook Page?")]),
+            _vm._v(" "),
+            _c("div", { staticClass: "w3-panel" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.properties.has_page,
+                    expression: "properties.has_page"
+                  }
+                ],
+                staticClass: "v-align",
+                attrs: { type: "radio", id: "page_yes" },
+                domProps: {
+                  value: true,
+                  checked: _vm.properties.has_page,
+                  checked: _vm._q(_vm.properties.has_page, true)
+                },
+                on: {
+                  change: function($event) {
+                    _vm.$set(_vm.properties, "has_page", true)
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _vm._m(3),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.properties.has_page,
+                    expression: "properties.has_page"
+                  }
+                ],
+                staticClass: "v-align",
+                attrs: { type: "radio", id: "page_no" },
+                domProps: {
+                  value: false,
+                  checked: _vm.properties.has_page,
+                  checked: _vm._q(_vm.properties.has_page, false)
+                },
+                on: {
+                  change: function($event) {
+                    _vm.$set(_vm.properties, "has_page", false)
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _vm._m(4)
+            ])
+          ]),
+          _vm._v(" "),
+          _vm.properties.has_page == false
             ? _c("div", { staticClass: "w3-panel" }, [
                 _c("div", [
                   _vm._v(
@@ -17701,7 +17777,7 @@ var render = function() {
                   )
                 ]),
                 _vm._v(" "),
-                _vm._m(3),
+                _vm._m(5),
                 _vm._v(" "),
                 _c("div", { staticClass: "w3-panel" }, [
                   _c("input", {
@@ -17726,7 +17802,7 @@ var render = function() {
                     }
                   }),
                   _vm._v(" "),
-                  _vm._m(4),
+                  _vm._m(6),
                   _vm._v(" "),
                   _c("input", {
                     directives: [
@@ -17750,14 +17826,14 @@ var render = function() {
                     }
                   }),
                   _vm._v(" "),
-                  _vm._m(5)
+                  _vm._m(7)
                 ])
               ])
             : _vm._e()
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "w3-section" }, [
-          _vm.properties.has_facebook == false &&
+          _vm.properties.has_page == false &&
           _vm.properties.create_facebook == false
             ? _c("h5", { staticClass: "w3-text-orange" }, [
                 _vm._v(
@@ -17770,7 +17846,7 @@ var render = function() {
                 )
               ]),
           _vm._v(" "),
-          _vm.properties.has_facebook == false &&
+          _vm.properties.has_page == false &&
           _vm.properties.create_facebook == false
             ? _c(
                 "button",
@@ -17825,6 +17901,24 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("label", { attrs: { for: "facebook_no" } }, [
+      _c("span", { staticClass: "w3-show-inline-block w3-margin v-align" }),
+      _vm._v("No\n                    ")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", { attrs: { for: "page_yes" } }, [
+      _c("span", { staticClass: "w3-show-inline-block w3-margin v-align" }),
+      _vm._v("Yes\n                    ")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", { attrs: { for: "page_no" } }, [
       _c("span", { staticClass: "w3-show-inline-block w3-margin v-align" }),
       _vm._v("No\n                    ")
     ])

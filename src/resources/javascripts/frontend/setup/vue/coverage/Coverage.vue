@@ -32,6 +32,7 @@
                     </Dropdown>
                 </div>
                 <Personal
+                    v-bind:default="hasPersonal()"
                     v-on:setOption="setPersonal($event)">
                 </Personal>
                 <div class="w3-section"
@@ -55,6 +56,7 @@
                     </Dropdown>
                 </div>
                 <Commercial
+                    v-bind:default="hasCommercial()"
                     v-on:setOption="setCommercial($event)">
                 </Commercial>
                 <div class="w3-section"
@@ -78,6 +80,7 @@
                     </Dropdown>
                 </div>
                 <Benefit
+                    v-bind:default="hasBenefit()"
                     v-on:setOption="setBenefit($event)">
                 </Benefit>
                 <div class="w3-section"
@@ -116,7 +119,7 @@
                     </ul>
                 </div>
                 <div class="w3-section"
-                    v-if="commercial_coverage == 'Y'">
+                    v-if="commercial_coverage == 'Y' || properties.selected_current_industries.length > 0">
                     <Dropdown
                         v-bind:label="'Current industries for marketing (Select up to 5)'"
                         v-bind:options="industry_currents"
@@ -136,7 +139,7 @@
                     </ul>
                 </div>
                 <div class="w3-section"
-                    v-if="commercial_coverage == 'Y'">
+                    v-if="commercial_coverage == 'Y' || properties.selected_target_industries.length > 0">
                     <Dropdown
                         v-bind:label="'Target industries for future marketing (Select up to 5)'"
                         v-bind:options="industry_targets"
@@ -229,6 +232,27 @@
                     }
                 }
                 this.properties.selected_carriers.push(carrier);
+            },
+            hasPersonal() {
+                if(this.properties.selected_personal_coverages.length > 0) {
+                    return 'Y';
+                } else {
+                    return 'N';
+                }
+            },
+            hasCommercial() {
+                if(this.properties.selected_commercial_coverages.length > 0) {
+                    return 'Y';
+                } else {
+                    return 'N';
+                }
+            },
+            hasBenefit() {
+                if(this.properties.selected_benefit_coverages.length > 0) {
+                    return 'Y';
+                } else {
+                    return 'N';
+                }
             },
             pushPersonalCoverage(coverage) {
                 for(let selected_coverage of this.properties.selected_personal_coverages) {
