@@ -17,7 +17,7 @@ class CreateFacebookAccountTable extends Migration
             $table->increments('id');
             $table->string('user_id');
             $table->string('email');
-            $table->string('access_token');
+            $table->string('access_token')->nullable();
             $table->string('page_id')->nullable();
             $table->string('page_name')->nullable();
             $table->string('page_token')->nullable();
