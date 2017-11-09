@@ -19,6 +19,9 @@
                 <button class="w3-button w3-text-white primary"
                     v-on:click="update('Twitter')">Continue
                 </button>
+                <button class="w3-button w3-text-white primary"
+                    v-on:click="update('Skip')">Skip
+                </button>
             </div>
         </div>
     </div>
@@ -52,6 +55,9 @@
                 this.properties.page_access_token = page.access_token;
             },
             update(route) {
+                if(route == 'Skip') {
+                    this.$router.push({ name: 'Twitter' });
+                }
                 this.errors = [];
                 if(this.errors.length == 0) {
                     axios.post(window.location, this.properties).then(response => {

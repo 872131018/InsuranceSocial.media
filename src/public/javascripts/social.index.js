@@ -18925,6 +18925,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 
 
@@ -18958,6 +18961,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         update: function update(route) {
             var _this2 = this;
 
+            if (route == 'Skip') {
+                this.$router.push({ name: 'Twitter' });
+            }
             this.errors = [];
             if (this.errors.length == 0) {
                 axios.post(window.location, this.properties).then(function (response) {
@@ -19173,6 +19179,19 @@ var render = function() {
               }
             },
             [_vm._v("Continue\n            ")]
+          ),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "w3-button w3-text-white primary",
+              on: {
+                click: function($event) {
+                  _vm.update("Skip")
+                }
+              }
+            },
+            [_vm._v("Skip\n            ")]
           )
         ])
       ])
