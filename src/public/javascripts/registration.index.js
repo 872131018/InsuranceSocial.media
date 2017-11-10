@@ -34454,7 +34454,11 @@ var render = function() {
         }
       }),
       _c("Field", {
-        attrs: { label: "Email", value: _vm.email, valid: _vm.emailValid },
+        attrs: {
+          label: "Email (This will be your username)",
+          value: _vm.email,
+          valid: _vm.emailValid
+        },
         on: {
           setValue: function(value) {
             return _vm.$store.commit("setEmail", value)

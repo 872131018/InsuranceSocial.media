@@ -6,12 +6,17 @@
             v-if="loading == 0">
             <router-view></router-view>
         </div>
+        <div
+            v-else>
+            <Loader></Loader>
+        </div>
         <Foot></Foot>
     </div>
 </template>
 
 <script>
     import Tips from './Tips';
+    import Loader from './Loader';
 
     export default {
         data() {
@@ -98,7 +103,8 @@
             });
         },
         components: {
-            Tips
+            Tips,
+            Loader
         }
     }
 </script>

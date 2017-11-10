@@ -9,7 +9,7 @@
             :valid="nameValid"
             @setValue="(value) => $store.commit('setName', value)")
         Field(
-            :label="'Email'"
+            :label="'Email (This will be your username)'"
             :value="email"
             :valid="emailValid"
             @setValue="(value) => $store.commit('setEmail', value)")

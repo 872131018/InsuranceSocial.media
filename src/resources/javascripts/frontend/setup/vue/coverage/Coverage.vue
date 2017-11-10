@@ -104,6 +104,7 @@
                     </Dropdown>
                 </div>
                 <Crop
+                    v-bind:default="hasCrop()"
                     v-on:setOption="(option) => crop_coverage = option">
                 </Crop>
                 <div class="w3-section"
@@ -254,6 +255,13 @@
                     return 'N';
                 }
             },
+            hasCrop() {
+                if(this.properties.selected_crop_coverages.length > 0) {
+                    return 'Y';
+                } else {
+                    return 'N';
+                }
+            },
             pushPersonalCoverage(coverage) {
                 for(let selected_coverage of this.properties.selected_personal_coverages) {
                     if(selected_coverage.code == coverage.code) {
@@ -384,12 +392,6 @@
                 }
                 if(this.crop_coverage) {
                     this.properties.selected_crop_coverages.push({"code": "11016", "desc":"Yes I write Crop coverages"});
-                }
-                if(this.personal_coverage == '' &&
-                    this.commercial_coverage == '' &&
-                    this.benefit_coverage == '' &&
-                    this.crop_coverage == '') {
-                        this.errors.push('You must select at least 1 type of coverage.')
                 }
                 if(this.personal_coverage == 'N' &&
                     this.commercial_coverage == 'N' &&

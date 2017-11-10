@@ -113,7 +113,7 @@
 </template>
 
 <script>
-    import Loader from './Loader';
+    import Loader from '../Loader';
     import ProgressBar from '../Progress';
     import QuickNavigation from '../QuickNavigation';
     import Field from './inputs/Field';
