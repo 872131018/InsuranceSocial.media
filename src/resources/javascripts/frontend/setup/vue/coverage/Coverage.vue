@@ -105,7 +105,7 @@
                 </div>
                 <Crop
                     v-bind:default="hasCrop()"
-                    v-on:setOption="(option) => crop_coverage = option">
+                    v-on:setOption="setCrop($event)">
                 </Crop>
                 <div class="w3-section"
                     v-if="properties.selected_current_industries.length > 0">
@@ -216,7 +216,7 @@
                 crop_coverage_lines: store.getState().OptionStore.crop_coverage_lines,
                 industry_currents: store.getState().OptionStore.industry_currents,
                 industry_targets: store.getState().OptionStore.industry_targets,
-                personal_coverage: '',
+                personal_coverage: store.getState().SelectionStore.personal_coverage,
                 commercial_coverage: '',
                 benefit_coverage: '',
                 crop_coverage: '',
@@ -262,6 +262,35 @@
                     return 'N';
                 }
             },
+            setPersonal(option) {
+                if(option == 'N') {
+                    this.properties.selected_personal_coverages = [];
+                    store.dispatch({ type: 'CLEAR_PERSONAL_COVERAGE' });
+                }
+                this.personal_coverage = option;
+            },
+            setCommercial(option) {
+                if(option == 'N') {
+                    this.properties.selected_commercial_coverages = [];
+                }
+                this.commercial_coverage = option;
+            },
+            setBenefit(option) {
+                if(option == 'N') {
+                    this.properties.selected_benefit_coverages = [];
+                }
+                this.benefit_coverage = option;
+            },
+            setCrop(option) {
+                if(option == 'N') {
+                    this.properties.selected_crop_coverages = [];
+                    store.dispatch({ type: 'CLEAR_CROP_COVERAGE' });
+                } else {
+                    this.properties.selected_crop_coverages.push({"code": "11016", "desc":"Yes I write Crop coverages"});
+                    store.dispatch({ type: 'UPDATE_CROP_COVERAGE', data: this.properties.selected_crop_coverages });
+                }
+                this.crop_coverage = option;
+            },
             pushPersonalCoverage(coverage) {
                 for(let selected_coverage of this.properties.selected_personal_coverages) {
                     if(selected_coverage.code == coverage.code) {
@@ -269,6 +298,7 @@
                     }
                 }
                 this.properties.selected_personal_coverages.push(coverage);
+                store.dispatch({ type: 'UPDATE_PERSONAL_COVERAGE', data: this.properties.selected_personal_coverages });
             },
             pushCommercialCoverage(coverage) {
                 for(let selected_coverage of this.properties.selected_commercial_coverages) {
@@ -277,6 +307,7 @@
                     }
                 }
                 this.properties.selected_commercial_coverages.push(coverage);
+                store.dispatch({ type: 'UPDATE_COMMERCIAL_COVERAGE', data: this.properties.selected_commercial_coverages });
             },
             pushBenefitCoverage(coverage) {
                 for(let selected_coverage of this.properties.selected_benefit_coverages) {
@@ -285,6 +316,7 @@
                     }
                 }
                 this.properties.selected_benefit_coverages.push(coverage);
+                store.dispatch({ type: 'UPDATE_BENEFIT_COVERAGE', data: this.properties.selected_benefit_coverages });
             },
             pushCurrentIndustry(industry) {
                 for(let selected_industry of this.properties.selected_current_industries) {
@@ -301,24 +333,6 @@
                     }
                 }
                 this.properties.selected_target_industries.push(industry);
-            },
-            setPersonal(option) {
-                if(option == 'N') {
-                    this.properties.selected_personal_coverages = [];
-                }
-                this.personal_coverage = option;
-            },
-            setCommercial(option) {
-                if(option == 'N') {
-                    this.properties.selected_commercial_coverages = [];
-                }
-                this.commercial_coverage = option;
-            },
-            setBenefit(option) {
-                if(option == 'N') {
-                    this.properties.selected_benefit_coverages = [];
-                }
-                this.benefit_coverage = option;
             },
             setRatio(ratio) {
                 this.properties.commercial_mix = ratio.commercial;
@@ -389,9 +403,6 @@
                 }
                 if(this.properties.selected_target_industries.length > 5) {
                     this.errors.push('You may only select up to 5 target industries.');
-                }
-                if(this.crop_coverage) {
-                    this.properties.selected_crop_coverages.push({"code": "11016", "desc":"Yes I write Crop coverages"});
                 }
                 if(this.personal_coverage == 'N' &&
                     this.commercial_coverage == 'N' &&

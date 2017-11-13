@@ -1,5 +1,5 @@
 <template lang="pug">
-    div(class="w3-card-2 w3-padding form")
+    div(class="w3-card w3-padding form")
         <div style="position:relative;height:0;padding-bottom:56.25%"><iframe class='sproutvideo-player' src='//videos.sproutvideo.com/embed/e89addb61c1ee7ca60/50f11a607713876a?bigPlayButton=false' style='position:absolute;width:100%;height:100%;left:0;top:0' frameborder='0' allowfullscreen></iframe></div>
         h3 Create an Account
         h5 Please complete required fields to complete registration.

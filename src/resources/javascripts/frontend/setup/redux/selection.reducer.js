@@ -20,6 +20,30 @@ module.exports = function(selections = initialState, action) {
                 selections[property] = action.data[property];
             }
             break;
+        case 'UPDATE_PERSONAL_COVERAGE':
+            selections.selected_personal_coverages = action.data;
+            break;
+        case 'CLEAR_PERSONAL_COVERAGE':
+            selections.selected_personal_coverages = [];
+            break;
+        case 'UPDATE_COMMERCIAL_COVERAGE':
+            selections.selected_commercial_coverages = action.data;
+            break;
+        case 'CLEAR_COMMERCIAL_COVERAGE':
+            selections.selected_commercial_coverages = [];
+            break;
+        case 'UPDATE_BENEFIT_COVERAGE':
+            selections.selected_benefit_coverages = action.data;
+            break;
+        case 'CLEAR_BENEFIT_COVERAGE':
+            selections.selected_benefit_coverages = [];
+            break;
+        case 'UPDATE_CROP_COVERAGE':
+            selections.selected_crop_coverages = action.data;
+            break;
+        case 'CLEAR_CROP_COVERAGE':
+            selections.selected_crop_coverages = [];
+            break;
         default:
             break;
     }

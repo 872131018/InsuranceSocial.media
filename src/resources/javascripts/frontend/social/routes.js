@@ -1,10 +1,11 @@
-import Facebook from './vue/facebook/Facebook';
+import VueRouter from 'vue-router';
+import Facebook from './vue/facebook/Index';
 import Create from './vue/create/Create';
 import Page from './vue/page/Page';
 import Twitter from './vue/twitter/Twitter';
 import LinkedIn from './vue/linkedin/LinkedIn';
 
-export default [
+const routes = [
     {
         path: '/facebook',
         name: 'Facebook',
@@ -31,3 +32,8 @@ export default [
         component: LinkedIn
     }
 ];
+
+export default new VueRouter({
+  mode: 'history',
+  routes
+});
