@@ -18397,95 +18397,29 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
-            properties: {
-                has_facebook: true,
-                has_page: false,
-                create_facebook: true
-            },
             redirectUrl: ''
         };
     },
     mounted: function mounted() {
         var _this = this;
 
-        axios.get(window.base_url + '/api/facebook').then(function (response) {
+        axios.get('/api/facebook').then(function (response) {
             _this.redirectUrl = response.data;
         });
     },
 
     methods: {
-        update: function update() {
-            if (this.properties.has_facebook) {
-                window.location = this.redirectUrl;
-            } else {
-                if (this.properties.create_facebook) {
-                    this.$router.push({ name: 'Create' });
-                } else {
-                    this.$router.push({ name: 'Twitter' });
-                }
-            }
+        facebookLogin: function facebookLogin() {
+            window.location = this.redirectUrl;
+        },
+        createPage: function createPage() {
+            this.$router.push({ name: 'Create' });
         }
     },
     components: {
@@ -18598,208 +18532,35 @@ var render = function() {
       _c("div", { staticClass: "w3-card w3-padding form" }, [
         _vm._m(0),
         _c("div", { staticClass: "w3-section" }, [
-          _c("div", { staticClass: "w3-panel" }, [
-            _c("div", [
-              _vm._v(
-                "Do you have a Facebook account? If so, please log in to Facebook in order to recieve our Facebook services."
-              )
-            ]),
-            _c("div", { staticClass: "w3-panel" }, [
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.properties.has_facebook,
-                    expression: "properties.has_facebook"
-                  }
-                ],
-                staticClass: "v-align",
-                attrs: { type: "radio", id: "facebook_yes" },
-                domProps: {
-                  value: true,
-                  checked: _vm.properties.has_facebook,
-                  checked: _vm._q(_vm.properties.has_facebook, true)
-                },
-                on: {
-                  change: function($event) {
-                    _vm.$set(_vm.properties, "has_facebook", true)
-                  }
-                }
-              }),
-              _vm._m(1),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.properties.has_facebook,
-                    expression: "properties.has_facebook"
-                  }
-                ],
-                staticClass: "v-align",
-                attrs: { type: "radio", id: "facebook_no" },
-                domProps: {
-                  value: false,
-                  checked: _vm.properties.has_facebook,
-                  checked: _vm._q(_vm.properties.has_facebook, false)
-                },
-                on: {
-                  change: function($event) {
-                    _vm.$set(_vm.properties, "has_facebook", false)
-                  }
-                }
-              }),
-              _vm._m(2)
-            ])
+          _c("div", [
+            _vm._v(
+              "Do you have a corporate Facebook page you’d like us to post to, or do you need us to create a page for you?"
+            )
           ]),
-          _c("div", { staticClass: "w3-panel" }, [
-            _c("div", [_vm._v("Do you have a corporate Facebook Page?")]),
-            _c("div", { staticClass: "w3-panel" }, [
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.properties.has_page,
-                    expression: "properties.has_page"
-                  }
-                ],
-                staticClass: "v-align",
-                attrs: { type: "radio", id: "page_yes" },
-                domProps: {
-                  value: true,
-                  checked: _vm.properties.has_page,
-                  checked: _vm._q(_vm.properties.has_page, true)
-                },
-                on: {
-                  change: function($event) {
-                    _vm.$set(_vm.properties, "has_page", true)
-                  }
+          _c(
+            "button",
+            {
+              staticClass: "w3-button w3-margin w3-text-white primary",
+              on: {
+                click: function($event) {
+                  _vm.facebookLogin()
                 }
-              }),
-              _vm._m(3),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.properties.has_page,
-                    expression: "properties.has_page"
-                  }
-                ],
-                staticClass: "v-align",
-                attrs: { type: "radio", id: "page_no" },
-                domProps: {
-                  value: false,
-                  checked: _vm.properties.has_page,
-                  checked: _vm._q(_vm.properties.has_page, false)
-                },
-                on: {
-                  change: function($event) {
-                    _vm.$set(_vm.properties, "has_page", false)
-                  }
+              }
+            },
+            [_vm._v("Post to my page")]
+          ),
+          _c(
+            "button",
+            {
+              staticClass: "w3-button w3-margin w3-text-white primary",
+              on: {
+                click: function($event) {
+                  _vm.createPage()
                 }
-              }),
-              _vm._m(4)
-            ])
-          ]),
-          _vm.properties.has_page == false
-            ? _c("div", { staticClass: "w3-panel" }, [
-                _c("div", [
-                  _vm._v(
-                    "Do you want InsuranceSocial.Media to setup a corporate Facebook Page for you?"
-                  )
-                ]),
-                _vm._m(5),
-                _c("div", { staticClass: "w3-panel" }, [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.properties.create_facebook,
-                        expression: "properties.create_facebook"
-                      }
-                    ],
-                    staticClass: "v-align",
-                    attrs: { type: "radio", id: "create_yes" },
-                    domProps: {
-                      value: true,
-                      checked: _vm._q(_vm.properties.create_facebook, true)
-                    },
-                    on: {
-                      change: function($event) {
-                        _vm.$set(_vm.properties, "create_facebook", true)
-                      }
-                    }
-                  }),
-                  _vm._m(6),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.properties.create_facebook,
-                        expression: "properties.create_facebook"
-                      }
-                    ],
-                    staticClass: "v-align",
-                    attrs: { type: "radio", id: "create_no" },
-                    domProps: {
-                      value: false,
-                      checked: _vm._q(_vm.properties.create_facebook, false)
-                    },
-                    on: {
-                      change: function($event) {
-                        _vm.$set(_vm.properties, "create_facebook", false)
-                      }
-                    }
-                  }),
-                  _vm._m(7)
-                ])
-              ])
-            : _vm._e()
-        ]),
-        _c("div", { staticClass: "w3-section" }, [
-          _vm.properties.has_page == false &&
-          _vm.properties.create_facebook == false
-            ? _c("h5", { staticClass: "w3-text-orange" }, [
-                _vm._v(
-                  "One in five page views in the United States is on Facebook! Are you sure you don’t want to make Facebook part of your social media marketing?"
-                )
-              ])
-            : _c("h5", [
-                _vm._v(
-                  "We look forward to working with you. Please click continue to finish setting up your account."
-                )
-              ]),
-          _vm.properties.has_page == false &&
-          _vm.properties.create_facebook == false
-            ? _c(
-                "button",
-                {
-                  staticClass: "w3-button w3-text-white primary",
-                  on: {
-                    click: function($event) {
-                      _vm.update()
-                    }
-                  }
-                },
-                [_vm._v("Yes, I'm sure")]
-              )
-            : _c(
-                "button",
-                {
-                  staticClass: "w3-button w3-text-white primary",
-                  on: {
-                    click: function($event) {
-                      _vm.update()
-                    }
-                  }
-                },
-                [_vm._v("Continue")]
-              )
+              }
+            },
+            [_vm._v("Create a new page")]
+          )
         ])
       ])
     ],
@@ -18813,68 +18574,6 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "w3-panel" }, [
       _c("h3", [_vm._v("Link your Facebook")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("label", { attrs: { for: "facebook_yes" } }, [
-      _c("span", { staticClass: "w3-show-inline-block w3-margin v-align" }),
-      _vm._v("Yes")
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("label", { attrs: { for: "facebook_no" } }, [
-      _c("span", { staticClass: "w3-show-inline-block w3-margin v-align" }),
-      _vm._v("No")
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("label", { attrs: { for: "page_yes" } }, [
-      _c("span", { staticClass: "w3-show-inline-block w3-margin v-align" }),
-      _vm._v("Yes")
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("label", { attrs: { for: "page_no" } }, [
-      _c("span", { staticClass: "w3-show-inline-block w3-margin v-align" }),
-      _vm._v("No")
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("em", [_vm._v(" (Note: A one-time $25 fee will apply)")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("label", { attrs: { for: "create_yes" } }, [
-      _c("span", { staticClass: "w3-show-inline-block w3-margin v-align" }),
-      _vm._v("Yes")
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("label", { attrs: { for: "create_no" } }, [
-      _c("span", { staticClass: "w3-show-inline-block w3-margin v-align" }),
-      _vm._v("No")
     ])
   }
 ]
@@ -18990,6 +18689,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -19005,6 +18711,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             },
             images: [{ 'id': '1', 'name': 'Apartment', 'src': 'images/apartment.jpg' }, { 'id': '2', 'name': 'Cars', 'src': 'images/cars.jpg' }, { 'id': '3', 'name': 'Cellphone', 'src': 'images/cellphone.jpg' }, { 'id': '4', 'name': 'Compass', 'src': 'images/compass.jpg' }, { 'id': '5', 'name': 'Door', 'src': 'images/door.jpg' }, { 'id': '6', 'name': 'House', 'src': 'images/house.jpg' }, { 'id': '7', 'name': 'Office', 'src': 'images/office.jpg' }, { 'id': '8', 'name': 'Pen', 'src': 'images/pen.jpg' }, { 'id': '9', 'name': 'Plan', 'src': 'images/plan.jpg' }, { 'id': '10', 'name': 'Tree', 'src': 'images/tree.jpg' }],
             redirectUrl: '',
+            warning: false,
             errors: []
         };
     },
@@ -19029,9 +18736,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }
             if (this.errors.length == 0) {
                 axios.post(window.location, this.properties).then(function (response) {
-                    //store.dispatch({ type: 'SET_TEMPLATE', data: response.data });
-                    //this.$router.push({ name: route });
-                    window.location = _this2.redirectUrl;
+                    store.dispatch({ type: 'SET_TEMPLATE', data: response.data });
+                    _this2.$router.push({ name: route });
+                    //window.location = this.redirectUrl;
                 }).catch(function (error) {
                     _this2.errors.push('An error has occured, please contact support.');
                 });
@@ -19794,7 +19501,7 @@ var render = function() {
         _c("div", { staticClass: "w3-section" }, [
           _c("h5", [
             _vm._v(
-              "By clicking continue, your Facebook Page will be queued for creation. You will be charged a one-time fee of $25.  You will also receive an email within 24 hours with further instructions. Please follow these instructions to complete the set-up of your business Facebook Page."
+              "I need InsuranceSocial.Media to create a new Facebook page for me. I approve the $25 Facebook page creation fee.  You will receive an email within 24 hours with further instructions. Please follow these instructions to complete the set-up of your business Facebook Page."
             )
           ]),
           _vm._v(" "),
@@ -19826,13 +19533,36 @@ var render = function() {
               staticClass: "w3-button w3-text-white primary",
               on: {
                 click: function($event) {
-                  _vm.$router.push({ name: "Twitter" })
+                  _vm.warning = true
                 }
               }
             },
-            [_vm._v("Skip\n            ")]
+            [_vm._v("I don't want to post to Facebook.\n            ")]
           )
-        ])
+        ]),
+        _vm._v(" "),
+        _vm.warning
+          ? _c("div", { staticClass: "w3-section" }, [
+              _c("h6", { staticClass: "w3-text-red" }, [
+                _vm._v(
+                  "One in five page views in the United States is on Facebook! Are you sure you don’t want to make Facebook part of your social media marketing?"
+                )
+              ]),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "w3-button w3-text-white primary",
+                  on: {
+                    click: function($event) {
+                      _vm.$router.push({ name: "Twitter" })
+                    }
+                  }
+                },
+                [_vm._v("Yes\n            ")]
+              )
+            ])
+          : _vm._e()
       ])
     ],
     1

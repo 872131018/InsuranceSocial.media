@@ -23,7 +23,7 @@
                 </Radio>
             </div>
             <div class="w3-section">
-                <h5>By clicking continue, your Facebook Page will be queued for creation. You will be charged a one-time fee of $25.  You will also receive an email within 24 hours with further instructions. Please follow these instructions to complete the set-up of your business Facebook Page.</h5>
+                <h5>I need InsuranceSocial.Media to create a new Facebook page for me. I approve the $25 Facebook page creation fee.  You will receive an email within 24 hours with further instructions. Please follow these instructions to complete the set-up of your business Facebook Page.</h5>
                 <div class="w3-panel"
                     v-if="errors.length">
                     <Errors v-bind:errors="errors"></Errors>
@@ -32,7 +32,14 @@
                     v-on:click="update('Twitter')">Continue
                 </button>
                 <button class="w3-button w3-text-white primary"
-                    v-on:click="$router.push({ name: 'Twitter' })">Skip
+                    v-on:click="warning = true">I don't want to post to Facebook.
+                </button>
+            </div>
+            <div class="w3-section"
+                v-if="warning">
+                <h6 class="w3-text-red">One in five page views in the United States is on Facebook! Are you sure you don’t want to make Facebook part of your social media marketing?</h6>
+                <button class="w3-button w3-text-white primary"
+                    v-on:click="$router.push({ name: 'Twitter' })">Yes
                 </button>
             </div>
         </div>
@@ -65,6 +72,7 @@
                     {'id':'10', 'name':'Tree', 'src':'images/tree.jpg'}
                 ],
                 redirectUrl: '',
+                warning: false,
                 errors: []
             }
         },
@@ -84,9 +92,9 @@
                 }
                 if(this.errors.length == 0) {
                     axios.post(window.location, this.properties).then(response => {
-                        //store.dispatch({ type: 'SET_TEMPLATE', data: response.data });
-                        //this.$router.push({ name: route });
-                        window.location = this.redirectUrl;
+                        store.dispatch({ type: 'SET_TEMPLATE', data: response.data });
+                        this.$router.push({ name: route });
+                        //window.location = this.redirectUrl;
                     }).catch(error => {
                         this.errors.push('An error has occured, please contact support.');
                     });
