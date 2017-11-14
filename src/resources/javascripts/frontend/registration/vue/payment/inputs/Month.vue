@@ -1,17 +1,12 @@
-<template>
-    <div class="w3-col l3 m3 s12 w3-margin-right v-align">
-        <div class="w3-dropdown-hover">
-            <button class="w3-button">{{ selected.name }}
-                <i class="fa fa-caret-down"></i>
-            </button>
-            <div class="w3-dropdown-content w3-bar-block w3-border">
-                <div class="w3-bar-item w3-button"
+<template lang="pug">
+    div(class="w3-third v-align")
+        div(class="w3-dropdown-hover")
+            button(class="w3-button") {{ selected.name }}
+                i(class="fa fa-caret-down")
+            div(class="w3-dropdown-content w3-bar-block w3-border")
+                div(class="w3-bar-item w3-button"
                     v-for="month in months"
-                    v-on:click="setMonth(month)">{{ month.name }}
-                </div>
-            </div>
-        </div>
-    </div>
+                    v-on:click="setMonth(month)") {{ month.name }}
 </template>
 
 <script>

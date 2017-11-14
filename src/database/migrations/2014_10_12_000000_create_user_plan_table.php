@@ -18,8 +18,8 @@ class CreateUserPlanTable extends Migration
             $table->string('user_id');
             $table->string('email');
             $table->char('plan_code', 1)->nullable();
-            $table->string('engagement_mix')->nullable();
-            $table->string('engagement_tone')->nullable();
+            $table->integer('engagement_mix')->nullable();
+            $table->integer('engagement_tone')->nullable();
             $table->boolean('holidays')->nullable();
             $table->boolean('humor')->nullable();
             $table->boolean('news')->nullable();
@@ -28,8 +28,6 @@ class CreateUserPlanTable extends Migration
             $table->boolean('wednesday')->nullable();
             $table->boolean('thursday')->nullable();
             $table->boolean('friday')->nullable();
-            $table->boolean('saturday')->nullable();
-            $table->boolean('sunday')->nullable();
             $table->string('time_code')->nullable();
             $table->timestamps();
             $table->softDeletes();

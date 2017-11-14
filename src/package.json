@@ -10,15 +10,15 @@
     "production": "NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
   },
   "dependencies": {
-    "axios": "^0.17.0",
+    "axios": "^0.17.1",
     "chartist": "^0.11.0",
-    "laravel-mix": "^1.5.1",
-    "moment": "^2.19.1",
+    "laravel-mix": "^1.6.1",
+    "moment": "^2.19.2",
     "pug": "^2.0.0-rc.4",
     "redux": "^3.7.2",
-    "vue": "^2.5.2",
+    "vue": "^2.5.3",
     "vue-router": "^3.0.1",
-    "vuex": "^3.0.0",
+    "vuex": "^3.0.1",
     "w3-css": "^4.0.4"
   }
 }

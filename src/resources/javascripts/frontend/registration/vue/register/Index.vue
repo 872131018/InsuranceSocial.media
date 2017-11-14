@@ -47,7 +47,6 @@
     import Field from './inputs/Field';
     import PasswordField from './inputs/PasswordField';
     import Terms from './inputs/Terms';
-    import Errors from './Errors';
 
     export default {
         data() {
@@ -148,8 +147,7 @@
         components: {
             Field,
             PasswordField,
-            Terms,
-            Errors
+            Terms
         }
     }
 </script>

@@ -1,27 +1,20 @@
-<template>
-    <div class="w3-section">
-        <div v-if="plan.name != 'Enterprise Plan'">
-            <input class="v-align" type="radio"
-                v-bind:id="getId(plan.name)"
-                v-bind:checked="selected"
-                v-on:change="$emit('setPlan', plan)">
-            <label v-bind:for="getId(plan.name)">
-                <span class="w3-show-inline-block w3-margin-right v-align"></span>
-            </label>
-            <span class="w3-large w3-margin-left">{{ plan.name }}</span>
-            <span class="w3-large w3-right w3-margin-right w3-padding-right">{{ plan.cost }}</span>
-            <Features v-bind:features="plan.features"></Features>
-        </div>
-        <div v-else>
-            <span class="w3-large w3-text-blue">Contact Us for Enterprise Pricing</span>
-            <Features v-bind:features="plan.features"></Features>
-        </div>
-    </div>
+<template lang="pug">
+    div(v-if="plan.name != 'Enterprise Plan'")
+        input(class="v-align" type="radio"
+            :id="getId(plan.name)"
+            :checked="selected"
+            @change="$emit('setPlan', plan)")
+        label(:for="getId(plan.name)")
+            span(class="w3-show-inline-block v-align")
+        span(class="w3-xlarge v-align") {{ plan.name }}
+        span(class="w3-xlarge w3-right v-align") {{ plan.cost }}
+        Features(:features="plan.features")
+    div(v-else)
+        span(class="w3-xlarge w3-text-blue") Contact Us for Enterprise Pricing
+        Features(:features="plan.features")
 </template>
 
 <script>
-    import Features from './Features';
-
     export default {
         props: {
             plan: {
@@ -35,9 +28,6 @@
             getId(name) {
                 return name.replace(' ', '');
             }
-        },
-        components: {
-            Features
         }
     }
 </script>

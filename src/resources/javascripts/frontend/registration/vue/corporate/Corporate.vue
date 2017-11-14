@@ -1,5 +1,5 @@
 <template lang="pug">
-    div(class="w3-card-2 w3-padding form")
+    div(class="w3-card w3-padding form")
         img(class="w3-image"
             :src="logo")
         h6 On behalf of {{ company }}, we’re looking forward to helping you build your strong, growing, personalized social media experience!

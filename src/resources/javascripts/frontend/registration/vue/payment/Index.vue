@@ -1,5 +1,5 @@
 <template lang="pug">
-    div(class="w3-card-2 w3-padding form")
+    div(class="w3-card w3-padding form")
         h3 You have selected the following plan.
         Plan(
             v-if="selected.name && !expired"
@@ -14,13 +14,13 @@
                 h3 Total Charges: #[b ${{ amount }}]
             Card(
                 @setCard="(value) => $store.commit('setCard', value)")
-            Expiration(
-                @setMonth="(value) => $store.commit('setMonth', value.value)"
-                @setYear="(value) => $store.commit('setYear', value)"
-                @setCode="(value) => $store.commit('setCVV', value)")
+            div(class="w3-row-padding")
+                Month(@setMonth="(value) => $store.commit('setMonth', value.value)")
+                Year(@setYear="(value) => $store.commit('setYear', value)")
+                CCV(@setCode="(value) => $store.commit('setCVV', value)")
             div Expiration Month and Year(YYYY) with Security Code
                 i(class="fa fa-question-circle-o w3-tooltip")
-                    img(class="w3-text" style="position:absolute;bottom:-20px" src="images/creditcards_cvv.png")
+                    img(class="w3-text" style="position:absolute;bottom:-20px" src="/images/creditcards_cvv.png")
             Name(@setName="(value) => $store.commit('setName', value)")
             Errors(
                 v-if="errors.length"
@@ -43,10 +43,12 @@
     import Moment from 'moment';
     import Plan from './Plan';
     import Card from './inputs/Card';
-    import Expiration from './Expiration';
+
+    import Month from './inputs/Month';
+    import Year from './inputs/Year';
     import CCV from './inputs/CCV';
+
     import Name from './inputs/Name';
-    import Errors from './Errors';
     import Modal from './modal/Modal';
     import Expired from './expired/Expired';
 
@@ -135,7 +137,7 @@
                     },
                     authData: this.$store.state.authorize
                 };
-
+                
                 Accept.dispatchData(secureData, (response) => {
                     if (response.messages.resultCode === "Error") {
                         for(let error of response.messages.message) {
@@ -190,10 +192,12 @@
         components: {
             Plan,
             Card,
-            Expiration,
+
+            Month,
+            Year,
             CCV,
+
             Name,
-            Errors,
             Modal,
             Expired
         }

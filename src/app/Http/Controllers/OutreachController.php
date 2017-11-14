@@ -44,16 +44,13 @@ class OutreachController extends Controller
     {
         $user = Auth::user();
         $plan = $user->plan;
-        $plan->engagement_mix = $request->input('engagement_mix');
-        $plan->engagement_tone = $request->input('engagement_tone');
+        $plan->engagement_mix = intval($request->input('engagement_mix'));
+        $plan->engagement_tone = intval($request->input('engagement_tone'));
         $plan->time_code = $request->input('time_code');
 
         $days = $request->input('posting_days');
         foreach($days as $day) {
             switch($day['code']) {
-                case 'sunday':
-                    $plan->sunday = true;
-                    break;
                 case 'monday':
                     $plan->monday = true;
                     break;
@@ -68,9 +65,6 @@ class OutreachController extends Controller
                     break;
                 case 'friday':
                     $plan->friday = true;
-                    break;
-                case 'saturday':
-                    $plan->saturday = true;
                     break;
             }
         }

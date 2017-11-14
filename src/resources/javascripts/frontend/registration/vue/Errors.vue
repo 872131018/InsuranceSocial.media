@@ -1,6 +1,5 @@
 <template lang="pug">
-    ul(class="w3-ul w3-text-red"
-        v-if="errors.length")
+    ul(class="w3-ul w3-text-red")
         li(
             v-for="error in errors") {{ error }}
 </template>

@@ -46,13 +46,11 @@ const initialState = {
     ],
     causes: [],
     days: [
-        {"code": "sunday", "desc":"Sunday"},
         {"code": "monday", "desc":"Monday"},
         {"code": "tuesday", "desc":"Tuesday"},
         {"code": "wednesday", "desc":"Wednesday"},
         {"code": "thursday", "desc":"Thursday"},
-        {"code": "friday", "desc":"Friday"},
-        {"code": "saturday", "desc":"Saturday"}
+        {"code": "friday", "desc":"Friday"}
     ],
     times: [
         {"code": "system_chosen", "desc":"System Chosen"},

@@ -1,6 +1,6 @@
 <template lang="pug">
     div(class="w3-padding-32 w3-hide-small tips")
-        ul(class="w3-ul w3-card-2 w3-white w3-center")
+        ul(class="w3-ul w3-card w3-white w3-center")
             li(class="w3-padding w3-text-white primary")
                 h6: b Why you'll #[em love] Insurance Social Media...
             li(class="w3-padding")
