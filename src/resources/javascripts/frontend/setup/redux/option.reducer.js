@@ -25,6 +25,7 @@ const initialState = {
     crop_coverage_lines: [
         {"code": "11016", "desc":"Yes I write Crop coverages"}
     ],
+    coverages: [],
     industry_currents: [],
     industry_targets: [],
     engagement_mix: [
@@ -84,12 +85,15 @@ export default function(options = initialState, action) {
         case 'SET_COVERAGES':
             for(let coverage of action.data.commercial) {
                 options['commercial_coverage_lines'].push(coverage);
+                options['coverages'].push(coverage);
             }
             for(let coverage of action.data.personal) {
                 options['personal_coverage_lines'].push(coverage);
+                options['coverages'].push(coverage);
             }
             for(let coverage of action.data.benefit) {
                 options['benefit_coverage_lines'].push(coverage);
+                options['coverages'].push(coverage);
             }
             break;
         case 'SET_INDUSTRIES':

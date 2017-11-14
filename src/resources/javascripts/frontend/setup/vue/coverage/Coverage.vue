@@ -156,6 +156,26 @@
                         v-on:setRatio="setRatio($event)">
                     </Ratio>
                 </div>
+                <div class="w3-section"
+                    v-if="properties.selected_target_coverages.length > 0">
+                    <div>Selected Target Coverages (Click to remove)</div>
+                    <ul class="w3-ul w3-hoverable">
+                        <li class="w3-section w3-show-inline-block w3-border-0 w3-padding"
+                            v-for="(coverage, index) in properties.selected_target_coverages"
+                            v-on:click="(coverate) => properties.selected_target_coverages.splice(index, 1)">
+                            {{ coverage.desc }}
+                            <i class="fa fa-times w3-margin-left"></i>
+                        </li>
+                    </ul>
+                </div>
+                <div class="w3-section">
+                    <div>What coverages do you want to sell more of?</div>
+                    <Dropdown
+                        v-bind:label="'Coverages (Select up to 5)'"
+                        v-bind:options="coverages"
+                        v-on:setOption="pushTargetCoverage($event)">
+                    </Dropdown>
+                </div>
             </div>
             <div class="w3-panel"
                 v-if="errors.length">
@@ -206,8 +226,9 @@
                     selected_crop_coverages: store.getState().SelectionStore.selected_crop_coverages,
                     selected_current_industries: store.getState().SelectionStore.selected_current_industries,
                     selected_target_industries: store.getState().SelectionStore.selected_target_industries,
+                    selected_target_coverages: store.getState().SelectionStore.selected_target_coverages,
                     commercial_mix: store.getState().UserStore.commercial_mix,
-                    personal_mix: store.getState().UserStore.personal_mix
+                    personal_mix: store.getState().UserStore.personal_mix,
                 },
                 carriers: store.getState().OptionStore.carriers,
                 personal_coverage_lines: store.getState().OptionStore.personal_coverage_lines,
@@ -220,6 +241,7 @@
                 commercial_coverage: '',
                 benefit_coverage: '',
                 crop_coverage: '',
+                coverages: store.getState().OptionStore.coverages,
                 errors: [],
                 modal: false,
                 modal_content: {}
@@ -334,6 +356,14 @@
                 }
                 this.properties.selected_target_industries.push(industry);
             },
+            pushTargetCoverage(coverage) {
+                for(let selected_coverage of this.properties.selected_target_coverages) {
+                    if(selected_coverage.code == coverage.code) {
+                        return
+                    }
+                }
+                this.properties.selected_target_coverages.push(coverage);
+            },
             setRatio(ratio) {
                 this.properties.commercial_mix = ratio.commercial;
                 this.properties.personal_mix = ratio.personal;
@@ -404,6 +434,12 @@
                 if(this.properties.selected_target_industries.length > 5) {
                     this.errors.push('You may only select up to 5 target industries.');
                 }
+                if(this.properties.selected_target_coverages.length > 5) {
+                    this.errors.push('You may only select up to 5 target coverages.');
+                }
+                if(this.properties.selected_target_coverages.length == 0) {
+                    this.errors.push('You must selected a type of coverage you want to sell more of.');
+                }
                 if(this.personal_coverage == 'N' &&
                     this.commercial_coverage == 'N' &&
                     this.benefit_coverage == 'N' &&
@@ -416,7 +452,6 @@
                         this.modal = true;
                     } else {
                         axios.post(window.location, this.properties).then(response => {
-                            store.dispatch({ type: 'SET_COVERAGE', data: response.data });
                             this.$router.push({ name: route });
                         }).catch(error => {
                             this.errors.push('An error has occured, please contact support.');

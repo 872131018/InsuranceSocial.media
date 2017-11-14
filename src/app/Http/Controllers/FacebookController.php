@@ -20,9 +20,7 @@ use App\Services\PaymentService;
 
 use App\Payment;
 
-use App\Mail\NoFacebook;
-
-use App\Mail\HasFacebook;
+use Illuminate\Support\Facades\Log;
 
 class FacebookController extends Controller
 {
@@ -91,7 +89,7 @@ class FacebookController extends Controller
             'type' => 'single',
             'amount' => '25.00'
             ],
-            Auth::user());
+            $user);
         $controller = new AnetController\CreateTransactionController($transactionRequest);
         $response = $controller->executeWithApiResponse(\net\authorize\api\constants\ANetEnvironment::SANDBOX);
 
@@ -165,7 +163,10 @@ class FacebookController extends Controller
             }
         }
 
-        Mail::to($user->email)->send(new NoFacebook($user));
+        Mail::send('emails.nofacebook', [ 'name' => $user->name ], function ($message) {
+           $message->to(Auth::user()->email);
+           $message->subject('Insurance Social Media Instructions');
+       });
 
         return response()->json($user);
     }
@@ -197,7 +198,10 @@ class FacebookController extends Controller
         $facebook->progress = 5;
         $facebook->update();
 
-        Mail::to($user->email)->send(new HasFacebook($user));
+        Mail::send('emails.hasfacebook', [ 'name' => $user->name ], function ($message) {
+           $message->to(Auth::user()->email);
+           $message->subject('Insurance Social Media Instructions');
+       });
 
         return response()->json($facebook);
     }

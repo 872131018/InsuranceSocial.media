@@ -7,6 +7,7 @@ const initialState = {
     selected_commercial_coverages: [],
     selected_benefit_coverages: [],
     selected_crop_coverages: [],
+    selected_target_coverages: [],
     selected_current_industries: [],
     selected_target_industries: [],
     selected_special_topics: [],
@@ -43,6 +44,12 @@ module.exports = function(selections = initialState, action) {
             break;
         case 'CLEAR_CROP_COVERAGE':
             selections.selected_crop_coverages = [];
+            break;
+        case 'UPDATE_TARGET_COVERAGE':
+            selections.selected_target_coverages = action.data;
+            break;
+        case 'CLEAR_TARGET_COVERAGE':
+            selections.selected_target_coverages = [];
             break;
         default:
             break;

@@ -1,4 +1,4 @@
-Dear {{ $user->name }}, <br/>
+Dear {{ $name }}, <br/>
 <p>
 Thank you for making InsuranceSocial.Media your insurance social media solution!</p>
 <p>

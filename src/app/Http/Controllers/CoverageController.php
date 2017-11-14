@@ -16,6 +16,8 @@ use App\SelectedPersonalCoverage;
 
 use App\SelectedBenefitCoverage;
 
+use App\SelectedTargetCoverage;
+
 use App\SelectedCurrentIndustry;
 
 use App\SelectedTargetIndustry;
@@ -142,6 +144,19 @@ class CoverageController extends Controller
             array_push($selected, $selectedIndustry);
         }
         $user->targetIndustries()->saveMany($selected);
+
+        $selected = [];
+        foreach($user->targetCoverages as $coverage) {
+            $coverage->delete();
+        }
+        foreach ($request->input('selected_target_coverages') as $coverage) {
+            $selectedCoverage = new SelectedTargetCoverage();
+            $selectedCoverage->email = $user->email;
+            $selectedCoverage->code = $coverage['code'];
+            $selectedCoverage->desc = $coverage['desc'];
+            array_push($selected, $selectedCoverage);
+        }
+        $user->targetCoverages()->saveMany($selected);
 
         $user->commercial_mix = $request->input('commercial_mix');
         $user->personal_mix = $request->input('personal_mix');

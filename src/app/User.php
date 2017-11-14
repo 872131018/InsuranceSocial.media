@@ -142,6 +142,14 @@ class User extends Authenticatable
     }
 
     /**
+     * Get the benefit coverages record associated with the user.
+     */
+    public function targetCoverages()
+    {
+        return $this->hasMany('App\SelectedTargetCoverage');
+    }
+
+    /**
      * Get the current industries record associated with the user.
      */
     public function currentIndustries()
