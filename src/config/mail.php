@@ -99,8 +99,7 @@ return [
     |
     */
 
-    //'sendmail' => '/usr/sbin/sendmail -bs',
-    'sendmail' => '/usr/sbin/sendmail',
+    'sendmail' => '/usr/sbin/sendmail -bs',
 
     /*
     |--------------------------------------------------------------------------
