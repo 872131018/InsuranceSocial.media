@@ -167,6 +167,11 @@ class OutreachController extends Controller
             $targetIndustries = null;
         }
 
+        $targetCoverages = $user->targetCoverages;
+        if(count($targetCoverages) == 0) {
+            $targetCoverages = null;
+        }
+
         $data = [
             'user' => $user,
             'plan' => $user->plan,
@@ -184,6 +189,7 @@ class OutreachController extends Controller
             'benefitCoverages' => $benefitCoverages,
             'currentIndustries' => $currentIndustries,
             'targetIndustries' => $targetIndustries,
+            'targetCoverages' => $targetCoverages,
             'causes' => $user->causes,
             'payments' => $user->payments,
             'cards' => $user->cards
