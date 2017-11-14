@@ -24,6 +24,8 @@ use App\Mail\NoFacebook;
 
 use App\Mail\HasFacebook;
 
+use Illuminate\Support\Facades\Log;
+
 class FacebookController extends Controller
 {
 
@@ -166,6 +168,12 @@ class FacebookController extends Controller
         }
 
         Mail::to($user->email)->send(new NoFacebook($user));
+
+        $fail = Mail::failures();
+        if(!empty($fail)) {
+            Log::info($fail[0]);
+            throw new \Exception('Could not send message to '.$fail[0]);
+        }
 
         return response()->json($user);
     }
