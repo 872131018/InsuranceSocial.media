@@ -40,6 +40,7 @@
                     v-on:setValue="(value) => properties.zip = value">
                 </Field>
                 <Marketing
+                    v-bind:default="setTarget()"
                     v-on:setMarketing="setMarketing($event)">
                 </Marketing>
                 <div v-show="target == 'R'">
@@ -153,6 +154,14 @@
             }
         },
         methods: {
+            setTarget() {
+                if(this.properties.selected_regions.length > 0) {
+                    return 'R';
+                }
+                if(this.properties.selected_states.length > 0) {
+                    return 'S';
+                }
+            },
             setMarketing(selection) {
                 if(selection == 'R') {
                     this.properties.selected_states = [];

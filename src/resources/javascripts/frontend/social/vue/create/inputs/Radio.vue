@@ -1,5 +1,5 @@
 <template>
-    <ul class="w3-ul w3-hoverable" style="display:table">
+    <ul class="w3-ul" style="display:table">
         <li class="w3-section" style="display:table-row"
             v-for="(option, index) in options">
             <div style="display:table-cell">
@@ -12,7 +12,7 @@
                     <span class="w3-show-inline-block w3-margin-right v-align"></span>{{ option.name }}
                 </label>
             </div>
-            <div style="display:table-cell">
+            <div class="w3-padding-16" style="display:table-cell">
                 <img class="v-align" height="180" width="180"
                     v-if="option.src"
                     v-bind:src="getSrc(option)">

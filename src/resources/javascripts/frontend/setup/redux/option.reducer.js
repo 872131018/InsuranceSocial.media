@@ -51,7 +51,9 @@ const initialState = {
         {"code": "tuesday", "desc":"Tuesday"},
         {"code": "wednesday", "desc":"Wednesday"},
         {"code": "thursday", "desc":"Thursday"},
-        {"code": "friday", "desc":"Friday"}
+        {"code": "friday", "desc":"Friday"},
+        {"code": "saturday", "desc":"Saturday"},
+        {"code": "sunday", "desc":"Sunday"}
     ],
     times: [
         {"code": "system_chosen", "desc":"System Chosen"},

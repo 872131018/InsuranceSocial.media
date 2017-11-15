@@ -28,6 +28,8 @@ class CreateUserPlanTable extends Migration
             $table->boolean('wednesday')->nullable();
             $table->boolean('thursday')->nullable();
             $table->boolean('friday')->nullable();
+            $table->boolean('saturday')->nullable();
+            $table->boolean('sunday')->nullable();
             $table->string('time_code')->nullable();
             $table->timestamps();
             $table->softDeletes();

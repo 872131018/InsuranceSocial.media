@@ -193,8 +193,8 @@
         </div>
         <Modal
             v-if="modal"
-            v-bind:personal_coverage="personal_coverage"
-            v-bind:commercial_coverage="commercial_coverage"
+            v-bind:personal_coverage="modal_personal_warning"
+            v-bind:commercial_coverage="modal_commercial_warning"
             v-on:closeModal="() => modal = false"
             v-on:continue="useDefaults()">
         </Modal>
@@ -244,7 +244,9 @@
                 coverages: store.getState().OptionStore.coverages,
                 errors: [],
                 modal: false,
-                modal_content: {}
+                modal_content: {},
+                modal_personal_warning: false,
+                modal_commercial_warning: false
             }
         },
         methods: {
@@ -373,7 +375,7 @@
                 this.$router.push({ name: 'Location' });
             },
             useDefaults() {
-                if(this.personal_coverage) {
+                if(this.modal_personal_warning) {
                     this.properties.selected_personal_coverages.push({
                          "id":1,
                          "code":"11005",
@@ -395,7 +397,7 @@
                         "desc":"Renters Insurance"
                     });
                 }
-                if(this.commercial_coverage) {
+                if(this.modal_commercial_warning) {
                     this.properties.selected_commercial_coverages.push({
                         "id":5,
                         "code":"11011",
@@ -412,7 +414,7 @@
                         "desc":"General Liability Insurance"
                     });
                 }
-                this.update('Outreach');
+                this.post('Outreach');
             },
             update(route) {
                 this.errors = [];
@@ -437,27 +439,41 @@
                 if(this.properties.selected_target_coverages.length > 5) {
                     this.errors.push('You may only select up to 5 target coverages.');
                 }
-                if(this.properties.selected_target_coverages.length == 0) {
-                    this.errors.push('You must selected a type of coverage you want to sell more of.');
-                }
                 if(this.personal_coverage == 'N' &&
                     this.commercial_coverage == 'N' &&
                     this.benefit_coverage == 'N' &&
                     this.crop_coverage == 'N') {
                         this.errors.push('You must select at least 1 type of coverage.')
                 }
+                if(this.properties.selected_target_coverages.length == 0) {
+                    this.errors.push('You must selected a type of coverage you want to sell more of.');
+                }
+                if(this.properties.commercial_mix == null ||
+                    this.properties.personal_mix == null) {
+                        this.errors.push('You must enter how much of your business is personal or commercial.')
+                }
                 if(this.errors.length == 0) {
-                    if((this.personal_coverage == 'Y' && this.properties.selected_personal_coverages.length == 0) ||
-                        (this.commercial_coverage == 'Y' && this.properties.selected_commercial_coverages.length == 0)) {
+                    if(this.personal_coverage == 'Y' && this.properties.selected_personal_coverages.length == 0) {
+                        this.modal_personal_warning = true;
                         this.modal = true;
                     } else {
-                        axios.post(window.location, this.properties).then(response => {
-                            this.$router.push({ name: route });
-                        }).catch(error => {
-                            this.errors.push('An error has occured, please contact support.');
-                        });
+                        this.modal_personal_warning = false;
                     }
+                    if(this.commercial_coverage == 'Y' && this.properties.selected_commercial_coverages.length == 0) {
+                        this.modal_commercial_warning = true;
+                        this.modal = true;
+                    } else {
+                        this.modal_commercial_warning = false;
+                    }
+                    this.post(route);
                 }
+            },
+            post(route) {
+                axios.post(window.location, this.properties).then(response => {
+                    this.$router.push({ name: route });
+                }).catch(error => {
+                    this.errors.push('An error has occured, please contact support.');
+                });
             }
         },
         components: {

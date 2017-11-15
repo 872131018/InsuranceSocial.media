@@ -25,11 +25,20 @@
         props: {
             method: {
                 type: String
+            },
+            default: {
+                type: String
             }
         },
         data() {
             return {
                 marketing: false,
+            }
+        },
+        mounted() {
+            if(this.default) {
+                this.marketing = this.default;
+                this.$emit('setMarketing', this.marketing);
             }
         }
     }

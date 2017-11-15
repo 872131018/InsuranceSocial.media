@@ -66,6 +66,12 @@ class OutreachController extends Controller
                 case 'friday':
                     $plan->friday = true;
                     break;
+                case 'saturday':
+                    $plan->saturday = true;
+                    break;
+                case 'sunday':
+                    $plan->sunday = true;
+                    break;
             }
         }
 

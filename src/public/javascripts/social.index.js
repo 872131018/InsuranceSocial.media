@@ -19306,7 +19306,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "ul",
-    { staticClass: "w3-ul w3-hoverable", staticStyle: { display: "table" } },
+    { staticClass: "w3-ul", staticStyle: { display: "table" } },
     _vm._l(_vm.options, function(option, index) {
       return _c(
         "li",
@@ -19347,18 +19347,25 @@ var render = function() {
             ])
           ]),
           _vm._v(" "),
-          _c("div", { staticStyle: { display: "table-cell" } }, [
-            option.src
-              ? _c("img", {
-                  staticClass: "v-align",
-                  attrs: {
-                    height: "180",
-                    width: "180",
-                    src: _vm.getSrc(option)
-                  }
-                })
-              : _vm._e()
-          ])
+          _c(
+            "div",
+            {
+              staticClass: "w3-padding-16",
+              staticStyle: { display: "table-cell" }
+            },
+            [
+              option.src
+                ? _c("img", {
+                    staticClass: "v-align",
+                    attrs: {
+                      height: "180",
+                      width: "180",
+                      src: _vm.getSrc(option)
+                    }
+                  })
+                : _vm._e()
+            ]
+          )
         ]
       )
     })

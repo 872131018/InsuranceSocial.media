@@ -6,7 +6,7 @@
             </header>
             <div class="w3-container">
                 <div class="w3-content w3-center"
-                    v-if="personal_coverage == 'Y'">
+                    v-if="personal_coverage">
                     <p>You haven't selected any personal coverages, would you like to use our core coverages?</p>
                     <p>The core coverages are as follows:</p>
                     <p>Personal Auto Insurance</p>
@@ -15,7 +15,7 @@
                     <p>Renters Insurance</p>
                 </div>
                 <div class="w3-content w3-center"
-                    v-if="commercial_coverage == 'Y'">
+                    v-if="commercial_coverage">
                     <p>You haven't selected any commercial coverages, would you like to use our core coverages?</p>
                     <p>The core coverages are as follows:</p>
                     <p>Business Owner's Policy</p>
@@ -38,13 +38,10 @@
     export default {
         props: {
             personal_coverage: {
-                type: String
+                type: Boolean
             },
             commercial_coverage: {
-                type: String
-            },
-            benefit_coverage: {
-                type: String
+                type: Boolean
             }
         }
     }

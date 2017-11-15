@@ -17565,7 +17565,7 @@ var initialState = (_initialState = {
     commercial_mix: '',
     personal_mix: '',
     api_token: ''
-}, _defineProperty(_initialState, 'commercial_mix', '0'), _defineProperty(_initialState, 'personal_mix', '0'), _initialState);
+}, _defineProperty(_initialState, 'commercial_mix', ''), _defineProperty(_initialState, 'personal_mix', ''), _initialState);
 
 module.exports = function () {
     var user = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
@@ -17694,7 +17694,7 @@ var initialState = {
     engagement_tone: [{ "code": "1", "desc": "Simply Informative" }, { "code": "2", "desc": "Conversational" }, { "code": "3", "desc": "Entertainingly Informative" }],
     special_topics: [{ "code": "NH", "desc": "Recognition of National Holidays" }, { "code": "IH", "desc": "Insurance Humor" }, { "code": "CN", "desc": "Current News" }],
     causes: [],
-    days: [{ "code": "monday", "desc": "Monday" }, { "code": "tuesday", "desc": "Tuesday" }, { "code": "wednesday", "desc": "Wednesday" }, { "code": "thursday", "desc": "Thursday" }, { "code": "friday", "desc": "Friday" }],
+    days: [{ "code": "monday", "desc": "Monday" }, { "code": "tuesday", "desc": "Tuesday" }, { "code": "wednesday", "desc": "Wednesday" }, { "code": "thursday", "desc": "Thursday" }, { "code": "friday", "desc": "Friday" }, { "code": "saturday", "desc": "Saturday" }, { "code": "sunday", "desc": "Sunday" }],
     times: [{ "code": "system_chosen", "desc": "System Chosen" }, { "code": "2-5am", "desc": "2-5am" }, { "code": "5-8am", "desc": "5-8am" }, { "code": "8-11am", "desc": "8-11am" }, { "code": "11am-2pm", "desc": "11am-2pm" }, { "code": "2-5pm", "desc": "2-5pm" }, { "code": "8-11pm", "desc": "8-11pm" }, { "code": "11pm-2am", "desc": "11pm-2am" }]
 };
 
@@ -20112,6 +20112,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 
@@ -20144,6 +20145,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
 
     methods: {
+        setTarget: function setTarget() {
+            if (this.properties.selected_regions.length > 0) {
+                return 'R';
+            }
+            if (this.properties.selected_states.length > 0) {
+                return 'S';
+            }
+        },
         setMarketing: function setMarketing(selection) {
             if (selection == 'R') {
                 this.properties.selected_states = [];
@@ -21069,12 +21078,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     props: {
         method: {
             type: String
+        },
+        default: {
+            type: String
         }
     },
     data: function data() {
         return {
             marketing: false
         };
+    },
+    mounted: function mounted() {
+        if (this.default) {
+            this.marketing = this.default;
+            this.$emit('setMarketing', this.marketing);
+        }
     }
 });
 
@@ -21370,6 +21388,7 @@ var render = function() {
             }),
             _vm._v(" "),
             _c("Marketing", {
+              attrs: { default: _vm.setTarget() },
               on: {
                 setMarketing: function($event) {
                   _vm.setMarketing($event)
@@ -21989,7 +22008,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             coverages: store.getState().OptionStore.coverages,
             errors: [],
             modal: false,
-            modal_content: {}
+            modal_content: {},
+            modal_personal_warning: false,
+            modal_commercial_warning: false
         };
     },
 
@@ -22273,7 +22294,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.$router.push({ name: 'Location' });
         },
         useDefaults: function useDefaults() {
-            if (this.personal_coverage) {
+            if (this.modal_personal_warning) {
                 this.properties.selected_personal_coverages.push({
                     "id": 1,
                     "code": "11005",
@@ -22295,7 +22316,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     "desc": "Renters Insurance"
                 });
             }
-            if (this.commercial_coverage) {
+            if (this.modal_commercial_warning) {
                 this.properties.selected_commercial_coverages.push({
                     "id": 5,
                     "code": "11011",
@@ -22312,11 +22333,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     "desc": "General Liability Insurance"
                 });
             }
-            this.update('Outreach');
+            this.post('Outreach');
         },
         update: function update(route) {
-            var _this = this;
-
             this.errors = [];
             if (this.properties.selected_carriers.length > 5) {
                 this.errors.push('You may only select up to 5 carriers.');
@@ -22339,23 +22358,39 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             if (this.properties.selected_target_coverages.length > 5) {
                 this.errors.push('You may only select up to 5 target coverages.');
             }
-            if (this.properties.selected_target_coverages.length == 0) {
-                this.errors.push('You must selected a type of coverage you want to sell more of.');
-            }
             if (this.personal_coverage == 'N' && this.commercial_coverage == 'N' && this.benefit_coverage == 'N' && this.crop_coverage == 'N') {
                 this.errors.push('You must select at least 1 type of coverage.');
             }
+            if (this.properties.selected_target_coverages.length == 0) {
+                this.errors.push('You must selected a type of coverage you want to sell more of.');
+            }
+            if (this.properties.commercial_mix == null || this.properties.personal_mix == null) {
+                this.errors.push('You must enter how much of your business is personal or commercial.');
+            }
             if (this.errors.length == 0) {
-                if (this.personal_coverage == 'Y' && this.properties.selected_personal_coverages.length == 0 || this.commercial_coverage == 'Y' && this.properties.selected_commercial_coverages.length == 0) {
+                if (this.personal_coverage == 'Y' && this.properties.selected_personal_coverages.length == 0) {
+                    this.modal_personal_warning = true;
                     this.modal = true;
                 } else {
-                    axios.post(window.location, this.properties).then(function (response) {
-                        _this.$router.push({ name: route });
-                    }).catch(function (error) {
-                        _this.errors.push('An error has occured, please contact support.');
-                    });
+                    this.modal_personal_warning = false;
                 }
+                if (this.commercial_coverage == 'Y' && this.properties.selected_commercial_coverages.length == 0) {
+                    this.modal_commercial_warning = true;
+                    this.modal = true;
+                } else {
+                    this.modal_commercial_warning = false;
+                }
+                this.post(route);
             }
+        },
+        post: function post(route) {
+            var _this = this;
+
+            axios.post(window.location, this.properties).then(function (response) {
+                _this.$router.push({ name: route });
+            }).catch(function (error) {
+                _this.errors.push('An error has occured, please contact support.');
+            });
         }
     },
     components: {
@@ -24120,13 +24155,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: {
         personal_coverage: {
-            type: String
+            type: Boolean
         },
         commercial_coverage: {
-            type: String
-        },
-        benefit_coverage: {
-            type: String
+            type: Boolean
         }
     }
 });
@@ -24144,7 +24176,7 @@ var render = function() {
       _vm._m(0),
       _vm._v(" "),
       _c("div", { staticClass: "w3-container" }, [
-        _vm.personal_coverage == "Y"
+        _vm.personal_coverage
           ? _c("div", { staticClass: "w3-content w3-center" }, [
               _c("p", [
                 _vm._v(
@@ -24164,7 +24196,7 @@ var render = function() {
             ])
           : _vm._e(),
         _vm._v(" "),
-        _vm.commercial_coverage == "Y"
+        _vm.commercial_coverage
           ? _c("div", { staticClass: "w3-content w3-center" }, [
               _c("p", [
                 _vm._v(
@@ -24910,8 +24942,8 @@ var render = function() {
       _vm.modal
         ? _c("Modal", {
             attrs: {
-              personal_coverage: _vm.personal_coverage,
-              commercial_coverage: _vm.commercial_coverage
+              personal_coverage: _vm.modal_personal_warning,
+              commercial_coverage: _vm.modal_commercial_warning
             },
             on: {
               closeModal: function() {
@@ -25263,8 +25295,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         getLabel: function getLabel() {
             if (store.getState().PlanStore.plan_code == 1) {
                 return 'Days to Post (Select 3)';
-            } else {
+            } else if (store.getState().PlanStore.plan_code == 2) {
                 return 'Days to Post (Select 5)';
+            } else if (store.getState().PlanStore.plan_code == 3) {
+                return 'Days to Post (Select 7)';
             }
         },
         getDays: function getDays() {
@@ -25330,7 +25364,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             if (this.errors.length == 0) {
                 axios.post(window.location, this.properties).then(function (response) {
                     if (route == 'Done') {
-                        alert('Congratulations! You have completed your profile. Click continue to go to your dashboard.');
                         _this.loading = true;
                         delete axios.defaults.headers.common['X-Requested-With'];
                         delete axios.defaults.headers.common['X-CSRF-TOKEN'];

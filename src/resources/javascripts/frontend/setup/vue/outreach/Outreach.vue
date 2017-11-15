@@ -172,8 +172,10 @@
             getLabel() {
                 if(store.getState().PlanStore.plan_code == 1) {
                     return 'Days to Post (Select 3)';
-                } else {
+                } else if(store.getState().PlanStore.plan_code == 2) {
                     return 'Days to Post (Select 5)';
+                } else if(store.getState().PlanStore.plan_code == 3) {
+                    return 'Days to Post (Select 7)';
                 }
             },
             getDays() {
@@ -215,7 +217,6 @@
                 if(this.errors.length == 0) {
                     axios.post(window.location, this.properties).then(response => {
                         if(route == 'Done') {
-                            alert('Congratulations! You have completed your profile. Click continue to go to your dashboard.');
                             this.loading = true;
                             delete axios.defaults.headers.common['X-Requested-With'];
                             delete axios.defaults.headers.common['X-CSRF-TOKEN'];

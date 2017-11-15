@@ -20,8 +20,6 @@ use App\Services\PaymentService;
 
 use App\Payment;
 
-use Illuminate\Support\Facades\Log;
-
 class FacebookController extends Controller
 {
 
@@ -231,14 +229,16 @@ class FacebookController extends Controller
 
         if(isset($accessToken)) {
             /**
-            * Logged in!!!
+            * Get the facebook email for the user
             */
-            $user = Auth::user();
-            $facebookAccount = new FacebookAccount();
-            $facebookAccount->email = $user->email;
-            $facebookAccount->access_token = (string) $accessToken;
-            $user->facebook()->save($facebookAccount);
-
+            try {
+                $response = $this->facebook->get('/me?fields=email', $accessToken);
+                $email = $response->getGraphUser()->getField('email');
+            } catch(Facebook\Exceptions\FacebookResponseException $e) {
+                return response()->json($e->getMessage(), 502);
+            } catch(Facebook\Exceptions\FacebookSDKException $e) {
+                return response()->json($e->getMessage(), 502);
+            }
             /**
             * Get the facebook pages for the user
             */
@@ -254,6 +254,20 @@ class FacebookController extends Controller
             foreach($response->getGraphEdge() as $page) {
                 array_push($pages, $page->asArray());
             }
+            usort($pages, function($a, $b) {
+                return $a['name'] <=> $b['name'];
+            });
+
+            /**
+            * Logged in!!!
+            */
+            $user = Auth::user();
+            $facebookAccount = new FacebookAccount();
+            $facebookAccount->email = $user->email;
+            $facebookAccount->facebook_email = $email;
+            $facebookAccount->access_token = (string) $accessToken;
+            $user->facebook()->save($facebookAccount);
+
             if(count($pages) != 0) {
                 session(['pages' => json_encode($pages)]);
                 return redirect('/page');
