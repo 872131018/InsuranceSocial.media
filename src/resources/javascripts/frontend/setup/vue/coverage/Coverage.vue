@@ -149,8 +149,7 @@
                 </div>
                 <div class="w3-section">
                     <Ratio
-                        v-bind:personal_coverage="personal_coverage"
-                        v-bind:commercial_coverage="commercial_coverage"
+                        v-if="personal_coverage == 'Y' && commercial_coverage== 'Y'"
                         v-bind:commercial_mix="properties.commercial_mix"
                         v-bind:personal_mix="properties.personal_mix"
                         v-on:setRatio="setRatio($event)">
@@ -237,7 +236,7 @@
                 crop_coverage_lines: store.getState().OptionStore.crop_coverage_lines,
                 industry_currents: store.getState().OptionStore.industry_currents,
                 industry_targets: store.getState().OptionStore.industry_targets,
-                personal_coverage: store.getState().SelectionStore.personal_coverage,
+                personal_coverage: '',
                 commercial_coverage: '',
                 benefit_coverage: '',
                 crop_coverage: '',
@@ -450,7 +449,11 @@
                 }
                 if(this.properties.commercial_mix == null ||
                     this.properties.personal_mix == null) {
-                        this.errors.push('You must enter how much of your business is personal or commercial.')
+                        if(this.benefit_coverage == 'Y' || this.crop_coverage == 'Y') {
+                            //
+                        } else {
+                            this.errors.push('You must enter how much of your business is personal or commercial.')
+                        }
                 }
                 if(this.errors.length == 0) {
                     if(this.personal_coverage == 'Y' && this.properties.selected_personal_coverages.length == 0) {
@@ -464,6 +467,14 @@
                         this.modal = true;
                     } else {
                         this.modal_commercial_warning = false;
+                    }
+                    if(this.personal_coverage == 'Y' && this.commercial_coverage == 'N') {
+                        this.properties.personal_mix = 100;
+                        this.properties.commercial_mix = 0;
+                    }
+                    if(this.personal_coverage == 'N' && this.commercial_coverage == 'Y') {
+                        this.properties.commercial_mix = 100;
+                        this.properties.personal_mix = 0;
                     }
                     this.post(route);
                 }

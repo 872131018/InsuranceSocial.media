@@ -21964,7 +21964,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 
 
@@ -22001,7 +22000,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             crop_coverage_lines: store.getState().OptionStore.crop_coverage_lines,
             industry_currents: store.getState().OptionStore.industry_currents,
             industry_targets: store.getState().OptionStore.industry_targets,
-            personal_coverage: store.getState().SelectionStore.personal_coverage,
+            personal_coverage: '',
             commercial_coverage: '',
             benefit_coverage: '',
             crop_coverage: '',
@@ -22365,7 +22364,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 this.errors.push('You must selected a type of coverage you want to sell more of.');
             }
             if (this.properties.commercial_mix == null || this.properties.personal_mix == null) {
-                this.errors.push('You must enter how much of your business is personal or commercial.');
+                if (this.benefit_coverage == 'Y' || this.crop_coverage == 'Y') {
+                    //
+                } else {
+                    this.errors.push('You must enter how much of your business is personal or commercial.');
+                }
             }
             if (this.errors.length == 0) {
                 if (this.personal_coverage == 'Y' && this.properties.selected_personal_coverages.length == 0) {
@@ -22379,6 +22382,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     this.modal = true;
                 } else {
                     this.modal_commercial_warning = false;
+                }
+                if (this.personal_coverage == 'Y' && this.commercial_coverage == 'N') {
+                    this.properties.personal_mix = 100;
+                    this.properties.commercial_mix = 0;
+                }
+                if (this.personal_coverage == 'N' && this.commercial_coverage == 'Y') {
+                    this.properties.commercial_mix = 100;
+                    this.properties.personal_mix = 0;
                 }
                 this.post(route);
             }
@@ -23864,8 +23875,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
 
 
 
@@ -23876,12 +23885,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             type: String
         },
         commercial_mix: {
-            type: String
-        },
-        personal_coverage: {
-            type: String
-        },
-        commercial_coverage: {
             type: String
         }
     },
@@ -23942,35 +23945,11 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "w3-section" }, [
-    _c(
-      "div",
-      {
-        directives: [
-          {
-            name: "show",
-            rawName: "v-show",
-            value:
-              _vm.commercial_coverage == "Y" || _vm.personal_coverage == "Y",
-            expression: "commercial_coverage == 'Y' || personal_coverage == 'Y'"
-          }
-        ]
-      },
-      [_vm._v("Ratio of Commercial to Personal Business")]
-    ),
+    _c("div", [_vm._v("Ratio of Commercial to Personal Business")]),
     _vm._v(" "),
     _c(
       "div",
-      {
-        directives: [
-          {
-            name: "show",
-            rawName: "v-show",
-            value: _vm.commercial_coverage == "Y",
-            expression: "commercial_coverage == 'Y'"
-          }
-        ],
-        staticClass: "w3-section"
-      },
+      { staticClass: "w3-section" },
       [
         _c("label", { staticClass: "w3-show-block" }, [_vm._v("% Commercial")]),
         _vm._v(" "),
@@ -24006,17 +23985,7 @@ var render = function() {
     _vm._v(" "),
     _c(
       "div",
-      {
-        directives: [
-          {
-            name: "show",
-            rawName: "v-show",
-            value: _vm.personal_coverage == "Y",
-            expression: "personal_coverage == 'Y'"
-          }
-        ],
-        staticClass: "w3-section"
-      },
+      { staticClass: "w3-section" },
       [
         _c("label", { staticClass: "w3-show-block" }, [_vm._v("% Personal")]),
         _vm._v(" "),
@@ -24811,19 +24780,19 @@ var render = function() {
               "div",
               { staticClass: "w3-section" },
               [
-                _c("Ratio", {
-                  attrs: {
-                    personal_coverage: _vm.personal_coverage,
-                    commercial_coverage: _vm.commercial_coverage,
-                    commercial_mix: _vm.properties.commercial_mix,
-                    personal_mix: _vm.properties.personal_mix
-                  },
-                  on: {
-                    setRatio: function($event) {
-                      _vm.setRatio($event)
-                    }
-                  }
-                })
+                _vm.personal_coverage == "Y" && _vm.commercial_coverage == "Y"
+                  ? _c("Ratio", {
+                      attrs: {
+                        commercial_mix: _vm.properties.commercial_mix,
+                        personal_mix: _vm.properties.personal_mix
+                      },
+                      on: {
+                        setRatio: function($event) {
+                          _vm.setRatio($event)
+                        }
+                      }
+                    })
+                  : _vm._e()
               ],
               1
             ),
