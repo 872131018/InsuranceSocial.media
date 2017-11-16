@@ -156,7 +156,7 @@ class FacebookController extends Controller
 
                 $facebookAccount = new FacebookAccount();
                 $facebookAccount->email = $user->email;
-                $facebookAccount->progress = '2';
+                $facebookAccount->progress = '3';
                 $user->facebook()->save($facebookAccount);
             }
         }
@@ -193,7 +193,7 @@ class FacebookController extends Controller
         $facebook->page_id = $request->page_id;
         $facebook->page_name = $request->page_name;
         $facebook->page_token = $request->page_access_token;
-        $facebook->progress = 5;
+        $facebook->progress = 4;
         $facebook->update();
 
         Mail::send('emails.hasfacebook', [ 'name' => $user->name ], function ($message) {
