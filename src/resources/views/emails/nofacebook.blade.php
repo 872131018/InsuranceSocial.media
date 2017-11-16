@@ -7,6 +7,10 @@ We are setting up a corporate Facebook page for your insurance agency. Of course
 </p>
 
 <p>
+If you have a personal Facebook account, log in to your InsuranceSocial.Media account. You’ll immediately be directed to log in to your Facebook account, so we’ll be able to invite you to be an admin on your new business page.
+</p>
+
+<p>
     If you don’t have a personal Facebook account, you will need to set one up.
 </p>
 
