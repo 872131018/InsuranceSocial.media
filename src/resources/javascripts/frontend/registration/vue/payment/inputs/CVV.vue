@@ -1,6 +1,6 @@
 <template lang="pug">
     div(class="w3-third v-align")
-        input(class="w3-input" type="text" placeholder="Year"
+        input(class="w3-input" type="text" placeholder="CVV"
             :value="value"
             @keyup="$emit('setValue', $event.target.value)")
 </template>

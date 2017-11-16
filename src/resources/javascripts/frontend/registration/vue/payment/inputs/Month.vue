@@ -11,6 +11,11 @@
 
 <script>
     export default {
+        props: {
+            value: {
+                type: String
+            }
+        },
         data() {
             return {
                 months: [
@@ -65,6 +70,15 @@
                 ],
                 selected: {
                     name: 'Month'
+                }
+            }
+        },
+        mounted() {
+            if(this.value) {
+                for(let month of this.months) {
+                    if(this.value == month.value) {
+                        this.selected = month;
+                    }
                 }
             }
         },

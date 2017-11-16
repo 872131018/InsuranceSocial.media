@@ -13,15 +13,24 @@
                 p Your credit card will be charged a pro-rated amount for this month’s subscription fee. You will be charged for next month’s service during the last week of this month.
                 h3 Total Charges: #[b ${{ amount }}]
             Card(
-                @setCard="(value) => $store.commit('setCard', value)")
+                :value="card"
+                @setValue="(value) => $store.commit('setCard', value)")
             div(class="w3-row-padding")
-                Month(@setMonth="(value) => $store.commit('setMonth', value.value)")
-                Year(@setYear="(value) => $store.commit('setYear', value)")
-                CCV(@setCode="(value) => $store.commit('setCVV', value)")
+                Month(
+                    :value="month"
+                    @setMonth="(value) => $store.commit('setMonth', value.value)")
+                Year(
+                    :value="year"
+                    @setValue="(value) => $store.commit('setYear', value)")
+                CVV(
+                    :value="cvv"
+                    @setValue="(value) => $store.commit('setCVV', value)")
             div Expiration Month and Year(YYYY) with Security Code
                 i(class="fa fa-question-circle-o w3-tooltip")
                     img(class="w3-text" style="position:absolute;bottom:-20px" src="/images/creditcards_cvv.png")
-            Name(@setName="(value) => $store.commit('setName', value)")
+            Name(
+                :value="name"
+                @setValue="(value) => $store.commit('setCardName', value)")
             Errors(
                 v-if="errors.length"
                 :errors="errors")
@@ -46,7 +55,7 @@
 
     import Month from './inputs/Month';
     import Year from './inputs/Year';
-    import CCV from './inputs/CCV';
+    import CVV from './inputs/CVV';
 
     import Name from './inputs/Name';
     import Modal from './modal/Modal';
@@ -69,7 +78,22 @@
             },
             amount() {
                 return this.$store.state.payment.amount;
-            }
+            },
+            card() {
+                return this.$store.state.payment.card;
+            },
+            month() {
+                return this.$store.state.payment.month;
+            },
+            year() {
+                return this.$store.state.payment.year;
+            },
+            cvv() {
+                return this.$store.state.payment.cvv;
+            },
+            name() {
+                return this.$store.state.payment.name;
+            },
         },
         mounted() {
             /*
@@ -130,14 +154,14 @@
                 this.errors = [];
                 const secureData = {
                     cardData: {
-                        cardNumber: this.$store.state.payment.card,
+                        cardNumber: this.card,
                         month: this.$store.state.payment.month,
                         year: this.$store.state.payment.year,
                         cardcode: this.$store.state.payment.cvv
                     },
                     authData: this.$store.state.authorize
                 };
-                
+
                 Accept.dispatchData(secureData, (response) => {
                     if (response.messages.resultCode === "Error") {
                         for(let error of response.messages.message) {
@@ -192,11 +216,9 @@
         components: {
             Plan,
             Card,
-
             Month,
             Year,
-            CCV,
-
+            CVV,
             Name,
             Modal,
             Expired

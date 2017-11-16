@@ -20,7 +20,7 @@ const Module = {
         setCVV(state, value) {
             state.cvv = value;
         },
-        setName(state, value) {
+        setCardName(state, value) {
             state.name = value;
         },
         setAmount(state, value) {
