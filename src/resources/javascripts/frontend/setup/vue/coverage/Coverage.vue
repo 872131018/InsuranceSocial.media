@@ -445,10 +445,10 @@
                         this.errors.push('You must select at least 1 type of coverage.')
                 }
                 if(this.properties.selected_target_coverages.length == 0) {
-                    this.errors.push('You must selected a type of coverage you want to sell more of.');
+                    this.errors.push('You must select a type of coverage you want to sell more of.');
                 }
-                if(this.properties.commercial_mix == null ||
-                    this.properties.personal_mix == null) {
+                if((this.properties.commercial_mix == null && this.commercial_coverage == 'Y') &&
+                    (this.properties.personal_mix == null && this.personal_coverage == 'Y')) {
                         if(this.benefit_coverage == 'Y' || this.crop_coverage == 'Y') {
                             //
                         } else {
@@ -476,7 +476,9 @@
                         this.properties.commercial_mix = 100;
                         this.properties.personal_mix = 0;
                     }
-                    this.post(route);
+                    if(this.modal == false) {
+                        this.post(route);
+                    }
                 }
             },
             post(route) {
