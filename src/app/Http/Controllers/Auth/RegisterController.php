@@ -24,6 +24,8 @@ use App\Payment;
 
 use App\Card;
 
+use App\TempUser;
+
 class RegisterController extends Controller
 {
     /*
@@ -248,5 +250,27 @@ class RegisterController extends Controller
                 'user' => $user
             ];
         }
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function confirm(Request $request)
+    {
+        if(TempUser::where('email', $request->email)->exists()) {
+            return response()->json([
+                'email' => 'That email has already been used. Please try another.'
+            ], 422);
+        }
+
+        if(User::where('email', $request->email)->exists()) {
+            return response()->json([
+                'email' => 'That email has already been used. Please try another.'
+            ], 422);
+        }
+        
+        return response()->json('ok');
     }
 }

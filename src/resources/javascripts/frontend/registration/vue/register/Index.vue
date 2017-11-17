@@ -103,26 +103,26 @@
             register() {
                 this.validate();
                 if(this.errors.length == 0) {
-                    if(this.code == 'FMH17' || this.code == 'IMTGEM17') {
-                        this.$router.push({ name: 'Corporate' });
-                    } else {
-                        this.$router.push({ name: 'Plans' });
-                    }
-                    /*
-                    axios.post(window.location, this.$store.state.registration).then(response => {
+                    axios.post('/confirm', { email: this.email }).then(response => {
+                        /*
                         if(response.data.discount && response.data.discount != 'ISMFREETRIAL') {
                             window.location = '/corporate';
                         } else {
                             window.location = '/plans';
                         }
+                        */
+                        if(this.code == 'FMH17' || this.code == 'IMTGEM17') {
+                            this.$router.push({ name: 'Corporate' });
+                        } else {
+                            this.$router.push({ name: 'Plans' });
+                        }
                     }).catch(error => {
-                        if(error.email) {
+                        if(error.response.data.email) {
                             this.errors.push('That email has already been used, please use another');
                         } else {
                             this.errors.push('An error has occured, please contact support.');
                         }
                     });
-                    */
                 }
             },
             validate() {

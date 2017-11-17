@@ -30,3 +30,5 @@ Route::get('/corporate/{discount}', 'Auth\RegisterController@register');
 Route::post('/register', 'Auth\RegisterController@register');
 
 Route::post('/register/{discount?}', 'Auth\RegisterController@register');
+
+Route::post('/confirm', 'Auth\RegisterController@confirm');
