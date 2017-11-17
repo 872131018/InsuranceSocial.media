@@ -35,7 +35,7 @@
             }
         },
         mounted() {
-            if(this.$store.state.registration.code == 'ISMFreeTrial') {
+            if(this.$store.state.registration.code == 'ISMFREETRIAL') {
                 this.$store.commit('setPlan', this.plans[0]);
             }
         },

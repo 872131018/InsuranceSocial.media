@@ -93,7 +93,7 @@
                 return this.$store.state.registration.code;
             },
             codeValid() {
-                return this.$store.state.registration.code == 'ISMFreeTrial' ||
+                return this.$store.state.registration.code == 'ISMFREETRIAL' ||
                         this.$store.state.registration.code == 'IMTGEM17' ||
                         this.$store.state.registration.code == 'FMH17' ||
                         this.$store.state.registration.code == '';
@@ -110,7 +110,7 @@
                     }
                     /*
                     axios.post(window.location, this.$store.state.registration).then(response => {
-                        if(response.data.discount && response.data.discount != 'ISMFreeTrial') {
+                        if(response.data.discount && response.data.discount != 'ISMFREETRIAL') {
                             window.location = '/corporate';
                         } else {
                             window.location = '/plans';

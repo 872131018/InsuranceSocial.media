@@ -8,10 +8,10 @@
             <div class="w3-container">
                 <div class="w3-content w3-center">
                     <p>Plan Cost: ${{ response.planCost }}</p>
-                    <p v-if="response.coupon_code == 'ISMFreeTrial'">Discount: ${{ response.planCost }}</p>
+                    <p v-if="response.coupon_code == 'ISMFREETRIAL'">Discount: ${{ response.planCost }}</p>
                     <p v-if="response.amount_charged != 1">Total Charged: ${{ response.amount_charged }}<p>
                         <p v-if="response.amount_charged == 1">Total Charged: $0.00<p>
-                    <p v-if="response.coupon_code == 'ISMFreeTrial'">Total: $0.00</p>
+                    <p v-if="response.coupon_code == 'ISMFREETRIAL'">Total: $0.00</p>
                     <p>Transaction ID: {{ response.transactionId }}</p>
                 </div>
             </div>

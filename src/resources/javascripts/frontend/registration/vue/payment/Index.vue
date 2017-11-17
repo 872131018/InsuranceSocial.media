@@ -8,7 +8,7 @@
             v-if="!expired")
             h3 Payment Method
             h6 Please enter a form of payment to complete registration.
-            p(v-if="code == 'ISMFreeTrial' && selected.tier == 1") Your Insurance Social Media Essential Plan trial period is free. We ask for your credit card to prevent any service interruption should you keep your account open after the trial period. Your card will not be charged for the trial period. After the trial, you will be charged for each month. You can cancel at any time.
+            p(v-if="code == 'ISMFREETRIAL' && selected.tier == 1") Your Insurance Social Media Essential Plan trial period is free. We ask for your credit card to prevent any service interruption should you keep your account open after the trial period. Your card will not be charged for the trial period. After the trial, you will be charged for each month. You can cancel at any time.
             div(v-else)
                 p Your credit card will be charged a pro-rated amount for this month’s subscription fee. You will be charged for next month’s service during the last week of this month.
                 h3 Total Charges: #[b ${{ amount }}]
@@ -103,7 +103,7 @@
             */
             const today = new Moment();
             switch(this.code) {
-                case 'ISMFreeTrial':
+                case 'ISMFREETRIAL':
                     if(this.selected.tier == 1) {
                         this.$store.commit('setAmount', 1.00);
                     } else {
@@ -185,7 +185,7 @@
                                 cvv: this.$store.state.payment.cvv
                             }
                         }
-                        if(this.code == 'ISMFreeTrial' ||
+                        if(this.code == 'ISMFREETRIAL' ||
                             this.code == 'IMTGEM17' ||
                             this.code == 'FMH17') {
                                 data.transaction.discount = 39.00;
