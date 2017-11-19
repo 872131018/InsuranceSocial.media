@@ -199,10 +199,9 @@
                                 transactionId: response.data.transaction.transactionId
                             };
                         }).catch((error) => {
-                            if(error.response.data.email) {
+                            if(error.response.data) {
                                 this.errors.push('This email has already been used.  Please go back and try another.');
-                            } else {
-                                this.errors.push('An Error has occured. Please contact support.');
+                                this.errors.push(error.response.data);
                             }
                         });
                     }

@@ -35339,10 +35339,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                             transactionId: response.data.transaction.transactionId
                         };
                     }).catch(function (error) {
-                        if (error.response.data.email) {
+                        if (error.response.data) {
                             _this.errors.push('This email has already been used.  Please go back and try another.');
-                        } else {
-                            _this.errors.push('An Error has occured. Please contact support.');
+                            _this.errors.push(error.response.data);
                         }
                     });
                 }
