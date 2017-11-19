@@ -26,6 +26,8 @@ use App\Card;
 
 use App\TempUser;
 
+use Illuminate\Support\Facades\Log;
+
 class RegisterController extends Controller
 {
     /*
@@ -209,6 +211,8 @@ class RegisterController extends Controller
         /**
         * Success sign up user with gathered information
         */
+        Log::info($response->getMessages());
+        Log::info($response->getMessages()->getResultCode());
         if(($response != null) && ($response->getMessages()->getResultCode() == "Ok") ) {
             $user->status = 'A';
             $user->role = 'A';
