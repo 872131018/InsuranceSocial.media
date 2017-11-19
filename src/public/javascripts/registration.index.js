@@ -35340,7 +35340,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                         };
                     }).catch(function (error) {
                         if (error.response.data) {
-                            _this.errors.push('This email has already been used.  Please go back and try another.');
+                            _this.errors.push('There has been an error. See error message below.');
                             _this.errors.push(error.response.data);
                         }
                     });

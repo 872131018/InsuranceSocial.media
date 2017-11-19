@@ -200,7 +200,7 @@
                             };
                         }).catch((error) => {
                             if(error.response.data) {
-                                this.errors.push('This email has already been used.  Please go back and try another.');
+                                this.errors.push('There has been an error. See error message below.');
                                 this.errors.push(error.response.data);
                             }
                         });
