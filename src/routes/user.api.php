@@ -129,6 +129,21 @@ use Illuminate\Support\Facades\Log;
         'selected_causes' => $user->causes
      ]);
  });
+ Route::get('/api/endpoint', function (Request $request) {
+    if(env('APP_ENV') == 'local') {
+        $response = [
+            'post' => 'https://www.staging.insurancesocial.media/api/ismv2/_ismv2_register/',
+            'redirect' => 'https://www.staging.insurancesocial.media/?vkVDosE4Oj_add_za_f_EHi9Y7GGB4gST8WkXMjnnWDIr7ZtE_e_'
+        ];
+    } else {
+        $response = [
+            'post' => 'https://www.ism.insurancesocial.media/api/ismv2/_ismv2_register/',
+            'redirect' => 'https://www.ism.insurancesocial.media/?vkVDosE4Oj_add_za_f_EHi9Y7GGB4gST8WkXMjnnWDIr7ZtE_e_'
+        ];
+    }
+
+     return response()->json($response);
+ });
  Route::get('/api/recent', function (Request $request) {
      $user = Auth::user();
 

@@ -89,7 +89,11 @@ class FacebookController extends Controller
             ],
             $user);
         $controller = new AnetController\CreateTransactionController($transactionRequest);
-        $response = $controller->executeWithApiResponse(\net\authorize\api\constants\ANetEnvironment::SANDBOX);
+        if(env('APP_ENV') == 'local') {
+            $response = $controller->executeWithApiResponse(\net\authorize\api\constants\ANetEnvironment::SANDBOX);
+        } else {
+            $response = $controller->executeWithApiResponse(\net\authorize\api\constants\ANetEnvironment::PRODUCTION);
+        }
 
         /**
         * ERROR no response

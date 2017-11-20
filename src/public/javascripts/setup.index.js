@@ -17518,6 +17518,9 @@ var Site = new __WEBPACK_IMPORTED_MODULE_1_vue___default.a({
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__redux_option_reducer__ = __webpack_require__(346);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__redux_selection_reducer__ = __webpack_require__(347);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__redux_selection_reducer___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__redux_selection_reducer__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__redux_endpoint_reducer__ = __webpack_require__(682);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__redux_endpoint_reducer___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__redux_endpoint_reducer__);
+
 
 
 
@@ -17530,7 +17533,8 @@ var reducers = Object(__WEBPACK_IMPORTED_MODULE_0_redux__["a" /* combineReducers
     PlanStore: __WEBPACK_IMPORTED_MODULE_2__redux_plan_reducer___default.a,
     AgencyStore: __WEBPACK_IMPORTED_MODULE_3__redux_agency_reducer___default.a,
     OptionStore: __WEBPACK_IMPORTED_MODULE_4__redux_option_reducer__["a" /* default */],
-    SelectionStore: __WEBPACK_IMPORTED_MODULE_5__redux_selection_reducer___default.a
+    SelectionStore: __WEBPACK_IMPORTED_MODULE_5__redux_selection_reducer___default.a,
+    EndpointStore: __WEBPACK_IMPORTED_MODULE_6__redux_endpoint_reducer___default.a
 });
 
 /* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_0_redux__["b" /* createStore */])(reducers));
@@ -25339,10 +25343,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                         delete axios.defaults.headers.common['X-Requested-With'];
                         delete axios.defaults.headers.common['X-CSRF-TOKEN'];
                         delete axios.defaults.headers.common['Authorization'];
-                        axios.post('https://www.staging.insurancesocial.media/api/ismv2/_ismv2_register/', response.data).then(function (response) {
+                        axios.post(store.getState().EndpointStore.post, response.data).then(function (response) {
                             if (response.data.success) {
                                 _this.loading = false;
-                                window.location = 'https://www.staging.insurancesocial.media/?vkVDosE4Oj_add_za_f_EHi9Y7GGB4gST8WkXMjnnWDIr7ZtE_e_';
+                                window.location = store.getState().EndpointStore.redirect;
                             } else {
                                 _this.errors.push(response.data.errors);
                             }
@@ -27233,6 +27237,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             store.dispatch({ type: 'SET_SELECTIONS', data: response.data });
             _this.loading--;
         });
+        this.loading++;
+        axios.get(window.base_url + '/api/endpoint').then(function (response) {
+            store.dispatch({ type: 'SET_ENDPOINT', data: response.data });
+            _this.loading--;
+        });
     },
 
     components: {
@@ -27655,6 +27664,240 @@ if (false) {
     require("vue-hot-reload-api")      .rerender("data-v-5343312c", module.exports)
   }
 }
+
+/***/ }),
+/* 472 */,
+/* 473 */,
+/* 474 */,
+/* 475 */,
+/* 476 */,
+/* 477 */,
+/* 478 */,
+/* 479 */,
+/* 480 */,
+/* 481 */,
+/* 482 */,
+/* 483 */,
+/* 484 */,
+/* 485 */,
+/* 486 */,
+/* 487 */,
+/* 488 */,
+/* 489 */,
+/* 490 */,
+/* 491 */,
+/* 492 */,
+/* 493 */,
+/* 494 */,
+/* 495 */,
+/* 496 */,
+/* 497 */,
+/* 498 */,
+/* 499 */,
+/* 500 */,
+/* 501 */,
+/* 502 */,
+/* 503 */,
+/* 504 */,
+/* 505 */,
+/* 506 */,
+/* 507 */,
+/* 508 */,
+/* 509 */,
+/* 510 */,
+/* 511 */,
+/* 512 */,
+/* 513 */,
+/* 514 */,
+/* 515 */,
+/* 516 */,
+/* 517 */,
+/* 518 */,
+/* 519 */,
+/* 520 */,
+/* 521 */,
+/* 522 */,
+/* 523 */,
+/* 524 */,
+/* 525 */,
+/* 526 */,
+/* 527 */,
+/* 528 */,
+/* 529 */,
+/* 530 */,
+/* 531 */,
+/* 532 */,
+/* 533 */,
+/* 534 */,
+/* 535 */,
+/* 536 */,
+/* 537 */,
+/* 538 */,
+/* 539 */,
+/* 540 */,
+/* 541 */,
+/* 542 */,
+/* 543 */,
+/* 544 */,
+/* 545 */,
+/* 546 */,
+/* 547 */,
+/* 548 */,
+/* 549 */,
+/* 550 */,
+/* 551 */,
+/* 552 */,
+/* 553 */,
+/* 554 */,
+/* 555 */,
+/* 556 */,
+/* 557 */,
+/* 558 */,
+/* 559 */,
+/* 560 */,
+/* 561 */,
+/* 562 */,
+/* 563 */,
+/* 564 */,
+/* 565 */,
+/* 566 */,
+/* 567 */,
+/* 568 */,
+/* 569 */,
+/* 570 */,
+/* 571 */,
+/* 572 */,
+/* 573 */,
+/* 574 */,
+/* 575 */,
+/* 576 */,
+/* 577 */,
+/* 578 */,
+/* 579 */,
+/* 580 */,
+/* 581 */,
+/* 582 */,
+/* 583 */,
+/* 584 */,
+/* 585 */,
+/* 586 */,
+/* 587 */,
+/* 588 */,
+/* 589 */,
+/* 590 */,
+/* 591 */,
+/* 592 */,
+/* 593 */,
+/* 594 */,
+/* 595 */,
+/* 596 */,
+/* 597 */,
+/* 598 */,
+/* 599 */,
+/* 600 */,
+/* 601 */,
+/* 602 */,
+/* 603 */,
+/* 604 */,
+/* 605 */,
+/* 606 */,
+/* 607 */,
+/* 608 */,
+/* 609 */,
+/* 610 */,
+/* 611 */,
+/* 612 */,
+/* 613 */,
+/* 614 */,
+/* 615 */,
+/* 616 */,
+/* 617 */,
+/* 618 */,
+/* 619 */,
+/* 620 */,
+/* 621 */,
+/* 622 */,
+/* 623 */,
+/* 624 */,
+/* 625 */,
+/* 626 */,
+/* 627 */,
+/* 628 */,
+/* 629 */,
+/* 630 */,
+/* 631 */,
+/* 632 */,
+/* 633 */,
+/* 634 */,
+/* 635 */,
+/* 636 */,
+/* 637 */,
+/* 638 */,
+/* 639 */,
+/* 640 */,
+/* 641 */,
+/* 642 */,
+/* 643 */,
+/* 644 */,
+/* 645 */,
+/* 646 */,
+/* 647 */,
+/* 648 */,
+/* 649 */,
+/* 650 */,
+/* 651 */,
+/* 652 */,
+/* 653 */,
+/* 654 */,
+/* 655 */,
+/* 656 */,
+/* 657 */,
+/* 658 */,
+/* 659 */,
+/* 660 */,
+/* 661 */,
+/* 662 */,
+/* 663 */,
+/* 664 */,
+/* 665 */,
+/* 666 */,
+/* 667 */,
+/* 668 */,
+/* 669 */,
+/* 670 */,
+/* 671 */,
+/* 672 */,
+/* 673 */,
+/* 674 */,
+/* 675 */,
+/* 676 */,
+/* 677 */,
+/* 678 */,
+/* 679 */,
+/* 680 */,
+/* 681 */,
+/* 682 */
+/***/ (function(module, exports) {
+
+var initialState = {
+    post: '',
+    redirect: ''
+};
+
+module.exports = function () {
+    var endpoint = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+    var action = arguments[1];
+
+    switch (action.type) {
+        case 'SET_ENDPOINT':
+            endpoint.post = action.data.post;
+            endpoint.redirect = action.data.redirect;
+            break;
+        default:
+            break;
+    }
+    return JSON.parse(JSON.stringify(endpoint));
+};
 
 /***/ })
 /******/ ]);

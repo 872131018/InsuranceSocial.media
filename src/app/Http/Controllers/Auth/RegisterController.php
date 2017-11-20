@@ -136,7 +136,11 @@ class RegisterController extends Controller
                 $user);
         }
         $controller = new AnetController\CreateTransactionController($transactionRequest);
-        $response = $controller->executeWithApiResponse(\net\authorize\api\constants\ANetEnvironment::PRODUCTION);
+        if(env('APP_ENV') == 'local') {
+            $response = $controller->executeWithApiResponse(\net\authorize\api\constants\ANetEnvironment::SANDBOX);
+        } else {
+            $response = $controller->executeWithApiResponse(\net\authorize\api\constants\ANetEnvironment::PRODUCTION);
+        }
         /**
         * ERROR no response
         */
@@ -194,7 +198,11 @@ class RegisterController extends Controller
         * Create customer profile from transaction
         */
         $controller = new AnetController\CreateCustomerProfileFromTransactionController($this->paymentService->createProfileFromTransaction($user, $transactionId));
-        $response = $controller->executeWithApiResponse(\net\authorize\api\constants\ANetEnvironment::PRODUCTION);
+        if(env('APP_ENV') == 'local') {
+            $response = $controller->executeWithApiResponse(\net\authorize\api\constants\ANetEnvironment::SANDBOX);
+        } else {
+            $response = $controller->executeWithApiResponse(\net\authorize\api\constants\ANetEnvironment::PRODUCTION);
+        }
         /**
         * Error problem creating customer payment profile
         */

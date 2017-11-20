@@ -101,6 +101,11 @@
                 store.dispatch({ type: 'SET_SELECTIONS', data: response.data });
                 this.loading--;
             });
+            this.loading++;
+            axios.get(`${ window.base_url }/api/endpoint`).then(response => {
+                store.dispatch({ type: 'SET_ENDPOINT', data: response.data });
+                this.loading--;
+            });
         },
         components: {
             Tips,
