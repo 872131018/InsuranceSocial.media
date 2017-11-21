@@ -88,15 +88,15 @@ class PaymentService
         return $request;
     }
 
-    public function createProfileFromTransaction($user = null, $transId = 0) {
+    public function createProfileFromTransaction($email = '', $name = '', $transaction_id = 0) {
         $customerProfile = new CustomerProfileBaseType();
         $customerProfile->setMerchantCustomerId(time());
-        $customerProfile->setEmail($user->email);
-        $customerProfile->setDescription('Name: '.$user->name.' Email: '.$user->email);
+        $customerProfile->setEmail($email);
+        $customerProfile->setDescription('Name: '.$name.' Email: '.$email);
 
         $request = new CreateCustomerProfileFromTransactionRequest();
         $request->setMerchantAuthentication($this->merchantAuthenticationType);
-        $request->setTransId($transId);
+        $request->setTransId($transaction_id);
         $request->setCustomer($customerProfile);
 
         return $request;

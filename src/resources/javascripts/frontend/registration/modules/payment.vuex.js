@@ -5,7 +5,7 @@ const Module = {
         year: '',
         cvv: '',
         name: '',
-        amount: 1.00
+        amount: 0.00
     },
     mutations: {
         setCard(state, value) {

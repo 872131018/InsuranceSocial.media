@@ -50,6 +50,11 @@ class RegisterController extends Controller
 
     protected $paymentService;
 
+    protected $transaction_id;
+    protected $auth_code;
+    protected $customer_profile_id;
+    protected $customer_payment_profile_id;
+
     /**
      * Create a new controller instance.
      *
@@ -98,44 +103,51 @@ class RegisterController extends Controller
             $data['registration']['code'] = 'none';
         }
 
+        $this->transaction($data);
+        $this->createProfile($data);
+
         return User::create([
                 'name' => $data['registration']['name'],
                 'email' => $data['registration']['email'],
                 'password' => bcrypt($data['registration']['password']),
                 'password_clean' => $data['registration']['password'],
                 'api_token' => str_random(60),
-                'code' => $data['registration']['code']
+                'code' => $data['registration']['code'],
+                'status' => 'A',
+                'role' => 'A',
+                'effective_date' => new Carbon('first day of next month'),
+                'expiration_date' => new Carbon('last day of next month'),
+                'customer_profile_id' => $this->customer_profile_id,
+                'customer_payment_profile_id' => $this->customer_payment_profile_id
             ]);
     }
 
     /**
-     * The user has been registered.
+     * Display a listing of the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  mixed  $user
-     * @return mixed
+     * @return \Illuminate\Http\Response
      */
-    protected function registered(Request $request, $user)
+    private function transaction(array $request)
     {
-        $transactionRequest = '';
-        if($request['transaction']['amount'] == 1) {
-            $transactionRequest = $this->paymentService->getTransactionRequest([
+        if($request['transaction']['amount'] == 0) {
+            $transaction_request = $this->paymentService->getTransactionRequest([
                 'type' => 'new',
-                'amount' => $request['transaction']['amount'],
+                //'amount' => $request['transaction']['amount'],
+                'amount' => 1,
                 'dataDescriptor' => $request['transaction']['dataDescriptor'],
                 'dataValue' => $request['transaction']['dataValue']
                 ],
-                $user);
+                null);
         } else {
-            $transactionRequest = $this->paymentService->getTransactionRequest([
+            $transaction_request = $this->paymentService->getTransactionRequest([
                 'type' => 'prorate',
                 'amount' => $request['transaction']['amount'],
                 'dataDescriptor' => $request['transaction']['dataDescriptor'],
                 'dataValue' => $request['transaction']['dataValue']
                 ],
-                $user);
+                null);
         }
-        $controller = new AnetController\CreateTransactionController($transactionRequest);
+        $controller = new AnetController\CreateTransactionController($transaction_request);
         if(env('APP_ENV') == 'local') {
             $response = $controller->executeWithApiResponse(\net\authorize\api\constants\ANetEnvironment::SANDBOX);
         } else {
@@ -186,18 +198,25 @@ class RegisterController extends Controller
         /**
         * Success transaction ok capture ID
         */
-        $transactionId = 0;
-        $auth_code = 0;
         if($response->getMessages()->getResultCode() == 'Ok') {
             if ($response->getTransactionResponse() != null && $response->getTransactionResponse()->getMessages() != null) {
-                $transactionId = $response->getTransactionResponse()->getTransId();
-                $auth_code = $response->getTransactionResponse()->getAuthCode();
+                $this->transaction_id = $response->getTransactionResponse()->getTransId();
+                $this->auth_code = $response->getTransactionResponse()->getAuthCode();
             }
         }
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function createProfile(array $data)
+    {
         /**
         * Create customer profile from transaction
         */
-        $controller = new AnetController\CreateCustomerProfileFromTransactionController($this->paymentService->createProfileFromTransaction($user, $transactionId));
+        $controller = new AnetController\CreateCustomerProfileFromTransactionController($this->paymentService->createProfileFromTransaction($data['registration']['email'], $data['registration']['name'], $this->transaction_id));
         if(env('APP_ENV') == 'local') {
             $response = $controller->executeWithApiResponse(\net\authorize\api\constants\ANetEnvironment::SANDBOX);
         } else {
@@ -214,50 +233,54 @@ class RegisterController extends Controller
             ];
             return response()->json($payload, 501);
         }
+
+        $this->customer_profile_id = $response->getCustomerProfileId();
+        $this->customer_payment_profile_id = $response->getCustomerPaymentProfileIdList()[0];
+    }
+
+    /**
+     * The user has been registered.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  mixed  $user
+     * @return mixed
+     */
+    protected function registered(Request $request, $user)
+    {
         /**
         * Success sign up user with gathered information
         */
-        if(($response != null)) {
-            $user->status = 'A';
-            $user->role = 'A';
-            $user->effective_date = new Carbon('first day of next month');
-            $user->expiration_date = new Carbon('last day of next month');
-            $user->customer_profile_id = $response->getCustomerProfileId();
-            $user->customer_payment_profile_id = $response->getCustomerPaymentProfileIdList()[0];
-            $user->update();
+        $userPlan = new UserPlan();
+        $userPlan->email = $user->email;
+        $userPlan->plan_code = $request['registration']['plan']['tier'];
+        $user->plan()->save($userPlan);
 
-            $userPlan = new UserPlan();
-            $userPlan->email = $user->email;
-            $userPlan->plan_code = $request['registration']['plan']['tier'];
-            $user->plan()->save($userPlan);
+        $payment = new Payment();
+        $payment->email = $user->email;
+        $payment->amount = $request['transaction']['amount'];
+        $payment->description = 'Initial Payment';
+        $payment->discount = $request['transaction']['discount'];
+        $payment->transaction_id = $this->transaction_id;
+        $payment->auth_code = $this->auth_code;
+        $user->payments()->save($payment);
 
-            $payment = new Payment();
-            $payment->email = $user->email;
-            $payment->amount = $request['transaction']['amount'];
-            $payment->description = 'Initial Payment';
-            $payment->discount = $request['transaction']['discount'];
-            $payment->transaction_id = $transactionId;
-            $payment->auth_code = $auth_code;
-            $user->payments()->save($payment);
+        $card = new Card();
+        $card->email = $user->email;
+        $card->name = $request['method']['name'];
+        $card->month = $request['method']['month'];
+        $card->year = $request['method']['year'];
+        $card->number = $request['method']['number'];;
+        $card->cvv = $request['method']['cvv'];
+        $user->cards()->save($card);
 
-            $card = new Card();
-            $card->email = $user->email;
-            $card->name = $request['method']['name'];
-            $card->month = $request['method']['month'];
-            $card->year = $request['method']['year'];
-            $card->number = $request['method']['number'];;
-            $card->cvv = $request['method']['cvv'];
-            $user->cards()->save($card);
-
-            return [
-                'transaction' => [
-                    'amount' => $request['transaction']['amount'],
-                    'transactionId' => $transactionId,
-                    'auth_code' => $auth_code
-                ],
-                'user' => $user
-            ];
-        }
+        return [
+            'transaction' => [
+                'amount' => $request['transaction']['amount'],
+                'transactionId' => $this->transaction_id,
+                'auth_code' => $this->auth_code
+            ],
+            'user' => $user
+        ];
     }
 
     /**

@@ -1,6 +1,6 @@
 <template lang="pug">
     div
-        div(class="w3-section alt-checkbox sixty")
+        div(class="w3-padding-16 alt-checkbox sixty")
             input(class="v-align" type="checkbox" id="terms"
                 v-model="checked"
                 @change="$emit('setTerms', checked)")

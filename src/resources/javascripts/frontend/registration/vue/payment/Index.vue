@@ -9,7 +9,7 @@
             h3 Payment Method
             h6 Please enter a form of payment to complete registration.
             p(v-if="code == 'ISMFREETRIAL' && selected.tier == 1") Your Insurance Social Media Essential Plan trial period is free. We ask for your credit card to prevent any service interruption should you keep your account open after the trial period. Your card will not be charged for the trial period. After the trial, you will be charged for each month. You can cancel at any time.
-            div(v-else)
+            p(v-else)
                 p Your credit card will be charged a pro-rated amount for this month’s subscription fee. You will be charged for next month’s service during the last week of this month.
                 h3 Total Charges: #[b ${{ amount }}]
             Card(
@@ -105,7 +105,7 @@
             switch(this.code) {
                 case 'ISMFREETRIAL':
                     if(this.selected.tier == 1) {
-                        this.$store.commit('setAmount', 1.00);
+                        this.$store.commit('setAmount', 0.00);
                     } else {
                         if(today.format('MM/DD/YYYY') == new Moment().startOf('month').format('MM/DD/YYYY') ||
                             today.format('MM/DD/YYYY') == new Moment().endOf('month').format('MM/DD/YYYY')) {
@@ -155,9 +155,9 @@
                 const secureData = {
                     cardData: {
                         cardNumber: this.card,
-                        month: this.$store.state.payment.month,
-                        year: this.$store.state.payment.year,
-                        cardcode: this.$store.state.payment.cvv
+                        month: this.month,
+                        year: this.year,
+                        cardcode: this.cvv
                     },
                     authData: this.$store.state.authorize
                 };
@@ -171,18 +171,18 @@
                         let data = {
                             registration: this.$store.state.registration,
                             transaction: {
-                                amount: this.$store.state.payment.amount,
+                                amount: this.amount,
                                 dataDescriptor: response.opaqueData.dataDescriptor,
                                 dataValue: response.opaqueData.dataValue,
                                 customerData: this.$store.state.registration,
                                 discount: 0.00
                             },
                             method: {
-                                name: this.$store.state.payment.name,
-                                month: this.$store.state.payment.month,
-                                year: this.$store.state.payment.year,
-                                number: this.$store.state.payment.card.substr(this.$store.state.payment.card.length - 4),
-                                cvv: this.$store.state.payment.cvv
+                                name: this.name,
+                                month: this.month,
+                                year: this.year,
+                                number: this.card.substr(this.card.length - 4),
+                                cvv: this.cvv
                             }
                         }
                         if(this.code == 'ISMFREETRIAL' ||

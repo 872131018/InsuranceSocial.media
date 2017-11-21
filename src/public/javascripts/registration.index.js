@@ -33347,7 +33347,7 @@ var Module = {
         year: '',
         cvv: '',
         name: '',
-        amount: 1.00
+        amount: 0.00
     },
     mutations: {
         setCard: function setCard(state, value) {
@@ -33568,6 +33568,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 
@@ -33593,7 +33594,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             return this.$store.state.registration.email;
         },
         emailValid: function emailValid() {
-            return (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,9})+$/.test(this.$store.state.registration.email)
+            return (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,9})+$/.test(this.email)
             );
         },
         emailConfirmation: function emailConfirmation() {
@@ -33606,7 +33607,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             return this.$store.state.registration.password;
         },
         passwordValid: function passwordValid() {
-            return (/^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$/.test(this.$store.state.registration.password)
+            return (/^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$/.test(this.password)
             );
         },
         passwordConfirmation: function passwordConfirmation() {
@@ -33629,13 +33630,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.validate();
             if (this.errors.length == 0) {
                 axios.post('/confirm', { email: this.email }).then(function (response) {
-                    /*
-                    if(response.data.discount && response.data.discount != 'ISMFREETRIAL') {
-                        window.location = '/corporate';
-                    } else {
-                        window.location = '/plans';
-                    }
-                    */
                     if (_this.code == 'FMH17' || _this.code == 'IMTGEM17') {
                         _this.$router.push({ name: 'Corporate' });
                     } else {
@@ -34439,7 +34433,7 @@ var render = function() {
   return _c(
     "div",
     [
-      _c("div", { staticClass: "w3-section alt-checkbox sixty" }, [
+      _c("div", { staticClass: "w3-padding-16 alt-checkbox sixty" }, [
         _c("input", {
           directives: [
             {
@@ -35226,7 +35220,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         switch (this.code) {
             case 'ISMFREETRIAL':
                 if (this.selected.tier == 1) {
-                    this.$store.commit('setAmount', 1.00);
+                    this.$store.commit('setAmount', 0.00);
                 } else {
                     if (today.format('MM/DD/YYYY') == new __WEBPACK_IMPORTED_MODULE_0_moment___default.a().startOf('month').format('MM/DD/YYYY') || today.format('MM/DD/YYYY') == new __WEBPACK_IMPORTED_MODULE_0_moment___default.a().endOf('month').format('MM/DD/YYYY')) {
                         this.$store.commit('setAmount', parseInt(this.selected.price));
@@ -35276,9 +35270,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var secureData = {
                 cardData: {
                     cardNumber: this.card,
-                    month: this.$store.state.payment.month,
-                    year: this.$store.state.payment.year,
-                    cardcode: this.$store.state.payment.cvv
+                    month: this.month,
+                    year: this.year,
+                    cardcode: this.cvv
                 },
                 authData: this.$store.state.authorize
             };
@@ -35313,18 +35307,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     var data = {
                         registration: _this.$store.state.registration,
                         transaction: {
-                            amount: _this.$store.state.payment.amount,
+                            amount: _this.amount,
                             dataDescriptor: response.opaqueData.dataDescriptor,
                             dataValue: response.opaqueData.dataValue,
                             customerData: _this.$store.state.registration,
                             discount: 0.00
                         },
                         method: {
-                            name: _this.$store.state.payment.name,
-                            month: _this.$store.state.payment.month,
-                            year: _this.$store.state.payment.year,
-                            number: _this.$store.state.payment.card.substr(_this.$store.state.payment.card.length - 4),
-                            cvv: _this.$store.state.payment.cvv
+                            name: _this.name,
+                            month: _this.month,
+                            year: _this.year,
+                            number: _this.card.substr(_this.card.length - 4),
+                            cvv: _this.cvv
                         }
                     };
                     if (_this.code == 'ISMFREETRIAL' || _this.code == 'IMTGEM17' || _this.code == 'FMH17') {
@@ -36699,17 +36693,17 @@ var render = function() {
                       "Your Insurance Social Media Essential Plan trial period is free. We ask for your credit card to prevent any service interruption should you keep your account open after the trial period. Your card will not be charged for the trial period. After the trial, you will be charged for each month. You can cancel at any time."
                     )
                   ])
-                : _c("div", [
-                    _c("p", [
-                      _vm._v(
-                        "Your credit card will be charged a pro-rated amount for this month’s subscription fee. You will be charged for next month’s service during the last week of this month."
-                      )
-                    ]),
-                    _c("h3", [
-                      _vm._v("Total Charges: "),
-                      _c("b", [_vm._v("$" + _vm._s(_vm.amount))])
-                    ])
-                  ]),
+                : _c("p"),
+              _c("p", [
+                _vm._v(
+                  "Your credit card will be charged a pro-rated amount for this month’s subscription fee. You will be charged for next month’s service during the last week of this month."
+                )
+              ]),
+              _c("h3", [
+                _vm._v("Total Charges: "),
+                _c("b", [_vm._v("$" + _vm._s(_vm.amount))])
+              ]),
+              _c("p"),
               _c("Card", {
                 attrs: { value: _vm.card },
                 on: {
@@ -37338,11 +37332,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         var _this = this;
 
         console.log('App mounted.');
-
         if (this.$route.params.code) {
             this.$store.commit('setCode', this.$route.params.code);
         }
-
         axios.get('/api/plans').then(function (response) {
             _this.$store.commit('setPlans', response.data);
             if (_this.$route.params.code) {
@@ -37428,11 +37420,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     //
@@ -37455,7 +37442,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "w3-padding-32 w3-hide-small tips" }, [
       _c("ul", { staticClass: "w3-ul w3-card w3-white w3-center" }, [
-        _c("li", { staticClass: "w3-padding w3-text-white primary" }, [
+        _c("li", { staticClass: "w3-text-white primary" }, [
           _c("h6", [
             _c("b", [
               _vm._v("Why you'll "),
@@ -37464,35 +37451,25 @@ var staticRenderFns = [
             ])
           ])
         ]),
-        _c("li", { staticClass: "w3-padding" }, [
-          _c("div", { staticClass: "w3-panel" }, [
-            _vm._v("Content customized to your marketing goals")
-          ])
+        _c("li", { staticClass: "w3-panel" }, [
+          _vm._v("Content customized to your marketing goals")
         ]),
-        _c("li", { staticClass: "w3-padding" }, [
-          _c("div", { staticClass: "w3-panel" }, [
-            _vm._v("Community content to engage followers")
-          ])
+        _c("li", { staticClass: "w3-panel" }, [
+          _vm._v("Community content to engage followers")
         ]),
-        _c("li", { staticClass: "w3-padding" }, [
-          _c("div", { staticClass: "w3-panel" }, [
-            _vm._v("Referral function to boost sales")
-          ])
+        _c("li", { staticClass: "w3-panel" }, [
+          _vm._v("Referral function to boost sales")
         ]),
-        _c("li", { staticClass: "w3-padding" }, [
-          _c("div", { staticClass: "w3-panel" }, [
-            _vm._v("Set it & forget it, or jump into the conversation")
-          ])
+        _c("li", { staticClass: "w3-panel" }, [
+          _vm._v("Set it & forget it, or jump into the conversation")
         ]),
-        _c("li", { staticClass: "w3-padding" }, [
-          _c("div", { staticClass: "w3-panel" }, [
-            _vm._v("We’re the insurance social media marketing leader!")
-          ]),
-          _c("div", { staticClass: "w3-panel" }, [
-            _vm._v("We can’t wait for you to reap the benefits!")
-          ])
+        _c("li", { staticClass: "w3-panel" }, [
+          _vm._v("We’re the insurance social media marketing leader!")
         ]),
-        _c("li", { staticClass: "w3-padding w3-text-white secondary" }, [
+        _c("li", { staticClass: "w3-panel" }, [
+          _vm._v("We can’t wait for you to reap the benefits!")
+        ]),
+        _c("li", { staticClass: "w3-text-white secondary" }, [
           _c("h6", [
             _vm._v("Join Insurance Social Media and get started today!")
           ])

@@ -33,7 +33,8 @@
             :value="code"
             :valid="codeValid"
             @setValue="(value) => $store.commit('setCode', value)")
-        Terms(@setTerms="(value) => $store.commit('setTerms', value)")
+        Terms(
+            @setTerms="(value) => $store.commit('setTerms', value)")
         Errors(
             v-if="errors.length"
             :errors="errors")
@@ -67,7 +68,7 @@
                 return this.$store.state.registration.email;
             },
             emailValid() {
-                return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,9})+$/.test(this.$store.state.registration.email);
+                return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,9})+$/.test(this.email);
             },
             emailConfirmation() {
                 return this.$store.state.registration.email_confirmation;
@@ -80,7 +81,7 @@
                 return this.$store.state.registration.password;
             },
             passwordValid() {
-                return /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$/.test(this.$store.state.registration.password);
+                return /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$/.test(this.password);
             },
             passwordConfirmation() {
                 return this.$store.state.registration.password_confirmation
@@ -104,13 +105,6 @@
                 this.validate();
                 if(this.errors.length == 0) {
                     axios.post('/confirm', { email: this.email }).then(response => {
-                        /*
-                        if(response.data.discount && response.data.discount != 'ISMFREETRIAL') {
-                            window.location = '/corporate';
-                        } else {
-                            window.location = '/plans';
-                        }
-                        */
                         if(this.code == 'FMH17' || this.code == 'IMTGEM17') {
                             this.$router.push({ name: 'Corporate' });
                         } else {
