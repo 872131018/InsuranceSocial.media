@@ -13,12 +13,18 @@
     export default {
         mounted() {
             console.log('App mounted.')
-            if(this.$route.params.code) {
-                this.$store.commit('setCode', this.$route.params.code);
+            if(this.$route.query.code) {
+                this.$store.commit('setCode', this.$route.query.code);
             }
             axios.get('/api/plans').then(response => {
                 this.$store.commit('setPlans', response.data);
-                if(this.$route.params.code) {
+                if(this.$route.query.code == 'ISMFREETRIAL') {
+                    this.$store.commit('setPlan', response.data[0]);
+                }
+                if(this.$route.query.code == 'STANDARD') {
+                    this.$store.commit('setPlan', response.data[1]);
+                }
+                if(this.$route.query.code == 'CONCIERGE') {
                     this.$store.commit('setPlan', response.data[0]);
                 }
             });

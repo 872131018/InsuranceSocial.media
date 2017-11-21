@@ -1,49 +1,31 @@
-<template>
-    <div>
-        <ProgressBar
-            v-bind:progress="44">
-        </ProgressBar>
-        <div class="w3-container w3-card-2 form">
-            <div class="w3-panel">
-                <h3>Corporate Page Preferences</h3>
-                <h5>Please select your preferences for your corporate Facebook page.</h5>
-            </div>
-            <div class="w3-section">
-                <Field
-                    v-bind:label="'Preferred Page Name'"
-                    v-on:setValue="(value) => properties.name = value">
-                </Field>
-                <div>Note: Your desired Page name may not be available. InsuranceSocial.Media will strive to get a Page name as close to your desired name as possible.</div>
-            </div>
-            <div class="w3-section">
-                <h5>Please select an image to use as your Facebook background and profile picture. Note, you will be able to change this later.</h5>
-                <Radio
-                    v-bind:options="images"
-                    v-on:setChecked="(image) => properties.image = image">
-                </Radio>
-            </div>
-            <div class="w3-section">
-                <h5>I need InsuranceSocial.Media to create a new Facebook page for me. I approve the $25 Facebook page creation fee.  You will receive an email within 24 hours with further instructions. Please follow these instructions to complete the set-up of your business Facebook Page.</h5>
-                <div class="w3-panel"
-                    v-if="errors.length">
-                    <Errors v-bind:errors="errors"></Errors>
-                </div>
-                <button class="w3-button w3-text-white primary"
-                    v-on:click="update('Twitter')">Continue
-                </button>
-                <button class="w3-button w3-text-white primary"
-                    v-on:click="warning = true">I don't want to post to Facebook.
-                </button>
-            </div>
-            <div class="w3-section"
-                v-if="warning">
-                <h6 class="w3-text-red">One in five page views in the United States is on Facebook! Are you sure you don’t want to make Facebook part of your social media marketing?</h6>
-                <button class="w3-button w3-text-white primary"
-                    v-on:click="$router.push({ name: 'Twitter' })">Yes
-                </button>
-            </div>
-        </div>
-    </div>
+<template lang="pug">
+    div
+        ProgressBar(
+            v-bind:progress="44")
+        div(class="w3-padding w3-card form")
+            h3 Corporate Page Preferences
+            h5 Please select your preferences for your corporate Facebook page.
+            Field(
+                :label="'Preferred Page Name'"
+                :setValue="(value) => properties.name = value")
+            p Note: Your desired Page name may not be available. InsuranceSocial.Media will strive to get a Page name as close to your desired name as possible.
+            h5 Please select an image to use as your Facebook background and profile picture. Note, you will be able to change this later.
+            Radio(
+                :options="images"
+                :setChecked="(image) => properties.image = image")
+            h5 I need InsuranceSocial.Media to create a new Facebook page for me. I approve the $25 Facebook page creation fee.  You will receive an email within 24 hours with further instructions. Please follow these instructions to complete the set-up of your business Facebook Page.
+            Errors(
+                v-if="errors.length"
+                :errors="errors")
+            button(class="w3-button w3-margin-right w3-text-white primary"
+                @click="update('Twitter')") Continue
+            button(class="w3-button w3-margin-left w3-text-white primary"
+                @click="warning = true") I don't want to post to Facebook.
+            div(
+                v-if="warning")
+                h6(class="w3-text-red") One in five page views in the United States is on Facebook! Are you sure you don’t want to make Facebook part of your social media marketing?
+                button(class="w3-button w3-text-white primary"
+                    @click="$router.push({ name: 'Twitter' })") Yes, I'm sure
 </template>
 
 <script>

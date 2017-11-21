@@ -25354,8 +25354,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }
             if (store.getState().PlanStore.plan_code == 1 && this.properties.posting_days.length > 3) {
                 this.errors.push('You may only select up to 3 posting days.');
-            } else if (store.getState().PlanStore.plan_code > 1 && this.properties.posting_days.length > 5) {
+            } else if (store.getState().PlanStore.plan_code > 2 && this.properties.posting_days.length > 5) {
                 this.errors.push('You may only select up to 5 posting days.');
+            } else if (store.getState().PlanStore.plan_code > 3 && this.properties.posting_days.length > 7) {
+                this.errors.push('You may only select up to 7 posting days.');
             }
             if (this.properties.posting_days.length == 0) {
                 this.errors.push('You must select days for posting content.');

@@ -3,14 +3,12 @@
         ProgressBar(
             :progress="33")
         div(class="w3-card w3-padding form")
-            div(class="w3-panel")
-                h3 Link your Facebook
-            div(class="w3-section")
-                div Do you have a corporate Facebook page you’d like us to post to, or do you need us to create a page for you?
-                button(class="w3-button w3-margin w3-text-white primary"
-                    @click="facebookLogin()") Post to my page
-                button(class="w3-button w3-margin w3-text-white primary"
-                    @click="createPage()") Create a new page
+            h3 Link your Facebook
+            p Do you have a corporate Facebook page you’d like us to post to, or do you need us to create a page for you?
+            button(class="w3-button w3-margin-right w3-text-white primary"
+                @click="facebookLogin()") Post to my page
+            button(class="w3-button w3-margin-left w3-text-white primary"
+                @click="createPage()") Create a new page
 </template>
 
 <script>

@@ -19,8 +19,7 @@
     export default {
         props: {
             progress: {
-                type: Number,
-                default: 33
+                type: Number
             }
         }
     }

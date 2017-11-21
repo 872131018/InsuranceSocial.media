@@ -37,6 +37,10 @@
         mounted() {
             if(this.$store.state.registration.code == 'ISMFREETRIAL') {
                 this.$store.commit('setPlan', this.plans[0]);
+            } else if(this.$store.state.registration.code == 'STANDARD') {
+                this.$store.commit('setPlan', this.plans[1]);
+            } else if(this.$store.state.registration.code == 'CONCIERGE') {
+                this.$store.commit('setPlan', this.plans[2]);
             }
         },
         methods: {

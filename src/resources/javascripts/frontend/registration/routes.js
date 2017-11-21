@@ -11,11 +11,6 @@ const routes = [
         component: Register
     },
     {
-        path: '/register/:code',
-        name: 'RegisterWithCode',
-        component: Register
-    },
-    {
         path: '/plans',
         name: 'Plans',
         component: Plans

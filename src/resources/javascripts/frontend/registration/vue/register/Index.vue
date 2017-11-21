@@ -95,6 +95,8 @@
             },
             codeValid() {
                 return this.$store.state.registration.code == 'ISMFREETRIAL' ||
+                        this.$store.state.registration.code == 'STANDARD' ||
+                        this.$store.state.registration.code == 'CONCIERGE' ||
                         this.$store.state.registration.code == 'IMTGEM17' ||
                         this.$store.state.registration.code == 'FMH17' ||
                         this.$store.state.registration.code == '';
