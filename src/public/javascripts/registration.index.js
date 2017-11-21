@@ -33226,7 +33226,9 @@ if (false) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__modules_authorize_vuex__ = __webpack_require__(219);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__modules_payment_vuex__ = __webpack_require__(220);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__modules_corporate_vuex__ = __webpack_require__(221);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__modules_services_vuex__ = __webpack_require__(222);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__modules_errors_vuex__ = __webpack_require__(685);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__modules_services_vuex__ = __webpack_require__(222);
+
 
 
 
@@ -33245,7 +33247,8 @@ var store = new __WEBPACK_IMPORTED_MODULE_1_vuex__["a" /* default */].Store({
         authorize: __WEBPACK_IMPORTED_MODULE_4__modules_authorize_vuex__["a" /* default */],
         payment: __WEBPACK_IMPORTED_MODULE_5__modules_payment_vuex__["a" /* default */],
         corporate: __WEBPACK_IMPORTED_MODULE_6__modules_corporate_vuex__["a" /* default */],
-        services: __WEBPACK_IMPORTED_MODULE_7__modules_services_vuex__["a" /* default */]
+        errors: __WEBPACK_IMPORTED_MODULE_7__modules_errors_vuex__["a" /* default */],
+        services: __WEBPACK_IMPORTED_MODULE_8__modules_services_vuex__["a" /* default */]
     }
 });
 
@@ -33574,8 +33577,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     data: function data() {
         return {
             email_confirmed: false,
-            password_confirmed: false,
-            errors: []
+            password_confirmed: false
         };
     },
 
@@ -33617,6 +33619,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         codeValid: function codeValid() {
             return this.$store.state.registration.code == 'ISMFREETRIAL' || this.$store.state.registration.code == 'STANDARD' || this.$store.state.registration.code == 'CONCIERGE' || this.$store.state.registration.code == 'IMTGEM17' || this.$store.state.registration.code == 'FMH17' || this.$store.state.registration.code == '';
+        },
+        errors: function errors() {
+            return this.$store.state.errors.errors;
         }
     },
     methods: {
@@ -33633,29 +33638,29 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     }
                 }).catch(function (error) {
                     if (error.response.data.email) {
-                        _this.errors.push('That email has already been used, please use another');
+                        _this.$store.commit('setError', 'That email has already been used, please use another');
                     } else {
-                        _this.errors.push('An error has occured, please contact support.');
+                        _this.$store.commit('setError', 'An error has occured, please contact support.');
                     }
                 });
             }
         },
         validate: function validate() {
-            this.errors = [];
+            this.$store.commit('clearErrors');
             if (!this.nameValid) {
-                this.errors.push('You must enter your full name.');
+                this.$store.commit('setError', 'You must enter your full name.');
             }
             if (!this.emailValid && !this.emailConfirmed) {
-                this.errors.push('You must enter and confirm your email.');
+                this.$store.commit('setError', 'You must enter and confirm your email.');
             }
             if (!this.passwordValid && !this.passwordConfirmed) {
-                this.errors.push('You must enter and confirm a password.');
+                this.$store.commit('setError', 'You must enter and confirm a password.');
             }
             if (!this.codeValid) {
-                this.errors.push('You have an invalid promotion code.');
+                this.$store.commit('setError', 'You have an invalid promotion code.');
             }
             if (!this.$store.state.registration.terms) {
-                this.errors.push('You must accept the Terms of Service.');
+                this.$store.commit('setError', 'You must accept the Terms of Service.');
             }
         }
     },
@@ -34767,18 +34772,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    data: function data() {
-        return {
-            errors: []
-        };
-    },
-
     computed: {
         plans: function plans() {
             return this.$store.state.plans.plans;
         },
         selected: function selected() {
             return this.$store.state.registration.plan.name;
+        },
+        errors: function errors() {
+            return this.$store.state.errors.errors;
         }
     },
     mounted: function mounted() {
@@ -34793,9 +34795,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     methods: {
         next: function next() {
-            this.errors = [];
+            this.$store.commit('clearErrors');
             if (!this.selected) {
-                this.errors.push('You must select a plan.');
+                this.$store.commit('setError', 'You must select a plan.');
             } else {
                 this.$router.push({ name: 'Payment' });
             }
@@ -35173,12 +35175,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
-
-
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
-            errors: [],
             response: null,
             expired: false
         };
@@ -35208,6 +35207,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         name: function name() {
             return this.$store.state.payment.name;
+        },
+        errors: function errors() {
+            return this.$store.state.errors.errors;
         }
     },
     mounted: function mounted() {
@@ -35266,80 +35268,100 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         sendPaymentDataToAnet: function sendPaymentDataToAnet() {
             var _this = this;
 
-            this.errors = [];
-            var secureData = {
-                cardData: {
-                    cardNumber: this.card,
-                    month: this.month,
-                    year: this.year,
-                    cardcode: this.cvv
-                },
-                authData: this.$store.state.authorize
-            };
+            this.validate();
+            if (this.errors.length == 0) {
+                var secureData = {
+                    cardData: {
+                        cardNumber: this.card,
+                        month: this.month,
+                        year: this.year,
+                        cardcode: this.cvv
+                    },
+                    authData: this.$store.state.authorize
+                };
 
-            Accept.dispatchData(secureData, function (response) {
-                if (response.messages.resultCode === "Error") {
-                    var _iteratorNormalCompletion = true;
-                    var _didIteratorError = false;
-                    var _iteratorError = undefined;
+                Accept.dispatchData(secureData, function (response) {
+                    if (response.messages.resultCode === "Error") {
+                        var _iteratorNormalCompletion = true;
+                        var _didIteratorError = false;
+                        var _iteratorError = undefined;
 
-                    try {
-                        for (var _iterator = response.messages.message[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-                            var error = _step.value;
-
-                            _this.errors.push(error.text);
-                        }
-                    } catch (err) {
-                        _didIteratorError = true;
-                        _iteratorError = err;
-                    } finally {
                         try {
-                            if (!_iteratorNormalCompletion && _iterator.return) {
-                                _iterator.return();
-                            }
-                        } finally {
-                            if (_didIteratorError) {
-                                throw _iteratorError;
-                            }
-                        }
-                    }
-                } else {
-                    var data = {
-                        registration: _this.$store.state.registration,
-                        transaction: {
-                            amount: _this.amount,
-                            dataDescriptor: response.opaqueData.dataDescriptor,
-                            dataValue: response.opaqueData.dataValue,
-                            customerData: _this.$store.state.registration,
-                            discount: 0.00
-                        },
-                        method: {
-                            name: _this.name,
-                            month: _this.month,
-                            year: _this.year,
-                            number: _this.card.substr(_this.card.length - 4),
-                            cvv: _this.cvv
-                        }
-                    };
-                    if (_this.code == 'ISMFREETRIAL' || _this.code == 'IMTGEM17' || _this.code == 'FMH17') {
-                        data.transaction.discount = 39.00;
-                    }
+                            for (var _iterator = response.messages.message[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                                var error = _step.value;
 
-                    axios.post('/register', data).then(function (response) {
-                        _this.response = {
-                            planCost: _this.selected.price,
-                            coupon_code: _this.$store.state.registration.code,
-                            amount_charged: response.data.transaction.amount,
-                            transactionId: response.data.transaction.transactionId
-                        };
-                    }).catch(function (error) {
-                        if (error.response.data) {
-                            _this.errors.push('There has been an error. See error message below.');
-                            _this.errors.push(error.response.data);
+                                _this.$store.commit('setError', error.text);
+                            }
+                        } catch (err) {
+                            _didIteratorError = true;
+                            _iteratorError = err;
+                        } finally {
+                            try {
+                                if (!_iteratorNormalCompletion && _iterator.return) {
+                                    _iterator.return();
+                                }
+                            } finally {
+                                if (_didIteratorError) {
+                                    throw _iteratorError;
+                                }
+                            }
                         }
-                    });
-                }
-            });
+                    } else {
+                        var data = {
+                            registration: _this.$store.state.registration,
+                            transaction: {
+                                amount: _this.amount,
+                                dataDescriptor: response.opaqueData.dataDescriptor,
+                                dataValue: response.opaqueData.dataValue,
+                                customerData: _this.$store.state.registration,
+                                discount: 0.00
+                            },
+                            method: {
+                                name: _this.name,
+                                month: _this.month,
+                                year: _this.year,
+                                number: _this.card.substr(_this.card.length - 4),
+                                cvv: _this.cvv
+                            }
+                        };
+                        if (_this.code == 'ISMFREETRIAL' || _this.code == 'IMTGEM17' || _this.code == 'FMH17') {
+                            data.transaction.discount = 39.00;
+                        }
+
+                        axios.post('/register', data).then(function (response) {
+                            _this.response = {
+                                planCost: _this.selected.price,
+                                coupon_code: _this.$store.state.registration.code,
+                                amount_charged: response.data.transaction.amount,
+                                transactionId: response.data.transaction.transactionId
+                            };
+                        }).catch(function (error) {
+                            if (error.response.data) {
+                                _this.$store.commit('setError', 'There has been an error. See error message below.');
+                                _this.$store.commit('setError', response.data);
+                            }
+                        });
+                    }
+                });
+            }
+        },
+        validate: function validate() {
+            this.$store.commit('clearErrors');
+            if (this.card == '') {
+                this.$store.commit('setError', 'Please enter credit card number.');
+            }
+            if (this.month == '') {
+                this.$store.commit('setError', 'Please enter expiration month on credit card.');
+            }
+            if (this.year == '') {
+                this.$store.commit('setError', 'Please enter expiration year on credit card.');
+            }
+            if (this.cvv == '') {
+                this.$store.commit('setError', 'Please enter the security code on the back of the card.');
+            }
+            if (this.name == '') {
+                this.$store.commit('setError', 'Please enter name on credit card.');
+            }
         },
         navigate: function navigate() {
             window.location = '/facebook';
@@ -37526,6 +37548,420 @@ if (false) {
     require("vue-hot-reload-api")      .rerender("data-v-288c3b4e", module.exports)
   }
 }
+
+/***/ }),
+/* 292 */,
+/* 293 */,
+/* 294 */,
+/* 295 */,
+/* 296 */,
+/* 297 */,
+/* 298 */,
+/* 299 */,
+/* 300 */,
+/* 301 */,
+/* 302 */,
+/* 303 */,
+/* 304 */,
+/* 305 */,
+/* 306 */,
+/* 307 */,
+/* 308 */,
+/* 309 */,
+/* 310 */,
+/* 311 */,
+/* 312 */,
+/* 313 */,
+/* 314 */,
+/* 315 */,
+/* 316 */,
+/* 317 */,
+/* 318 */,
+/* 319 */,
+/* 320 */,
+/* 321 */,
+/* 322 */,
+/* 323 */,
+/* 324 */,
+/* 325 */,
+/* 326 */,
+/* 327 */,
+/* 328 */,
+/* 329 */,
+/* 330 */,
+/* 331 */,
+/* 332 */,
+/* 333 */,
+/* 334 */,
+/* 335 */,
+/* 336 */,
+/* 337 */,
+/* 338 */,
+/* 339 */,
+/* 340 */,
+/* 341 */,
+/* 342 */,
+/* 343 */,
+/* 344 */,
+/* 345 */,
+/* 346 */,
+/* 347 */,
+/* 348 */,
+/* 349 */,
+/* 350 */,
+/* 351 */,
+/* 352 */,
+/* 353 */,
+/* 354 */,
+/* 355 */,
+/* 356 */,
+/* 357 */,
+/* 358 */,
+/* 359 */,
+/* 360 */,
+/* 361 */,
+/* 362 */,
+/* 363 */,
+/* 364 */,
+/* 365 */,
+/* 366 */,
+/* 367 */,
+/* 368 */,
+/* 369 */,
+/* 370 */,
+/* 371 */,
+/* 372 */,
+/* 373 */,
+/* 374 */,
+/* 375 */,
+/* 376 */,
+/* 377 */,
+/* 378 */,
+/* 379 */,
+/* 380 */,
+/* 381 */,
+/* 382 */,
+/* 383 */,
+/* 384 */,
+/* 385 */,
+/* 386 */,
+/* 387 */,
+/* 388 */,
+/* 389 */,
+/* 390 */,
+/* 391 */,
+/* 392 */,
+/* 393 */,
+/* 394 */,
+/* 395 */,
+/* 396 */,
+/* 397 */,
+/* 398 */,
+/* 399 */,
+/* 400 */,
+/* 401 */,
+/* 402 */,
+/* 403 */,
+/* 404 */,
+/* 405 */,
+/* 406 */,
+/* 407 */,
+/* 408 */,
+/* 409 */,
+/* 410 */,
+/* 411 */,
+/* 412 */,
+/* 413 */,
+/* 414 */,
+/* 415 */,
+/* 416 */,
+/* 417 */,
+/* 418 */,
+/* 419 */,
+/* 420 */,
+/* 421 */,
+/* 422 */,
+/* 423 */,
+/* 424 */,
+/* 425 */,
+/* 426 */,
+/* 427 */,
+/* 428 */,
+/* 429 */,
+/* 430 */,
+/* 431 */,
+/* 432 */,
+/* 433 */,
+/* 434 */,
+/* 435 */,
+/* 436 */,
+/* 437 */,
+/* 438 */,
+/* 439 */,
+/* 440 */,
+/* 441 */,
+/* 442 */,
+/* 443 */,
+/* 444 */,
+/* 445 */,
+/* 446 */,
+/* 447 */,
+/* 448 */,
+/* 449 */,
+/* 450 */,
+/* 451 */,
+/* 452 */,
+/* 453 */,
+/* 454 */,
+/* 455 */,
+/* 456 */,
+/* 457 */,
+/* 458 */,
+/* 459 */,
+/* 460 */,
+/* 461 */,
+/* 462 */,
+/* 463 */,
+/* 464 */,
+/* 465 */,
+/* 466 */,
+/* 467 */,
+/* 468 */,
+/* 469 */,
+/* 470 */,
+/* 471 */,
+/* 472 */,
+/* 473 */,
+/* 474 */,
+/* 475 */,
+/* 476 */,
+/* 477 */,
+/* 478 */,
+/* 479 */,
+/* 480 */,
+/* 481 */,
+/* 482 */,
+/* 483 */,
+/* 484 */,
+/* 485 */,
+/* 486 */,
+/* 487 */,
+/* 488 */,
+/* 489 */,
+/* 490 */,
+/* 491 */,
+/* 492 */,
+/* 493 */,
+/* 494 */,
+/* 495 */,
+/* 496 */,
+/* 497 */,
+/* 498 */,
+/* 499 */,
+/* 500 */,
+/* 501 */,
+/* 502 */,
+/* 503 */,
+/* 504 */,
+/* 505 */,
+/* 506 */,
+/* 507 */,
+/* 508 */,
+/* 509 */,
+/* 510 */,
+/* 511 */,
+/* 512 */,
+/* 513 */,
+/* 514 */,
+/* 515 */,
+/* 516 */,
+/* 517 */,
+/* 518 */,
+/* 519 */,
+/* 520 */,
+/* 521 */,
+/* 522 */,
+/* 523 */,
+/* 524 */,
+/* 525 */,
+/* 526 */,
+/* 527 */,
+/* 528 */,
+/* 529 */,
+/* 530 */,
+/* 531 */,
+/* 532 */,
+/* 533 */,
+/* 534 */,
+/* 535 */,
+/* 536 */,
+/* 537 */,
+/* 538 */,
+/* 539 */,
+/* 540 */,
+/* 541 */,
+/* 542 */,
+/* 543 */,
+/* 544 */,
+/* 545 */,
+/* 546 */,
+/* 547 */,
+/* 548 */,
+/* 549 */,
+/* 550 */,
+/* 551 */,
+/* 552 */,
+/* 553 */,
+/* 554 */,
+/* 555 */,
+/* 556 */,
+/* 557 */,
+/* 558 */,
+/* 559 */,
+/* 560 */,
+/* 561 */,
+/* 562 */,
+/* 563 */,
+/* 564 */,
+/* 565 */,
+/* 566 */,
+/* 567 */,
+/* 568 */,
+/* 569 */,
+/* 570 */,
+/* 571 */,
+/* 572 */,
+/* 573 */,
+/* 574 */,
+/* 575 */,
+/* 576 */,
+/* 577 */,
+/* 578 */,
+/* 579 */,
+/* 580 */,
+/* 581 */,
+/* 582 */,
+/* 583 */,
+/* 584 */,
+/* 585 */,
+/* 586 */,
+/* 587 */,
+/* 588 */,
+/* 589 */,
+/* 590 */,
+/* 591 */,
+/* 592 */,
+/* 593 */,
+/* 594 */,
+/* 595 */,
+/* 596 */,
+/* 597 */,
+/* 598 */,
+/* 599 */,
+/* 600 */,
+/* 601 */,
+/* 602 */,
+/* 603 */,
+/* 604 */,
+/* 605 */,
+/* 606 */,
+/* 607 */,
+/* 608 */,
+/* 609 */,
+/* 610 */,
+/* 611 */,
+/* 612 */,
+/* 613 */,
+/* 614 */,
+/* 615 */,
+/* 616 */,
+/* 617 */,
+/* 618 */,
+/* 619 */,
+/* 620 */,
+/* 621 */,
+/* 622 */,
+/* 623 */,
+/* 624 */,
+/* 625 */,
+/* 626 */,
+/* 627 */,
+/* 628 */,
+/* 629 */,
+/* 630 */,
+/* 631 */,
+/* 632 */,
+/* 633 */,
+/* 634 */,
+/* 635 */,
+/* 636 */,
+/* 637 */,
+/* 638 */,
+/* 639 */,
+/* 640 */,
+/* 641 */,
+/* 642 */,
+/* 643 */,
+/* 644 */,
+/* 645 */,
+/* 646 */,
+/* 647 */,
+/* 648 */,
+/* 649 */,
+/* 650 */,
+/* 651 */,
+/* 652 */,
+/* 653 */,
+/* 654 */,
+/* 655 */,
+/* 656 */,
+/* 657 */,
+/* 658 */,
+/* 659 */,
+/* 660 */,
+/* 661 */,
+/* 662 */,
+/* 663 */,
+/* 664 */,
+/* 665 */,
+/* 666 */,
+/* 667 */,
+/* 668 */,
+/* 669 */,
+/* 670 */,
+/* 671 */,
+/* 672 */,
+/* 673 */,
+/* 674 */,
+/* 675 */,
+/* 676 */,
+/* 677 */,
+/* 678 */,
+/* 679 */,
+/* 680 */,
+/* 681 */,
+/* 682 */,
+/* 683 */,
+/* 684 */,
+/* 685 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var Module = {
+    state: {
+        errors: []
+    },
+    mutations: {
+        setError: function setError(state, value) {
+            state.errors.push(value);
+        },
+        clearErrors: function clearErrors(state) {
+            state.errors = [];
+        }
+    }
+};
+
+/* harmony default export */ __webpack_exports__["a"] = (Module);
 
 /***/ })
 /******/ ]);

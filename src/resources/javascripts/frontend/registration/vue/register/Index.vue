@@ -54,7 +54,6 @@
             return {
                 email_confirmed: false,
                 password_confirmed: false,
-                errors: []
             }
         },
         computed: {
@@ -100,6 +99,9 @@
                         this.$store.state.registration.code == 'IMTGEM17' ||
                         this.$store.state.registration.code == 'FMH17' ||
                         this.$store.state.registration.code == '';
+            },
+            errors() {
+                return this.$store.state.errors.errors;
             }
         },
         methods: {
@@ -114,29 +116,29 @@
                         }
                     }).catch(error => {
                         if(error.response.data.email) {
-                            this.errors.push('That email has already been used, please use another');
+                            this.$store.commit('setError', 'That email has already been used, please use another');
                         } else {
-                            this.errors.push('An error has occured, please contact support.');
+                            this.$store.commit('setError', 'An error has occured, please contact support.');
                         }
                     });
                 }
             },
             validate() {
-                this.errors = [];
+                this.$store.commit('clearErrors');
                 if(!this.nameValid) {
-                    this.errors.push('You must enter your full name.');
+                    this.$store.commit('setError', 'You must enter your full name.');
                 }
                 if(!this.emailValid && !this.emailConfirmed) {
-                    this.errors.push('You must enter and confirm your email.');
+                    this.$store.commit('setError', 'You must enter and confirm your email.');
                 }
                 if(!this.passwordValid && !this.passwordConfirmed) {
-                    this.errors.push('You must enter and confirm a password.');
+                    this.$store.commit('setError', 'You must enter and confirm a password.');
                 }
                 if(!this.codeValid) {
-                    this.errors.push('You have an invalid promotion code.');
+                    this.$store.commit('setError', 'You have an invalid promotion code.');
                 }
                 if(!this.$store.state.registration.terms) {
-                    this.errors.push('You must accept the Terms of Service.');
+                    this.$store.commit('setError', 'You must accept the Terms of Service.');
                 }
             }
         },

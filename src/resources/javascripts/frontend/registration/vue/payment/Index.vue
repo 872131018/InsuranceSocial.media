@@ -52,11 +52,9 @@
     import Moment from 'moment';
     import Plan from './Plan';
     import Card from './inputs/Card';
-
     import Month from './inputs/Month';
     import Year from './inputs/Year';
     import CVV from './inputs/CVV';
-
     import Name from './inputs/Name';
     import Modal from './modal/Modal';
     import Expired from './expired/Expired';
@@ -64,7 +62,6 @@
     export default {
         data() {
             return {
-                errors: [],
                 response: null,
                 expired: false
             }
@@ -94,6 +91,9 @@
             name() {
                 return this.$store.state.payment.name;
             },
+            errors() {
+                return this.$store.state.errors.errors;
+            }
         },
         mounted() {
             /*
@@ -151,62 +151,81 @@
         },
         methods: {
             sendPaymentDataToAnet() {
-                this.errors = [];
-                const secureData = {
-                    cardData: {
-                        cardNumber: this.card,
-                        month: this.month,
-                        year: this.year,
-                        cardcode: this.cvv
-                    },
-                    authData: this.$store.state.authorize
-                };
+                this.validate();
+                if(this.errors.length == 0) {
+                    const secureData = {
+                        cardData: {
+                            cardNumber: this.card,
+                            month: this.month,
+                            year: this.year,
+                            cardcode: this.cvv
+                        },
+                        authData: this.$store.state.authorize
+                    };
 
-                Accept.dispatchData(secureData, (response) => {
-                    if (response.messages.resultCode === "Error") {
-                        for(let error of response.messages.message) {
-                            this.errors.push(error.text);
-                        }
-                    } else {
-                        let data = {
-                            registration: this.$store.state.registration,
-                            transaction: {
-                                amount: this.amount,
-                                dataDescriptor: response.opaqueData.dataDescriptor,
-                                dataValue: response.opaqueData.dataValue,
-                                customerData: this.$store.state.registration,
-                                discount: 0.00
-                            },
-                            method: {
-                                name: this.name,
-                                month: this.month,
-                                year: this.year,
-                                number: this.card.substr(this.card.length - 4),
-                                cvv: this.cvv
+                    Accept.dispatchData(secureData, (response) => {
+                        if (response.messages.resultCode === "Error") {
+                            for(let error of response.messages.message) {
+                                this.$store.commit('setError', error.text);
                             }
-                        }
-                        if(this.code == 'ISMFREETRIAL' ||
-                            this.code == 'IMTGEM17' ||
-                            this.code == 'FMH17') {
-                                data.transaction.discount = 39.00;
-                        }
-
-                        axios.post('/register', data).then(response => {
-                            this.response = {
-                                planCost: this.selected.price,
-                                coupon_code: this.$store.state.registration.code,
-                                amount_charged: response.data.transaction.amount,
-                                transactionId: response.data.transaction.transactionId
-                            };
-                        }).catch((error) => {
-                            if(error.response.data) {
-                                this.errors.push('There has been an error. See error message below.');
-                                this.errors.push(error.response.data);
+                        } else {
+                            let data = {
+                                registration: this.$store.state.registration,
+                                transaction: {
+                                    amount: this.amount,
+                                    dataDescriptor: response.opaqueData.dataDescriptor,
+                                    dataValue: response.opaqueData.dataValue,
+                                    customerData: this.$store.state.registration,
+                                    discount: 0.00
+                                },
+                                method: {
+                                    name: this.name,
+                                    month: this.month,
+                                    year: this.year,
+                                    number: this.card.substr(this.card.length - 4),
+                                    cvv: this.cvv
+                                }
                             }
-                        });
-                    }
-                });
+                            if(this.code == 'ISMFREETRIAL' ||
+                                this.code == 'IMTGEM17' ||
+                                this.code == 'FMH17') {
+                                    data.transaction.discount = 39.00;
+                            }
 
+                            axios.post('/register', data).then(response => {
+                                this.response = {
+                                    planCost: this.selected.price,
+                                    coupon_code: this.$store.state.registration.code,
+                                    amount_charged: response.data.transaction.amount,
+                                    transactionId: response.data.transaction.transactionId
+                                };
+                            }).catch((error) => {
+                                if(error.response.data) {
+                                    this.$store.commit('setError', 'There has been an error. See error message below.');
+                                    this.$store.commit('setError', response.data);
+                                }
+                            });
+                        }
+                    });
+                }
+            },
+            validate() {
+                this.$store.commit('clearErrors');
+                if(this.card == '') {
+                    this.$store.commit('setError', 'Please enter credit card number.');
+                }
+                if(this.month == '') {
+                    this.$store.commit('setError', 'Please enter expiration month on credit card.');
+                }
+                if(this.year == '') {
+                    this.$store.commit('setError', 'Please enter expiration year on credit card.');
+                }
+                if(this.cvv == '') {
+                    this.$store.commit('setError', 'Please enter the security code on the back of the card.');
+                }
+                if(this.name == '') {
+                    this.$store.commit('setError', 'Please enter name on credit card.');
+                }
             },
             navigate() {
                 window.location = '/facebook';

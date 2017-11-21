@@ -21,17 +21,15 @@
     import Plan from './Plan';
 
     export default {
-        data() {
-            return {
-                errors: []
-            }
-        },
         computed: {
             plans() {
                 return this.$store.state.plans.plans;
             },
             selected() {
                 return this.$store.state.registration.plan.name;
+            },
+            errors() {
+                return this.$store.state.errors.errors;
             }
         },
         mounted() {
@@ -45,9 +43,9 @@
         },
         methods: {
             next() {
-                this.errors = [];
+                this.$store.commit('clearErrors');
                 if(!this.selected) {
-                    this.errors.push('You must select a plan.');
+                    this.$store.commit('setError', 'You must select a plan.');
                 } else {
                     this.$router.push({ name: 'Payment' })
                 }
