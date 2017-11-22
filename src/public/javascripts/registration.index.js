@@ -33618,7 +33618,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             return this.$store.state.registration.code;
         },
         codeValid: function codeValid() {
-            return this.$store.state.registration.code == 'ISMFREETRIAL' || this.$store.state.registration.code == 'STANDARD' || this.$store.state.registration.code == 'CONCIERGE' || this.$store.state.registration.code == 'IMTGEM17' || this.$store.state.registration.code == 'FMH17' || this.$store.state.registration.code == '';
+            return this.$store.state.registration.code == 'ISMFREETRIAL' || this.$store.state.registration.code == 'IMTGEM17' || this.$store.state.registration.code == 'FMH17' || this.$store.state.registration.code == '';
         },
         errors: function errors() {
             return this.$store.state.errors.errors;
@@ -37354,19 +37354,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         var _this = this;
 
         console.log('App mounted.');
-        if (this.$route.query.code) {
-            this.$store.commit('setCode', this.$route.query.code);
-        }
+
         axios.get('/api/plans').then(function (response) {
             _this.$store.commit('setPlans', response.data);
-            if (_this.$route.query.code == 'ISMFREETRIAL') {
+            if (_this.$route.query.code) {
+                _this.$store.commit('setCode', _this.$route.query.code);
+            }
+            if (_this.$route.query.plan == 'ISMFREETRIAL') {
                 _this.$store.commit('setPlan', response.data[0]);
             }
-            if (_this.$route.query.code == 'STANDARD') {
+            if (_this.$route.query.plan == 'STANDARD') {
                 _this.$store.commit('setPlan', response.data[1]);
             }
-            if (_this.$route.query.code == 'CONCIERGE') {
-                _this.$store.commit('setPlan', response.data[0]);
+            if (_this.$route.query.plan == 'CONCIERGE') {
+                _this.$store.commit('setPlan', response.data[2]);
             }
         });
         axios.get('/api/payment').then(function (response) {
