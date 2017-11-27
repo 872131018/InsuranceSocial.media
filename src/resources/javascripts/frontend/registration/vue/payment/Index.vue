@@ -1,14 +1,14 @@
 <template lang="pug">
     div(class="w3-card w3-padding form")
         h3 You have selected the following plan.
-        Plan(
-            v-if="selected.name && !expired"
-            :plan="selected")
+        Selected(
+            v-if="plan.name && !expired"
+            :plan="plan")
         div(
             v-if="!expired")
             h3 Payment Method
             h6 Please enter a form of payment to complete registration.
-            p(v-if="code == 'ISMFREETRIAL' && selected.tier == 1") Your Insurance Social Media Essential Plan trial period is free. We ask for your credit card to prevent any service interruption should you keep your account open after the trial period. Your card will not be charged for the trial period. After the trial, you will be charged for each month. You can cancel at any time.
+            p(v-if="code == 'ISMFREETRIAL' && plan.tier == 1") Your Insurance Social Media Essential Plan trial period is free. We ask for your credit card to prevent any service interruption should you keep your account open after the trial period. Your card will not be charged for the trial period. After the trial, you will be charged for each month. You can cancel at any time.
             p(v-else)
                 p Your credit card will be charged a pro-rated amount for this month’s subscription fee. You will be charged for next month’s service during the last week of this month.
                 h3 Total Charges: #[b ${{ amount }}]
@@ -50,7 +50,7 @@
 
 <script>
     import Moment from 'moment';
-    import Plan from './Plan';
+    import Selected from './Selected';
     import Card from './inputs/Card';
     import Month from './inputs/Month';
     import Year from './inputs/Year';
@@ -67,7 +67,7 @@
             }
         },
         computed: {
-            selected() {
+            plan() {
                 return this.$store.state.registration.plan;
             },
             code() {
@@ -104,16 +104,16 @@
             const today = new Moment();
             switch(this.code) {
                 case 'ISMFREETRIAL':
-                    if(this.selected.tier == 1) {
+                    if(this.plan.tier == 1) {
                         this.$store.commit('setAmount', 0.00);
                     } else {
                         if(today.format('MM/DD/YYYY') == new Moment().startOf('month').format('MM/DD/YYYY') ||
                             today.format('MM/DD/YYYY') == new Moment().endOf('month').format('MM/DD/YYYY')) {
-                            this.$store.commit('setAmount', parseInt(this.selected.price));
+                            this.$store.commit('setAmount', parseInt(this.plan.price));
                         } else {
                             const firstDay = new Moment().startOf('month');
                             const lastDay = new Moment().endOf('month');
-                            const rate = (parseInt(this.selected.price) / lastDay.diff(firstDay, 'days')).toFixed(2);
+                            const rate = (parseInt(this.plan.price) / lastDay.diff(firstDay, 'days')).toFixed(2);
                             let prorate = 0;
                             prorate = (rate * lastDay.diff(today, 'days')).toFixed(2);
                             this.$store.commit('setAmount', prorate);
@@ -124,11 +124,11 @@
                 case 'FMH17':
                     if(today.format('MM/DD/YYYY') == new Moment().startOf('month').format('MM/DD/YYYY') ||
                         today.format('MM/DD/YYYY') == new Moment().endOf('month').format('MM/DD/YYYY')) {
-                        this.$store.commit('setAmount', parseInt(this.selected.price) - 39.00);
+                        this.$store.commit('setAmount', parseInt(this.plan.price) - 39.00);
                     } else {
                         const firstDay = new Moment().startOf('month');
                         const lastDay = new Moment().endOf('month');
-                        const rate = (parseInt(this.selected.price - 39.00) / lastDay.diff(firstDay, 'days')).toFixed(2);
+                        const rate = (parseInt(this.plan.price - 39.00) / lastDay.diff(firstDay, 'days')).toFixed(2);
                         let prorate = 0;
                         prorate = (rate * lastDay.diff(today, 'days')).toFixed(2);
                         this.$store.commit('setAmount', prorate);
@@ -137,11 +137,11 @@
                 default:
                     if(today.format('MM/DD/YYYY') == new Moment().startOf('month').format('MM/DD/YYYY') ||
                         today.format('MM/DD/YYYY') == new Moment().endOf('month').format('MM/DD/YYYY')) {
-                        this.$store.commit('setAmount', this.selected.price);
+                        this.$store.commit('setAmount', this.plan.price);
                     } else {
                         const firstDay = new Moment().startOf('month');
                         const lastDay = new Moment().endOf('month');
-                        const rate = (parseInt(this.selected.price) / lastDay.diff(firstDay, 'days')).toFixed(2);
+                        const rate = (parseInt(this.plan.price) / lastDay.diff(firstDay, 'days')).toFixed(2);
                         let prorate = 0;
                         prorate = (rate * lastDay.diff(today, 'days')).toFixed(2);
                         this.$store.commit('setAmount', prorate);
@@ -194,7 +194,7 @@
 
                             axios.post('/register', data).then(response => {
                                 this.response = {
-                                    planCost: this.selected.price,
+                                    planCost: this.plan.price,
                                     coupon_code: this.$store.state.registration.code,
                                     amount_charged: response.data.transaction.amount,
                                     transactionId: response.data.transaction.transactionId
@@ -232,7 +232,7 @@
             }
         },
         components: {
-            Plan,
+            Selected,
             Card,
             Month,
             Year,

@@ -17,10 +17,10 @@ class CreateTwitterAccountTable extends Migration
             $table->increments('id');
             $table->string('user_id');
             $table->string('email');
-            $table->string('access_token');
-            $table->string('secret_token');
-            $table->string('screen_name');
-            $table->string('twitter_id');
+            $table->string('access_token')->nullable();
+            $table->string('secret_token')->nullable();
+            $table->string('screen_name')->nullable();
+            $table->string('twitter_id')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

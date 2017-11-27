@@ -1,8 +1,8 @@
 import VueRouter from 'vue-router';
 import Facebook from './vue/facebook/Index';
-import Create from './vue/create/Create';
+import Create from './vue/create/Index';
 import Page from './vue/page/Page';
-import Twitter from './vue/twitter/Twitter';
+import Twitter from './vue/twitter/Index';
 import LinkedIn from './vue/linkedin/LinkedIn';
 
 const routes = [

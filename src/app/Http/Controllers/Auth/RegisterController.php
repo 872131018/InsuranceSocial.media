@@ -26,6 +26,16 @@ use App\Card;
 
 use App\TempUser;
 
+use App\FacebookAccount;
+
+use App\FacebookTemplate;
+
+use App\TwitterAccount;
+
+use App\LinkedInAccount;
+
+use App\Agency;
+
 class RegisterController extends Controller
 {
     /*
@@ -272,6 +282,26 @@ class RegisterController extends Controller
         $card->number = $request['method']['number'];;
         $card->cvv = $request['method']['cvv'];
         $user->cards()->save($card);
+
+        $facebookAccount = new FacebookAccount();
+        $facebookAccount->email = $user->email;
+        $user->facebook()->save($facebookAccount);
+
+        $template = new FacebookTemplate();
+        $template->email = $user->email;
+        $user->template()->save($template);
+
+        $twitterAccount = new TwitterAccount();
+        $twitterAccount->email = $user->email;
+        $user->twitter()->save($twitterAccount);
+
+        $linkedinAccount = new LinkedInAccount();
+        $linkedinAccount->email = $user->email;
+        $user->linkedin()->save($linkedinAccount);
+
+        $agency = new Agency();
+        $agency->email = $user->email;
+        $user->agency()->save($agency);
 
         return [
             'transaction' => [

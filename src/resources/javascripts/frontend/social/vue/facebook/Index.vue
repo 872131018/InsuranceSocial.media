@@ -12,29 +12,14 @@
 </template>
 
 <script>
-    import ProgressBar from '../Progress';
-
     export default {
-        data() {
-            return {
-                redirectUrl: ''
-            }
-        },
-        mounted() {
-            axios.get('/api/facebook').then(response => {
-                this.redirectUrl = response.data
-            });
-        },
         methods: {
             facebookLogin() {
-                window.location = this.redirectUrl;
+                window.location = this.$store.state.redirect.facebookUrl;
             },
             createPage() {
                 this.$router.push({ name: 'Create' });
             }
-        },
-        components: {
-            ProgressBar
         }
     }
 </script>

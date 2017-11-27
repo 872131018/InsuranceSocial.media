@@ -17,6 +17,12 @@
             axios.get('/api/user').then(response => {
                 store.dispatch({ type: 'SET_USER', data: response.data });
             });
+            axios.get('/api/facebook').then(response => {
+                this.$store.commit('setFacebookUrl', response.data);
+            });
+            axios.get('/api/twitter').then(response => {
+                this.$store.commit('setTwitterUrl', response.data);
+            });
         },
         components: {
             Tips

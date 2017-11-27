@@ -77,10 +77,9 @@ class FacebookController extends Controller
     public function store(Request $request)
     {
         $user = Auth::user();
-        $template = new FacebookTemplate();
-        $template->email = $user->email;
+        $template = $user->template;
         $template->name = $request->input('name');
-        $template->image = $request->input('image')['name'];
+        $template->image = $request->input('image');
         $user->template()->save($template);
 
         $transactionRequest = $this->paymentService->getTransactionRequest([
@@ -158,10 +157,9 @@ class FacebookController extends Controller
                 $payment->auth_code = $auth_code;
                 $user->payments()->save($payment);
 
-                $facebookAccount = new FacebookAccount();
-                $facebookAccount->email = $user->email;
-                $facebookAccount->progress = '3';
-                $user->facebook()->save($facebookAccount);
+                $facebook = $user->facebook;
+                $facebook->progress = 3;
+                $facebook->update();
             }
         }
 
@@ -193,7 +191,21 @@ class FacebookController extends Controller
     public function edit(Request $request, $id = 0)
     {
         $user = Auth::user();
-        $facebook = FacebookAccount::find($user->facebook->id);
+        $facebook = $user->facebook;
+
+        /**
+        * Get the facebook email for the user
+        */
+        try {
+            $response = $this->facebook->get('/me?fields=email', $facebook->access_token);
+            $email = $response->getGraphUser()->getField('email');
+        } catch(Facebook\Exceptions\FacebookResponseException $e) {
+            return response()->json($e->getMessage(), 502);
+        } catch(Facebook\Exceptions\FacebookSDKException $e) {
+            return response()->json($e->getMessage(), 502);
+        }
+
+        $facebook->facebook_email = $email;
         $facebook->page_id = $request->page_id;
         $facebook->page_name = $request->page_name;
         $facebook->page_token = $request->page_access_token;
@@ -266,11 +278,11 @@ class FacebookController extends Controller
             * Logged in!!!
             */
             $user = Auth::user();
-            $facebookAccount = new FacebookAccount();
-            $facebookAccount->email = $user->email;
-            $facebookAccount->facebook_email = $email;
-            $facebookAccount->access_token = (string) $accessToken;
-            $user->facebook()->save($facebookAccount);
+            $facebook = $user->facebook;
+            $facebook->email = $user->email;
+            $facebook->facebook_email = $email;
+            $facebook->access_token = $accessToken;
+            $facebook->update();
 
             if(count($pages) != 0) {
                 session(['pages' => json_encode($pages)]);

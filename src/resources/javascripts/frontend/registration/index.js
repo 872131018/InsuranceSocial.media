@@ -8,8 +8,8 @@ import Vue from 'vue';
 
 import Navigation from '../global/navigation/Navigation';
 import Foot from '../global/foot/Foot';
+import Errors from '../global/Errors';
 import Features from './vue/Features';
-import Errors from './vue/Errors';
 Vue.component('Navigation', Navigation);
 Vue.component('Foot', Foot);
 Vue.component('Features', Features);

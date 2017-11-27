@@ -20,12 +20,12 @@ use Illuminate\Http\Request;
 
  Route::get('/api/facebook', 'FacebookController@index');
 
- Route::post('/create', 'FacebookController@store');
-
  Route::get('/api/pages', function (Request $request) {
      $data = json_decode(session('pages'));
      return response()->json($data);
  });
+
+ Route::post('/create', 'FacebookController@store');
 
  Route::post('/page', 'FacebookController@edit');
 

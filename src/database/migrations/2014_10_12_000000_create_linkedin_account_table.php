@@ -17,8 +17,8 @@ class CreateLinkedInAccountTable extends Migration
             $table->increments('id');
             $table->string('user_id');
             $table->string('email');
-            $table->string('access_token');
-            $table->string('expires_in');
+            $table->string('access_token')->nullable();
+            $table->string('expires_in')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

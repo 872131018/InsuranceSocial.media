@@ -1,4 +1,4 @@
-const ServiceModule = {
+const Module = {
     state: {
         loading: 0
     },
@@ -12,4 +12,4 @@ const ServiceModule = {
     }
 }
 
-export default ServiceModule;
+export default Module;

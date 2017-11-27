@@ -110,13 +110,12 @@ class TwitterController extends Controller
             $response = $connection->get('account/verify_credentials');
 
             $user = Auth::user();
-            $twitterAccount = new TwitterAccount();
-            $twitterAccount->email = $user->email;
-            $twitterAccount->access_token = $access_token['oauth_token'];
-            $twitterAccount->secret_token = $access_token['oauth_token_secret'];
-            $twitterAccount->screen_name = $response->screen_name;
-            $twitterAccount->twitter_id = $response->id;
-            $user->twitter()->save($twitterAccount);
+            $twitter = $user->twitter;
+            $twitter->access_token = $access_token['oauth_token'];
+            $twitter->secret_token = $access_token['oauth_token_secret'];
+            $twitter->screen_name = $response->screen_name;
+            $twitter->twitter_id = $response->id;
+            $twitter->update();
 
            return redirect('profile');
         }

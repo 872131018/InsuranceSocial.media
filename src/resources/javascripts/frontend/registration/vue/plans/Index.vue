@@ -32,22 +32,17 @@
                 return this.$store.state.errors.errors;
             }
         },
-        mounted() {
-            if(this.$store.state.registration.code == 'ISMFREETRIAL') {
-                this.$store.commit('setPlan', this.plans[0]);
-            } else if(this.$store.state.registration.code == 'STANDARD') {
-                this.$store.commit('setPlan', this.plans[1]);
-            } else if(this.$store.state.registration.code == 'CONCIERGE') {
-                this.$store.commit('setPlan', this.plans[2]);
-            }
-        },
         methods: {
             next() {
+                this.validate();
+                if(this.errors.length == 0) {
+                    this.$router.push({ name: 'Payment' })
+                }
+            },
+            validate() {
                 this.$store.commit('clearErrors');
                 if(!this.selected) {
                     this.$store.commit('setError', 'You must select a plan.');
-                } else {
-                    this.$router.push({ name: 'Payment' })
                 }
             }
         },
