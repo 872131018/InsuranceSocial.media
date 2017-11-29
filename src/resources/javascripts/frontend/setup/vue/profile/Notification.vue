@@ -21,10 +21,10 @@
     export default {
         props: {
             notifyEmail: {
-                type: Boolean
+                type: [ Boolean, Number ]
             },
             notifyText: {
-                type: Boolean
+                type: [ Boolean, Number ]
             }
         }
     }

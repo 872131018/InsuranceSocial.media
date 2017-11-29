@@ -5,7 +5,7 @@ const Module = {
         name: '',
         website: '',
         size: '',
-        year: '',
+        established: '',
         multigenerational: ''
     },
     mutations: {
@@ -29,8 +29,8 @@ const Module = {
         setSize(state, value) {
             state.size = value;
         },
-        setYear(state, value) {
-            state.year = value;
+        setEstablished(state, value) {
+            state.established = value;
         },
         setGeneration(state, value) {
             state.multigenerational = value;

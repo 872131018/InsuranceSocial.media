@@ -47,21 +47,29 @@ class ProfileController extends Controller
         $user->notify_text = $request->input('notify_text');
         $user->update();
 
-        $agency = new Agency();
-        $agency->email = $user->email;
+        return response()->json($user);
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function storeAgency(Request $request)
+    {
+        $user = Auth::user();
+        $agency = $user->agency;
         $agency->principal_name = $request->input('principal_name');
         $agency->principal_email = $request->input('principal_email');
-        $agency->name = $request->input('agency_name');
+        $agency->name = $request->input('name');
         $agency->website = $request->input('website');
         $agency->size = $request->input('size');
         $agency->established = $request->input('established');
         $agency->multigenerational = $request->input('multigenerational');
-        $user->agency()->save($agency);
+        $agency->update();
 
-        return response()->json([
-            'user' => $user,
-            'agency' => $agency
-        ]);
+        return response()->json($agency);
     }
 
     /**

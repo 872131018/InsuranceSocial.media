@@ -50,12 +50,6 @@
     import Terms from './inputs/Terms';
 
     export default {
-        data() {
-            return {
-                email_confirmed: false,
-                password_confirmed: false,
-            }
-        },
         computed: {
             name() {
                 return this.$store.state.registration.name;

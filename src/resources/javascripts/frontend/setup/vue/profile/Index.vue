@@ -56,9 +56,9 @@
                 @setValue="(value) => $store.commit('setSize', value.code)")
             Field(
                 :label="'Founding Year (e.g. 19XX)'"
-                :value="year"
-                :valid="yearValid"
-                @setValue="(value) => $store.commit('setYear', value)")
+                :value="established"
+                :valid="establishedValid"
+                @setValue="(value) => $store.commit('setEstablished', value)")
             Dropdown(
                 :label="'Is this a multigenerational company?'"
                 :options="$store.state.options.generations"
@@ -91,10 +91,7 @@
 <script>
     import ProgressBar from '../Progress';
     import QuickNavigation from '../QuickNavigation';
-    import Field from './inputs/Field';
-    import Dropdown from './inputs/Dropdown';
     import Notification from './Notification';
-    import Errors from './Errors';
 
     export default {
         computed: {
@@ -164,11 +161,11 @@
                 }
 
             },
-            year() {
-                return this.$store.state.agency.year;
+            established() {
+                return this.$store.state.agency.established;
             },
-            yearValid() {
-                return this.year != null && this.year.length == 4;
+            establishedValid() {
+                return this.established != null && this.established.length == 4;
             },
             generation() {
                 if(this.$store.state.agency.multigenerational) {
@@ -213,14 +210,24 @@
         methods: {
             update(route) {
                 this.validate();
-                return;
                 if(this.errors.length == 0) {
-                    axios.post(window.location, this.properties).then(response => {
-                        store.dispatch({ type: 'SET_USER', data: response.data.user });
-                        store.dispatch({ type: 'SET_AGENCY', data: response.data.agency });
-                        this.$router.push({ name: route });
+                    this.$store.commit('serviceLoading');
+                    axios.post('/profile', this.$store.state.user).then(response => {
+                        this.$store.commit('serviceFinished');
+                        if(this.$store.state.services.loading == 0) {
+                            this.$router.push({ name: route });
+                        }
                     }).catch(error => {
-                        this.errors.push('An error has occured, please contact support.');
+                        this.$store.commit('setError', 'An error has occured, please contact support.');
+                    });
+                    this.$store.commit('serviceLoading');
+                    axios.post('/agency', this.$store.state.agency).then(response => {
+                        this.$store.commit('serviceFinished');
+                        if(this.$store.state.services.loading == 0) {
+                            this.$router.push({ name: route });
+                        }
+                    }).catch(error => {
+                        this.$store.commit('setError', 'An error has occured, please contact support.');
                     });
                 }
             },
@@ -244,7 +251,7 @@
                 if(this.size.code == 'DE') {
                     this.$store.commit('setError', 'You must enter your agency size.');
                 }
-                if(!this.yearValid) {
+                if(!this.establishedValid) {
                     this.$store.commit('setError', 'You must enter your agency\'s founding year.');
                 }
                 if(this.generation.code == 'DE') {
@@ -261,10 +268,7 @@
         components: {
             ProgressBar,
             QuickNavigation,
-            Field,
-            Dropdown,
-            Notification,
-            Errors
+            Notification
         }
     }
 </script>
