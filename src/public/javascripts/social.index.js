@@ -2315,6 +2315,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         nameValid: function nameValid() {
             return this.$store.state.create.name != '';
         },
+        image: function image() {
+            return this.$store.state.create.image;
+        },
         selected: function selected() {
             return this.$store.state.create.image;
         },
@@ -2340,10 +2343,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         validate: function validate() {
             this.$store.commit('clearErrors');
-            if (this.name == '') {
+            if (!this.nameValid) {
                 this.$store.commit('setError', 'You must enter a name for your page.');
             }
-            if (this.selected == '') {
+            if (!this.image) {
                 this.$store.commit('setError', 'You must select an image for your page.');
             }
         }

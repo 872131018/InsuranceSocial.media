@@ -50,6 +50,9 @@
             nameValid() {
                 return this.$store.state.create.name != '';
             },
+            image() {
+                return this.$store.state.create.image;
+            },
             selected() {
                 return this.$store.state.create.image;
             },
@@ -73,10 +76,10 @@
             },
             validate() {
                 this.$store.commit('clearErrors');
-                if(this.name == '') {
+                if(!this.nameValid) {
                     this.$store.commit('setError', 'You must enter a name for your page.');
                 }
-                if(this.selected == '') {
+                if(!this.image) {
                     this.$store.commit('setError', 'You must select an image for your page.');
                 }
             }
