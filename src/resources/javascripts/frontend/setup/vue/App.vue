@@ -1,17 +1,14 @@
-<template>
-    <div>
-        <Navigation></Navigation>
-        <Tips></Tips>
-        <div class="w3-container w3-padding-32 bgimg2"
-            v-if="loading == 0">
-            <router-view></router-view>
-        </div>
-        <div
-            v-else>
-            <Loader></Loader>
-        </div>
-        <Foot></Foot>
-    </div>
+<template lang="pug">
+    div
+        Navigation
+        Tips
+        div(class="w3-container w3-padding-32 bgimg2"
+            v-if="loading == 0")
+            router-view
+        div(
+            v-else)
+            Loader
+        Foot
 </template>
 
 <script>
@@ -26,86 +23,86 @@
         },
         mounted() {
             console.log('App mounted.');
+
             this.loading++;
-            axios.get(`${ window.base_url }/api/user`).then(response => {
-                store.dispatch({ type: 'SET_USER', data: response.data });
+            axios.get('/api/titles').then(response => {
+                this.$store.commit('setTitles', response.data);
                 this.loading--;
             });
             this.loading++;
-            axios.get(`${ window.base_url }/api/plan`).then(response => {
+            axios.get('/api/sizes').then(response => {
+                this.$store.commit('setSizes', response.data);
+                this.loading--;
+            });
+            this.loading++;
+            axios.get('/api/generations').then(response => {
+                this.$store.commit('setGenerations', response.data);
+                this.loading--;
+            });
+            this.loading++;
+            axios.get('/api/frequencies').then(response => {
+                this.$store.commit('setFrequencies', response.data);
+                this.loading--;
+            });
+            this.loading++;
+            axios.get('/api/user').then(response => {
+                //console.log(response.data)
+                this.$store.commit('setUser', response.data);
+                this.$store.commit('setAgency', response.data.agency);
+                this.loading--;
+            });
+            /*
+            this.loading++;
+            axios.get('/api/plan').then(response => {
                 store.dispatch({ type: 'SET_PLAN', data: response.data });
                 this.loading--;
             });
             this.loading++;
-            axios.get(`${ window.base_url }/api/agency`).then(response => {
-                store.dispatch({ type: 'SET_AGENCY', data: response.data });
-                this.loading--;
-            });
-            this.loading++;
-            axios.get(`${ window.base_url }/api/regions`).then(response => {
+            axios.get('/api/regions').then(response => {
                 store.dispatch({ type: 'SET_REGIONS', data: response.data });
                 this.loading--;
             });
             this.loading++;
-            axios.get(`${ window.base_url }/api/states`).then(response => {
+            axios.get('/api/states').then(response => {
                 store.dispatch({ type: 'SET_STATES', data: response.data });
                 this.loading--;
             });
             this.loading++;
-            axios.get(`${ window.base_url }/api/counties`).then(response => {
+            axios.get('/api/counties').then(response => {
                 store.dispatch({ type: 'SET_COUNTIES', data: response.data });
                 this.loading--;
             });
             this.loading++;
-            axios.get(`${ window.base_url }/api/coverages`).then(response => {
+            axios.get('/api/coverages').then(response => {
                 store.dispatch({ type: 'SET_COVERAGES', data: response.data });
                 this.loading--;
             });
             this.loading++;
-            axios.get(`${ window.base_url }/api/industries`).then(response => {
+            axios.get('/api/industries').then(response => {
                 store.dispatch({ type: 'SET_INDUSTRIES', data: response.data });
                 this.loading--;
             });
             this.loading++;
-            axios.get(`${ window.base_url }/api/causes`).then(response => {
+            axios.get('/api/causes').then(response => {
                 store.dispatch({ type: 'SET_CAUSES', data: response.data });
                 this.loading--;
             });
             this.loading++;
-            axios.get(`${ window.base_url }/api/titles`).then(response => {
-                store.dispatch({ type: 'SET_TITLES', data: response.data });
-                this.loading--;
-            });
-            this.loading++;
-            axios.get(`${ window.base_url }/api/sizes`).then(response => {
-                store.dispatch({ type: 'SET_SIZES', data: response.data });
-                this.loading--;
-            });
-            this.loading++;
-            axios.get(`${ window.base_url }/api/generations`).then(response => {
-                store.dispatch({ type: 'SET_GENERATIONS', data: response.data });
-                this.loading--;
-            });
-            this.loading++;
-            axios.get(`${ window.base_url }/api/frequencies`).then(response => {
-                store.dispatch({ type: 'SET_FREQUENCIES', data: response.data });
-                this.loading--;
-            });
-            this.loading++;
-            axios.get(`${ window.base_url }/api/carriers`).then(response => {
+            axios.get('/api/carriers').then(response => {
                 store.dispatch({ type: 'SET_CARRIERS', data: response.data });
                 this.loading--;
             });
             this.loading++;
-            axios.get(`${ window.base_url }/api/selections`).then(response => {
+            axios.get('/api/selections').then(response => {
                 store.dispatch({ type: 'SET_SELECTIONS', data: response.data });
                 this.loading--;
             });
             this.loading++;
-            axios.get(`${ window.base_url }/api/endpoint`).then(response => {
+            axios.get('/api/endpoint').then(response => {
                 store.dispatch({ type: 'SET_ENDPOINT', data: response.data });
                 this.loading--;
             });
+            */
         },
         components: {
             Tips,

@@ -22,12 +22,6 @@ Vue.use(VueRouter);
 import Vuex from 'vuex';
 Vue.use(Vuex);
 
-/**
-* Remove this later
-*/
-import Store from './root.redux';
-window.store = Store;
-
 import store from './root.vuex';
 import router from './routes';
 import App from './vue/App';

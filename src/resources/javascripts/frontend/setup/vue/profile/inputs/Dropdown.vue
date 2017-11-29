@@ -1,18 +1,12 @@
-<template>
-    <div class="eighty v-align">
-        <div>{{ label }}</div>
-        <div class="w3-dropdown-hover w3-grey">
-            <button class="w3-button">{{ selected.desc }}
-                <i class="fa fa-caret-down"></i>
-            </button>
-            <div class="w3-dropdown-content w3-bar-block w3-border">
-                <div class="w3-bar-item w3-button"
+<template lang="pug">
+    div(class="eighty v-align")
+        p {{ label }}
+        div(class="w3-dropdown-hover w3-grey")
+            button(class="w3-button") {{ selected.desc }} #[i(class="fa fa-caret-down")]
+            div(class="w3-dropdown-content w3-bar-block w3-border")
+                div(class="w3-bar-item w3-button"
                     v-for="option in options"
-                    v-on:click="setSelected(option)">{{ option.desc }}
-                </div>
-            </div>
-        </div>
-    </div>
+                    @click="$emit('setValue', option)") {{ option.desc }}
 </template>
 
 <script>
@@ -24,28 +18,8 @@
             options: {
                 type: Array
             },
-            default: {
-                type: String
-            }
-        },
-        data() {
-            return {
-                selected: { code: 'DE', desc:'Options' }
-            }
-        },
-        mounted() {
-            if(this.default) {
-                for(let option of this.options) {
-                    if(option.code == this.default) {
-                        this.selected = option;
-                    }
-                }
-            }
-        },
-        methods: {
-            setSelected(option) {
-                this.selected = option;
-                this.$emit('setOption', option);
+            selected: {
+                type: Object
             }
         }
     }

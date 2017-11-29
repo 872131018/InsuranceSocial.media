@@ -66,13 +66,10 @@ use Illuminate\Support\Facades\Log;
  * @return \Illuminate\Http\Response
  */
  Route::get('/api/user', function (Request $request) {
-     return response()->json(Auth::user());
+     return response()->json(Auth::user()->with('agency')->first());
  });
  Route::get('/api/plan', function (Request $request) {
      return response()->json(Auth::user()->plan);
- });
- Route::get('/api/agency', function (Request $request) {
-     return response()->json(Auth::user()->agency);
  });
  Route::get('/api/regions', function (Request $request) {
      return response()->json(Region::all());

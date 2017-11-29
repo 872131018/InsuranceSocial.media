@@ -61,7 +61,7 @@
                 return this.$store.state.registration.name;
             },
             nameValid() {
-                return this.$store.state.registration.name != '';
+                return this.name != '';
             },
             email() {
                 return this.$store.state.registration.email;
@@ -93,10 +93,10 @@
                 return this.$store.state.registration.code;
             },
             codeValid() {
-                return this.$store.state.registration.code == 'ISMFREETRIAL' ||
-                        this.$store.state.registration.code == 'IMTGEM17' ||
-                        this.$store.state.registration.code == 'FMH17' ||
-                        this.$store.state.registration.code == '';
+                return this.code == 'ISMFREETRIAL' ||
+                        this.code == 'IMTGEM17' ||
+                        this.code == 'FMH17' ||
+                        this.code == '';
             },
             errors() {
                 return this.$store.state.errors.errors;

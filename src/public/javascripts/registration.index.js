@@ -33388,7 +33388,10 @@ var routes = [{
 
 /* harmony default export */ __webpack_exports__["a"] = (new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
     mode: 'history',
-    routes: routes
+    routes: routes,
+    scrollBehavior: function scrollBehavior(to, from, savedPosition) {
+        return { x: 0, y: 0 };
+    }
 }));
 
 /***/ }),
@@ -33515,7 +33518,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             return this.$store.state.registration.name;
         },
         nameValid: function nameValid() {
-            return this.$store.state.registration.name != '';
+            return this.name != '';
         },
         email: function email() {
             return this.$store.state.registration.email;
@@ -33547,7 +33550,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             return this.$store.state.registration.code;
         },
         codeValid: function codeValid() {
-            return this.$store.state.registration.code == 'ISMFREETRIAL' || this.$store.state.registration.code == 'IMTGEM17' || this.$store.state.registration.code == 'FMH17' || this.$store.state.registration.code == '';
+            return this.code == 'ISMFREETRIAL' || this.code == 'IMTGEM17' || this.code == 'FMH17' || this.code == '';
         },
         errors: function errors() {
             return this.$store.state.errors.errors;

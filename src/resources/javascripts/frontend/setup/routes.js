@@ -1,9 +1,10 @@
-import Profile from './vue/profile/Profile';
+import VueRouter from 'vue-router';
+import Profile from './vue/profile/Index';
 import Location from './vue/location/Location';
 import Coverage from './vue/coverage/Coverage';
 import Outreach from './vue/outreach/Outreach';
 
-export default [
+const routes = [
     {
         path: '/profile',
         name: 'Profile',
@@ -25,3 +26,11 @@ export default [
         component: Outreach
     }
 ];
+
+export default new VueRouter({
+  mode: 'history',
+  routes,
+  scrollBehavior (to, from, savedPosition) {
+      return { x: 0, y: 0 }
+  }
+});
