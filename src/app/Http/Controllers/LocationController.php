@@ -6,8 +6,6 @@ use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Auth;
 
-use App\Agency;
-
 use App\SelectedRegion;
 
 use App\SelectedState;
@@ -53,8 +51,24 @@ class LocationController extends Controller
         $agency->zip = $request->input('zip');
         $agency->update();
 
+        return response()->json($agency);
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function storeSelections(Request $request)
+    {
+        $user = Auth::user();
+
+        foreach($user->regions as $selection) {
+            $selection->delete();
+        }
         $selected = [];
-        foreach ($request->input('selected_regions') as $region) {
+        foreach ($request->input('regions') as $region) {
             $selectedRegion = new SelectedRegion();
             $selectedRegion->email = $user->email;
             $selectedRegion->state_code = $region['state_code'];
@@ -64,8 +78,11 @@ class LocationController extends Controller
         }
         $user->regions()->saveMany($selected);
 
+        foreach($user->states as $selection) {
+            $selection->delete();
+        }
         $selected = [];
-        foreach ($request->input('selected_states') as $state) {
+        foreach ($request->input('states') as $state) {
             $selectedState = new SelectedState();
             $selectedState->email = $user->email;
             $selectedState->state_code = $state['state_code'];
@@ -75,8 +92,11 @@ class LocationController extends Controller
         }
         $user->states()->saveMany($selected);
 
+        foreach($user->counties as $selection) {
+            $selection->delete();
+        }
         $selected = [];
-        foreach ($request->input('selected_counties') as $county) {
+        foreach ($request->input('counties') as $county) {
             $selectedCounty = new SelectedCounty();
             $selectedCounty->email = $user->email;
             $selectedCounty->state_code = $county['state_code'];
@@ -86,10 +106,7 @@ class LocationController extends Controller
         }
         $user->counties()->saveMany($selected);
 
-        return response()->json([
-            'user' => $user,
-            'agency' => $agency
-        ]);
+        return response()->json($user);
     }
 
     /**

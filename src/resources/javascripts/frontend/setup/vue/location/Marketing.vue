@@ -1,44 +1,30 @@
-<template>
-    <div class="w3-section">
-        <span class="w3-large">Marketing Geography:</span>
-        <div class="w3-show-inline-block w3-margin-left">
-            <input type="radio" id="region" value="R"
-                v-model="marketing"
-                v-on:change="$emit('setMarketing', marketing)">
-            <label for="region">
-                <span class="w3-show-inline-block w3-margin-right v-align"></span>Region
-            </label>
-        </div>
-        <div class="w3-show-inline-block w3-margin-left">
-            <input type="radio" id="state" value="S"
-                v-model="marketing"
-                v-on:change="$emit('setMarketing', marketing)">
-            <label for="state">
-                <span class="w3-show-inline-block w3-margin-right v-align"></span>State and County
-            </label>
-        </div>
-    </div>
+<template lang="pug">
+    div(class="w3-padding-16")
+        div(class="w3-third") Marketing Geography:
+        div(class="w3-third")
+            input(type="radio" id="marketingRegion"
+                :checked="marketingRegion"
+                @change="$emit('setMarketingRegion', $event.target.checked)")
+            label(for="marketingRegion")
+                span(class="w3-show-inline-block v-align")
+                | Region
+        div(class="w3-third")
+            input(type="radio" id="marketingState"
+                :checked="marketingState"
+                @change="$emit('setMarketingState', $event.target.checked)")
+            label(for="marketingState")
+                span(class="w3-show-inline-block v-align")
+                | State and County
 </template>
 
 <script>
     export default {
         props: {
-            method: {
-                type: String
+            marketingRegion: {
+                type: Boolean
             },
-            default: {
-                type: String
-            }
-        },
-        data() {
-            return {
-                marketing: false,
-            }
-        },
-        mounted() {
-            if(this.default) {
-                this.marketing = this.default;
-                this.$emit('setMarketing', this.marketing);
+            marketingState: {
+                type: Boolean
             }
         }
     }

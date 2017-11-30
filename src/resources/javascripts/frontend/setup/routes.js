@@ -1,6 +1,6 @@
 import VueRouter from 'vue-router';
 import Profile from './vue/profile/Index';
-import Location from './vue/location/Location';
+import Location from './vue/location/Index';
 import Coverage from './vue/coverage/Coverage';
 import Outreach from './vue/outreach/Outreach';
 

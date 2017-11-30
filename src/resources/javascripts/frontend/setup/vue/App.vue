@@ -45,31 +45,32 @@
                 this.loading--;
             });
             this.loading++;
+            axios.get('/api/states').then(response => {
+                this.$store.commit('setStates', response.data);
+                this.loading--;
+            });
+            this.loading++;
+            axios.get('/api/regions').then(response => {
+                this.$store.commit('setRegions', response.data);
+                this.loading--;
+            });
+            this.loading++;
+            axios.get('/api/counties').then(response => {
+                this.$store.commit('setCounties', response.data);
+                this.loading--;
+            });
+            this.loading++;
             axios.get('/api/user').then(response => {
                 //console.log(response.data)
                 this.$store.commit('setUser', response.data);
                 this.$store.commit('setAgency', response.data.agency);
+                this.$store.commit('setUserRegions', response.data.regions);
                 this.loading--;
             });
             /*
             this.loading++;
             axios.get('/api/plan').then(response => {
                 store.dispatch({ type: 'SET_PLAN', data: response.data });
-                this.loading--;
-            });
-            this.loading++;
-            axios.get('/api/regions').then(response => {
-                store.dispatch({ type: 'SET_REGIONS', data: response.data });
-                this.loading--;
-            });
-            this.loading++;
-            axios.get('/api/states').then(response => {
-                store.dispatch({ type: 'SET_STATES', data: response.data });
-                this.loading--;
-            });
-            this.loading++;
-            axios.get('/api/counties').then(response => {
-                store.dispatch({ type: 'SET_COUNTIES', data: response.data });
                 this.loading--;
             });
             this.loading++;

@@ -10,11 +10,13 @@ import Vue from 'vue';
 import Navigation from '../global/navigation/Navigation';
 import Field from './vue/inputs/Field';
 import Dropdown from './vue/inputs/Dropdown';
+import List from './vue/inputs/List';
 import Errors from './vue/Errors';
 import Foot from '../global/foot/Foot';
 Vue.component('Navigation', Navigation);
 Vue.component('Field', Field);
 Vue.component('Dropdown', Dropdown);
+Vue.component('List', List);
 Vue.component('Errors', Errors);
 Vue.component('Foot', Foot);
 

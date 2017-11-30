@@ -6,8 +6,6 @@ use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Auth;
 
-use App\Agency;
-
 class ProfileController extends Controller
 {
     /**
