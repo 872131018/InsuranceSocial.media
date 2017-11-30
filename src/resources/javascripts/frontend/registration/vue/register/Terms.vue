@@ -15,7 +15,7 @@
 </template>
 
 <script>
-    import Modal from '../modal/Modal';
+    import Modal from './Modal';
 
     export default {
         data() {

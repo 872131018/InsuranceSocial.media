@@ -51,13 +51,13 @@
 <script>
     import Moment from 'moment';
     import Selected from './Selected';
-    import Card from './inputs/Card';
-    import Month from './inputs/Month';
-    import Year from './inputs/Year';
-    import CVV from './inputs/CVV';
-    import Name from './inputs/Name';
-    import Modal from './modal/Modal';
-    import Expired from './expired/Expired';
+    import Card from './Card';
+    import Month from './Month';
+    import Year from './Year';
+    import CVV from './CVV';
+    import Name from './Name';
+    import Modal from './Modal';
+    import Expired from './Expired';
 
     export default {
         data() {

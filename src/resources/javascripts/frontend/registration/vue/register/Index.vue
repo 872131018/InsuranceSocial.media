@@ -45,9 +45,7 @@
 </template>
 
 <script>
-    import Field from './inputs/Field';
-    import PasswordField from './inputs/PasswordField';
-    import Terms from './inputs/Terms';
+    import Terms from './Terms';
 
     export default {
         computed: {
@@ -135,8 +133,6 @@
             }
         },
         components: {
-            Field,
-            PasswordField,
             Terms
         }
     }

@@ -78,8 +78,8 @@ class FacebookController extends Controller
     {
         $user = Auth::user();
         $template = $user->template;
-        $template->name = $request->input('name');
-        $template->image = $request->input('image');
+        $template->name = $request->name;
+        $template->image = $request->image;
         $user->template()->save($template);
 
         $transactionRequest = $this->paymentService->getTransactionRequest([
@@ -206,9 +206,9 @@ class FacebookController extends Controller
         }
 
         $facebook->facebook_email = $email;
-        $facebook->page_id = $request->page_id;
-        $facebook->page_name = $request->page_name;
-        $facebook->page_token = $request->page_access_token;
+        $facebook->page_id = $request->id;
+        $facebook->page_name = $request->name;
+        $facebook->page_token = $request->access_token;
         $facebook->progress = 4;
         $facebook->update();
 
@@ -230,8 +230,8 @@ class FacebookController extends Controller
     public function update(Request $request)
     {
         $helper = $this->facebook->getRedirectLoginHelper();
-        if($request->input('state')) {
-            $helper->getPersistentDataHandler()->set('state', $request->input('state'));
+        if($request->state) {
+            $helper->getPersistentDataHandler()->set('state', $request->state);
         }
         try {
             $accessToken = $helper->getAccessToken();

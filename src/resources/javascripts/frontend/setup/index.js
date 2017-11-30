@@ -8,11 +8,12 @@ window.axios = axios;
 import Vue from 'vue';
 
 import Navigation from '../global/navigation/Navigation';
+import Errors from '../global/Errors';
+import Foot from '../global/foot/Foot';
 import Field from './vue/inputs/Field';
 import Dropdown from './vue/inputs/Dropdown';
 import List from './vue/inputs/List';
-import Errors from './vue/Errors';
-import Foot from '../global/foot/Foot';
+import ProgressBar from './vue/Progress';
 Vue.component('Navigation', Navigation);
 Vue.component('Field', Field);
 Vue.component('Dropdown', Dropdown);

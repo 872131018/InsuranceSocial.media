@@ -44,11 +44,11 @@ class LocationController extends Controller
     {
         $user = Auth::user();
         $agency = $user->agency;
-        $agency->address_1 = $request->input('address_1');
-        $agency->address_2 = $request->input('address_2');
-        $agency->city = $request->input('city');
-        $agency->state = $request->input('state');
-        $agency->zip = $request->input('zip');
+        $agency->address_1 = $request->address_1;
+        $agency->address_2 = $request->address_2;
+        $agency->city = $request->city;
+        $agency->state = $request->state;
+        $agency->zip = $request->zip;
         $agency->update();
 
         return response()->json($agency);
@@ -68,7 +68,7 @@ class LocationController extends Controller
             $selection->delete();
         }
         $selected = [];
-        foreach ($request->input('regions') as $region) {
+        foreach ($request->regions as $region) {
             $selectedRegion = new SelectedRegion();
             $selectedRegion->email = $user->email;
             $selectedRegion->state_code = $region['state_code'];
@@ -82,7 +82,7 @@ class LocationController extends Controller
             $selection->delete();
         }
         $selected = [];
-        foreach ($request->input('states') as $state) {
+        foreach ($request->states as $state) {
             $selectedState = new SelectedState();
             $selectedState->email = $user->email;
             $selectedState->state_code = $state['state_code'];
@@ -96,7 +96,7 @@ class LocationController extends Controller
             $selection->delete();
         }
         $selected = [];
-        foreach ($request->input('counties') as $county) {
+        foreach ($request->counties as $county) {
             $selectedCounty = new SelectedCounty();
             $selectedCounty->email = $user->email;
             $selectedCounty->state_code = $county['state_code'];

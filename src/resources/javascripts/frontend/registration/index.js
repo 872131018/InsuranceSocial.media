@@ -9,9 +9,13 @@ import Vue from 'vue';
 import Navigation from '../global/navigation/Navigation';
 import Foot from '../global/foot/Foot';
 import Errors from '../global/Errors';
+import Field from './vue/inputs/Field';
+import PasswordField from './vue/inputs/PasswordField';
 import Features from './vue/Features';
 Vue.component('Navigation', Navigation);
 Vue.component('Foot', Foot);
+Vue.component('Field', Field);
+Vue.component('PasswordField', PasswordField);
 Vue.component('Features', Features);
 Vue.component('Errors', Errors);
 

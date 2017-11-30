@@ -8,12 +8,14 @@ window.axios = axios;
 import Vue from 'vue';
 
 import Navigation from '../global/navigation/Navigation';
-import Foot from '../global/foot/Foot';
 import Errors from '../global/Errors';
+import Foot from '../global/foot/Foot';
+import Field from './vue/inputs/Field';
 import ProgressBar from './vue/Progress';
 Vue.component('Navigation', Navigation);
 Vue.component('Foot', Foot);
 Vue.component('Errors', Errors);
+Vue.component('Field', Field);
 Vue.component('ProgressBar', ProgressBar);
 
 import VueRouter from 'vue-router';

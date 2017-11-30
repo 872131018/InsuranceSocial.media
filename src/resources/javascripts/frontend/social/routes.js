@@ -1,7 +1,7 @@
 import VueRouter from 'vue-router';
 import Facebook from './vue/facebook/Index';
 import Create from './vue/create/Index';
-import Page from './vue/page/Page';
+import Page from './vue/page/Index';
 import Twitter from './vue/twitter/Index';
 import LinkedIn from './vue/linkedin/LinkedIn';
 
