@@ -22,7 +22,7 @@ use App\Plan;
 
  Route::post('/profile', 'ProfileController@store');
 
- Route::post('/profile/agency', 'ProfileController@storeAgency');
+ Route::post('/agency', 'ProfileController@storeAgency');
 
  Route::post('/location', 'LocationController@store');
 

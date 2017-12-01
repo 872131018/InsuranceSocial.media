@@ -122,10 +122,10 @@
                 return /(^\d{5}$)|(^\d{5}-\d{4}$)/.test(this.zip);
             },
             marketingRegion() {
-                return this.$store.state.marketing.marketingRegion;
+                return this.$store.state.transient.marketingRegion;
             },
             marketingState() {
-                return this.$store.state.marketing.marketingState;
+                return this.$store.state.transient.marketingState;
             },
             selectedRegions() {
                 return this.$store.state.user.regions;

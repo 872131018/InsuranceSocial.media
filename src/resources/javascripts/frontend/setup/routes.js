@@ -1,7 +1,7 @@
 import VueRouter from 'vue-router';
 import Profile from './vue/profile/Index';
 import Location from './vue/location/Index';
-import Coverage from './vue/coverage/Coverage';
+import Coverage from './vue/coverage/Index';
 import Outreach from './vue/outreach/Outreach';
 
 const routes = [

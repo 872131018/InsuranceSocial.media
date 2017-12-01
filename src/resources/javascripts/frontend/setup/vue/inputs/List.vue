@@ -1,10 +1,9 @@
 <template lang="pug">
-    div(class="w3-padding-16")
+    div(class="w3-padding-16" style="clear:both")
         div {{ label }}
-        ul(class="w3-ul w3-hoverable")
-            li(class="w3-section w3-show-inline-block w3-border-0 w3-padding"
-                v-for="(item, index) in items"
-                @click="$emit('clearValue', index)") {{ item.desc }} #[i(class="fa fa-times w3-margin-left")]
+        div(class="w3-show-inline-block w3-padding w3-hover-grey"
+            v-for="(item, index) in items"
+            @click="$emit('clearValue', index)") {{ item.desc }} #[i(class="fa fa-times w3-margin-left")]
 </template>
 
 <script>

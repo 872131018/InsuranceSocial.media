@@ -2,7 +2,7 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import UserModule from './modules/user.vuex';
 import AgencyModule from './modules/agency.vuex';
-import MarketingModule from './modules/marketing.vuex';
+import TransientModule from './modules/transient.vuex';
 import OptionModule from './modules/options.vuex';
 import ErrorModule from './modules/errors.vuex';
 import ServiceModule from './modules/services.vuex';
@@ -13,7 +13,7 @@ const store = new Vuex.Store({
     modules: {
         user: UserModule,
         agency: AgencyModule,
-        marketing: MarketingModule,
+        transient: TransientModule,
         options: OptionModule,
         errors: ErrorModule,
         services: ServiceModule

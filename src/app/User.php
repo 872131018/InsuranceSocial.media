@@ -118,14 +118,6 @@ class User extends Authenticatable
     }
 
     /**
-     * Get the crop coverages record associated with the user.
-     */
-    public function cropCoverages()
-    {
-        return $this->hasMany('App\SelectedCropCoverage');
-    }
-
-    /**
      * Get the personal coverages record associated with the user.
      */
     public function personalCoverages()
@@ -139,6 +131,14 @@ class User extends Authenticatable
     public function benefitCoverages()
     {
         return $this->hasMany('App\SelectedBenefitCoverage');
+    }
+
+    /**
+     * Get the crop coverages record associated with the user.
+     */
+    public function cropCoverages()
+    {
+        return $this->hasMany('App\SelectedCropCoverage');
     }
 
     /**

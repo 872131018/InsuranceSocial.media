@@ -6,7 +6,14 @@ const Module = {
         frequencies: [],
         states: [],
         regions: [],
-        counties: []
+        counties: [],
+        carriers: [],
+        personal: [],
+        commercial: [],
+        benefit: [],
+        crop: [],
+        industries: [],
+        coverages: []
     },
     mutations: {
         setTitles(state, value) {
@@ -35,6 +42,27 @@ const Module = {
                 index.desc = `${ index.desc } - ${ index.state_code }`;
             }
             state.counties = value;
+        },
+        setCarriers(state, value) {
+            state.carriers = value;
+        },
+        setCoverages(state, value) {
+            state.personal = value.personal;
+            state.commercial = value.commercial;
+            state.benefit = value.benefit;
+            state.crop = [
+                {"code": "11016", "desc":"Crop coverages"}
+            ];
+            let array = Array.prototype.concat(state.personal, state.commercial, state.benefit, state.crop);
+            array.sort((a, b) => {
+                if(a.desc < b.desc) return -1;
+                if(a.desc > b.desc) return 1;
+                return 0;
+            })
+            state.coverages = array;
+        },
+        setIndustries(state, value) {
+            state.industries = value;
         },
     }
 }

@@ -1,82 +1,35 @@
-<template>
-    <div class="w3-section">
-        <div>Ratio of Commercial to Personal Business</div>
-        <div class="w3-section">
-            <label class="w3-show-block">% Commercial</label>
-            <input class="w3-input w3-show-inline-block eighty" type="text"
-                v-model="commercial"
-                v-on:blur="setCommercialMix()">
-            <Check v-if="isValid"></Check>
-            <Cross v-else></Cross>
-        </div>
-        <div class="w3-section">
-            <label class="w3-show-block">% Personal</label>
-            <input class="w3-input w3-show-inline-block eighty" type="text"
-                v-model="personal"
-                v-on:blur="setPersonalMix()">
-            <Check v-if="isValid"></Check>
-            <Cross v-else></Cross>
-        </div>
-    </div>
+<template lang="pug">
+    div(class="w3-padding-16" style="clear:both")
+        div(class="w3-third") Ratio of Commercial to Personal Business
+        div(class="w3-third")
+            Field(
+                :label="'% Commercial'"
+                :value="commercialMix"
+                :valid="commercialMixValid"
+                @setValue="(value) => $emit('setCommercialMix', value)")
+        div(class="w3-third")
+            Field(
+                :label="'% Personal'"
+                :value="personalMix"
+                :valid="personalMixValid"
+                @setValue="(value) => $emit('setPersonalMix', value)")
 </template>
 
 <script>
-    import Check from './inputs/Check';
-    import Cross from './inputs/Cross';
-
     export default {
         props: {
-            personal_mix: {
-                type: Number
+            commercialMix: {
+                type: String
             },
-            commercial_mix: {
-                type: Number
+            personalMix: {
+                type: String
             },
-        },
-        data() {
-            return {
-                commercial: '',
-                personal: '',
-                isValid: false
-            }
-        },
-        mounted() {
-            if(this.commercial_mix) {
-                this.commercial = this.commercial_mix;
-                this.isValid = true;
-            }
-            if(this.personal_mix) {
-                this.personal = this.personal_mix;
-                this.isValid = true;
-            }
-        },
-        methods: {
-            setCommercialMix() {
-                let result = 100 - parseInt(this.commercial);
-                this.personal = result.toString();
-                if(this.commercial != '' && this.personal != '') {
-                    this.isValid = true;
-                    this.$emit('setRatio', {
-                        commercial: this.commercial,
-                        personal: this.personal
-                    });
-                }
+            commercialMixValid: {
+                type: Boolean
             },
-            setPersonalMix() {
-                let result = 100 - parseInt(this.personal);
-                this.commercial = result.toString();
-                if(this.commercial != '' && this.personal != '') {
-                    this.isValid = true;
-                    this.$emit('setRatio', {
-                        commercial: this.commercial,
-                        personal: this.personal
-                    });
-                }
+            personalMixValid: {
+                type: Boolean
             }
-        },
-        components: {
-            Check,
-            Cross
         }
     }
 </script>

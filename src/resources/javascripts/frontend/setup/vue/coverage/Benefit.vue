@@ -1,41 +1,27 @@
-<template>
-    <div class="w3-section">
-        <span class="w3-large">Do I write benefits?</span>
-        <div class="w3-show-inline-block w3-margin-left">
-            <input type="radio" id="benefit_yes" value="Y"
-                v-model="option"
-                v-on:change="$emit('setOption', option)">
-            <label for="benefit_yes">
-                <span class="w3-show-inline-block w3-margin-right v-align"></span>Yes
-            </label>
-        </div>
-        <div class="w3-show-inline-block w3-margin-left">
-            <input type="radio" id="benefit_no" value="N"
-                v-model="option"
-                v-on:change="$emit('setOption', option)">
-            <label for="benefit_no">
-                <span class="w3-show-inline-block w3-margin-right v-align"></span>No
-            </label>
-        </div>
-    </div>
+<template lang="pug">
+    div(class="w3-padding-16" style="clear:both")
+        div(class="w3-third") Do I write Benefit coverage?
+        div(class="w3-third")
+            input(type="radio" id="benefitYes"
+                :checked="benefit"
+                @change="$emit('setOption', true)")
+            label(for="benefitYes")
+                span(class="w3-show-inline-block v-align")
+                | Yes
+        div(class="w3-third")
+            input(type="radio" id="benefitNo"
+                :checked="!benefit"
+                @change="$emit('setOption', false)")
+            label(for="benefitNo")
+                span(class="w3-show-inline-block v-align")
+                | No
 </template>
 
 <script>
     export default {
         props: {
-            default: {
-                type: String
-            }
-        },
-        data() {
-            return {
-                option: 'N',
-            }
-        },
-        mounted() {
-            if(this.default) {
-                this.option = this.default;
-                this.$emit('setOption', this.option);
+            benefit: {
+                type: Boolean
             }
         }
     }

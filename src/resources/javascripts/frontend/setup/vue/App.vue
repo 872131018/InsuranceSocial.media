@@ -60,11 +60,46 @@
                 this.loading--;
             });
             this.loading++;
+            axios.get('/api/carriers').then(response => {
+                this.$store.commit('setCarriers', response.data);
+                this.loading--;
+            });
+            this.loading++;
+            axios.get('/api/coverages').then(response => {
+                this.$store.commit('setCoverages', response.data);
+                this.loading--;
+            });
+            this.loading++;
+            axios.get('/api/industries').then(response => {
+                this.$store.commit('setIndustries', response.data);
+                this.loading--;
+            });
+            this.loading++;
             axios.get('/api/user').then(response => {
-                //console.log(response.data)
+                console.log(response.data)
                 this.$store.commit('setUser', response.data);
                 this.$store.commit('setAgency', response.data.agency);
                 this.$store.commit('setUserRegions', response.data.regions);
+                this.$store.commit('setUserCarriers', response.data.carriers);
+                this.$store.commit('setCommercialCoverages', response.data.commercial_coverages);
+                if(response.data.commercial_coverages.length > 0) {
+                    this.$store.commit('setCommercial', true);
+                }
+                this.$store.commit('setPersonalCoverages', response.data.personal_coverages);
+                if(response.data.personal_coverages.length > 0) {
+                    this.$store.commit('setPersonal', true);
+                }
+                this.$store.commit('setBenefitCoverages', response.data.benefit_coverages);
+                if(response.data.benefit_coverages.length > 0) {
+                    this.$store.commit('setBenefit', true);
+                }
+                this.$store.commit('setCropCoverages', response.data.crop_coverages);
+                if(response.data.crop_coverages.length > 0) {
+                    this.$store.commit('setCrop', true);
+                }
+                this.$store.commit('setTargetCoverages', response.data.target_coverages);
+                this.$store.commit('setCurrentIndustries', response.data.current_industries);
+                this.$store.commit('setTargetIndustries', response.data.target_industries);
                 this.loading--;
             });
             /*
@@ -74,23 +109,8 @@
                 this.loading--;
             });
             this.loading++;
-            axios.get('/api/coverages').then(response => {
-                store.dispatch({ type: 'SET_COVERAGES', data: response.data });
-                this.loading--;
-            });
-            this.loading++;
-            axios.get('/api/industries').then(response => {
-                store.dispatch({ type: 'SET_INDUSTRIES', data: response.data });
-                this.loading--;
-            });
-            this.loading++;
             axios.get('/api/causes').then(response => {
                 store.dispatch({ type: 'SET_CAUSES', data: response.data });
-                this.loading--;
-            });
-            this.loading++;
-            axios.get('/api/carriers').then(response => {
-                store.dispatch({ type: 'SET_CARRIERS', data: response.data });
                 this.loading--;
             });
             this.loading++;

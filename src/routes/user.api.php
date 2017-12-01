@@ -71,6 +71,14 @@ use Illuminate\Support\Facades\Log;
         ->with('regions')
         ->with('states')
         ->with('counties')
+        ->with('carriers')
+        ->with('commercialCoverages')
+        ->with('personalCoverages')
+        ->with('benefitCoverages')
+        ->with('cropCoverages')
+        ->with('targetCoverages')
+        ->with('currentIndustries')
+        ->with('targetIndustries')
         ->first());
  });
  Route::get('/api/plan', function (Request $request) {

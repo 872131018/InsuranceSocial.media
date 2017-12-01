@@ -58,7 +58,7 @@ class CoverageController extends Controller
         foreach($user->carriers as $carrier) {
             $carrier->delete();
         }
-        foreach ($request->input('selected_carriers') as $carrier) {
+        foreach ($request->carriers as $carrier) {
             $selectedCarrier = new SelectedCarrier();
             $selectedCarrier->email = $user->email;
             $selectedCarrier->code = $carrier['code'];
@@ -71,7 +71,7 @@ class CoverageController extends Controller
         foreach($user->commercialCoverages as $coverage) {
             $coverage->delete();
         }
-        foreach ($request->input('selected_commercial_coverages') as $coverage) {
+        foreach ($request->commercial as $coverage) {
             $selectedCoverage = new SelectedCommercialCoverage();
             $selectedCoverage->email = $user->email;
             $selectedCoverage->code = $coverage['code'];
@@ -84,7 +84,7 @@ class CoverageController extends Controller
         foreach($user->cropCoverages as $coverage) {
             $coverage->delete();
         }
-        foreach ($request->input('selected_crop_coverages') as $coverage) {
+        foreach ($request->crop as $coverage) {
             $selectedCoverage = new SelectedCropCoverage();
             $selectedCoverage->email = $user->email;
             $selectedCoverage->code = $coverage['code'];
@@ -97,7 +97,7 @@ class CoverageController extends Controller
         foreach($user->personalCoverages as $coverage) {
             $coverage->delete();
         }
-        foreach ($request->input('selected_personal_coverages') as $coverage) {
+        foreach ($request->personal as $coverage) {
             $selectedCoverage = new SelectedPersonalCoverage();
             $selectedCoverage->email = $user->email;
             $selectedCoverage->code = $coverage['code'];
@@ -110,7 +110,7 @@ class CoverageController extends Controller
         foreach($user->benefitCoverages as $coverage) {
             $coverage->delete();
         }
-        foreach ($request->input('selected_benefit_coverages') as $coverage) {
+        foreach ($request->benefit as $coverage) {
             $selectedCoverage = new SelectedBenefitCoverage();
             $selectedCoverage->email = $user->email;
             $selectedCoverage->code = $coverage['code'];
@@ -123,7 +123,7 @@ class CoverageController extends Controller
         foreach($user->currentIndustries as $industry) {
             $industry->delete();
         }
-        foreach ($request->input('selected_current_industries') as $industry) {
+        foreach ($request->current_industries as $industry) {
             $selectedIndustry = new SelectedCurrentIndustry();
             $selectedIndustry->email = $user->email;
             $selectedIndustry->code = $industry['code'];
@@ -136,7 +136,7 @@ class CoverageController extends Controller
         foreach($user->targetIndustries as $industry) {
             $industry->delete();
         }
-        foreach ($request->input('selected_target_industries') as $industry) {
+        foreach ($request->target_industries as $industry) {
             $selectedIndustry = new SelectedTargetIndustry();
             $selectedIndustry->email = $user->email;
             $selectedIndustry->code = $industry['code'];
@@ -149,7 +149,7 @@ class CoverageController extends Controller
         foreach($user->targetCoverages as $coverage) {
             $coverage->delete();
         }
-        foreach ($request->input('selected_target_coverages') as $coverage) {
+        foreach ($request->target_coverages as $coverage) {
             $selectedCoverage = new SelectedTargetCoverage();
             $selectedCoverage->email = $user->email;
             $selectedCoverage->code = $coverage['code'];
@@ -158,8 +158,8 @@ class CoverageController extends Controller
         }
         $user->targetCoverages()->saveMany($selected);
 
-        $user->commercial_mix = $request->input('commercial_mix');
-        $user->personal_mix = $request->input('personal_mix');
+        $user->commercial_mix = $request->commercial_mix;
+        $user->personal_mix = $request->personal_mix;
         $user->update();
 
         return response()->json($user);
