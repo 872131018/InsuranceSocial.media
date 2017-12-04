@@ -1,7 +1,5 @@
 <template lang="pug">
     div
-        ProgressBar(
-            :progress="44")
         div(class="w3-padding w3-card form")
             h3 Corporate Page Preferences
             h5 Please select your preferences for your corporate Facebook page.

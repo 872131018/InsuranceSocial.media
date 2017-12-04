@@ -1,9 +1,5 @@
 <template lang="pug">
     div
-        ProgressBar(
-            :progress="67")
-        QuickNavigation(
-            @route="update($event)")
         div(class="w3-card w3-padding form")
             <div style="position:relative;height:0;padding-bottom:56.25%"><iframe class='sproutvideo-player' src='//videos.sproutvideo.com/embed/489addb61c1ee6c3c0/b381ae020a9f6ae2?bigPlayButton=false' style='position:absolute;width:100%;height:100%;left:0;top:0' frameborder='0' allowfullscreen></iframe></div>
             h3 Who are you?
@@ -89,7 +85,6 @@
 </template>
 
 <script>
-    import ProgressBar from '../Progress';
     import QuickNavigation from '../QuickNavigation';
     import Notification from './Notification';
 
@@ -208,14 +203,14 @@
             }
         },
         methods: {
-            update(route) {
+            update() {
                 this.validate();
                 if(this.errors.length == 0) {
                     this.$store.commit('serviceLoading');
                     axios.post('/profile', this.$store.state.user).then(response => {
                         this.$store.commit('serviceFinished');
                         if(this.$store.state.services.loading == 0) {
-                            this.$router.push({ name: route });
+                            this.$router.push({ name: 'Location' });
                         }
                     }).catch(error => {
                         this.$store.commit('setError', 'An error has occured, please contact support.');
@@ -224,7 +219,7 @@
                     axios.post('/agency', this.$store.state.agency).then(response => {
                         this.$store.commit('serviceFinished');
                         if(this.$store.state.services.loading == 0) {
-                            this.$router.push({ name: route });
+                            this.$router.push({ name: 'Location' });
                         }
                     }).catch(error => {
                         this.$store.commit('setError', 'An error has occured, please contact support.');
@@ -266,7 +261,6 @@
             }
         },
         components: {
-            ProgressBar,
             QuickNavigation,
             Notification
         }

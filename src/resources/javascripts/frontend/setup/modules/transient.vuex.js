@@ -5,7 +5,9 @@ const Module = {
         personal: false,
         commercial: false,
         benefit: false,
-        crop: false
+        crop: false,
+        post: '',
+        redirect: ''
     },
     mutations: {
         setMarketingRegion(state, value) {
@@ -28,6 +30,10 @@ const Module = {
         setCrop(state, value) {
             state.crop = value;
         },
+        setEndpoints(state, value) {
+            state.post = value.post;
+            state.redirect = value.redirect;
+        }
     }
 }
 

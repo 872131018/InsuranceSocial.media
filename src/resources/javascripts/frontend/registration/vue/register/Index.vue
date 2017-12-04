@@ -38,10 +38,9 @@
         Errors(
             v-if="errors.length"
             :errors="errors")
-        div(class="w3-padding-16")
-            button(class="w3-button w3-text-white primary"
-                @click="register()")
-                div(style="height: 22px; width: 127px") Register
+        button(class="w3-button w3-text-white primary"
+            @click="register()")
+            div(style="height: 22px; width: 127px") Register
 </template>
 
 <script>
@@ -65,8 +64,8 @@
                 return this.$store.state.registration.email_confirmation;
             },
             emailConfirmed() {
-                return this.$store.state.registration.email == this.$store.state.registration.email_confirmation &&
-                    this.$store.state.registration.email != '';
+                return this.email == this.emailConfirmation &&
+                    this.email != '';
             },
             password() {
                 return this.$store.state.registration.password;
@@ -78,8 +77,8 @@
                 return this.$store.state.registration.password_confirmation
             },
             passwordConfirmed() {
-                return this.$store.state.registration.password == this.$store.state.registration.password_confirmation &&
-                    this.$store.state.registration.password != '';
+                return this.password == this.passwordConfirmation &&
+                    this.password != '';
             },
             code() {
                 return this.$store.state.registration.code;

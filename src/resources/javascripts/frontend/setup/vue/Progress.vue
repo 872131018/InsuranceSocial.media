@@ -9,7 +9,7 @@
             div(class="primary w3-third w3-padding-large") Social Media
             div(class="primary w3-third w3-padding-large") Profile
         div(class="w3-section w3-center w3-text-white"
-            v-if="progress == 67")
+            v-if="progress >= 67")
             div(class="secondary w3-third w3-padding-large") Registration
             div(class="secondary w3-third w3-padding-large") Social Media
             div(class="primary w3-third w3-padding-large") Profile

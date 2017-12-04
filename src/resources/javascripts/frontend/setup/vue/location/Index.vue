@@ -1,9 +1,5 @@
 <template lang="pug">
     div
-        ProgressBar(
-            :progress="72")
-        QuickNavigation(
-            @route="update($event)")
         div(class="w3-card w3-padding form")
             h3 Where are you?
             h5 Please complete this information to receive content pertaining to your marketing areas.
@@ -75,12 +71,10 @@
             button(class="w3-button w3-margin-right w3-text-white primary"
                 @click="$router.push({ name: 'Profile' })") Previous
             button(class="w3-button w3-margin-left w3-text-white primary"
-                @click="update('Coverage')") Continue
+                @click="update('Coverages')") Continue
 </template>
 
 <script>
-    import ProgressBar from '../Progress';
-    import QuickNavigation from '../QuickNavigation';
     import Marketing from './Marketing';
 
     export default {
@@ -213,8 +207,6 @@
             }
         },
         components: {
-            ProgressBar,
-            QuickNavigation,
             Marketing
         }
     }

@@ -17,10 +17,10 @@ use Illuminate\Http\Request;
  *
  * @return \Illuminate\Http\Response
  */
- Route::get('/profile', 'SetupController@index');
+ Route::get('/agency', 'SetupController@index');
 
  Route::get('/location', 'SetupController@index');
 
- Route::get('/coverage', 'SetupController@index');
+ Route::get('/coverages', 'SetupController@index');
 
  Route::get('/outreach', 'SetupController@index');

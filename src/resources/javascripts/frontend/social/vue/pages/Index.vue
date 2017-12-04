@@ -1,7 +1,5 @@
 <template lang="pug">
     div
-        ProgressBar(
-            :progress="44")
         div(class="w3-padding w3-card form")
             h3 Select a Corporate Facebook Page
             h5 This is the page Insurance Social Media will post content to.
@@ -46,7 +44,7 @@
         methods: {
             update() {
                 this.$store.commit('clearErrors');
-                axios.post('/page', this.$store.state.page).then(response => {
+                axios.post('/pages', this.$store.state.page).then(response => {
                     this.$router.push({ name: 'Twitter' });
                 }).catch(error => {
                     this.$store.commit('setError', 'An error has occured, please contact support.');

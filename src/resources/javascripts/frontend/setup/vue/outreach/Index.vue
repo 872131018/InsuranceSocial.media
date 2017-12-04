@@ -1,9 +1,5 @@
 <template lang="pug">
     div
-        ProgressBar(
-            v-bind:progress="96")
-        QuickNavigation(
-            @route="update($event)")
         div(class="w3-padding w3-card form")
             h3 How do we reach your customers?
             h5 Please set your preferences for the type of outreach you would like.
@@ -65,8 +61,6 @@
 </template>
 
 <script>
-    import ProgressBar from '../Progress';
-    import QuickNavigation from '../QuickNavigation';
     import Days from './Days';
 
     export default {
@@ -146,16 +140,15 @@
             export() {
                 this.loading = true;
                 axios.get('/export').then(response => {
-                    console.log(response.data);
                     delete axios.defaults.headers.common['X-Requested-With'];
                     delete axios.defaults.headers.common['X-CSRF-TOKEN'];
                     delete axios.defaults.headers.common['Authorization'];
-                    axios.post(store.getState().EndpointStore.post, response.data).then(response => {
+                    axios.post(this.$store.state.transient.post, response.data).then(response => {
                         if(response.data.success) {
                             this.loading = false;
-                            window.location = store.getState().EndpointStore.redirect;
+                            this.$store.state.transient.redirect;
                         } else {
-                            this.errors.push(response.data.errors);
+                            this.$store.commit('setError', response.data.errors);
                         }
                     });
                 });
@@ -198,8 +191,6 @@
 
         },
         components: {
-            ProgressBar,
-            QuickNavigation,
             Days
         }
     }

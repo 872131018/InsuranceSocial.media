@@ -1,9 +1,5 @@
 <template lang="pug">
     div
-        ProgressBar(
-            :progress="84")
-        QuickNavigation(
-            @route="update($event)")
         div(class="w3-card w3-padding form")
             h3 What do you write?
             h5 Please tell us about the lines of coverage you write and any industries you market to.
@@ -128,8 +124,6 @@
 </template>
 
 <script>
-    import ProgressBar from '../Progress';
-    import QuickNavigation from '../QuickNavigation';
     import Personal from './Personal';
     import Commercial from './Commercial';
     import Benefit from './Benefit';
@@ -236,7 +230,7 @@
                         this.modal_commercial_warning = false;
                     }
                     if(this.modal == false) {
-                        axios.post('/coverage', this.$store.state.user).then(response => {
+                        axios.post('/coverages', this.$store.state.user).then(response => {
                             this.$router.push({ name: 'Outreach' });
                         }).catch(error => {
                             this.$store.commit('setError', 'An error has occured, please contact support.');
@@ -281,8 +275,6 @@
             }
         },
         components: {
-            ProgressBar,
-            QuickNavigation,
             Personal,
             Commercial,
             Benefit,

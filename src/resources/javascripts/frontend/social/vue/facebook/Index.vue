@@ -1,7 +1,5 @@
 <template lang="pug">
     div
-        ProgressBar(
-            :progress="33")
         div(class="w3-card w3-padding form")
             h3 Link your Facebook
             p Do you have a corporate Facebook page you’d like us to post to, or do you need us to create a page for you?

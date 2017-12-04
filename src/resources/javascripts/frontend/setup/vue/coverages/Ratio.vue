@@ -1,13 +1,13 @@
 <template lang="pug">
     div(class="w3-padding-16" style="clear:both")
-        div(class="w3-third") Ratio of Commercial to Personal Business
-        div(class="w3-third")
+        div Ratio of Commercial to Personal Business
+        div(class="w3-half")
             Field(
                 :label="'% Commercial'"
                 :value="commercialMix"
                 :valid="commercialMixValid"
                 @setValue="(value) => $emit('setCommercialMix', value)")
-        div(class="w3-third")
+        div(class="w3-half")
             Field(
                 :label="'% Personal'"
                 :value="personalMix"

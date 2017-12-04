@@ -4,8 +4,7 @@
         Selected(
             v-if="plan.name && !expired"
             :plan="plan")
-        div(
-            v-if="!expired")
+        div(v-if="!expired")
             h3 Payment Method
             h6 Please enter a form of payment to complete registration.
             p(v-if="code == 'ISMFREETRIAL' && plan.tier == 1") Your Insurance Social Media Essential Plan trial period is free. We ask for your credit card to prevent any service interruption should you keep your account open after the trial period. Your card will not be charged for the trial period. After the trial, you will be charged for each month. You can cancel at any time.
@@ -34,9 +33,8 @@
             Errors(
                 v-if="errors.length"
                 :errors="errors")
-            div(class="w3-padding")
-                button(class="w3-button w3-text-white primary"
-                    @click="sendPaymentDataToAnet()") Submit
+            button(class="w3-button w3-text-white primary"
+                @click="sendPaymentDataToAnet()") Submit
         Modal(
             v-if="response"
             :response="response"

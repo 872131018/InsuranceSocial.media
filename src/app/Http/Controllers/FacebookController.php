@@ -286,7 +286,7 @@ class FacebookController extends Controller
 
             if(count($pages) != 0) {
                 session(['pages' => json_encode($pages)]);
-                return redirect('/page');
+                return redirect('/pages');
             } else {
                 return redirect('/twitter');
             }

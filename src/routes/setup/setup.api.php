@@ -28,7 +28,7 @@ use App\Plan;
 
  Route::post('/location/selections', 'LocationController@storeSelections');
 
- Route::post('/coverage', 'CoverageController@store');
+ Route::post('/coverages', 'CoverageController@store');
 
  Route::post('/outreach', 'OutreachController@store');
 

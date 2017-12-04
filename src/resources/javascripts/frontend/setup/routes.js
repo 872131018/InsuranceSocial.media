@@ -1,14 +1,14 @@
 import VueRouter from 'vue-router';
-import Profile from './vue/profile/Index';
+import Agency from './vue/agency/Index';
 import Location from './vue/location/Index';
-import Coverage from './vue/coverage/Index';
+import Coverages from './vue/coverages/Index';
 import Outreach from './vue/outreach/Index';
 
 const routes = [
     {
-        path: '/profile',
-        name: 'Profile',
-        component: Profile
+        path: '/agency',
+        name: 'Agency',
+        component: Agency
     },
     {
         path: '/location',
@@ -16,9 +16,9 @@ const routes = [
         component: Location
     },
     {
-        path: '/coverage',
-        name: 'Coverage',
-        component: Coverage
+        path: '/coverages',
+        name: 'Coverages',
+        component: Coverages
     },
     {
         path: '/outreach',

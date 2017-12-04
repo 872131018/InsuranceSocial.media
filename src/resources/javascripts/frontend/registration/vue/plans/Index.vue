@@ -12,9 +12,8 @@
         Errors(
             v-if="errors.length"
             :errors="errors")
-        div(class="w3-padding-16")
-            button(class="w3-button w3-text-white primary"
-                @click="next()") Continue
+        button(class="w3-button w3-text-white primary"
+            @click="next()") Continue
 </template>
 
 <script>
