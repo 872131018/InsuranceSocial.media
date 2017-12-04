@@ -20,7 +20,9 @@ const Module = {
         target_industries: [],
         commercial_mix: '',
         personal_mix: '',
-        target_coverages: []
+        target_coverages: [],
+        special_topics: [],
+        causes: [],
 
     },
     mutations: {
@@ -259,6 +261,34 @@ const Module = {
                 "desc":"General Liability Insurance"
             });
         },
+        setUserCauses(state, value) {
+            state.causes = value;
+        },
+        setCause(state, value) {
+            for(let selection of state.causes) {
+                if(selection.code == value.code) {
+                    return;
+                }
+            }
+            state.causes.push(value);
+        },
+        removeCause(state, value) {
+            state.causes.splice(value, 1);
+        },
+        setSpecialTopics(state, value) {
+            state.special_topics = value;
+        },
+        setSpecialTopic(state, value) {
+            for(let selection of state.special_topics) {
+                if(selection.code == value.code) {
+                    return;
+                }
+            }
+            state.special_topics.push(value);
+        },
+        removeSpecialTopic(state, value) {
+            state.special_topics.splice(value, 1);
+        }
     }
 }
 

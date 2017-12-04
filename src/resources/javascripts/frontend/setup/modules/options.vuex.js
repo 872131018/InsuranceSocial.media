@@ -13,7 +13,13 @@ const Module = {
         benefit: [],
         crop: [],
         industries: [],
-        coverages: []
+        coverages: [],
+        mixes: [],
+        tones: [],
+        topics: [],
+        causes:[],
+        days: [],
+        times: []
     },
     mutations: {
         setTitles(state, value) {
@@ -51,7 +57,7 @@ const Module = {
             state.commercial = value.commercial;
             state.benefit = value.benefit;
             state.crop = [
-                {"code": "11016", "desc":"Crop coverages"}
+                {"code": "11016", "desc":"Crop Coverages"}
             ];
             let array = Array.prototype.concat(state.personal, state.commercial, state.benefit, state.crop);
             array.sort((a, b) => {
@@ -64,6 +70,24 @@ const Module = {
         setIndustries(state, value) {
             state.industries = value;
         },
+        setMixes(state, value) {
+            state.mixes = value;
+        },
+        setTones(state, value) {
+            state.tones = value;
+        },
+        setTopics(state, value) {
+            state.topics = value;
+        },
+        setCauses(state, value) {
+            state.causes = value;
+        },
+        setDays(state, value) {
+            state.days = value;
+        },
+        setTimes(state, value) {
+            state.times = value;
+        }
     }
 }
 

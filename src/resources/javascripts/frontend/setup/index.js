@@ -13,11 +13,13 @@ import Foot from '../global/foot/Foot';
 import Field from './vue/inputs/Field';
 import Dropdown from './vue/inputs/Dropdown';
 import List from './vue/inputs/List';
+import Radio from './vue/inputs/Radio';
 import ProgressBar from './vue/Progress';
 Vue.component('Navigation', Navigation);
 Vue.component('Field', Field);
 Vue.component('Dropdown', Dropdown);
 Vue.component('List', List);
+Vue.component('Radio', Radio);
 Vue.component('Errors', Errors);
 Vue.component('Foot', Foot);
 

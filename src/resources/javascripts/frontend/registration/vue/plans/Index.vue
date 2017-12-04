@@ -4,7 +4,7 @@
         h3 Plan Selection
         h6 Choose your plan.
         Plan(
-            v-for="(plan, index) in plans"
+            v-for="(plan, index) in $store.state.plans.plans"
             :key="index"
             :plan="plan"
             :selected="selected == plan.name"
@@ -22,9 +22,6 @@
 
     export default {
         computed: {
-            plans() {
-                return this.$store.state.plans.plans;
-            },
             selected() {
                 return this.$store.state.registration.plan.name;
             },

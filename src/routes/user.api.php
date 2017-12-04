@@ -67,6 +67,7 @@ use Illuminate\Support\Facades\Log;
  */
  Route::get('/api/user', function (Request $request) {
      return response()->json(Auth::user()
+        ->with('plan')
         ->with('agency')
         ->with('regions')
         ->with('states')
@@ -79,6 +80,8 @@ use Illuminate\Support\Facades\Log;
         ->with('targetCoverages')
         ->with('currentIndustries')
         ->with('targetIndustries')
+        ->with('specialTopics')
+        ->with('causes')
         ->first());
  });
  Route::get('/api/plan', function (Request $request) {

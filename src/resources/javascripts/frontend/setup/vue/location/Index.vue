@@ -172,7 +172,7 @@
                         this.$store.commit('setError', 'An error has occured, please contact support.');
                     });
                     this.$store.commit('serviceLoading');
-                    axios.post('/selections', this.$store.state.user).then(response => {
+                    axios.post('/location/selections', this.$store.state.user).then(response => {
                         this.$store.commit('serviceFinished');
                         if(this.$store.state.services.loading == 0) {
                             this.$router.push({ name: route });
