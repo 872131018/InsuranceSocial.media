@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 208);
+/******/ 	return __webpack_require__(__webpack_require__.s = 199);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -2020,7 +2020,7 @@ function loadLocale(name) {
         try {
             oldLocale = globalLocale._abbr;
             var aliasedRequire = require;
-            __webpack_require__(252)("./" + name);
+            __webpack_require__(233)("./" + name);
             getSetGlobalLocale(oldLocale);
         } catch (e) {}
     }
@@ -4692,7 +4692,7 @@ return hooks;
 
 })));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(51)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(60)(module)))
 
 /***/ }),
 /* 2 */
@@ -4702,7 +4702,7 @@ return hooks;
 
 
 var bind = __webpack_require__(8);
-var isBuffer = __webpack_require__(34);
+var isBuffer = __webpack_require__(30);
 
 /*global toString:true*/
 
@@ -5039,7 +5039,7 @@ module.exports = g;
 /* WEBPACK VAR INJECTION */(function(process) {
 
 var utils = __webpack_require__(2);
-var normalizeHeaderName = __webpack_require__(36);
+var normalizeHeaderName = __webpack_require__(32);
 
 var DEFAULT_CONTENT_TYPE = {
   'Content-Type': 'application/x-www-form-urlencoded'
@@ -18600,12 +18600,12 @@ module.exports = function bind(fn, thisArg) {
 
 
 var utils = __webpack_require__(2);
-var settle = __webpack_require__(37);
-var buildURL = __webpack_require__(39);
-var parseHeaders = __webpack_require__(40);
-var isURLSameOrigin = __webpack_require__(41);
+var settle = __webpack_require__(33);
+var buildURL = __webpack_require__(35);
+var parseHeaders = __webpack_require__(36);
+var isURLSameOrigin = __webpack_require__(37);
 var createError = __webpack_require__(10);
-var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(42);
+var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(38);
 
 module.exports = function xhrAdapter(config) {
   return new Promise(function dispatchXhrRequest(resolve, reject) {
@@ -18702,7 +18702,7 @@ module.exports = function xhrAdapter(config) {
     // This is only done if running in a standard browser environment.
     // Specifically not if we're in a web worker, or react-native.
     if (utils.isStandardBrowserEnv()) {
-      var cookies = __webpack_require__(43);
+      var cookies = __webpack_require__(39);
 
       // Add xsrf header
       var xsrfValue = (config.withCredentials || isURLSameOrigin(config.url)) && config.xsrfCookieName ?
@@ -18786,7 +18786,7 @@ module.exports = function xhrAdapter(config) {
 "use strict";
 
 
-var enhanceError = __webpack_require__(38);
+var enhanceError = __webpack_require__(34);
 
 /**
  * Create an Error with the specified message, config, error code, request and response.
@@ -19265,1210 +19265,7 @@ if (false) {
 }
 
 /***/ }),
-/* 18 */,
-/* 19 */,
-/* 20 */,
-/* 21 */,
-/* 22 */,
-/* 23 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(0)
-/* script */
-var __vue_script__ = __webpack_require__(24)
-/* template */
-var __vue_template__ = __webpack_require__(31)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/javascripts/frontend/global/navigation/Navigation.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-84c7c062", Component.options)
-  } else {
-    hotAPI.reload("data-v-84c7c062", Component.options)
-' + '  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 24 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Desktop__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Desktop___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Desktop__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Mobile__ = __webpack_require__(28);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Mobile___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__Mobile__);
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    components: {
-        Desktop: __WEBPACK_IMPORTED_MODULE_0__Desktop___default.a,
-        Mobile: __WEBPACK_IMPORTED_MODULE_1__Mobile___default.a
-    }
-});
-
-/***/ }),
-/* 25 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(0)
-/* script */
-var __vue_script__ = __webpack_require__(26)
-/* template */
-var __vue_template__ = __webpack_require__(27)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/javascripts/frontend/global/navigation/Desktop.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-0601db1e", Component.options)
-  } else {
-    hotAPI.reload("data-v-0601db1e", Component.options)
-' + '  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 26 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    //
-});
-
-/***/ }),
-/* 27 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "w3-bar-item w3-button header-logo" }, [
-    _vm._v("Insurance Social Media")
-  ])
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-0601db1e", module.exports)
-  }
-}
-
-/***/ }),
-/* 28 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(0)
-/* script */
-var __vue_script__ = __webpack_require__(29)
-/* template */
-var __vue_template__ = __webpack_require__(30)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/javascripts/frontend/global/navigation/Mobile.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-af7e8e46", Component.options)
-  } else {
-    hotAPI.reload("data-v-af7e8e46", Component.options)
-' + '  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 29 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    //
-});
-
-/***/ }),
-/* 30 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "w3-bar-item w3-button header-logo" }, [
-    _vm._v("Insurance Social Media")
-  ])
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-af7e8e46", module.exports)
-  }
-}
-
-/***/ }),
-/* 31 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "nav",
-    { staticClass: "w3-bar w3-xlarge w3-text-white primary header" },
-    [
-      _c("div", { staticClass: "w3-hide-small" }, [_c("Desktop")], 1),
-      _c(
-        "div",
-        { staticClass: "w3-hide-medium w3-hide-large" },
-        [_c("Mobile")],
-        1
-      )
-    ]
-  )
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-84c7c062", module.exports)
-  }
-}
-
-/***/ }),
-/* 32 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(33);
-
-/***/ }),
-/* 33 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var utils = __webpack_require__(2);
-var bind = __webpack_require__(8);
-var Axios = __webpack_require__(35);
-var defaults = __webpack_require__(4);
-
-/**
- * Create an instance of Axios
- *
- * @param {Object} defaultConfig The default config for the instance
- * @return {Axios} A new instance of Axios
- */
-function createInstance(defaultConfig) {
-  var context = new Axios(defaultConfig);
-  var instance = bind(Axios.prototype.request, context);
-
-  // Copy axios.prototype to instance
-  utils.extend(instance, Axios.prototype, context);
-
-  // Copy context to instance
-  utils.extend(instance, context);
-
-  return instance;
-}
-
-// Create the default instance to be exported
-var axios = createInstance(defaults);
-
-// Expose Axios class to allow class inheritance
-axios.Axios = Axios;
-
-// Factory for creating new instances
-axios.create = function create(instanceConfig) {
-  return createInstance(utils.merge(defaults, instanceConfig));
-};
-
-// Expose Cancel & CancelToken
-axios.Cancel = __webpack_require__(12);
-axios.CancelToken = __webpack_require__(49);
-axios.isCancel = __webpack_require__(11);
-
-// Expose all/spread
-axios.all = function all(promises) {
-  return Promise.all(promises);
-};
-axios.spread = __webpack_require__(50);
-
-module.exports = axios;
-
-// Allow use of default import syntax in TypeScript
-module.exports.default = axios;
-
-
-/***/ }),
-/* 34 */
-/***/ (function(module, exports) {
-
-/*!
- * Determine if an object is a Buffer
- *
- * @author   Feross Aboukhadijeh <https://feross.org>
- * @license  MIT
- */
-
-// The _isBuffer check is for Safari 5-7 support, because it's missing
-// Object.prototype.constructor. Remove this eventually
-module.exports = function (obj) {
-  return obj != null && (isBuffer(obj) || isSlowBuffer(obj) || !!obj._isBuffer)
-}
-
-function isBuffer (obj) {
-  return !!obj.constructor && typeof obj.constructor.isBuffer === 'function' && obj.constructor.isBuffer(obj)
-}
-
-// For Node v0.10 support. Remove this eventually.
-function isSlowBuffer (obj) {
-  return typeof obj.readFloatLE === 'function' && typeof obj.slice === 'function' && isBuffer(obj.slice(0, 0))
-}
-
-
-/***/ }),
-/* 35 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var defaults = __webpack_require__(4);
-var utils = __webpack_require__(2);
-var InterceptorManager = __webpack_require__(44);
-var dispatchRequest = __webpack_require__(45);
-
-/**
- * Create a new instance of Axios
- *
- * @param {Object} instanceConfig The default config for the instance
- */
-function Axios(instanceConfig) {
-  this.defaults = instanceConfig;
-  this.interceptors = {
-    request: new InterceptorManager(),
-    response: new InterceptorManager()
-  };
-}
-
-/**
- * Dispatch a request
- *
- * @param {Object} config The config specific for this request (merged with this.defaults)
- */
-Axios.prototype.request = function request(config) {
-  /*eslint no-param-reassign:0*/
-  // Allow for axios('example/url'[, config]) a la fetch API
-  if (typeof config === 'string') {
-    config = utils.merge({
-      url: arguments[0]
-    }, arguments[1]);
-  }
-
-  config = utils.merge(defaults, this.defaults, { method: 'get' }, config);
-  config.method = config.method.toLowerCase();
-
-  // Hook up interceptors middleware
-  var chain = [dispatchRequest, undefined];
-  var promise = Promise.resolve(config);
-
-  this.interceptors.request.forEach(function unshiftRequestInterceptors(interceptor) {
-    chain.unshift(interceptor.fulfilled, interceptor.rejected);
-  });
-
-  this.interceptors.response.forEach(function pushResponseInterceptors(interceptor) {
-    chain.push(interceptor.fulfilled, interceptor.rejected);
-  });
-
-  while (chain.length) {
-    promise = promise.then(chain.shift(), chain.shift());
-  }
-
-  return promise;
-};
-
-// Provide aliases for supported request methods
-utils.forEach(['delete', 'get', 'head', 'options'], function forEachMethodNoData(method) {
-  /*eslint func-names:0*/
-  Axios.prototype[method] = function(url, config) {
-    return this.request(utils.merge(config || {}, {
-      method: method,
-      url: url
-    }));
-  };
-});
-
-utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
-  /*eslint func-names:0*/
-  Axios.prototype[method] = function(url, data, config) {
-    return this.request(utils.merge(config || {}, {
-      method: method,
-      url: url,
-      data: data
-    }));
-  };
-});
-
-module.exports = Axios;
-
-
-/***/ }),
-/* 36 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var utils = __webpack_require__(2);
-
-module.exports = function normalizeHeaderName(headers, normalizedName) {
-  utils.forEach(headers, function processHeader(value, name) {
-    if (name !== normalizedName && name.toUpperCase() === normalizedName.toUpperCase()) {
-      headers[normalizedName] = value;
-      delete headers[name];
-    }
-  });
-};
-
-
-/***/ }),
-/* 37 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var createError = __webpack_require__(10);
-
-/**
- * Resolve or reject a Promise based on response status.
- *
- * @param {Function} resolve A function that resolves the promise.
- * @param {Function} reject A function that rejects the promise.
- * @param {object} response The response.
- */
-module.exports = function settle(resolve, reject, response) {
-  var validateStatus = response.config.validateStatus;
-  // Note: status is not exposed by XDomainRequest
-  if (!response.status || !validateStatus || validateStatus(response.status)) {
-    resolve(response);
-  } else {
-    reject(createError(
-      'Request failed with status code ' + response.status,
-      response.config,
-      null,
-      response.request,
-      response
-    ));
-  }
-};
-
-
-/***/ }),
-/* 38 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-/**
- * Update an Error with the specified config, error code, and response.
- *
- * @param {Error} error The error to update.
- * @param {Object} config The config.
- * @param {string} [code] The error code (for example, 'ECONNABORTED').
- * @param {Object} [request] The request.
- * @param {Object} [response] The response.
- * @returns {Error} The error.
- */
-module.exports = function enhanceError(error, config, code, request, response) {
-  error.config = config;
-  if (code) {
-    error.code = code;
-  }
-  error.request = request;
-  error.response = response;
-  return error;
-};
-
-
-/***/ }),
-/* 39 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var utils = __webpack_require__(2);
-
-function encode(val) {
-  return encodeURIComponent(val).
-    replace(/%40/gi, '@').
-    replace(/%3A/gi, ':').
-    replace(/%24/g, '$').
-    replace(/%2C/gi, ',').
-    replace(/%20/g, '+').
-    replace(/%5B/gi, '[').
-    replace(/%5D/gi, ']');
-}
-
-/**
- * Build a URL by appending params to the end
- *
- * @param {string} url The base of the url (e.g., http://www.google.com)
- * @param {object} [params] The params to be appended
- * @returns {string} The formatted url
- */
-module.exports = function buildURL(url, params, paramsSerializer) {
-  /*eslint no-param-reassign:0*/
-  if (!params) {
-    return url;
-  }
-
-  var serializedParams;
-  if (paramsSerializer) {
-    serializedParams = paramsSerializer(params);
-  } else if (utils.isURLSearchParams(params)) {
-    serializedParams = params.toString();
-  } else {
-    var parts = [];
-
-    utils.forEach(params, function serialize(val, key) {
-      if (val === null || typeof val === 'undefined') {
-        return;
-      }
-
-      if (utils.isArray(val)) {
-        key = key + '[]';
-      }
-
-      if (!utils.isArray(val)) {
-        val = [val];
-      }
-
-      utils.forEach(val, function parseValue(v) {
-        if (utils.isDate(v)) {
-          v = v.toISOString();
-        } else if (utils.isObject(v)) {
-          v = JSON.stringify(v);
-        }
-        parts.push(encode(key) + '=' + encode(v));
-      });
-    });
-
-    serializedParams = parts.join('&');
-  }
-
-  if (serializedParams) {
-    url += (url.indexOf('?') === -1 ? '?' : '&') + serializedParams;
-  }
-
-  return url;
-};
-
-
-/***/ }),
-/* 40 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var utils = __webpack_require__(2);
-
-// Headers whose duplicates are ignored by node
-// c.f. https://nodejs.org/api/http.html#http_message_headers
-var ignoreDuplicateOf = [
-  'age', 'authorization', 'content-length', 'content-type', 'etag',
-  'expires', 'from', 'host', 'if-modified-since', 'if-unmodified-since',
-  'last-modified', 'location', 'max-forwards', 'proxy-authorization',
-  'referer', 'retry-after', 'user-agent'
-];
-
-/**
- * Parse headers into an object
- *
- * ```
- * Date: Wed, 27 Aug 2014 08:58:49 GMT
- * Content-Type: application/json
- * Connection: keep-alive
- * Transfer-Encoding: chunked
- * ```
- *
- * @param {String} headers Headers needing to be parsed
- * @returns {Object} Headers parsed into an object
- */
-module.exports = function parseHeaders(headers) {
-  var parsed = {};
-  var key;
-  var val;
-  var i;
-
-  if (!headers) { return parsed; }
-
-  utils.forEach(headers.split('\n'), function parser(line) {
-    i = line.indexOf(':');
-    key = utils.trim(line.substr(0, i)).toLowerCase();
-    val = utils.trim(line.substr(i + 1));
-
-    if (key) {
-      if (parsed[key] && ignoreDuplicateOf.indexOf(key) >= 0) {
-        return;
-      }
-      if (key === 'set-cookie') {
-        parsed[key] = (parsed[key] ? parsed[key] : []).concat([val]);
-      } else {
-        parsed[key] = parsed[key] ? parsed[key] + ', ' + val : val;
-      }
-    }
-  });
-
-  return parsed;
-};
-
-
-/***/ }),
-/* 41 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var utils = __webpack_require__(2);
-
-module.exports = (
-  utils.isStandardBrowserEnv() ?
-
-  // Standard browser envs have full support of the APIs needed to test
-  // whether the request URL is of the same origin as current location.
-  (function standardBrowserEnv() {
-    var msie = /(msie|trident)/i.test(navigator.userAgent);
-    var urlParsingNode = document.createElement('a');
-    var originURL;
-
-    /**
-    * Parse a URL to discover it's components
-    *
-    * @param {String} url The URL to be parsed
-    * @returns {Object}
-    */
-    function resolveURL(url) {
-      var href = url;
-
-      if (msie) {
-        // IE needs attribute set twice to normalize properties
-        urlParsingNode.setAttribute('href', href);
-        href = urlParsingNode.href;
-      }
-
-      urlParsingNode.setAttribute('href', href);
-
-      // urlParsingNode provides the UrlUtils interface - http://url.spec.whatwg.org/#urlutils
-      return {
-        href: urlParsingNode.href,
-        protocol: urlParsingNode.protocol ? urlParsingNode.protocol.replace(/:$/, '') : '',
-        host: urlParsingNode.host,
-        search: urlParsingNode.search ? urlParsingNode.search.replace(/^\?/, '') : '',
-        hash: urlParsingNode.hash ? urlParsingNode.hash.replace(/^#/, '') : '',
-        hostname: urlParsingNode.hostname,
-        port: urlParsingNode.port,
-        pathname: (urlParsingNode.pathname.charAt(0) === '/') ?
-                  urlParsingNode.pathname :
-                  '/' + urlParsingNode.pathname
-      };
-    }
-
-    originURL = resolveURL(window.location.href);
-
-    /**
-    * Determine if a URL shares the same origin as the current location
-    *
-    * @param {String} requestURL The URL to test
-    * @returns {boolean} True if URL shares the same origin, otherwise false
-    */
-    return function isURLSameOrigin(requestURL) {
-      var parsed = (utils.isString(requestURL)) ? resolveURL(requestURL) : requestURL;
-      return (parsed.protocol === originURL.protocol &&
-            parsed.host === originURL.host);
-    };
-  })() :
-
-  // Non standard browser envs (web workers, react-native) lack needed support.
-  (function nonStandardBrowserEnv() {
-    return function isURLSameOrigin() {
-      return true;
-    };
-  })()
-);
-
-
-/***/ }),
-/* 42 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-// btoa polyfill for IE<10 courtesy https://github.com/davidchambers/Base64.js
-
-var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
-
-function E() {
-  this.message = 'String contains an invalid character';
-}
-E.prototype = new Error;
-E.prototype.code = 5;
-E.prototype.name = 'InvalidCharacterError';
-
-function btoa(input) {
-  var str = String(input);
-  var output = '';
-  for (
-    // initialize result and counter
-    var block, charCode, idx = 0, map = chars;
-    // if the next str index does not exist:
-    //   change the mapping table to "="
-    //   check if d has no fractional digits
-    str.charAt(idx | 0) || (map = '=', idx % 1);
-    // "8 - idx % 1 * 8" generates the sequence 2, 4, 6, 8
-    output += map.charAt(63 & block >> 8 - idx % 1 * 8)
-  ) {
-    charCode = str.charCodeAt(idx += 3 / 4);
-    if (charCode > 0xFF) {
-      throw new E();
-    }
-    block = block << 8 | charCode;
-  }
-  return output;
-}
-
-module.exports = btoa;
-
-
-/***/ }),
-/* 43 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var utils = __webpack_require__(2);
-
-module.exports = (
-  utils.isStandardBrowserEnv() ?
-
-  // Standard browser envs support document.cookie
-  (function standardBrowserEnv() {
-    return {
-      write: function write(name, value, expires, path, domain, secure) {
-        var cookie = [];
-        cookie.push(name + '=' + encodeURIComponent(value));
-
-        if (utils.isNumber(expires)) {
-          cookie.push('expires=' + new Date(expires).toGMTString());
-        }
-
-        if (utils.isString(path)) {
-          cookie.push('path=' + path);
-        }
-
-        if (utils.isString(domain)) {
-          cookie.push('domain=' + domain);
-        }
-
-        if (secure === true) {
-          cookie.push('secure');
-        }
-
-        document.cookie = cookie.join('; ');
-      },
-
-      read: function read(name) {
-        var match = document.cookie.match(new RegExp('(^|;\\s*)(' + name + ')=([^;]*)'));
-        return (match ? decodeURIComponent(match[3]) : null);
-      },
-
-      remove: function remove(name) {
-        this.write(name, '', Date.now() - 86400000);
-      }
-    };
-  })() :
-
-  // Non standard browser env (web workers, react-native) lack needed support.
-  (function nonStandardBrowserEnv() {
-    return {
-      write: function write() {},
-      read: function read() { return null; },
-      remove: function remove() {}
-    };
-  })()
-);
-
-
-/***/ }),
-/* 44 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var utils = __webpack_require__(2);
-
-function InterceptorManager() {
-  this.handlers = [];
-}
-
-/**
- * Add a new interceptor to the stack
- *
- * @param {Function} fulfilled The function to handle `then` for a `Promise`
- * @param {Function} rejected The function to handle `reject` for a `Promise`
- *
- * @return {Number} An ID used to remove interceptor later
- */
-InterceptorManager.prototype.use = function use(fulfilled, rejected) {
-  this.handlers.push({
-    fulfilled: fulfilled,
-    rejected: rejected
-  });
-  return this.handlers.length - 1;
-};
-
-/**
- * Remove an interceptor from the stack
- *
- * @param {Number} id The ID that was returned by `use`
- */
-InterceptorManager.prototype.eject = function eject(id) {
-  if (this.handlers[id]) {
-    this.handlers[id] = null;
-  }
-};
-
-/**
- * Iterate over all the registered interceptors
- *
- * This method is particularly useful for skipping over any
- * interceptors that may have become `null` calling `eject`.
- *
- * @param {Function} fn The function to call for each interceptor
- */
-InterceptorManager.prototype.forEach = function forEach(fn) {
-  utils.forEach(this.handlers, function forEachHandler(h) {
-    if (h !== null) {
-      fn(h);
-    }
-  });
-};
-
-module.exports = InterceptorManager;
-
-
-/***/ }),
-/* 45 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var utils = __webpack_require__(2);
-var transformData = __webpack_require__(46);
-var isCancel = __webpack_require__(11);
-var defaults = __webpack_require__(4);
-var isAbsoluteURL = __webpack_require__(47);
-var combineURLs = __webpack_require__(48);
-
-/**
- * Throws a `Cancel` if cancellation has been requested.
- */
-function throwIfCancellationRequested(config) {
-  if (config.cancelToken) {
-    config.cancelToken.throwIfRequested();
-  }
-}
-
-/**
- * Dispatch a request to the server using the configured adapter.
- *
- * @param {object} config The config that is to be used for the request
- * @returns {Promise} The Promise to be fulfilled
- */
-module.exports = function dispatchRequest(config) {
-  throwIfCancellationRequested(config);
-
-  // Support baseURL config
-  if (config.baseURL && !isAbsoluteURL(config.url)) {
-    config.url = combineURLs(config.baseURL, config.url);
-  }
-
-  // Ensure headers exist
-  config.headers = config.headers || {};
-
-  // Transform request data
-  config.data = transformData(
-    config.data,
-    config.headers,
-    config.transformRequest
-  );
-
-  // Flatten headers
-  config.headers = utils.merge(
-    config.headers.common || {},
-    config.headers[config.method] || {},
-    config.headers || {}
-  );
-
-  utils.forEach(
-    ['delete', 'get', 'head', 'post', 'put', 'patch', 'common'],
-    function cleanHeaderConfig(method) {
-      delete config.headers[method];
-    }
-  );
-
-  var adapter = config.adapter || defaults.adapter;
-
-  return adapter(config).then(function onAdapterResolution(response) {
-    throwIfCancellationRequested(config);
-
-    // Transform response data
-    response.data = transformData(
-      response.data,
-      response.headers,
-      config.transformResponse
-    );
-
-    return response;
-  }, function onAdapterRejection(reason) {
-    if (!isCancel(reason)) {
-      throwIfCancellationRequested(config);
-
-      // Transform response data
-      if (reason && reason.response) {
-        reason.response.data = transformData(
-          reason.response.data,
-          reason.response.headers,
-          config.transformResponse
-        );
-      }
-    }
-
-    return Promise.reject(reason);
-  });
-};
-
-
-/***/ }),
-/* 46 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var utils = __webpack_require__(2);
-
-/**
- * Transform the data for a request or a response
- *
- * @param {Object|String} data The data to be transformed
- * @param {Array} headers The headers for the request or response
- * @param {Array|Function} fns A single function or Array of functions
- * @returns {*} The resulting transformed data
- */
-module.exports = function transformData(data, headers, fns) {
-  /*eslint no-param-reassign:0*/
-  utils.forEach(fns, function transform(fn) {
-    data = fn(data, headers);
-  });
-
-  return data;
-};
-
-
-/***/ }),
-/* 47 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-/**
- * Determines whether the specified URL is absolute
- *
- * @param {string} url The URL to test
- * @returns {boolean} True if the specified URL is absolute, otherwise false
- */
-module.exports = function isAbsoluteURL(url) {
-  // A URL is considered absolute if it begins with "<scheme>://" or "//" (protocol-relative URL).
-  // RFC 3986 defines scheme name as a sequence of characters beginning with a letter and followed
-  // by any combination of letters, digits, plus, period, or hyphen.
-  return /^([a-z][a-z\d\+\-\.]*:)?\/\//i.test(url);
-};
-
-
-/***/ }),
-/* 48 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-/**
- * Creates a new URL by combining the specified URLs
- *
- * @param {string} baseURL The base URL
- * @param {string} relativeURL The relative URL
- * @returns {string} The combined URL
- */
-module.exports = function combineURLs(baseURL, relativeURL) {
-  return relativeURL
-    ? baseURL.replace(/\/+$/, '') + '/' + relativeURL.replace(/^\/+/, '')
-    : baseURL;
-};
-
-
-/***/ }),
-/* 49 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var Cancel = __webpack_require__(12);
-
-/**
- * A `CancelToken` is an object that can be used to request cancellation of an operation.
- *
- * @class
- * @param {Function} executor The executor function.
- */
-function CancelToken(executor) {
-  if (typeof executor !== 'function') {
-    throw new TypeError('executor must be a function.');
-  }
-
-  var resolvePromise;
-  this.promise = new Promise(function promiseExecutor(resolve) {
-    resolvePromise = resolve;
-  });
-
-  var token = this;
-  executor(function cancel(message) {
-    if (token.reason) {
-      // Cancellation has already been requested
-      return;
-    }
-
-    token.reason = new Cancel(message);
-    resolvePromise(token.reason);
-  });
-}
-
-/**
- * Throws a `Cancel` if cancellation has been requested.
- */
-CancelToken.prototype.throwIfRequested = function throwIfRequested() {
-  if (this.reason) {
-    throw this.reason;
-  }
-};
-
-/**
- * Returns an object that contains a new `CancelToken` and a function that, when called,
- * cancels the `CancelToken`.
- */
-CancelToken.source = function source() {
-  var cancel;
-  var token = new CancelToken(function executor(c) {
-    cancel = c;
-  });
-  return {
-    token: token,
-    cancel: cancel
-  };
-};
-
-module.exports = CancelToken;
-
-
-/***/ }),
-/* 50 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-/**
- * Syntactic sugar for invoking a function and expanding an array for arguments.
- *
- * Common use case would be to use `Function.prototype.apply`.
- *
- *  ```js
- *  function f(x, y, z) {}
- *  var args = [1, 2, 3];
- *  f.apply(null, args);
- *  ```
- *
- * With `spread` this example can be re-written.
- *
- *  ```js
- *  spread(function(x, y, z) {})([1, 2, 3]);
- *  ```
- *
- * @param {Function} callback
- * @returns {Function}
- */
-module.exports = function spread(callback) {
-  return function wrap(arr) {
-    return callback.apply(null, arr);
-  };
-};
-
-
-/***/ }),
-/* 51 */
-/***/ (function(module, exports) {
-
-module.exports = function(module) {
-	if(!module.webpackPolyfill) {
-		module.deprecate = function() {};
-		module.paths = [];
-		// module.parent = undefined by default
-		if(!module.children) module.children = [];
-		Object.defineProperty(module, "loaded", {
-			enumerable: true,
-			get: function() {
-				return module.l;
-			}
-		});
-		Object.defineProperty(module, "id", {
-			enumerable: true,
-			get: function() {
-				return module.i;
-			}
-		});
-		module.webpackPolyfill = 1;
-	}
-	return module;
-};
-
-
-/***/ }),
-/* 52 */,
-/* 53 */
+/* 18 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -21413,123 +20210,1311 @@ var index_esm = {
 
 
 /***/ }),
+/* 19 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(20)
+/* template */
+var __vue_template__ = __webpack_require__(27)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/javascripts/frontend/global/navigation/Navigation.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-84c7c062", Component.options)
+  } else {
+    hotAPI.reload("data-v-84c7c062", Component.options)
+' + '  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 20 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Desktop__ = __webpack_require__(21);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Desktop___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Desktop__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Mobile__ = __webpack_require__(24);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Mobile___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__Mobile__);
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    components: {
+        Desktop: __WEBPACK_IMPORTED_MODULE_0__Desktop___default.a,
+        Mobile: __WEBPACK_IMPORTED_MODULE_1__Mobile___default.a
+    }
+});
+
+/***/ }),
+/* 21 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(22)
+/* template */
+var __vue_template__ = __webpack_require__(23)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/javascripts/frontend/global/navigation/Desktop.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-0601db1e", Component.options)
+  } else {
+    hotAPI.reload("data-v-0601db1e", Component.options)
+' + '  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 22 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    //
+});
+
+/***/ }),
+/* 23 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "w3-bar-item w3-button header-logo" }, [
+    _vm._v("Insurance Social Media")
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-0601db1e", module.exports)
+  }
+}
+
+/***/ }),
+/* 24 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(25)
+/* template */
+var __vue_template__ = __webpack_require__(26)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/javascripts/frontend/global/navigation/Mobile.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-af7e8e46", Component.options)
+  } else {
+    hotAPI.reload("data-v-af7e8e46", Component.options)
+' + '  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 25 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    //
+});
+
+/***/ }),
+/* 26 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "w3-bar-item w3-button header-logo" }, [
+    _vm._v("Insurance Social Media")
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-af7e8e46", module.exports)
+  }
+}
+
+/***/ }),
+/* 27 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "nav",
+    { staticClass: "w3-bar w3-xlarge w3-text-white primary header" },
+    [
+      _c("div", { staticClass: "w3-hide-small" }, [_c("Desktop")], 1),
+      _c(
+        "div",
+        { staticClass: "w3-hide-medium w3-hide-large" },
+        [_c("Mobile")],
+        1
+      )
+    ]
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-84c7c062", module.exports)
+  }
+}
+
+/***/ }),
+/* 28 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(29);
+
+/***/ }),
+/* 29 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var utils = __webpack_require__(2);
+var bind = __webpack_require__(8);
+var Axios = __webpack_require__(31);
+var defaults = __webpack_require__(4);
+
+/**
+ * Create an instance of Axios
+ *
+ * @param {Object} defaultConfig The default config for the instance
+ * @return {Axios} A new instance of Axios
+ */
+function createInstance(defaultConfig) {
+  var context = new Axios(defaultConfig);
+  var instance = bind(Axios.prototype.request, context);
+
+  // Copy axios.prototype to instance
+  utils.extend(instance, Axios.prototype, context);
+
+  // Copy context to instance
+  utils.extend(instance, context);
+
+  return instance;
+}
+
+// Create the default instance to be exported
+var axios = createInstance(defaults);
+
+// Expose Axios class to allow class inheritance
+axios.Axios = Axios;
+
+// Factory for creating new instances
+axios.create = function create(instanceConfig) {
+  return createInstance(utils.merge(defaults, instanceConfig));
+};
+
+// Expose Cancel & CancelToken
+axios.Cancel = __webpack_require__(12);
+axios.CancelToken = __webpack_require__(45);
+axios.isCancel = __webpack_require__(11);
+
+// Expose all/spread
+axios.all = function all(promises) {
+  return Promise.all(promises);
+};
+axios.spread = __webpack_require__(46);
+
+module.exports = axios;
+
+// Allow use of default import syntax in TypeScript
+module.exports.default = axios;
+
+
+/***/ }),
+/* 30 */
+/***/ (function(module, exports) {
+
+/*!
+ * Determine if an object is a Buffer
+ *
+ * @author   Feross Aboukhadijeh <https://feross.org>
+ * @license  MIT
+ */
+
+// The _isBuffer check is for Safari 5-7 support, because it's missing
+// Object.prototype.constructor. Remove this eventually
+module.exports = function (obj) {
+  return obj != null && (isBuffer(obj) || isSlowBuffer(obj) || !!obj._isBuffer)
+}
+
+function isBuffer (obj) {
+  return !!obj.constructor && typeof obj.constructor.isBuffer === 'function' && obj.constructor.isBuffer(obj)
+}
+
+// For Node v0.10 support. Remove this eventually.
+function isSlowBuffer (obj) {
+  return typeof obj.readFloatLE === 'function' && typeof obj.slice === 'function' && isBuffer(obj.slice(0, 0))
+}
+
+
+/***/ }),
+/* 31 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var defaults = __webpack_require__(4);
+var utils = __webpack_require__(2);
+var InterceptorManager = __webpack_require__(40);
+var dispatchRequest = __webpack_require__(41);
+
+/**
+ * Create a new instance of Axios
+ *
+ * @param {Object} instanceConfig The default config for the instance
+ */
+function Axios(instanceConfig) {
+  this.defaults = instanceConfig;
+  this.interceptors = {
+    request: new InterceptorManager(),
+    response: new InterceptorManager()
+  };
+}
+
+/**
+ * Dispatch a request
+ *
+ * @param {Object} config The config specific for this request (merged with this.defaults)
+ */
+Axios.prototype.request = function request(config) {
+  /*eslint no-param-reassign:0*/
+  // Allow for axios('example/url'[, config]) a la fetch API
+  if (typeof config === 'string') {
+    config = utils.merge({
+      url: arguments[0]
+    }, arguments[1]);
+  }
+
+  config = utils.merge(defaults, this.defaults, { method: 'get' }, config);
+  config.method = config.method.toLowerCase();
+
+  // Hook up interceptors middleware
+  var chain = [dispatchRequest, undefined];
+  var promise = Promise.resolve(config);
+
+  this.interceptors.request.forEach(function unshiftRequestInterceptors(interceptor) {
+    chain.unshift(interceptor.fulfilled, interceptor.rejected);
+  });
+
+  this.interceptors.response.forEach(function pushResponseInterceptors(interceptor) {
+    chain.push(interceptor.fulfilled, interceptor.rejected);
+  });
+
+  while (chain.length) {
+    promise = promise.then(chain.shift(), chain.shift());
+  }
+
+  return promise;
+};
+
+// Provide aliases for supported request methods
+utils.forEach(['delete', 'get', 'head', 'options'], function forEachMethodNoData(method) {
+  /*eslint func-names:0*/
+  Axios.prototype[method] = function(url, config) {
+    return this.request(utils.merge(config || {}, {
+      method: method,
+      url: url
+    }));
+  };
+});
+
+utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
+  /*eslint func-names:0*/
+  Axios.prototype[method] = function(url, data, config) {
+    return this.request(utils.merge(config || {}, {
+      method: method,
+      url: url,
+      data: data
+    }));
+  };
+});
+
+module.exports = Axios;
+
+
+/***/ }),
+/* 32 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var utils = __webpack_require__(2);
+
+module.exports = function normalizeHeaderName(headers, normalizedName) {
+  utils.forEach(headers, function processHeader(value, name) {
+    if (name !== normalizedName && name.toUpperCase() === normalizedName.toUpperCase()) {
+      headers[normalizedName] = value;
+      delete headers[name];
+    }
+  });
+};
+
+
+/***/ }),
+/* 33 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var createError = __webpack_require__(10);
+
+/**
+ * Resolve or reject a Promise based on response status.
+ *
+ * @param {Function} resolve A function that resolves the promise.
+ * @param {Function} reject A function that rejects the promise.
+ * @param {object} response The response.
+ */
+module.exports = function settle(resolve, reject, response) {
+  var validateStatus = response.config.validateStatus;
+  // Note: status is not exposed by XDomainRequest
+  if (!response.status || !validateStatus || validateStatus(response.status)) {
+    resolve(response);
+  } else {
+    reject(createError(
+      'Request failed with status code ' + response.status,
+      response.config,
+      null,
+      response.request,
+      response
+    ));
+  }
+};
+
+
+/***/ }),
+/* 34 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/**
+ * Update an Error with the specified config, error code, and response.
+ *
+ * @param {Error} error The error to update.
+ * @param {Object} config The config.
+ * @param {string} [code] The error code (for example, 'ECONNABORTED').
+ * @param {Object} [request] The request.
+ * @param {Object} [response] The response.
+ * @returns {Error} The error.
+ */
+module.exports = function enhanceError(error, config, code, request, response) {
+  error.config = config;
+  if (code) {
+    error.code = code;
+  }
+  error.request = request;
+  error.response = response;
+  return error;
+};
+
+
+/***/ }),
+/* 35 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var utils = __webpack_require__(2);
+
+function encode(val) {
+  return encodeURIComponent(val).
+    replace(/%40/gi, '@').
+    replace(/%3A/gi, ':').
+    replace(/%24/g, '$').
+    replace(/%2C/gi, ',').
+    replace(/%20/g, '+').
+    replace(/%5B/gi, '[').
+    replace(/%5D/gi, ']');
+}
+
+/**
+ * Build a URL by appending params to the end
+ *
+ * @param {string} url The base of the url (e.g., http://www.google.com)
+ * @param {object} [params] The params to be appended
+ * @returns {string} The formatted url
+ */
+module.exports = function buildURL(url, params, paramsSerializer) {
+  /*eslint no-param-reassign:0*/
+  if (!params) {
+    return url;
+  }
+
+  var serializedParams;
+  if (paramsSerializer) {
+    serializedParams = paramsSerializer(params);
+  } else if (utils.isURLSearchParams(params)) {
+    serializedParams = params.toString();
+  } else {
+    var parts = [];
+
+    utils.forEach(params, function serialize(val, key) {
+      if (val === null || typeof val === 'undefined') {
+        return;
+      }
+
+      if (utils.isArray(val)) {
+        key = key + '[]';
+      }
+
+      if (!utils.isArray(val)) {
+        val = [val];
+      }
+
+      utils.forEach(val, function parseValue(v) {
+        if (utils.isDate(v)) {
+          v = v.toISOString();
+        } else if (utils.isObject(v)) {
+          v = JSON.stringify(v);
+        }
+        parts.push(encode(key) + '=' + encode(v));
+      });
+    });
+
+    serializedParams = parts.join('&');
+  }
+
+  if (serializedParams) {
+    url += (url.indexOf('?') === -1 ? '?' : '&') + serializedParams;
+  }
+
+  return url;
+};
+
+
+/***/ }),
+/* 36 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var utils = __webpack_require__(2);
+
+// Headers whose duplicates are ignored by node
+// c.f. https://nodejs.org/api/http.html#http_message_headers
+var ignoreDuplicateOf = [
+  'age', 'authorization', 'content-length', 'content-type', 'etag',
+  'expires', 'from', 'host', 'if-modified-since', 'if-unmodified-since',
+  'last-modified', 'location', 'max-forwards', 'proxy-authorization',
+  'referer', 'retry-after', 'user-agent'
+];
+
+/**
+ * Parse headers into an object
+ *
+ * ```
+ * Date: Wed, 27 Aug 2014 08:58:49 GMT
+ * Content-Type: application/json
+ * Connection: keep-alive
+ * Transfer-Encoding: chunked
+ * ```
+ *
+ * @param {String} headers Headers needing to be parsed
+ * @returns {Object} Headers parsed into an object
+ */
+module.exports = function parseHeaders(headers) {
+  var parsed = {};
+  var key;
+  var val;
+  var i;
+
+  if (!headers) { return parsed; }
+
+  utils.forEach(headers.split('\n'), function parser(line) {
+    i = line.indexOf(':');
+    key = utils.trim(line.substr(0, i)).toLowerCase();
+    val = utils.trim(line.substr(i + 1));
+
+    if (key) {
+      if (parsed[key] && ignoreDuplicateOf.indexOf(key) >= 0) {
+        return;
+      }
+      if (key === 'set-cookie') {
+        parsed[key] = (parsed[key] ? parsed[key] : []).concat([val]);
+      } else {
+        parsed[key] = parsed[key] ? parsed[key] + ', ' + val : val;
+      }
+    }
+  });
+
+  return parsed;
+};
+
+
+/***/ }),
+/* 37 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var utils = __webpack_require__(2);
+
+module.exports = (
+  utils.isStandardBrowserEnv() ?
+
+  // Standard browser envs have full support of the APIs needed to test
+  // whether the request URL is of the same origin as current location.
+  (function standardBrowserEnv() {
+    var msie = /(msie|trident)/i.test(navigator.userAgent);
+    var urlParsingNode = document.createElement('a');
+    var originURL;
+
+    /**
+    * Parse a URL to discover it's components
+    *
+    * @param {String} url The URL to be parsed
+    * @returns {Object}
+    */
+    function resolveURL(url) {
+      var href = url;
+
+      if (msie) {
+        // IE needs attribute set twice to normalize properties
+        urlParsingNode.setAttribute('href', href);
+        href = urlParsingNode.href;
+      }
+
+      urlParsingNode.setAttribute('href', href);
+
+      // urlParsingNode provides the UrlUtils interface - http://url.spec.whatwg.org/#urlutils
+      return {
+        href: urlParsingNode.href,
+        protocol: urlParsingNode.protocol ? urlParsingNode.protocol.replace(/:$/, '') : '',
+        host: urlParsingNode.host,
+        search: urlParsingNode.search ? urlParsingNode.search.replace(/^\?/, '') : '',
+        hash: urlParsingNode.hash ? urlParsingNode.hash.replace(/^#/, '') : '',
+        hostname: urlParsingNode.hostname,
+        port: urlParsingNode.port,
+        pathname: (urlParsingNode.pathname.charAt(0) === '/') ?
+                  urlParsingNode.pathname :
+                  '/' + urlParsingNode.pathname
+      };
+    }
+
+    originURL = resolveURL(window.location.href);
+
+    /**
+    * Determine if a URL shares the same origin as the current location
+    *
+    * @param {String} requestURL The URL to test
+    * @returns {boolean} True if URL shares the same origin, otherwise false
+    */
+    return function isURLSameOrigin(requestURL) {
+      var parsed = (utils.isString(requestURL)) ? resolveURL(requestURL) : requestURL;
+      return (parsed.protocol === originURL.protocol &&
+            parsed.host === originURL.host);
+    };
+  })() :
+
+  // Non standard browser envs (web workers, react-native) lack needed support.
+  (function nonStandardBrowserEnv() {
+    return function isURLSameOrigin() {
+      return true;
+    };
+  })()
+);
+
+
+/***/ }),
+/* 38 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+// btoa polyfill for IE<10 courtesy https://github.com/davidchambers/Base64.js
+
+var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
+
+function E() {
+  this.message = 'String contains an invalid character';
+}
+E.prototype = new Error;
+E.prototype.code = 5;
+E.prototype.name = 'InvalidCharacterError';
+
+function btoa(input) {
+  var str = String(input);
+  var output = '';
+  for (
+    // initialize result and counter
+    var block, charCode, idx = 0, map = chars;
+    // if the next str index does not exist:
+    //   change the mapping table to "="
+    //   check if d has no fractional digits
+    str.charAt(idx | 0) || (map = '=', idx % 1);
+    // "8 - idx % 1 * 8" generates the sequence 2, 4, 6, 8
+    output += map.charAt(63 & block >> 8 - idx % 1 * 8)
+  ) {
+    charCode = str.charCodeAt(idx += 3 / 4);
+    if (charCode > 0xFF) {
+      throw new E();
+    }
+    block = block << 8 | charCode;
+  }
+  return output;
+}
+
+module.exports = btoa;
+
+
+/***/ }),
+/* 39 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var utils = __webpack_require__(2);
+
+module.exports = (
+  utils.isStandardBrowserEnv() ?
+
+  // Standard browser envs support document.cookie
+  (function standardBrowserEnv() {
+    return {
+      write: function write(name, value, expires, path, domain, secure) {
+        var cookie = [];
+        cookie.push(name + '=' + encodeURIComponent(value));
+
+        if (utils.isNumber(expires)) {
+          cookie.push('expires=' + new Date(expires).toGMTString());
+        }
+
+        if (utils.isString(path)) {
+          cookie.push('path=' + path);
+        }
+
+        if (utils.isString(domain)) {
+          cookie.push('domain=' + domain);
+        }
+
+        if (secure === true) {
+          cookie.push('secure');
+        }
+
+        document.cookie = cookie.join('; ');
+      },
+
+      read: function read(name) {
+        var match = document.cookie.match(new RegExp('(^|;\\s*)(' + name + ')=([^;]*)'));
+        return (match ? decodeURIComponent(match[3]) : null);
+      },
+
+      remove: function remove(name) {
+        this.write(name, '', Date.now() - 86400000);
+      }
+    };
+  })() :
+
+  // Non standard browser env (web workers, react-native) lack needed support.
+  (function nonStandardBrowserEnv() {
+    return {
+      write: function write() {},
+      read: function read() { return null; },
+      remove: function remove() {}
+    };
+  })()
+);
+
+
+/***/ }),
+/* 40 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var utils = __webpack_require__(2);
+
+function InterceptorManager() {
+  this.handlers = [];
+}
+
+/**
+ * Add a new interceptor to the stack
+ *
+ * @param {Function} fulfilled The function to handle `then` for a `Promise`
+ * @param {Function} rejected The function to handle `reject` for a `Promise`
+ *
+ * @return {Number} An ID used to remove interceptor later
+ */
+InterceptorManager.prototype.use = function use(fulfilled, rejected) {
+  this.handlers.push({
+    fulfilled: fulfilled,
+    rejected: rejected
+  });
+  return this.handlers.length - 1;
+};
+
+/**
+ * Remove an interceptor from the stack
+ *
+ * @param {Number} id The ID that was returned by `use`
+ */
+InterceptorManager.prototype.eject = function eject(id) {
+  if (this.handlers[id]) {
+    this.handlers[id] = null;
+  }
+};
+
+/**
+ * Iterate over all the registered interceptors
+ *
+ * This method is particularly useful for skipping over any
+ * interceptors that may have become `null` calling `eject`.
+ *
+ * @param {Function} fn The function to call for each interceptor
+ */
+InterceptorManager.prototype.forEach = function forEach(fn) {
+  utils.forEach(this.handlers, function forEachHandler(h) {
+    if (h !== null) {
+      fn(h);
+    }
+  });
+};
+
+module.exports = InterceptorManager;
+
+
+/***/ }),
+/* 41 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var utils = __webpack_require__(2);
+var transformData = __webpack_require__(42);
+var isCancel = __webpack_require__(11);
+var defaults = __webpack_require__(4);
+var isAbsoluteURL = __webpack_require__(43);
+var combineURLs = __webpack_require__(44);
+
+/**
+ * Throws a `Cancel` if cancellation has been requested.
+ */
+function throwIfCancellationRequested(config) {
+  if (config.cancelToken) {
+    config.cancelToken.throwIfRequested();
+  }
+}
+
+/**
+ * Dispatch a request to the server using the configured adapter.
+ *
+ * @param {object} config The config that is to be used for the request
+ * @returns {Promise} The Promise to be fulfilled
+ */
+module.exports = function dispatchRequest(config) {
+  throwIfCancellationRequested(config);
+
+  // Support baseURL config
+  if (config.baseURL && !isAbsoluteURL(config.url)) {
+    config.url = combineURLs(config.baseURL, config.url);
+  }
+
+  // Ensure headers exist
+  config.headers = config.headers || {};
+
+  // Transform request data
+  config.data = transformData(
+    config.data,
+    config.headers,
+    config.transformRequest
+  );
+
+  // Flatten headers
+  config.headers = utils.merge(
+    config.headers.common || {},
+    config.headers[config.method] || {},
+    config.headers || {}
+  );
+
+  utils.forEach(
+    ['delete', 'get', 'head', 'post', 'put', 'patch', 'common'],
+    function cleanHeaderConfig(method) {
+      delete config.headers[method];
+    }
+  );
+
+  var adapter = config.adapter || defaults.adapter;
+
+  return adapter(config).then(function onAdapterResolution(response) {
+    throwIfCancellationRequested(config);
+
+    // Transform response data
+    response.data = transformData(
+      response.data,
+      response.headers,
+      config.transformResponse
+    );
+
+    return response;
+  }, function onAdapterRejection(reason) {
+    if (!isCancel(reason)) {
+      throwIfCancellationRequested(config);
+
+      // Transform response data
+      if (reason && reason.response) {
+        reason.response.data = transformData(
+          reason.response.data,
+          reason.response.headers,
+          config.transformResponse
+        );
+      }
+    }
+
+    return Promise.reject(reason);
+  });
+};
+
+
+/***/ }),
+/* 42 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var utils = __webpack_require__(2);
+
+/**
+ * Transform the data for a request or a response
+ *
+ * @param {Object|String} data The data to be transformed
+ * @param {Array} headers The headers for the request or response
+ * @param {Array|Function} fns A single function or Array of functions
+ * @returns {*} The resulting transformed data
+ */
+module.exports = function transformData(data, headers, fns) {
+  /*eslint no-param-reassign:0*/
+  utils.forEach(fns, function transform(fn) {
+    data = fn(data, headers);
+  });
+
+  return data;
+};
+
+
+/***/ }),
+/* 43 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/**
+ * Determines whether the specified URL is absolute
+ *
+ * @param {string} url The URL to test
+ * @returns {boolean} True if the specified URL is absolute, otherwise false
+ */
+module.exports = function isAbsoluteURL(url) {
+  // A URL is considered absolute if it begins with "<scheme>://" or "//" (protocol-relative URL).
+  // RFC 3986 defines scheme name as a sequence of characters beginning with a letter and followed
+  // by any combination of letters, digits, plus, period, or hyphen.
+  return /^([a-z][a-z\d\+\-\.]*:)?\/\//i.test(url);
+};
+
+
+/***/ }),
+/* 44 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/**
+ * Creates a new URL by combining the specified URLs
+ *
+ * @param {string} baseURL The base URL
+ * @param {string} relativeURL The relative URL
+ * @returns {string} The combined URL
+ */
+module.exports = function combineURLs(baseURL, relativeURL) {
+  return relativeURL
+    ? baseURL.replace(/\/+$/, '') + '/' + relativeURL.replace(/^\/+/, '')
+    : baseURL;
+};
+
+
+/***/ }),
+/* 45 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var Cancel = __webpack_require__(12);
+
+/**
+ * A `CancelToken` is an object that can be used to request cancellation of an operation.
+ *
+ * @class
+ * @param {Function} executor The executor function.
+ */
+function CancelToken(executor) {
+  if (typeof executor !== 'function') {
+    throw new TypeError('executor must be a function.');
+  }
+
+  var resolvePromise;
+  this.promise = new Promise(function promiseExecutor(resolve) {
+    resolvePromise = resolve;
+  });
+
+  var token = this;
+  executor(function cancel(message) {
+    if (token.reason) {
+      // Cancellation has already been requested
+      return;
+    }
+
+    token.reason = new Cancel(message);
+    resolvePromise(token.reason);
+  });
+}
+
+/**
+ * Throws a `Cancel` if cancellation has been requested.
+ */
+CancelToken.prototype.throwIfRequested = function throwIfRequested() {
+  if (this.reason) {
+    throw this.reason;
+  }
+};
+
+/**
+ * Returns an object that contains a new `CancelToken` and a function that, when called,
+ * cancels the `CancelToken`.
+ */
+CancelToken.source = function source() {
+  var cancel;
+  var token = new CancelToken(function executor(c) {
+    cancel = c;
+  });
+  return {
+    token: token,
+    cancel: cancel
+  };
+};
+
+module.exports = CancelToken;
+
+
+/***/ }),
+/* 46 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/**
+ * Syntactic sugar for invoking a function and expanding an array for arguments.
+ *
+ * Common use case would be to use `Function.prototype.apply`.
+ *
+ *  ```js
+ *  function f(x, y, z) {}
+ *  var args = [1, 2, 3];
+ *  f.apply(null, args);
+ *  ```
+ *
+ * With `spread` this example can be re-written.
+ *
+ *  ```js
+ *  spread(function(x, y, z) {})([1, 2, 3]);
+ *  ```
+ *
+ * @param {Function} callback
+ * @returns {Function}
+ */
+module.exports = function spread(callback) {
+  return function wrap(arr) {
+    return callback.apply(null, arr);
+  };
+};
+
+
+/***/ }),
+/* 47 */,
+/* 48 */,
+/* 49 */,
+/* 50 */,
+/* 51 */,
+/* 52 */,
+/* 53 */,
 /* 54 */,
 /* 55 */,
 /* 56 */,
-/* 57 */,
-/* 58 */,
-/* 59 */,
-/* 60 */,
+/* 57 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(58)
+/* template */
+var __vue_template__ = __webpack_require__(59)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/javascripts/frontend/global/Errors.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-99157c0a", Component.options)
+  } else {
+    hotAPI.reload("data-v-99157c0a", Component.options)
+' + '  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 58 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: {
+        errors: {
+            type: Array
+        }
+    }
+});
+
+/***/ }),
+/* 59 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "ul",
+    { staticClass: "w3-ul w3-text-red" },
+    _vm._l(_vm.errors, function(error) {
+      return _c("li", [_vm._v(_vm._s(error))])
+    })
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-99157c0a", module.exports)
+  }
+}
+
+/***/ }),
+/* 60 */
+/***/ (function(module, exports) {
+
+module.exports = function(module) {
+	if(!module.webpackPolyfill) {
+		module.deprecate = function() {};
+		module.paths = [];
+		// module.parent = undefined by default
+		if(!module.children) module.children = [];
+		Object.defineProperty(module, "loaded", {
+			enumerable: true,
+			get: function() {
+				return module.l;
+			}
+		});
+		Object.defineProperty(module, "id", {
+			enumerable: true,
+			get: function() {
+				return module.i;
+			}
+		});
+		module.webpackPolyfill = 1;
+	}
+	return module;
+};
+
+
+/***/ }),
 /* 61 */,
 /* 62 */,
-/* 63 */,
-/* 64 */,
-/* 65 */,
-/* 66 */,
-/* 67 */,
-/* 68 */,
-/* 69 */,
-/* 70 */,
-/* 71 */,
-/* 72 */,
-/* 73 */,
-/* 74 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(0)
-/* script */
-var __vue_script__ = __webpack_require__(229)
-/* template */
-var __vue_template__ = __webpack_require__(230)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/javascripts/frontend/registration/vue/register/inputs/Check.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-70d804bb", Component.options)
-  } else {
-    hotAPI.reload("data-v-70d804bb", Component.options)
-' + '  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 75 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(0)
-/* script */
-var __vue_script__ = __webpack_require__(231)
-/* template */
-var __vue_template__ = __webpack_require__(232)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/javascripts/frontend/registration/vue/register/inputs/Cross.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-a73f481a", Component.options)
-  } else {
-    hotAPI.reload("data-v-a73f481a", Component.options)
-' + '  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 76 */
+/* 63 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -21607,7 +21592,7 @@ return af;
 
 
 /***/ }),
-/* 77 */
+/* 64 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -21754,7 +21739,7 @@ return ar;
 
 
 /***/ }),
-/* 78 */
+/* 65 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -21818,7 +21803,7 @@ return arDz;
 
 
 /***/ }),
-/* 79 */
+/* 66 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -21882,7 +21867,7 @@ return arKw;
 
 
 /***/ }),
-/* 80 */
+/* 67 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -22013,7 +21998,7 @@ return arLy;
 
 
 /***/ }),
-/* 81 */
+/* 68 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -22078,7 +22063,7 @@ return arMa;
 
 
 /***/ }),
-/* 82 */
+/* 69 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -22188,7 +22173,7 @@ return arSa;
 
 
 /***/ }),
-/* 83 */
+/* 70 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -22252,7 +22237,7 @@ return arTn;
 
 
 /***/ }),
-/* 84 */
+/* 71 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -22362,7 +22347,7 @@ return az;
 
 
 /***/ }),
-/* 85 */
+/* 72 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -22501,7 +22486,7 @@ return be;
 
 
 /***/ }),
-/* 86 */
+/* 73 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -22596,7 +22581,7 @@ return bg;
 
 
 /***/ }),
-/* 87 */
+/* 74 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -22660,7 +22645,7 @@ return bm;
 
 
 /***/ }),
-/* 88 */
+/* 75 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -22784,7 +22769,7 @@ return bn;
 
 
 /***/ }),
-/* 89 */
+/* 76 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -22908,7 +22893,7 @@ return bo;
 
 
 /***/ }),
-/* 90 */
+/* 77 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -23021,7 +23006,7 @@ return br;
 
 
 /***/ }),
-/* 91 */
+/* 78 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -23169,7 +23154,7 @@ return bs;
 
 
 /***/ }),
-/* 92 */
+/* 79 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -23262,7 +23247,7 @@ return ca;
 
 
 /***/ }),
-/* 93 */
+/* 80 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -23439,7 +23424,7 @@ return cs;
 
 
 /***/ }),
-/* 94 */
+/* 81 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -23507,7 +23492,7 @@ return cv;
 
 
 /***/ }),
-/* 95 */
+/* 82 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -23593,7 +23578,7 @@ return cy;
 
 
 /***/ }),
-/* 96 */
+/* 83 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -23658,7 +23643,7 @@ return da;
 
 
 /***/ }),
-/* 97 */
+/* 84 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -23741,7 +23726,7 @@ return de;
 
 
 /***/ }),
-/* 98 */
+/* 85 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -23825,7 +23810,7 @@ return deAt;
 
 
 /***/ }),
-/* 99 */
+/* 86 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -23908,7 +23893,7 @@ return deCh;
 
 
 /***/ }),
-/* 100 */
+/* 87 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -24013,7 +23998,7 @@ return dv;
 
 
 /***/ }),
-/* 101 */
+/* 88 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -24118,7 +24103,7 @@ return el;
 
 
 /***/ }),
-/* 102 */
+/* 89 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -24190,7 +24175,7 @@ return enAu;
 
 
 /***/ }),
-/* 103 */
+/* 90 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -24258,7 +24243,7 @@ return enCa;
 
 
 /***/ }),
-/* 104 */
+/* 91 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -24330,7 +24315,7 @@ return enGb;
 
 
 /***/ }),
-/* 105 */
+/* 92 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -24402,7 +24387,7 @@ return enIe;
 
 
 /***/ }),
-/* 106 */
+/* 93 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -24474,7 +24459,7 @@ return enNz;
 
 
 /***/ }),
-/* 107 */
+/* 94 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -24552,7 +24537,7 @@ return eo;
 
 
 /***/ }),
-/* 108 */
+/* 95 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -24649,7 +24634,7 @@ return es;
 
 
 /***/ }),
-/* 109 */
+/* 96 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -24745,7 +24730,7 @@ return esDo;
 
 
 /***/ }),
-/* 110 */
+/* 97 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -24833,7 +24818,7 @@ return esUs;
 
 
 /***/ }),
-/* 111 */
+/* 98 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -24918,7 +24903,7 @@ return et;
 
 
 /***/ }),
-/* 112 */
+/* 99 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -24989,7 +24974,7 @@ return eu;
 
 
 /***/ }),
-/* 113 */
+/* 100 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -25101,7 +25086,7 @@ return fa;
 
 
 /***/ }),
-/* 114 */
+/* 101 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -25213,7 +25198,7 @@ return fi;
 
 
 /***/ }),
-/* 115 */
+/* 102 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -25278,7 +25263,7 @@ return fo;
 
 
 /***/ }),
-/* 116 */
+/* 103 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -25366,7 +25351,7 @@ return fr;
 
 
 /***/ }),
-/* 117 */
+/* 104 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -25445,7 +25430,7 @@ return frCa;
 
 
 /***/ }),
-/* 118 */
+/* 105 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -25528,7 +25513,7 @@ return frCh;
 
 
 /***/ }),
-/* 119 */
+/* 106 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -25608,7 +25593,7 @@ return fy;
 
 
 /***/ }),
-/* 120 */
+/* 107 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -25689,7 +25674,7 @@ return gd;
 
 
 /***/ }),
-/* 121 */
+/* 108 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -25771,7 +25756,7 @@ return gl;
 
 
 /***/ }),
-/* 122 */
+/* 109 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -25898,7 +25883,7 @@ return gomLatn;
 
 
 /***/ }),
-/* 123 */
+/* 110 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -26027,7 +26012,7 @@ return gu;
 
 
 /***/ }),
-/* 124 */
+/* 111 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -26131,7 +26116,7 @@ return he;
 
 
 /***/ }),
-/* 125 */
+/* 112 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -26260,7 +26245,7 @@ return hi;
 
 
 /***/ }),
-/* 126 */
+/* 113 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -26410,7 +26395,7 @@ return hr;
 
 
 /***/ }),
-/* 127 */
+/* 114 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -26524,7 +26509,7 @@ return hu;
 
 
 /***/ }),
-/* 128 */
+/* 115 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -26624,7 +26609,7 @@ return hyAm;
 
 
 /***/ }),
-/* 129 */
+/* 116 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -26712,7 +26697,7 @@ return id;
 
 
 /***/ }),
-/* 130 */
+/* 117 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -26844,7 +26829,7 @@ return is;
 
 
 /***/ }),
-/* 131 */
+/* 118 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -26919,7 +26904,7 @@ return it;
 
 
 /***/ }),
-/* 132 */
+/* 119 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -27004,7 +26989,7 @@ return ja;
 
 
 /***/ }),
-/* 133 */
+/* 120 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -27092,7 +27077,7 @@ return jv;
 
 
 /***/ }),
-/* 134 */
+/* 121 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -27186,7 +27171,7 @@ return ka;
 
 
 /***/ }),
-/* 135 */
+/* 122 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -27278,7 +27263,7 @@ return kk;
 
 
 /***/ }),
-/* 136 */
+/* 123 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -27341,7 +27326,7 @@ return km;
 
 
 /***/ }),
-/* 137 */
+/* 124 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -27472,7 +27457,7 @@ return kn;
 
 
 /***/ }),
-/* 138 */
+/* 125 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -27560,7 +27545,7 @@ return ko;
 
 
 /***/ }),
-/* 139 */
+/* 126 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -27653,7 +27638,7 @@ return ky;
 
 
 /***/ }),
-/* 140 */
+/* 127 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -27795,7 +27780,7 @@ return lb;
 
 
 /***/ }),
-/* 141 */
+/* 128 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -27870,7 +27855,7 @@ return lo;
 
 
 /***/ }),
-/* 142 */
+/* 129 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -27992,7 +27977,7 @@ return lt;
 
 
 /***/ }),
-/* 143 */
+/* 130 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -28094,7 +28079,7 @@ return lv;
 
 
 /***/ }),
-/* 144 */
+/* 131 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -28210,7 +28195,7 @@ return me;
 
 
 /***/ }),
-/* 145 */
+/* 132 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -28279,7 +28264,7 @@ return mi;
 
 
 /***/ }),
-/* 146 */
+/* 133 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -28374,7 +28359,7 @@ return mk;
 
 
 /***/ }),
-/* 147 */
+/* 134 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -28460,7 +28445,7 @@ return ml;
 
 
 /***/ }),
-/* 148 */
+/* 135 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -28624,7 +28609,7 @@ return mr;
 
 
 /***/ }),
-/* 149 */
+/* 136 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -28711,7 +28696,7 @@ return ms;
 
 
 /***/ }),
-/* 150 */
+/* 137 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -28799,7 +28784,7 @@ return msMy;
 
 
 /***/ }),
-/* 151 */
+/* 138 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -28900,7 +28885,7 @@ return my;
 
 
 /***/ }),
-/* 152 */
+/* 139 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -28968,7 +28953,7 @@ return nb;
 
 
 /***/ }),
-/* 153 */
+/* 140 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -29096,7 +29081,7 @@ return ne;
 
 
 /***/ }),
-/* 154 */
+/* 141 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -29189,7 +29174,7 @@ return nl;
 
 
 /***/ }),
-/* 155 */
+/* 142 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -29282,7 +29267,7 @@ return nlBe;
 
 
 /***/ }),
-/* 156 */
+/* 143 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -29347,7 +29332,7 @@ return nn;
 
 
 /***/ }),
-/* 157 */
+/* 144 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -29476,7 +29461,7 @@ return paIn;
 
 
 /***/ }),
-/* 158 */
+/* 145 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -29605,7 +29590,7 @@ return pl;
 
 
 /***/ }),
-/* 159 */
+/* 146 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -29675,7 +29660,7 @@ return pt;
 
 
 /***/ }),
-/* 160 */
+/* 147 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -29742,7 +29727,7 @@ return ptBr;
 
 
 /***/ }),
-/* 161 */
+/* 148 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -29822,7 +29807,7 @@ return ro;
 
 
 /***/ }),
-/* 162 */
+/* 149 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -30010,7 +29995,7 @@ return ru;
 
 
 /***/ }),
-/* 163 */
+/* 150 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -30113,7 +30098,7 @@ return sd;
 
 
 /***/ }),
-/* 164 */
+/* 151 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -30179,7 +30164,7 @@ return se;
 
 
 /***/ }),
-/* 165 */
+/* 152 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -30255,7 +30240,7 @@ return si;
 
 
 /***/ }),
-/* 166 */
+/* 153 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -30410,7 +30395,7 @@ return sk;
 
 
 /***/ }),
-/* 167 */
+/* 154 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -30577,7 +30562,7 @@ return sl;
 
 
 /***/ }),
-/* 168 */
+/* 155 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -30652,7 +30637,7 @@ return sq;
 
 
 /***/ }),
-/* 169 */
+/* 156 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -30767,7 +30752,7 @@ return sr;
 
 
 /***/ }),
-/* 170 */
+/* 157 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -30882,7 +30867,7 @@ return srCyrl;
 
 
 /***/ }),
-/* 171 */
+/* 158 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -30976,7 +30961,7 @@ return ss;
 
 
 /***/ }),
-/* 172 */
+/* 159 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -31050,7 +31035,7 @@ return sv;
 
 
 /***/ }),
-/* 173 */
+/* 160 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -31114,7 +31099,7 @@ return sw;
 
 
 /***/ }),
-/* 174 */
+/* 161 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -31249,7 +31234,7 @@ return ta;
 
 
 /***/ }),
-/* 175 */
+/* 162 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -31343,7 +31328,7 @@ return te;
 
 
 /***/ }),
-/* 176 */
+/* 163 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -31416,7 +31401,7 @@ return tet;
 
 
 /***/ }),
-/* 177 */
+/* 164 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -31488,7 +31473,7 @@ return th;
 
 
 /***/ }),
-/* 178 */
+/* 165 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -31555,7 +31540,7 @@ return tlPh;
 
 
 /***/ }),
-/* 179 */
+/* 166 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -31680,7 +31665,7 @@ return tlh;
 
 
 /***/ }),
-/* 180 */
+/* 167 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -31775,7 +31760,7 @@ return tr;
 
 
 /***/ }),
-/* 181 */
+/* 168 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -31871,7 +31856,7 @@ return tzl;
 
 
 /***/ }),
-/* 182 */
+/* 169 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -31934,7 +31919,7 @@ return tzm;
 
 
 /***/ }),
-/* 183 */
+/* 170 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -31997,7 +31982,7 @@ return tzmLatn;
 
 
 /***/ }),
-/* 184 */
+/* 171 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -32153,7 +32138,7 @@ return uk;
 
 
 /***/ }),
-/* 185 */
+/* 172 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -32257,7 +32242,7 @@ return ur;
 
 
 /***/ }),
-/* 186 */
+/* 173 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -32320,7 +32305,7 @@ return uz;
 
 
 /***/ }),
-/* 187 */
+/* 174 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -32383,7 +32368,7 @@ return uzLatn;
 
 
 /***/ }),
-/* 188 */
+/* 175 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -32467,7 +32452,7 @@ return vi;
 
 
 /***/ }),
-/* 189 */
+/* 176 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -32540,7 +32525,7 @@ return xPseudo;
 
 
 /***/ }),
-/* 190 */
+/* 177 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -32605,7 +32590,7 @@ return yo;
 
 
 /***/ }),
-/* 191 */
+/* 178 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -32721,7 +32706,7 @@ return zhCn;
 
 
 /***/ }),
-/* 192 */
+/* 179 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -32831,7 +32816,7 @@ return zhHk;
 
 
 /***/ }),
-/* 193 */
+/* 180 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //! moment.js locale configuration
@@ -32940,49 +32925,53 @@ return zhTw;
 
 
 /***/ }),
+/* 181 */,
+/* 182 */,
+/* 183 */,
+/* 184 */,
+/* 185 */,
+/* 186 */,
+/* 187 */,
+/* 188 */,
+/* 189 */,
+/* 190 */,
+/* 191 */,
+/* 192 */,
+/* 193 */,
 /* 194 */,
 /* 195 */,
 /* 196 */,
 /* 197 */,
 /* 198 */,
-/* 199 */,
-/* 200 */,
-/* 201 */,
-/* 202 */,
-/* 203 */,
-/* 204 */,
-/* 205 */,
-/* 206 */,
-/* 207 */,
-/* 208 */
+/* 199 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(209);
+module.exports = __webpack_require__(200);
 
 
 /***/ }),
-/* 209 */
+/* 200 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(28);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__global_navigation_Navigation__ = __webpack_require__(23);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__global_navigation_Navigation__ = __webpack_require__(19);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__global_navigation_Navigation___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__global_navigation_Navigation__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__global_foot_Foot__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__global_foot_Foot___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__global_foot_Foot__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__global_Errors__ = __webpack_require__(691);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__global_Errors__ = __webpack_require__(57);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__global_Errors___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__global_Errors__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__vue_Features__ = __webpack_require__(210);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__vue_Features__ = __webpack_require__(204);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__vue_Features___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__vue_Features__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_vue_router__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_vuex__ = __webpack_require__(53);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__root_vuex__ = __webpack_require__(216);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__routes__ = __webpack_require__(224);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__vue_App__ = __webpack_require__(287);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_vuex__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__root_vuex__ = __webpack_require__(207);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__routes__ = __webpack_require__(215);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__vue_App__ = __webpack_require__(268);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__vue_App___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10__vue_App__);
 
 __WEBPACK_IMPORTED_MODULE_0_axios___default.a.defaults.baseURL = window.base_url;
@@ -33020,15 +33009,18 @@ var Site = new __WEBPACK_IMPORTED_MODULE_1_vue___default.a({
 }).$mount('#app');
 
 /***/ }),
-/* 210 */
+/* 201 */,
+/* 202 */,
+/* 203 */,
+/* 204 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(211)
+var __vue_script__ = __webpack_require__(205)
 /* template */
-var __vue_template__ = __webpack_require__(212)
+var __vue_template__ = __webpack_require__(206)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -33068,7 +33060,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 211 */
+/* 205 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -33090,7 +33082,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 212 */
+/* 206 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -33119,23 +33111,20 @@ if (false) {
 }
 
 /***/ }),
-/* 213 */,
-/* 214 */,
-/* 215 */,
-/* 216 */
+/* 207 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vuex__ = __webpack_require__(53);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__modules_registration_vuex__ = __webpack_require__(217);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__modules_plans_vuex__ = __webpack_require__(218);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__modules_authorize_vuex__ = __webpack_require__(219);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__modules_payment_vuex__ = __webpack_require__(220);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__modules_corporate_vuex__ = __webpack_require__(221);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__modules_errors_vuex__ = __webpack_require__(222);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__modules_services_vuex__ = __webpack_require__(223);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vuex__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__modules_registration_vuex__ = __webpack_require__(208);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__modules_plans_vuex__ = __webpack_require__(209);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__modules_authorize_vuex__ = __webpack_require__(210);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__modules_payment_vuex__ = __webpack_require__(211);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__modules_corporate_vuex__ = __webpack_require__(212);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__modules_errors_vuex__ = __webpack_require__(213);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__modules_services_vuex__ = __webpack_require__(214);
 
 
 
@@ -33163,7 +33152,7 @@ var store = new __WEBPACK_IMPORTED_MODULE_1_vuex__["a" /* default */].Store({
 /* harmony default export */ __webpack_exports__["a"] = (store);
 
 /***/ }),
-/* 217 */
+/* 208 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -33209,7 +33198,7 @@ var Module = {
 /* harmony default export */ __webpack_exports__["a"] = (Module);
 
 /***/ }),
-/* 218 */
+/* 209 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -33227,7 +33216,7 @@ var Module = {
 /* harmony default export */ __webpack_exports__["a"] = (Module);
 
 /***/ }),
-/* 219 */
+/* 210 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -33247,7 +33236,7 @@ var Module = {
 /* harmony default export */ __webpack_exports__["a"] = (Module);
 
 /***/ }),
-/* 220 */
+/* 211 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -33285,7 +33274,7 @@ var Module = {
 /* harmony default export */ __webpack_exports__["a"] = (Module);
 
 /***/ }),
-/* 221 */
+/* 212 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -33307,7 +33296,7 @@ var Module = {
 /* harmony default export */ __webpack_exports__["a"] = (Module);
 
 /***/ }),
-/* 222 */
+/* 213 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -33328,7 +33317,7 @@ var Module = {
 /* harmony default export */ __webpack_exports__["a"] = (Module);
 
 /***/ }),
-/* 223 */
+/* 214 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -33349,18 +33338,18 @@ var Module = {
 /* harmony default export */ __webpack_exports__["a"] = (Module);
 
 /***/ }),
-/* 224 */
+/* 215 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_router__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__vue_register_Index__ = __webpack_require__(225);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__vue_register_Index__ = __webpack_require__(216);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__vue_register_Index___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__vue_register_Index__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__vue_plans_Index__ = __webpack_require__(244);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__vue_plans_Index__ = __webpack_require__(225);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__vue_plans_Index___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__vue_plans_Index__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__vue_payment_Index__ = __webpack_require__(250);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__vue_payment_Index__ = __webpack_require__(231);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__vue_payment_Index___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__vue_payment_Index__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__vue_corporate_Corporate__ = __webpack_require__(278);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__vue_corporate_Corporate__ = __webpack_require__(259);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__vue_corporate_Corporate___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__vue_corporate_Corporate__);
 
 
@@ -33392,15 +33381,15 @@ var routes = [{
 }));
 
 /***/ }),
-/* 225 */
+/* 216 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(226)
+var __vue_script__ = __webpack_require__(217)
 /* template */
-var __vue_template__ = __webpack_require__(243)
+var __vue_template__ = __webpack_require__(224)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -33440,16 +33429,16 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 226 */
+/* 217 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__inputs_Field__ = __webpack_require__(227);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__inputs_Field__ = __webpack_require__(620);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__inputs_Field___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__inputs_Field__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__inputs_PasswordField__ = __webpack_require__(234);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__inputs_PasswordField__ = __webpack_require__(627);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__inputs_PasswordField___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__inputs_PasswordField__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__inputs_Terms__ = __webpack_require__(237);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__inputs_Terms__ = __webpack_require__(630);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__inputs_Terms___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__inputs_Terms__);
 //
 //
@@ -33601,868 +33590,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 227 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(0)
-/* script */
-var __vue_script__ = __webpack_require__(228)
-/* template */
-var __vue_template__ = __webpack_require__(233)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/javascripts/frontend/registration/vue/register/inputs/Field.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-b70110a6", Component.options)
-  } else {
-    hotAPI.reload("data-v-b70110a6", Component.options)
-' + '  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 228 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Check__ = __webpack_require__(74);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Check___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Check__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Cross__ = __webpack_require__(75);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Cross___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__Cross__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    props: {
-        label: {
-            type: String
-        },
-        value: {
-            type: String
-        },
-        valid: {
-            type: Boolean
-        }
-    },
-    components: {
-        Check: __WEBPACK_IMPORTED_MODULE_0__Check___default.a,
-        Cross: __WEBPACK_IMPORTED_MODULE_1__Cross___default.a
-    }
-});
-
-/***/ }),
-/* 229 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    //
-});
-
-/***/ }),
-/* 230 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("i", {
-    staticClass: "fa fa-check fa-3x w3-show-inline w3-text-green v-align"
-  })
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-70d804bb", module.exports)
-  }
-}
-
-/***/ }),
-/* 231 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    //
-});
-
-/***/ }),
-/* 232 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("i", {
-    staticClass: "fa fa-times fa-3x w3-show-inline w3-text-red v-align"
-  })
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-a73f481a", module.exports)
-  }
-}
-
-/***/ }),
-/* 233 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "w3-padding-16" },
-    [
-      _c("label", { staticClass: "w3-show-block" }, [
-        _vm._v(_vm._s(_vm.label))
-      ]),
-      _c("input", {
-        staticClass: "w3-input w3-show-inline-block eighty",
-        attrs: { type: "text" },
-        domProps: { value: _vm.value },
-        on: {
-          keyup: function($event) {
-            _vm.$emit("setValue", $event.target.value)
-          }
-        }
-      }),
-      _c("Check", {
-        directives: [
-          {
-            name: "show",
-            rawName: "v-show",
-            value: _vm.valid,
-            expression: "valid"
-          }
-        ]
-      }),
-      _c("Cross", {
-        directives: [
-          {
-            name: "show",
-            rawName: "v-show",
-            value: !_vm.valid,
-            expression: "!valid"
-          }
-        ]
-      })
-    ],
-    1
-  )
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-b70110a6", module.exports)
-  }
-}
-
-/***/ }),
-/* 234 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(0)
-/* script */
-var __vue_script__ = __webpack_require__(235)
-/* template */
-var __vue_template__ = __webpack_require__(236)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/javascripts/frontend/registration/vue/register/inputs/PasswordField.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-47a75052", Component.options)
-  } else {
-    hotAPI.reload("data-v-47a75052", Component.options)
-' + '  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 235 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Check__ = __webpack_require__(74);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Check___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Check__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Cross__ = __webpack_require__(75);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Cross___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__Cross__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    props: {
-        label: {
-            type: String
-        },
-        value: {
-            type: String
-        },
-        valid: {
-            type: Boolean
-        }
-    },
-    components: {
-        Check: __WEBPACK_IMPORTED_MODULE_0__Check___default.a,
-        Cross: __WEBPACK_IMPORTED_MODULE_1__Cross___default.a
-    }
-});
-
-/***/ }),
-/* 236 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "w3-padding-16" },
-    [
-      _c("label", { staticClass: "w3-show-block" }, [
-        _vm._v(_vm._s(_vm.label))
-      ]),
-      _c("div", { staticClass: "w3-small" }, [
-        _vm._v(
-          "Must contain min 8 characters, 1 number, and 1 special character"
-        )
-      ]),
-      _c("input", {
-        staticClass: "w3-input w3-show-inline-block eighty",
-        attrs: { type: "password" },
-        domProps: { value: _vm.value },
-        on: {
-          keyup: function($event) {
-            _vm.$emit("setValue", $event.target.value)
-          }
-        }
-      }),
-      _c("Check", {
-        directives: [
-          {
-            name: "show",
-            rawName: "v-show",
-            value: _vm.valid,
-            expression: "valid"
-          }
-        ]
-      }),
-      _c("Cross", {
-        directives: [
-          {
-            name: "show",
-            rawName: "v-show",
-            value: !_vm.valid,
-            expression: "!valid"
-          }
-        ]
-      })
-    ],
-    1
-  )
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-47a75052", module.exports)
-  }
-}
-
-/***/ }),
-/* 237 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(0)
-/* script */
-var __vue_script__ = __webpack_require__(238)
-/* template */
-var __vue_template__ = __webpack_require__(242)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/javascripts/frontend/registration/vue/register/inputs/Terms.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-5a1bdc8c", Component.options)
-  } else {
-    hotAPI.reload("data-v-5a1bdc8c", Component.options)
-' + '  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 238 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__modal_Modal__ = __webpack_require__(239);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__modal_Modal___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__modal_Modal__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    data: function data() {
-        return {
-            checked: false,
-            modal: false
-        };
-    },
-
-    components: {
-        Modal: __WEBPACK_IMPORTED_MODULE_0__modal_Modal___default.a
-    }
-});
-
-/***/ }),
-/* 239 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(0)
-/* script */
-var __vue_script__ = __webpack_require__(240)
-/* template */
-var __vue_template__ = __webpack_require__(241)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/javascripts/frontend/registration/vue/register/modal/Modal.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-104b807c", Component.options)
-  } else {
-    hotAPI.reload("data-v-104b807c", Component.options)
-' + '  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 240 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    //
-});
-
-/***/ }),
-/* 241 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    {
-      staticClass: "w3-modal w3-show",
-      on: {
-        click: function($event) {
-          _vm.$emit("setModal")
-        }
-      }
-    },
-    [_vm._m(0)]
-  )
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "w3-modal-content w3-card-4" }, [
-      _c("header", { staticClass: "w3-container w3-center primary" }, [
-        _c("i", {
-          staticClass:
-            "fa fa-times fa-3x w3-display-topright w3-padding w3-text-white"
-        }),
-        _vm._v(" "),
-        _c("h2", { staticClass: "w3-text-white" }, [
-          _vm._v("Terms of Service")
-        ]),
-        _vm._v(" "),
-        _c("p", { staticClass: "w3-text-white" }, [
-          _vm._v("Last modified September 17, 2015")
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "w3-container" }, [
-        _c("p", [
-          _vm._v(
-            'Welcome to InsuranceSocial.Media. These terms and conditions (“Terms of Service” or “Agreement”) govern your access to and use of Serious Social Media, Inc.’s (“Serious Social Media”) services and website accessible via www.InsuranceSocial.Media, including successor domain names or sites (the “Site”), and any and all information, text, graphics, photos, or other materials uploaded, downloaded, or appearing on the Services (as defined below).\nBY ACCESSING AND USING THE SERVICES IN ANY MANNER, YOU ARE "ACCEPTING" AND AGREEING TO BE BOUND BY THESE TERMS OF SERVICE TO THE EXCLUSION OF ALL OTHER TERMS. IF YOU DO NOT UNCONDITIONALLY ACCEPT THESE TERMS IN THEIR ENTIRETY, YOU SHALL NOT (AND SHALL HAVE NO RIGHT TO) ACCESS OR USE THE SERVICES. IF THE TERMS OF THIS AGREEMENT ARE CONSIDERED AN OFFER, ACCEPTANCE IS EXPRESSLY LIMITED TO SUCH TERMS. THESE TERMS SHOULD BE READ IN CONJUNCTION WITH THE INSURANCESOCIAL.MEDIA PRIVACY POLICY.\nWherever used in these Terms of Service, “you,” “your,” “Customer,” or similar terms means the person or legal entity accessing or using the Services. If you are accessing and using the Services on behalf of a company (such as your employer) or other legal entity, you represent and warrant that you have the authority to bind that company or other legal entity to these Terms of Service.\nSerious Social Media reserves the right, at any time, to update and change any or all of these Terms of Service, in its sole discretion, including but not limited to the fees and charges associated with the use of the Services. If Serious Social Media does so, it will post the modified Terms of Service on the Site, though we will notify you of any changes that, in our sole discretion, materially impact these Terms of Service. Continued use of the Services after any such changes have been made shall constitute your consent to such changes. You are responsible for regularly reviewing the most current version of the Terms of Service, which are currently available at: www.InsuranceSocial. Media/terms. When Serious Social Media changes these Terms of Service, Serious Social Media will modify the "Last Modified" date above.'
-          )
-        ]),
-        _vm._v(" "),
-        _c("p", [_c("b", [_vm._v("1. Definitions")])]),
-        _vm._v(" "),
-        _c("p", [
-          _vm._v(
-            "“Authorization Form” means a document issued by Serious Social Media and executed or otherwise agreed upon by authorized representatives of the Parties which specifies, among other things, a description of the Services, the Fees (as defined below), the Term (as defined below), and any other details specifically related to the Services. “Authorized Users” means individuals who are directly accessing the Services via an online sign-up process, or individual users authorized by you to use the Services and to whom you have supplied user identifications and passwords. Authorized Users may include your employees, consultants, contractors, agents, or your other designees, but shall not include any employee or agent of any Serious Social Media competitor.\n“Customer Content” means all information and data (including text, images, photos, videos, audio, and documents) or any other content in any media and format provided or made available to Serious Social Media by or on your behalf in relation to the use of the Services.\n“Fair Use Policy” means the limits placed on usage as described in Section 2.6.\n“Mentions” means the information, including links, posts, and excerpts, that has been made publicly available and obtained by Serious Social Media on your behalf from the Internet, and data derived therefrom, including reports, summaries, graphs, and charts.\n“Query” means a search string that an Authorized User uses to define what words and phrases must be present in a Mention for that Mention to be included in the applicable stream.\n“Seat” means a single subscription associated with a single log-in to the Site, assigned to one Authorized User.\n“Services” means the Serious Social Media services made available via Serious Social Media’s proprietary software delivered through the Site and mobile applications that provide for a single log-in, centralized web pages that enable you and Authorized Users to manage and create a user profile and customize your desired social media marketing, access reporting, and publish social media content to multiple Supported Platforms, including any modifications or Updates (as defined below), and the social media content created and posted by InsuranceSocial.Media on behalf of Authorized Users.\n“Supported Platform(s)” means the social networking site(s) currently supported by the Services, including Twitter, Facebook, and Google+.\n“Taxes” means all taxes, assessments, charges, fees, and levies that may be levied or based upon the sale or license of goods and/or services, as the case may be, including all sales, use, goods and services, value added, and excise taxes, custom duties, and assessments together with any installments with respect thereto, and any interest, fines, and penalties with respect thereto, imposed by any governmental authority (including federal, state, provincial, municipal, and foreign governmental authorities)."
-          )
-        ]),
-        _vm._v(" "),
-        _c("p", [_c("b", [_vm._v("2. Serious Social Media Services")])]),
-        _vm._v(" "),
-        _c("p", [
-          _vm._v(
-            "2.1 Updates and Functionalities\nYou acknowledge that from time to time Serious Social Media may apply updates to the Services and that such updates may result in changes in the appearance and/or functionality of the Services (including the addition, modification, or removal of functionality, features, or content). Excluding the addition of wholly new products, Serious Social Media shall provide, implement, configure, install, support, and maintain at its own cost any and all updates, upgrades, enhancements, improvements, releases, corrections, bug fixes, patches, and modifications to the Services (collectively, the “Updates”). You acknowledge that the Services interoperate with several Supported Platforms, and that the Services provided are highly dependent on the availability of such Supported Platforms. If at any time any Supported Platforms cease to make their programs available to Serious Social Media on reasonable terms, Serious Social Media may cease to provide such features to you without entitling you to refund, credit, or other compensation.\n2.2 Acceptable Use. You shall (i) be responsible for your and your Authorized Users’ compliance with these Terms of Service, including the Fair Use Policy; (ii) be solely responsible for the accuracy, quality, integrity, and legality of Customer Content and of the means by which you acquired or generated Customer Content; (iii) use commercially reasonable efforts to prevent unauthorized access to or use of the Services, including keeping you password and user name confidential and not permitting any third party to access or use your user name, password, or account for the Services; (iv) be solely responsible and liable for all activity conducted through your account in connection with the Services; (v) promptly notify Serious Social Media if you become aware of or reasonably suspect any security breach, including any loss, theft, or unauthorized disclosure or use of your (or any Authorized User’s) user name, password, or account; (vi) use the Services only in accordance with applicable laws and government regulations; (vii) comply in all respects with all applicable terms of the Third-Party Services that you subscribe to or otherwise access in connection with your use of the Services. \nYou must not (a) make the Services available to anyone other than to your Authorized Users; (b) allow more than one individual Authorized User to use a Seat; (c) sell, trade, or otherwise transfer your Seats to another party; (d) use the Services to store or transmit any content, including Customer Content, that may be infringing, defamatory, threatening, harmful, or otherwise unlawful, including any content that may violate intellectual property, privacy, rights of publicity, or other laws, or send spam or other unsolicited messages in violation of applicable law; (e) upload to, or transmit from, the Services any data, file, software, or link that contains or redirects to a virus, Trojan horse, worm, or other harmful component; (f) attempt to reverse engineer, de-compile, hack, disable, interfere with, disassemble, copy, or disrupt the integrity or the performance of the Services, any third-party use of the Services, or any third-party data contained therein (except to the extent such restrictions are prohibited by applicable law); (g) access the Services in order to build a competitive product or service or copy any ideas, features, functions, or graphics of the Services; (h) attempt to gain unauthorized access to the Services or its related systems or networks; or (i) authorize, permit, or encourage any third party to do any of the above.\n2.3 Mentions. You understand that by using the Services you may be exposed to third-party content, information, and Mentions that might be unlawful, offensive, harmful, inaccurate or otherwise inappropriate. Serious Social Media does not own, control, or review Mentions, and unless Customer creates the content of Mentions, Mentions shall not be considered “Customer Content” under any circumstances. Mentions may be indecent, offensive, inaccurate, unlawful, or otherwise objectionable. Serious Social Media has no obligation to preview, verify, flag, modify, filter, or remove any Mentions, even if requested to do so, although Serious Social Media may do so in its sole discretion. Your use of Mentions is at your sole risk, and Serious Social Media shall not be liable to you or any third party in relation to Mentions.\n2.4 Fair Use Policy. Serious Social Media may suspend your access to the Services for abusive practices that degrade the performance of the Services for you and/or other customers of Serious Social Media.\n2.5 Third-Party Products and Services. You acknowledge that the Services may enable or assist you to access, interact with, and/or purchase services from Supported Platforms and other third parties via third-party websites or applications (collectively, the “Third-Party Services”). When you access the Third-Party Services, you will do so at your own risk. Any use of Third-Party Services is governed solely by the terms and conditions of such Third-Party Services (and you shall comply with all such terms and conditions), and any contract entered into, or any transaction completed via any Third-Party Services, is between you and the relevant third party, and not Serious Social Media. Serious Social Media makes no representation and shall have no liability or obligation whatsoever in relation to the content or use of, or correspondence with, any such Third-Party Services or any transactions completed and any contract entered into by you with any such third party.\n2.6 Non-Exclusivity. You acknowledge that the rights granted to you under this Agreement are non-exclusive and that nothing in this Agreement will be interpreted or construed to prohibit or in any way restrict Serious Social Media’s right to license, sell, or otherwise make available the Services to any third party or perform any services for any third party.\n"
-          )
-        ]),
-        _vm._v(" "),
-        _c("p", [_c("b", [_vm._v("3. Intellectual Property")])]),
-        _vm._v(" "),
-        _c("p", [
-          _vm._v(
-            "3.1 Serious Social Media Services. As between you and Serious Social Media, Serious Social Media retains all right, title, and interest in and to the Services. Nothing herein shall be construed to restrict, impair, encumber, alter, deprive, or adversely affect the Services or any of Serious Social Media’s rights or interests therein or any other Serious Social Media intellectual property, brands, information, content, processes, methodologies, products, goods, services, materials, or rights, tangible or intangible. All rights, title, and interest in and to the Services not expressly granted in this Agreement are reserved by Serious Social Media. You may from time to time provide suggestions, comments or other feedback to Serious Social Media with respect to the Services (“Feedback”). Feedback, even if designated as confidential by you, shall not create any confidentiality obligation for Serious Social Media notwithstanding anything else. You shall, and hereby do, grant to Serious Social Media a non-exclusive, worldwide, perpetual, irrevocable, transferable, sublicensable, royalty-free, fully paid-up license to use and exploit the Feedback for any purpose.\n3.2 Customer Content. You grant Serious Social Media a limited, worldwide, non-exclusive, non-transferable (except as set forth in Section 9.1) license, without a right of sublicense, to access, use, reproduce, electronically distribute, transmit, perform, format, display, store, archive, and index the Customer Content for the purpose of supporting your use of the Services and providing Services to you. Serious Social Media may also use Customer Content for the purpose of supporting and developing the Site, provided that when doing so, Serious Social Media shall only use Customer Content in an anonymized and aggregated way. Subject only to the limited license expressly granted herein, you and your Authorized Users shall retain all right, title and interest in and to the Customer Content and all intellectual property rights therein. Nothing in this Agreement will confer on Serious Social Media any right of ownership or interest in the Customer Content or the intellectual property rights there.\n3.3 Responsibility for Customer Content and Mentions. You are solely responsible for the Customer Content that you or Authorized Users upload, publish, display, link to, or otherwise make available via the Services, and you agree that Serious Social Media is only acting as a passive conduit for the online distribution and publication of the Customer Content and the online display of Queries and Mentions. Serious Social Media will not review, share, distribute, or reference any Customer Content or Mentions except as provided herein, as provided in Serious Social Media’s privacy policy , or as may be required by law. Notwithstanding the foregoing, Serious Social Media retains the authority to remove any Customer Content uploaded that it deems in violation of this Agreement, at its sole discretion.\n3.4 Responsibility for Serious Social Media content. Content created and posted by Serious Social Media on behalf of the Customer is the sole property of Serious Social Media, and may not be sublicensed, reproduced, electronically distributed, stored, archived, or indexed by the Customer except insofar as the content is posted on social media outlets, and may be viewed and shared by other users of those outlets (such as in the Facebook function “Share”). "
-          )
-        ]),
-        _vm._v(" "),
-        _c("p", [
-          _c("b", [_vm._v("4. Serious Social Media Products and Fees")])
-        ]),
-        _vm._v(" "),
-        _c("p", [
-          _vm._v(
-            "4.1 Purchases By Credit Card. You agree to a thirty (30) day contract minimum beginning upon receipt of credit card payment. Exact contract duration is decided upon at sign-up. You agree that all charges and fees associated with your account are your sole responsibility.\n4.2 You must provide Serious Social Media with a valid credit card to pay for Services. You authorize Serious Social Media to charge the credit card for the recurring subscription, as per the auto renewal terms below. In addition, you agree that Serious Social Media has permission to retain and/or share with financial institutions and payment processing firms (including any institutions or firms Serious Social Media retains in the future) your submitted payment information in order to process your purchase. Subscription to InsuranceSocial.Media are billed in advance on a monthly basis and are non-refundable for the subscription period they are purchased for. Serious Social Media does not support all payment methods, currencies, or locations for payment. If the payment method you use with us, such as a credit card, reaches its expiration date and you do not edit your payment method information or cancel, you authorize Serious Social Media to continue billing your credit card and you remain responsible for any uncollected amounts. Your obligation to pay fees continues through to the end of the subscription period during which you cancel your subscription. All applicable taxes are calculated based on the billing information you provide us at the time of purchase.\n4.3 Auto-renewal and Cancellation. Serious Social Media Services are for subscriptions that renew automatically, such as monthly. You agree that Serious Social Media may process your credit card on each monthly renewal term, on the calendar day corresponding to the first day you subscribed to a paid subscription. If your paid subscription to Paid Services began on a day not contained in a subsequent month (e.g., your service began on January 30 and there is no February 30), Serious Social Media will process your payment on the last day of such month. \n4.4 Late Payment. If any amounts due hereunder are not received by Serious Social Media by the due date, then at Serious Social Media’s discretion, such charges may accrue late interest at the rate of 12% per year or the maximum rate permitted by law, whichever is lower, from the date such payment was due until the date paid. In addition, upon 10 days' written notice, Serious Social Media may suspend your access to the Services if Serious Social Media does not receive the amounts invoiced hereunder at the expiration of such period.\n4.5 Taxes and Withholdings. You are responsible for paying all Taxes associated with the subscription to the Services. If Serious Social Media has the legal obligation to pay or collect Taxes for which you are responsible under this Section, the appropriate amount shall be invoiced to and paid by you, unless you provide Serious Social Media with a valid tax exemption certificate authorized by the appropriate taxing authority. Any and all payments by or on account of the compensation payable under this Agreement shall be made free and clear of and without deduction or withholding for any Taxes. If you are required to deduct or withhold any Taxes from such payments, then the sum payable shall be increased as necessary so that, after making all required deductions or withholdings, Serious Social Media receives an amount equal to the sum it would have received had no such deduction or withholding been made."
-          )
-        ]),
-        _vm._v(" "),
-        _c("p", [_c("b", [_vm._v("5. Term and Termination")])]),
-        _vm._v(" "),
-        _c("p", [
-          _vm._v(
-            "5.1 This Agreement shall commence on the day you access the Services for the first time and shall continue until your account is cancelled and you cease using our Services.\n5.2 Termination. If you violate the letter or spirit of these Terms of Service, abuse the Services, or otherwise create risk or possible legal exposure to Serious Social Media, Serious Social Media can terminate or suspend your InsuranceSocial.Media Account at our sole discretion. Serious Social Media will notify you by email or at the next time you attempt to access your account. You may cancel your InsuranceSocial.Media account at any time. For cancellation procedure, and for further assistance, see the instructions published on the InsuranceSocial.Media website.\n5.3 Effects of Termination. Upon termination of this Agreement for any reason, (i) you will immediately cease all use of the Services; (ii) you will have no further access to your accounts provided by Serious Social Media; and (iii) you will pay Serious Social Media all unpaid amounts owing to Serious Social Media.\n5.4 Survival. Any provision of this Agreement which, either by its terms or to give effect to its meaning, must survive, and such other provisions which expressly, or by their nature, are intended to survive termination shall survive the expiration or termination of this Agreement."
-          )
-        ]),
-        _vm._v(" "),
-        _c("p", [_c("b", [_vm._v("6. Warranty Disclaimer")])]),
-        _vm._v(" "),
-        _c("p", [
-          _vm._v(
-            "EXCEPT AS EXPRESSLY PROVIDED HEREIN, TO THE GREATEST EXTENT PERMITTED BY APPLICABLE LAW, SERIOUS SOCIAL MEDIA EXPRESSLY EXCLUDES AND DISCLAIMS ALL WARRANTIES OF ANY KIND, WHETHER EXPRESS, IMPLIED, STATUTORY, OR OTHERWISE. WITHOUT LIMITING THE GENERALITY OF THE FOREGOING, SERIOUS SOCIAL MEDIA SPECIFICALLY DISCLAIMS ALL EXPRESS OR IMPLIED WARRANTIES OF DESIGN, MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE, QUALITY, AND NONINFRINGEMENT, THAT ITS SERVICES WILL MEET YOUR REQUIREMENTS, OR THAT ITS SERVICES WILL ALWAYS BE AVAILABLE, ACCESSIBLE, UNINTERRUPTED, TIMELY, SECURE, ACCURATE, COMPLETE, OR ERROR-FREE. IN ADDITION, SERIOUS SOCIAL MEDIA DOES NOT WARRANT ANY CONNECTION TO OR TRANSMISSION FROM THE INTERNET. NO ADVICE OR INFORMATION, WHETHER ORAL OR WRITTEN, OBTAINED FROM SERIOUS SOCIAL MEDIA OR ELSEWHERE WILL CREATE ANY WARRANTY OR CONDITION NOT EXPRESSLY STATED IN THIS AGREEMENT. EXCEPT AS EXPRESSLY PROVIDED HEREIN, THE SERVICES ARE PROVIDED ON AN “AS IS” AND “AS AVAILABLE” BASIS. THESE LIMITATIONS SHALL APPLY NOTWITHSTANDING THE FAILURE OF ESSENTIAL PURPOSE OF ANY LIMITED REMEDY PROVIDED HEREIN. SERIOUS SOCIAL MEDIA DISCLAIMS ANY AND ALL RESPONSIBILITY OR LIABILITY IN RELATION TO THE CONTENT MADE AVAILABLE THROUGH THE SERVICES, INCLUDING THE CUSTOMER CONTENT AND MENTIONS, OR ANY CONTENT OR SERVICES PROVIDED BY THIRD PARTIES. SERIOUS SOCIAL MEDIA DOES NOT CONTROL OR VET CUSTOMER CONTENT OR MENTIONS AND IS NOT RESPONSIBLE FOR WHAT USERS POST, TRANSMIT, OR SHARE ON OR THROUGH THE SERVICES. SERIOUS SOCIAL MEDIA IS NOT RESPONSIBLE OR LIABLE IN ANY MANNER FOR ANY THIRD-PARTY SERVICES OR SUPPORTED PLATFORMS ASSOCIATED WITH OR UTILIZED IN CONNECTION WITH THE SERVICES, INCLUDING THE FAILURE OF ANY SUCH THIRD-PARTY SERVICES OR SUPPORTED PLATFORMS. SERIOUS SOCIAL MEDIA EXPRESSLY DENIES ANY RESPONSIBILITY RESULTING FROM HACKING, TAMPERING, OR OTHER UNAUTHORIZED ACCESS OR USE OF THE SERVICES OR YOUR ACCOUNT OR THE INFORMATION CONTAINED THEREIN. IF YOU ARE DISSATISFIED OR HARMED BY SERIOUS SOCIAL MEDIA OR ANYTHING RELATED TO SERIOUS SOCIAL MEDIA, YOU MAY CANCEL YOUR INSURANCESOCIAL.MEDIA ACCOUNT AND TERMINATE THIS AGREEMENT IN ACCORDANCE WITH SECTION 4.4 (AUTO-RENEWAL AND CANCELLATION) OR SECTION 5.2 (TERMINATION), AS APPLICABLE, AND SUCH TERMINATION SHALL BE YOUR SOLE AND EXCLUSIVE REMEDY (AND SERIOUS SOCIAL MEDIA’S SOLE AND EXCLUSIVE LIABILITY)."
-          )
-        ]),
-        _vm._v(" "),
-        _c("p", [_c("b", [_vm._v("7. Indemnification")])]),
-        _vm._v(" "),
-        _c("p", [
-          _vm._v(
-            "7.1 Your Indemnification. You shall defend, indemnify, and hold harmless Serious Social Media, its affiliates, directors, officers, employees, and agents from and against all claims, losses, damages, penalties, liability, and costs, including reasonable attorneys’ fees, of any kind or nature which are in connection with or arising out of a claim (a) alleging that the Customer Content or your use of the Services infringes or violates the intellectual property rights, privacy rights, or other rights of a third party or violates applicable law; (b) relating to, or arising from, Customer Content, or your breach of Section 2.3 or Section 2.6; or (c) relating to, or arising from, Third-Party Services."
-          )
-        ]),
-        _vm._v(" "),
-        _c("p", [_c("b", [_vm._v("8. Limitation of Liability")])]),
-        _vm._v(" "),
-        _c("p", [
-          _vm._v(
-            "TO THE MAXIMUM EXTENT PERMITTED BY LAW, IN NO EVENT SHALL SERIOUS SOCIAL MEDIA’S AGGREGATE LIABILITY FOR ALL CLAIMS OF ANY KIND, INCLUDING ANY CLAIMS ARISING OUT OF OR RELATED TO THIS AGREEMENT, WHETHER BY STATUTE, CONTRACT, TORT, OR UNDER ANY OTHER THEORY OF LIABILITY, EXCEED THE GREATER OF (A) THE FEES PAID BY YOU FOR THE SERVICES HEREUNDER DURING THE THREE (3) MONTH PERIOD IMMEDIATELY PRECEDING THE DATE ON WHICH THE CAUSE OF ACTION AROSE AND (B) US$500. SERIOUS SOCIAL MEDIA DOES NOT OFFER ANY WARRANTY OR REMEDIES FOR THE INTERRUPTION OR CESSATION OF ACCESS OR TRANSMISSION TO OR FROM THE SERVICES.\nTO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, IN NO EVENT SHALL SERIOUS SOCIAL MEDIA, ITS DIRECTORS, EMPLOYEES, AGENTS, OR LICENSORS BE LIABLE FOR ANY INDIRECT, PUNITIVE, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR EXEMPLARY DAMAGES, INCLUDING DAMAGES FOR LOSS OF PROFITS, GOODWILL USE, OR DATA OR OTHER INTANGIBLE LOSSES, THAT RESULT FROM THE USE OF, OR INABILITY TO USE, THE SERVICES OR ANY OTHER ASPECT OF THIS AGREEMENT. UNDER NO CIRCUMSTANCES WILL SERIOUS SOCIAL MEDIA BE RESPONSIBLE FOR ANY DAMAGE, LOSS, OR INJURY RESULTING FROM HACKING, TAMPERING, OR OTHER UNAUTHORIZED ACCESS OR USE OF THE SERVICES OR YOUR ACCOUNT OR THE INFORMATION CONTAINED THEREIN.\nTHE PARTIES ACKNOWLEDGE AND AGREE THAT THE ESSENTIAL PURPOSE OF THIS SECTION IS TO ALLOCATE THE RISKS UNDER THESE TERMS BETWEEN THE PARTIES AND LIMIT THEIR POTENTIAL LIABILITY GIVEN THE FEES CHARGED UNDER THIS AGREEMENT, WHICH WOULD HAVE BEEN SUBSTANTIALLY HIGHER IF SERIOUS SOCIAL MEDIA WERE TO ASSUME ANY FURTHER LIABILITY OTHER THAN AS SET FORTH HEREIN. THE PARTIES HAVE RELIED ON THESE LIMITATIONS IN DETERMINING WHETHER TO ENTER INTO THESE TERMS. NOTHING IN THIS AGREEMENT IS INTENDED TO EXCLUDE OR RESTRICT OR SHALL BE CONSTRUED AS EXCLUDING OR RESTRICTING THE LIABILITY OF SERIOUS SOCIAL MEDIA FOR (I) DEATH OR PERSONAL INJURY CAUSED BY THE NEGLIGENCE OF SERIOUS SOCIAL MEDIA, ITS EMPLOYEES, OR ITS AGENTS; (II) WILLFUL MISCONDUCT OF SERIOUS SOCIAL MEDIA; OR (III) ANY LIABILITY WHICH CANNOT BE LIMITED OR EXCLUDED BY APPLICABLE LAW."
-          )
-        ]),
-        _vm._v(" "),
-        _c("p", [_c("b", [_vm._v("8. Limitation of Liability")])]),
-        _vm._v(" "),
-        _c("p", [
-          _vm._v(
-            "9.1 Assignment. You may not assign or otherwise transfer any of your rights or obligations hereunder, whether by merger, sale of assets, change of control, operation of law or otherwise, without the prior written consent of Serious Social Media (not to be unreasonably withheld), and any attempted assignment or transfer without such consent will be void. Serious Social Media may freely assign or delegate all rights and obligations under this Agreement, fully or partially without notice to you. Serious Social Media may also substitute, by way of unilateral novation, effective upon notice to you, Serious Social Media for any third party that assumes our rights and obligations under this Agreement.\n9.2 Amendment. Serious Social Media reserves the right to modify, supplement, or replace the terms of this Agreement, effective upon posting on the InsuranceSocial.Media website or notifying you otherwise. Your continued use of the Services after the effectiveness of that update will be deemed to represent your agreement with, and consent to be bound by, the new terms. Except for changes made by Serious Social Media as described here, no other amendment or modification of this Agreement shall be effective unless set forth in a written agreement bearing a written signature by Serious Social Media and you.\n9.3 Severability. Each provision of this Agreement is severable. If any provision of this Agreement is or becomes illegal, invalid, or unenforceable in any jurisdiction, the illegality, invalidity, or unenforceability of that provision will not affect the legality, validity, or enforceability of the remaining provisions of this Agreement or of that provision in any other jurisdiction.\n9.4 Notices. For purposes of service messages and notices about the Services, Serious Social Media may place a banner notice across its pages to alert you to certain changes such as modifications to this Agreement. Alternatively, notice may consist of an email from Serious Social Media to an email address associated with your account, even if Serious Social Media has other contact information. You also agree that Serious Social Media may communicate with you through your InsuranceSocial.Media account or through other means including email, mobile number, telephone, or delivery services including the postal service about your Serious Social Media account or services associated with Serious Social Media. You acknowledge and agree that Serious Social Media shall have no liability associated with or arising from your failure to do so maintain accurate contact or other information, including, but not limited to, your failure to receive critical information about the Services. You may provide legal notice to Serious Social Media via registered mail to Serious Social Media, Inc., 3419 E Chapman Ave., #107, Orange, CA 92869; Attention: General Counsel. \n9.5 Waivers. No waiver of any provision of this Agreement is binding unless it is in writing and signed by all parties to this Agreement, except that any provision which does not give rights or benefits to particular parties may be waived in writing, signed only by those parties who have rights under, or hold the benefit of, the provision being waived if those parties promptly send a copy of the executed waiver to all other parties. No failure to exercise, and no delay in exercising, any right or remedy under this Agreement will be deemed to be a waiver of that right or remedy. No waiver of any breach of any provision of this Agreement will be deemed to be a waiver of any subsequent breach of that provision or of any similar provision. 9.6 Nature of Relationship. No agency, partnership, joint venture, or employment relationship is created as a result of this Agreement and neither party has any authority of any kind to bind the other in any respect.\n9.7 Force Majeure. Except for payment obligations, neither party shall be liable for any failure to perform its obligations hereunder where such failure results from any cause beyond such party’s reasonable control, including the elements; fire; flood; severe weather; earthquake; vandalism; accidents; sabotage; power failure; denial of service attacks or similar attacks; Internet failure; acts of God and the public enemy; acts of war; acts of terrorism; riots; civil or public disturbances; strikes, lock-outs, or labor disruptions; and any laws, orders, rules, regulations, acts, or restraints of any government or governmental body or authority, civil or military, including the orders and judgments of courts.\n9.8 Governing Law. This Agreement and your relationship with Serious Social Media shall be governed exclusively by, and will be enforced, construed, and interpreted exclusively in accordance with, the laws applicable in the State of California, and shall be considered to have been made and accepted in California without regard to its conflict of law provisions. All disputes under this Agreement will be resolved by the courts of California. In any action or proceeding to enforce rights under this Agreement, the prevailing party shall be entitled to recover costs and attorneys’ fees.\n9.9 Entire Agreement. The terms of this Agreement, together with any applicable Authorization Form, all exhibits, and Serious Social Media’s privacy policy, constitute the entire agreement between the parties with respect to the use of the Services and supersede any prior or inconsistent agreements, negotiations, representations, and promises, written or oral, with respect to the subject matter and is binding upon the parties and their permitted successors and assigns. In the event of any conflict between this Agreement and the terms of an Authorization Form, the provisions of the Authorization Form shall prevail. The terms of this Agreement will apply to all orders you submit to Serious Social Media and shall supersede any additional terms, which may be incorporated in a purchase order form, or any other form you generate. Any such terms shall be null and void."
-          )
-        ])
-      ]),
-      _vm._v(" "),
-      _c("footer", { staticClass: "w3-container w3-text-white primary" }, [
-        _c("p", { staticClass: "w3-center" }, [
-          _vm._v("Click anywhere to close")
-        ])
-      ])
-    ])
-  }
-]
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-104b807c", module.exports)
-  }
-}
-
-/***/ }),
-/* 242 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    [
-      _c("div", { staticClass: "w3-padding-16 alt-checkbox sixty" }, [
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.checked,
-              expression: "checked"
-            }
-          ],
-          staticClass: "v-align",
-          attrs: { type: "checkbox", id: "terms" },
-          domProps: {
-            checked: Array.isArray(_vm.checked)
-              ? _vm._i(_vm.checked, null) > -1
-              : _vm.checked
-          },
-          on: {
-            change: [
-              function($event) {
-                var $$a = _vm.checked,
-                  $$el = $event.target,
-                  $$c = $$el.checked ? true : false
-                if (Array.isArray($$a)) {
-                  var $$v = null,
-                    $$i = _vm._i($$a, $$v)
-                  if ($$el.checked) {
-                    $$i < 0 && (_vm.checked = $$a.concat([$$v]))
-                  } else {
-                    $$i > -1 &&
-                      (_vm.checked = $$a
-                        .slice(0, $$i)
-                        .concat($$a.slice($$i + 1)))
-                  }
-                } else {
-                  _vm.checked = $$c
-                }
-              },
-              function($event) {
-                _vm.$emit("setTerms", _vm.checked)
-              }
-            ]
-          }
-        }),
-        _c("label", {
-          staticClass: "v-align check-box",
-          attrs: { for: "terms" }
-        }),
-        _vm._m(0)
-      ]),
-      _c("div", { staticClass: "w3-section" }, [
-        _c(
-          "button",
-          {
-            staticClass: "w3-button w3-text-white secondary",
-            on: {
-              click: function($event) {
-                _vm.modal = !_vm.modal
-              }
-            }
-          },
-          [_vm._v("Terms of Service")]
-        )
-      ]),
-      _vm.modal
-        ? _c("Modal", {
-            on: {
-              setModal: function($event) {
-                _vm.modal = !_vm.modal
-              }
-            }
-          })
-        : _vm._e()
-    ],
-    1
-  )
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("span", { staticClass: "w3-large w3-margin-left" }, [
-      _vm._v("By clicking here, I agree to the "),
-      _c("b", [_vm._v("Insurance Social Media")]),
-      _vm._v(" Terms of Service.")
-    ])
-  }
-]
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-5a1bdc8c", module.exports)
-  }
-}
-
-/***/ }),
-/* 243 */
+/* 218 */,
+/* 219 */,
+/* 220 */,
+/* 221 */,
+/* 222 */,
+/* 223 */,
+/* 224 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -34623,15 +33757,15 @@ if (false) {
 }
 
 /***/ }),
-/* 244 */
+/* 225 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(245)
+var __vue_script__ = __webpack_require__(226)
 /* template */
-var __vue_template__ = __webpack_require__(249)
+var __vue_template__ = __webpack_require__(230)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -34671,12 +33805,12 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 245 */
+/* 226 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Plan__ = __webpack_require__(246);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Plan__ = __webpack_require__(227);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Plan___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Plan__);
 //
 //
@@ -34732,15 +33866,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 246 */
+/* 227 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(247)
+var __vue_script__ = __webpack_require__(228)
 /* template */
-var __vue_template__ = __webpack_require__(248)
+var __vue_template__ = __webpack_require__(229)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -34780,7 +33914,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 247 */
+/* 228 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -34815,7 +33949,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 248 */
+/* 229 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -34871,7 +34005,7 @@ if (false) {
 }
 
 /***/ }),
-/* 249 */
+/* 230 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -34962,15 +34096,15 @@ if (false) {
 }
 
 /***/ }),
-/* 250 */
+/* 231 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(251)
+var __vue_script__ = __webpack_require__(232)
 /* template */
-var __vue_template__ = __webpack_require__(277)
+var __vue_template__ = __webpack_require__(258)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -35010,28 +34144,28 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 251 */
+/* 232 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_moment__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_moment__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Selected__ = __webpack_require__(253);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Selected__ = __webpack_require__(234);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Selected___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__Selected__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__inputs_Card__ = __webpack_require__(256);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__inputs_Card__ = __webpack_require__(636);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__inputs_Card___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__inputs_Card__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__inputs_Month__ = __webpack_require__(259);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__inputs_Month__ = __webpack_require__(639);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__inputs_Month___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__inputs_Month__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__inputs_Year__ = __webpack_require__(262);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__inputs_Year__ = __webpack_require__(642);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__inputs_Year___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__inputs_Year__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__inputs_CVV__ = __webpack_require__(265);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__inputs_CVV__ = __webpack_require__(645);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__inputs_CVV___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__inputs_CVV__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__inputs_Name__ = __webpack_require__(268);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__inputs_Name__ = __webpack_require__(648);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__inputs_Name___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__inputs_Name__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__modal_Modal__ = __webpack_require__(271);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__modal_Modal__ = __webpack_require__(651);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__modal_Modal___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__modal_Modal__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__expired_Expired__ = __webpack_require__(274);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__expired_Expired__ = __webpack_require__(654);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__expired_Expired___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8__expired_Expired__);
 //
 //
@@ -35299,246 +34433,246 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 252 */
+/* 233 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
-	"./af": 76,
-	"./af.js": 76,
-	"./ar": 77,
-	"./ar-dz": 78,
-	"./ar-dz.js": 78,
-	"./ar-kw": 79,
-	"./ar-kw.js": 79,
-	"./ar-ly": 80,
-	"./ar-ly.js": 80,
-	"./ar-ma": 81,
-	"./ar-ma.js": 81,
-	"./ar-sa": 82,
-	"./ar-sa.js": 82,
-	"./ar-tn": 83,
-	"./ar-tn.js": 83,
-	"./ar.js": 77,
-	"./az": 84,
-	"./az.js": 84,
-	"./be": 85,
-	"./be.js": 85,
-	"./bg": 86,
-	"./bg.js": 86,
-	"./bm": 87,
-	"./bm.js": 87,
-	"./bn": 88,
-	"./bn.js": 88,
-	"./bo": 89,
-	"./bo.js": 89,
-	"./br": 90,
-	"./br.js": 90,
-	"./bs": 91,
-	"./bs.js": 91,
-	"./ca": 92,
-	"./ca.js": 92,
-	"./cs": 93,
-	"./cs.js": 93,
-	"./cv": 94,
-	"./cv.js": 94,
-	"./cy": 95,
-	"./cy.js": 95,
-	"./da": 96,
-	"./da.js": 96,
-	"./de": 97,
-	"./de-at": 98,
-	"./de-at.js": 98,
-	"./de-ch": 99,
-	"./de-ch.js": 99,
-	"./de.js": 97,
-	"./dv": 100,
-	"./dv.js": 100,
-	"./el": 101,
-	"./el.js": 101,
-	"./en-au": 102,
-	"./en-au.js": 102,
-	"./en-ca": 103,
-	"./en-ca.js": 103,
-	"./en-gb": 104,
-	"./en-gb.js": 104,
-	"./en-ie": 105,
-	"./en-ie.js": 105,
-	"./en-nz": 106,
-	"./en-nz.js": 106,
-	"./eo": 107,
-	"./eo.js": 107,
-	"./es": 108,
-	"./es-do": 109,
-	"./es-do.js": 109,
-	"./es-us": 110,
-	"./es-us.js": 110,
-	"./es.js": 108,
-	"./et": 111,
-	"./et.js": 111,
-	"./eu": 112,
-	"./eu.js": 112,
-	"./fa": 113,
-	"./fa.js": 113,
-	"./fi": 114,
-	"./fi.js": 114,
-	"./fo": 115,
-	"./fo.js": 115,
-	"./fr": 116,
-	"./fr-ca": 117,
-	"./fr-ca.js": 117,
-	"./fr-ch": 118,
-	"./fr-ch.js": 118,
-	"./fr.js": 116,
-	"./fy": 119,
-	"./fy.js": 119,
-	"./gd": 120,
-	"./gd.js": 120,
-	"./gl": 121,
-	"./gl.js": 121,
-	"./gom-latn": 122,
-	"./gom-latn.js": 122,
-	"./gu": 123,
-	"./gu.js": 123,
-	"./he": 124,
-	"./he.js": 124,
-	"./hi": 125,
-	"./hi.js": 125,
-	"./hr": 126,
-	"./hr.js": 126,
-	"./hu": 127,
-	"./hu.js": 127,
-	"./hy-am": 128,
-	"./hy-am.js": 128,
-	"./id": 129,
-	"./id.js": 129,
-	"./is": 130,
-	"./is.js": 130,
-	"./it": 131,
-	"./it.js": 131,
-	"./ja": 132,
-	"./ja.js": 132,
-	"./jv": 133,
-	"./jv.js": 133,
-	"./ka": 134,
-	"./ka.js": 134,
-	"./kk": 135,
-	"./kk.js": 135,
-	"./km": 136,
-	"./km.js": 136,
-	"./kn": 137,
-	"./kn.js": 137,
-	"./ko": 138,
-	"./ko.js": 138,
-	"./ky": 139,
-	"./ky.js": 139,
-	"./lb": 140,
-	"./lb.js": 140,
-	"./lo": 141,
-	"./lo.js": 141,
-	"./lt": 142,
-	"./lt.js": 142,
-	"./lv": 143,
-	"./lv.js": 143,
-	"./me": 144,
-	"./me.js": 144,
-	"./mi": 145,
-	"./mi.js": 145,
-	"./mk": 146,
-	"./mk.js": 146,
-	"./ml": 147,
-	"./ml.js": 147,
-	"./mr": 148,
-	"./mr.js": 148,
-	"./ms": 149,
-	"./ms-my": 150,
-	"./ms-my.js": 150,
-	"./ms.js": 149,
-	"./my": 151,
-	"./my.js": 151,
-	"./nb": 152,
-	"./nb.js": 152,
-	"./ne": 153,
-	"./ne.js": 153,
-	"./nl": 154,
-	"./nl-be": 155,
-	"./nl-be.js": 155,
-	"./nl.js": 154,
-	"./nn": 156,
-	"./nn.js": 156,
-	"./pa-in": 157,
-	"./pa-in.js": 157,
-	"./pl": 158,
-	"./pl.js": 158,
-	"./pt": 159,
-	"./pt-br": 160,
-	"./pt-br.js": 160,
-	"./pt.js": 159,
-	"./ro": 161,
-	"./ro.js": 161,
-	"./ru": 162,
-	"./ru.js": 162,
-	"./sd": 163,
-	"./sd.js": 163,
-	"./se": 164,
-	"./se.js": 164,
-	"./si": 165,
-	"./si.js": 165,
-	"./sk": 166,
-	"./sk.js": 166,
-	"./sl": 167,
-	"./sl.js": 167,
-	"./sq": 168,
-	"./sq.js": 168,
-	"./sr": 169,
-	"./sr-cyrl": 170,
-	"./sr-cyrl.js": 170,
-	"./sr.js": 169,
-	"./ss": 171,
-	"./ss.js": 171,
-	"./sv": 172,
-	"./sv.js": 172,
-	"./sw": 173,
-	"./sw.js": 173,
-	"./ta": 174,
-	"./ta.js": 174,
-	"./te": 175,
-	"./te.js": 175,
-	"./tet": 176,
-	"./tet.js": 176,
-	"./th": 177,
-	"./th.js": 177,
-	"./tl-ph": 178,
-	"./tl-ph.js": 178,
-	"./tlh": 179,
-	"./tlh.js": 179,
-	"./tr": 180,
-	"./tr.js": 180,
-	"./tzl": 181,
-	"./tzl.js": 181,
-	"./tzm": 182,
-	"./tzm-latn": 183,
-	"./tzm-latn.js": 183,
-	"./tzm.js": 182,
-	"./uk": 184,
-	"./uk.js": 184,
-	"./ur": 185,
-	"./ur.js": 185,
-	"./uz": 186,
-	"./uz-latn": 187,
-	"./uz-latn.js": 187,
-	"./uz.js": 186,
-	"./vi": 188,
-	"./vi.js": 188,
-	"./x-pseudo": 189,
-	"./x-pseudo.js": 189,
-	"./yo": 190,
-	"./yo.js": 190,
-	"./zh-cn": 191,
-	"./zh-cn.js": 191,
-	"./zh-hk": 192,
-	"./zh-hk.js": 192,
-	"./zh-tw": 193,
-	"./zh-tw.js": 193
+	"./af": 63,
+	"./af.js": 63,
+	"./ar": 64,
+	"./ar-dz": 65,
+	"./ar-dz.js": 65,
+	"./ar-kw": 66,
+	"./ar-kw.js": 66,
+	"./ar-ly": 67,
+	"./ar-ly.js": 67,
+	"./ar-ma": 68,
+	"./ar-ma.js": 68,
+	"./ar-sa": 69,
+	"./ar-sa.js": 69,
+	"./ar-tn": 70,
+	"./ar-tn.js": 70,
+	"./ar.js": 64,
+	"./az": 71,
+	"./az.js": 71,
+	"./be": 72,
+	"./be.js": 72,
+	"./bg": 73,
+	"./bg.js": 73,
+	"./bm": 74,
+	"./bm.js": 74,
+	"./bn": 75,
+	"./bn.js": 75,
+	"./bo": 76,
+	"./bo.js": 76,
+	"./br": 77,
+	"./br.js": 77,
+	"./bs": 78,
+	"./bs.js": 78,
+	"./ca": 79,
+	"./ca.js": 79,
+	"./cs": 80,
+	"./cs.js": 80,
+	"./cv": 81,
+	"./cv.js": 81,
+	"./cy": 82,
+	"./cy.js": 82,
+	"./da": 83,
+	"./da.js": 83,
+	"./de": 84,
+	"./de-at": 85,
+	"./de-at.js": 85,
+	"./de-ch": 86,
+	"./de-ch.js": 86,
+	"./de.js": 84,
+	"./dv": 87,
+	"./dv.js": 87,
+	"./el": 88,
+	"./el.js": 88,
+	"./en-au": 89,
+	"./en-au.js": 89,
+	"./en-ca": 90,
+	"./en-ca.js": 90,
+	"./en-gb": 91,
+	"./en-gb.js": 91,
+	"./en-ie": 92,
+	"./en-ie.js": 92,
+	"./en-nz": 93,
+	"./en-nz.js": 93,
+	"./eo": 94,
+	"./eo.js": 94,
+	"./es": 95,
+	"./es-do": 96,
+	"./es-do.js": 96,
+	"./es-us": 97,
+	"./es-us.js": 97,
+	"./es.js": 95,
+	"./et": 98,
+	"./et.js": 98,
+	"./eu": 99,
+	"./eu.js": 99,
+	"./fa": 100,
+	"./fa.js": 100,
+	"./fi": 101,
+	"./fi.js": 101,
+	"./fo": 102,
+	"./fo.js": 102,
+	"./fr": 103,
+	"./fr-ca": 104,
+	"./fr-ca.js": 104,
+	"./fr-ch": 105,
+	"./fr-ch.js": 105,
+	"./fr.js": 103,
+	"./fy": 106,
+	"./fy.js": 106,
+	"./gd": 107,
+	"./gd.js": 107,
+	"./gl": 108,
+	"./gl.js": 108,
+	"./gom-latn": 109,
+	"./gom-latn.js": 109,
+	"./gu": 110,
+	"./gu.js": 110,
+	"./he": 111,
+	"./he.js": 111,
+	"./hi": 112,
+	"./hi.js": 112,
+	"./hr": 113,
+	"./hr.js": 113,
+	"./hu": 114,
+	"./hu.js": 114,
+	"./hy-am": 115,
+	"./hy-am.js": 115,
+	"./id": 116,
+	"./id.js": 116,
+	"./is": 117,
+	"./is.js": 117,
+	"./it": 118,
+	"./it.js": 118,
+	"./ja": 119,
+	"./ja.js": 119,
+	"./jv": 120,
+	"./jv.js": 120,
+	"./ka": 121,
+	"./ka.js": 121,
+	"./kk": 122,
+	"./kk.js": 122,
+	"./km": 123,
+	"./km.js": 123,
+	"./kn": 124,
+	"./kn.js": 124,
+	"./ko": 125,
+	"./ko.js": 125,
+	"./ky": 126,
+	"./ky.js": 126,
+	"./lb": 127,
+	"./lb.js": 127,
+	"./lo": 128,
+	"./lo.js": 128,
+	"./lt": 129,
+	"./lt.js": 129,
+	"./lv": 130,
+	"./lv.js": 130,
+	"./me": 131,
+	"./me.js": 131,
+	"./mi": 132,
+	"./mi.js": 132,
+	"./mk": 133,
+	"./mk.js": 133,
+	"./ml": 134,
+	"./ml.js": 134,
+	"./mr": 135,
+	"./mr.js": 135,
+	"./ms": 136,
+	"./ms-my": 137,
+	"./ms-my.js": 137,
+	"./ms.js": 136,
+	"./my": 138,
+	"./my.js": 138,
+	"./nb": 139,
+	"./nb.js": 139,
+	"./ne": 140,
+	"./ne.js": 140,
+	"./nl": 141,
+	"./nl-be": 142,
+	"./nl-be.js": 142,
+	"./nl.js": 141,
+	"./nn": 143,
+	"./nn.js": 143,
+	"./pa-in": 144,
+	"./pa-in.js": 144,
+	"./pl": 145,
+	"./pl.js": 145,
+	"./pt": 146,
+	"./pt-br": 147,
+	"./pt-br.js": 147,
+	"./pt.js": 146,
+	"./ro": 148,
+	"./ro.js": 148,
+	"./ru": 149,
+	"./ru.js": 149,
+	"./sd": 150,
+	"./sd.js": 150,
+	"./se": 151,
+	"./se.js": 151,
+	"./si": 152,
+	"./si.js": 152,
+	"./sk": 153,
+	"./sk.js": 153,
+	"./sl": 154,
+	"./sl.js": 154,
+	"./sq": 155,
+	"./sq.js": 155,
+	"./sr": 156,
+	"./sr-cyrl": 157,
+	"./sr-cyrl.js": 157,
+	"./sr.js": 156,
+	"./ss": 158,
+	"./ss.js": 158,
+	"./sv": 159,
+	"./sv.js": 159,
+	"./sw": 160,
+	"./sw.js": 160,
+	"./ta": 161,
+	"./ta.js": 161,
+	"./te": 162,
+	"./te.js": 162,
+	"./tet": 163,
+	"./tet.js": 163,
+	"./th": 164,
+	"./th.js": 164,
+	"./tl-ph": 165,
+	"./tl-ph.js": 165,
+	"./tlh": 166,
+	"./tlh.js": 166,
+	"./tr": 167,
+	"./tr.js": 167,
+	"./tzl": 168,
+	"./tzl.js": 168,
+	"./tzm": 169,
+	"./tzm-latn": 170,
+	"./tzm-latn.js": 170,
+	"./tzm.js": 169,
+	"./uk": 171,
+	"./uk.js": 171,
+	"./ur": 172,
+	"./ur.js": 172,
+	"./uz": 173,
+	"./uz-latn": 174,
+	"./uz-latn.js": 174,
+	"./uz.js": 173,
+	"./vi": 175,
+	"./vi.js": 175,
+	"./x-pseudo": 176,
+	"./x-pseudo.js": 176,
+	"./yo": 177,
+	"./yo.js": 177,
+	"./zh-cn": 178,
+	"./zh-cn.js": 178,
+	"./zh-hk": 179,
+	"./zh-hk.js": 179,
+	"./zh-tw": 180,
+	"./zh-tw.js": 180
 };
 function webpackContext(req) {
 	return __webpack_require__(webpackContextResolve(req));
@@ -35554,18 +34688,18 @@ webpackContext.keys = function webpackContextKeys() {
 };
 webpackContext.resolve = webpackContextResolve;
 module.exports = webpackContext;
-webpackContext.id = 252;
+webpackContext.id = 233;
 
 /***/ }),
-/* 253 */
+/* 234 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(254)
+var __vue_script__ = __webpack_require__(235)
 /* template */
-var __vue_template__ = __webpack_require__(255)
+var __vue_template__ = __webpack_require__(236)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -35605,7 +34739,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 254 */
+/* 235 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -35627,7 +34761,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 255 */
+/* 236 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -35660,950 +34794,28 @@ if (false) {
 }
 
 /***/ }),
-/* 256 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(0)
-/* script */
-var __vue_script__ = __webpack_require__(257)
-/* template */
-var __vue_template__ = __webpack_require__(258)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/javascripts/frontend/registration/vue/payment/inputs/Card.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-68ae334c", Component.options)
-  } else {
-    hotAPI.reload("data-v-68ae334c", Component.options)
-' + '  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 257 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    props: {
-        value: {
-            type: String
-        }
-    }
-});
-
-/***/ }),
+/* 237 */,
+/* 238 */,
+/* 239 */,
+/* 240 */,
+/* 241 */,
+/* 242 */,
+/* 243 */,
+/* 244 */,
+/* 245 */,
+/* 246 */,
+/* 247 */,
+/* 248 */,
+/* 249 */,
+/* 250 */,
+/* 251 */,
+/* 252 */,
+/* 253 */,
+/* 254 */,
+/* 255 */,
+/* 256 */,
+/* 257 */,
 /* 258 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "w3-padding" }, [
-    _c("img", {
-      staticClass: "w3-show-block",
-      attrs: { src: "/images/credit-card-icon-set.png" }
-    }),
-    _c("input", {
-      staticClass: "w3-input w3-show-inline-block",
-      attrs: { type: "text" },
-      domProps: { value: _vm.value },
-      on: {
-        keyup: function($event) {
-          _vm.$emit("setValue", $event.target.value)
-        }
-      }
-    }),
-    _c("label", { staticClass: "w3-show-block" }, [_vm._v("Card Number")]),
-    _c("span", { staticClass: "w3-small" }, [
-      _vm._v(
-        "Accepted payment forms are Visa, Mastercard, Discover, and American Express"
-      )
-    ])
-  ])
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-68ae334c", module.exports)
-  }
-}
-
-/***/ }),
-/* 259 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(0)
-/* script */
-var __vue_script__ = __webpack_require__(260)
-/* template */
-var __vue_template__ = __webpack_require__(261)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/javascripts/frontend/registration/vue/payment/inputs/Month.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-6d35eaa6", Component.options)
-  } else {
-    hotAPI.reload("data-v-6d35eaa6", Component.options)
-' + '  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 260 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    props: {
-        value: {
-            type: String
-        }
-    },
-    data: function data() {
-        return {
-            months: [{
-                name: 'January',
-                value: '01'
-            }, {
-                name: 'February',
-                value: '02'
-            }, {
-                name: 'March',
-                value: '03'
-            }, {
-                name: 'April',
-                value: '04'
-            }, {
-                name: 'May',
-                value: '05'
-            }, {
-                name: 'June',
-                value: '06'
-            }, {
-                name: 'July',
-                value: '07'
-            }, {
-                name: 'August',
-                value: '08'
-            }, {
-                name: 'September',
-                value: '09'
-            }, {
-                name: 'October',
-                value: '10'
-            }, {
-                name: 'November',
-                value: '11'
-            }, {
-                name: 'December',
-                value: '12'
-            }],
-            selected: {
-                name: 'Month'
-            }
-        };
-    },
-    mounted: function mounted() {
-        if (this.value) {
-            var _iteratorNormalCompletion = true;
-            var _didIteratorError = false;
-            var _iteratorError = undefined;
-
-            try {
-                for (var _iterator = this.months[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-                    var month = _step.value;
-
-                    if (this.value == month.value) {
-                        this.selected = month;
-                    }
-                }
-            } catch (err) {
-                _didIteratorError = true;
-                _iteratorError = err;
-            } finally {
-                try {
-                    if (!_iteratorNormalCompletion && _iterator.return) {
-                        _iterator.return();
-                    }
-                } finally {
-                    if (_didIteratorError) {
-                        throw _iteratorError;
-                    }
-                }
-            }
-        }
-    },
-
-    methods: {
-        setMonth: function setMonth(month) {
-            this.selected = month;
-            this.$emit('setMonth', month);
-        }
-    }
-});
-
-/***/ }),
-/* 261 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "w3-third v-align" }, [
-    _c("div", { staticClass: "w3-dropdown-hover" }, [
-      _c("button", { staticClass: "w3-button" }, [
-        _vm._v(_vm._s(_vm.selected.name)),
-        _c("i", { staticClass: "fa fa-caret-down" })
-      ]),
-      _c(
-        "div",
-        { staticClass: "w3-dropdown-content w3-bar-block w3-border" },
-        _vm._l(_vm.months, function(month) {
-          return _c(
-            "div",
-            {
-              staticClass: "w3-bar-item w3-button",
-              on: {
-                click: function($event) {
-                  _vm.setMonth(month)
-                }
-              }
-            },
-            [_vm._v(_vm._s(month.name))]
-          )
-        })
-      )
-    ])
-  ])
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-6d35eaa6", module.exports)
-  }
-}
-
-/***/ }),
-/* 262 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(0)
-/* script */
-var __vue_script__ = __webpack_require__(263)
-/* template */
-var __vue_template__ = __webpack_require__(264)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/javascripts/frontend/registration/vue/payment/inputs/Year.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-705e9507", Component.options)
-  } else {
-    hotAPI.reload("data-v-705e9507", Component.options)
-' + '  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 263 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    props: {
-        value: {
-            type: String
-        }
-    }
-});
-
-/***/ }),
-/* 264 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "w3-third v-align" }, [
-    _c("input", {
-      staticClass: "w3-input",
-      attrs: { type: "text", placeholder: "Year" },
-      domProps: { value: _vm.value },
-      on: {
-        keyup: function($event) {
-          _vm.$emit("setValue", $event.target.value)
-        }
-      }
-    })
-  ])
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-705e9507", module.exports)
-  }
-}
-
-/***/ }),
-/* 265 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(0)
-/* script */
-var __vue_script__ = __webpack_require__(266)
-/* template */
-var __vue_template__ = __webpack_require__(267)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/javascripts/frontend/registration/vue/payment/inputs/CVV.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-0af0a889", Component.options)
-  } else {
-    hotAPI.reload("data-v-0af0a889", Component.options)
-' + '  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 266 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    props: {
-        value: {
-            type: String
-        }
-    }
-});
-
-/***/ }),
-/* 267 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "w3-third v-align" }, [
-    _c("input", {
-      staticClass: "w3-input",
-      attrs: { type: "text", placeholder: "CVV" },
-      domProps: { value: _vm.value },
-      on: {
-        keyup: function($event) {
-          _vm.$emit("setValue", $event.target.value)
-        }
-      }
-    })
-  ])
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-0af0a889", module.exports)
-  }
-}
-
-/***/ }),
-/* 268 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(0)
-/* script */
-var __vue_script__ = __webpack_require__(269)
-/* template */
-var __vue_template__ = __webpack_require__(270)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/javascripts/frontend/registration/vue/payment/inputs/Name.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-39dbb055", Component.options)
-  } else {
-    hotAPI.reload("data-v-39dbb055", Component.options)
-' + '  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 269 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    props: {
-        value: {
-            type: String
-        }
-    }
-});
-
-/***/ }),
-/* 270 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "w3-padding" }, [
-    _c("input", {
-      staticClass: "w3-input w3-show-inline-block",
-      attrs: { type: "text" },
-      domProps: { value: _vm.value },
-      on: {
-        keyup: function($event) {
-          _vm.$emit("setValue", $event.target.value)
-        }
-      }
-    }),
-    _c("label", { staticClass: "w3-show-block" }, [
-      _vm._v("Card Holder's Name")
-    ])
-  ])
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-39dbb055", module.exports)
-  }
-}
-
-/***/ }),
-/* 271 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(0)
-/* script */
-var __vue_script__ = __webpack_require__(272)
-/* template */
-var __vue_template__ = __webpack_require__(273)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/javascripts/frontend/registration/vue/payment/modal/Modal.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-7f2140ef", Component.options)
-  } else {
-    hotAPI.reload("data-v-7f2140ef", Component.options)
-' + '  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 272 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    props: {
-        response: {
-            type: Object
-        }
-    }
-});
-
-/***/ }),
-/* 273 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    {
-      staticClass: "w3-modal w3-show",
-      on: {
-        click: function($event) {
-          _vm.$emit("setModal")
-        }
-      }
-    },
-    [
-      _c("div", { staticClass: "w3-modal-content w3-card-4" }, [
-        _vm._m(0),
-        _vm._v(" "),
-        _c("div", { staticClass: "w3-container" }, [
-          _c("div", { staticClass: "w3-content w3-center" }, [
-            _c("p", [_vm._v("Plan Cost: $" + _vm._s(_vm.response.planCost))]),
-            _vm._v(" "),
-            _vm.response.coupon_code == "ISMFREETRIAL"
-              ? _c("p", [_vm._v("Discount: $" + _vm._s(_vm.response.planCost))])
-              : _vm._e(),
-            _vm._v(" "),
-            _vm.response.amount_charged != 1
-              ? _c("p", [
-                  _vm._v(
-                    "Total Charged: $" + _vm._s(_vm.response.amount_charged)
-                  )
-                ])
-              : _vm._e(),
-            _c("p"),
-            _vm.response.amount_charged == 1
-              ? _c("p", [_vm._v("Total Charged: $0.00")])
-              : _vm._e(),
-            _c("p"),
-            _vm.response.coupon_code == "ISMFREETRIAL"
-              ? _c("p", [_vm._v("Total: $0.00")])
-              : _vm._e(),
-            _vm._v(" "),
-            _c("p", [
-              _vm._v("Transaction ID: " + _vm._s(_vm.response.transactionId))
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _vm._m(1)
-      ])
-    ]
-  )
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("header", { staticClass: "w3-container w3-center primary" }, [
-      _c("h2", { staticClass: "w3-text-white" }, [_vm._v("Payment Success")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("footer", { staticClass: "w3-container w3-text-white primary" }, [
-      _c("p", { staticClass: "w3-center" }, [
-        _vm._v(
-          "Click anywhere to continue and configure your social media accounts"
-        )
-      ])
-    ])
-  }
-]
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-7f2140ef", module.exports)
-  }
-}
-
-/***/ }),
-/* 274 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(0)
-/* script */
-var __vue_script__ = __webpack_require__(275)
-/* template */
-var __vue_template__ = __webpack_require__(276)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/javascripts/frontend/registration/vue/payment/expired/Expired.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-69466c5f", Component.options)
-  } else {
-    hotAPI.reload("data-v-69466c5f", Component.options)
-' + '  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 275 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    props: {
-        response: {
-            type: Object
-        }
-    }
-});
-
-/***/ }),
-/* 276 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    {
-      staticClass: "w3-modal w3-show",
-      on: {
-        click: function($event) {
-          _vm.$emit("setModal")
-        }
-      }
-    },
-    [_vm._m(0)]
-  )
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "w3-modal-content w3-card-4" }, [
-      _c("header", { staticClass: "w3-container w3-center w3-red" }, [
-        _c("h2", { staticClass: "w3-text-white" }, [
-          _vm._v("This page has expired.")
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "w3-container" }, [
-        _c("div", { staticClass: "w3-content w3-center" }, [
-          _c("p", [
-            _vm._v(
-              "If you reached this page, your payment session has expired."
-            )
-          ]),
-          _vm._v(" "),
-          _c("p", [
-            _vm._v(
-              "We believe that you have already completed this step of the registration process, if you used your browser's back function to get here, please go forward and continue the process."
-            )
-          ]),
-          _vm._v(" "),
-          _c("p", [
-            _vm._v(
-              "If you are recieving this message and you do not believe your payment method is correct, please contact support"
-            )
-          ])
-        ])
-      ])
-    ])
-  }
-]
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-69466c5f", module.exports)
-  }
-}
-
-/***/ }),
-/* 277 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -36781,15 +34993,15 @@ if (false) {
 }
 
 /***/ }),
-/* 278 */
+/* 259 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(279)
+var __vue_script__ = __webpack_require__(260)
 /* template */
-var __vue_template__ = __webpack_require__(286)
+var __vue_template__ = __webpack_require__(267)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -36829,12 +35041,12 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 279 */
+/* 260 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Plan__ = __webpack_require__(280);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Plan__ = __webpack_require__(261);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Plan___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Plan__);
 //
 //
@@ -36878,15 +35090,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 280 */
+/* 261 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(281)
+var __vue_script__ = __webpack_require__(262)
 /* template */
-var __vue_template__ = __webpack_require__(285)
+var __vue_template__ = __webpack_require__(266)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -36926,12 +35138,12 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 281 */
+/* 262 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Features__ = __webpack_require__(282);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Features__ = __webpack_require__(263);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Features___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Features__);
 //
 //
@@ -36977,15 +35189,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 282 */
+/* 263 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(283)
+var __vue_script__ = __webpack_require__(264)
 /* template */
-var __vue_template__ = __webpack_require__(284)
+var __vue_template__ = __webpack_require__(265)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -37025,7 +35237,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 283 */
+/* 264 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -37050,7 +35262,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 284 */
+/* 265 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -37081,7 +35293,7 @@ if (false) {
 }
 
 /***/ }),
-/* 285 */
+/* 266 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -37151,7 +35363,7 @@ if (false) {
 }
 
 /***/ }),
-/* 286 */
+/* 267 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -37201,15 +35413,15 @@ if (false) {
 }
 
 /***/ }),
-/* 287 */
+/* 268 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(288)
+var __vue_script__ = __webpack_require__(269)
 /* template */
-var __vue_template__ = __webpack_require__(292)
+var __vue_template__ = __webpack_require__(273)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -37249,12 +35461,12 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 288 */
+/* 269 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Tips__ = __webpack_require__(289);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Tips__ = __webpack_require__(270);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Tips___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Tips__);
 //
 //
@@ -37300,15 +35512,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 289 */
+/* 270 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(290)
+var __vue_script__ = __webpack_require__(271)
 /* template */
-var __vue_template__ = __webpack_require__(291)
+var __vue_template__ = __webpack_require__(272)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -37348,7 +35560,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 290 */
+/* 271 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -37374,7 +35586,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 291 */
+/* 272 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -37436,7 +35648,7 @@ if (false) {
 }
 
 /***/ }),
-/* 292 */
+/* 273 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -37470,6 +35682,25 @@ if (false) {
 }
 
 /***/ }),
+/* 274 */,
+/* 275 */,
+/* 276 */,
+/* 277 */,
+/* 278 */,
+/* 279 */,
+/* 280 */,
+/* 281 */,
+/* 282 */,
+/* 283 */,
+/* 284 */,
+/* 285 */,
+/* 286 */,
+/* 287 */,
+/* 288 */,
+/* 289 */,
+/* 290 */,
+/* 291 */,
+/* 292 */,
 /* 293 */,
 /* 294 */,
 /* 295 */,
@@ -37793,90 +36024,15 @@ if (false) {
 /* 613 */,
 /* 614 */,
 /* 615 */,
-/* 616 */,
-/* 617 */,
-/* 618 */,
-/* 619 */,
-/* 620 */,
-/* 621 */,
-/* 622 */,
-/* 623 */,
-/* 624 */,
-/* 625 */,
-/* 626 */,
-/* 627 */,
-/* 628 */,
-/* 629 */,
-/* 630 */,
-/* 631 */,
-/* 632 */,
-/* 633 */,
-/* 634 */,
-/* 635 */,
-/* 636 */,
-/* 637 */,
-/* 638 */,
-/* 639 */,
-/* 640 */,
-/* 641 */,
-/* 642 */,
-/* 643 */,
-/* 644 */,
-/* 645 */,
-/* 646 */,
-/* 647 */,
-/* 648 */,
-/* 649 */,
-/* 650 */,
-/* 651 */,
-/* 652 */,
-/* 653 */,
-/* 654 */,
-/* 655 */,
-/* 656 */,
-/* 657 */,
-/* 658 */,
-/* 659 */,
-/* 660 */,
-/* 661 */,
-/* 662 */,
-/* 663 */,
-/* 664 */,
-/* 665 */,
-/* 666 */,
-/* 667 */,
-/* 668 */,
-/* 669 */,
-/* 670 */,
-/* 671 */,
-/* 672 */,
-/* 673 */,
-/* 674 */,
-/* 675 */,
-/* 676 */,
-/* 677 */,
-/* 678 */,
-/* 679 */,
-/* 680 */,
-/* 681 */,
-/* 682 */,
-/* 683 */,
-/* 684 */,
-/* 685 */,
-/* 686 */,
-/* 687 */,
-/* 688 */,
-/* 689 */,
-/* 690 */,
-/* 691 */
+/* 616 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(692)
+var __vue_script__ = __webpack_require__(622)
 /* template */
-var __vue_template__ = __webpack_require__(693)
+var __vue_template__ = __webpack_require__(623)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -37893,7 +36049,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources/javascripts/frontend/global/Errors.vue"
+Component.options.__file = "resources/javascripts/frontend/registration/vue/register/inputs/Check.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
 
 /* hot reload */
@@ -37903,9 +36059,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-99157c0a", Component.options)
+    hotAPI.createRecord("data-v-70d804bb", Component.options)
   } else {
-    hotAPI.reload("data-v-99157c0a", Component.options)
+    hotAPI.reload("data-v-70d804bb", Component.options)
 ' + '  }
   module.hot.dispose(function (data) {
     disposed = true
@@ -37916,7 +36072,571 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 692 */
+/* 617 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(624)
+/* template */
+var __vue_template__ = __webpack_require__(625)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/javascripts/frontend/registration/vue/register/inputs/Cross.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-a73f481a", Component.options)
+  } else {
+    hotAPI.reload("data-v-a73f481a", Component.options)
+' + '  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 618 */,
+/* 619 */,
+/* 620 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(621)
+/* template */
+var __vue_template__ = __webpack_require__(626)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/javascripts/frontend/registration/vue/register/inputs/Field.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-b70110a6", Component.options)
+  } else {
+    hotAPI.reload("data-v-b70110a6", Component.options)
+' + '  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 621 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Check__ = __webpack_require__(616);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Check___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Check__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Cross__ = __webpack_require__(617);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Cross___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__Cross__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: {
+        label: {
+            type: String
+        },
+        value: {
+            type: String
+        },
+        valid: {
+            type: Boolean
+        }
+    },
+    components: {
+        Check: __WEBPACK_IMPORTED_MODULE_0__Check___default.a,
+        Cross: __WEBPACK_IMPORTED_MODULE_1__Cross___default.a
+    }
+});
+
+/***/ }),
+/* 622 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    //
+});
+
+/***/ }),
+/* 623 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("i", {
+    staticClass: "fa fa-check fa-3x w3-show-inline w3-text-green v-align"
+  })
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-70d804bb", module.exports)
+  }
+}
+
+/***/ }),
+/* 624 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    //
+});
+
+/***/ }),
+/* 625 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("i", {
+    staticClass: "fa fa-times fa-3x w3-show-inline w3-text-red v-align"
+  })
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-a73f481a", module.exports)
+  }
+}
+
+/***/ }),
+/* 626 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "w3-padding-16" },
+    [
+      _c("label", { staticClass: "w3-show-block" }, [
+        _vm._v(_vm._s(_vm.label))
+      ]),
+      _c("input", {
+        staticClass: "w3-input w3-show-inline-block eighty",
+        attrs: { type: "text" },
+        domProps: { value: _vm.value },
+        on: {
+          keyup: function($event) {
+            _vm.$emit("setValue", $event.target.value)
+          }
+        }
+      }),
+      _c("Check", {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: _vm.valid,
+            expression: "valid"
+          }
+        ]
+      }),
+      _c("Cross", {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: !_vm.valid,
+            expression: "!valid"
+          }
+        ]
+      })
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-b70110a6", module.exports)
+  }
+}
+
+/***/ }),
+/* 627 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(628)
+/* template */
+var __vue_template__ = __webpack_require__(629)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/javascripts/frontend/registration/vue/register/inputs/PasswordField.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-47a75052", Component.options)
+  } else {
+    hotAPI.reload("data-v-47a75052", Component.options)
+' + '  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 628 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Check__ = __webpack_require__(616);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Check___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Check__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Cross__ = __webpack_require__(617);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Cross___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__Cross__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: {
+        label: {
+            type: String
+        },
+        value: {
+            type: String
+        },
+        valid: {
+            type: Boolean
+        }
+    },
+    components: {
+        Check: __WEBPACK_IMPORTED_MODULE_0__Check___default.a,
+        Cross: __WEBPACK_IMPORTED_MODULE_1__Cross___default.a
+    }
+});
+
+/***/ }),
+/* 629 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "w3-padding-16" },
+    [
+      _c("label", { staticClass: "w3-show-block" }, [
+        _vm._v(_vm._s(_vm.label))
+      ]),
+      _c("div", { staticClass: "w3-small" }, [
+        _vm._v(
+          "Must contain min 8 characters, 1 number, and 1 special character"
+        )
+      ]),
+      _c("input", {
+        staticClass: "w3-input w3-show-inline-block eighty",
+        attrs: { type: "password" },
+        domProps: { value: _vm.value },
+        on: {
+          keyup: function($event) {
+            _vm.$emit("setValue", $event.target.value)
+          }
+        }
+      }),
+      _c("Check", {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: _vm.valid,
+            expression: "valid"
+          }
+        ]
+      }),
+      _c("Cross", {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: !_vm.valid,
+            expression: "!valid"
+          }
+        ]
+      })
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-47a75052", module.exports)
+  }
+}
+
+/***/ }),
+/* 630 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(631)
+/* template */
+var __vue_template__ = __webpack_require__(635)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/javascripts/frontend/registration/vue/register/inputs/Terms.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-5a1bdc8c", Component.options)
+  } else {
+    hotAPI.reload("data-v-5a1bdc8c", Component.options)
+' + '  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 631 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__modal_Modal__ = __webpack_require__(632);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__modal_Modal___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__modal_Modal__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            checked: false,
+            modal: false
+        };
+    },
+
+    components: {
+        Modal: __WEBPACK_IMPORTED_MODULE_0__modal_Modal___default.a
+    }
+});
+
+/***/ }),
+/* 632 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(633)
+/* template */
+var __vue_template__ = __webpack_require__(634)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/javascripts/frontend/registration/vue/register/modal/Modal.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-104b807c", Component.options)
+  } else {
+    hotAPI.reload("data-v-104b807c", Component.options)
+' + '  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 633 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -37927,17 +36647,93 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: {
-        errors: {
-            type: Array
-        }
-    }
+    //
 });
 
 /***/ }),
-/* 693 */
+/* 634 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -37945,12 +36741,350 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
-    "ul",
-    { staticClass: "w3-ul w3-text-red" },
-    _vm._l(_vm.errors, function(error) {
-      return _c("li", [_vm._v(_vm._s(error))])
-    })
+    "div",
+    {
+      staticClass: "w3-modal w3-show",
+      on: {
+        click: function($event) {
+          _vm.$emit("setModal")
+        }
+      }
+    },
+    [_vm._m(0)]
   )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "w3-modal-content w3-card-4" }, [
+      _c("header", { staticClass: "w3-container w3-center primary" }, [
+        _c("i", {
+          staticClass:
+            "fa fa-times fa-3x w3-display-topright w3-padding w3-text-white"
+        }),
+        _vm._v(" "),
+        _c("h2", { staticClass: "w3-text-white" }, [
+          _vm._v("Terms of Service")
+        ]),
+        _vm._v(" "),
+        _c("p", { staticClass: "w3-text-white" }, [
+          _vm._v("Last modified September 17, 2015")
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "w3-container" }, [
+        _c("p", [
+          _vm._v(
+            'Welcome to InsuranceSocial.Media. These terms and conditions (“Terms of Service” or “Agreement”) govern your access to and use of Serious Social Media, Inc.’s (“Serious Social Media”) services and website accessible via www.InsuranceSocial.Media, including successor domain names or sites (the “Site”), and any and all information, text, graphics, photos, or other materials uploaded, downloaded, or appearing on the Services (as defined below).\nBY ACCESSING AND USING THE SERVICES IN ANY MANNER, YOU ARE "ACCEPTING" AND AGREEING TO BE BOUND BY THESE TERMS OF SERVICE TO THE EXCLUSION OF ALL OTHER TERMS. IF YOU DO NOT UNCONDITIONALLY ACCEPT THESE TERMS IN THEIR ENTIRETY, YOU SHALL NOT (AND SHALL HAVE NO RIGHT TO) ACCESS OR USE THE SERVICES. IF THE TERMS OF THIS AGREEMENT ARE CONSIDERED AN OFFER, ACCEPTANCE IS EXPRESSLY LIMITED TO SUCH TERMS. THESE TERMS SHOULD BE READ IN CONJUNCTION WITH THE INSURANCESOCIAL.MEDIA PRIVACY POLICY.\nWherever used in these Terms of Service, “you,” “your,” “Customer,” or similar terms means the person or legal entity accessing or using the Services. If you are accessing and using the Services on behalf of a company (such as your employer) or other legal entity, you represent and warrant that you have the authority to bind that company or other legal entity to these Terms of Service.\nSerious Social Media reserves the right, at any time, to update and change any or all of these Terms of Service, in its sole discretion, including but not limited to the fees and charges associated with the use of the Services. If Serious Social Media does so, it will post the modified Terms of Service on the Site, though we will notify you of any changes that, in our sole discretion, materially impact these Terms of Service. Continued use of the Services after any such changes have been made shall constitute your consent to such changes. You are responsible for regularly reviewing the most current version of the Terms of Service, which are currently available at: www.InsuranceSocial. Media/terms. When Serious Social Media changes these Terms of Service, Serious Social Media will modify the "Last Modified" date above.'
+          )
+        ]),
+        _vm._v(" "),
+        _c("p", [_c("b", [_vm._v("1. Definitions")])]),
+        _vm._v(" "),
+        _c("p", [
+          _vm._v(
+            "“Authorization Form” means a document issued by Serious Social Media and executed or otherwise agreed upon by authorized representatives of the Parties which specifies, among other things, a description of the Services, the Fees (as defined below), the Term (as defined below), and any other details specifically related to the Services. “Authorized Users” means individuals who are directly accessing the Services via an online sign-up process, or individual users authorized by you to use the Services and to whom you have supplied user identifications and passwords. Authorized Users may include your employees, consultants, contractors, agents, or your other designees, but shall not include any employee or agent of any Serious Social Media competitor.\n“Customer Content” means all information and data (including text, images, photos, videos, audio, and documents) or any other content in any media and format provided or made available to Serious Social Media by or on your behalf in relation to the use of the Services.\n“Fair Use Policy” means the limits placed on usage as described in Section 2.6.\n“Mentions” means the information, including links, posts, and excerpts, that has been made publicly available and obtained by Serious Social Media on your behalf from the Internet, and data derived therefrom, including reports, summaries, graphs, and charts.\n“Query” means a search string that an Authorized User uses to define what words and phrases must be present in a Mention for that Mention to be included in the applicable stream.\n“Seat” means a single subscription associated with a single log-in to the Site, assigned to one Authorized User.\n“Services” means the Serious Social Media services made available via Serious Social Media’s proprietary software delivered through the Site and mobile applications that provide for a single log-in, centralized web pages that enable you and Authorized Users to manage and create a user profile and customize your desired social media marketing, access reporting, and publish social media content to multiple Supported Platforms, including any modifications or Updates (as defined below), and the social media content created and posted by InsuranceSocial.Media on behalf of Authorized Users.\n“Supported Platform(s)” means the social networking site(s) currently supported by the Services, including Twitter, Facebook, and Google+.\n“Taxes” means all taxes, assessments, charges, fees, and levies that may be levied or based upon the sale or license of goods and/or services, as the case may be, including all sales, use, goods and services, value added, and excise taxes, custom duties, and assessments together with any installments with respect thereto, and any interest, fines, and penalties with respect thereto, imposed by any governmental authority (including federal, state, provincial, municipal, and foreign governmental authorities)."
+          )
+        ]),
+        _vm._v(" "),
+        _c("p", [_c("b", [_vm._v("2. Serious Social Media Services")])]),
+        _vm._v(" "),
+        _c("p", [
+          _vm._v(
+            "2.1 Updates and Functionalities\nYou acknowledge that from time to time Serious Social Media may apply updates to the Services and that such updates may result in changes in the appearance and/or functionality of the Services (including the addition, modification, or removal of functionality, features, or content). Excluding the addition of wholly new products, Serious Social Media shall provide, implement, configure, install, support, and maintain at its own cost any and all updates, upgrades, enhancements, improvements, releases, corrections, bug fixes, patches, and modifications to the Services (collectively, the “Updates”). You acknowledge that the Services interoperate with several Supported Platforms, and that the Services provided are highly dependent on the availability of such Supported Platforms. If at any time any Supported Platforms cease to make their programs available to Serious Social Media on reasonable terms, Serious Social Media may cease to provide such features to you without entitling you to refund, credit, or other compensation.\n2.2 Acceptable Use. You shall (i) be responsible for your and your Authorized Users’ compliance with these Terms of Service, including the Fair Use Policy; (ii) be solely responsible for the accuracy, quality, integrity, and legality of Customer Content and of the means by which you acquired or generated Customer Content; (iii) use commercially reasonable efforts to prevent unauthorized access to or use of the Services, including keeping you password and user name confidential and not permitting any third party to access or use your user name, password, or account for the Services; (iv) be solely responsible and liable for all activity conducted through your account in connection with the Services; (v) promptly notify Serious Social Media if you become aware of or reasonably suspect any security breach, including any loss, theft, or unauthorized disclosure or use of your (or any Authorized User’s) user name, password, or account; (vi) use the Services only in accordance with applicable laws and government regulations; (vii) comply in all respects with all applicable terms of the Third-Party Services that you subscribe to or otherwise access in connection with your use of the Services. \nYou must not (a) make the Services available to anyone other than to your Authorized Users; (b) allow more than one individual Authorized User to use a Seat; (c) sell, trade, or otherwise transfer your Seats to another party; (d) use the Services to store or transmit any content, including Customer Content, that may be infringing, defamatory, threatening, harmful, or otherwise unlawful, including any content that may violate intellectual property, privacy, rights of publicity, or other laws, or send spam or other unsolicited messages in violation of applicable law; (e) upload to, or transmit from, the Services any data, file, software, or link that contains or redirects to a virus, Trojan horse, worm, or other harmful component; (f) attempt to reverse engineer, de-compile, hack, disable, interfere with, disassemble, copy, or disrupt the integrity or the performance of the Services, any third-party use of the Services, or any third-party data contained therein (except to the extent such restrictions are prohibited by applicable law); (g) access the Services in order to build a competitive product or service or copy any ideas, features, functions, or graphics of the Services; (h) attempt to gain unauthorized access to the Services or its related systems or networks; or (i) authorize, permit, or encourage any third party to do any of the above.\n2.3 Mentions. You understand that by using the Services you may be exposed to third-party content, information, and Mentions that might be unlawful, offensive, harmful, inaccurate or otherwise inappropriate. Serious Social Media does not own, control, or review Mentions, and unless Customer creates the content of Mentions, Mentions shall not be considered “Customer Content” under any circumstances. Mentions may be indecent, offensive, inaccurate, unlawful, or otherwise objectionable. Serious Social Media has no obligation to preview, verify, flag, modify, filter, or remove any Mentions, even if requested to do so, although Serious Social Media may do so in its sole discretion. Your use of Mentions is at your sole risk, and Serious Social Media shall not be liable to you or any third party in relation to Mentions.\n2.4 Fair Use Policy. Serious Social Media may suspend your access to the Services for abusive practices that degrade the performance of the Services for you and/or other customers of Serious Social Media.\n2.5 Third-Party Products and Services. You acknowledge that the Services may enable or assist you to access, interact with, and/or purchase services from Supported Platforms and other third parties via third-party websites or applications (collectively, the “Third-Party Services”). When you access the Third-Party Services, you will do so at your own risk. Any use of Third-Party Services is governed solely by the terms and conditions of such Third-Party Services (and you shall comply with all such terms and conditions), and any contract entered into, or any transaction completed via any Third-Party Services, is between you and the relevant third party, and not Serious Social Media. Serious Social Media makes no representation and shall have no liability or obligation whatsoever in relation to the content or use of, or correspondence with, any such Third-Party Services or any transactions completed and any contract entered into by you with any such third party.\n2.6 Non-Exclusivity. You acknowledge that the rights granted to you under this Agreement are non-exclusive and that nothing in this Agreement will be interpreted or construed to prohibit or in any way restrict Serious Social Media’s right to license, sell, or otherwise make available the Services to any third party or perform any services for any third party.\n"
+          )
+        ]),
+        _vm._v(" "),
+        _c("p", [_c("b", [_vm._v("3. Intellectual Property")])]),
+        _vm._v(" "),
+        _c("p", [
+          _vm._v(
+            "3.1 Serious Social Media Services. As between you and Serious Social Media, Serious Social Media retains all right, title, and interest in and to the Services. Nothing herein shall be construed to restrict, impair, encumber, alter, deprive, or adversely affect the Services or any of Serious Social Media’s rights or interests therein or any other Serious Social Media intellectual property, brands, information, content, processes, methodologies, products, goods, services, materials, or rights, tangible or intangible. All rights, title, and interest in and to the Services not expressly granted in this Agreement are reserved by Serious Social Media. You may from time to time provide suggestions, comments or other feedback to Serious Social Media with respect to the Services (“Feedback”). Feedback, even if designated as confidential by you, shall not create any confidentiality obligation for Serious Social Media notwithstanding anything else. You shall, and hereby do, grant to Serious Social Media a non-exclusive, worldwide, perpetual, irrevocable, transferable, sublicensable, royalty-free, fully paid-up license to use and exploit the Feedback for any purpose.\n3.2 Customer Content. You grant Serious Social Media a limited, worldwide, non-exclusive, non-transferable (except as set forth in Section 9.1) license, without a right of sublicense, to access, use, reproduce, electronically distribute, transmit, perform, format, display, store, archive, and index the Customer Content for the purpose of supporting your use of the Services and providing Services to you. Serious Social Media may also use Customer Content for the purpose of supporting and developing the Site, provided that when doing so, Serious Social Media shall only use Customer Content in an anonymized and aggregated way. Subject only to the limited license expressly granted herein, you and your Authorized Users shall retain all right, title and interest in and to the Customer Content and all intellectual property rights therein. Nothing in this Agreement will confer on Serious Social Media any right of ownership or interest in the Customer Content or the intellectual property rights there.\n3.3 Responsibility for Customer Content and Mentions. You are solely responsible for the Customer Content that you or Authorized Users upload, publish, display, link to, or otherwise make available via the Services, and you agree that Serious Social Media is only acting as a passive conduit for the online distribution and publication of the Customer Content and the online display of Queries and Mentions. Serious Social Media will not review, share, distribute, or reference any Customer Content or Mentions except as provided herein, as provided in Serious Social Media’s privacy policy , or as may be required by law. Notwithstanding the foregoing, Serious Social Media retains the authority to remove any Customer Content uploaded that it deems in violation of this Agreement, at its sole discretion.\n3.4 Responsibility for Serious Social Media content. Content created and posted by Serious Social Media on behalf of the Customer is the sole property of Serious Social Media, and may not be sublicensed, reproduced, electronically distributed, stored, archived, or indexed by the Customer except insofar as the content is posted on social media outlets, and may be viewed and shared by other users of those outlets (such as in the Facebook function “Share”). "
+          )
+        ]),
+        _vm._v(" "),
+        _c("p", [
+          _c("b", [_vm._v("4. Serious Social Media Products and Fees")])
+        ]),
+        _vm._v(" "),
+        _c("p", [
+          _vm._v(
+            "4.1 Purchases By Credit Card. You agree to a thirty (30) day contract minimum beginning upon receipt of credit card payment. Exact contract duration is decided upon at sign-up. You agree that all charges and fees associated with your account are your sole responsibility.\n4.2 You must provide Serious Social Media with a valid credit card to pay for Services. You authorize Serious Social Media to charge the credit card for the recurring subscription, as per the auto renewal terms below. In addition, you agree that Serious Social Media has permission to retain and/or share with financial institutions and payment processing firms (including any institutions or firms Serious Social Media retains in the future) your submitted payment information in order to process your purchase. Subscription to InsuranceSocial.Media are billed in advance on a monthly basis and are non-refundable for the subscription period they are purchased for. Serious Social Media does not support all payment methods, currencies, or locations for payment. If the payment method you use with us, such as a credit card, reaches its expiration date and you do not edit your payment method information or cancel, you authorize Serious Social Media to continue billing your credit card and you remain responsible for any uncollected amounts. Your obligation to pay fees continues through to the end of the subscription period during which you cancel your subscription. All applicable taxes are calculated based on the billing information you provide us at the time of purchase.\n4.3 Auto-renewal and Cancellation. Serious Social Media Services are for subscriptions that renew automatically, such as monthly. You agree that Serious Social Media may process your credit card on each monthly renewal term, on the calendar day corresponding to the first day you subscribed to a paid subscription. If your paid subscription to Paid Services began on a day not contained in a subsequent month (e.g., your service began on January 30 and there is no February 30), Serious Social Media will process your payment on the last day of such month. \n4.4 Late Payment. If any amounts due hereunder are not received by Serious Social Media by the due date, then at Serious Social Media’s discretion, such charges may accrue late interest at the rate of 12% per year or the maximum rate permitted by law, whichever is lower, from the date such payment was due until the date paid. In addition, upon 10 days' written notice, Serious Social Media may suspend your access to the Services if Serious Social Media does not receive the amounts invoiced hereunder at the expiration of such period.\n4.5 Taxes and Withholdings. You are responsible for paying all Taxes associated with the subscription to the Services. If Serious Social Media has the legal obligation to pay or collect Taxes for which you are responsible under this Section, the appropriate amount shall be invoiced to and paid by you, unless you provide Serious Social Media with a valid tax exemption certificate authorized by the appropriate taxing authority. Any and all payments by or on account of the compensation payable under this Agreement shall be made free and clear of and without deduction or withholding for any Taxes. If you are required to deduct or withhold any Taxes from such payments, then the sum payable shall be increased as necessary so that, after making all required deductions or withholdings, Serious Social Media receives an amount equal to the sum it would have received had no such deduction or withholding been made."
+          )
+        ]),
+        _vm._v(" "),
+        _c("p", [_c("b", [_vm._v("5. Term and Termination")])]),
+        _vm._v(" "),
+        _c("p", [
+          _vm._v(
+            "5.1 This Agreement shall commence on the day you access the Services for the first time and shall continue until your account is cancelled and you cease using our Services.\n5.2 Termination. If you violate the letter or spirit of these Terms of Service, abuse the Services, or otherwise create risk or possible legal exposure to Serious Social Media, Serious Social Media can terminate or suspend your InsuranceSocial.Media Account at our sole discretion. Serious Social Media will notify you by email or at the next time you attempt to access your account. You may cancel your InsuranceSocial.Media account at any time. For cancellation procedure, and for further assistance, see the instructions published on the InsuranceSocial.Media website.\n5.3 Effects of Termination. Upon termination of this Agreement for any reason, (i) you will immediately cease all use of the Services; (ii) you will have no further access to your accounts provided by Serious Social Media; and (iii) you will pay Serious Social Media all unpaid amounts owing to Serious Social Media.\n5.4 Survival. Any provision of this Agreement which, either by its terms or to give effect to its meaning, must survive, and such other provisions which expressly, or by their nature, are intended to survive termination shall survive the expiration or termination of this Agreement."
+          )
+        ]),
+        _vm._v(" "),
+        _c("p", [_c("b", [_vm._v("6. Warranty Disclaimer")])]),
+        _vm._v(" "),
+        _c("p", [
+          _vm._v(
+            "EXCEPT AS EXPRESSLY PROVIDED HEREIN, TO THE GREATEST EXTENT PERMITTED BY APPLICABLE LAW, SERIOUS SOCIAL MEDIA EXPRESSLY EXCLUDES AND DISCLAIMS ALL WARRANTIES OF ANY KIND, WHETHER EXPRESS, IMPLIED, STATUTORY, OR OTHERWISE. WITHOUT LIMITING THE GENERALITY OF THE FOREGOING, SERIOUS SOCIAL MEDIA SPECIFICALLY DISCLAIMS ALL EXPRESS OR IMPLIED WARRANTIES OF DESIGN, MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE, QUALITY, AND NONINFRINGEMENT, THAT ITS SERVICES WILL MEET YOUR REQUIREMENTS, OR THAT ITS SERVICES WILL ALWAYS BE AVAILABLE, ACCESSIBLE, UNINTERRUPTED, TIMELY, SECURE, ACCURATE, COMPLETE, OR ERROR-FREE. IN ADDITION, SERIOUS SOCIAL MEDIA DOES NOT WARRANT ANY CONNECTION TO OR TRANSMISSION FROM THE INTERNET. NO ADVICE OR INFORMATION, WHETHER ORAL OR WRITTEN, OBTAINED FROM SERIOUS SOCIAL MEDIA OR ELSEWHERE WILL CREATE ANY WARRANTY OR CONDITION NOT EXPRESSLY STATED IN THIS AGREEMENT. EXCEPT AS EXPRESSLY PROVIDED HEREIN, THE SERVICES ARE PROVIDED ON AN “AS IS” AND “AS AVAILABLE” BASIS. THESE LIMITATIONS SHALL APPLY NOTWITHSTANDING THE FAILURE OF ESSENTIAL PURPOSE OF ANY LIMITED REMEDY PROVIDED HEREIN. SERIOUS SOCIAL MEDIA DISCLAIMS ANY AND ALL RESPONSIBILITY OR LIABILITY IN RELATION TO THE CONTENT MADE AVAILABLE THROUGH THE SERVICES, INCLUDING THE CUSTOMER CONTENT AND MENTIONS, OR ANY CONTENT OR SERVICES PROVIDED BY THIRD PARTIES. SERIOUS SOCIAL MEDIA DOES NOT CONTROL OR VET CUSTOMER CONTENT OR MENTIONS AND IS NOT RESPONSIBLE FOR WHAT USERS POST, TRANSMIT, OR SHARE ON OR THROUGH THE SERVICES. SERIOUS SOCIAL MEDIA IS NOT RESPONSIBLE OR LIABLE IN ANY MANNER FOR ANY THIRD-PARTY SERVICES OR SUPPORTED PLATFORMS ASSOCIATED WITH OR UTILIZED IN CONNECTION WITH THE SERVICES, INCLUDING THE FAILURE OF ANY SUCH THIRD-PARTY SERVICES OR SUPPORTED PLATFORMS. SERIOUS SOCIAL MEDIA EXPRESSLY DENIES ANY RESPONSIBILITY RESULTING FROM HACKING, TAMPERING, OR OTHER UNAUTHORIZED ACCESS OR USE OF THE SERVICES OR YOUR ACCOUNT OR THE INFORMATION CONTAINED THEREIN. IF YOU ARE DISSATISFIED OR HARMED BY SERIOUS SOCIAL MEDIA OR ANYTHING RELATED TO SERIOUS SOCIAL MEDIA, YOU MAY CANCEL YOUR INSURANCESOCIAL.MEDIA ACCOUNT AND TERMINATE THIS AGREEMENT IN ACCORDANCE WITH SECTION 4.4 (AUTO-RENEWAL AND CANCELLATION) OR SECTION 5.2 (TERMINATION), AS APPLICABLE, AND SUCH TERMINATION SHALL BE YOUR SOLE AND EXCLUSIVE REMEDY (AND SERIOUS SOCIAL MEDIA’S SOLE AND EXCLUSIVE LIABILITY)."
+          )
+        ]),
+        _vm._v(" "),
+        _c("p", [_c("b", [_vm._v("7. Indemnification")])]),
+        _vm._v(" "),
+        _c("p", [
+          _vm._v(
+            "7.1 Your Indemnification. You shall defend, indemnify, and hold harmless Serious Social Media, its affiliates, directors, officers, employees, and agents from and against all claims, losses, damages, penalties, liability, and costs, including reasonable attorneys’ fees, of any kind or nature which are in connection with or arising out of a claim (a) alleging that the Customer Content or your use of the Services infringes or violates the intellectual property rights, privacy rights, or other rights of a third party or violates applicable law; (b) relating to, or arising from, Customer Content, or your breach of Section 2.3 or Section 2.6; or (c) relating to, or arising from, Third-Party Services."
+          )
+        ]),
+        _vm._v(" "),
+        _c("p", [_c("b", [_vm._v("8. Limitation of Liability")])]),
+        _vm._v(" "),
+        _c("p", [
+          _vm._v(
+            "TO THE MAXIMUM EXTENT PERMITTED BY LAW, IN NO EVENT SHALL SERIOUS SOCIAL MEDIA’S AGGREGATE LIABILITY FOR ALL CLAIMS OF ANY KIND, INCLUDING ANY CLAIMS ARISING OUT OF OR RELATED TO THIS AGREEMENT, WHETHER BY STATUTE, CONTRACT, TORT, OR UNDER ANY OTHER THEORY OF LIABILITY, EXCEED THE GREATER OF (A) THE FEES PAID BY YOU FOR THE SERVICES HEREUNDER DURING THE THREE (3) MONTH PERIOD IMMEDIATELY PRECEDING THE DATE ON WHICH THE CAUSE OF ACTION AROSE AND (B) US$500. SERIOUS SOCIAL MEDIA DOES NOT OFFER ANY WARRANTY OR REMEDIES FOR THE INTERRUPTION OR CESSATION OF ACCESS OR TRANSMISSION TO OR FROM THE SERVICES.\nTO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, IN NO EVENT SHALL SERIOUS SOCIAL MEDIA, ITS DIRECTORS, EMPLOYEES, AGENTS, OR LICENSORS BE LIABLE FOR ANY INDIRECT, PUNITIVE, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR EXEMPLARY DAMAGES, INCLUDING DAMAGES FOR LOSS OF PROFITS, GOODWILL USE, OR DATA OR OTHER INTANGIBLE LOSSES, THAT RESULT FROM THE USE OF, OR INABILITY TO USE, THE SERVICES OR ANY OTHER ASPECT OF THIS AGREEMENT. UNDER NO CIRCUMSTANCES WILL SERIOUS SOCIAL MEDIA BE RESPONSIBLE FOR ANY DAMAGE, LOSS, OR INJURY RESULTING FROM HACKING, TAMPERING, OR OTHER UNAUTHORIZED ACCESS OR USE OF THE SERVICES OR YOUR ACCOUNT OR THE INFORMATION CONTAINED THEREIN.\nTHE PARTIES ACKNOWLEDGE AND AGREE THAT THE ESSENTIAL PURPOSE OF THIS SECTION IS TO ALLOCATE THE RISKS UNDER THESE TERMS BETWEEN THE PARTIES AND LIMIT THEIR POTENTIAL LIABILITY GIVEN THE FEES CHARGED UNDER THIS AGREEMENT, WHICH WOULD HAVE BEEN SUBSTANTIALLY HIGHER IF SERIOUS SOCIAL MEDIA WERE TO ASSUME ANY FURTHER LIABILITY OTHER THAN AS SET FORTH HEREIN. THE PARTIES HAVE RELIED ON THESE LIMITATIONS IN DETERMINING WHETHER TO ENTER INTO THESE TERMS. NOTHING IN THIS AGREEMENT IS INTENDED TO EXCLUDE OR RESTRICT OR SHALL BE CONSTRUED AS EXCLUDING OR RESTRICTING THE LIABILITY OF SERIOUS SOCIAL MEDIA FOR (I) DEATH OR PERSONAL INJURY CAUSED BY THE NEGLIGENCE OF SERIOUS SOCIAL MEDIA, ITS EMPLOYEES, OR ITS AGENTS; (II) WILLFUL MISCONDUCT OF SERIOUS SOCIAL MEDIA; OR (III) ANY LIABILITY WHICH CANNOT BE LIMITED OR EXCLUDED BY APPLICABLE LAW."
+          )
+        ]),
+        _vm._v(" "),
+        _c("p", [_c("b", [_vm._v("8. Limitation of Liability")])]),
+        _vm._v(" "),
+        _c("p", [
+          _vm._v(
+            "9.1 Assignment. You may not assign or otherwise transfer any of your rights or obligations hereunder, whether by merger, sale of assets, change of control, operation of law or otherwise, without the prior written consent of Serious Social Media (not to be unreasonably withheld), and any attempted assignment or transfer without such consent will be void. Serious Social Media may freely assign or delegate all rights and obligations under this Agreement, fully or partially without notice to you. Serious Social Media may also substitute, by way of unilateral novation, effective upon notice to you, Serious Social Media for any third party that assumes our rights and obligations under this Agreement.\n9.2 Amendment. Serious Social Media reserves the right to modify, supplement, or replace the terms of this Agreement, effective upon posting on the InsuranceSocial.Media website or notifying you otherwise. Your continued use of the Services after the effectiveness of that update will be deemed to represent your agreement with, and consent to be bound by, the new terms. Except for changes made by Serious Social Media as described here, no other amendment or modification of this Agreement shall be effective unless set forth in a written agreement bearing a written signature by Serious Social Media and you.\n9.3 Severability. Each provision of this Agreement is severable. If any provision of this Agreement is or becomes illegal, invalid, or unenforceable in any jurisdiction, the illegality, invalidity, or unenforceability of that provision will not affect the legality, validity, or enforceability of the remaining provisions of this Agreement or of that provision in any other jurisdiction.\n9.4 Notices. For purposes of service messages and notices about the Services, Serious Social Media may place a banner notice across its pages to alert you to certain changes such as modifications to this Agreement. Alternatively, notice may consist of an email from Serious Social Media to an email address associated with your account, even if Serious Social Media has other contact information. You also agree that Serious Social Media may communicate with you through your InsuranceSocial.Media account or through other means including email, mobile number, telephone, or delivery services including the postal service about your Serious Social Media account or services associated with Serious Social Media. You acknowledge and agree that Serious Social Media shall have no liability associated with or arising from your failure to do so maintain accurate contact or other information, including, but not limited to, your failure to receive critical information about the Services. You may provide legal notice to Serious Social Media via registered mail to Serious Social Media, Inc., 3419 E Chapman Ave., #107, Orange, CA 92869; Attention: General Counsel. \n9.5 Waivers. No waiver of any provision of this Agreement is binding unless it is in writing and signed by all parties to this Agreement, except that any provision which does not give rights or benefits to particular parties may be waived in writing, signed only by those parties who have rights under, or hold the benefit of, the provision being waived if those parties promptly send a copy of the executed waiver to all other parties. No failure to exercise, and no delay in exercising, any right or remedy under this Agreement will be deemed to be a waiver of that right or remedy. No waiver of any breach of any provision of this Agreement will be deemed to be a waiver of any subsequent breach of that provision or of any similar provision. 9.6 Nature of Relationship. No agency, partnership, joint venture, or employment relationship is created as a result of this Agreement and neither party has any authority of any kind to bind the other in any respect.\n9.7 Force Majeure. Except for payment obligations, neither party shall be liable for any failure to perform its obligations hereunder where such failure results from any cause beyond such party’s reasonable control, including the elements; fire; flood; severe weather; earthquake; vandalism; accidents; sabotage; power failure; denial of service attacks or similar attacks; Internet failure; acts of God and the public enemy; acts of war; acts of terrorism; riots; civil or public disturbances; strikes, lock-outs, or labor disruptions; and any laws, orders, rules, regulations, acts, or restraints of any government or governmental body or authority, civil or military, including the orders and judgments of courts.\n9.8 Governing Law. This Agreement and your relationship with Serious Social Media shall be governed exclusively by, and will be enforced, construed, and interpreted exclusively in accordance with, the laws applicable in the State of California, and shall be considered to have been made and accepted in California without regard to its conflict of law provisions. All disputes under this Agreement will be resolved by the courts of California. In any action or proceeding to enforce rights under this Agreement, the prevailing party shall be entitled to recover costs and attorneys’ fees.\n9.9 Entire Agreement. The terms of this Agreement, together with any applicable Authorization Form, all exhibits, and Serious Social Media’s privacy policy, constitute the entire agreement between the parties with respect to the use of the Services and supersede any prior or inconsistent agreements, negotiations, representations, and promises, written or oral, with respect to the subject matter and is binding upon the parties and their permitted successors and assigns. In the event of any conflict between this Agreement and the terms of an Authorization Form, the provisions of the Authorization Form shall prevail. The terms of this Agreement will apply to all orders you submit to Serious Social Media and shall supersede any additional terms, which may be incorporated in a purchase order form, or any other form you generate. Any such terms shall be null and void."
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _c("footer", { staticClass: "w3-container w3-text-white primary" }, [
+        _c("p", { staticClass: "w3-center" }, [
+          _vm._v("Click anywhere to close")
+        ])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-104b807c", module.exports)
+  }
+}
+
+/***/ }),
+/* 635 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    [
+      _c("div", { staticClass: "w3-padding-16 alt-checkbox sixty" }, [
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.checked,
+              expression: "checked"
+            }
+          ],
+          staticClass: "v-align",
+          attrs: { type: "checkbox", id: "terms" },
+          domProps: {
+            checked: Array.isArray(_vm.checked)
+              ? _vm._i(_vm.checked, null) > -1
+              : _vm.checked
+          },
+          on: {
+            change: [
+              function($event) {
+                var $$a = _vm.checked,
+                  $$el = $event.target,
+                  $$c = $$el.checked ? true : false
+                if (Array.isArray($$a)) {
+                  var $$v = null,
+                    $$i = _vm._i($$a, $$v)
+                  if ($$el.checked) {
+                    $$i < 0 && (_vm.checked = $$a.concat([$$v]))
+                  } else {
+                    $$i > -1 &&
+                      (_vm.checked = $$a
+                        .slice(0, $$i)
+                        .concat($$a.slice($$i + 1)))
+                  }
+                } else {
+                  _vm.checked = $$c
+                }
+              },
+              function($event) {
+                _vm.$emit("setTerms", _vm.checked)
+              }
+            ]
+          }
+        }),
+        _c("label", {
+          staticClass: "v-align check-box",
+          attrs: { for: "terms" }
+        }),
+        _vm._m(0)
+      ]),
+      _c("div", { staticClass: "w3-section" }, [
+        _c(
+          "button",
+          {
+            staticClass: "w3-button w3-text-white secondary",
+            on: {
+              click: function($event) {
+                _vm.modal = !_vm.modal
+              }
+            }
+          },
+          [_vm._v("Terms of Service")]
+        )
+      ]),
+      _vm.modal
+        ? _c("Modal", {
+            on: {
+              setModal: function($event) {
+                _vm.modal = !_vm.modal
+              }
+            }
+          })
+        : _vm._e()
+    ],
+    1
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "w3-large w3-margin-left" }, [
+      _vm._v("By clicking here, I agree to the "),
+      _c("b", [_vm._v("Insurance Social Media")]),
+      _vm._v(" Terms of Service.")
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-5a1bdc8c", module.exports)
+  }
+}
+
+/***/ }),
+/* 636 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(637)
+/* template */
+var __vue_template__ = __webpack_require__(638)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/javascripts/frontend/registration/vue/payment/inputs/Card.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-68ae334c", Component.options)
+  } else {
+    hotAPI.reload("data-v-68ae334c", Component.options)
+' + '  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 637 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: {
+        value: {
+            type: String
+        }
+    }
+});
+
+/***/ }),
+/* 638 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "w3-padding" }, [
+    _c("img", {
+      staticClass: "w3-show-block",
+      attrs: { src: "/images/credit-card-icon-set.png" }
+    }),
+    _c("input", {
+      staticClass: "w3-input w3-show-inline-block",
+      attrs: { type: "text" },
+      domProps: { value: _vm.value },
+      on: {
+        keyup: function($event) {
+          _vm.$emit("setValue", $event.target.value)
+        }
+      }
+    }),
+    _c("label", { staticClass: "w3-show-block" }, [_vm._v("Card Number")]),
+    _c("span", { staticClass: "w3-small" }, [
+      _vm._v(
+        "Accepted payment forms are Visa, Mastercard, Discover, and American Express"
+      )
+    ])
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -37958,7 +37092,836 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-99157c0a", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-68ae334c", module.exports)
+  }
+}
+
+/***/ }),
+/* 639 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(640)
+/* template */
+var __vue_template__ = __webpack_require__(641)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/javascripts/frontend/registration/vue/payment/inputs/Month.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-6d35eaa6", Component.options)
+  } else {
+    hotAPI.reload("data-v-6d35eaa6", Component.options)
+' + '  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 640 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: {
+        value: {
+            type: String
+        }
+    },
+    data: function data() {
+        return {
+            months: [{
+                name: 'January',
+                value: '01'
+            }, {
+                name: 'February',
+                value: '02'
+            }, {
+                name: 'March',
+                value: '03'
+            }, {
+                name: 'April',
+                value: '04'
+            }, {
+                name: 'May',
+                value: '05'
+            }, {
+                name: 'June',
+                value: '06'
+            }, {
+                name: 'July',
+                value: '07'
+            }, {
+                name: 'August',
+                value: '08'
+            }, {
+                name: 'September',
+                value: '09'
+            }, {
+                name: 'October',
+                value: '10'
+            }, {
+                name: 'November',
+                value: '11'
+            }, {
+                name: 'December',
+                value: '12'
+            }],
+            selected: {
+                name: 'Month'
+            }
+        };
+    },
+    mounted: function mounted() {
+        if (this.value) {
+            var _iteratorNormalCompletion = true;
+            var _didIteratorError = false;
+            var _iteratorError = undefined;
+
+            try {
+                for (var _iterator = this.months[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                    var month = _step.value;
+
+                    if (this.value == month.value) {
+                        this.selected = month;
+                    }
+                }
+            } catch (err) {
+                _didIteratorError = true;
+                _iteratorError = err;
+            } finally {
+                try {
+                    if (!_iteratorNormalCompletion && _iterator.return) {
+                        _iterator.return();
+                    }
+                } finally {
+                    if (_didIteratorError) {
+                        throw _iteratorError;
+                    }
+                }
+            }
+        }
+    },
+
+    methods: {
+        setMonth: function setMonth(month) {
+            this.selected = month;
+            this.$emit('setMonth', month);
+        }
+    }
+});
+
+/***/ }),
+/* 641 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "w3-third v-align" }, [
+    _c("div", { staticClass: "w3-dropdown-hover" }, [
+      _c("button", { staticClass: "w3-button" }, [
+        _vm._v(_vm._s(_vm.selected.name)),
+        _c("i", { staticClass: "fa fa-caret-down" })
+      ]),
+      _c(
+        "div",
+        { staticClass: "w3-dropdown-content w3-bar-block w3-border" },
+        _vm._l(_vm.months, function(month) {
+          return _c(
+            "div",
+            {
+              staticClass: "w3-bar-item w3-button",
+              on: {
+                click: function($event) {
+                  _vm.setMonth(month)
+                }
+              }
+            },
+            [_vm._v(_vm._s(month.name))]
+          )
+        })
+      )
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-6d35eaa6", module.exports)
+  }
+}
+
+/***/ }),
+/* 642 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(643)
+/* template */
+var __vue_template__ = __webpack_require__(644)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/javascripts/frontend/registration/vue/payment/inputs/Year.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-705e9507", Component.options)
+  } else {
+    hotAPI.reload("data-v-705e9507", Component.options)
+' + '  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 643 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: {
+        value: {
+            type: String
+        }
+    }
+});
+
+/***/ }),
+/* 644 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "w3-third v-align" }, [
+    _c("input", {
+      staticClass: "w3-input",
+      attrs: { type: "text", placeholder: "Year" },
+      domProps: { value: _vm.value },
+      on: {
+        keyup: function($event) {
+          _vm.$emit("setValue", $event.target.value)
+        }
+      }
+    })
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-705e9507", module.exports)
+  }
+}
+
+/***/ }),
+/* 645 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(646)
+/* template */
+var __vue_template__ = __webpack_require__(647)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/javascripts/frontend/registration/vue/payment/inputs/CVV.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-0af0a889", Component.options)
+  } else {
+    hotAPI.reload("data-v-0af0a889", Component.options)
+' + '  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 646 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: {
+        value: {
+            type: String
+        }
+    }
+});
+
+/***/ }),
+/* 647 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "w3-third v-align" }, [
+    _c("input", {
+      staticClass: "w3-input",
+      attrs: { type: "text", placeholder: "CVV" },
+      domProps: { value: _vm.value },
+      on: {
+        keyup: function($event) {
+          _vm.$emit("setValue", $event.target.value)
+        }
+      }
+    })
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-0af0a889", module.exports)
+  }
+}
+
+/***/ }),
+/* 648 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(649)
+/* template */
+var __vue_template__ = __webpack_require__(650)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/javascripts/frontend/registration/vue/payment/inputs/Name.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-39dbb055", Component.options)
+  } else {
+    hotAPI.reload("data-v-39dbb055", Component.options)
+' + '  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 649 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: {
+        value: {
+            type: String
+        }
+    }
+});
+
+/***/ }),
+/* 650 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "w3-padding" }, [
+    _c("input", {
+      staticClass: "w3-input w3-show-inline-block",
+      attrs: { type: "text" },
+      domProps: { value: _vm.value },
+      on: {
+        keyup: function($event) {
+          _vm.$emit("setValue", $event.target.value)
+        }
+      }
+    }),
+    _c("label", { staticClass: "w3-show-block" }, [
+      _vm._v("Card Holder's Name")
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-39dbb055", module.exports)
+  }
+}
+
+/***/ }),
+/* 651 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(652)
+/* template */
+var __vue_template__ = __webpack_require__(653)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/javascripts/frontend/registration/vue/payment/modal/Modal.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-7f2140ef", Component.options)
+  } else {
+    hotAPI.reload("data-v-7f2140ef", Component.options)
+' + '  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 652 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: {
+        response: {
+            type: Object
+        }
+    }
+});
+
+/***/ }),
+/* 653 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    {
+      staticClass: "w3-modal w3-show",
+      on: {
+        click: function($event) {
+          _vm.$emit("setModal")
+        }
+      }
+    },
+    [
+      _c("div", { staticClass: "w3-modal-content w3-card-4" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c("div", { staticClass: "w3-container" }, [
+          _c("div", { staticClass: "w3-content w3-center" }, [
+            _c("p", [_vm._v("Plan Cost: $" + _vm._s(_vm.response.planCost))]),
+            _vm._v(" "),
+            _vm.response.coupon_code == "ISMFREETRIAL"
+              ? _c("p", [_vm._v("Discount: $" + _vm._s(_vm.response.planCost))])
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.response.amount_charged != 1
+              ? _c("p", [
+                  _vm._v(
+                    "Total Charged: $" + _vm._s(_vm.response.amount_charged)
+                  )
+                ])
+              : _vm._e(),
+            _c("p"),
+            _vm.response.amount_charged == 1
+              ? _c("p", [_vm._v("Total Charged: $0.00")])
+              : _vm._e(),
+            _c("p"),
+            _vm.response.coupon_code == "ISMFREETRIAL"
+              ? _c("p", [_vm._v("Total: $0.00")])
+              : _vm._e(),
+            _vm._v(" "),
+            _c("p", [
+              _vm._v("Transaction ID: " + _vm._s(_vm.response.transactionId))
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _vm._m(1)
+      ])
+    ]
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("header", { staticClass: "w3-container w3-center primary" }, [
+      _c("h2", { staticClass: "w3-text-white" }, [_vm._v("Payment Success")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("footer", { staticClass: "w3-container w3-text-white primary" }, [
+      _c("p", { staticClass: "w3-center" }, [
+        _vm._v(
+          "Click anywhere to continue and configure your social media accounts"
+        )
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-7f2140ef", module.exports)
+  }
+}
+
+/***/ }),
+/* 654 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(655)
+/* template */
+var __vue_template__ = __webpack_require__(656)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/javascripts/frontend/registration/vue/payment/expired/Expired.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-69466c5f", Component.options)
+  } else {
+    hotAPI.reload("data-v-69466c5f", Component.options)
+' + '  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 655 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: {
+        response: {
+            type: Object
+        }
+    }
+});
+
+/***/ }),
+/* 656 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    {
+      staticClass: "w3-modal w3-show",
+      on: {
+        click: function($event) {
+          _vm.$emit("setModal")
+        }
+      }
+    },
+    [_vm._m(0)]
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "w3-modal-content w3-card-4" }, [
+      _c("header", { staticClass: "w3-container w3-center w3-red" }, [
+        _c("h2", { staticClass: "w3-text-white" }, [
+          _vm._v("This page has expired.")
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "w3-container" }, [
+        _c("div", { staticClass: "w3-content w3-center" }, [
+          _c("p", [
+            _vm._v(
+              "If you reached this page, your payment session has expired."
+            )
+          ]),
+          _vm._v(" "),
+          _c("p", [
+            _vm._v(
+              "We believe that you have already completed this step of the registration process, if you used your browser's back function to get here, please go forward and continue the process."
+            )
+          ]),
+          _vm._v(" "),
+          _c("p", [
+            _vm._v(
+              "If you are recieving this message and you do not believe your payment method is correct, please contact support"
+            )
+          ])
+        ])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-69466c5f", module.exports)
   }
 }
 
