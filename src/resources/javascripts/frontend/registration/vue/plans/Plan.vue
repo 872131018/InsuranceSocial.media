@@ -7,12 +7,14 @@
         label(
             :for="plan.id")
             span(class="w3-show-inline-block v-align")
-        span(class="w3-xlarge v-align") {{ plan.name }}
-        span(class="w3-xlarge w3-right v-align") {{ plan.cost }}
-        Features(:features="plan.features")
+        span(class="w3-large v-align") {{ plan.name }}
+        span(class="w3-large w3-right v-align") {{ plan.cost }}
+        Features(
+            :features="plan.features")
     div(v-else)
-        span(class="w3-xlarge w3-text-blue") Contact Us for Enterprise Pricing
-        Features(:features="plan.features")
+        span(class="w3-large w3-text-blue") Contact Us for Enterprise Pricing
+        Features(
+            :features="plan.features")
 </template>
 
 <script>

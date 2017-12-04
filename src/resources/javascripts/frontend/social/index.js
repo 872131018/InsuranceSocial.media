@@ -8,12 +8,14 @@ window.axios = axios;
 import Vue from 'vue';
 
 import Navigation from '../global/navigation/Navigation';
-import Foot from '../global/foot/Foot';
+import Field from '../global/inputs/Field';
 import Errors from '../global/Errors';
+import Foot from '../global/foot/Foot';
 import ProgressBar from './vue/Progress';
 Vue.component('Navigation', Navigation);
 Vue.component('Foot', Foot);
 Vue.component('Errors', Errors);
+Vue.component('Field', Field);
 Vue.component('ProgressBar', ProgressBar);
 
 import VueRouter from 'vue-router';
@@ -21,12 +23,6 @@ Vue.use(VueRouter);
 
 import Vuex from 'vuex';
 Vue.use(Vuex);
-
-/**
-* Remove this later
-*/
-import Store from './root.redux';
-window.store = Store;
 
 import store from './root.vuex';
 import router from './routes';

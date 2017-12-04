@@ -22,8 +22,16 @@ use App\Plan;
 
  Route::post('/profile', 'ProfileController@store');
 
+ Route::post('/agency', 'ProfileController@storeAgency');
+
  Route::post('/location', 'LocationController@store');
 
- Route::post('/coverage', 'CoverageController@store');
+ Route::post('/location/selections', 'LocationController@storeSelections');
+
+ Route::post('/coverages', 'CoverageController@store');
 
  Route::post('/outreach', 'OutreachController@store');
+
+ Route::post('/outreach/selections', 'OutreachController@storeSelections');
+
+ Route::get('/export', 'OutreachController@show');

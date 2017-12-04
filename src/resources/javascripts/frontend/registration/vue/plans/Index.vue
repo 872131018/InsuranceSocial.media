@@ -4,7 +4,7 @@
         h3 Plan Selection
         h6 Choose your plan.
         Plan(
-            v-for="(plan, index) in plans"
+            v-for="(plan, index) in $store.state.plans.plans"
             :key="index"
             :plan="plan"
             :selected="selected == plan.name"
@@ -12,9 +12,8 @@
         Errors(
             v-if="errors.length"
             :errors="errors")
-        div(class="w3-padding-16")
-            button(class="w3-button w3-text-white primary"
-                @click="next()") Continue
+        button(class="w3-button w3-text-white primary"
+            @click="next()") Continue
 </template>
 
 <script>
@@ -22,9 +21,6 @@
 
     export default {
         computed: {
-            plans() {
-                return this.$store.state.plans.plans;
-            },
             selected() {
                 return this.$store.state.registration.plan.name;
             },

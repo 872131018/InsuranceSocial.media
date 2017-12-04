@@ -1,7 +1,7 @@
 <template lang="pug">
-    div(class="w3-section")
-        span(class="w3-xlarge v-align") {{ plan.name }}
-        span(class="w3-xlarge w3-right v-align") {{ plan.cost }}
+    div
+        span(class="w3-large v-align") {{ plan.name }}
+        span(class="w3-large w3-right v-align") {{ plan.cost }}
         Features(:features="plan.features")
 </template>
 

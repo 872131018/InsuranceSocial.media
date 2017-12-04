@@ -2,7 +2,7 @@
     ul(class="w3-ul")
         li(v-for="feature in features")
             i(class="fa fa-check w3-text-green")
-            span {{ feature }}
+            | {{ feature }}
 </template>
 
 <script>

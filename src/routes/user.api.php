@@ -66,69 +66,43 @@ use Illuminate\Support\Facades\Log;
  * @return \Illuminate\Http\Response
  */
  Route::get('/api/user', function (Request $request) {
-     return response()->json(Auth::user());
+     return response()->json(Auth::user()
+        ->with('plan')
+        ->with('agency')
+        ->with('regions')
+        ->with('states')
+        ->with('counties')
+        ->with('carriers')
+        ->with('commercialCoverages')
+        ->with('personalCoverages')
+        ->with('benefitCoverages')
+        ->with('cropCoverages')
+        ->with('targetCoverages')
+        ->with('currentIndustries')
+        ->with('targetIndustries')
+        ->with('specialTopics')
+        ->with('causes')
+        ->first());
  });
- Route::get('/api/plan', function (Request $request) {
-     return response()->json(Auth::user()->plan);
- });
- Route::get('/api/agency', function (Request $request) {
-     return response()->json(Auth::user()->agency);
- });
- Route::get('/api/regions', function (Request $request) {
-     return response()->json(Region::all());
- });
- Route::get('/api/states', function (Request $request) {
-     return response()->json(State::all());
- });
- Route::get('/api/counties', function (Request $request) {
-     return response()->json(County::all());
- });
- Route::get('/api/coverages', function (Request $request) {
-     return response()->json([
+ Route::get('/api/options', function (Request $request) {
+     $data = [
+         'regions' => Region::all(),
+         'states' => State::all(),
+         'counties' => County::all(),
          'commercial' => CommercialCoverage::all(),
          'personal' => PersonalCoverage::all(),
-         'benefit' => BenefitCoverage::all()
-     ]);
+         'benefit' => BenefitCoverage::all(),
+         'industries' => Industry::all(),
+         'causes' => Cause::all(),
+         'titles' => Title::all(),
+         'sizes' => Size::all(),
+         'generations' => Generation::all(),
+         'frequencies' => Frequency::all(),
+         'carriers' => Carrier::all()
+     ];
+     return response()->json($data);
  });
- Route::get('/api/industries', function (Request $request) {
-     return response()->json(Industry::all());
- });
- Route::get('/api/causes', function (Request $request) {
-     return response()->json(Cause::all());
- });
- Route::get('/api/titles', function (Request $request) {
-     return response()->json(Title::all());
- });
- Route::get('/api/sizes', function (Request $request) {
-     return response()->json(Size::all());
- });
- Route::get('/api/generations', function (Request $request) {
-     return response()->json(Generation::all());
- });
- Route::get('/api/frequencies', function (Request $request) {
-     return response()->json(Frequency::all());
- });
- Route::get('/api/carriers', function (Request $request) {
-     return response()->json(Carrier::all());
- });
- Route::get('/api/selections', function (Request $request) {
-     $user = Auth::user();
 
-     return response()->json([
-        'selected_regions' => $user->regions,
-        'selected_states' => $user->states,
-        'selected_counties' => $user->counties,
-        'selected_carriers' => $user->carriers,
-        'selected_personal_coverages' => $user->personalCoverages,
-        'selected_commercial_coverages' => $user->commercialCoverages,
-        'selected_benefit_coverages' => $user->benefitCoverages,
-        'selected_crop_coverages' => $user->cropCoverages,
-        'selected_current_industries' => $user->currentIndustries,
-        'selected_target_industries' => $user->targetIndustries,
-        'selected_special_topics' => $user->specialTopics,
-        'selected_causes' => $user->causes
-     ]);
- });
  Route::get('/api/endpoint', function (Request $request) {
     if(env('APP_ENV') == 'local') {
         $response = [

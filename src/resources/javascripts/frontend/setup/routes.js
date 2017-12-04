@@ -1,13 +1,14 @@
-import Profile from './vue/profile/Profile';
-import Location from './vue/location/Location';
-import Coverage from './vue/coverage/Coverage';
-import Outreach from './vue/outreach/Outreach';
+import VueRouter from 'vue-router';
+import Agency from './vue/agency/Index';
+import Location from './vue/location/Index';
+import Coverages from './vue/coverages/Index';
+import Outreach from './vue/outreach/Index';
 
-export default [
+const routes = [
     {
-        path: '/profile',
-        name: 'Profile',
-        component: Profile
+        path: '/agency',
+        name: 'Agency',
+        component: Agency
     },
     {
         path: '/location',
@@ -15,9 +16,9 @@ export default [
         component: Location
     },
     {
-        path: '/coverage',
-        name: 'Coverage',
-        component: Coverage
+        path: '/coverages',
+        name: 'Coverages',
+        component: Coverages
     },
     {
         path: '/outreach',
@@ -25,3 +26,11 @@ export default [
         component: Outreach
     }
 ];
+
+export default new VueRouter({
+  mode: 'history',
+  routes,
+  scrollBehavior (to, from, savedPosition) {
+      return { x: 0, y: 0 }
+  }
+});

@@ -6,8 +6,6 @@ use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Auth;
 
-use App\Agency;
-
 class ProfileController extends Controller
 {
     /**
@@ -39,29 +37,37 @@ class ProfileController extends Controller
     public function store(Request $request)
     {
         $user = Auth::user();
-        $user->phone = $request->input('phone');
-        $user->cell_phone = $request->input('cell_phone');
-        $user->title_code = $request->input('title_code');
-        $user->notify_frequency = $request->input('notify_frequency');
-        $user->notify_email = $request->input('notify_email');
-        $user->notify_text = $request->input('notify_text');
+        $user->phone = $request->phone;
+        $user->cell_phone = $request->cell_phone;
+        $user->title_code = $request->title_code;
+        $user->notify_frequency = $request->notify_frequency;
+        $user->notify_email = $request->notify_email;
+        $user->notify_text = $request->notify_text;
         $user->update();
 
-        $agency = new Agency();
-        $agency->email = $user->email;
-        $agency->principal_name = $request->input('principal_name');
-        $agency->principal_email = $request->input('principal_email');
-        $agency->name = $request->input('agency_name');
-        $agency->website = $request->input('website');
-        $agency->size = $request->input('size');
-        $agency->established = $request->input('established');
-        $agency->multigenerational = $request->input('multigenerational');
-        $user->agency()->save($agency);
+        return response()->json($user);
+    }
 
-        return response()->json([
-            'user' => $user,
-            'agency' => $agency
-        ]);
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function storeAgency(Request $request)
+    {
+        $user = Auth::user();
+        $agency = $user->agency;
+        $agency->principal_name = $request->principal_name;
+        $agency->principal_email = $request->principal_email;
+        $agency->name = $request->name;
+        $agency->website = $request->website;
+        $agency->size = $request->size;
+        $agency->established = $request->established;
+        $agency->multigenerational = $request->multigenerational;
+        $agency->update();
+
+        return response()->json($agency);
     }
 
     /**

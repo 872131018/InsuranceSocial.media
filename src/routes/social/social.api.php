@@ -27,7 +27,7 @@ use Illuminate\Http\Request;
 
  Route::post('/create', 'FacebookController@store');
 
- Route::post('/page', 'FacebookController@edit');
+ Route::post('/pages', 'FacebookController@edit');
 
  Route::get('/api/twitter', 'TwitterController@index');
 

@@ -38,30 +38,21 @@
         Errors(
             v-if="errors.length"
             :errors="errors")
-        div(class="w3-padding-16")
-            button(class="w3-button w3-text-white primary"
-                @click="register()")
-                div(style="height: 22px; width: 127px") Register
+        button(class="w3-button w3-text-white primary"
+            @click="register()")
+            div(style="height: 22px; width: 127px") Register
 </template>
 
 <script>
-    import Field from './inputs/Field';
-    import PasswordField from './inputs/PasswordField';
-    import Terms from './inputs/Terms';
+    import Terms from './Terms';
 
     export default {
-        data() {
-            return {
-                email_confirmed: false,
-                password_confirmed: false,
-            }
-        },
         computed: {
             name() {
                 return this.$store.state.registration.name;
             },
             nameValid() {
-                return this.$store.state.registration.name != '';
+                return this.name != '';
             },
             email() {
                 return this.$store.state.registration.email;
@@ -73,8 +64,8 @@
                 return this.$store.state.registration.email_confirmation;
             },
             emailConfirmed() {
-                return this.$store.state.registration.email == this.$store.state.registration.email_confirmation &&
-                    this.$store.state.registration.email != '';
+                return this.email == this.emailConfirmation &&
+                    this.email != '';
             },
             password() {
                 return this.$store.state.registration.password;
@@ -86,17 +77,17 @@
                 return this.$store.state.registration.password_confirmation
             },
             passwordConfirmed() {
-                return this.$store.state.registration.password == this.$store.state.registration.password_confirmation &&
-                    this.$store.state.registration.password != '';
+                return this.password == this.passwordConfirmation &&
+                    this.password != '';
             },
             code() {
                 return this.$store.state.registration.code;
             },
             codeValid() {
-                return this.$store.state.registration.code == 'ISMFREETRIAL' ||
-                        this.$store.state.registration.code == 'IMTGEM17' ||
-                        this.$store.state.registration.code == 'FMH17' ||
-                        this.$store.state.registration.code == '';
+                return this.code == 'ISMFREETRIAL' ||
+                        this.code == 'IMTGEM17' ||
+                        this.code == 'FMH17' ||
+                        this.code == '';
             },
             errors() {
                 return this.$store.state.errors.errors;
@@ -141,8 +132,6 @@
             }
         },
         components: {
-            Field,
-            PasswordField,
             Terms
         }
     }

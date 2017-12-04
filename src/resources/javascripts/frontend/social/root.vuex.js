@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import PageModule from './modules/page.vuex';
 import CreateModule from './modules/create.vuex';
 import TwitterModule from './modules/twitter.vuex';
 import RedirectModule from './modules/redirect.vuex';
@@ -10,6 +11,7 @@ Vue.use(Vuex);
 
 const store = new Vuex.Store({
     modules: {
+        page: PageModule,
         create: CreateModule,
         twitter: TwitterModule,
         redirect: RedirectModule,

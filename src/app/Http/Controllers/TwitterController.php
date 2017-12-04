@@ -93,12 +93,12 @@ class TwitterController extends Controller
      */
     public function update(Request $request)
     {
-        $oauth_token = $request->input('oauth_token');
-        if(isset($oauth_token) && session('oauth_token') !== $request->input('oauth_token')) {
+        $oauth_token = $request->oauth_token;
+        if(isset($oauth_token) && session('oauth_token') !== $request->oauth_token) {
             return response(500);
         }
         $connection = new TwitterOAuth(env('CONSUMER_KEY'), env('CONSUMER_SECRET'), session('oauth_token'), session('oauth_token_secret'));
-        $access_token = $connection->oauth("oauth/access_token", ["oauth_verifier" => $request->input('oauth_verifier')]);
+        $access_token = $connection->oauth("oauth/access_token", ["oauth_verifier" => $request->oauth_verifier]);
 
         if(isset($access_token)) {
             $connection = new TwitterOAuth(
@@ -117,7 +117,7 @@ class TwitterController extends Controller
             $twitter->twitter_id = $response->id;
             $twitter->update();
 
-           return redirect('profile');
+           return redirect('agency');
         }
     }
 

@@ -44,51 +44,37 @@ class OutreachController extends Controller
     {
         $user = Auth::user();
         $plan = $user->plan;
-        $plan->engagement_mix = intval($request->input('engagement_mix'));
-        $plan->engagement_tone = intval($request->input('engagement_tone'));
-        $plan->time_code = $request->input('time_code');
-
-        $days = $request->input('posting_days');
-        foreach($days as $day) {
-            switch($day['code']) {
-                case 'monday':
-                    $plan->monday = true;
-                    break;
-                case 'tuesday':
-                    $plan->tuesday = true;
-                    break;
-                case 'wednesday':
-                    $plan->wednesday = true;
-                    break;
-                case 'thursday':
-                    $plan->thursday = true;
-                    break;
-                case 'friday':
-                    $plan->friday = true;
-                    break;
-                case 'saturday':
-                    $plan->saturday = true;
-                    break;
-                case 'sunday':
-                    $plan->sunday = true;
-                    break;
-            }
-        }
-
-        $topics = $request->input('selected_special_topics');
-        foreach($topics as $topic) {
-            if($topic['code'] == 'NH') {
-                $plan->holidays = true;
-            } else if($topic['code'] == 'IH') {
-                $plan->humor = true;
-            } else if($topic['code'] == 'CN') {
-                $plan->news = true;
-            }
-        }
+        $plan->engagement_mix = intval($request->engagement_mix);
+        $plan->engagement_tone = intval($request->engagement_tone);
+        $plan->time_code = $request->time_code;
+        $plan->monday = $request->monday;
+        $plan->tuesday = $request->tuesday;
+        $plan->wednesday = $request->wednesday;
+        $plan->thursday = $request->thursday;
+        $plan->friday = $request->friday;
+        $plan->saturday = $request->saturday;
+        $plan->sunday = $request->sunday;
         $plan->update();
 
+
+        return response()->json($plan);
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function storeSelections(Request $request)
+    {
+        $user = Auth::user();
+
+        foreach($user->specialTopics as $selection) {
+            $selection->delete();
+        }
         $selected = [];
-        foreach ($request->input('selected_special_topics') as $topic) {
+        foreach($request->special_topics as $topic) {
             $selectedTopic = new SelectedSpecialTopic();
             $selectedTopic->email = $user->email;
             $selectedTopic->code = $topic['code'];
@@ -97,15 +83,43 @@ class OutreachController extends Controller
         }
         $user->specialTopics()->saveMany($selected);
 
+        foreach($user->causes as $selection) {
+            $selection->delete();
+        }
         $selected = [];
-        foreach ($request->input('selected_causes') as $cause) {
-            $selectedCause = new selectedCause();
+        foreach ($request->causes as $cause) {
+            $selectedCause = new SelectedCause();
             $selectedCause->email = $user->email;
             $selectedCause->code = $cause['code'];
             $selectedCause->desc = $cause['desc'];
             array_push($selected, $selectedCause);
         }
         $user->causes()->saveMany($selected);
+
+        return response()->json($user);
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    //public function show($id)
+    public function show()
+    {
+        $user = Auth::user();
+
+        $plan = $user->plan;
+        foreach($user->specialTopics as $topic) {
+            if($topic['code'] == 'NH') {
+                $plan->holidays = true;
+            } else if($topic['code'] == 'IH') {
+                $plan->humor = true;
+            } else if($topic['code'] == 'CN') {
+                $plan->news = true;
+            }
+        }
 
         /**
         * DATA SCRUBBING STARTS HERE
@@ -178,9 +192,10 @@ class OutreachController extends Controller
             $targetCoverages = null;
         }
 
+
         $data = [
             'user' => $user,
-            'plan' => $user->plan,
+            'plan' => $plan,
             'facebook' => $user->facebook,
             'template' => $user->template,
             'plan' => $user->plan,
@@ -202,17 +217,6 @@ class OutreachController extends Controller
         ];
 
         return response()->json($data);
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
     }
 
     /**

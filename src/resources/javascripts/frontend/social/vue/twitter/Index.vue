@@ -1,7 +1,5 @@
 <template lang="pug">
     div
-        ProgressBar(
-            :progress="56")
         div(class="w3-card w3-padding form")
             h3 Link your Twitter Account
             h6 Do you have a Twitter account? If so, please log in to Twitter in order to recieve our Twitter services.
@@ -40,7 +38,7 @@
                 if(this.selected) {
                     window.location = this.$store.state.redirect.twitterUrl;
                 } else {
-                    window.location = '/profile';
+                    window.location = '/agency';
                 }
             }
         }

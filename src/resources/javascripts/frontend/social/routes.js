@@ -1,7 +1,7 @@
 import VueRouter from 'vue-router';
 import Facebook from './vue/facebook/Index';
 import Create from './vue/create/Index';
-import Page from './vue/page/Page';
+import Pages from './vue/pages/Index';
 import Twitter from './vue/twitter/Index';
 import LinkedIn from './vue/linkedin/LinkedIn';
 
@@ -17,9 +17,9 @@ const routes = [
         component: Create
     },
     {
-        path: '/page',
-        name: 'Page',
-        component: Page
+        path: '/pages',
+        name: 'Pages',
+        component: Pages
     },
     {
         path: '/twitter',
@@ -35,5 +35,8 @@ const routes = [
 
 export default new VueRouter({
   mode: 'history',
-  routes
+  routes,
+  scrollBehavior (to, from, savedPosition) {
+      return { x: 0, y: 0 }
+  }
 });

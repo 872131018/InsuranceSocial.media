@@ -25,7 +25,7 @@ use Illuminate\Http\Request;
 
  Route::get('/create', 'SocialController@index');
 
- Route::get('/page', 'SocialController@index');
+ Route::get('/pages', 'SocialController@index');
 
  Route::get('/twitter', 'SocialController@index');
 
