@@ -10,11 +10,11 @@ const Module = {
         redirect: ''
     },
     mutations: {
-        setMarketingRegion(state, value) {
+        setMarketingRegionType(state, value) {
             state.marketingRegion = value;
             state.marketingState = !value;
         },
-        setMarketingState(state, value) {
+        setMarketingStateType(state, value) {
             state.marketingState = value;
             state.marketingRegion = !value;
         },

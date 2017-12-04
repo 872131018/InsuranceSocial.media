@@ -49,13 +49,13 @@ const Module = {
         setCellphone(state, value) {
             state.cell_phone = value;
         },
-        setUserRegions(state, value) {
+        setRegions(state, value) {
             state.regions = value;
         },
-        clearUserRegions(state, value) {
+        clearRegions(state, value) {
             state.regions = [];
         },
-        setUserRegion(state, value) {
+        setRegion(state, value) {
             for(let selection of state.regions) {
                 if(selection.code == value.code) {
                     return;
@@ -63,16 +63,16 @@ const Module = {
             }
             state.regions.push(value);
         },
-        removeUserRegion(state, value) {
+        removeRegion(state, value) {
             state.regions.splice(value, 1);
         },
-        setUserStates(state, value) {
+        setStates(state, value) {
             state.states = value;
         },
-        clearUserStates(state, value) {
+        clearStates(state, value) {
             state.states = [];
         },
-        setUserState(state, value) {
+        setMarketingState(state, value) {
             for(let selection of state.states) {
                 if(selection.code == value.code) {
                     return;
@@ -80,16 +80,16 @@ const Module = {
             }
             state.states.push(value);
         },
-        removeUserState(state, value) {
+        removeState(state, value) {
             state.states.splice(value, 1);
         },
-        setUserCounties(state, value) {
+        setCounties(state, value) {
             state.counties = value;
         },
-        clearUserCounties(state, value) {
+        clearCounties(state, value) {
             state.counties = [];
         },
-        setUserCounty(state, value) {
+        setCounty(state, value) {
             for(let selection of state.counties) {
                 if(selection.code == value.code) {
                     return;
@@ -97,10 +97,10 @@ const Module = {
             }
             state.counties.push(value);
         },
-        removeUserCounty(state, value) {
+        removeCounty(state, value) {
             state.counties.splice(value, 1);
         },
-        setUserCarriers(state, value) {
+        setCarriers(state, value) {
             state.carriers = value;
         },
         setCarrier(state, value) {
@@ -261,7 +261,7 @@ const Module = {
                 "desc":"General Liability Insurance"
             });
         },
-        setUserCauses(state, value) {
+        setCauses(state, value) {
             state.causes = value;
         },
         setCause(state, value) {

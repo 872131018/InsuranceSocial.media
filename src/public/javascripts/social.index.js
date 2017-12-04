@@ -18859,7 +18859,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             if (this.selected) {
                 window.location = this.$store.state.redirect.twitterUrl;
             } else {
-                window.location = '/profile';
+                window.location = '/agency';
             }
         }
     }

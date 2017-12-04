@@ -2754,13 +2754,13 @@ var Module = {
         setCellphone: function setCellphone(state, value) {
             state.cell_phone = value;
         },
-        setUserRegions: function setUserRegions(state, value) {
+        setRegions: function setRegions(state, value) {
             state.regions = value;
         },
-        clearUserRegions: function clearUserRegions(state, value) {
+        clearRegions: function clearRegions(state, value) {
             state.regions = [];
         },
-        setUserRegion: function setUserRegion(state, value) {
+        setRegion: function setRegion(state, value) {
             var _iteratorNormalCompletion = true;
             var _didIteratorError = false;
             var _iteratorError = undefined;
@@ -2790,16 +2790,16 @@ var Module = {
 
             state.regions.push(value);
         },
-        removeUserRegion: function removeUserRegion(state, value) {
+        removeRegion: function removeRegion(state, value) {
             state.regions.splice(value, 1);
         },
-        setUserStates: function setUserStates(state, value) {
+        setStates: function setStates(state, value) {
             state.states = value;
         },
-        clearUserStates: function clearUserStates(state, value) {
+        clearStates: function clearStates(state, value) {
             state.states = [];
         },
-        setUserState: function setUserState(state, value) {
+        setMarketingState: function setMarketingState(state, value) {
             var _iteratorNormalCompletion2 = true;
             var _didIteratorError2 = false;
             var _iteratorError2 = undefined;
@@ -2829,16 +2829,16 @@ var Module = {
 
             state.states.push(value);
         },
-        removeUserState: function removeUserState(state, value) {
+        removeState: function removeState(state, value) {
             state.states.splice(value, 1);
         },
-        setUserCounties: function setUserCounties(state, value) {
+        setCounties: function setCounties(state, value) {
             state.counties = value;
         },
-        clearUserCounties: function clearUserCounties(state, value) {
+        clearCounties: function clearCounties(state, value) {
             state.counties = [];
         },
-        setUserCounty: function setUserCounty(state, value) {
+        setCounty: function setCounty(state, value) {
             var _iteratorNormalCompletion3 = true;
             var _didIteratorError3 = false;
             var _iteratorError3 = undefined;
@@ -2868,10 +2868,10 @@ var Module = {
 
             state.counties.push(value);
         },
-        removeUserCounty: function removeUserCounty(state, value) {
+        removeCounty: function removeCounty(state, value) {
             state.counties.splice(value, 1);
         },
-        setUserCarriers: function setUserCarriers(state, value) {
+        setCarriers: function setCarriers(state, value) {
             state.carriers = value;
         },
         setCarrier: function setCarrier(state, value) {
@@ -3208,7 +3208,7 @@ var Module = {
                 "desc": "General Liability Insurance"
             });
         },
-        setUserCauses: function setUserCauses(state, value) {
+        setCauses: function setCauses(state, value) {
             state.causes = value;
         },
         setCause: function setCause(state, value) {
@@ -3446,11 +3446,11 @@ var Module = {
         redirect: ''
     },
     mutations: {
-        setMarketingRegion: function setMarketingRegion(state, value) {
+        setMarketingRegionType: function setMarketingRegionType(state, value) {
             state.marketingRegion = value;
             state.marketingState = !value;
         },
-        setMarketingState: function setMarketingState(state, value) {
+        setMarketingStateType: function setMarketingStateType(state, value) {
             state.marketingState = value;
             state.marketingRegion = !value;
         },
@@ -3505,25 +3505,17 @@ var Module = {
         times: []
     },
     mutations: {
-        setTitles: function setTitles(state, value) {
-            state.titles = value;
-        },
-        setSizes: function setSizes(state, value) {
-            state.sizes = value;
-        },
-        setGenerations: function setGenerations(state, value) {
-            state.generations = value;
-        },
-        setFrequencies: function setFrequencies(state, value) {
-            state.frequencies = value;
-        },
-        setStates: function setStates(state, value) {
+        setOptions: function setOptions(state, value) {
+            state.titles = value.titles;
+            state.sizes = value.sizes;
+            state.generations = value.generations;
+            state.frequencies = value.frequencies;
             var _iteratorNormalCompletion = true;
             var _didIteratorError = false;
             var _iteratorError = undefined;
 
             try {
-                for (var _iterator = value[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                for (var _iterator = value.states[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
                     var index = _step.value;
 
                     index.desc = index.desc + " - " + index.state_code;
@@ -3543,21 +3535,17 @@ var Module = {
                 }
             }
 
-            state.states = value;
-        },
-        setRegions: function setRegions(state, value) {
-            state.regions = value;
-        },
-        setCounties: function setCounties(state, value) {
+            state.states = value.states;
+            state.regions = value.regions;
             var _iteratorNormalCompletion2 = true;
             var _didIteratorError2 = false;
             var _iteratorError2 = undefined;
 
             try {
-                for (var _iterator2 = value[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
-                    var index = _step2.value;
+                for (var _iterator2 = value.counties[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+                    var _index = _step2.value;
 
-                    index.desc = index.desc + " - " + index.state_code;
+                    _index.desc = _index.desc + " - " + _index.state_code;
                 }
             } catch (err) {
                 _didIteratorError2 = true;
@@ -3574,12 +3562,8 @@ var Module = {
                 }
             }
 
-            state.counties = value;
-        },
-        setCarriers: function setCarriers(state, value) {
-            state.carriers = value;
-        },
-        setCoverages: function setCoverages(state, value) {
+            state.counties = value.counties;
+            state.carriers = value.carriers;
             state.personal = value.personal;
             state.commercial = value.commercial;
             state.benefit = value.benefit;
@@ -3591,27 +3575,13 @@ var Module = {
                 return 0;
             });
             state.coverages = array;
-        },
-        setIndustries: function setIndustries(state, value) {
-            state.industries = value;
-        },
-        setMixes: function setMixes(state, value) {
-            state.mixes = value;
-        },
-        setTones: function setTones(state, value) {
-            state.tones = value;
-        },
-        setTopics: function setTopics(state, value) {
-            state.topics = value;
-        },
-        setCauses: function setCauses(state, value) {
-            state.causes = value;
-        },
-        setDays: function setDays(state, value) {
-            state.days = value;
-        },
-        setTimes: function setTimes(state, value) {
-            state.times = value;
+            state.industries = value.industries;
+            state.mixes = [{ "code": "1", "desc": "Existing Clients Only" }, { "code": "2", "desc": "Mostly Existing Clients" }, { "code": "3", "desc": "Existing and New Clients Equally" }, { "code": "4", "desc": "Mostly New Clients" }, { "code": "5", "desc": "New Clients Only" }];
+            state.tones = [{ "code": "1", "desc": "Simply Informative" }, { "code": "2", "desc": "Conversational" }, { "code": "3", "desc": "Entertainingly Informative" }];
+            state.topics = [{ "code": "NH", "desc": "Recognition of National Holidays" }, { "code": "IH", "desc": "Insurance Humor" }, { "code": "CN", "desc": "Current News" }];
+            state.causes = value.causes;
+            state.days = [{ "code": "monday", "desc": "Monday" }, { "code": "tuesday", "desc": "Tuesday" }, { "code": "wednesday", "desc": "Wednesday" }, { "code": "thursday", "desc": "Thursday" }, { "code": "friday", "desc": "Friday" }, { "code": "saturday", "desc": "Saturday" }, { "code": "sunday", "desc": "Sunday" }];
+            state.times = [{ "code": "system_chosen", "desc": "System Chosen" }, { "code": "2-5am", "desc": "2-5am" }, { "code": "5-8am", "desc": "5-8am" }, { "code": "8-11am", "desc": "8-11am" }, { "code": "11am-2pm", "desc": "11am-2pm" }, { "code": "2-5pm", "desc": "2-5pm" }, { "code": "8-11pm", "desc": "8-11pm" }, { "code": "11pm-2am", "desc": "11pm-2am" }];
         }
     }
 };
@@ -4383,13 +4353,13 @@ var render = function() {
           },
           on: {
             setMarketingRegion: function(value) {
-              _vm.$store.commit("setMarketingRegion", value)
-              _vm.$store.commit("clearUserStates")
-              _vm.$store.commit("clearUserCounties")
+              _vm.$store.commit("setMarketingRegionType", value)
+              _vm.$store.commit("clearStates")
+              _vm.$store.commit("clearCounties")
             },
             setMarketingState: function(value) {
-              _vm.$store.commit("setMarketingState", value)
-              _vm.$store.commit("clearUserRegions")
+              _vm.$store.commit("setMarketingStateType", value)
+              _vm.$store.commit("clearRegions")
             }
           }
         }),
@@ -4404,7 +4374,7 @@ var render = function() {
                   },
                   on: {
                     clearValue: function(value) {
-                      return _vm.$store.commit("removeUserRegion", value)
+                      return _vm.$store.commit("removeRegion", value)
                     }
                   }
                 }),
@@ -4416,7 +4386,7 @@ var render = function() {
                   },
                   on: {
                     setValue: function(value) {
-                      return _vm.$store.commit("setUserRegion", value)
+                      return _vm.$store.commit("setRegion", value)
                     }
                   }
                 })
@@ -4435,7 +4405,7 @@ var render = function() {
                   },
                   on: {
                     clearValue: function(value) {
-                      return _vm.$store.commit("removeUserState", value)
+                      return _vm.$store.commit("removeState", value)
                     }
                   }
                 }),
@@ -4447,7 +4417,7 @@ var render = function() {
                   },
                   on: {
                     setValue: function(value) {
-                      return _vm.$store.commit("setUserState", value)
+                      return _vm.$store.commit("setMarketingState", value)
                     }
                   }
                 }),
@@ -4458,7 +4428,7 @@ var render = function() {
                   },
                   on: {
                     clearValue: function(value) {
-                      return _vm.$store.commit("removeUserCounty", value)
+                      return _vm.$store.commit("removeCounty", value)
                     }
                   }
                 }),
@@ -4470,7 +4440,7 @@ var render = function() {
                   },
                   on: {
                     setValue: function(value) {
-                      return _vm.$store.commit("setUserCounty", value)
+                      return _vm.$store.commit("setCounty", value)
                     }
                   }
                 })
@@ -5410,58 +5380,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         console.log('App mounted.');
 
         this.loading++;
-        axios.get('/api/titles').then(function (response) {
-            _this.$store.commit('setTitles', response.data);
-            _this.loading--;
-        });
-        this.loading++;
-        axios.get('/api/sizes').then(function (response) {
-            _this.$store.commit('setSizes', response.data);
-            _this.loading--;
-        });
-        this.loading++;
-        axios.get('/api/generations').then(function (response) {
-            _this.$store.commit('setGenerations', response.data);
-            _this.loading--;
-        });
-        this.loading++;
-        axios.get('/api/frequencies').then(function (response) {
-            _this.$store.commit('setFrequencies', response.data);
-            _this.loading--;
-        });
-        this.loading++;
-        axios.get('/api/states').then(function (response) {
-            _this.$store.commit('setStates', response.data);
-            _this.loading--;
-        });
-        this.loading++;
-        axios.get('/api/regions').then(function (response) {
-            _this.$store.commit('setRegions', response.data);
-            _this.loading--;
-        });
-        this.loading++;
-        axios.get('/api/counties').then(function (response) {
-            _this.$store.commit('setCounties', response.data);
-            _this.loading--;
-        });
-        this.loading++;
-        axios.get('/api/carriers').then(function (response) {
-            _this.$store.commit('setCarriers', response.data);
-            _this.loading--;
-        });
-        this.loading++;
-        axios.get('/api/coverages').then(function (response) {
-            _this.$store.commit('setCoverages', response.data);
-            _this.loading--;
-        });
-        this.loading++;
-        axios.get('/api/industries').then(function (response) {
-            _this.$store.commit('setIndustries', response.data);
-            _this.loading--;
-        });
-        this.loading++;
-        axios.get('/api/causes').then(function (response) {
-            _this.$store.commit('setCauses', response.data);
+        axios.get('/api/options').then(function (response) {
+            _this.$store.commit('setOptions', response.data);
             _this.loading--;
         });
         this.loading++;
@@ -5469,8 +5389,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             _this.$store.commit('setUser', response.data);
             _this.$store.commit('setPlan', response.data.plan);
             _this.$store.commit('setAgency', response.data.agency);
-            _this.$store.commit('setUserRegions', response.data.regions);
-            _this.$store.commit('setUserCarriers', response.data.carriers);
+            _this.$store.commit('setRegions', response.data.regions);
+            _this.$store.commit('setStates', response.data.states);
+            _this.$store.commit('setCounties', response.data.counties);
+            _this.$store.commit('setRegions', response.data.regions);
+            _this.$store.commit('setCarriers', response.data.carriers);
             _this.$store.commit('setCommercialCoverages', response.data.commercial_coverages);
             if (response.data.commercial_coverages.length > 0) {
                 _this.$store.commit('setCommercial', true);
@@ -5491,7 +5414,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             _this.$store.commit('setCurrentIndustries', response.data.current_industries);
             _this.$store.commit('setTargetIndustries', response.data.target_industries);
             _this.$store.commit('setSpecialTopics', response.data.special_topics);
-            _this.$store.commit('setUserCauses', response.data.causes);
+            _this.$store.commit('setCauses', response.data.causes);
             _this.loading--;
         });
         this.loading++;
@@ -5499,11 +5422,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             _this.$store.commit('setEndpoints', response.data);
             _this.loading--;
         });
-        this.$store.commit('setMixes', [{ "code": "1", "desc": "Existing Clients Only" }, { "code": "2", "desc": "Mostly Existing Clients" }, { "code": "3", "desc": "Existing and New Clients Equally" }, { "code": "4", "desc": "Mostly New Clients" }, { "code": "5", "desc": "New Clients Only" }]);
-        this.$store.commit('setTones', [{ "code": "1", "desc": "Simply Informative" }, { "code": "2", "desc": "Conversational" }, { "code": "3", "desc": "Entertainingly Informative" }]);
-        this.$store.commit('setTopics', [{ "code": "NH", "desc": "Recognition of National Holidays" }, { "code": "IH", "desc": "Insurance Humor" }, { "code": "CN", "desc": "Current News" }]);
-        this.$store.commit('setDays', [{ "code": "monday", "desc": "Monday" }, { "code": "tuesday", "desc": "Tuesday" }, { "code": "wednesday", "desc": "Wednesday" }, { "code": "thursday", "desc": "Thursday" }, { "code": "friday", "desc": "Friday" }, { "code": "saturday", "desc": "Saturday" }, { "code": "sunday", "desc": "Sunday" }]);
-        this.$store.commit('setTimes', [{ "code": "system_chosen", "desc": "System Chosen" }, { "code": "2-5am", "desc": "2-5am" }, { "code": "5-8am", "desc": "5-8am" }, { "code": "8-11am", "desc": "8-11am" }, { "code": "11am-2pm", "desc": "11am-2pm" }, { "code": "2-5pm", "desc": "2-5pm" }, { "code": "8-11pm", "desc": "8-11pm" }, { "code": "11pm-2am", "desc": "11pm-2am" }]);
     },
 
     components: {

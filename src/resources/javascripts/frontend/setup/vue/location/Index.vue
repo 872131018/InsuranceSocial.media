@@ -31,39 +31,39 @@
             Marketing(
                 :marketingRegion="marketingRegion"
                 :marketingState="marketingState"
-                @setMarketingRegion="(value) => { $store.commit('setMarketingRegion', value); $store.commit('clearUserStates'); $store.commit('clearUserCounties') }"
-                @setMarketingState="(value) => { $store.commit('setMarketingState', value); $store.commit('clearUserRegions') }")
+                @setMarketingRegion="(value) => { $store.commit('setMarketingRegionType', value); $store.commit('clearStates'); $store.commit('clearCounties') }"
+                @setMarketingState="(value) => { $store.commit('setMarketingStateType', value); $store.commit('clearRegions') }")
             div(
                 v-if="marketingRegion")
                 List(
                     :label="'Selected Regions (click to remove)'"
                     :items="selectedRegions"
-                    @clearValue="(value) => $store.commit('removeUserRegion', value)")
+                    @clearValue="(value) => $store.commit('removeRegion', value)")
                 Dropdown(
                     :label="'Marketing Regions (Select up to 5)'"
                     :options="$store.state.options.regions"
                     :selected="label"
-                    @setValue="(value) => $store.commit('setUserRegion', value)")
+                    @setValue="(value) => $store.commit('setRegion', value)")
             div(
                 v-if="marketingState")
                 List(
                     :label="'Selected State (click to remove)'"
                     :items="selectedStates"
-                    @clearValue="(value) => $store.commit('removeUserState', value)")
+                    @clearValue="(value) => $store.commit('removeState', value)")
                 Dropdown(
                     :label="'Marketing States (Select up to 5)'"
                     :options="$store.state.options.states"
                     :selected="label"
-                    @setValue="(value) => $store.commit('setUserState', value)")
+                    @setValue="(value) => $store.commit('setMarketingState', value)")
                 List(
                     :label="'Selected Counties (click to remove)'"
                     :items="selectedCounties"
-                    @clearValue="(value) => $store.commit('removeUserCounty', value)")
+                    @clearValue="(value) => $store.commit('removeCounty', value)")
                 Dropdown(
                     :label="'Marketing Counties (No selection is all counties)'"
                     :options="counties"
                     :selected="label"
-                    @setValue="(value) => $store.commit('setUserCounty', value)")
+                    @setValue="(value) => $store.commit('setCounty', value)")
             Errors(
                 v-if="errors.length"
                 :errors="errors")

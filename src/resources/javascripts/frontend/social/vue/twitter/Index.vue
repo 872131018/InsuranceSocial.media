@@ -38,7 +38,7 @@
                 if(this.selected) {
                     window.location = this.$store.state.redirect.twitterUrl;
                 } else {
-                    window.location = '/profile';
+                    window.location = '/agency';
                 }
             }
         }
