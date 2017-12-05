@@ -67,22 +67,21 @@ use Illuminate\Support\Facades\Log;
  */
  Route::get('/api/user', function (Request $request) {
      return response()->json(Auth::user()
-        ->with('plan')
-        ->with('agency')
-        ->with('regions')
-        ->with('states')
-        ->with('counties')
-        ->with('carriers')
-        ->with('commercialCoverages')
-        ->with('personalCoverages')
-        ->with('benefitCoverages')
-        ->with('cropCoverages')
-        ->with('targetCoverages')
-        ->with('currentIndustries')
-        ->with('targetIndustries')
-        ->with('specialTopics')
-        ->with('causes')
-        ->first());
+        ->load('plan')
+        ->load('agency')
+        ->load('regions')
+        ->load('states')
+        ->load('counties')
+        ->load('carriers')
+        ->load('commercialCoverages')
+        ->load('personalCoverages')
+        ->load('benefitCoverages')
+        ->load('cropCoverages')
+        ->load('targetCoverages')
+        ->load('currentIndustries')
+        ->load('targetIndustries')
+        ->load('specialTopics')
+        ->load('causes'));
  });
  Route::get('/api/options', function (Request $request) {
      $data = [
