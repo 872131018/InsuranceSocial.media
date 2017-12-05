@@ -64,9 +64,12 @@
             update(route) {
                 this.validate();
                 if(this.errors.length == 0) {
+                    this.$store.commit('serviceLoading');
                     axios.post(window.location, this.$store.state.create).then(response => {
+                        this.$store.commit('serviceFinished');
                         this.$router.push({ name: route });
                     }).catch(error => {
+                        this.$store.commit('serviceFinished');
                         this.$store.commit('setError', 'An error has occured, please contact support.');
                     });
                 }

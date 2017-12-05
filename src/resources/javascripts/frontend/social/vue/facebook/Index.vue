@@ -6,7 +6,7 @@
             button(class="w3-button w3-margin-right w3-text-white primary"
                 @click="facebookLogin()") Post to my page
             button(class="w3-button w3-margin-left w3-text-white primary"
-                @click="createPage()") Create a new page
+                @click="$router.push({ name: 'Create' })") Create a new page
 </template>
 
 <script>
@@ -14,9 +14,6 @@
         methods: {
             facebookLogin() {
                 window.location = this.$store.state.redirect.facebookUrl;
-            },
-            createPage() {
-                this.$router.push({ name: 'Create' });
             }
         }
     }

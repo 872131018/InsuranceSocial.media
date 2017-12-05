@@ -213,6 +213,7 @@
                             this.$router.push({ name: 'Location' });
                         }
                     }).catch(error => {
+                        this.$store.commit('serviceFinished');
                         this.$store.commit('setError', 'An error has occured, please contact support.');
                     });
                     this.$store.commit('serviceLoading');
@@ -222,6 +223,7 @@
                             this.$router.push({ name: 'Location' });
                         }
                     }).catch(error => {
+                        this.$store.commit('serviceFinished');
                         this.$store.commit('setError', 'An error has occured, please contact support.');
                     });
                 }

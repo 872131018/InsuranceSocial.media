@@ -26,9 +26,9 @@
             <footer class="w3-container w3-text-white primary w3-center">
                 <p>By continuing you accept these coverages. They can be changed at a later time.</p>
                 <div class="w3-half w3-padding w3-yellow w3-card"
-                    v-on:click="$emit('closeModal')">Click to select different coverages</div>
+                    v-on:click="$emit('closeModal')">Click here to select your own coverages</div>
                 <div class="w3-half w3-padding w3-green w3-card"
-                    v-on:click="$emit('continue')">Click to continue with core coverages</div>
+                    v-on:click="$emit('continue')">Click here to select core coverages</div>
             </footer>
         </div>
     </div>

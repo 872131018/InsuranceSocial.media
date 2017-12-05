@@ -6,6 +6,8 @@
             ProgressBar(
                 :progress="progress")
             router-view
+        Loader(
+            v-if="loading != 0")
         Foot
 </template>
 
@@ -14,6 +16,9 @@
 
     export default {
         computed: {
+            loading() {
+                return this.$store.state.services.loading;
+            },
             progress() {
                 switch(this.$route.path) {
                     case '/facebook':
@@ -33,12 +38,15 @@
         },
         mounted() {
             console.log('App mounted.');
-
+            this.$store.commit('serviceLoading');
             axios.get('/api/facebook').then(response => {
                 this.$store.commit('setFacebookUrl', response.data);
+                this.$store.commit('serviceFinished');
             });
+            this.$store.commit('serviceLoading');
             axios.get('/api/twitter').then(response => {
                 this.$store.commit('setTwitterUrl', response.data);
+                this.$store.commit('serviceFinished');
             });
         },
         components: {

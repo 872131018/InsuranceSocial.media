@@ -56,14 +56,14 @@
                 @setValue="(value) => $store.commit('setBenefitCoverage', value)")
             Crop(
                 :crop="crop"
-                @setOption="(value) => $store.commit('setCrop', value)")
+                @setOption="setCrop($event)")
             List(
-                v-if="crop"
+                v-if="crop == 'TEMP'"
                 :label="'Selected Coverages (click to remove)'"
                 :items="cropCoverages"
                 @clearValue="(value) => $store.commit('removeCropCoverage', value)")
             Dropdown(
-                v-if="crop"
+                v-if="crop == 'TEMP'"
                 :label="'Crop Coverages (Select up to 5)'"
                 :options="$store.state.options.crop"
                 :selected="label"
@@ -197,6 +197,20 @@
             }
         },
         methods: {
+            setCrop(value) {
+                /*
+                * Temp fix anticipating specific crop coverages later
+                * Also check the conditional on the List and Dropdown
+                */
+                //(value) => $store.commit('setCrop', value)
+                this.$store.commit('setCrop', value);
+                if(value == true) {
+                    this.$store.commit('setCropCoverage', this.$store.state.options.crop[0]);
+                } else {
+                    this.$store.commit('removeCropCoverage', 0);
+                }
+
+            },
             useDefaults() {
                 if(this.modal_personal_warning) {
                     this.$store.commit('setPersonalDefaults');
@@ -230,9 +244,12 @@
                         this.modal_commercial_warning = false;
                     }
                     if(this.modal == false) {
+                        this.$store.commit('serviceLoading');
                         axios.post('/coverages', this.$store.state.user).then(response => {
+                            this.$store.commit('serviceFinished');
                             this.$router.push({ name: 'Outreach' });
                         }).catch(error => {
+                            this.$store.commit('serviceFinished');
                             this.$store.commit('setError', 'An error has occured, please contact support.');
                         });
                     }

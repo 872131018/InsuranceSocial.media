@@ -1,5 +1,5 @@
 <template lang="pug">
-    div(class="w3-padding")
+    div
         input(class="w3-input w3-show-inline-block" type="text"
             :value="value"
             @keyup="$emit('setValue', $event.target.value)")

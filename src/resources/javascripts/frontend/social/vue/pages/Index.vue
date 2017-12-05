@@ -4,7 +4,7 @@
             h3 Select a Corporate Facebook Page
             h5 This is the page Insurance Social Media will post content to.
             Page(
-                v-for="(page, index) in pages"
+                v-for="(page, index) in $store.state.page.pages"
                 :key="index"
                 :page="page"
                 :selected="selected == page.id"
@@ -26,14 +26,13 @@
 
     export default {
         mounted() {
+            this.$store.commit('serviceLoading');
             axios.get('/api/pages').then(response => {
+                this.$store.commit('serviceFinished');
                 this.$store.commit('setPages', response.data);
             });
         },
         computed: {
-            pages() {
-                return this.$store.state.page.pages;
-            },
             selected() {
                 return this.$store.state.page.id;
             },
@@ -43,12 +42,23 @@
         },
         methods: {
             update() {
+                this.validate();
+                if(this.errors.length == 0) {
+                    this.$store.commit('serviceLoading');
+                    axios.post('/pages', this.$store.state.page).then(response => {
+                        this.$store.commit('serviceFinished');
+                        this.$router.push({ name: 'Twitter' });
+                    }).catch(error => {
+                        this.$store.commit('serviceFinished');
+                        this.$store.commit('setError', 'An error has occured, please contact support.');
+                    });
+                }
+            },
+            validate() {
                 this.$store.commit('clearErrors');
-                axios.post('/pages', this.$store.state.page).then(response => {
-                    this.$router.push({ name: 'Twitter' });
-                }).catch(error => {
-                    this.$store.commit('setError', 'An error has occured, please contact support.');
-                });
+                if(!this.selected) {
+                    this.$store.commit('setError', 'You must select a page unless you want to create a new page or skip this step.');
+                }
             }
         },
         components: {

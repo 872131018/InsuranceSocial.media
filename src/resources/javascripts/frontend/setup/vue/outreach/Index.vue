@@ -124,6 +124,7 @@
                             this.export();
                         }
                     }).catch(error => {
+                        this.$store.commit('serviceFinished');
                         this.$store.commit('setError', 'An error has occured, please contact support.');
                     });
                     this.$store.commit('serviceLoading');
@@ -133,12 +134,13 @@
                             this.export();
                         }
                     }).catch(error => {
+                        this.$store.commit('serviceFinished');
                         this.$store.commit('setError', 'An error has occured, please contact support.');
                     });
                 }
             },
             export() {
-                this.loading = true;
+                this.$store.commit('serviceLoading');
                 axios.get('/export').then(response => {
                     delete axios.defaults.headers.common['X-Requested-With'];
                     delete axios.defaults.headers.common['X-CSRF-TOKEN'];
@@ -150,6 +152,9 @@
                         } else {
                             this.$store.commit('setError', response.data.errors);
                         }
+                    }).catch(error => {
+                        this.$store.commit('serviceFinished');
+                        this.$store.commit('setError', 'An error has occured, please contact support.');
                     });
                 });
             },
@@ -164,14 +169,8 @@
                 if(this.specialTopics.length > 5) {
                     this.$store.commit('setError', 'You may only select up to 5 post topics.');
                 }
-                if(this.specialTopics.length == 0) {
-                    this.$store.commit('setError', 'You may only select at least 1 special posting topic.');
-                }
                 if(this.causes.length > 5) {
                     this.$store.commit('setError', 'You may only select up to 5 causes.');
-                }
-                if(this.causes.length == 0) {
-                    this.$store.commit('setError', 'You may only select at least 1 cause to support.');
                 }
                 let code = this.$store.state.plan.plan_code;
                 if(code == 1 && this.days.length != 3) {

@@ -1,6 +1,5 @@
 {
     "carriers":[
-        {"code": "11274", "desc":"Carrier"},
         {"code": "11286", "desc":"Farmer's Mutual Hail"},
         {"code": "11227", "desc":"Grinnell Mutual"},
         {"code": "11280", "desc":"IMT Group"},

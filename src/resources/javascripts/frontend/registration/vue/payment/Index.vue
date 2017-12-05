@@ -14,17 +14,16 @@
             Card(
                 :value="card"
                 @setValue="(value) => $store.commit('setCard', value)")
-            div(class="w3-row-padding")
-                Month(
-                    :value="month"
-                    @setMonth="(value) => $store.commit('setMonth', value.value)")
-                Year(
-                    :value="year"
-                    @setValue="(value) => $store.commit('setYear', value)")
-                CVV(
-                    :value="cvv"
-                    @setValue="(value) => $store.commit('setCVV', value)")
-            div Expiration Month and Year(YYYY) with Security Code
+            Month(
+                :value="month"
+                @setMonth="(value) => $store.commit('setMonth', value.value)")
+            Year(
+                :value="year"
+                @setValue="(value) => $store.commit('setYear', value)")
+            CVV(
+                :value="cvv"
+                @setValue="(value) => $store.commit('setCVV', value)")
+            div(style="clear:both") Expiration Month and Year(YYYY) with Security Code
                 i(class="fa fa-question-circle-o w3-tooltip")
                     img(class="w3-text" style="position:absolute;bottom:-20px" src="/images/creditcards_cvv.png")
             Name(
@@ -160,7 +159,7 @@
                         },
                         authData: this.$store.state.authorize
                     };
-
+                    this.$store.commit('serviceLoading');
                     Accept.dispatchData(secureData, (response) => {
                         if (response.messages.resultCode === "Error") {
                             for(let error of response.messages.message) {
@@ -191,6 +190,7 @@
                             }
 
                             axios.post('/register', data).then(response => {
+                                this.$store.commit('serviceFinished');
                                 this.response = {
                                     planCost: this.plan.price,
                                     coupon_code: this.$store.state.registration.code,
@@ -198,6 +198,7 @@
                                     transactionId: response.data.transaction.transactionId
                                 };
                             }).catch((error) => {
+                                this.$store.commit('serviceFinished');
                                 if(error.response.data) {
                                     this.$store.commit('setError', 'There has been an error. See error message below.');
                                     this.$store.commit('setError', response.data);

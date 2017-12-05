@@ -2,29 +2,24 @@
     div
         Navigation
         Tips
-        div(class="w3-container w3-padding-32 bgimg2"
-            v-if="loading == 0")
+        div(class="w3-container w3-padding-32 bgimg2")
             ProgressBar(
                 :progress="progress")
             QuickNavigation
             router-view
-        div(
-            v-else)
-            Loader
+        Loader(
+            v-if="loading != 0")
         Foot
 </template>
 
 <script>
     import Tips from './Tips';
-    import Loader from './Loader';
 
     export default {
-        data() {
-            return {
-                loading: 0
-            }
-        },
         computed: {
+            loading() {
+                return this.$store.state.services.loading;
+            },
             progress() {
                 switch(this.$route.path) {
                     case '/agency':
@@ -45,12 +40,12 @@
         mounted() {
             console.log('App mounted.');
 
-            this.loading++;
+            this.$store.commit('serviceLoading');
             axios.get('/api/options').then(response => {
                 this.$store.commit('setOptions', response.data);
-                this.loading--;
+                this.$store.commit('serviceFinished');
             });
-            this.loading++;
+            this.$store.commit('serviceLoading');
             axios.get('/api/user').then(response => {
                 this.$store.commit('setUser', response.data);
                 this.$store.commit('setPlan', response.data.plan);
@@ -81,17 +76,16 @@
                 this.$store.commit('setTargetIndustries', response.data.target_industries);
                 this.$store.commit('setSpecialTopics', response.data.special_topics);
                 this.$store.commit('setCauses', response.data.causes);
-                this.loading--;
+                this.$store.commit('serviceFinished');
             });
-            this.loading++;
+            this.$store.commit('serviceLoading');
             axios.get('/api/endpoint').then(response => {
                 this.$store.commit('setEndpoints', response.data);
-                this.loading--;
+                this.$store.commit('serviceFinished');
             });
         },
         components: {
-            Tips,
-            Loader
+            Tips
         }
     }
 </script>

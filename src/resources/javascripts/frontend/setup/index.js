@@ -9,6 +9,7 @@ import Vue from 'vue';
 
 import Navigation from '../global/navigation/Navigation';
 import Foot from '../global/foot/Foot';
+import Loader from '../global/Loader';
 import Field from '../global/inputs/Field';
 import Dropdown from '../global/inputs/Dropdown';
 import List from '../global/inputs/List';
@@ -18,6 +19,7 @@ import ProgressBar from './vue/Progress';
 import QuickNavigation from './vue/QuickNavigation';
 Vue.component('Navigation', Navigation);
 Vue.component('Foot', Foot);
+Vue.component('Loader', Loader);
 Vue.component('Field', Field);
 Vue.component('Dropdown', Dropdown);
 Vue.component('List', List);

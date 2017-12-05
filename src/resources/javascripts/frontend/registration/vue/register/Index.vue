@@ -97,13 +97,16 @@
             register() {
                 this.validate();
                 if(this.errors.length == 0) {
+                    this.$store.commit('serviceLoading');
                     axios.post('/confirm', { email: this.email }).then(response => {
+                        this.$store.commit('serviceFinished');
                         if(this.code == 'FMH17' || this.code == 'IMTGEM17') {
                             this.$router.push({ name: 'Corporate' });
                         } else {
                             this.$router.push({ name: 'Plans' });
                         }
                     }).catch(error => {
+                        this.$store.commit('serviceFinished');
                         if(error.response.data.email) {
                             this.$store.commit('setError', 'That email has already been used, please use another');
                         } else {

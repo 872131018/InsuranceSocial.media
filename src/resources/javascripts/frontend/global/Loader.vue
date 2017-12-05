@@ -1,7 +1,7 @@
 <template lang="pug">
     div(class="w3-modal w3-show")
         div(class="loader")
-        h3(class="w3-center w3-text-white") We are importing your preferences and loading your account. Please be patient.
+        h3(class="w3-center w3-text-white") We are initializing application settings and loading relevant data. Please be patient.
 </template>
 
 <script>
