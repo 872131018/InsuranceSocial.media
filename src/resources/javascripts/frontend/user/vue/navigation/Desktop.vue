@@ -1,37 +1,31 @@
-<template>
-    <div>
-        <a class="w3-bar-item w3-button w3-hover-white header-logo">Insurance Social Media</a>
-        <!--
-        <router-link class="w3-bar-item w3-button w3-hover-white w3-right header-link"
-            v-bind:to="{ name: 'Outreach' }">Outreach
-        </router-link>
-        <router-link class="w3-bar-item w3-button w3-hover-white w3-right header-link"
-            v-bind:to="{ name: 'Coverage' }">Coverage
-        </router-link>
-        <router-link class="w3-bar-item w3-button w3-hover-white w3-right header-link"
-            v-bind:to="{ name: 'Location' }">Location
-        </router-link>
-        <router-link class="w3-bar-item w3-button w3-hover-white w3-right header-link"
-            v-bind:to="{ name: 'Profile' }">Profile
-        </router-link>
-    -->
-        <div class="w3-bar-item w3-button w3-hover-white w3-right header-link"
-            v-bind:class="{ 'w3-white': selected == 'tools' }"
-            v-on:click="$emit('showTools')">Tools
-        </div>
-        <div class="w3-bar-item w3-button w3-hover-white w3-right header-link"
-            v-bind:class="{ 'w3-white': selected == 'social' }"
-            v-on:click="$emit('showSocialMedia')">Social Media
-        </div>
-        <div class="w3-bar-item w3-button w3-hover-white w3-right header-link"
-            v-bind:class="{ 'w3-white': selected == 'reports' }"
-            v-on:click="$emit('showReports')">Reports
-        </div>
-        <div class="w3-bar-item w3-button w3-hover-white w3-right header-link"
-            v-bind:class="{ 'w3-white': selected == 'home' }"
-            v-on:click="$emit('showHome')">Home
-        </div>
-    </div>
+<template lang="pug">
+    div
+        div(class="w3-bar-item w3-button w3-hover-white header-logo") Insurance Social Media
+        //-
+            <router-link class="w3-bar-item w3-button w3-hover-white w3-right header-link"
+                v-bind:to="{ name: 'Outreach' }">Outreach
+            </router-link>
+            <router-link class="w3-bar-item w3-button w3-hover-white w3-right header-link"
+                v-bind:to="{ name: 'Coverage' }">Coverage
+            </router-link>
+            <router-link class="w3-bar-item w3-button w3-hover-white w3-right header-link"
+                v-bind:to="{ name: 'Location' }">Location
+            </router-link>
+            <router-link class="w3-bar-item w3-button w3-hover-white w3-right header-link"
+                v-bind:to="{ name: 'Profile' }">Profile
+            </router-link>
+        div(class="w3-bar-item w3-button w3-hover-white w3-right header-link"
+            :class="{ 'w3-white': selected == 'tools' }"
+            @click="$emit('showMenu', 'tools')") Tools
+        div(class="w3-bar-item w3-button w3-hover-white w3-right header-link"
+            :class="{ 'w3-white': selected == 'socialMedia' }"
+            @click="$emit('showMenu', 'socialMedia')") Social Media
+        div(class="w3-bar-item w3-button w3-hover-white w3-right header-link"
+            :class="{ 'w3-white': selected == 'reports' }"
+            @click="$emit('showMenu', 'reports')") Reports
+        div(class="w3-bar-item w3-button w3-hover-white w3-right header-link"
+            :class="{ 'w3-white': selected == 'home' }"
+            @click="$emit('showMenu', 'home')") Home
 </template>
 
 <script>

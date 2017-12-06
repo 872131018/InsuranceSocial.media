@@ -22,6 +22,7 @@
             console.log('App mounted.')
             this.$store.commit('serviceLoading');
             axios.get('/api/plans').then(response => {
+                this.$store.commit('serviceFinished');
                 this.$store.commit('setPlans', response.data);
                 if(this.$route.query.code) {
                     this.$store.commit('setCode', this.$route.query.code);
@@ -35,12 +36,11 @@
                 if(this.$route.query.plan == 'CONCIERGE') {
                     this.$store.commit('setPlan', response.data[2]);
                 }
-                this.$store.commit('serviceFinished');
             });
             this.$store.commit('serviceLoading');
             axios.get('/api/payment').then(response => {
-                this.$store.commit('setAuthorize', response.data);
                 this.$store.commit('serviceFinished');
+                this.$store.commit('setAuthorize', response.data);
             });
         },
         components: {

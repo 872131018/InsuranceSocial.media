@@ -55,7 +55,7 @@
                 v-if="errors.length"
                 :errors="errors")
             button(class="w3-button w3-text-white w3-margin-right primary"
-                @click="$router.push({ name: 'Coverage' })") Previous
+                @click="$router.push({ name: 'Coverages' })") Previous
             button(class="w3-button w3-text-white w3-margin-left primary"
                 @click="update()") Finish
 </template>
@@ -179,9 +179,6 @@
                     this.$store.commit('setError', 'You must select 5 posting days.');
                 } else if(code == 3 && this.days.length != 7) {
                     this.$store.commit('setError', 'You must select 7 posting days.');
-                }
-                if(this.days.length == 0) {
-                    this.$store.commit('setError', 'You must select days for posting content.');
                 }
                 if(!this.timeCode) {
                     this.$store.commit('setError', 'You must select a time to post content.');

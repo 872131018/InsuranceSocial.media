@@ -40,13 +40,13 @@
             console.log('App mounted.');
             this.$store.commit('serviceLoading');
             axios.get('/api/facebook').then(response => {
-                this.$store.commit('setFacebookUrl', response.data);
                 this.$store.commit('serviceFinished');
+                this.$store.commit('setFacebookUrl', response.data);
             });
             this.$store.commit('serviceLoading');
             axios.get('/api/twitter').then(response => {
-                this.$store.commit('setTwitterUrl', response.data);
                 this.$store.commit('serviceFinished');
+                this.$store.commit('setTwitterUrl', response.data);
             });
         },
         components: {

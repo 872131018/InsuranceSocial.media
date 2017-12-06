@@ -1,4 +1,5 @@
-import Recent from './vue/recent/Recent';
+import VueRouter from 'vue-router';
+import Recent from './vue/recent/Index';
 import ReportsFacebook from './vue/reports/facebook/Reports';
 import ReportsTwitter from './vue/reports/twitter/Reports';
 import FacebookFeed from './vue/actions/facebook/Feed';
@@ -9,7 +10,7 @@ import Location from './vue/location/Location';
 import Coverage from './vue/coverage/Coverage';
 import Outreach from './vue/outreach/Outreach';
 
-export default [
+const routes = [
     {
         path: '/user/recent',
         name: 'Recent',
@@ -61,3 +62,11 @@ export default [
         component: Outreach
     }
 ];
+
+export default new VueRouter({
+  mode: 'history',
+  routes,
+  scrollBehavior (to, from, savedPosition) {
+      return { x: 0, y: 0 }
+  }
+});
