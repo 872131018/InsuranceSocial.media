@@ -454,7 +454,11 @@ class DashboardController extends Controller
         */
         foreach($interaction['reach_series'] as $key => $value) {
             array_push($interaction['ratio_labels'], $interaction['reach_series'][$key]);
-            $ratio = (float) number_format($interaction['engagement_series'][$key] / $interaction['reach_series'][$key], 2);
+            if( $interaction['reach_series'][$key] != 0) {
+                $ratio = (float) number_format($interaction['engagement_series'][$key] / $interaction['reach_series'][$key], 2);
+            } else {
+                $ratio = 0;
+            }
             array_push($interaction['ratio_series'], $ratio);
         }
 

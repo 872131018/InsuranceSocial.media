@@ -3,10 +3,13 @@ import Vuex from 'vuex';
 import NavigationModule from './modules/navigation.vuex';
 import UserModule from './modules/user.vuex';
 import RecentModule from './modules/recent.vuex';
-import PlanModule from './modules/plan.vuex';
-import AgencyModule from './modules/agency.vuex';
+import FacebookPerformance from './modules/facebookPerformance.vuex';
+import FacebookInteraction from './modules/facebookInteraction.vuex';
+import FacebookPosts from './modules/facebookPosts.vuex';
+import TwitterPerformance from './modules/twitterPerformance.vuex';
+import TwitterInteraction from './modules/twitterInteraction.vuex';
+import TwitterPosts from './modules/twitterPosts.vuex';
 import TransientModule from './modules/transient.vuex';
-import OptionModule from './modules/options.vuex';
 import ErrorModule from './modules/errors.vuex';
 import ServiceModule from './modules/services.vuex';
 
@@ -17,10 +20,13 @@ const store = new Vuex.Store({
         navigation: NavigationModule,
         recent: RecentModule,
         user: UserModule,
-        plan: PlanModule,
-        agency: AgencyModule,
+        facebookPerformance: FacebookPerformance,
+        facebookInteraction: FacebookInteraction,
+        facebookPosts: FacebookPosts,
+        twitterPerformance: TwitterPerformance,
+        twitterInteraction: TwitterInteraction,
+        twitterPosts: TwitterPosts,
         transient: TransientModule,
-        options: OptionModule,
         errors: ErrorModule,
         services: ServiceModule
     }

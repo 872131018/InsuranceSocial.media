@@ -1,38 +1,30 @@
 const Module = {
     state: {
-        marketingRegion: false,
-        marketingState: false,
-        personal: false,
-        commercial: false,
-        benefit: false,
-        crop: false,
-        post: '',
-        redirect: ''
+        facebookPerformanceRange: 60,
+        facebookInteractionRange: 60,
+        facebookInteractionGraph: 'reach',
+        twitterPerformanceRange: 50,
+        twitterInteractionRange: 50,
+        twitterInteractionGraph: 'retweets'
     },
     mutations: {
-        setMarketingRegionType(state, value) {
-            state.marketingRegion = value;
-            state.marketingState = !value;
+        setFacebookPerformanceRange(state, value) {
+            state.facebookPerformanceRange = value;
         },
-        setMarketingStateType(state, value) {
-            state.marketingState = value;
-            state.marketingRegion = !value;
+        setFacebookInteractionRange(state, value) {
+            state.facebookInteractionRange = value;
         },
-        setPersonal(state, value) {
-            state.personal = value;
+        setFacebookInteractionGraph(state, value) {
+            state.facebookInteractionGraph = value;
         },
-        setCommercial(state, value) {
-            state.commercial = value;
+        setTwitterPerformanceRange(state, value) {
+            state.twitterPerformanceRange = value;
         },
-        setBenefit(state, value) {
-            state.benefit = value;
+        setTwitterInteractionRange(state, value) {
+            state.twitterInteractionRange = value;
         },
-        setCrop(state, value) {
-            state.crop = value;
-        },
-        setEndpoints(state, value) {
-            state.post = value.post;
-            state.redirect = value.redirect;
+        setTwitterInteractionGraph(state, value) {
+            state.twitterInteractionGraph = value;
         }
     }
 }

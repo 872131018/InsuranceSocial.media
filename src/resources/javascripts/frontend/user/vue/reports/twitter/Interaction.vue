@@ -1,43 +1,32 @@
-<template>
-    <div>
-        <div class="w3-padding w3-text-white primary">
-            <b>Interaction Trends</b>
-            <span class="w3-padding">{{ interaction.last_interaction }}</span>
-            <i class="fa fa-refresh w3-right" style="font-size:24px"
-                v-on:click="$emit('updateInteraction', range)">
-            </i>
-        </div>
-        <div class="w3-blue">
-            <i class="fa fa-twitter w3-padding"></i>
-            <span class="w3-padding"
-                v-bind:style="{ textDecoration: range == 20 ? 'underline' :  'none' }"
-                v-on:click="range = 20">Last 20 Days
-            </span>
-            <span class="w3-padding"
-                v-bind:style="{ textDecoration: range == 50 ? 'underline' :  'none' }"
-                v-on:click="range = 50">Last 50 Days
-            </span>
-            <span class="w3-padding"
-                v-bind:style="{ textDecoration: range == 100 ? 'underline' :  'none' }"
-                v-on:click="range = 100">Last 100 Days
-            </span>
-        </div>
-        <div class="line-chart"></div>
-        <div class="w3-center">
-            <span class="w3-padding w3-bottombar"
-                v-bind:class="{ 'w3-border-blue': graph == 'retweets'}"
-                v-on:click="reflowGraph('retweets')">Retweets
-            </span>
-            <span class="w3-padding w3-bottombar"
-                v-bind:class="{ 'w3-border-blue': graph == 'favorites'}"
-                v-on:click="reflowGraph('favorites')">Favorites
-            </span>
-            <span class="w3-padding w3-bottombar"
-                v-bind:class="{ 'w3-border-blue': graph == 'mentions'}"
-                v-on:click="reflowGraph('mentions')">Mentions
-            </span>
-        </div>
-    </div>
+<template lang="pug">
+    div
+        div(class="w3-padding w3-text-white primary")
+            b Interaction Trends
+            span(class="w3-padding") {{ interaction.created_at.slice(0, 10) }}
+            i(class="fa fa-refresh w3-right" style="font-size:24px"
+                @click="$emit('updateInteraction', range)")
+        div(class="w3-blue")
+            i(class="fa fa-twitter w3-padding")
+            span(class="w3-padding"
+                :style="{ textDecoration: range == 20 ? 'underline' :  'none' }"
+                @click="$emit('setRange', 20)") Last 20 Days
+            span(class="w3-padding"
+                :style="{ textDecoration: range == 50 ? 'underline' :  'none' }"
+                @click="$emit('setRange', 50)") Last 50 Days
+            span(class="w3-padding"
+                :style="{ textDecoration: range == 100 ? 'underline' :  'none' }"
+                @click="$emit('setRange', 100)") Last 100 Days
+        div(class="line-chart")
+        div(class="w3-center")
+            span(class="w3-padding w3-bottombar"
+                :class="{ 'w3-border-blue': graph == 'retweets'}"
+                @click="$emit('setGraph', 'retweets')") Retweets
+            span(class="w3-padding w3-bottombar"
+                :class="{ 'w3-border-blue': graph == 'favorites'}"
+                @click="$emit('setGraph', 'favorites')") Favorites
+            span(class="w3-padding w3-bottombar"
+                :class="{ 'w3-border-blue': graph == 'mentions'}"
+                @click="$emit('setGraph', 'mentions')") Mentions
 </template>
 
 <script>
@@ -47,12 +36,12 @@
         props: {
             interaction: {
                 type: Object
-            }
-        },
-        data() {
-            return {
-                range: 50,
-                graph: 'retweets'
+            },
+            range: {
+                type: Number
+            },
+            graph: {
+                type: String
             }
         },
         updated() {
@@ -69,7 +58,6 @@
                         }, {
                             height: '160px'
                         });
-                        this.graph = 'retweets';
                         break;
                     case 'favorites':
                         new Chartist.Line('.line-chart', {
@@ -79,7 +67,6 @@
                         }, {
                             height: '160px'
                         });
-                        this.graph = 'favorites';
                         break;
                     case 'mentions':
                         new Chartist.Line('.line-chart', {
@@ -89,7 +76,6 @@
                         }, {
                             height: '160px'
                         });
-                        this.graph = 'mentions';
                         break;
                 }
             }
