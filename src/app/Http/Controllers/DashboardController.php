@@ -57,7 +57,7 @@ class DashboardController extends Controller
 
         try {
             $start = Carbon::today()->toDateString();
-            $end = Carbon::today()->subDays(strval($request->input('range')))->toDateString();
+            $end = Carbon::today()->subDays(strval($request->range))->toDateString();
             $params = '?since='.$end.'&until='.$start;
 
             $batch = [
@@ -123,8 +123,8 @@ class DashboardController extends Controller
 
         try {
 
-            $start = Carbon::today()->subDays(strval($request->input('range')))->toDateString();
-            $end = Carbon::today()->subDays(strval($request->input('range')) * 2)->toDateString();
+            $start = Carbon::today()->subDays(strval($request->range))->toDateString();
+            $end = Carbon::today()->subDays(strval($request->range) * 2)->toDateString();
             $params = '?since='.$end.'&until='.$start;
 
             $batch = [
@@ -246,7 +246,7 @@ class DashboardController extends Controller
 
         $facebookPerformance = new FacebookPerformance();
         $facebookPerformance->email = $user->email;
-        $facebookPerformance->range = $request->input('range');
+        $facebookPerformance->range = $request->range;
         $facebookPerformance->reach = $facebook['reach'];
         $facebookPerformance->clicks = $facebook['clicks'];
         $facebookPerformance->likes = $facebook['likes'];
@@ -318,7 +318,7 @@ class DashboardController extends Controller
             $response = $this->twitter->get('statuses/user_timeline', [
                 'screen_name' => $user->twitter->screen_name,
                 'user_id' => $user->twitter->twitter_id,
-                'count' => $request->input('range'),
+                'count' => $request->range,
             ]);
         } catch(Exception $e) {
             return response()->json($e->getMessage(), 502);
@@ -335,7 +335,7 @@ class DashboardController extends Controller
             $response = $this->twitter->get('statuses/user_timeline', [
                 'screen_name' => $user->twitter->screen_name,
                 'user_id' => $user->twitter->twitter_id,
-                'count' => $request->input('twitter'),
+                'count' => $request->twitter,
                 'max_id' => $max_id
             ]);
         } catch(Exception $e) {
@@ -378,7 +378,7 @@ class DashboardController extends Controller
 
         $twitterPerformance = new TwitterPerformance();
         $twitterPerformance->email = $user->email;
-        $twitterPerformance->range = $request->input('range');
+        $twitterPerformance->range = $request->range;
         $twitterPerformance->followers = $twitter['followers'];
         $twitterPerformance->retweets = $twitter['retweets'];
         $twitterPerformance->favorites = $twitter['favorites'];
@@ -406,7 +406,7 @@ class DashboardController extends Controller
 
         try {
             $start = Carbon::today()->toDateString();
-            $end = Carbon::today()->subDays(strval($request->input('range')))->toDateString();
+            $end = Carbon::today()->subDays(strval($request->range))->toDateString();
             $params = '?since='.$end.'&until='.$start;
 
             $batch = [
@@ -464,7 +464,7 @@ class DashboardController extends Controller
 
         $facebookInteraction = new FacebookInteraction();
         $facebookInteraction->email = $user->email;
-        $facebookInteraction->range = $request->input('range');
+        $facebookInteraction->range = $request->range;
         $facebookInteraction->reach_labels = json_encode($interaction['reach_labels']);
         $facebookInteraction->reach_series = json_encode($interaction['reach_series']);
         $facebookInteraction->engagement_labels = json_encode($interaction['engagement_labels']);
@@ -505,7 +505,7 @@ class DashboardController extends Controller
             $response = $this->twitter->get('statuses/user_timeline', [
                 'screen_name' => $user->twitter->screen_name,
                 'user_id' => $user->twitter->twitter_id,
-                'count' => $request->input('range'),
+                'count' => $request->range,
             ]);
         } catch(Exception $e) {
             return response()->json($e->getMessage(), 502);
@@ -522,7 +522,7 @@ class DashboardController extends Controller
 
         $twitterInteraction = new TwitterInteraction();
         $twitterInteraction->email = $user->email;
-        $twitterInteraction->range = $request->input('range');
+        $twitterInteraction->range = $request->range;
         $twitterInteraction->retweet_labels = json_encode($interaction['retweet_labels']);
         $twitterInteraction->retweet_series = json_encode($interaction['retweet_series']);
         $twitterInteraction->favorite_labels = json_encode($interaction['favorite_labels']);
@@ -658,7 +658,7 @@ class DashboardController extends Controller
             $response = $this->twitter->get('statuses/user_timeline', [
                 'screen_name' => $user->twitter->screen_name,
                 'user_id' => $user->twitter->twitter_id,
-                'count' => $request->input('range'),
+                'count' => $request->range,
             ]);
         } catch(Exception $e) {
             return response()->json($e->getMessage(), 502);
@@ -889,13 +889,21 @@ class DashboardController extends Controller
         * POST
         */
         try {
-            $batch = [
-                'post' => $this->facebook->request('POST', '/'.$user->facebook->page_id.'/feed',[
-                    'message' => $request->input('message'),
-                    'link' => $request->input('link'),
-                    //'image' => '@'.$request->file->path()
-                ], $user->facebook->page_token)
-            ];
+            if($request->file) {
+                $batch = [
+                    'post' => $this->facebook->request('POST', '/'.$user->facebook->page_id.'/photos',[
+                        'message' => $request->message,
+                        'source' => $this->facebook->fileToUpload($request->file->path())
+                    ], $user->facebook->page_token)
+                ];
+            } else {
+                $batch = [
+                    'post' => $this->facebook->request('POST', '/'.$user->facebook->page_id.'/feed',[
+                        'message' => $request->message,
+                        'link' => $request->link,
+                    ], $user->facebook->page_token)
+                ];
+            }
             $responses = $this->facebook->sendBatchRequest($batch);
         } catch(Facebook\Exceptions\FacebookResponseException $e) {
             return response()->json($e->getMessage(), 502);
@@ -903,10 +911,11 @@ class DashboardController extends Controller
             return response()->json($e->getMessage(), 502);
         }
         $responses = json_decode($responses->getBody());
-        Log::info(json_encode($responses)); die;
-
-
-        return response()->json('ok');
+        if($responses[0]->code != 200) {
+            return response()->json('failed', 500);
+        } else {
+            return response()->json('ok');
+        }
     }
 
     /**

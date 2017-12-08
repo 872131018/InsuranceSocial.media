@@ -9,6 +9,7 @@ import FacebookPosts from './modules/facebookPosts.vuex';
 import TwitterPerformance from './modules/twitterPerformance.vuex';
 import TwitterInteraction from './modules/twitterInteraction.vuex';
 import TwitterPosts from './modules/twitterPosts.vuex';
+import Post from './modules/post.vuex';
 import TransientModule from './modules/transient.vuex';
 import ErrorModule from './modules/errors.vuex';
 import ServiceModule from './modules/services.vuex';
@@ -26,6 +27,7 @@ const store = new Vuex.Store({
         twitterPerformance: TwitterPerformance,
         twitterInteraction: TwitterInteraction,
         twitterPosts: TwitterPosts,
+        post: Post,
         transient: TransientModule,
         errors: ErrorModule,
         services: ServiceModule

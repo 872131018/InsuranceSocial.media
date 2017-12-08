@@ -1,35 +1,28 @@
-<template>
-    <div>
-        <div class="w3-card-2 dashboard">
-            <div class="w3-container w3-content w3-padding">
-                <div class="w3-content">
-                    <div class="w3-padding w3-margin w3-text-white primary">
-                        <i class="fa fa-facebook-official" style="font-size:24px"></i>
-                        <span>Home Feed for {{ facebook_page }}</span>
-                    </div>
-                    <div class="w3-center w3-padding">
-                        <FacebookPosts
-                            v-bind:posts="facebook_posts">
-                        </FacebookPosts>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+<template lang="pug">
+    div
+        div(class="w3-card w3-content w3-padding dashboard")
+            div(class="w3-padding w3-text-white primary")
+                i(class="fa fa-facebook-official" style="font-size:24px")
+                | {{ facebookPage }}
+            div(class="w3-center w3-padding")
+                div(id="fb-root")
+                div(class="fb-post" data-width="auto"
+                    v-for="post in facebookPosts"
+                    :data-href="post.permalink_url")
 </template>
 
 <script>
-    import FacebookPosts from './FacebookPosts';
-
     export default {
-        data() {
-            return {
-                facebook_page: store.getState().RecentStore.facebook_page,
-                facebook_posts: store.getState().RecentStore.facebook_posts,
+        computed: {
+            facebookPage() {
+                return this.$store.state.recent.facebook_page;
+            },
+            facebookPosts() {
+                return this.$store.state.recent.facebook_posts;
             }
         },
-        mounted() {
-            if(this.facebook_page) {
+        updated() {
+            if(this.facebookPage) {
                 /* FACEBOOK STUFF */
                 window.fbAsyncInit = function() {
                     FB.init({
@@ -45,9 +38,6 @@
                     fjs.parentNode.insertBefore(js, fjs);
                   }(document, 'script', 'facebook-jssdk'));
             }
-        },
-        components: {
-            FacebookPosts
         }
     }
 </script>

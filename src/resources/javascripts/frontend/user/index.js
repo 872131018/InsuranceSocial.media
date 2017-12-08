@@ -10,9 +10,17 @@ import Vue from 'vue';
 import Navigation from './vue/navigation/Navigation';
 import Foot from '../global/foot/Foot';
 import Loader from '../global/Loader';
+import Errors from '../global/Errors';
+import Field from '../global/inputs/Field';
+import Message from '../global/inputs/Message';
+import File from '../global/inputs/File';
 Vue.component('Navigation', Navigation);
 Vue.component('Foot', Foot);
 Vue.component('Loader', Loader);
+Vue.component('Errors', Errors);
+Vue.component('Field', Field);
+Vue.component('Message', Message);
+Vue.component('File', File);
 
 import VueRouter from 'vue-router';
 Vue.use(VueRouter);

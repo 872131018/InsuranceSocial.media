@@ -55,10 +55,12 @@
             });
             this.$store.commit('serviceLoading');
             axios.get('/api/recent').then(response => {
-                this.$store.commit('setRecent', response.data);
                 this.$store.commit('serviceFinished');
+                this.$store.commit('setRecent', response.data);
             });
+            this.$store.commit('serviceLoading');
             axios.get('/api/dashboard/insights').then(response => {
+                this.$store.commit('serviceFinished');
                 let score = 0;
                 for(let key in response.data) {
                     score += response.data[key];

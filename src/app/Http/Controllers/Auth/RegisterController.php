@@ -12,6 +12,8 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Mail;
+
 use App\Services\PaymentService;
 
 use net\authorize\api\controller as AnetController;
@@ -302,6 +304,18 @@ class RegisterController extends Controller
         $agency = new Agency();
         $agency->email = $user->email;
         $user->agency()->save($agency);
+
+        Mail::send('emails.newregister', [
+            'name' => $user->name,
+            'email' => $user->email,
+            'code' => $user->code,
+            'plan' => $user->plan->plan_code ], function ($message) {
+            $message->to([
+                'davidb@insurancesocial.media',
+                'elizabethd@insurancesocial.media'
+            ]);
+            $message->subject('New Agent Signup');
+        });
 
         return [
             'transaction' => [
