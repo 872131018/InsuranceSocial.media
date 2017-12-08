@@ -148,7 +148,7 @@
                     axios.post(this.$store.state.transient.post, response.data).then(response => {
                         if(response.data.success) {
                             this.loading = false;
-                            this.$store.state.transient.redirect;
+                            window.location = this.$store.state.transient.redirect;
                         } else {
                             this.$store.commit('setError', response.data.errors);
                         }

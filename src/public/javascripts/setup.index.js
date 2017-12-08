@@ -23180,7 +23180,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 axios.post(_this2.$store.state.transient.post, response.data).then(function (response) {
                     if (response.data.success) {
                         _this2.loading = false;
-                        _this2.$store.state.transient.redirect;
+                        window.location = _this2.$store.state.transient.redirect;
                     } else {
                         _this2.$store.commit('setError', response.data.errors);
                     }
