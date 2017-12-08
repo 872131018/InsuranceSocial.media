@@ -166,7 +166,7 @@ class FacebookController extends Controller
         Mail::send('emails.nofacebook', [ 'name' => $user->name ], function ($message) {
            $message->to(Auth::user()->email);
            $message->bcc([
-               'elisabethd@insurancesocial.media'
+               'elisabethd@insurancesocial.media',
                'davidb@insurancesocial.media'
            ]);
            $message->subject('Insurance Social Media Instructions');
@@ -219,7 +219,7 @@ class FacebookController extends Controller
         Mail::send('emails.hasfacebook', [ 'name' => $user->name ], function ($message) {
            $message->to(Auth::user()->email);
            $message->bcc([
-               'elisabethd@insurancesocial.media'
+               'elisabethd@insurancesocial.media',
                'davidb@insurancesocial.media'
            ]);
            $message->subject('Insurance Social Media Instructions');
