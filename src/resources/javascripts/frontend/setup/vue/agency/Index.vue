@@ -24,7 +24,7 @@
                 :options="$store.state.options.titles"
                 :selected="title"
                 @setValue="(value) => $store.commit('setTitle', value.code)")
-            div(v-if="title.code != 'OW'")
+            div(v-if="title.code && title.code != 'OW'")
                 Field(
                     :label="'Principal Name'"
                     :value="principalName"

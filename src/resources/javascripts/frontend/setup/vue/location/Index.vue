@@ -98,7 +98,7 @@
                 return this.city != null && this.city != '';
             },
             state() {
-                if(this.$store.state.agency.state) {
+                if(this.$store.state.agency.state && this.$store.state.agency.state != '') {
                     for(let option of this.$store.state.options.states) {
                         if(this.$store.state.agency.state == option.code) {
                             return option;

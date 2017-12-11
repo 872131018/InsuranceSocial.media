@@ -50,6 +50,9 @@
                 this.$store.commit('serviceFinished');
                 this.$store.commit('setUser', response.data);
                 this.$store.commit('setPlan', response.data.plan);
+                if(response.data.plan.time_code == null) {
+                    this.$store.commit('setTimeCode', '5-8am');
+                }
                 this.$store.commit('setAgency', response.data.agency);
                 this.$store.commit('setRegions', response.data.regions);
                 this.$store.commit('setStates', response.data.states);
