@@ -1,46 +1,41 @@
-<template>
-    <div>
-        <div class="w3-card-2 dashboard">
-            <div class="w3-container w3-content w3-padding">
-                <div class="w3-content">
-                    <div class="w3-padding w3-margin w3-text-white primary">
-                        <i class="fa fa-twitter" style="font-size:24px"></i>
-                        <span>Feed for @{{ twitter_handle }}</span>
-                    </div>
-                    <div class="w3-padding">
-                        <TwitterPosts></TwitterPosts>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+<template lang="pug">
+    div
+        div(class="w3-card w3-content w3-padding dashboard")
+            div(class="w3-padding w3-text-white primary")
+                i(class="fa fa-twitter" style="font-size:24px")
+                | @{{ twitterHandle }}
+            div(class="w3-center w3-padding")
+                a(id="twitter_timeline" class="twitter-timeline")
 </template>
 
 <script>
-    import TwitterPosts from './TwitterPosts';
-
     export default {
-        data() {
-            return {
-                twitter_handle: store.getState().RecentStore.twitter_handle,
+        computed: {
+            twitterHandle() {
+                return this.$store.state.recent.twitter_handle;
             }
         },
         mounted() {
-            if(this.twitter_handle) {
-                /* TWITTER STUFF */
-                twttr.widgets.createTimeline({
-                    sourceType: "profile",
-                    screenName: this.twitter_handle,
-                },
-                    document.getElementById("twitter_timeline"), {
-                        tweetLimit: 5,
-                        chrome: 'noheader',
-                    }
-                );
-            }
+            this.feed();
         },
-        components: {
-            TwitterPosts
+        updated() {
+            this.feed();
+        },
+        methods: {
+            feed() {
+                if(this.twitterHandle) {
+                    /* TWITTER STUFF */
+                    twttr.widgets.createTimeline({
+                        sourceType: "profile",
+                        screenName: this.twitterHandle,
+                    },
+                        document.getElementById("twitter_timeline"), {
+                            tweetLimit: 5,
+                            chrome: 'noheader',
+                        }
+                    );
+                }
+            }
         }
     }
 </script>

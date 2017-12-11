@@ -23,9 +23,10 @@
         div(class="w3-bar-item w3-button w3-hover-white w3-right header-link"
             :class="{ 'w3-white': selected == 'reports' }"
             @click="$emit('showMenu', 'reports')") Reports
-        div(class="w3-bar-item w3-button w3-hover-white w3-right header-link"
+        router-link(class="w3-bar-item w3-hover-white w3-right header-link"
             :class="{ 'w3-white': selected == 'home' }"
-            @click="$emit('showMenu', 'home')") Home
+            @click="$emit('showMenu', 'home')"
+            :to="{ name: 'Recent' }") Home
 </template>
 
 <script>

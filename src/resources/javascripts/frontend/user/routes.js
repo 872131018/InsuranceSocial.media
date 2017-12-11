@@ -5,6 +5,7 @@ import ReportsTwitter from './vue/reports/twitter/Index';
 import FacebookFeed from './vue/actions/facebook/Feed';
 import FacebookPost from './vue/actions/facebook/Post';
 import TwitterFeed from './vue/actions/twitter/Feed';
+import TwitterPost from './vue/actions/twitter/Post';
 
 const routes = [
     {
@@ -36,7 +37,12 @@ const routes = [
         path: '/user/twitter/feed',
         name: 'TwitterFeed',
         component: TwitterFeed
-    }
+    },
+    {
+        path: '/user/twitter/post',
+        name: 'TwitterPost',
+        component: TwitterPost
+    },
 ];
 
 export default new VueRouter({

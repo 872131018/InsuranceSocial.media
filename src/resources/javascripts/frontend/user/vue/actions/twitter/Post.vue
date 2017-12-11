@@ -3,27 +3,21 @@
         div(class="w3-card w3-content w3-padding dashboard")
             div(class="w3-padding w3-text-white primary")
                 i(class="fa fa-facebook-official" style="font-size:24px")
-                | Create post for {{ facebookPage }}
-            p You may upload a link or a photo with an optional message, or just a simple message.
-            p Links must be a proper url for Facebook to accept (E.g. www.example.com, https://insurancesocial.media).
-            p Facebook recommends photos smaller than 4mb for best results. Large images may be pixelated once posted.
+                | Create post for {{ twitterHandle }}
+            p You may tweet up to 256 characters, or a link (in the format of http://www.example.com) in the message section.
+            p If your link has the correct meta data, twitter will read it and display it in the tweet.
+            p If you want to post a picture, you must include a message for it to appear on twitter.
             div(class="w3-row")
-                div(class="w3-half")
-                    Field(
-                        :label="'Link'"
-                        :value="link"
-                        :valid="linkValid"
-                        @setValue="(value) => $store.commit('setLink', value)")
-                    File(
-                        :label="'Upload File'"
-                        :valid="fileValid"
-                        @setFile="(value) => $store.commit('setFile', value)")
                 div(class="w3-half")
                     Message(
                         :label="'Post Content'"
                         :value="message"
                         :valid="messageValid"
                         @setValue="(value) => $store.commit('setMessage', value)")
+                    File(
+                        :label="'Upload File'"
+                        :valid="fileValid"
+                        @setFile="(value) => $store.commit('setFile', value)")
                     button(class="w3-button w3-text-white secondary"
                         @click="post()") Post
             Errors(
@@ -34,8 +28,8 @@
 <script>
     export default {
         computed: {
-            facebookPage() {
-                return this.$store.state.recent.facebook_page;
+            twitterHandle() {
+                return this.$store.state.recent.twitter_handle;
             },
             link() {
                 return this.$store.state.post.link;
@@ -65,11 +59,10 @@
 
                 let form = new FormData();
                 form.append('message', this.message);
-                form.append('link', this.link);
                 form.append('file', this.file);
 
                 this.$store.commit('serviceLoading');
-                axios.post('/api/facebook/post', form, {
+                axios.post('/api/twitter/post', form, {
                     headers: {
                       'Content-Type': 'multipart/form-data'
                     }

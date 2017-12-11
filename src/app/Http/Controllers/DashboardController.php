@@ -919,6 +919,46 @@ class DashboardController extends Controller
     }
 
     /**
+     * Post a facebook entry.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function indexTwitterPost(Request $request)
+    {
+        $user = Auth::user();
+
+        $this->twitter = new TwitterOAuth(
+            env('CONSUMER_KEY'),
+            env('CONSUMER_SECRET'),
+            $user->twitter->access_token,
+            $user->twitter->secret_token
+        );
+
+        try {
+            if($request->file) {
+                $media1 = $this->twitter->upload('media/upload', ['media' => $request->file->path()]);
+                $response = $this->twitter->post('statuses/update', [
+                    'status' => $request->message,
+                    'media_ids' => [$media1->media_id_string]
+                ]);
+            } else {
+                $response = $this->twitter->post('statuses/update', [
+                    'status' => $request->message,
+                ]);
+            }
+        } catch(Exception $e) {
+            return response()->json($e->getMessage(), 502);
+        }
+        Log::info(json_encode($response)); die;
+
+        if($response->code != 200) {
+            return response()->json('failed', 500);
+        } else {
+            return response()->json('ok');
+        }
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
