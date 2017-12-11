@@ -949,9 +949,8 @@ class DashboardController extends Controller
         } catch(Exception $e) {
             return response()->json($e->getMessage(), 502);
         }
-        Log::info(json_encode($response)); die;
 
-        if($response->code != 200) {
+        if(!$response->id) {
             return response()->json('failed', 500);
         } else {
             return response()->json('ok');
