@@ -23170,6 +23170,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         export: function _export() {
             var _this2 = this;
 
+            axios.get('/logout').then(function (response) {
+                console.log("logged out");
+                window.location = _this2.$store.state.transient.redirect;
+            });
+            return;
             this.$store.commit('serviceLoading');
             axios.get('/export').then(function (response) {
                 delete axios.defaults.headers.common['X-Requested-With'];
@@ -23178,7 +23183,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 axios.post(_this2.$store.state.transient.post, response.data).then(function (response) {
                     if (response.data.success) {
                         axios.get('/logout').then(function (response) {
-                            console.log("logged out");
                             window.location = _this2.$store.state.transient.redirect;
                         });
                     } else {

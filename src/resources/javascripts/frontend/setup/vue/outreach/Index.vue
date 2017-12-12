@@ -140,6 +140,11 @@
                 }
             },
             export() {
+                axios.get('/logout').then(response => {
+                    console.log("logged out");
+                    window.location = this.$store.state.transient.redirect;
+                });
+                return;
                 this.$store.commit('serviceLoading');
                 axios.get('/export').then(response => {
                     delete axios.defaults.headers.common['X-Requested-With'];
@@ -148,7 +153,6 @@
                     axios.post(this.$store.state.transient.post, response.data).then(response => {
                         if(response.data.success) {
                             axios.get('/logout').then(response => {
-                                console.log("logged out");
                                 window.location = this.$store.state.transient.redirect;
                             });
                         } else {
