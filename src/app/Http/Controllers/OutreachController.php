@@ -216,6 +216,8 @@ class OutreachController extends Controller
             'cards' => $user->cards
         ];
 
+        Auth::logout();
+
         return response()->json($data);
     }
 
