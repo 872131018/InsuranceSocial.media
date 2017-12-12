@@ -147,8 +147,10 @@
                     delete axios.defaults.headers.common['Authorization'];
                     axios.post(this.$store.state.transient.post, response.data).then(response => {
                         if(response.data.success) {
-                            this.loading = false;
-                            window.location = this.$store.state.transient.redirect;
+                            axios.get('/logout').then(response => {
+                                console.log("logged out");
+                                window.location = this.$store.state.transient.redirect;
+                            });
                         } else {
                             this.$store.commit('setError', response.data.errors);
                         }

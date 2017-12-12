@@ -16,6 +16,8 @@ use Illuminate\Support\Facades\Auth;
 
 Auth::routes();
 
+Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
+
 Route::get('/user/recent', 'HomeController@index')->name('home');
 
 Route::get('/user/reports/facebook', 'HomeController@index')->name('home');

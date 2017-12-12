@@ -23177,8 +23177,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 delete axios.defaults.headers.common['Authorization'];
                 axios.post(_this2.$store.state.transient.post, response.data).then(function (response) {
                     if (response.data.success) {
-                        _this2.loading = false;
-                        window.location = _this2.$store.state.transient.redirect;
+                        axios.get('/logout').then(function (response) {
+                            console.log("logged out");
+                            window.location = _this2.$store.state.transient.redirect;
+                        });
                     } else {
                         _this2.$store.commit('setError', response.data.errors);
                     }

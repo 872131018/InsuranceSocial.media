@@ -62,5 +62,3 @@ use App\Plan;
     ];
     return response()->json($data);
  });
-
- Route::post('/payment', 'PaymentController@store');
