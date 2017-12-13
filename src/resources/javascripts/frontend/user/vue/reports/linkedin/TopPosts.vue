@@ -9,7 +9,7 @@
             tr
                 td Post Date
                 td Post Content
-                td Total Interactions
+                td Total RFM
             tr(
                 v-for="post in posts.posts")
                 td {{ post.date.slice(0, 10) }}

@@ -196,20 +196,6 @@ class FacebookController extends Controller
     {
         $user = Auth::user();
         $facebook = $user->facebook;
-
-        /**
-        * Get the facebook email for the user
-        */
-        try {
-            $response = $this->facebook->get('/me?fields=email', $facebook->access_token);
-            $email = $response->getGraphUser()->getField('email');
-        } catch(Facebook\Exceptions\FacebookResponseException $e) {
-            return response()->json($e->getMessage(), 502);
-        } catch(Facebook\Exceptions\FacebookSDKException $e) {
-            return response()->json($e->getMessage(), 502);
-        }
-
-        $facebook->facebook_email = $email;
         $facebook->page_id = $request->id;
         $facebook->page_name = $request->name;
         $facebook->page_token = $request->access_token;
@@ -264,6 +250,14 @@ class FacebookController extends Controller
                 return response()->json($e->getMessage(), 502);
             }
             /**
+            * Logged in!!!
+            */
+            $user = Auth::user();
+            $facebook = $user->facebook;
+            $facebook->facebook_email = $email;
+            $facebook->access_token = $accessToken;
+            $facebook->update();
+            /**
             * Get the facebook pages for the user
             */
             try {
@@ -281,16 +275,6 @@ class FacebookController extends Controller
             usort($pages, function($a, $b) {
                 return $a['name'] <=> $b['name'];
             });
-
-            /**
-            * Logged in!!!
-            */
-            $user = Auth::user();
-            $facebook = $user->facebook;
-            $facebook->email = $user->email;
-            $facebook->facebook_email = $email;
-            $facebook->access_token = $accessToken;
-            $facebook->update();
 
             if(count($pages) != 0) {
                 session(['pages' => json_encode($pages)]);

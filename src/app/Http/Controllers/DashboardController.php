@@ -22,8 +22,6 @@ use App\TwitterPerformance;
 
 use App\TwitterInteraction;
 
-use Illuminate\Support\Facades\Log;
-
 class DashboardController extends Controller
 {
 

@@ -3,7 +3,8 @@ import Facebook from './vue/facebook/Index';
 import Create from './vue/create/Index';
 import Pages from './vue/pages/Index';
 import Twitter from './vue/twitter/Index';
-import LinkedIn from './vue/linkedin/LinkedIn';
+import LinkedIn from './vue/linkedin/Index';
+import Companies from './vue/companies/Index';
 
 const routes = [
     {
@@ -30,6 +31,11 @@ const routes = [
         path: '/linkedin',
         name: 'LinkedIn',
         component: LinkedIn
+    },
+    {
+        path: '/companies',
+        name: 'Companies',
+        component: Companies
     }
 ];
 

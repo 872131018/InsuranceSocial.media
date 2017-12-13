@@ -32,3 +32,10 @@ use Illuminate\Http\Request;
  Route::get('/api/twitter', 'TwitterController@index');
 
  Route::get('/api/linkedin', 'LinkedInController@index');
+
+ Route::get('/api/companies', function (Request $request) {
+     $data = json_decode(session('companies'));
+     return response()->json($data);
+ });
+
+ Route::post('/companies', 'LinkedInController@edit');

@@ -1,7 +1,8 @@
 const Module = {
     state: {
         facebookUrl: '',
-        twitterUrl: ''
+        twitterUrl: '',
+        linkedInUrl: ''
     },
     mutations: {
         setFacebookUrl(state, value) {
@@ -9,6 +10,9 @@ const Module = {
         },
         setTwitterUrl(state, value) {
             state.twitterUrl = value;
+        },
+        setLinkedInUrl(state, value) {
+            state.linkedInUrl = value;
         }
     }
 }

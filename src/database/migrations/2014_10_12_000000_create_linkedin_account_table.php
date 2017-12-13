@@ -17,7 +17,11 @@ class CreateLinkedInAccountTable extends Migration
             $table->increments('id');
             $table->string('user_id');
             $table->string('email');
+            $table->string('linkedin_email')->nullable();
             $table->string('access_token')->nullable();
+            $table->string('company_id')->nullable();
+            $table->string('company_name')->nullable();
+            $table->char('progress', 1)->nullable();
             $table->string('expires_in')->nullable();
             $table->timestamps();
             $table->softDeletes();

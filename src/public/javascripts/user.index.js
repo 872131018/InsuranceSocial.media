@@ -24830,14 +24830,17 @@ var Module = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__vue_reports_facebook_Index___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__vue_reports_facebook_Index__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__vue_reports_twitter_Index__ = __webpack_require__(447);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__vue_reports_twitter_Index___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__vue_reports_twitter_Index__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__vue_actions_facebook_Feed__ = __webpack_require__(459);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__vue_actions_facebook_Feed___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__vue_actions_facebook_Feed__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__vue_actions_facebook_Post__ = __webpack_require__(462);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__vue_actions_facebook_Post___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__vue_actions_facebook_Post__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__vue_actions_twitter_Feed__ = __webpack_require__(465);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__vue_actions_twitter_Feed___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__vue_actions_twitter_Feed__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__vue_actions_twitter_Post__ = __webpack_require__(468);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__vue_actions_twitter_Post___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__vue_actions_twitter_Post__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__vue_reports_linkedin_Index__ = __webpack_require__(474);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__vue_reports_linkedin_Index___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__vue_reports_linkedin_Index__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__vue_actions_facebook_Feed__ = __webpack_require__(459);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__vue_actions_facebook_Feed___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__vue_actions_facebook_Feed__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__vue_actions_facebook_Post__ = __webpack_require__(462);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__vue_actions_facebook_Post___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__vue_actions_facebook_Post__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__vue_actions_twitter_Feed__ = __webpack_require__(465);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__vue_actions_twitter_Feed___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__vue_actions_twitter_Feed__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__vue_actions_twitter_Post__ = __webpack_require__(468);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__vue_actions_twitter_Post___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8__vue_actions_twitter_Post__);
+
 
 
 
@@ -24860,21 +24863,25 @@ var routes = [{
     name: 'ReportsTwitter',
     component: __WEBPACK_IMPORTED_MODULE_3__vue_reports_twitter_Index___default.a
 }, {
+    path: '/user/reports/linkedin',
+    name: 'ReportsLinkedIn',
+    component: __WEBPACK_IMPORTED_MODULE_4__vue_reports_linkedin_Index___default.a
+}, {
     path: '/user/facebook/feed',
     name: 'FacebookFeed',
-    component: __WEBPACK_IMPORTED_MODULE_4__vue_actions_facebook_Feed___default.a
+    component: __WEBPACK_IMPORTED_MODULE_5__vue_actions_facebook_Feed___default.a
 }, {
     path: '/user/facebook/post',
     name: 'FacebookPost',
-    component: __WEBPACK_IMPORTED_MODULE_5__vue_actions_facebook_Post___default.a
+    component: __WEBPACK_IMPORTED_MODULE_6__vue_actions_facebook_Post___default.a
 }, {
     path: '/user/twitter/feed',
     name: 'TwitterFeed',
-    component: __WEBPACK_IMPORTED_MODULE_6__vue_actions_twitter_Feed___default.a
+    component: __WEBPACK_IMPORTED_MODULE_7__vue_actions_twitter_Feed___default.a
 }, {
     path: '/user/twitter/post',
     name: 'TwitterPost',
-    component: __WEBPACK_IMPORTED_MODULE_7__vue_actions_twitter_Post___default.a
+    component: __WEBPACK_IMPORTED_MODULE_8__vue_actions_twitter_Post___default.a
 }];
 
 /* harmony default export */ __webpack_exports__["a"] = (new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
@@ -26780,7 +26787,7 @@ var render = function() {
             }
           }
         },
-        [_vm._v("Last 20 Days")]
+        [_vm._v("Last 20 Tweets")]
       ),
       _c(
         "span",
@@ -26793,7 +26800,7 @@ var render = function() {
             }
           }
         },
-        [_vm._v("Last 50 Days")]
+        [_vm._v("Last 50 Tweets")]
       ),
       _c(
         "span",
@@ -26806,7 +26813,7 @@ var render = function() {
             }
           }
         },
-        [_vm._v("Last 100 Days")]
+        [_vm._v("Last 100 Tweets")]
       )
     ]),
     _c("div", { staticClass: "line-chart" }),
@@ -26994,7 +27001,7 @@ var staticRenderFns = [
     return _c("tr", [
       _c("td", [_vm._v("Post Date")]),
       _c("td", [_vm._v("Post Content")]),
-      _c("td", [_vm._v("Total RFM")])
+      _c("td", [_vm._v("Total Interactions")])
     ])
   }
 ]
@@ -28061,6 +28068,973 @@ if (false) {
   module.hot.accept()
   if (module.hot.data) {
     require("vue-hot-reload-api")      .rerender("data-v-4ce8f140", module.exports)
+  }
+}
+
+/***/ }),
+/* 474 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(475)
+/* template */
+var __vue_template__ = __webpack_require__(485)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/javascripts/frontend/user/vue/reports/linkedin/Index.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-17f283bc", Component.options)
+  } else {
+    hotAPI.reload("data-v-17f283bc", Component.options)
+' + '  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 475 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Performance__ = __webpack_require__(476);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Performance___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Performance__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Interaction__ = __webpack_require__(479);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Interaction___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__Interaction__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__TopPosts__ = __webpack_require__(482);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__TopPosts___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__TopPosts__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_chartist__ = __webpack_require__(67);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_chartist___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_chartist__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    computed: {
+        performance: function performance() {
+            return this.$store.state.twitterPerformance;
+        },
+        performanceRange: function performanceRange() {
+            return this.$store.state.transient.twitterPerformanceRange;
+        },
+        interaction: function interaction() {
+            return this.$store.state.twitterInteraction;
+        },
+        interactionRange: function interactionRange() {
+            return this.$store.state.transient.twitterInteractionRange;
+        },
+        interactionGraph: function interactionGraph() {
+            return this.$store.state.transient.twitterInteractionGraph;
+        },
+        posts: function posts() {
+            return this.$store.state.twitterPosts;
+        }
+    },
+    mounted: function mounted() {
+        /**
+        * REFRESH GRAPHS
+        */
+        this.updatePerformance(50);
+        this.updateInteraction(50);
+        this.updatePosts();
+
+        var pieData = {
+            series: [22, 13, 37, 28]
+        };
+
+        var sum = function sum(a, b) {
+            return a + b;
+        };
+
+        new __WEBPACK_IMPORTED_MODULE_3_chartist___default.a.Pie('.pie-chart', pieData, {
+            labelInterpolationFnc: function labelInterpolationFnc(value) {
+                return Math.round(value / pieData.series.reduce(sum) * 100) + '%';
+            }
+        });
+    },
+
+    methods: {
+        updatePerformance: function updatePerformance() {
+            var _this = this;
+
+            this.$store.commit('serviceLoading');
+            axios.get('/api/reports/twitter/performance?range=' + this.performanceRange).then(function (response) {
+                _this.$store.commit('serviceFinished');
+                _this.$store.commit('setTwitterPerformance', response.data);
+            });
+        },
+        updateInteraction: function updateInteraction() {
+            var _this2 = this;
+
+            this.$store.commit('serviceLoading');
+            axios.get('/api/reports/twitter/interaction?range=' + this.interactionRange).then(function (response) {
+                _this2.$store.commit('serviceFinished');
+                _this2.$store.commit('setTwitterInteraction', response.data);
+            });
+        },
+        updatePosts: function updatePosts() {
+            var _this3 = this;
+
+            this.$store.commit('serviceLoading');
+            axios.get('/api/reports/twitter/posts').then(function (response) {
+                _this3.$store.commit('serviceFinished');
+                _this3.$store.commit('setTwitterPosts', response.data);
+                _this3.loading--;
+            });
+        }
+    },
+    components: {
+        Performance: __WEBPACK_IMPORTED_MODULE_0__Performance___default.a,
+        Interaction: __WEBPACK_IMPORTED_MODULE_1__Interaction___default.a,
+        TopPosts: __WEBPACK_IMPORTED_MODULE_2__TopPosts___default.a
+    }
+});
+
+/***/ }),
+/* 476 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(477)
+/* template */
+var __vue_template__ = __webpack_require__(478)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/javascripts/frontend/user/vue/reports/linkedin/Performance.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-996bc700", Component.options)
+  } else {
+    hotAPI.reload("data-v-996bc700", Component.options)
+' + '  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 477 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: {
+        performance: {
+            type: Object
+        },
+        range: {
+            type: Number
+        }
+    }
+});
+
+/***/ }),
+/* 478 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("div", { staticClass: "w3-padding w3-text-white primary" }, [
+      _c("b", [_vm._v("Twitter Performance")]),
+      _c("span", { staticClass: "w3-padding" }, [
+        _vm._v(_vm._s(_vm.performance.last_performance))
+      ]),
+      _c("i", {
+        staticClass: "fa fa-refresh w3-right",
+        staticStyle: { "font-size": "24px" },
+        on: {
+          click: function($event) {
+            _vm.$emit("updatePerformance", _vm.range)
+          }
+        }
+      })
+    ]),
+    _c("div", { staticClass: "w3-blue" }, [
+      _c("i", { staticClass: "fa fa-facebook-official w3-padding" }),
+      _c(
+        "span",
+        {
+          staticClass: "w3-padding",
+          style: { textDecoration: _vm.range == 20 ? "underline" : "none" },
+          on: {
+            click: function($event) {
+              _vm.$emit("setRange", 20)
+            }
+          }
+        },
+        [_vm._v("Last 20 Tweets")]
+      ),
+      _c(
+        "span",
+        {
+          staticClass: "w3-padding",
+          style: { textDecoration: _vm.range == 50 ? "underline" : "none" },
+          on: {
+            click: function($event) {
+              _vm.$emit("setRange", 50)
+            }
+          }
+        },
+        [_vm._v("Last 50 Tweets")]
+      ),
+      _c(
+        "span",
+        {
+          staticClass: "w3-padding",
+          style: { textDecoration: _vm.range == 100 ? "underline" : "none" },
+          on: {
+            click: function($event) {
+              _vm.$emit("setRange", 100)
+            }
+          }
+        },
+        [_vm._v("Last 100 Tweets")]
+      )
+    ]),
+    _c("table", { staticClass: "w3-table-all w3-half" }, [
+      _c("tr", [
+        _c("td", [_vm._v("Followers")]),
+        _c("td", { staticClass: "bold" }, [
+          _vm._v(_vm._s(_vm.performance.followers))
+        ]),
+        _c("td", [_vm._v("--")])
+      ]),
+      _c("tr", [
+        _c("td", [_vm._v("Mentions")]),
+        _c("td", { staticClass: "bold" }, [
+          _vm._v(_vm._s(_vm.performance.mentions))
+        ]),
+        _c(
+          "td",
+          {
+            class: {
+              "w3-text-green":
+                _vm.performance.mentions_percentage.charAt(0) == "+",
+              "w3-text-red":
+                _vm.performance.mentions_percentage.charAt(0) == "-"
+            }
+          },
+          [_vm._v(_vm._s(_vm.performance.mentions_percentage))]
+        )
+      ])
+    ]),
+    _c("table", { staticClass: "w3-table-all w3-half" }, [
+      _c("tr", [
+        _c("td", [_vm._v("Retweets")]),
+        _c("td", { staticClass: "bold" }, [
+          _vm._v(_vm._s(_vm.performance.retweets))
+        ]),
+        _c(
+          "td",
+          {
+            class: {
+              "w3-text-green":
+                _vm.performance.retweets_percentage.charAt(0) == "+",
+              "w3-text-red":
+                _vm.performance.retweets_percentage.charAt(0) == "-"
+            }
+          },
+          [_vm._v(_vm._s(_vm.performance.retweets_percentage))]
+        )
+      ]),
+      _c("tr", [
+        _c("td", [_vm._v("Favorites")]),
+        _c("td", { staticClass: "bold" }, [
+          _vm._v(_vm._s(_vm.performance.favorites))
+        ]),
+        _c(
+          "td",
+          {
+            class: {
+              "w3-text-green":
+                _vm.performance.favorites_percentage.charAt(0) == "+",
+              "w3-text-red":
+                _vm.performance.favorites_percentage.charAt(0) == "-"
+            }
+          },
+          [_vm._v(_vm._s(_vm.performance.favorites_percentage))]
+        )
+      ])
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-996bc700", module.exports)
+  }
+}
+
+/***/ }),
+/* 479 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(480)
+/* template */
+var __vue_template__ = __webpack_require__(481)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/javascripts/frontend/user/vue/reports/linkedin/Interaction.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-fc87cd3c", Component.options)
+  } else {
+    hotAPI.reload("data-v-fc87cd3c", Component.options)
+' + '  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 480 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_chartist__ = __webpack_require__(67);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_chartist___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_chartist__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: {
+        interaction: {
+            type: Object
+        },
+        range: {
+            type: Number
+        },
+        graph: {
+            type: String
+        }
+    },
+    updated: function updated() {
+        this.reflowGraph(this.graph);
+    },
+
+    methods: {
+        reflowGraph: function reflowGraph(graph) {
+            switch (graph) {
+                case 'retweets':
+                    new __WEBPACK_IMPORTED_MODULE_0_chartist___default.a.Line('.line-chart', {
+                        //labels: this.interaction.retweet_labels,
+                        labels: [],
+                        series: [this.interaction.retweet_series]
+                    }, {
+                        height: '160px'
+                    });
+                    break;
+                case 'favorites':
+                    new __WEBPACK_IMPORTED_MODULE_0_chartist___default.a.Line('.line-chart', {
+                        //labels: this.interaction.favorite_labels,
+                        labels: [],
+                        series: [this.interaction.favorite_series]
+                    }, {
+                        height: '160px'
+                    });
+                    break;
+                case 'mentions':
+                    new __WEBPACK_IMPORTED_MODULE_0_chartist___default.a.Line('.line-chart', {
+                        //labels: this.interaction.mention_labels,
+                        labels: [],
+                        series: [this.interaction.mention_series]
+                    }, {
+                        height: '160px'
+                    });
+                    break;
+            }
+        }
+    }
+});
+
+/***/ }),
+/* 481 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("div", { staticClass: "w3-padding w3-text-white primary" }, [
+      _c("b", [_vm._v("Interaction Trends")]),
+      _c("span", { staticClass: "w3-padding" }, [
+        _vm._v(_vm._s(_vm.interaction.created_at.slice(0, 10)))
+      ]),
+      _c("i", {
+        staticClass: "fa fa-refresh w3-right",
+        staticStyle: { "font-size": "24px" },
+        on: {
+          click: function($event) {
+            _vm.$emit("updateInteraction", _vm.range)
+          }
+        }
+      })
+    ]),
+    _c("div", { staticClass: "w3-blue" }, [
+      _c("i", { staticClass: "fa fa-twitter w3-padding" }),
+      _c(
+        "span",
+        {
+          staticClass: "w3-padding",
+          style: { textDecoration: _vm.range == 20 ? "underline" : "none" },
+          on: {
+            click: function($event) {
+              _vm.$emit("setRange", 20)
+            }
+          }
+        },
+        [_vm._v("Last 20 Days")]
+      ),
+      _c(
+        "span",
+        {
+          staticClass: "w3-padding",
+          style: { textDecoration: _vm.range == 50 ? "underline" : "none" },
+          on: {
+            click: function($event) {
+              _vm.$emit("setRange", 50)
+            }
+          }
+        },
+        [_vm._v("Last 50 Days")]
+      ),
+      _c(
+        "span",
+        {
+          staticClass: "w3-padding",
+          style: { textDecoration: _vm.range == 100 ? "underline" : "none" },
+          on: {
+            click: function($event) {
+              _vm.$emit("setRange", 100)
+            }
+          }
+        },
+        [_vm._v("Last 100 Days")]
+      )
+    ]),
+    _c("div", { staticClass: "line-chart" }),
+    _c("div", { staticClass: "w3-center" }, [
+      _c(
+        "span",
+        {
+          staticClass: "w3-padding w3-bottombar",
+          class: { "w3-border-blue": _vm.graph == "retweets" },
+          on: {
+            click: function($event) {
+              _vm.$emit("setGraph", "retweets")
+            }
+          }
+        },
+        [_vm._v("Retweets")]
+      ),
+      _c(
+        "span",
+        {
+          staticClass: "w3-padding w3-bottombar",
+          class: { "w3-border-blue": _vm.graph == "favorites" },
+          on: {
+            click: function($event) {
+              _vm.$emit("setGraph", "favorites")
+            }
+          }
+        },
+        [_vm._v("Favorites")]
+      ),
+      _c(
+        "span",
+        {
+          staticClass: "w3-padding w3-bottombar",
+          class: { "w3-border-blue": _vm.graph == "mentions" },
+          on: {
+            click: function($event) {
+              _vm.$emit("setGraph", "mentions")
+            }
+          }
+        },
+        [_vm._v("Mentions")]
+      )
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-fc87cd3c", module.exports)
+  }
+}
+
+/***/ }),
+/* 482 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(483)
+/* template */
+var __vue_template__ = __webpack_require__(484)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/javascripts/frontend/user/vue/reports/linkedin/TopPosts.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-6789445e", Component.options)
+  } else {
+    hotAPI.reload("data-v-6789445e", Component.options)
+' + '  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 483 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: {
+        posts: {
+            type: Object
+        }
+    }
+});
+
+/***/ }),
+/* 484 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("div", { staticClass: "w3-padding w3-text-white primary" }, [
+      _c("b", [_vm._v("Top ISM Tweets")]),
+      _c("span", { staticClass: "w3-padding" }, [
+        _vm._v(_vm._s(_vm.posts.created_at))
+      ]),
+      _c("i", {
+        staticClass: "fa fa-refresh w3-right",
+        staticStyle: { "font-size": "24px" },
+        on: {
+          click: function($event) {
+            _vm.$emit("updatePosts")
+          }
+        }
+      })
+    ]),
+    _c(
+      "table",
+      { staticClass: "w3-table-all" },
+      [
+        _vm._m(0),
+        _vm._l(_vm.posts.posts, function(post) {
+          return _c("tr", [
+            _c("td", [_vm._v(_vm._s(post.date.slice(0, 10)))]),
+            _c("td", [_vm._v(_vm._s(post.content))]),
+            _c("td", [_vm._v(_vm._s(post.rfm))])
+          ])
+        })
+      ],
+      2
+    )
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("tr", [
+      _c("td", [_vm._v("Post Date")]),
+      _c("td", [_vm._v("Post Content")]),
+      _c("td", [_vm._v("Total RFM")])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-6789445e", module.exports)
+  }
+}
+
+/***/ }),
+/* 485 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("div", { staticClass: "w3-card w3-padding dashboard" }, [
+      _c("div", { staticClass: "w3-row" }, [
+        _c(
+          "div",
+          { staticClass: "w3-half w3-padding" },
+          [
+            _c("Performance", {
+              attrs: {
+                performance: _vm.performance,
+                range: _vm.performanceRange
+              },
+              on: {
+                setRange: function(value) {
+                  return _vm.$store.commit("setTwitterPerformanceRange", value)
+                },
+                updatePerformance: function($event) {
+                  _vm.updatePerformance(_vm.performanceRange)
+                }
+              }
+            })
+          ],
+          1
+        ),
+        _c(
+          "div",
+          { staticClass: "w3-half w3-padding" },
+          [
+            _c("Interaction", {
+              attrs: {
+                interaction: _vm.interaction,
+                range: _vm.interactionRange,
+                graph: _vm.interactionGraph
+              },
+              on: {
+                setRange: function(value) {
+                  return _vm.$store.commit("setTwitterInteractionRange", value)
+                },
+                setGraph: function(value) {
+                  return _vm.$store.commit("setTwitterInteractionGraph", value)
+                },
+                updateInteraction: function($event) {
+                  _vm.updateInteraction(_vm.interactionRange)
+                }
+              }
+            })
+          ],
+          1
+        )
+      ]),
+      _c("div", { staticClass: "w3-row" }, [
+        _c("div", { staticClass: "w3-half w3-padding" }, [
+          _c("div", { staticClass: "w3-padding w3-text-white primary" }, [
+            _c("b", [_vm._v("Content Insights")]),
+            _c("span", { staticClass: "w3-padding" }),
+            _c("i", {
+              staticClass: "fa fa-refresh w3-right",
+              staticStyle: { "font-size": "24px" },
+              on: {
+                click: function($event) {
+                  _vm.updateInsights()
+                }
+              }
+            })
+          ]),
+          _vm._m(0),
+          _vm._m(1)
+        ]),
+        _c(
+          "div",
+          { staticClass: "w3-half w3-padding" },
+          [
+            _c("TopPosts", {
+              attrs: { posts: _vm.posts },
+              on: {
+                updatePosts: function($event) {
+                  _vm.updatePosts()
+                }
+              }
+            })
+          ],
+          1
+        )
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "w3-half w3-center" }, [
+      _c("p", [_vm._v("Carrier 18%")]),
+      _c("p", [_vm._v("Coverage 15%")]),
+      _c("p", [_vm._v("Industry 10%")]),
+      _c("p", [_vm._v("Community 57%")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "w3-half" }, [
+      _c("div", { staticClass: "pie-chart" })
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-17f283bc", module.exports)
   }
 }
 

@@ -9,13 +9,13 @@
             i(class="fa fa-twitter w3-padding")
             span(class="w3-padding"
                 :style="{ textDecoration: range == 20 ? 'underline' :  'none' }"
-                @click="$emit('setRange', 20)") Last 20 Tweets
+                @click="$emit('setRange', 20)") Last 20 Days
             span(class="w3-padding"
                 :style="{ textDecoration: range == 50 ? 'underline' :  'none' }"
-                @click="$emit('setRange', 50)") Last 50 Tweets
+                @click="$emit('setRange', 50)") Last 50 Days
             span(class="w3-padding"
                 :style="{ textDecoration: range == 100 ? 'underline' :  'none' }"
-                @click="$emit('setRange', 100)") Last 100 Tweets
+                @click="$emit('setRange', 100)") Last 100 Days
         div(class="line-chart")
         div(class="w3-center")
             span(class="w3-padding w3-bottombar"

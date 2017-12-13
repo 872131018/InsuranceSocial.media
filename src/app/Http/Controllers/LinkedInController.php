@@ -8,7 +8,9 @@ use Illuminate\Support\Facades\Auth;
 
 use App\Services\HttpService;
 
-use App\LinkedInAccount;
+use GuzzleHttp\Client;
+
+use Illuminate\Support\Facades\Log;
 
 class LinkedInController extends Controller
 {
@@ -34,7 +36,7 @@ class LinkedInController extends Controller
         $url .= http_build_query([
             'response_type' => 'code',
             'client_id' => env('CLIENT_ID'),
-            'redirect_uri' => 'https://localhost/linkedin/return',
+            'redirect_uri' => env('APP_URL').'/linkedin/return',
             'state' => 'DCEeFWf45A53sdfKef424'
         ]);
 
@@ -79,9 +81,26 @@ class LinkedInController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request, $id = 0)
     {
-        //
+        $user = Auth::user();
+        $linkedInAccount = $user->linkedin;
+        $linkedInAccount->company_id = $request->id;
+        $linkedInAccount->company_name = $request->name;
+        $linkedInAccount->progress = 4;
+        $linkedInAccount->update();
+        /*
+        Mail::send('emails.haslinkedin', [ 'name' => $user->name ], function ($message) {
+           $message->to(Auth::user()->email);
+           $message->bcc([
+               'elisabethd@insurancesocial.media',
+               'davidb@insurancesocial.media'
+           ]);
+           $message->subject('Insurance Social Media Instructions');
+       });
+       */
+
+        return response()->json($linkedInAccount);
     }
 
     /**
@@ -93,26 +112,53 @@ class LinkedInController extends Controller
      */
     public function update(Request $request)
     {
-        $response = $this->client->post('accessToken', [
-            'form_params' => [
-                'grant_type' => 'authorization_code',
-                'code' => $request->input('code'),
-                'redirect_uri' => 'https://localhost/linkedin/return',
-                'client_id' => env('CLIENT_ID'),
-                'client_secret' => env('CLIENT_SECRET')
-            ]
-        ]);
+        try {
+            $response = $this->client->post('accessToken', [
+                'form_params' => [
+                    'grant_type' => 'authorization_code',
+                    'code' => $request->code,
+                    'redirect_uri' => env('APP_URL').'/linkedin/return',
+                    'client_id' => env('CLIENT_ID'),
+                    'client_secret' => env('CLIENT_SECRET')
+                ]
+            ]);
+        } catch(Exception $e) {
+            return response()->json($e->getMessage(), 502);
+        }
 
         $response = json_decode($response->getBody());
         if(isset($response->access_token) && isset($response->expires_in)) {
-          $user = Auth::user();
-          $linkedinAccount = new LinkedInAccount();
-          $linkedinAccount->email = $user->email;
-          $linkedinAccount->access_token = $response->access_token;
-          $linkedinAccount->expires_in = $response->expires_in;
-          $user->linkedin()->save($linkedinAccount);
+            $access_token = $response->access_token;
+            $expires_in = $response->expires_in;
 
-           return redirect('profile');
+            try {
+                $client = new Client();
+                $response = $client->request('GET', 'https://api.linkedin.com/v1/people/~:(email-address)?format=json', [
+                    'headers' => ['Authorization' => 'Bearer '.$access_token]
+                ]);
+                $response = json_decode($response->getBody());
+                $email = $response->emailAddress;
+            } catch(Exception $e) {
+                return response()->json($e->getMessage(), 502);
+            }
+        }
+        $user = Auth::user();
+        $linkedInAccount = $user->linkedin;
+        $linkedInAccount->linkedin_email = $email;
+        $linkedInAccount->access_token = $access_token;
+        $linkedInAccount->expires_in = $expires_in;
+        $linkedInAccount->update();
+
+        $response = $client->request('GET', 'https://api.linkedin.com/v1/companies?format=json&is-company-admin=true', [
+            'headers' => ['Authorization' => 'Bearer '.$access_token]
+        ]);
+        $response = json_decode($response->getBody());
+        if(count($response->values) != 0) {
+            session(['companies' => json_encode($response->values)]);
+            //return redirect('/companies');
+            return redirect('/twitter');
+        } else {
+            return redirect('/twitter');
         }
     }
 

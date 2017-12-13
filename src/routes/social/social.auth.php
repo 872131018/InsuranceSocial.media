@@ -34,3 +34,5 @@ use Illuminate\Http\Request;
  Route::get('/linkedin', 'SocialController@index');
 
  Route::get('/linkedin/return', 'LinkedInController@update');
+
+ Route::get('/companies', 'SocialController@index');

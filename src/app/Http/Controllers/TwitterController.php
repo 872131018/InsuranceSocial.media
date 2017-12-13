@@ -10,8 +10,6 @@ use Abraham\TwitterOAuth\TwitterOAuth;
 
 use App\TwitterAccount;
 
-use Illuminate\Support\Facades\Log;
-
 class TwitterController extends Controller
 {
     /**

@@ -33,6 +33,9 @@
                     case '/twitter':
                         return 55;
                         break;
+                    case '/linkedin':
+                        return 60;
+                        break;
                 }
             }
         },
@@ -47,6 +50,11 @@
             axios.get('/api/twitter').then(response => {
                 this.$store.commit('serviceFinished');
                 this.$store.commit('setTwitterUrl', response.data);
+            });
+            this.$store.commit('serviceLoading');
+            axios.get('/api/linkedin').then(response => {
+                this.$store.commit('serviceFinished');
+                this.$store.commit('setLinkedInUrl', response.data);
             });
         },
         components: {

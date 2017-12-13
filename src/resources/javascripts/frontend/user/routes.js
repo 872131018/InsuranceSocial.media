@@ -2,6 +2,7 @@ import VueRouter from 'vue-router';
 import Recent from './vue/recent/Index';
 import ReportsFacebook from './vue/reports/facebook/Index';
 import ReportsTwitter from './vue/reports/twitter/Index';
+import ReportsLinkedIn from './vue/reports/linkedin/Index';
 import FacebookFeed from './vue/actions/facebook/Feed';
 import FacebookPost from './vue/actions/facebook/Post';
 import TwitterFeed from './vue/actions/twitter/Feed';
@@ -22,6 +23,11 @@ const routes = [
         path: '/user/reports/twitter',
         name: 'ReportsTwitter',
         component: ReportsTwitter
+    },
+    {
+        path: '/user/reports/linkedin',
+        name: 'ReportsLinkedIn',
+        component: ReportsLinkedIn
     },
     {
         path: '/user/facebook/feed',
