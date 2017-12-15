@@ -23177,7 +23177,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var _this2 = this;
 
             this.$store.commit('serviceLoading');
-            axios.post('/export').then(function (response) {
+            axios.get('/export').then(function (response) {
                 delete axios.defaults.headers.common['X-Requested-With'];
                 delete axios.defaults.headers.common['X-CSRF-TOKEN'];
                 delete axios.defaults.headers.common['Authorization'];

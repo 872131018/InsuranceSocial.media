@@ -141,7 +141,7 @@
             },
             export() {
                 this.$store.commit('serviceLoading');
-                axios.post('/export').then(response => {
+                axios.get('/export').then(response => {
                     delete axios.defaults.headers.common['X-Requested-With'];
                     delete axios.defaults.headers.common['X-CSRF-TOKEN'];
                     delete axios.defaults.headers.common['Authorization'];
