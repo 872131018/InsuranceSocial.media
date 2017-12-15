@@ -19,10 +19,14 @@
             console.log('App mounted.');
 
             this.$store.commit('serviceLoading');
+            axios.get('/api/options').then(response => {
+                this.$store.commit('setOptions', response.data);
+                this.$store.commit('serviceFinished');
+            });
+            this.$store.commit('serviceLoading');
             axios.get('/api/user').then(response => {
                 this.$store.commit('serviceFinished');
                 this.$store.commit('setUser', response.data);
-                /*
                 this.$store.commit('setPlan', response.data.plan);
                 this.$store.commit('setAgency', response.data.agency);
                 this.$store.commit('setRegions', response.data.regions);
@@ -51,7 +55,6 @@
                 this.$store.commit('setTargetIndustries', response.data.target_industries);
                 this.$store.commit('setSpecialTopics', response.data.special_topics);
                 this.$store.commit('setCauses', response.data.causes);
-                */
             });
             this.$store.commit('serviceLoading');
             axios.get('/api/recent').then(response => {

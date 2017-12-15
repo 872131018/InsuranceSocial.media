@@ -5,7 +5,13 @@ const Module = {
         facebookInteractionGraph: 'reach',
         twitterPerformanceRange: 50,
         twitterInteractionRange: 50,
-        twitterInteractionGraph: 'retweets'
+        twitterInteractionGraph: 'retweets',
+        marketingRegion: false,
+        marketingState: false,
+        personal: false,
+        commercial: false,
+        benefit: false,
+        crop: false,
     },
     mutations: {
         setFacebookPerformanceRange(state, value) {
@@ -25,6 +31,26 @@ const Module = {
         },
         setTwitterInteractionGraph(state, value) {
             state.twitterInteractionGraph = value;
+        },
+        setMarketingRegionType(state, value) {
+            state.marketingRegion = value;
+            state.marketingState = !value;
+        },
+        setMarketingStateType(state, value) {
+            state.marketingState = value;
+            state.marketingRegion = !value;
+        },
+        setPersonal(state, value) {
+            state.personal = value;
+        },
+        setCommercial(state, value) {
+            state.commercial = value;
+        },
+        setBenefit(state, value) {
+            state.benefit = value;
+        },
+        setCrop(state, value) {
+            state.crop = value;
         }
     }
 }

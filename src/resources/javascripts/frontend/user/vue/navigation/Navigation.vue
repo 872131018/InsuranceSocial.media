@@ -15,6 +15,8 @@
                 @showSubMenu="(value) => $store.commit('setSubMenu', value)")
             SubTools(
                 v-if="selected == 'tools'")
+            SubProfile(
+                v-if="selected == 'profile'")
         nav(class="w3-bar w3-xlarge w3-text-white primary")
             LinkedInActions(
                 v-if="selectedSub == 'linkedin'")
@@ -29,6 +31,7 @@
     import Mobile from './Mobile';
     import SubReports from './SubReports';
     import SubTools from './SubTools';
+    import SubProfile from './SubProfile';
     import SubSocialMedia from './SubSocialMedia';
     import LinkedInActions from './LinkedInActions';
     import TwitterActions from './TwitterActions';
@@ -48,6 +51,7 @@
             Mobile,
             SubReports,
             SubTools,
+            SubProfile,
             SubSocialMedia,
             LinkedInActions,
             TwitterActions,

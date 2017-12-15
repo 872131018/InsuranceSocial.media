@@ -8,6 +8,10 @@ import FacebookPost from './vue/actions/facebook/Post';
 import TwitterFeed from './vue/actions/twitter/Feed';
 import TwitterPost from './vue/actions/twitter/Post';
 import LinkedInPost from './vue/actions/linkedin/Post';
+import Agency from './vue/profile/agency/Index';
+import Location from './vue/profile/location/Index';
+import Coverages from './vue/profile/coverages/Index';
+import Outreach from './vue/profile/outreach/Index';
 
 
 const routes = [
@@ -56,6 +60,26 @@ const routes = [
         name: 'LinkedInPost',
         component: LinkedInPost
     },
+    {
+        path: '/user/agency',
+        name: 'Agency',
+        component: Agency
+    },
+    {
+        path: '/user/location',
+        name: 'Location',
+        component: Location
+    },
+    {
+        path: '/user/coverages',
+        name: 'Coverages',
+        component: Coverages
+    },
+    {
+        path: '/user/outreach',
+        name: 'Outreach',
+        component: Outreach
+    }
 ];
 
 export default new VueRouter({

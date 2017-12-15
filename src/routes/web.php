@@ -33,3 +33,11 @@ Route::get('/user/twitter/feed', 'HomeController@index')->name('home');
 Route::get('/user/twitter/post', 'HomeController@index')->name('home');
 
 Route::get('/user/linkedin/post', 'HomeController@index')->name('home');
+
+Route::get('/user/agency', 'HomeController@index')->name('home');
+
+Route::get('/user/location', 'HomeController@index')->name('home');
+
+Route::get('/user/coverages', 'HomeController@index')->name('home');
+
+Route::get('/user/outreach', 'HomeController@index')->name('home');

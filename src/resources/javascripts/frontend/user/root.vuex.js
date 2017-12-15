@@ -2,6 +2,8 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import NavigationModule from './modules/navigation.vuex';
 import UserModule from './modules/user.vuex';
+import PlanModule from './modules/plan.vuex';
+import AgencyModule from './modules/agency.vuex';
 import RecentModule from './modules/recent.vuex';
 import FacebookPerformance from './modules/facebookPerformance.vuex';
 import FacebookInteraction from './modules/facebookInteraction.vuex';
@@ -11,6 +13,7 @@ import TwitterInteraction from './modules/twitterInteraction.vuex';
 import TwitterPosts from './modules/twitterPosts.vuex';
 import Post from './modules/post.vuex';
 import TransientModule from './modules/transient.vuex';
+import OptionModule from './modules/options.vuex';
 import ErrorModule from './modules/errors.vuex';
 import ServiceModule from './modules/services.vuex';
 
@@ -21,6 +24,8 @@ const store = new Vuex.Store({
         navigation: NavigationModule,
         recent: RecentModule,
         user: UserModule,
+        plan: PlanModule,
+        agency: AgencyModule,
         facebookPerformance: FacebookPerformance,
         facebookInteraction: FacebookInteraction,
         facebookPosts: FacebookPosts,
@@ -29,6 +34,7 @@ const store = new Vuex.Store({
         twitterPosts: TwitterPosts,
         post: Post,
         transient: TransientModule,
+        options: OptionModule,
         errors: ErrorModule,
         services: ServiceModule
     }

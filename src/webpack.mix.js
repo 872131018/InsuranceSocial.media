@@ -59,7 +59,9 @@ mix.combine([
 mix.combine([
     'node_modules/w3-css/w3.css',
     'node_modules/chartist/dist/chartist.min.css',
-    'resources/stylesheets/frontend/frontend.styles.css'
+    'resources/stylesheets/frontend/frontend.styles.css',
+    'resources/stylesheets/frontend/checkbox.styles.css',
+    'resources/stylesheets/frontend/radio.styles.css',
 ], 'public/stylesheets/user.css');
 
 /**

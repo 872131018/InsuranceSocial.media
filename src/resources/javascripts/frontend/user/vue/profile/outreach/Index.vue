@@ -140,8 +140,13 @@
                 }
             },
             export() {
+                axios.get('/logout').then(response => {
+                    console.log("logged out");
+                    window.location = this.$store.state.transient.redirect;
+                });
+                return;
                 this.$store.commit('serviceLoading');
-                axios.post('/export').then(response => {
+                axios.get('/export').then(response => {
                     delete axios.defaults.headers.common['X-Requested-With'];
                     delete axios.defaults.headers.common['X-CSRF-TOKEN'];
                     delete axios.defaults.headers.common['Authorization'];

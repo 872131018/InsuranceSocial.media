@@ -16,6 +16,9 @@
             </router-link>
         div(class="w3-bar-item w3-button w3-hover-white w3-right header-link"
             :class="{ 'w3-white': selected == 'tools' }"
+            @click="$emit('showMenu', 'profile')") Profile
+        div(class="w3-bar-item w3-button w3-hover-white w3-right header-link"
+            :class="{ 'w3-white': selected == 'tools' }"
             @click="$emit('showMenu', 'tools')") Tools
         div(class="w3-bar-item w3-button w3-hover-white w3-right header-link"
             :class="{ 'w3-white': selected == 'socialMedia' }"
