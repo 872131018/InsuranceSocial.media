@@ -115,7 +115,11 @@ class TwitterController extends Controller
             $twitter->twitter_id = $response->id;
             $twitter->update();
 
-           return redirect('agency');
+            if($user->plan->linkedin) {
+                return redirect('/linkedin');
+            } else {
+                return redirect('/agency');
+            }
         }
     }
 

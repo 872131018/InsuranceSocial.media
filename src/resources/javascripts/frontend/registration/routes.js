@@ -1,6 +1,7 @@
 import VueRouter from 'vue-router';
 import Register from './vue/register/Index';
 import Plans from './vue/plans/Index';
+import LinkedIn from './vue/linkedin/Index';
 import Payment from './vue/payment/Index';
 import Corporate from './vue/corporate/Corporate';
 
@@ -14,6 +15,11 @@ const routes = [
         path: '/plans',
         name: 'Plans',
         component: Plans
+    },
+    {
+        path: '/options',
+        name: 'LinkedIn',
+        component: LinkedIn
     },
     {
         path: '/payment',

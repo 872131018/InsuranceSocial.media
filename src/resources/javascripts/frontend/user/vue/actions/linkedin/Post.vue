@@ -2,11 +2,11 @@
     div
         div(class="w3-card w3-content w3-padding dashboard")
             div(class="w3-padding w3-text-white primary")
-                i(class="fa fa-facebook-official" style="font-size:24px")
-                | Create post for {{ twitterHandle }}
-            p You may tweet up to 256 characters, or a link (in the format of http://www.example.com) in the message section.
-            p If your link has the correct meta data, twitter will read it and display it in the tweet.
-            p If you want to post a picture, you must include a message for it to appear on twitter.
+                i(class="fa fa-linkedin-square" style="font-size:24px")
+                | Create post for {{ linkedIn }}
+            p You may post up to 700 characters which includes a link in the message section.
+            p You must include a link in your post(in the format of http://example.com or www.insurancesocial.media).
+            p LinkedIn will not accept a post without a link. If you try to post multiple links only the first will be analyzed by LinkedIn.
             div(class="w3-row")
                 div(class="w3-half")
                     Message(
@@ -14,10 +14,6 @@
                         :value="message"
                         :valid="messageValid"
                         @setValue="(value) => $store.commit('setMessage', value)")
-                    File(
-                        :label="'Upload File'"
-                        :valid="fileValid"
-                        @setFile="(value) => $store.commit('setFile', value)")
                     button(class="w3-button w3-text-white secondary"
                         @click="post()") Post
             Errors(
@@ -28,20 +24,15 @@
 <script>
     export default {
         computed: {
-            twitterHandle() {
-                return this.$store.state.recent.twitter_handle;
+            linkedIn() {
+                //return this.$store.state.recent.twitter_handle;
+                return 'LinkedIn Account Name';
             },
             message() {
                 return this.$store.state.post.message;
             },
             messageValid() {
                 return this.message != '' && this.message != null;
-            },
-            file() {
-                return this.$store.state.post.file;
-            },
-            fileValid() {
-                return this.file != '' && this.file != null;
             },
             errors() {
                 return this.$store.state.errors.errors;
@@ -53,10 +44,9 @@
 
                 let form = new FormData();
                 form.append('message', this.message);
-                form.append('file', this.file);
 
                 this.$store.commit('serviceLoading');
-                axios.post('/api/twitter/post', form, {
+                axios.post('/api/linkedin/post', form, {
                     headers: {
                       'Content-Type': 'multipart/form-data'
                     }

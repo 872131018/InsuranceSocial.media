@@ -23,6 +23,8 @@ Route::get('/register/{discount?}', 'Auth\RegisterController@index');
 
 Route::get('/plans', 'Auth\RegisterController@index');
 
+Route::get('/options', 'Auth\RegisterController@index');
+
 Route::get('/payment', 'Auth\RegisterController@index');
 
 Route::get('/corporate/{discount}', 'Auth\RegisterController@register');

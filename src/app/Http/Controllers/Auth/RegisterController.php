@@ -265,6 +265,7 @@ class RegisterController extends Controller
         $userPlan = new UserPlan();
         $userPlan->email = $user->email;
         $userPlan->plan_code = $request['registration']['plan']['tier'];
+        $userPlan->linkedin = $request['registration']['plan']['linkedIn'];
         $user->plan()->save($userPlan);
 
         $payment = new Payment();

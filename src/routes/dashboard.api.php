@@ -34,3 +34,5 @@ use Illuminate\Http\Request;
  Route::post('/api/facebook/post', 'DashboardController@indexFacebookPost');
 
  Route::post('/api/twitter/post', 'DashboardController@indexTwitterPost');
+
+ Route::post('/api/linkedin/post', 'DashboardController@indexLinkedInPost');

@@ -24,6 +24,9 @@
             selected() {
                 return this.$store.state.registration.plan.name;
             },
+            code() {
+                return this.$store.state.registration.code;
+            },
             errors() {
                 return this.$store.state.errors.errors;
             }
@@ -32,7 +35,11 @@
             next() {
                 this.validate();
                 if(this.errors.length == 0) {
-                    this.$router.push({ name: 'Payment' })
+                    if(this.code == 'ISMFREETRIAL') {
+                        this.$router.push({ name: 'Payment' })
+                    } else {
+                        this.$router.push({ name: 'LinkedIn' })
+                    }
                 }
             },
             validate() {

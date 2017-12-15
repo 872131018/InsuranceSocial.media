@@ -1,4 +1,4 @@
-<template lang="pug">
+parseFloat<template lang="pug">
     div(class="w3-card w3-padding form")
         h3 You have selected the following plan.
         Selected(
@@ -106,11 +106,11 @@
                     } else {
                         if(today.format('MM/DD/YYYY') == new Moment().startOf('month').format('MM/DD/YYYY') ||
                             today.format('MM/DD/YYYY') == new Moment().endOf('month').format('MM/DD/YYYY')) {
-                            this.$store.commit('setAmount', parseInt(this.plan.price));
+                            this.$store.commit('setAmount', parseFloat(this.plan.price));
                         } else {
                             const firstDay = new Moment().startOf('month');
                             const lastDay = new Moment().endOf('month');
-                            const rate = (parseInt(this.plan.price) / lastDay.diff(firstDay, 'days')).toFixed(2);
+                            const rate = (parseFloat(this.plan.price) / lastDay.diff(firstDay, 'days')).toFixed(2);
                             let prorate = 0;
                             prorate = (rate * lastDay.diff(today, 'days')).toFixed(2);
                             this.$store.commit('setAmount', prorate);
@@ -121,11 +121,11 @@
                 case 'FMH17':
                     if(today.format('MM/DD/YYYY') == new Moment().startOf('month').format('MM/DD/YYYY') ||
                         today.format('MM/DD/YYYY') == new Moment().endOf('month').format('MM/DD/YYYY')) {
-                        this.$store.commit('setAmount', parseInt(this.plan.price) - 39.00);
+                        this.$store.commit('setAmount', parseFloat(this.plan.price) - 39.00);
                     } else {
                         const firstDay = new Moment().startOf('month');
                         const lastDay = new Moment().endOf('month');
-                        const rate = (parseInt(this.plan.price - 39.00) / lastDay.diff(firstDay, 'days')).toFixed(2);
+                        const rate = (parseFloat(this.plan.price) - 39.00) / lastDay.diff(firstDay, 'days').toFixed(2);
                         let prorate = 0;
                         prorate = (rate * lastDay.diff(today, 'days')).toFixed(2);
                         this.$store.commit('setAmount', prorate);
@@ -134,16 +134,20 @@
                 default:
                     if(today.format('MM/DD/YYYY') == new Moment().startOf('month').format('MM/DD/YYYY') ||
                         today.format('MM/DD/YYYY') == new Moment().endOf('month').format('MM/DD/YYYY')) {
-                        this.$store.commit('setAmount', this.plan.price);
+                        this.$store.commit('setAmount', parseFloat(this.plan.price));
                     } else {
                         const firstDay = new Moment().startOf('month');
                         const lastDay = new Moment().endOf('month');
-                        const rate = (parseInt(this.plan.price) / lastDay.diff(firstDay, 'days')).toFixed(2);
+                        const rate = (parseFloat(this.plan.price) / lastDay.diff(firstDay, 'days')).toFixed(2);
                         let prorate = 0;
                         prorate = (rate * lastDay.diff(today, 'days')).toFixed(2);
                         this.$store.commit('setAmount', prorate);
                     }
                     break;
+            }
+            if(this.plan.linkedIn) {
+                let amount = (parseFloat(this.amount) + 19.00).toFixed(2);
+                this.$store.commit('setAmount', amount);
             }
         },
         methods: {

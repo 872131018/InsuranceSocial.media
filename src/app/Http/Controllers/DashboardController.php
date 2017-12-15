@@ -12,6 +12,8 @@ use Abraham\TwitterOAuth\TwitterOAuth;
 
 use Carbon\Carbon;
 
+use GuzzleHttp\Client;
+
 use App\FacebookAccount;
 
 use App\FacebookPerformance;
@@ -21,6 +23,9 @@ use App\FacebookInteraction;
 use App\TwitterPerformance;
 
 use App\TwitterInteraction;
+
+use Illuminate\Support\Facades\Log;
+
 
 class DashboardController extends Controller
 {
@@ -947,6 +952,42 @@ class DashboardController extends Controller
         } catch(Exception $e) {
             return response()->json($e->getMessage(), 502);
         }
+
+        if(!$response->id) {
+            return response()->json('failed', 500);
+        } else {
+            return response()->json('ok');
+        }
+    }
+
+    /**
+     * Post a facebook entry.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function indexLinkedInPost(Request $request)
+    {
+        $user = Auth::user();
+        try {
+            $client = new Client();
+            $response = $client->request('POST', 'https://api.linkedin.com/v1/people/~/shares?format=json', [
+                'headers' => [
+                    'Authorization' => 'Bearer '.$user->linkedin->access_token,
+                    'Content-Type' => 'application/json',
+                    'x-li-format' => 'json'
+                ],
+                'json' => [
+                    'comment' => $request->message,
+                    'visibility' => [
+                        'code' => 'anyone'
+                    ]
+                ]
+            ]);
+        } catch(Exception $e) {
+            return response()->json($e->getMessage(), 502);
+        }
+        Log::info($response->getBody());die;
+        $response = json_decode($response->getBody());
 
         if(!$response->id) {
             return response()->json('failed', 500);

@@ -10,8 +10,6 @@ use App\Services\HttpService;
 
 use GuzzleHttp\Client;
 
-use Illuminate\Support\Facades\Log;
-
 class LinkedInController extends Controller
 {
     protected $client;
@@ -149,16 +147,20 @@ class LinkedInController extends Controller
         $linkedInAccount->expires_in = $expires_in;
         $linkedInAccount->update();
 
-        $response = $client->request('GET', 'https://api.linkedin.com/v1/companies?format=json&is-company-admin=true', [
-            'headers' => ['Authorization' => 'Bearer '.$access_token]
-        ]);
+        try {
+            $response = $client->request('GET', 'https://api.linkedin.com/v1/companies?format=json&is-company-admin=true', [
+                'headers' => ['Authorization' => 'Bearer '.$access_token]
+            ]);
+        } catch(Exception $e) {
+            return response()->json($e->getMessage(), 502);
+        }
         $response = json_decode($response->getBody());
-        if(count($response->values) != 0) {
+        if(isset($response->values) && count($response->values) != 0) {
             session(['companies' => json_encode($response->values)]);
             //return redirect('/companies');
-            return redirect('/twitter');
+            return redirect('/agency');
         } else {
-            return redirect('/twitter');
+            return redirect('/agency');
         }
     }
 

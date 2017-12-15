@@ -7,7 +7,15 @@ const Module = {
         password_confirmation: '', //required for laravel validation
         code: '',
         terms: false,
-        plan: {}
+        plan: {
+            id: '',
+            name: '',
+            cost: '',
+            price: '',
+            tier: '',
+            features: [],
+            linkedIn: false
+        }
     },
     mutations: {
         setName(state, value) {
@@ -32,7 +40,15 @@ const Module = {
             state.terms = value;
         },
         setPlan(state, value) {
-            state.plan = value;
+            state.plan.id = value.id,
+            state.plan.name = value.name,
+            state.plan.cost = value.cost,
+            state.plan.price = value.price,
+            state.plan.tier = value.tier,
+            state.plan.features = value.features
+        },
+        setLinkedIn(state, value) {
+            state.plan.linkedIn = value;
         }
     }
 }
