@@ -42,23 +42,23 @@ use App\Plan;
         case 'IMTGEM17':
             $logo = asset('images/IMT-logos.jpg');
             $company = 'The IMT Group';
-            $details = 'If you choose the Essential Plan, The IMT Group will cover the full cost of your subscription through Dec. 31, 2017. If you choose the Standard or Concierge Plans, IMT will pay for $39 of your total monthly subscription through Dec. 31, 2017.';
+            $expiration = 'Dec. 31, 2017';
             break;
         case 'FMH17':
             $logo = asset('images/FMH-logos.jpg');
             $company = 'Farmers Mutual Hail Insurance Company of Iowa';
-            $details = 'If you choose the Essential Plan, Farmers Mutual Hail will cover the full cost of your subscription through April 30, 2018. If you choose the Standard or Concierge Plans, Farmers Mutual Hail will pay for $39 of your total monthly subscription through April 30, 2018.';
+            $expiration = 'April 30, 2018';
             break;
         case 'ROCK18':
             $logo = asset('images/ROCK-logos.jpg');
             $company = 'Plymouth Rock Assurance';
-            $details = 'If you choose the Essential Plan, Farmers Mutual Hail will cover the full cost of your subscription through April 30, 2018. If you choose the Standard or Concierge Plans, Farmers Mutual Hail will pay for $39 of your total monthly subscription through April 30, 2018.';
+            $expiration = 'March 31, 2018';
             break;
     }
     $data = [
         'logo' => $logo,
         'company' => $company,
-        'details' => $details
+        'expiration' => $expiration
     ];
     return response()->json($data);
  });

@@ -34216,13 +34216,13 @@ var Module = {
     state: {
         logo: '',
         company: '',
-        details: ''
+        expiration: ''
     },
     mutations: {
         setCorporate: function setCorporate(state, value) {
             state.logo = value.logo;
             state.company = value.company;
-            state.details = value.details;
+            state.expiration = value.expiration;
         }
     }
 };
@@ -38541,6 +38541,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     computed: {
@@ -38550,8 +38560,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         company: function company() {
             return this.$store.state.corporate.company;
         },
-        details: function details() {
-            return this.$store.state.corporate.details;
+        expiration: function expiration() {
+            return this.$store.state.corporate.expiration;
         }
     },
     mounted: function mounted() {
@@ -38573,20 +38583,66 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "w3-card w3-padding form" }, [
     _c("img", { staticClass: "w3-image", attrs: { src: _vm.logo } }),
-    _c("h6", [
+    _c("h3", [
       _vm._v(
         "On behalf of " +
           _vm._s(_vm.company) +
           ", we’re looking forward to helping you build your strong, growing, personalized social media experience!"
       )
     ]),
-    _c("h3", [_vm._v("Plan Description")]),
-    _c("p", [_vm._v(_vm._s(_vm.details))]),
-    _c("h6", [
+    _c("h4", [_vm._v("To help you succeed, we’ve made everything easy.")]),
+    _c("p", [
       _vm._v(
-        "We look forward to working with you. Please click continue to finish registering your account."
+        "We handle the posting automatically, so you can spend more time with your clients and family."
       )
     ]),
+    _c("p", [
+      _vm._v(
+        "We make it easy for you to interact with your followers, if desired."
+      )
+    ]),
+    _c("p", [
+      _vm._v(
+        "We even help you build your social media audience, so you can focus on building more relationships and sales."
+      )
+    ]),
+    _c("h3", [_vm._v("Getting started is easy too.")]),
+    _c("h4", [_vm._v("The sign-up process takes 10 minutes or less.")]),
+    _c("p", [
+      _vm._v(
+        "1. Click here to get started. If you choose the Essential Plan, " +
+          _vm._s(_vm.company) +
+          " will cover the full cost of your subscription through " +
+          _vm._s(_vm.expiration) +
+          ". If you choose the Standard or Concierge Plans, " +
+          _vm._s(_vm.company) +
+          " will pay for $39 of your total monthly subscription through " +
+          _vm._s(_vm.expiration) +
+          "."
+      )
+    ]),
+    _c("p", [
+      _vm._v("2. Enter your contact information and create a password.")
+    ]),
+    _c("p", [
+      _vm._v(
+        "3. Connect your social media accounts to InsuranceSocial.Media. (If you already have a corporate Facebook page, you’ll enter your personal Facebook login info to allow us to connect to that page. If you don’t have a corporate Facebook page, we’ll set one up for you for a one-time fee of $25.)"
+      )
+    ]),
+    _c("p", [
+      _vm._v(
+        "4. Enter your credit card information and " +
+          _vm._s(_vm.company) +
+          " code."
+      )
+    ]),
+    _c("p", [
+      _vm._v(
+        "5. Answer a few questions that will enable us to customize your posts to your local market, personal interests and product lines."
+      )
+    ]),
+    _c("p", [_vm._v("Activate your account today.")]),
+    _vm._m(0),
     _c("div", { staticClass: "w3-padding-16" }, [
       _c(
         "button",
@@ -38603,7 +38659,20 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", [
+      _c("b", [
+        _vm._v(
+          "*Note: this offer is valid only to new InsuranceSocial.Media subscribers."
+        )
+      ])
+    ])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {

@@ -2,13 +2,13 @@ const Module = {
     state: {
         logo: '',
         company: '',
-        details: ''
+        expiration: ''
     },
     mutations: {
         setCorporate(state, value) {
             state.logo = value.logo;
             state.company = value.company;
-            state.details = value.details;
+            state.expiration = value.expiration;
         }
     }
 }
