@@ -28,6 +28,8 @@ Route::get('/user/facebook/feed', 'HomeController@index')->name('home');
 
 Route::get('/user/facebook/post', 'HomeController@index')->name('home');
 
+Route::get('/user/facebook/schedule', 'HomeController@index')->name('home');
+
 Route::get('/user/twitter/feed', 'HomeController@index')->name('home');
 
 Route::get('/user/twitter/post', 'HomeController@index')->name('home');
@@ -41,3 +43,5 @@ Route::get('/user/location', 'HomeController@index')->name('home');
 Route::get('/user/coverages', 'HomeController@index')->name('home');
 
 Route::get('/user/outreach', 'HomeController@index')->name('home');
+
+Route::get('/user/payment', 'HomeController@index')->name('home');

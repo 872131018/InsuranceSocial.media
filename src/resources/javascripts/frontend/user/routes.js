@@ -5,6 +5,7 @@ import ReportsTwitter from './vue/reports/twitter/Index';
 import ReportsLinkedIn from './vue/reports/linkedin/Index';
 import FacebookFeed from './vue/actions/facebook/Feed';
 import FacebookPost from './vue/actions/facebook/Post';
+import FacebookSchedule from './vue/actions/facebook/Schedule';
 import TwitterFeed from './vue/actions/twitter/Feed';
 import TwitterPost from './vue/actions/twitter/Post';
 import LinkedInPost from './vue/actions/linkedin/Post';
@@ -12,6 +13,7 @@ import Agency from './vue/profile/agency/Index';
 import Location from './vue/profile/location/Index';
 import Coverages from './vue/profile/coverages/Index';
 import Outreach from './vue/profile/outreach/Index';
+import Payment from './vue/profile/payment/Index';
 
 
 const routes = [
@@ -44,6 +46,11 @@ const routes = [
         path: '/user/facebook/post',
         name: 'FacebookPost',
         component: FacebookPost
+    },
+    {
+        path: '/user/facebook/schedule',
+        name: 'FacebookSchedule',
+        component: FacebookSchedule
     },
     {
         path: '/user/twitter/feed',
@@ -79,6 +86,11 @@ const routes = [
         path: '/user/outreach',
         name: 'Outreach',
         component: Outreach
+    },
+    {
+        path: '/user/payment',
+        name: 'Payment',
+        component: Payment
     }
 ];
 

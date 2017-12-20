@@ -71,7 +71,7 @@
             button(class="w3-button w3-margin-right w3-text-white primary"
                 @click="$router.push({ name: 'Profile' })") Previous
             button(class="w3-button w3-margin-left w3-text-white primary"
-                @click="update('Coverages')") Continue
+                @click="update()") Continue
 </template>
 
 <script>
@@ -153,14 +153,14 @@
             }
         },
         methods: {
-            update(route) {
+            update() {
                 this.validate();
                 if(this.errors.length == 0) {
                     this.$store.commit('serviceLoading');
                     axios.post('/location', this.$store.state.agency).then(response => {
                         this.$store.commit('serviceFinished');
                         if(this.$store.state.services.loading == 0) {
-                            this.$router.push({ name: route });
+                            this.$router.push({ name: 'Recent' });
                         }
                     }).catch(error => {
                         this.$store.commit('serviceFinished');
@@ -170,7 +170,7 @@
                     axios.post('/location/selections', this.$store.state.user).then(response => {
                         this.$store.commit('serviceFinished');
                         if(this.$store.state.services.loading == 0) {
-                            this.$router.push({ name: route });
+                            this.$router.push({ name: 'Recent' });
                         }
                     }).catch(error => {
                         this.$store.commit('serviceFinished');

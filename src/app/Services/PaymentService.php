@@ -26,6 +26,10 @@ use net\authorize\api\contract\v1\CustomerProfileType;
 
 use net\authorize\api\contract\v1\CustomerPaymentProfileType;
 
+use net\authorize\api\contract\v1\UpdateCustomerPaymentProfileRequest;
+
+use net\authorize\api\contract\v1\CustomerPaymentProfileExType;
+
 class PaymentService
 {
     protected $merchantAuthenticationType;
@@ -98,6 +102,27 @@ class PaymentService
         $request->setMerchantAuthentication($this->merchantAuthenticationType);
         $request->setTransId($transaction_id);
         $request->setCustomer($customerProfile);
+
+        return $request;
+    }
+
+    public function getUpdateRequest($payment = [], $user = null) {
+        $op = new OpaqueDataType();
+        $op->setDataDescriptor($payment['dataDescriptor']);
+        $op->setDataValue($payment['dataValue']);
+
+        $payment = new PaymentType();
+        $payment->setOpaqueData($op);
+
+        $paymentprofile = new CustomerPaymentProfileExType();
+	    $paymentprofile->setCustomerPaymentProfileId($user->customer_payment_profile_id);
+	    //$paymentprofile->setBillTo($billto);
+	    $paymentprofile->setPayment($payment);
+
+        $request = new UpdateCustomerPaymentProfileRequest();
+        $request->setMerchantAuthentication($this->merchantAuthenticationType);
+        $request->setCustomerProfileId($user->customer_profile_id);
+        $request->setPaymentProfile($paymentprofile);
 
         return $request;
     }

@@ -87,6 +87,7 @@
                 return this.code == 'ISMFREETRIAL' ||
                         this.code == 'IMTGEM17' ||
                         this.code == 'FMH17' ||
+                        this.code == 'ROCK18' ||
                         this.code == '';
             },
             errors() {
@@ -100,7 +101,9 @@
                     this.$store.commit('serviceLoading');
                     axios.post('/confirm', { email: this.email }).then(response => {
                         this.$store.commit('serviceFinished');
-                        if(this.code == 'FMH17' || this.code == 'IMTGEM17') {
+                        if(this.code == 'FMH17' ||
+                            this.code == 'IMTGEM17' ||
+                            this.code == 'ROCK18') {
                             this.$router.push({ name: 'Corporate' });
                         } else {
                             this.$router.push({ name: 'Plans' });

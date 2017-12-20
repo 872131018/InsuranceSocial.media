@@ -14,6 +14,8 @@ use Carbon\Carbon;
 
 use GuzzleHttp\Client;
 
+use net\authorize\api\controller as AnetController;
+
 use App\FacebookAccount;
 
 use App\FacebookPerformance;
@@ -23,6 +25,10 @@ use App\FacebookInteraction;
 use App\TwitterPerformance;
 
 use App\TwitterInteraction;
+
+use App\Services\PaymentService;
+
+use App\Card;
 
 use Illuminate\Support\Facades\Log;
 
@@ -34,18 +40,21 @@ class DashboardController extends Controller
 
     protected $twitter;
 
+    protected $paymentService;
+
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(PaymentService $paymentService)
     {
         $this->facebook = new Facebook([
             'app_id' => env('APP_ID'),
             'app_secret' => env('APP_SECRET'),
             'default_graph_version' => env('DEFAULT_GRAPH_VERSION')
         ]);
+        $this->paymentService = $paymentService;
     }
 
     /**
@@ -926,6 +935,64 @@ class DashboardController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function indexFacebookSchedule(Request $request)
+    {
+        $user = Auth::user();
+        $this->facebook->setDefaultAccessToken($user->facebook->access_token);
+        /*
+        * Generate UNIX timestamp
+        */
+        $time = mktime(
+            $request->hour,
+            $request->minute,
+            0,
+            $request->month,
+            $request->day,
+            $request->year
+        );
+        /**
+        * POST
+        */
+        try {
+            if($request->file) {
+                $batch = [
+                    'post' => $this->facebook->request('POST', '/'.$user->facebook->page_id.'/photos',[
+                        'message' => $request->message,
+                        'source' => $this->facebook->fileToUpload($request->file->path()),
+                        'scheduled_publish_time' => $time,
+                        'published' => false
+                    ], $user->facebook->page_token)
+                ];
+            } else {
+                $batch = [
+                    'post' => $this->facebook->request('POST', '/'.$user->facebook->page_id.'/feed',[
+                        'message' => $request->message,
+                        'link' => $request->link,
+                        'scheduled_publish_time' => $time,
+                        'published' => false
+                    ], $user->facebook->page_token)
+                ];
+            }
+            $responses = $this->facebook->sendBatchRequest($batch);
+        } catch(Facebook\Exceptions\FacebookResponseException $e) {
+            return response()->json($e->getMessage(), 502);
+        } catch(Facebook\Exceptions\FacebookSDKException $e) {
+            return response()->json($e->getMessage(), 502);
+        }
+        $responses = json_decode($responses->getBody());
+        Log::info(json_encode($responses)); die;
+        if($responses[0]->code != 200) {
+            return response()->json('failed', 500);
+        } else {
+            return response()->json('ok');
+        }
+    }
+
+    /**
+     * Post a facebook entry.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function indexTwitterPost(Request $request)
     {
         $user = Auth::user();
@@ -986,7 +1053,6 @@ class DashboardController extends Controller
         } catch(Exception $e) {
             return response()->json($e->getMessage(), 502);
         }
-        Log::info($response->getBody());die;
         $response = json_decode($response->getBody());
 
         if(!$response->id) {
@@ -994,6 +1060,63 @@ class DashboardController extends Controller
         } else {
             return response()->json('ok');
         }
+    }
+
+    /**
+     * Update payment information
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function indexUpdatePayment(Request $request)
+    {
+        $user = Auth::user();
+
+        $transaction_request = $this->paymentService->getUpdateRequest([
+            'dataDescriptor' => $request['transaction']['dataDescriptor'],
+            'dataValue' => $request['transaction']['dataValue']
+            ],
+            $user);
+        $controller = new AnetController\UpdateCustomerPaymentProfileController($transaction_request);
+        if(env('APP_ENV') == 'local') {
+            $response = $controller->executeWithApiResponse(\net\authorize\api\constants\ANetEnvironment::SANDBOX);
+        } else {
+            $response = $controller->executeWithApiResponse(\net\authorize\api\constants\ANetEnvironment::PRODUCTION);
+        }
+        /**
+        * ERROR no response
+        */
+        if($response == null) {
+            return response()->json([
+                'error' => 'FAILED',
+                'errorCode' => 'No Code',
+                'errorMessage' => 'No response returned'
+            ], 501);
+        }
+        /**
+        * ERROR problem with response code
+        */
+        if($response->getMessages()->getResultCode() != 'Ok') {
+            $payload = [
+                'error' => 'FAILED',
+                'errorCode' => $response->getMessages()->getMessage()[0]->getCode(),
+                'errorMessage' => $response->getMessages()->getMessage()[0]->getText()
+            ];
+            return response()->json($payload, 501);
+        }
+        /**
+        * Success transaction ok capture ID
+        */
+        if($response->getMessages()->getResultCode() == 'Ok') {
+            $card = new Card();
+            $card->email = $user->email;
+            $card->name = $request->method['name'];
+            $card->month = $request->method['month'];
+            $card->year = $request->method['year'];
+            $card->number = $request->method['number'];
+            $card->cvv = $request->method['cvv'];
+            $user->cards()->save($card);
+        }
+
     }
 
     /**

@@ -60,44 +60,52 @@
                 return this.$store.state.recent.scoreSeries;
             }
         },
+        mounted() {
+            this.initialize();
+        },
         updated() {
-            if(this.facebookPage) {
-                /* FACEBOOK STUFF */
-                window.fbAsyncInit = function() {
-                    FB.init({
-                      xfbml      : true,
-                      version    : 'v2.10'
-                    });
-                  };
-                  (function(d, s, id){
-                    var js, fjs = d.getElementsByTagName(s)[0];
-                    if (d.getElementById(id)) {return;}
-                    js = d.createElement(s); js.id = id;
-                    js.src = "//connect.facebook.net/en_US/sdk.js";
-                    fjs.parentNode.insertBefore(js, fjs);
-                  }(document, 'script', 'facebook-jssdk'));
+            this.initialize();
+        },
+        methods: {
+            initialize() {
+                if(this.facebookPage) {
+                    /* FACEBOOK STUFF */
+                    window.fbAsyncInit = function() {
+                        FB.init({
+                          xfbml      : true,
+                          version    : 'v2.10'
+                        });
+                      };
+                      (function(d, s, id){
+                        var js, fjs = d.getElementsByTagName(s)[0];
+                        if (d.getElementById(id)) {return;}
+                        js = d.createElement(s); js.id = id;
+                        js.src = "//connect.facebook.net/en_US/sdk.js";
+                        fjs.parentNode.insertBefore(js, fjs);
+                      }(document, 'script', 'facebook-jssdk'));
+                }
+                if(this.twitterHandle) {
+                    /* TWITTER STUFF */
+                    twttr.widgets.createTimeline({
+                        sourceType: "profile",
+                        screenName: this.twitterHandle,
+                    },
+                        document.getElementById("twitter_timeline"), {
+                            tweetLimit: 5,
+                            chrome: 'noheader',
+                        }
+                    );
+                }
+                new Chartist.Bar('.bar-chart', {
+                    labels: this.scoreLabels,
+                    series: [
+                        this.scoreSeries
+                    ]
+                }, {
+                    low: 0,
+                    high: 100
+                });
             }
-            if(this.twitterHandle) {
-                /* TWITTER STUFF */
-                twttr.widgets.createTimeline({
-                    sourceType: "profile",
-                    screenName: this.twitterHandle,
-                },
-                    document.getElementById("twitter_timeline"), {
-                        tweetLimit: 5,
-                        chrome: 'noheader',
-                    }
-                );
-            }
-            new Chartist.Bar('.bar-chart', {
-                labels: this.scoreLabels,
-                series: [
-                    this.scoreSeries
-                ]
-            }, {
-                low: 0,
-                high: 100
-            });
         }
     }
 </script>

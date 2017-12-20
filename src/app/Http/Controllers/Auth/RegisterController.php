@@ -282,7 +282,7 @@ class RegisterController extends Controller
         $card->name = $request['method']['name'];
         $card->month = $request['method']['month'];
         $card->year = $request['method']['year'];
-        $card->number = $request['method']['number'];;
+        $card->number = $request['method']['number'];
         $card->cvv = $request['method']['cvv'];
         $user->cards()->save($card);
 

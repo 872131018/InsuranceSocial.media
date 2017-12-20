@@ -33,6 +33,10 @@ use Illuminate\Http\Request;
 
  Route::post('/api/facebook/post', 'DashboardController@indexFacebookPost');
 
+ Route::post('/api/facebook/schedule', 'DashboardController@indexFacebookSchedule');
+
  Route::post('/api/twitter/post', 'DashboardController@indexTwitterPost');
 
  Route::post('/api/linkedin/post', 'DashboardController@indexLinkedInPost');
+
+ Route::post('/api/payment', 'DashboardController@indexUpdatePayment');

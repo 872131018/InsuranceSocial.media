@@ -209,7 +209,7 @@
                     axios.post('/profile', this.$store.state.user).then(response => {
                         this.$store.commit('serviceFinished');
                         if(this.$store.state.services.loading == 0) {
-                            this.$router.push({ name: 'Location' });
+                            this.$router.push({ name: 'Recent' });
                         }
                     }).catch(error => {
                         this.$store.commit('serviceFinished');
@@ -219,7 +219,7 @@
                     axios.post('/agency', this.$store.state.agency).then(response => {
                         this.$store.commit('serviceFinished');
                         if(this.$store.state.services.loading == 0) {
-                            this.$router.push({ name: 'Location' });
+                            this.$router.push({ name: 'Recent' });
                         }
                     }).catch(error => {
                         this.$store.commit('serviceFinished');

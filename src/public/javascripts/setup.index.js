@@ -20836,7 +20836,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         }
     },
     methods: {
-        update: function update(route) {
+        update: function update() {
             var _this = this;
 
             this.validate();
@@ -20845,7 +20845,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 axios.post('/location', this.$store.state.agency).then(function (response) {
                     _this.$store.commit('serviceFinished');
                     if (_this.$store.state.services.loading == 0) {
-                        _this.$router.push({ name: route });
+                        _this.$router.push({ name: 'Coverages' });
                     }
                 }).catch(function (error) {
                     _this.$store.commit('serviceFinished');
@@ -20855,7 +20855,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 axios.post('/location/selections', this.$store.state.user).then(function (response) {
                     _this.$store.commit('serviceFinished');
                     if (_this.$store.state.services.loading == 0) {
-                        _this.$router.push({ name: route });
+                        _this.$router.push({ name: 'Coverages' });
                     }
                 }).catch(function (error) {
                     _this.$store.commit('serviceFinished');
@@ -21243,7 +21243,7 @@ var render = function() {
             staticClass: "w3-button w3-margin-left w3-text-white primary",
             on: {
               click: function($event) {
-                _vm.update("Coverages")
+                _vm.update()
               }
             }
           },

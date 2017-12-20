@@ -64,24 +64,10 @@
             }
         },
         mounted() {
-            /**
-            * REFRESH GRAPHS
-            */
-            this.updatePerformance(50);
-            this.updateInteraction(50);
-            this.updatePosts();
-
-            let pieData = {
-                series: [22, 13, 37, 28]
-            };
-
-            let sum = function(a, b) { return a + b };
-
-            new Chartist.Pie('.pie-chart', pieData, {
-                labelInterpolationFnc: function(value) {
-                    return Math.round(value / pieData.series.reduce(sum) * 100) + '%';
-                }
-            });
+            this.initialize();
+        },
+        updated() {
+            this.initialize();
         },
         methods: {
             updatePerformance() {
@@ -104,6 +90,23 @@
                     this.$store.commit('serviceFinished');
                     this.$store.commit('setTwitterPosts', response.data);
                     this.loading--;
+                });
+            },
+            initialize() {
+                this.updatePerformance(50);
+                this.updateInteraction(50);
+                this.updatePosts();
+
+                let pieData = {
+                    series: [22, 13, 37, 28]
+                };
+
+                let sum = function(a, b) { return a + b };
+
+                new Chartist.Pie('.pie-chart', pieData, {
+                    labelInterpolationFnc: function(value) {
+                        return Math.round(value / pieData.series.reduce(sum) * 100) + '%';
+                    }
                 });
             }
         },

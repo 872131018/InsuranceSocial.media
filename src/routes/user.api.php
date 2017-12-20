@@ -68,6 +68,7 @@ use Illuminate\Support\Facades\Log;
  Route::get('/api/user', function (Request $request) {
      return response()->json(Auth::user()
         ->load('plan')
+        ->load('cards')
         ->load('agency')
         ->load('regions')
         ->load('states')

@@ -64,26 +64,29 @@
             }
         },
         mounted() {
-            /**
-            * REFRESH GRAPHS
-            */
-            this.updatePerformance();
-            this.updateInteraction();
-            this.updatePosts();
-
-            let pieData = {
-                series: [18, 15, 10, 57]
-            };
-
-            let sum = function(a, b) { return a + b };
-
-            new Chartist.Pie('.pie-chart', pieData, {
-                labelInterpolationFnc: function(value) {
-                    return Math.round(value / pieData.series.reduce(sum) * 100) + '%';
-                }
-            });
+            this.initialize();
+        },
+        updated() {
+            this.initialize();
         },
         methods: {
+            initialize() {
+                this.updatePerformance();
+                this.updateInteraction();
+                this.updatePosts();
+
+                let pieData = {
+                    series: [18, 15, 10, 57]
+                };
+
+                let sum = function(a, b) { return a + b };
+
+                new Chartist.Pie('.pie-chart', pieData, {
+                    labelInterpolationFnc: function(value) {
+                        return Math.round(value / pieData.series.reduce(sum) * 100) + '%';
+                    }
+                });
+            },
             updatePerformance() {
                 this.$store.commit('serviceLoading');
                 axios.get(`/api/reports/facebook/performance?range=${ this.performanceRange }`).then(response => {

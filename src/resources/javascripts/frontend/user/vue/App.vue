@@ -28,6 +28,7 @@
                 this.$store.commit('serviceFinished');
                 this.$store.commit('setUser', response.data);
                 this.$store.commit('setPlan', response.data.plan);
+                this.$store.commit('setPayment', response.data.cards[response.data.cards.length-1]);
                 this.$store.commit('setAgency', response.data.agency);
                 this.$store.commit('setRegions', response.data.regions);
                 this.$store.commit('setStates', response.data.states);
@@ -71,6 +72,11 @@
                 this.$store.commit('setScore', score);
                 this.$store.commit('pushScore', score);
                 this.$store.commit('pushScore', 50);
+            });
+            this.$store.commit('serviceLoading');
+            axios.get('/api/payment').then(response => {
+                this.$store.commit('serviceFinished');
+                this.$store.commit('setAuthorize', response.data);
             });
         }
     }

@@ -49,12 +49,12 @@ use App\Plan;
             $company = 'Farmers Mutual Hail Insurance Company of Iowa';
             $details = 'If you choose the Essential Plan, Farmers Mutual Hail will cover the full cost of your subscription through April 30, 2018. If you choose the Standard or Concierge Plans, Farmers Mutual Hail will pay for $39 of your total monthly subscription through April 30, 2018.';
             break;
+        case 'ROCK18':
+            $logo = asset('images/ROCK-logos.jpg');
+            $company = 'Plymouth Rock Assurance';
+            $details = 'If you choose the Essential Plan, Farmers Mutual Hail will cover the full cost of your subscription through April 30, 2018. If you choose the Standard or Concierge Plans, Farmers Mutual Hail will pay for $39 of your total monthly subscription through April 30, 2018.';
+            break;
     }
-    /*
-    foreach ($mock_plans as $key => $value) {
-        $mock_plans[$key]['features'] = json_decode($value['features']);
-    }
-    */
     $data = [
         'logo' => $logo,
         'company' => $company,

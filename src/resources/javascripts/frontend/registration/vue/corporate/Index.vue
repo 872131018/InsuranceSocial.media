@@ -12,8 +12,6 @@
 </template>
 
 <script>
-    import Plan from './Plan';
-
     export default {
         computed: {
             logo() {
@@ -30,9 +28,6 @@
             axios.get(`/api/corporate/${ this.$store.state.registration.code }`).then(response => {
                 this.$store.commit('setCorporate', response.data);
             });
-        },
-        components: {
-            Plan
         }
     }
 </script>

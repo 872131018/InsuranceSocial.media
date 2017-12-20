@@ -1,21 +1,8 @@
 <template lang="pug">
     div
         div(class="w3-bar-item w3-button w3-hover-white header-logo") Insurance Social Media
-        //-
-            <router-link class="w3-bar-item w3-button w3-hover-white w3-right header-link"
-                v-bind:to="{ name: 'Outreach' }">Outreach
-            </router-link>
-            <router-link class="w3-bar-item w3-button w3-hover-white w3-right header-link"
-                v-bind:to="{ name: 'Coverage' }">Coverage
-            </router-link>
-            <router-link class="w3-bar-item w3-button w3-hover-white w3-right header-link"
-                v-bind:to="{ name: 'Location' }">Location
-            </router-link>
-            <router-link class="w3-bar-item w3-button w3-hover-white w3-right header-link"
-                v-bind:to="{ name: 'Profile' }">Profile
-            </router-link>
         div(class="w3-bar-item w3-button w3-hover-white w3-right header-link"
-            :class="{ 'w3-white': selected == 'tools' }"
+            :class="{ 'w3-white': selected == 'profile' }"
             @click="$emit('showMenu', 'profile')") Profile
         div(class="w3-bar-item w3-button w3-hover-white w3-right header-link"
             :class="{ 'w3-white': selected == 'tools' }"

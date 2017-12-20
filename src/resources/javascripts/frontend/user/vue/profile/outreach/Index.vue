@@ -121,7 +121,7 @@
                     axios.post('/outreach', this.$store.state.plan).then(response => {
                         this.$store.commit('serviceFinished');
                         if(this.$store.state.services.loading == 0) {
-                            this.export();
+                            this.$router.push({ name: 'Recent' });
                         }
                     }).catch(error => {
                         this.$store.commit('serviceFinished');
@@ -131,38 +131,13 @@
                     axios.post('/outreach/selections', this.$store.state.user).then(response => {
                         this.$store.commit('serviceFinished');
                         if(this.$store.state.services.loading == 0) {
-                            this.export();
+                            this.$router.push({ name: 'Recent' });
                         }
                     }).catch(error => {
                         this.$store.commit('serviceFinished');
                         this.$store.commit('setError', 'An error has occured, please contact support.');
                     });
                 }
-            },
-            export() {
-                axios.get('/logout').then(response => {
-                    console.log("logged out");
-                    window.location = this.$store.state.transient.redirect;
-                });
-                return;
-                this.$store.commit('serviceLoading');
-                axios.get('/export').then(response => {
-                    delete axios.defaults.headers.common['X-Requested-With'];
-                    delete axios.defaults.headers.common['X-CSRF-TOKEN'];
-                    delete axios.defaults.headers.common['Authorization'];
-                    axios.post(this.$store.state.transient.post, response.data).then(response => {
-                        if(response.data.success) {
-                            axios.get('/logout').then(response => {
-                                window.location = this.$store.state.transient.redirect;
-                            });
-                        } else {
-                            this.$store.commit('setError', response.data.errors);
-                        }
-                    }).catch(error => {
-                        this.$store.commit('serviceFinished');
-                        this.$store.commit('setError', 'An error has occured, please contact support.');
-                    });
-                });
             },
             validate() {
                 this.$store.commit('clearErrors');

@@ -36,9 +36,9 @@
                 this.validate();
                 if(this.errors.length == 0) {
                     if(this.code == 'ISMFREETRIAL') {
-                        this.$router.push({ name: 'Payment' })
+                        this.$router.push({ name: 'Payment' });
                     } else {
-                        this.$router.push({ name: 'LinkedIn' })
+                        this.$router.push({ name: 'LinkedIn' });
                     }
                 }
             },

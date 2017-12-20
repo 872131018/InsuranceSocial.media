@@ -247,7 +247,7 @@
                         this.$store.commit('serviceLoading');
                         axios.post('/coverages', this.$store.state.user).then(response => {
                             this.$store.commit('serviceFinished');
-                            this.$router.push({ name: 'Outreach' });
+                            this.$router.push({ name: 'Recent' });
                         }).catch(error => {
                             this.$store.commit('serviceFinished');
                             this.$store.commit('setError', 'An error has occured, please contact support.');

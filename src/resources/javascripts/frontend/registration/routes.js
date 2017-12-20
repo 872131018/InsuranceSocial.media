@@ -3,7 +3,7 @@ import Register from './vue/register/Index';
 import Plans from './vue/plans/Index';
 import LinkedIn from './vue/linkedin/Index';
 import Payment from './vue/payment/Index';
-import Corporate from './vue/corporate/Corporate';
+import Corporate from './vue/corporate/Index';
 
 const routes = [
     {

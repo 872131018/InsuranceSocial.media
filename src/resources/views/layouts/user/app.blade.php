@@ -25,6 +25,13 @@
         <App></App>
     </div>
     <!-- Scripts -->
+    <!-- (c) 2005, 2017. Authorize.Net is a registered trademark of CyberSource Corporation -->
+    <script type="text/javascript" language="javascript">var ANS_customer_id="1d45b387-8334-4d7a-9ae3-8f6788033392"</script>
+    @if(env('APP_ENV') === 'local')
+        <script type="text/javascript" src="https://jstest.authorize.net/v1/Accept.js" charset="utf-8"></script>
+    @else
+        <script type="text/javascript" src="https://js.authorize.net/v1/Accept.js" charset="utf-8"></script>
+    @endif
     <script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
     <script type="text/javascript" src="{{ url('javascripts/user.index.js') }}"></script>
 </body>
