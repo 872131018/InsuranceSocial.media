@@ -13,6 +13,7 @@ import TwitterPerformance from './modules/twitterPerformance.vuex';
 import TwitterInteraction from './modules/twitterInteraction.vuex';
 import TwitterPosts from './modules/twitterPosts.vuex';
 import Post from './modules/post.vuex';
+import Referral from './modules/referral.vuex';
 import TransientModule from './modules/transient.vuex';
 import AuthorizeModule from './modules/authorize.vuex';
 import OptionModule from './modules/options.vuex';
@@ -36,6 +37,7 @@ const store = new Vuex.Store({
         twitterInteraction: TwitterInteraction,
         twitterPosts: TwitterPosts,
         post: Post,
+        referral: Referral,
         transient: TransientModule,
         authorize: AuthorizeModule,
         options: OptionModule,

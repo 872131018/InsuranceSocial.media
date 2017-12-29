@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 330);
+/******/ 	return __webpack_require__(__webpack_require__.s = 324);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -18355,20 +18355,14 @@ if (false) {
 /* 321 */,
 /* 322 */,
 /* 323 */,
-/* 324 */,
-/* 325 */,
-/* 326 */,
-/* 327 */,
-/* 328 */,
-/* 329 */,
-/* 330 */
+/* 324 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(331);
+module.exports = __webpack_require__(325);
 
 
 /***/ }),
-/* 331 */
+/* 325 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -18393,15 +18387,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__global_inputs_Radio___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8__global_inputs_Radio__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__global_Errors__ = __webpack_require__(57);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__global_Errors___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9__global_Errors__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__vue_Progress__ = __webpack_require__(332);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__vue_Progress__ = __webpack_require__(326);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__vue_Progress___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10__vue_Progress__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__vue_QuickNavigation__ = __webpack_require__(335);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__vue_QuickNavigation__ = __webpack_require__(329);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__vue_QuickNavigation___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_11__vue_QuickNavigation__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_vue_router__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_vuex__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__root_vuex__ = __webpack_require__(338);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__routes__ = __webpack_require__(346);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__vue_App__ = __webpack_require__(386);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__root_vuex__ = __webpack_require__(332);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__routes__ = __webpack_require__(340);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__vue_App__ = __webpack_require__(380);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__vue_App___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_16__vue_App__);
 
 __WEBPACK_IMPORTED_MODULE_0_axios___default.a.defaults.baseURL = window.base_url;
@@ -18452,15 +18446,15 @@ var Site = new __WEBPACK_IMPORTED_MODULE_1_vue___default.a({
 }).$mount('#app');
 
 /***/ }),
-/* 332 */
+/* 326 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(333)
+var __vue_script__ = __webpack_require__(327)
 /* template */
-var __vue_template__ = __webpack_require__(334)
+var __vue_template__ = __webpack_require__(328)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -18500,7 +18494,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 333 */
+/* 327 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -18532,7 +18526,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 334 */
+/* 328 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -18589,15 +18583,15 @@ if (false) {
 }
 
 /***/ }),
-/* 335 */
+/* 329 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(336)
+var __vue_script__ = __webpack_require__(330)
 /* template */
-var __vue_template__ = __webpack_require__(337)
+var __vue_template__ = __webpack_require__(331)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -18637,7 +18631,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 336 */
+/* 330 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -18668,7 +18662,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 337 */
+/* 331 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -18761,20 +18755,20 @@ if (false) {
 }
 
 /***/ }),
-/* 338 */
+/* 332 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vuex__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__modules_user_vuex__ = __webpack_require__(339);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__modules_plan_vuex__ = __webpack_require__(340);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__modules_agency_vuex__ = __webpack_require__(341);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__modules_transient_vuex__ = __webpack_require__(342);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__modules_options_vuex__ = __webpack_require__(343);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__modules_errors_vuex__ = __webpack_require__(344);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__modules_services_vuex__ = __webpack_require__(345);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__modules_user_vuex__ = __webpack_require__(333);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__modules_plan_vuex__ = __webpack_require__(334);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__modules_agency_vuex__ = __webpack_require__(335);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__modules_transient_vuex__ = __webpack_require__(336);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__modules_options_vuex__ = __webpack_require__(337);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__modules_errors_vuex__ = __webpack_require__(338);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__modules_services_vuex__ = __webpack_require__(339);
 
 
 
@@ -18802,7 +18796,7 @@ var store = new __WEBPACK_IMPORTED_MODULE_1_vuex__["a" /* default */].Store({
 /* harmony default export */ __webpack_exports__["a"] = (store);
 
 /***/ }),
-/* 339 */
+/* 333 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -19389,7 +19383,7 @@ var Module = {
 /* harmony default export */ __webpack_exports__["a"] = (Module);
 
 /***/ }),
-/* 340 */
+/* 334 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -19434,7 +19428,7 @@ var Module = {
 /* harmony default export */ __webpack_exports__["a"] = (Module);
 
 /***/ }),
-/* 341 */
+/* 335 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -19501,7 +19495,7 @@ var Module = {
 /* harmony default export */ __webpack_exports__["a"] = (Module);
 
 /***/ }),
-/* 342 */
+/* 336 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -19547,7 +19541,7 @@ var Module = {
 /* harmony default export */ __webpack_exports__["a"] = (Module);
 
 /***/ }),
-/* 343 */
+/* 337 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -19659,7 +19653,7 @@ var Module = {
 /* harmony default export */ __webpack_exports__["a"] = (Module);
 
 /***/ }),
-/* 344 */
+/* 338 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -19680,7 +19674,7 @@ var Module = {
 /* harmony default export */ __webpack_exports__["a"] = (Module);
 
 /***/ }),
-/* 345 */
+/* 339 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -19701,18 +19695,18 @@ var Module = {
 /* harmony default export */ __webpack_exports__["a"] = (Module);
 
 /***/ }),
-/* 346 */
+/* 340 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_router__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__vue_agency_Index__ = __webpack_require__(347);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__vue_agency_Index__ = __webpack_require__(341);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__vue_agency_Index___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__vue_agency_Index__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__vue_location_Index__ = __webpack_require__(353);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__vue_location_Index__ = __webpack_require__(347);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__vue_location_Index___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__vue_location_Index__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__vue_coverages_Index__ = __webpack_require__(359);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__vue_coverages_Index__ = __webpack_require__(353);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__vue_coverages_Index___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__vue_coverages_Index__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__vue_outreach_Index__ = __webpack_require__(380);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__vue_outreach_Index__ = __webpack_require__(374);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__vue_outreach_Index___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__vue_outreach_Index__);
 
 
@@ -19747,15 +19741,15 @@ var routes = [{
 }));
 
 /***/ }),
-/* 347 */
+/* 341 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(348)
+var __vue_script__ = __webpack_require__(342)
 /* template */
-var __vue_template__ = __webpack_require__(352)
+var __vue_template__ = __webpack_require__(346)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -19795,14 +19789,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 348 */
+/* 342 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Notification__ = __webpack_require__(349);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Notification__ = __webpack_require__(343);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Notification___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Notification__);
-//
 //
 //
 //
@@ -20155,15 +20148,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 349 */
+/* 343 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(350)
+var __vue_script__ = __webpack_require__(344)
 /* template */
-var __vue_template__ = __webpack_require__(351)
+var __vue_template__ = __webpack_require__(345)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -20203,7 +20196,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 350 */
+/* 344 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -20240,7 +20233,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 351 */
+/* 345 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -20305,218 +20298,216 @@ if (false) {
 }
 
 /***/ }),
-/* 352 */
+/* 346 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c(
-      "div",
-      { staticClass: "w3-card w3-padding form" },
-      [
-        _vm._m(0),
-        _c("h3", [_vm._v("Who are you?")]),
-        _c("h5", [
-          _vm._v(
-            "Please complete this information so we may provide you the best service."
-          )
-        ]),
-        _c("Field", {
-          attrs: { label: "Full Name", value: _vm.name, valid: _vm.nameValid },
-          on: {
-            setValue: function(value) {
-              return _vm.$store.commit("setName", value)
-            }
-          }
-        }),
-        _c("Field", {
-          attrs: { label: "Email", value: _vm.email, valid: _vm.emailValid },
-          on: {
-            setValue: function(value) {
-              return _vm.$store.commit("setEmail", value)
-            }
-          }
-        }),
-        _c("Field", {
-          attrs: {
-            label: "Phone (e.g. 555-555-1234)",
-            value: _vm.phone,
-            valid: _vm.phoneValid
-          },
-          on: {
-            setValue: function(value) {
-              return _vm.$store.commit("setPhone", value)
-            }
-          }
-        }),
-        _c("Dropdown", {
-          attrs: {
-            label: "What is your title?",
-            options: _vm.$store.state.options.titles,
-            selected: _vm.title
-          },
-          on: {
-            setValue: function(value) {
-              return _vm.$store.commit("setTitle", value.code)
-            }
-          }
-        }),
-        _vm.title.code && _vm.title.code != "OW"
-          ? _c(
-              "div",
-              [
-                _c("Field", {
-                  attrs: {
-                    label: "Principal Name",
-                    value: _vm.principalName,
-                    valid: _vm.principalNameValid
-                  },
-                  on: {
-                    setValue: function(value) {
-                      return _vm.$store.commit("setPrincipalName", value)
-                    }
-                  }
-                }),
-                _c("Field", {
-                  attrs: {
-                    label: "Principal Email",
-                    value: _vm.principalEmail,
-                    valid: _vm.principalEmailValid
-                  },
-                  on: {
-                    setValue: function(value) {
-                      return _vm.$store.commit("setPrincipalEmail", value)
-                    }
-                  }
-                })
-              ],
-              1
-            )
-          : _vm._e(),
-        _c("Field", {
-          attrs: {
-            label: "Agency Name",
-            value: _vm.agencyName,
-            valid: _vm.agencyNameValid
-          },
-          on: {
-            setValue: function(value) {
-              return _vm.$store.commit("setAgencyName", value)
-            }
-          }
-        }),
-        _c("Field", {
-          attrs: {
-            label: "Website",
-            value: _vm.website,
-            valid: _vm.websiteValid
-          },
-          on: {
-            setValue: function(value) {
-              return _vm.$store.commit("setWebsite", value)
-            }
-          }
-        }),
-        _c("Dropdown", {
-          attrs: {
-            label: "What is the size of your staff?",
-            options: _vm.$store.state.options.sizes,
-            selected: _vm.size
-          },
-          on: {
-            setValue: function(value) {
-              return _vm.$store.commit("setSize", value.code)
-            }
-          }
-        }),
-        _c("Field", {
-          attrs: {
-            label: "Founding Year (e.g. 19XX)",
-            value: _vm.established,
-            valid: _vm.establishedValid
-          },
-          on: {
-            setValue: function(value) {
-              return _vm.$store.commit("setEstablished", value)
-            }
-          }
-        }),
-        _c("Dropdown", {
-          attrs: {
-            label: "Is this a multigenerational company?",
-            options: _vm.$store.state.options.generations,
-            selected: _vm.generation
-          },
-          on: {
-            setValue: function(value) {
-              return _vm.$store.commit("setGeneration", value.code)
-            }
-          }
-        }),
-        _c("Dropdown", {
-          attrs: {
-            label: "How often would you like us to communicate with you?",
-            options: _vm.$store.state.options.frequencies,
-            selected: _vm.frequency
-          },
-          on: {
-            setValue: function(value) {
-              return _vm.$store.commit("setFrequency", value.code)
-            }
-          }
-        }),
-        _c("Notification", {
-          attrs: { notifyEmail: _vm.notifyEmail, notifyText: _vm.notifyText },
-          on: {
-            setEmail: function(value) {
-              return _vm.$store.commit("setNotifyEmail", value)
-            },
-            setText: function(value) {
-              return _vm.$store.commit("setNotifyText", value)
-            }
-          }
-        }),
-        _vm.notifyText
-          ? _c("Field", {
-              attrs: {
-                label: "Cell Phone (e.g. 555-555-1234)",
-                value: _vm.cellphone,
-                valid: _vm.cellphoneValid
-              },
-              on: {
-                setValue: function(value) {
-                  return _vm.$store.commit("setCellphone", value)
-                }
-              }
-            })
-          : _vm._e(),
-        _vm.errors.length
-          ? _c("Errors", { attrs: { errors: _vm.errors } })
-          : _vm._e(),
-        _c("h5", [
-          _vm._v(
-            "Please continue to fill out the geographic information for your profile."
-          )
-        ]),
-        _c(
-          "button",
-          {
-            staticClass: "w3-button w3-text-white primary",
-            on: {
-              click: function($event) {
-                _vm.update("Location")
-              }
-            }
-          },
-          [_vm._v("Continue")]
+  return _c(
+    "div",
+    { staticClass: "w3-card w3-padding form" },
+    [
+      _vm._m(0),
+      _c("h3", [_vm._v("Who are you?")]),
+      _c("h5", [
+        _vm._v(
+          "Please complete this information so we may provide you the best service."
         )
-      ],
-      1
-    )
-  ])
+      ]),
+      _c("Field", {
+        attrs: { label: "Full Name", value: _vm.name, valid: _vm.nameValid },
+        on: {
+          setValue: function(value) {
+            return _vm.$store.commit("setName", value)
+          }
+        }
+      }),
+      _c("Field", {
+        attrs: { label: "Email", value: _vm.email, valid: _vm.emailValid },
+        on: {
+          setValue: function(value) {
+            return _vm.$store.commit("setEmail", value)
+          }
+        }
+      }),
+      _c("Field", {
+        attrs: {
+          label: "Phone (e.g. 555-555-1234)",
+          value: _vm.phone,
+          valid: _vm.phoneValid
+        },
+        on: {
+          setValue: function(value) {
+            return _vm.$store.commit("setPhone", value)
+          }
+        }
+      }),
+      _c("Dropdown", {
+        attrs: {
+          label: "What is your title?",
+          options: _vm.$store.state.options.titles,
+          selected: _vm.title
+        },
+        on: {
+          setValue: function(value) {
+            return _vm.$store.commit("setTitle", value.code)
+          }
+        }
+      }),
+      _vm.title.code && _vm.title.code != "OW"
+        ? _c(
+            "div",
+            [
+              _c("Field", {
+                attrs: {
+                  label: "Principal Name",
+                  value: _vm.principalName,
+                  valid: _vm.principalNameValid
+                },
+                on: {
+                  setValue: function(value) {
+                    return _vm.$store.commit("setPrincipalName", value)
+                  }
+                }
+              }),
+              _c("Field", {
+                attrs: {
+                  label: "Principal Email",
+                  value: _vm.principalEmail,
+                  valid: _vm.principalEmailValid
+                },
+                on: {
+                  setValue: function(value) {
+                    return _vm.$store.commit("setPrincipalEmail", value)
+                  }
+                }
+              })
+            ],
+            1
+          )
+        : _vm._e(),
+      _c("Field", {
+        attrs: {
+          label: "Agency Name",
+          value: _vm.agencyName,
+          valid: _vm.agencyNameValid
+        },
+        on: {
+          setValue: function(value) {
+            return _vm.$store.commit("setAgencyName", value)
+          }
+        }
+      }),
+      _c("Field", {
+        attrs: {
+          label: "Website",
+          value: _vm.website,
+          valid: _vm.websiteValid
+        },
+        on: {
+          setValue: function(value) {
+            return _vm.$store.commit("setWebsite", value)
+          }
+        }
+      }),
+      _c("Dropdown", {
+        attrs: {
+          label: "What is the size of your staff?",
+          options: _vm.$store.state.options.sizes,
+          selected: _vm.size
+        },
+        on: {
+          setValue: function(value) {
+            return _vm.$store.commit("setSize", value.code)
+          }
+        }
+      }),
+      _c("Field", {
+        attrs: {
+          label: "Founding Year (e.g. 19XX)",
+          value: _vm.established,
+          valid: _vm.establishedValid
+        },
+        on: {
+          setValue: function(value) {
+            return _vm.$store.commit("setEstablished", value)
+          }
+        }
+      }),
+      _c("Dropdown", {
+        attrs: {
+          label: "Is this a multigenerational company?",
+          options: _vm.$store.state.options.generations,
+          selected: _vm.generation
+        },
+        on: {
+          setValue: function(value) {
+            return _vm.$store.commit("setGeneration", value.code)
+          }
+        }
+      }),
+      _c("Dropdown", {
+        attrs: {
+          label: "How often would you like us to communicate with you?",
+          options: _vm.$store.state.options.frequencies,
+          selected: _vm.frequency
+        },
+        on: {
+          setValue: function(value) {
+            return _vm.$store.commit("setFrequency", value.code)
+          }
+        }
+      }),
+      _c("Notification", {
+        attrs: { notifyEmail: _vm.notifyEmail, notifyText: _vm.notifyText },
+        on: {
+          setEmail: function(value) {
+            return _vm.$store.commit("setNotifyEmail", value)
+          },
+          setText: function(value) {
+            return _vm.$store.commit("setNotifyText", value)
+          }
+        }
+      }),
+      _vm.notifyText
+        ? _c("Field", {
+            attrs: {
+              label: "Cell Phone (e.g. 555-555-1234)",
+              value: _vm.cellphone,
+              valid: _vm.cellphoneValid
+            },
+            on: {
+              setValue: function(value) {
+                return _vm.$store.commit("setCellphone", value)
+              }
+            }
+          })
+        : _vm._e(),
+      _vm.errors.length
+        ? _c("Errors", { attrs: { errors: _vm.errors } })
+        : _vm._e(),
+      _c("h5", [
+        _vm._v(
+          "Please continue to fill out the geographic information for your profile."
+        )
+      ]),
+      _c(
+        "button",
+        {
+          staticClass: "w3-button w3-text-white primary",
+          on: {
+            click: function($event) {
+              _vm.update()
+            }
+          }
+        },
+        [_vm._v("Continue")]
+      )
+    ],
+    1
+  )
 }
 var staticRenderFns = [
   function() {
@@ -20563,15 +20554,15 @@ if (false) {
 }
 
 /***/ }),
-/* 353 */
+/* 347 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(354)
+var __vue_script__ = __webpack_require__(348)
 /* template */
-var __vue_template__ = __webpack_require__(358)
+var __vue_template__ = __webpack_require__(352)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -20611,14 +20602,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 354 */
+/* 348 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Marketing__ = __webpack_require__(355);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Marketing__ = __webpack_require__(349);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Marketing___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Marketing__);
-//
 //
 //
 //
@@ -20897,15 +20887,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 355 */
+/* 349 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(356)
+var __vue_script__ = __webpack_require__(350)
 /* template */
-var __vue_template__ = __webpack_require__(357)
+var __vue_template__ = __webpack_require__(351)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -20945,7 +20935,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 356 */
+/* 350 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -20982,7 +20972,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 357 */
+/* 351 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -21047,212 +21037,210 @@ if (false) {
 }
 
 /***/ }),
-/* 358 */
+/* 352 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c(
-      "div",
-      { staticClass: "w3-card w3-padding form" },
-      [
-        _c("h3", [_vm._v("Where are you?")]),
-        _c("h5", [
-          _vm._v(
-            "Please complete this information to receive content pertaining to your marketing areas."
-          )
-        ]),
-        _c("Field", {
-          attrs: {
-            label: "Business Address 1",
-            value: _vm.address1,
-            valid: _vm.address1Valid
-          },
-          on: {
-            setValue: function(value) {
-              return _vm.$store.commit("setAddress1", value)
-            }
-          }
-        }),
-        _c("Field", {
-          attrs: {
-            label: "Business Address 2",
-            value: _vm.address2,
-            valid: _vm.address2Valid
-          },
-          on: {
-            setValue: function(value) {
-              return _vm.$store.commit("setAddress2", value)
-            }
-          }
-        }),
-        _c("Field", {
-          attrs: { label: "City", value: _vm.city, valid: _vm.cityValid },
-          on: {
-            setValue: function(value) {
-              return _vm.$store.commit("setCity", value)
-            }
-          }
-        }),
-        _c("Dropdown", {
-          attrs: {
-            label: "State",
-            options: _vm.$store.state.options.states,
-            selected: _vm.state
-          },
-          on: {
-            setValue: function(value) {
-              return _vm.$store.commit("setState", value.code)
-            }
-          }
-        }),
-        _c("Field", {
-          attrs: { label: "Zip Code", value: _vm.zip, valid: _vm.zipValid },
-          on: {
-            setValue: function(value) {
-              return _vm.$store.commit("setZip", value)
-            }
-          }
-        }),
-        _c("Marketing", {
-          attrs: {
-            marketingRegion: _vm.marketingRegion,
-            marketingState: _vm.marketingState
-          },
-          on: {
-            setMarketingRegion: function(value) {
-              _vm.$store.commit("setMarketingRegionType", value)
-              _vm.$store.commit("clearStates")
-              _vm.$store.commit("clearCounties")
-            },
-            setMarketingState: function(value) {
-              _vm.$store.commit("setMarketingStateType", value)
-              _vm.$store.commit("clearRegions")
-            }
-          }
-        }),
-        _vm.marketingRegion
-          ? _c(
-              "div",
-              [
-                _c("List", {
-                  attrs: {
-                    label: "Selected Regions (click to remove)",
-                    items: _vm.selectedRegions
-                  },
-                  on: {
-                    clearValue: function(value) {
-                      return _vm.$store.commit("removeRegion", value)
-                    }
-                  }
-                }),
-                _c("Dropdown", {
-                  attrs: {
-                    label: "Marketing Regions (Select up to 5)",
-                    options: _vm.$store.state.options.regions,
-                    selected: _vm.label
-                  },
-                  on: {
-                    setValue: function(value) {
-                      return _vm.$store.commit("setRegion", value)
-                    }
-                  }
-                })
-              ],
-              1
-            )
-          : _vm._e(),
-        _vm.marketingState
-          ? _c(
-              "div",
-              [
-                _c("List", {
-                  attrs: {
-                    label: "Selected State (click to remove)",
-                    items: _vm.selectedStates
-                  },
-                  on: {
-                    clearValue: function(value) {
-                      return _vm.$store.commit("removeState", value)
-                    }
-                  }
-                }),
-                _c("Dropdown", {
-                  attrs: {
-                    label: "Marketing States (Select up to 5)",
-                    options: _vm.$store.state.options.states,
-                    selected: _vm.label
-                  },
-                  on: {
-                    setValue: function(value) {
-                      return _vm.$store.commit("setMarketingState", value)
-                    }
-                  }
-                }),
-                _c("List", {
-                  attrs: {
-                    label: "Selected Counties (click to remove)",
-                    items: _vm.selectedCounties
-                  },
-                  on: {
-                    clearValue: function(value) {
-                      return _vm.$store.commit("removeCounty", value)
-                    }
-                  }
-                }),
-                _c("Dropdown", {
-                  attrs: {
-                    label: "Marketing Counties (No selection is all counties)",
-                    options: _vm.counties,
-                    selected: _vm.label
-                  },
-                  on: {
-                    setValue: function(value) {
-                      return _vm.$store.commit("setCounty", value)
-                    }
-                  }
-                })
-              ],
-              1
-            )
-          : _vm._e(),
-        _vm.errors.length
-          ? _c("Errors", { attrs: { errors: _vm.errors } })
-          : _vm._e(),
-        _c("h5", [
-          _vm._v("Click continue to select the coverages you wish to write.")
-        ]),
-        _c(
-          "button",
-          {
-            staticClass: "w3-button w3-margin-right w3-text-white primary",
-            on: {
-              click: function($event) {
-                _vm.$router.push({ name: "Profile" })
-              }
-            }
-          },
-          [_vm._v("Previous")]
-        ),
-        _c(
-          "button",
-          {
-            staticClass: "w3-button w3-margin-left w3-text-white primary",
-            on: {
-              click: function($event) {
-                _vm.update()
-              }
-            }
-          },
-          [_vm._v("Continue")]
+  return _c(
+    "div",
+    { staticClass: "w3-card w3-padding form" },
+    [
+      _c("h3", [_vm._v("Where are you?")]),
+      _c("h5", [
+        _vm._v(
+          "Please complete this information to receive content pertaining to your marketing areas."
         )
-      ],
-      1
-    )
-  ])
+      ]),
+      _c("Field", {
+        attrs: {
+          label: "Business Address 1",
+          value: _vm.address1,
+          valid: _vm.address1Valid
+        },
+        on: {
+          setValue: function(value) {
+            return _vm.$store.commit("setAddress1", value)
+          }
+        }
+      }),
+      _c("Field", {
+        attrs: {
+          label: "Business Address 2",
+          value: _vm.address2,
+          valid: _vm.address2Valid
+        },
+        on: {
+          setValue: function(value) {
+            return _vm.$store.commit("setAddress2", value)
+          }
+        }
+      }),
+      _c("Field", {
+        attrs: { label: "City", value: _vm.city, valid: _vm.cityValid },
+        on: {
+          setValue: function(value) {
+            return _vm.$store.commit("setCity", value)
+          }
+        }
+      }),
+      _c("Dropdown", {
+        attrs: {
+          label: "State",
+          options: _vm.$store.state.options.states,
+          selected: _vm.state
+        },
+        on: {
+          setValue: function(value) {
+            return _vm.$store.commit("setState", value.code)
+          }
+        }
+      }),
+      _c("Field", {
+        attrs: { label: "Zip Code", value: _vm.zip, valid: _vm.zipValid },
+        on: {
+          setValue: function(value) {
+            return _vm.$store.commit("setZip", value)
+          }
+        }
+      }),
+      _c("Marketing", {
+        attrs: {
+          marketingRegion: _vm.marketingRegion,
+          marketingState: _vm.marketingState
+        },
+        on: {
+          setMarketingRegion: function(value) {
+            _vm.$store.commit("setMarketingRegionType", value)
+            _vm.$store.commit("clearStates")
+            _vm.$store.commit("clearCounties")
+          },
+          setMarketingState: function(value) {
+            _vm.$store.commit("setMarketingStateType", value)
+            _vm.$store.commit("clearRegions")
+          }
+        }
+      }),
+      _vm.marketingRegion
+        ? _c(
+            "div",
+            [
+              _c("List", {
+                attrs: {
+                  label: "Selected Regions (click to remove)",
+                  items: _vm.selectedRegions
+                },
+                on: {
+                  clearValue: function(value) {
+                    return _vm.$store.commit("removeRegion", value)
+                  }
+                }
+              }),
+              _c("Dropdown", {
+                attrs: {
+                  label: "Marketing Regions (Select up to 5)",
+                  options: _vm.$store.state.options.regions,
+                  selected: _vm.label
+                },
+                on: {
+                  setValue: function(value) {
+                    return _vm.$store.commit("setRegion", value)
+                  }
+                }
+              })
+            ],
+            1
+          )
+        : _vm._e(),
+      _vm.marketingState
+        ? _c(
+            "div",
+            [
+              _c("List", {
+                attrs: {
+                  label: "Selected State (click to remove)",
+                  items: _vm.selectedStates
+                },
+                on: {
+                  clearValue: function(value) {
+                    return _vm.$store.commit("removeState", value)
+                  }
+                }
+              }),
+              _c("Dropdown", {
+                attrs: {
+                  label: "Marketing States (Select up to 5)",
+                  options: _vm.$store.state.options.states,
+                  selected: _vm.label
+                },
+                on: {
+                  setValue: function(value) {
+                    return _vm.$store.commit("setMarketingState", value)
+                  }
+                }
+              }),
+              _c("List", {
+                attrs: {
+                  label: "Selected Counties (click to remove)",
+                  items: _vm.selectedCounties
+                },
+                on: {
+                  clearValue: function(value) {
+                    return _vm.$store.commit("removeCounty", value)
+                  }
+                }
+              }),
+              _c("Dropdown", {
+                attrs: {
+                  label: "Marketing Counties (No selection is all counties)",
+                  options: _vm.counties,
+                  selected: _vm.label
+                },
+                on: {
+                  setValue: function(value) {
+                    return _vm.$store.commit("setCounty", value)
+                  }
+                }
+              })
+            ],
+            1
+          )
+        : _vm._e(),
+      _vm.errors.length
+        ? _c("Errors", { attrs: { errors: _vm.errors } })
+        : _vm._e(),
+      _c("h5", [
+        _vm._v("Click continue to select the coverages you wish to write.")
+      ]),
+      _c(
+        "button",
+        {
+          staticClass: "w3-button w3-margin-right w3-text-white primary",
+          on: {
+            click: function($event) {
+              _vm.$router.push({ name: "Profile" })
+            }
+          }
+        },
+        [_vm._v("Previous")]
+      ),
+      _c(
+        "button",
+        {
+          staticClass: "w3-button w3-margin-left w3-text-white primary",
+          on: {
+            click: function($event) {
+              _vm.update()
+            }
+          }
+        },
+        [_vm._v("Continue")]
+      )
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -21265,15 +21253,15 @@ if (false) {
 }
 
 /***/ }),
-/* 359 */
+/* 353 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(360)
+var __vue_script__ = __webpack_require__(354)
 /* template */
-var __vue_template__ = __webpack_require__(379)
+var __vue_template__ = __webpack_require__(373)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -21313,24 +21301,23 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 360 */
+/* 354 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Personal__ = __webpack_require__(361);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Personal__ = __webpack_require__(355);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Personal___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Personal__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Commercial__ = __webpack_require__(364);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Commercial__ = __webpack_require__(358);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Commercial___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__Commercial__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Benefit__ = __webpack_require__(367);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Benefit__ = __webpack_require__(361);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Benefit___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__Benefit__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Crop__ = __webpack_require__(370);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Crop__ = __webpack_require__(364);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Crop___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__Crop__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Ratio__ = __webpack_require__(373);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Ratio__ = __webpack_require__(367);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Ratio___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__Ratio__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__Modal__ = __webpack_require__(376);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__Modal__ = __webpack_require__(370);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__Modal___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__Modal__);
-//
 //
 //
 //
@@ -21634,15 +21621,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 361 */
+/* 355 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(362)
+var __vue_script__ = __webpack_require__(356)
 /* template */
-var __vue_template__ = __webpack_require__(363)
+var __vue_template__ = __webpack_require__(357)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -21682,7 +21669,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 362 */
+/* 356 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -21716,7 +21703,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 363 */
+/* 357 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -21787,15 +21774,15 @@ if (false) {
 }
 
 /***/ }),
-/* 364 */
+/* 358 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(365)
+var __vue_script__ = __webpack_require__(359)
 /* template */
-var __vue_template__ = __webpack_require__(366)
+var __vue_template__ = __webpack_require__(360)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -21835,7 +21822,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 365 */
+/* 359 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -21869,7 +21856,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 366 */
+/* 360 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -21940,15 +21927,15 @@ if (false) {
 }
 
 /***/ }),
-/* 367 */
+/* 361 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(368)
+var __vue_script__ = __webpack_require__(362)
 /* template */
-var __vue_template__ = __webpack_require__(369)
+var __vue_template__ = __webpack_require__(363)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -21988,7 +21975,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 368 */
+/* 362 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -22022,7 +22009,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 369 */
+/* 363 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -22093,15 +22080,15 @@ if (false) {
 }
 
 /***/ }),
-/* 370 */
+/* 364 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(371)
+var __vue_script__ = __webpack_require__(365)
 /* template */
-var __vue_template__ = __webpack_require__(372)
+var __vue_template__ = __webpack_require__(366)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -22141,7 +22128,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 371 */
+/* 365 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -22175,7 +22162,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 372 */
+/* 366 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -22246,15 +22233,15 @@ if (false) {
 }
 
 /***/ }),
-/* 373 */
+/* 367 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(374)
+var __vue_script__ = __webpack_require__(368)
 /* template */
-var __vue_template__ = __webpack_require__(375)
+var __vue_template__ = __webpack_require__(369)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -22294,7 +22281,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 374 */
+/* 368 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -22335,7 +22322,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 375 */
+/* 369 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -22399,15 +22386,15 @@ if (false) {
 }
 
 /***/ }),
-/* 376 */
+/* 370 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(377)
+var __vue_script__ = __webpack_require__(371)
 /* template */
-var __vue_template__ = __webpack_require__(378)
+var __vue_template__ = __webpack_require__(372)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -22447,7 +22434,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 377 */
+/* 371 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -22501,7 +22488,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 378 */
+/* 372 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -22612,335 +22599,330 @@ if (false) {
 }
 
 /***/ }),
-/* 379 */
+/* 373 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c(
-      "div",
-      { staticClass: "w3-card w3-padding form" },
-      [
-        _c("h3", [_vm._v("What do you write?")]),
-        _c("h5", [
-          _vm._v(
-            "Please tell us about the lines of coverage you write and any industries you market to."
-          )
-        ]),
-        _c("List", {
-          attrs: {
-            label: "Selected Carriers (click to remove)",
-            items: _vm.carriers
-          },
-          on: {
-            clearValue: function(value) {
-              return _vm.$store.commit("removeCarrier", value)
-            }
+  return _c(
+    "div",
+    { staticClass: "w3-card w3-padding form" },
+    [
+      _c("h3", [_vm._v("What do you write?")]),
+      _c("h5", [
+        _vm._v(
+          "Please tell us about the lines of coverage you write and any industries you market to."
+        )
+      ]),
+      _c("List", {
+        attrs: {
+          label: "Selected Carriers (click to remove)",
+          items: _vm.carriers
+        },
+        on: {
+          clearValue: function(value) {
+            return _vm.$store.commit("removeCarrier", value)
           }
-        }),
-        _c("Dropdown", {
-          attrs: {
-            label: "Carriers (Select up to 5)",
-            options: _vm.$store.state.options.carriers,
-            selected: _vm.label
-          },
-          on: {
-            setValue: function(value) {
-              return _vm.$store.commit("setCarrier", value)
-            }
+        }
+      }),
+      _c("Dropdown", {
+        attrs: {
+          label: "Carriers (Select up to 5)",
+          options: _vm.$store.state.options.carriers,
+          selected: _vm.label
+        },
+        on: {
+          setValue: function(value) {
+            return _vm.$store.commit("setCarrier", value)
           }
-        }),
-        _c("Personal", {
-          attrs: { personal: _vm.personal },
-          on: {
-            setOption: function(value) {
-              return _vm.$store.commit("setPersonal", value)
-            }
+        }
+      }),
+      _c("Personal", {
+        attrs: { personal: _vm.personal },
+        on: {
+          setOption: function(value) {
+            return _vm.$store.commit("setPersonal", value)
           }
-        }),
-        _vm.personal
-          ? _c("List", {
-              attrs: {
-                label: "Selected Coverages (click to remove)",
-                items: _vm.personalCoverages
-              },
-              on: {
-                clearValue: function(value) {
-                  return _vm.$store.commit("removePersonalCoverage", value)
-                }
-              }
-            })
-          : _vm._e(),
-        _vm.personal
-          ? _c("Dropdown", {
-              attrs: {
-                label: "Personal Coverages (Select up to 5)",
-                options: _vm.$store.state.options.personal,
-                selected: _vm.label
-              },
-              on: {
-                setValue: function(value) {
-                  return _vm.$store.commit("setPersonalCoverage", value)
-                }
-              }
-            })
-          : _vm._e(),
-        _c("Commercial", {
-          attrs: { commercial: _vm.commercial },
-          on: {
-            setOption: function(value) {
-              return _vm.$store.commit("setCommercial", value)
-            }
-          }
-        }),
-        _vm.commercial
-          ? _c("List", {
-              attrs: {
-                label: "Selected Coverages (click to remove)",
-                items: _vm.commercialCoverages
-              },
-              on: {
-                clearValue: function(value) {
-                  return _vm.$store.commit("removeCommercialCoverage", value)
-                }
-              }
-            })
-          : _vm._e(),
-        _vm.commercial
-          ? _c("Dropdown", {
-              attrs: {
-                label: "Commercial Coverages (Select up to 5)",
-                options: _vm.$store.state.options.commercial,
-                selected: _vm.label
-              },
-              on: {
-                setValue: function(value) {
-                  return _vm.$store.commit("setCommercialCoverage", value)
-                }
-              }
-            })
-          : _vm._e(),
-        _c("Benefit", {
-          attrs: { benefit: _vm.benefit },
-          on: {
-            setOption: function(value) {
-              return _vm.$store.commit("setBenefit", value)
-            }
-          }
-        }),
-        _vm.benefit
-          ? _c("List", {
-              attrs: {
-                label: "Selected Coverages (click to remove)",
-                items: _vm.benefitCoverages
-              },
-              on: {
-                clearValue: function(value) {
-                  return _vm.$store.commit("removeBenefitCoverage", value)
-                }
-              }
-            })
-          : _vm._e(),
-        _vm.benefit
-          ? _c("Dropdown", {
-              attrs: {
-                label: "Benefit Coverages (Select up to 5)",
-                options: _vm.$store.state.options.benefit,
-                selected: _vm.label
-              },
-              on: {
-                setValue: function(value) {
-                  return _vm.$store.commit("setBenefitCoverage", value)
-                }
-              }
-            })
-          : _vm._e(),
-        _c("Crop", {
-          attrs: { crop: _vm.crop },
-          on: {
-            setOption: function($event) {
-              _vm.setCrop($event)
-            }
-          }
-        }),
-        _vm.crop == "TEMP"
-          ? _c("List", {
-              attrs: {
-                label: "Selected Coverages (click to remove)",
-                items: _vm.cropCoverages
-              },
-              on: {
-                clearValue: function(value) {
-                  return _vm.$store.commit("removeCropCoverage", value)
-                }
-              }
-            })
-          : _vm._e(),
-        _vm.crop == "TEMP"
-          ? _c("Dropdown", {
-              attrs: {
-                label: "Crop Coverages (Select up to 5)",
-                options: _vm.$store.state.options.crop,
-                selected: _vm.label
-              },
-              on: {
-                setValue: function(value) {
-                  return _vm.$store.commit("setCropCoverage", value)
-                }
-              }
-            })
-          : _vm._e(),
-        _vm.commercial
-          ? _c("List", {
-              attrs: {
-                label: "Selected Industries (click to remove)",
-                items: _vm.currentIndustries
-              },
-              on: {
-                clearValue: function(value) {
-                  return _vm.$store.commit("removeCurrentIndustry", value)
-                }
-              }
-            })
-          : _vm._e(),
-        _vm.commercial
-          ? _c("Dropdown", {
-              attrs: {
-                label: "Current industries for marketing (Select up to 5)",
-                options: _vm.$store.state.options.industries,
-                selected: _vm.label
-              },
-              on: {
-                setValue: function(value) {
-                  return _vm.$store.commit("setCurrentIndustry", value)
-                }
-              }
-            })
-          : _vm._e(),
-        _vm.commercial
-          ? _c("List", {
-              attrs: {
-                label: "Selected Industries (click to remove)",
-                items: _vm.targetIndustries
-              },
-              on: {
-                clearValue: function(value) {
-                  return _vm.$store.commit("removeTargetIndustry", value)
-                }
-              }
-            })
-          : _vm._e(),
-        _vm.commercial
-          ? _c("Dropdown", {
-              attrs: {
-                label: "Target industries for marketing (Select up to 5)",
-                options: _vm.$store.state.options.industries,
-                selected: _vm.label
-              },
-              on: {
-                setValue: function(value) {
-                  return _vm.$store.commit("setTargetIndustry", value)
-                }
-              }
-            })
-          : _vm._e(),
-        _vm.personal && _vm.commercial
-          ? _c("Ratio", {
-              attrs: {
-                commercialMix: _vm.commercialMix,
-                commercialMixValid: _vm.commercialMixValid,
-                personalMix: _vm.personalMix,
-                personalMixValid: _vm.personalMixValid
-              },
-              on: {
-                setCommercialMix: function(value) {
-                  return _vm.$store.commit("setCommercialMix", value)
-                },
-                setPersonalMix: function(value) {
-                  return _vm.$store.commit("setPersonalMix", value)
-                }
-              }
-            })
-          : _vm._e(),
-        _c("List", {
-          attrs: {
-            label: "Selected Coverages (click to remove)",
-            items: _vm.targetCoverages
-          },
-          on: {
-            clearValue: function(value) {
-              return _vm.$store.commit("removeTargetCoverage", value)
-            }
-          }
-        }),
-        _c("Dropdown", {
-          attrs: {
-            label:
-              "What coverages do you want to sell more of? (Select up to 5)",
-            options: _vm.$store.state.options.coverages,
-            selected: _vm.label
-          },
-          on: {
-            setValue: function(value) {
-              return _vm.$store.commit("setTargetCoverage", value)
-            }
-          }
-        }),
-        _vm.errors.length
-          ? _c("Errors", { attrs: { errors: _vm.errors } })
-          : _vm._e(),
-        _c("h5", [
-          _vm._v(
-            "Click continue to select how you want to reach your followers."
-          )
-        ]),
-        _c(
-          "button",
-          {
-            staticClass: "w3-button w3-margin-right w3-text-white primary",
+        }
+      }),
+      _vm.personal
+        ? _c("List", {
+            attrs: {
+              label: "Selected Coverages (click to remove)",
+              items: _vm.personalCoverages
+            },
             on: {
-              click: function($event) {
-                _vm.$router.push({ name: "Location" })
+              clearValue: function(value) {
+                return _vm.$store.commit("removePersonalCoverage", value)
               }
             }
-          },
-          [_vm._v("Previous")]
-        ),
-        _c(
-          "button",
-          {
-            staticClass: "w3-button w3-margin-left w3-text-white primary",
+          })
+        : _vm._e(),
+      _vm.personal
+        ? _c("Dropdown", {
+            attrs: {
+              label: "Personal Coverages (Select up to 5)",
+              options: _vm.$store.state.options.personal,
+              selected: _vm.label
+            },
             on: {
-              click: function($event) {
-                _vm.update("Outreach")
+              setValue: function(value) {
+                return _vm.$store.commit("setPersonalCoverage", value)
               }
             }
-          },
-          [_vm._v("Continue")]
-        ),
-        _vm.modal
-          ? _c("Modal", {
-              attrs: {
-                personal_coverage: _vm.modal_personal_warning,
-                commercial_coverage: _vm.modal_commercial_warning
-              },
-              on: {
-                closeModal: function($event) {
-                  _vm.modal = false
-                },
-                continue: function($event) {
-                  _vm.useDefaults()
-                }
+          })
+        : _vm._e(),
+      _c("Commercial", {
+        attrs: { commercial: _vm.commercial },
+        on: {
+          setOption: function(value) {
+            return _vm.$store.commit("setCommercial", value)
+          }
+        }
+      }),
+      _vm.commercial
+        ? _c("List", {
+            attrs: {
+              label: "Selected Coverages (click to remove)",
+              items: _vm.commercialCoverages
+            },
+            on: {
+              clearValue: function(value) {
+                return _vm.$store.commit("removeCommercialCoverage", value)
               }
-            })
-          : _vm._e()
-      ],
-      1
-    )
-  ])
+            }
+          })
+        : _vm._e(),
+      _vm.commercial
+        ? _c("Dropdown", {
+            attrs: {
+              label: "Commercial Coverages (Select up to 5)",
+              options: _vm.$store.state.options.commercial,
+              selected: _vm.label
+            },
+            on: {
+              setValue: function(value) {
+                return _vm.$store.commit("setCommercialCoverage", value)
+              }
+            }
+          })
+        : _vm._e(),
+      _c("Benefit", {
+        attrs: { benefit: _vm.benefit },
+        on: {
+          setOption: function(value) {
+            return _vm.$store.commit("setBenefit", value)
+          }
+        }
+      }),
+      _vm.benefit
+        ? _c("List", {
+            attrs: {
+              label: "Selected Coverages (click to remove)",
+              items: _vm.benefitCoverages
+            },
+            on: {
+              clearValue: function(value) {
+                return _vm.$store.commit("removeBenefitCoverage", value)
+              }
+            }
+          })
+        : _vm._e(),
+      _vm.benefit
+        ? _c("Dropdown", {
+            attrs: {
+              label: "Benefit Coverages (Select up to 5)",
+              options: _vm.$store.state.options.benefit,
+              selected: _vm.label
+            },
+            on: {
+              setValue: function(value) {
+                return _vm.$store.commit("setBenefitCoverage", value)
+              }
+            }
+          })
+        : _vm._e(),
+      _c("Crop", {
+        attrs: { crop: _vm.crop },
+        on: {
+          setOption: function($event) {
+            _vm.setCrop($event)
+          }
+        }
+      }),
+      _vm.crop == "TEMP"
+        ? _c("List", {
+            attrs: {
+              label: "Selected Coverages (click to remove)",
+              items: _vm.cropCoverages
+            },
+            on: {
+              clearValue: function(value) {
+                return _vm.$store.commit("removeCropCoverage", value)
+              }
+            }
+          })
+        : _vm._e(),
+      _vm.crop == "TEMP"
+        ? _c("Dropdown", {
+            attrs: {
+              label: "Crop Coverages (Select up to 5)",
+              options: _vm.$store.state.options.crop,
+              selected: _vm.label
+            },
+            on: {
+              setValue: function(value) {
+                return _vm.$store.commit("setCropCoverage", value)
+              }
+            }
+          })
+        : _vm._e(),
+      _vm.commercial
+        ? _c("List", {
+            attrs: {
+              label: "Selected Industries (click to remove)",
+              items: _vm.currentIndustries
+            },
+            on: {
+              clearValue: function(value) {
+                return _vm.$store.commit("removeCurrentIndustry", value)
+              }
+            }
+          })
+        : _vm._e(),
+      _vm.commercial
+        ? _c("Dropdown", {
+            attrs: {
+              label: "Current industries for marketing (Select up to 5)",
+              options: _vm.$store.state.options.industries,
+              selected: _vm.label
+            },
+            on: {
+              setValue: function(value) {
+                return _vm.$store.commit("setCurrentIndustry", value)
+              }
+            }
+          })
+        : _vm._e(),
+      _vm.commercial
+        ? _c("List", {
+            attrs: {
+              label: "Selected Industries (click to remove)",
+              items: _vm.targetIndustries
+            },
+            on: {
+              clearValue: function(value) {
+                return _vm.$store.commit("removeTargetIndustry", value)
+              }
+            }
+          })
+        : _vm._e(),
+      _vm.commercial
+        ? _c("Dropdown", {
+            attrs: {
+              label: "Target industries for marketing (Select up to 5)",
+              options: _vm.$store.state.options.industries,
+              selected: _vm.label
+            },
+            on: {
+              setValue: function(value) {
+                return _vm.$store.commit("setTargetIndustry", value)
+              }
+            }
+          })
+        : _vm._e(),
+      _vm.personal && _vm.commercial
+        ? _c("Ratio", {
+            attrs: {
+              commercialMix: _vm.commercialMix,
+              commercialMixValid: _vm.commercialMixValid,
+              personalMix: _vm.personalMix,
+              personalMixValid: _vm.personalMixValid
+            },
+            on: {
+              setCommercialMix: function(value) {
+                return _vm.$store.commit("setCommercialMix", value)
+              },
+              setPersonalMix: function(value) {
+                return _vm.$store.commit("setPersonalMix", value)
+              }
+            }
+          })
+        : _vm._e(),
+      _c("List", {
+        attrs: {
+          label: "Selected Coverages (click to remove)",
+          items: _vm.targetCoverages
+        },
+        on: {
+          clearValue: function(value) {
+            return _vm.$store.commit("removeTargetCoverage", value)
+          }
+        }
+      }),
+      _c("Dropdown", {
+        attrs: {
+          label: "What coverages do you want to sell more of? (Select up to 5)",
+          options: _vm.$store.state.options.coverages,
+          selected: _vm.label
+        },
+        on: {
+          setValue: function(value) {
+            return _vm.$store.commit("setTargetCoverage", value)
+          }
+        }
+      }),
+      _vm.errors.length
+        ? _c("Errors", { attrs: { errors: _vm.errors } })
+        : _vm._e(),
+      _c("h5", [
+        _vm._v("Click continue to select how you want to reach your followers.")
+      ]),
+      _c(
+        "button",
+        {
+          staticClass: "w3-button w3-margin-right w3-text-white primary",
+          on: {
+            click: function($event) {
+              _vm.$router.push({ name: "Location" })
+            }
+          }
+        },
+        [_vm._v("Previous")]
+      ),
+      _c(
+        "button",
+        {
+          staticClass: "w3-button w3-margin-left w3-text-white primary",
+          on: {
+            click: function($event) {
+              _vm.update()
+            }
+          }
+        },
+        [_vm._v("Continue")]
+      ),
+      _vm.modal
+        ? _c("Modal", {
+            attrs: {
+              personal_coverage: _vm.modal_personal_warning,
+              commercial_coverage: _vm.modal_commercial_warning
+            },
+            on: {
+              closeModal: function($event) {
+                _vm.modal = false
+              },
+              continue: function($event) {
+                _vm.useDefaults()
+              }
+            }
+          })
+        : _vm._e()
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -22953,15 +22935,15 @@ if (false) {
 }
 
 /***/ }),
-/* 380 */
+/* 374 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(381)
+var __vue_script__ = __webpack_require__(375)
 /* template */
-var __vue_template__ = __webpack_require__(385)
+var __vue_template__ = __webpack_require__(379)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -23001,14 +22983,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 381 */
+/* 375 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Days__ = __webpack_require__(382);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Days__ = __webpack_require__(376);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Days___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Days__);
-//
 //
 //
 //
@@ -23228,15 +23209,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 382 */
+/* 376 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(383)
+var __vue_script__ = __webpack_require__(377)
 /* template */
-var __vue_template__ = __webpack_require__(384)
+var __vue_template__ = __webpack_require__(378)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -23276,7 +23257,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 383 */
+/* 377 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -23302,7 +23283,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 384 */
+/* 378 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -23346,187 +23327,182 @@ if (false) {
 }
 
 /***/ }),
-/* 385 */
+/* 379 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c(
-      "div",
-      { staticClass: "w3-padding w3-card form" },
-      [
-        _c("h3", [_vm._v("How do we reach your customers?")]),
-        _c("h5", [
-          _vm._v(
-            "Please set your preferences for the type of outreach you would like."
-          )
-        ]),
-        _c(
-          "div",
-          [
-            _vm._v("Desired engagement mix"),
-            _vm._l(_vm.$store.state.options.mixes, function(option, index) {
-              return _c("Radio", {
-                key: index,
-                attrs: {
-                  option: option,
-                  selected: option.code == _vm.engagementMix
-                },
-                on: {
-                  setValue: function(value) {
-                    return _vm.$store.commit("setEngagementMix", value)
-                  }
-                }
-              })
-            })
-          ],
-          2
-        ),
-        _c(
-          "div",
-          [
-            _vm._v("Desired engagement tone"),
-            _vm._l(_vm.$store.state.options.tones, function(option, index) {
-              return _c("Radio", {
-                key: index,
-                attrs: {
-                  option: option,
-                  selected: option.code == _vm.engagementTone
-                },
-                on: {
-                  setValue: function(value) {
-                    return _vm.$store.commit("setEngagementTone", value)
-                  }
-                }
-              })
-            })
-          ],
-          2
-        ),
-        _c("List", {
-          attrs: {
-            label: "Selected Topics (click to remove)",
-            items: _vm.specialTopics
-          },
-          on: {
-            clearValue: function(value) {
-              return _vm.$store.commit("removeSpecialTopic", value)
-            }
-          }
-        }),
-        _c("Dropdown", {
-          attrs: {
-            label: "Special Post Topics (Select all that apply)",
-            options: _vm.$store.state.options.topics,
-            selected: _vm.label
-          },
-          on: {
-            setValue: function(value) {
-              return _vm.$store.commit("setSpecialTopic", value)
-            }
-          }
-        }),
-        _c("List", {
-          attrs: {
-            label: "Selected Causes (click to remove)",
-            items: _vm.causes
-          },
-          on: {
-            clearValue: function(value) {
-              return _vm.$store.commit("removeCause", value)
-            }
-          }
-        }),
-        _c("Dropdown", {
-          attrs: {
-            label: "Supported Causes (Select up to 5)",
-            options: _vm.$store.state.options.causes,
-            selected: _vm.label
-          },
-          on: {
-            setValue: function(value) {
-              return _vm.$store.commit("setCause", value)
-            }
-          }
-        }),
-        _c("Days", {
-          attrs: {
-            label: "Selected Posting Days (click to remove)",
-            items: _vm.days
-          },
-          on: {
-            clearValue: function(value) {
-              return _vm.$store.commit("removeDay", value)
-            }
-          }
-        }),
-        _c("Dropdown", {
-          attrs: {
-            label: _vm.dayLabel,
-            options: _vm.$store.state.options.days,
-            selected: _vm.label
-          },
-          on: {
-            setValue: function(value) {
-              return _vm.$store.commit("setDay", value)
-            }
-          }
-        }),
-        _c(
-          "div",
-          [
-            _vm._v("Times to post (all times PST)"),
-            _vm._l(_vm.$store.state.options.times, function(option, index) {
-              return _c("Radio", {
-                key: index,
-                attrs: {
-                  option: option,
-                  selected: option.code == _vm.timeCode
-                },
-                on: {
-                  setValue: function(value) {
-                    return _vm.$store.commit("setTimeCode", value)
-                  }
-                }
-              })
-            })
-          ],
-          2
-        ),
-        _vm.errors.length
-          ? _c("Errors", { attrs: { errors: _vm.errors } })
-          : _vm._e(),
-        _c(
-          "button",
-          {
-            staticClass: "w3-button w3-text-white w3-margin-right primary",
-            on: {
-              click: function($event) {
-                _vm.$router.push({ name: "Coverages" })
-              }
-            }
-          },
-          [_vm._v("Previous")]
-        ),
-        _c(
-          "button",
-          {
-            staticClass: "w3-button w3-text-white w3-margin-left primary",
-            on: {
-              click: function($event) {
-                _vm.update()
-              }
-            }
-          },
-          [_vm._v("Finish")]
+  return _c(
+    "div",
+    { staticClass: "w3-padding w3-card form" },
+    [
+      _c("h3", [_vm._v("How do we reach your customers?")]),
+      _c("h5", [
+        _vm._v(
+          "Please set your preferences for the type of outreach you would like."
         )
-      ],
-      1
-    )
-  ])
+      ]),
+      _c(
+        "div",
+        [
+          _vm._v("Desired engagement mix"),
+          _vm._l(_vm.$store.state.options.mixes, function(option, index) {
+            return _c("Radio", {
+              key: index,
+              attrs: {
+                option: option,
+                selected: option.code == _vm.engagementMix
+              },
+              on: {
+                setValue: function(value) {
+                  return _vm.$store.commit("setEngagementMix", value)
+                }
+              }
+            })
+          })
+        ],
+        2
+      ),
+      _c(
+        "div",
+        [
+          _vm._v("Desired engagement tone"),
+          _vm._l(_vm.$store.state.options.tones, function(option, index) {
+            return _c("Radio", {
+              key: index,
+              attrs: {
+                option: option,
+                selected: option.code == _vm.engagementTone
+              },
+              on: {
+                setValue: function(value) {
+                  return _vm.$store.commit("setEngagementTone", value)
+                }
+              }
+            })
+          })
+        ],
+        2
+      ),
+      _c("List", {
+        attrs: {
+          label: "Selected Topics (click to remove)",
+          items: _vm.specialTopics
+        },
+        on: {
+          clearValue: function(value) {
+            return _vm.$store.commit("removeSpecialTopic", value)
+          }
+        }
+      }),
+      _c("Dropdown", {
+        attrs: {
+          label: "Special Post Topics (Select all that apply)",
+          options: _vm.$store.state.options.topics,
+          selected: _vm.label
+        },
+        on: {
+          setValue: function(value) {
+            return _vm.$store.commit("setSpecialTopic", value)
+          }
+        }
+      }),
+      _c("List", {
+        attrs: {
+          label: "Selected Causes (click to remove)",
+          items: _vm.causes
+        },
+        on: {
+          clearValue: function(value) {
+            return _vm.$store.commit("removeCause", value)
+          }
+        }
+      }),
+      _c("Dropdown", {
+        attrs: {
+          label: "Supported Causes (Select up to 5)",
+          options: _vm.$store.state.options.causes,
+          selected: _vm.label
+        },
+        on: {
+          setValue: function(value) {
+            return _vm.$store.commit("setCause", value)
+          }
+        }
+      }),
+      _c("Days", {
+        attrs: {
+          label: "Selected Posting Days (click to remove)",
+          items: _vm.days
+        },
+        on: {
+          clearValue: function(value) {
+            return _vm.$store.commit("removeDay", value)
+          }
+        }
+      }),
+      _c("Dropdown", {
+        attrs: {
+          label: _vm.dayLabel,
+          options: _vm.$store.state.options.days,
+          selected: _vm.label
+        },
+        on: {
+          setValue: function(value) {
+            return _vm.$store.commit("setDay", value)
+          }
+        }
+      }),
+      _c(
+        "div",
+        [
+          _vm._v("Times to post (all times PST)"),
+          _vm._l(_vm.$store.state.options.times, function(option, index) {
+            return _c("Radio", {
+              key: index,
+              attrs: { option: option, selected: option.code == _vm.timeCode },
+              on: {
+                setValue: function(value) {
+                  return _vm.$store.commit("setTimeCode", value)
+                }
+              }
+            })
+          })
+        ],
+        2
+      ),
+      _vm.errors.length
+        ? _c("Errors", { attrs: { errors: _vm.errors } })
+        : _vm._e(),
+      _c(
+        "button",
+        {
+          staticClass: "w3-button w3-text-white w3-margin-right primary",
+          on: {
+            click: function($event) {
+              _vm.$router.push({ name: "Coverages" })
+            }
+          }
+        },
+        [_vm._v("Previous")]
+      ),
+      _c(
+        "button",
+        {
+          staticClass: "w3-button w3-text-white w3-margin-left primary",
+          on: {
+            click: function($event) {
+              _vm.update()
+            }
+          }
+        },
+        [_vm._v("Finish")]
+      )
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -23539,15 +23515,15 @@ if (false) {
 }
 
 /***/ }),
-/* 386 */
+/* 380 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(387)
+var __vue_script__ = __webpack_require__(381)
 /* template */
-var __vue_template__ = __webpack_require__(391)
+var __vue_template__ = __webpack_require__(385)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -23587,12 +23563,12 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 387 */
+/* 381 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Tips__ = __webpack_require__(388);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Tips__ = __webpack_require__(382);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Tips___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Tips__);
 //
 //
@@ -23692,15 +23668,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 388 */
+/* 382 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(389)
+var __vue_script__ = __webpack_require__(383)
 /* template */
-var __vue_template__ = __webpack_require__(390)
+var __vue_template__ = __webpack_require__(384)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -23740,7 +23716,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 389 */
+/* 383 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -23785,7 +23761,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 390 */
+/* 384 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -23923,7 +23899,7 @@ if (false) {
 }
 
 /***/ }),
-/* 391 */
+/* 385 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {

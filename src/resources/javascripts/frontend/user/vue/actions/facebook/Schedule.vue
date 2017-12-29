@@ -1,66 +1,65 @@
 <template lang="pug">
-    div
-        div(class="w3-card w3-content w3-padding dashboard")
-            div(class="w3-padding w3-text-white primary")
-                i(class="fa fa-facebook-official" style="font-size:24px")
-                | Schedule a post for {{ facebookPage }}
-            p You may upload a link or a photo with an optional message, or just a simple message.
-            p Links must be a proper url for Facebook to accept (E.g. www.example.com, https://insurancesocial.media).
-            p Facebook recommends photos smaller than 4mb for best results. Large images may be pixelated once posted.
-            p Post date must be a minimum of tomorrow and a maximum of 6 months from today.
-            div(class="w3-row")
-                div(class="w3-half")
-                    Month(
-                        :value="month"
-                        @setMonth="(value) => $store.commit('setMonth', value.value)")
-                div(class="w3-half")
-                    div(class="w3-half")
-                        Field(
-                            :label="'Hour'"
-                            :value="hour"
-                            :valid="hourValid"
-                            @setValue="(value) => $store.commit('setHour', value)")
-                    div(class="w3-half")
-                        Field(
-                            :label="'Minute'"
-                            :value="minute"
-                            :valid="minuteValid"
-                            @setValue="(value) => $store.commit('setMinute', value)")
-            div(class="w3-row")
+    div(class="w3-card w3-content w3-padding dashboard")
+        div(class="w3-padding w3-text-white primary")
+            i(class="fa fa-facebook-official" style="font-size:24px")
+            | Schedule a post for {{ facebookPage }}
+        p You may upload a link or a photo with an optional message, or just a simple message.
+        p Links must be a proper url for Facebook to accept (E.g. www.example.com, https://insurancesocial.media).
+        p Facebook recommends photos smaller than 4mb for best results. Large images may be pixelated once posted.
+        p Post date must be a minimum of tomorrow and a maximum of 6 months from today.
+        div(class="w3-row")
+            div(class="w3-half")
+                Month(
+                    :value="month"
+                    @setMonth="(value) => $store.commit('setMonth', value.value)")
+            div(class="w3-half")
                 div(class="w3-half")
                     Field(
-                        :label="'Day'"
-                        :value="day"
-                        :valid="dayValid"
-                        @setValue="(value) => $store.commit('setDay', value)")
+                        :label="'Hour'"
+                        :value="hour"
+                        :valid="hourValid"
+                        @setValue="(value) => $store.commit('setHour', value)")
                 div(class="w3-half")
                     Field(
-                        :label="'Year'"
-                        :value="year"
-                        :valid="yearValid"
-                        @setValue="(value) => $store.commit('setYear', value)")
-            div(class="w3-row")
-                div(class="w3-half")
-                    Field(
-                        :label="'Link'"
-                        :value="link"
-                        :valid="linkValid"
-                        @setValue="(value) => $store.commit('setLink', value)")
-                    File(
-                        :label="'Upload File'"
-                        :valid="fileValid"
-                        @setFile="(value) => $store.commit('setFile', value)")
-                div(class="w3-half")
-                    Message(
-                        :label="'Post Content'"
-                        :value="message"
-                        :valid="messageValid"
-                        @setValue="(value) => $store.commit('setMessage', value)")
-                    button(class="w3-button w3-text-white secondary"
-                        @click="post()") Post
-            Errors(
-                v-if="errors.length"
-                :errors="errors")
+                        :label="'Minute'"
+                        :value="minute"
+                        :valid="minuteValid"
+                        @setValue="(value) => $store.commit('setMinute', value)")
+        div(class="w3-row")
+            div(class="w3-half")
+                Field(
+                    :label="'Day'"
+                    :value="day"
+                    :valid="dayValid"
+                    @setValue="(value) => $store.commit('setDay', value)")
+            div(class="w3-half")
+                Field(
+                    :label="'Year'"
+                    :value="year"
+                    :valid="yearValid"
+                    @setValue="(value) => $store.commit('setYear', value)")
+        div(class="w3-row")
+            div(class="w3-half")
+                Field(
+                    :label="'Link'"
+                    :value="link"
+                    :valid="linkValid"
+                    @setValue="(value) => $store.commit('setLink', value)")
+                File(
+                    :label="'Upload File'"
+                    :valid="fileValid"
+                    @setFile="(value) => $store.commit('setFile', value)")
+            div(class="w3-half")
+                Message(
+                    :label="'Post Content'"
+                    :value="message"
+                    :valid="messageValid"
+                    @setValue="(value) => $store.commit('setMessage', value)")
+                button(class="w3-button w3-text-white secondary"
+                    @click="post()") Post
+        Errors(
+            v-if="errors.length"
+            :errors="errors")
 </template>
 
 <script>

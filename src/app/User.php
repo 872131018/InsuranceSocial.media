@@ -228,4 +228,12 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\TwitterInteraction');
     }
+
+    /**
+     * Get the causes record associated with the user.
+     */
+    public function referrals()
+    {
+        return $this->hasMany('App\Referral');
+    }
 }

@@ -1,5 +1,5 @@
-parseFloat<template lang="pug">
-div(class="w3-card w3-padding form")
+<template lang="pug">
+    div(class="w3-card w3-padding form")
         h3 Payment Method
         h6 You may enter a new card to update your payment information.
         p Current card on file

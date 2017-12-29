@@ -1,126 +1,125 @@
 <template lang="pug">
-    div
-        div(class="w3-card w3-padding form")
-            h3 What do you write?
-            h5 Please tell us about the lines of coverage you write and any industries you market to.
-            List(
-                :label="'Selected Carriers (click to remove)'"
-                :items="carriers"
-                @clearValue="(value) => $store.commit('removeCarrier', value)")
-            Dropdown(
-                :label="'Carriers (Select up to 5)'"
-                :options="$store.state.options.carriers"
-                :selected="label"
-                @setValue="(value) => $store.commit('setCarrier', value)")
-            Personal(
-                :personal="personal"
-                @setOption="(value) => $store.commit('setPersonal', value)")
-            List(
-                v-if="personal"
-                :label="'Selected Coverages (click to remove)'"
-                :items="personalCoverages"
-                @clearValue="(value) => $store.commit('removePersonalCoverage', value)")
-            Dropdown(
-                v-if="personal"
-                :label="'Personal Coverages (Select up to 5)'"
-                :options="$store.state.options.personal"
-                :selected="label"
-                @setValue="(value) => $store.commit('setPersonalCoverage', value)")
-            Commercial(
-                :commercial="commercial"
-                @setOption="(value) => $store.commit('setCommercial', value)")
-            List(
-                v-if="commercial"
-                :label="'Selected Coverages (click to remove)'"
-                :items="commercialCoverages"
-                @clearValue="(value) => $store.commit('removeCommercialCoverage', value)")
-            Dropdown(
-                v-if="commercial"
-                :label="'Commercial Coverages (Select up to 5)'"
-                :options="$store.state.options.commercial"
-                :selected="label"
-                @setValue="(value) => $store.commit('setCommercialCoverage', value)")
-            Benefit(
-                :benefit="benefit"
-                @setOption="(value) => $store.commit('setBenefit', value)")
-            List(
-                v-if="benefit"
-                :label="'Selected Coverages (click to remove)'"
-                :items="benefitCoverages"
-                @clearValue="(value) => $store.commit('removeBenefitCoverage', value)")
-            Dropdown(
-                v-if="benefit"
-                :label="'Benefit Coverages (Select up to 5)'"
-                :options="$store.state.options.benefit"
-                :selected="label"
-                @setValue="(value) => $store.commit('setBenefitCoverage', value)")
-            Crop(
-                :crop="crop"
-                @setOption="setCrop($event)")
-            List(
-                v-if="crop == 'TEMP'"
-                :label="'Selected Coverages (click to remove)'"
-                :items="cropCoverages"
-                @clearValue="(value) => $store.commit('removeCropCoverage', value)")
-            Dropdown(
-                v-if="crop == 'TEMP'"
-                :label="'Crop Coverages (Select up to 5)'"
-                :options="$store.state.options.crop"
-                :selected="label"
-                @setValue="(value) => $store.commit('setCropCoverage', value)")
-            List(
-                v-if="commercial"
-                :label="'Selected Industries (click to remove)'"
-                :items="currentIndustries"
-                @clearValue="(value) => $store.commit('removeCurrentIndustry', value)")
-            Dropdown(
-                v-if="commercial"
-                :label="'Current industries for marketing (Select up to 5)'"
-                :options="$store.state.options.industries"
-                :selected="label"
-                @setValue="(value) => $store.commit('setCurrentIndustry', value)")
-            List(
-                v-if="commercial"
-                :label="'Selected Industries (click to remove)'"
-                :items="targetIndustries"
-                @clearValue="(value) => $store.commit('removeTargetIndustry', value)")
-            Dropdown(
-                v-if="commercial"
-                :label="'Target industries for marketing (Select up to 5)'"
-                :options="$store.state.options.industries"
-                :selected="label"
-                @setValue="(value) => $store.commit('setTargetIndustry', value)")
-            Ratio(
-                v-if="personal && commercial"
-                :commercialMix="commercialMix"
-                :commercialMixValid="commercialMixValid"
-                :personalMix="personalMix"
-                :personalMixValid="personalMixValid"
-                @setCommercialMix="(value) => $store.commit('setCommercialMix', value)"
-                @setPersonalMix="(value) => $store.commit('setPersonalMix', value)")
-            List(
-                :label="'Selected Coverages (click to remove)'"
-                :items="targetCoverages"
-                @clearValue="(value) => $store.commit('removeTargetCoverage', value)")
-            Dropdown(
-                :label="'What coverages do you want to sell more of? (Select up to 5)'"
-                :options="$store.state.options.coverages"
-                :selected="label"
-                @setValue="(value) => $store.commit('setTargetCoverage', value)")
-            Errors(
-                v-if="errors.length"
-                :errors="errors")
-            h5 Click continue to select how you want to reach your followers.
-            button(class="w3-button w3-margin-right w3-text-white primary"
-                v-on:click="$router.push({ name: 'Location' })") Previous
-            button(class="w3-button w3-margin-left w3-text-white primary"
-                v-on:click="update('Outreach')") Continue
-            Modal(
-                v-if="modal"
-                :personal_coverage="modal_personal_warning"
-                :commercial_coverage="modal_commercial_warning"
-                @closeModal="modal = false"
-                @continue="useDefaults()")
+    div(class="w3-card w3-padding form")
+        h3 What do you write?
+        h5 Please tell us about the lines of coverage you write and any industries you market to.
+        List(
+            :label="'Selected Carriers (click to remove)'"
+            :items="carriers"
+            @clearValue="(value) => $store.commit('removeCarrier', value)")
+        Dropdown(
+            :label="'Carriers (Select up to 5)'"
+            :options="$store.state.options.carriers"
+            :selected="label"
+            @setValue="(value) => $store.commit('setCarrier', value)")
+        Personal(
+            :personal="personal"
+            @setOption="(value) => $store.commit('setPersonal', value)")
+        List(
+            v-if="personal"
+            :label="'Selected Coverages (click to remove)'"
+            :items="personalCoverages"
+            @clearValue="(value) => $store.commit('removePersonalCoverage', value)")
+        Dropdown(
+            v-if="personal"
+            :label="'Personal Coverages (Select up to 5)'"
+            :options="$store.state.options.personal"
+            :selected="label"
+            @setValue="(value) => $store.commit('setPersonalCoverage', value)")
+        Commercial(
+            :commercial="commercial"
+            @setOption="(value) => $store.commit('setCommercial', value)")
+        List(
+            v-if="commercial"
+            :label="'Selected Coverages (click to remove)'"
+            :items="commercialCoverages"
+            @clearValue="(value) => $store.commit('removeCommercialCoverage', value)")
+        Dropdown(
+            v-if="commercial"
+            :label="'Commercial Coverages (Select up to 5)'"
+            :options="$store.state.options.commercial"
+            :selected="label"
+            @setValue="(value) => $store.commit('setCommercialCoverage', value)")
+        Benefit(
+            :benefit="benefit"
+            @setOption="(value) => $store.commit('setBenefit', value)")
+        List(
+            v-if="benefit"
+            :label="'Selected Coverages (click to remove)'"
+            :items="benefitCoverages"
+            @clearValue="(value) => $store.commit('removeBenefitCoverage', value)")
+        Dropdown(
+            v-if="benefit"
+            :label="'Benefit Coverages (Select up to 5)'"
+            :options="$store.state.options.benefit"
+            :selected="label"
+            @setValue="(value) => $store.commit('setBenefitCoverage', value)")
+        Crop(
+            :crop="crop"
+            @setOption="setCrop($event)")
+        List(
+            v-if="crop == 'TEMP'"
+            :label="'Selected Coverages (click to remove)'"
+            :items="cropCoverages"
+            @clearValue="(value) => $store.commit('removeCropCoverage', value)")
+        Dropdown(
+            v-if="crop == 'TEMP'"
+            :label="'Crop Coverages (Select up to 5)'"
+            :options="$store.state.options.crop"
+            :selected="label"
+            @setValue="(value) => $store.commit('setCropCoverage', value)")
+        List(
+            v-if="commercial"
+            :label="'Selected Industries (click to remove)'"
+            :items="currentIndustries"
+            @clearValue="(value) => $store.commit('removeCurrentIndustry', value)")
+        Dropdown(
+            v-if="commercial"
+            :label="'Current industries for marketing (Select up to 5)'"
+            :options="$store.state.options.industries"
+            :selected="label"
+            @setValue="(value) => $store.commit('setCurrentIndustry', value)")
+        List(
+            v-if="commercial"
+            :label="'Selected Industries (click to remove)'"
+            :items="targetIndustries"
+            @clearValue="(value) => $store.commit('removeTargetIndustry', value)")
+        Dropdown(
+            v-if="commercial"
+            :label="'Target industries for marketing (Select up to 5)'"
+            :options="$store.state.options.industries"
+            :selected="label"
+            @setValue="(value) => $store.commit('setTargetIndustry', value)")
+        Ratio(
+            v-if="personal && commercial"
+            :commercialMix="commercialMix"
+            :commercialMixValid="commercialMixValid"
+            :personalMix="personalMix"
+            :personalMixValid="personalMixValid"
+            @setCommercialMix="(value) => $store.commit('setCommercialMix', value)"
+            @setPersonalMix="(value) => $store.commit('setPersonalMix', value)")
+        List(
+            :label="'Selected Coverages (click to remove)'"
+            :items="targetCoverages"
+            @clearValue="(value) => $store.commit('removeTargetCoverage', value)")
+        Dropdown(
+            :label="'What coverages do you want to sell more of? (Select up to 5)'"
+            :options="$store.state.options.coverages"
+            :selected="label"
+            @setValue="(value) => $store.commit('setTargetCoverage', value)")
+        Errors(
+            v-if="errors.length"
+            :errors="errors")
+        h5 Click continue to select how you want to reach your followers.
+        button(class="w3-button w3-margin-right w3-text-white primary"
+            v-on:click="$router.push({ name: 'Location' })") Previous
+        button(class="w3-button w3-margin-left w3-text-white primary"
+            v-on:click="update()") Continue
+        Modal(
+            v-if="modal"
+            :personal_coverage="modal_personal_warning"
+            :commercial_coverage="modal_commercial_warning"
+            @closeModal="modal = false"
+            @continue="useDefaults()")
 </template>
 
 <script>

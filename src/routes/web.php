@@ -45,3 +45,5 @@ Route::get('/user/coverages', 'HomeController@index')->name('home');
 Route::get('/user/outreach', 'HomeController@index')->name('home');
 
 Route::get('/user/payment', 'HomeController@index')->name('home');
+
+Route::get('/user/referral', 'HomeController@index')->name('home');

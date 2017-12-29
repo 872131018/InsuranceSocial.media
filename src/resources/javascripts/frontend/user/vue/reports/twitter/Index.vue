@@ -1,39 +1,38 @@
 <template lang="pug">
-    div
-        div(class="w3-card w3-padding dashboard")
-            div(class="w3-row")
-                div(class="w3-half w3-padding")
-                    Performance(
-                        :performance="performance"
-                        :range="performanceRange"
-                        @setRange="(value) => $store.commit('setTwitterPerformanceRange', value)"
-                        @updatePerformance="updatePerformance(performanceRange)")
-                div(class="w3-half w3-padding")
-                    Interaction(
-                        :interaction="interaction"
-                        :range="interactionRange"
-                        :graph="interactionGraph"
-                        @setRange="(value) => $store.commit('setTwitterInteractionRange', value)"
-                        @setGraph="(value) => $store.commit('setTwitterInteractionGraph', value)"
-                        @updateInteraction="updateInteraction(interactionRange)")
-            div(class="w3-row")
-                div(class="w3-half w3-padding")
-                    div(class="w3-padding w3-text-white primary")
-                        b Content Insights
-                        span(class="w3-padding")
-                        i(class="fa fa-refresh w3-right" style="font-size:24px"
-                            @click="updateInsights()")
-                    div(class="w3-half w3-center")
-                        p Carrier 18%
-                        p Coverage 15%
-                        p Industry 10%
-                        p Community 57%
-                    div(class="w3-half")
-                        div(class="pie-chart")
-                div(class="w3-half w3-padding")
-                    TopPosts(
-                        :posts="posts"
-                        @updatePosts="updatePosts()")
+    div(class="w3-card w3-padding dashboard")
+        div(class="w3-row")
+            div(class="w3-half w3-padding")
+                Performance(
+                    :performance="performance"
+                    :range="performanceRange"
+                    @setRange="(value) => $store.commit('setTwitterPerformanceRange', value)"
+                    @updatePerformance="updatePerformance(performanceRange)")
+            div(class="w3-half w3-padding")
+                Interaction(
+                    :interaction="interaction"
+                    :range="interactionRange"
+                    :graph="interactionGraph"
+                    @setRange="(value) => $store.commit('setTwitterInteractionRange', value)"
+                    @setGraph="(value) => $store.commit('setTwitterInteractionGraph', value)"
+                    @updateInteraction="updateInteraction(interactionRange)")
+        div(class="w3-row")
+            div(class="w3-half w3-padding")
+                div(class="w3-padding w3-text-white primary")
+                    b Content Insights
+                    span(class="w3-padding")
+                    i(class="fa fa-refresh w3-right" style="font-size:24px"
+                        @click="updateInsights()")
+                div(class="w3-half w3-center")
+                    p Carrier 18%
+                    p Coverage 15%
+                    p Industry 10%
+                    p Community 57%
+                div(class="w3-half")
+                    div(class="pie-chart")
+            div(class="w3-half w3-padding")
+                TopPosts(
+                    :posts="posts"
+                    @updatePosts="updatePosts()")
 </template>
 
 <script>

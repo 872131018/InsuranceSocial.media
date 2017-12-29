@@ -1,14 +1,13 @@
 <template lang="pug">
-    div
-        div(class="w3-card w3-content w3-padding dashboard")
-            div(class="w3-padding w3-text-white primary")
-                i(class="fa fa-facebook-official" style="font-size:24px")
-                | {{ facebookPage }}
-            div(class="w3-center w3-padding")
-                div(id="fb-root")
-                div(class="fb-post" data-width="auto"
-                    v-for="post in facebookPosts"
-                    :data-href="post.permalink_url")
+    div(class="w3-card w3-content w3-padding dashboard")
+        div(class="w3-padding w3-text-white primary")
+            i(class="fa fa-facebook-official" style="font-size:24px")
+            | {{ facebookPage }}
+        div(class="w3-center w3-padding")
+            div(id="fb-root")
+            div(class="fb-post" data-width="auto"
+                v-for="post in facebookPosts"
+                :data-href="post.permalink_url")
 </template>
 
 <script>

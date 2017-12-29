@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 283);
+/******/ 	return __webpack_require__(__webpack_require__.s = 277);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -17961,20 +17961,14 @@ if (false) {
 /* 274 */,
 /* 275 */,
 /* 276 */,
-/* 277 */,
-/* 278 */,
-/* 279 */,
-/* 280 */,
-/* 281 */,
-/* 282 */,
-/* 283 */
+/* 277 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(284);
+module.exports = __webpack_require__(278);
 
 
 /***/ }),
-/* 284 */
+/* 278 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -17993,13 +17987,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__global_Errors___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__global_Errors__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__global_inputs_Field__ = __webpack_require__(60);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__global_inputs_Field___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__global_inputs_Field__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__vue_Progress__ = __webpack_require__(285);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__vue_Progress__ = __webpack_require__(279);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__vue_Progress___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__vue_Progress__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_vue_router__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_vuex__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__root_vuex__ = __webpack_require__(288);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__routes__ = __webpack_require__(296);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__vue_App__ = __webpack_require__(324);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__root_vuex__ = __webpack_require__(282);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__routes__ = __webpack_require__(290);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__vue_App__ = __webpack_require__(318);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__vue_App___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_12__vue_App__);
 
 __WEBPACK_IMPORTED_MODULE_0_axios___default.a.defaults.baseURL = window.base_url;
@@ -18042,15 +18036,15 @@ var Site = new __WEBPACK_IMPORTED_MODULE_1_vue___default.a({
 }).$mount('#app');
 
 /***/ }),
-/* 285 */
+/* 279 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(286)
+var __vue_script__ = __webpack_require__(280)
 /* template */
-var __vue_template__ = __webpack_require__(287)
+var __vue_template__ = __webpack_require__(281)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -18090,7 +18084,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 286 */
+/* 280 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -18122,7 +18116,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 287 */
+/* 281 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -18179,20 +18173,20 @@ if (false) {
 }
 
 /***/ }),
-/* 288 */
+/* 282 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vuex__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__modules_page_vuex__ = __webpack_require__(289);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__modules_company_vuex__ = __webpack_require__(290);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__modules_create_vuex__ = __webpack_require__(291);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__modules_social_vuex__ = __webpack_require__(292);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__modules_redirect_vuex__ = __webpack_require__(293);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__modules_errors_vuex__ = __webpack_require__(294);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__modules_services_vuex__ = __webpack_require__(295);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__modules_page_vuex__ = __webpack_require__(283);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__modules_company_vuex__ = __webpack_require__(284);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__modules_create_vuex__ = __webpack_require__(285);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__modules_social_vuex__ = __webpack_require__(286);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__modules_redirect_vuex__ = __webpack_require__(287);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__modules_errors_vuex__ = __webpack_require__(288);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__modules_services_vuex__ = __webpack_require__(289);
 
 
 
@@ -18220,7 +18214,7 @@ var store = new __WEBPACK_IMPORTED_MODULE_1_vuex__["a" /* default */].Store({
 /* harmony default export */ __webpack_exports__["a"] = (store);
 
 /***/ }),
-/* 289 */
+/* 283 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -18246,7 +18240,7 @@ var Module = {
 /* harmony default export */ __webpack_exports__["a"] = (Module);
 
 /***/ }),
-/* 290 */
+/* 284 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -18270,7 +18264,7 @@ var Module = {
 /* harmony default export */ __webpack_exports__["a"] = (Module);
 
 /***/ }),
-/* 291 */
+/* 285 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -18293,7 +18287,7 @@ var Module = {
 /* harmony default export */ __webpack_exports__["a"] = (Module);
 
 /***/ }),
-/* 292 */
+/* 286 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -18315,7 +18309,7 @@ var Module = {
 /* harmony default export */ __webpack_exports__["a"] = (Module);
 
 /***/ }),
-/* 293 */
+/* 287 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -18341,7 +18335,7 @@ var Module = {
 /* harmony default export */ __webpack_exports__["a"] = (Module);
 
 /***/ }),
-/* 294 */
+/* 288 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -18362,7 +18356,7 @@ var Module = {
 /* harmony default export */ __webpack_exports__["a"] = (Module);
 
 /***/ }),
-/* 295 */
+/* 289 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -18383,22 +18377,22 @@ var Module = {
 /* harmony default export */ __webpack_exports__["a"] = (Module);
 
 /***/ }),
-/* 296 */
+/* 290 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_router__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__vue_facebook_Index__ = __webpack_require__(297);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__vue_facebook_Index__ = __webpack_require__(291);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__vue_facebook_Index___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__vue_facebook_Index__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__vue_create_Index__ = __webpack_require__(300);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__vue_create_Index__ = __webpack_require__(294);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__vue_create_Index___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__vue_create_Index__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__vue_pages_Index__ = __webpack_require__(306);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__vue_pages_Index__ = __webpack_require__(300);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__vue_pages_Index___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__vue_pages_Index__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__vue_twitter_Index__ = __webpack_require__(312);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__vue_twitter_Index__ = __webpack_require__(306);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__vue_twitter_Index___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__vue_twitter_Index__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__vue_linkedin_Index__ = __webpack_require__(315);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__vue_linkedin_Index__ = __webpack_require__(309);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__vue_linkedin_Index___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__vue_linkedin_Index__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__vue_companies_Index__ = __webpack_require__(318);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__vue_companies_Index__ = __webpack_require__(312);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__vue_companies_Index___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__vue_companies_Index__);
 
 
@@ -18443,15 +18437,15 @@ var routes = [{
 }));
 
 /***/ }),
-/* 297 */
+/* 291 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(298)
+var __vue_script__ = __webpack_require__(292)
 /* template */
-var __vue_template__ = __webpack_require__(299)
+var __vue_template__ = __webpack_require__(293)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -18491,12 +18485,11 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 298 */
+/* 292 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
 //
 //
 //
@@ -18517,46 +18510,44 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 299 */
+/* 293 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("div", { staticClass: "w3-card w3-padding form" }, [
-      _c("h3", [_vm._v("Link your Facebook")]),
-      _c("p", [
-        _vm._v(
-          "Do you have a corporate Facebook page you’d like us to post to, or do you need us to create a page for you?"
-        )
-      ]),
-      _c(
-        "button",
-        {
-          staticClass: "w3-button w3-margin-right w3-text-white primary",
-          on: {
-            click: function($event) {
-              _vm.facebookLogin()
-            }
-          }
-        },
-        [_vm._v("Post to my page")]
-      ),
-      _c(
-        "button",
-        {
-          staticClass: "w3-button w3-margin-left w3-text-white primary",
-          on: {
-            click: function($event) {
-              _vm.$router.push({ name: "Create" })
-            }
-          }
-        },
-        [_vm._v("Create a new page")]
+  return _c("div", { staticClass: "w3-card w3-padding form" }, [
+    _c("h3", [_vm._v("Link your Facebook")]),
+    _c("p", [
+      _vm._v(
+        "Do you have a corporate Facebook page you’d like us to post to, or do you need us to create a page for you?"
       )
-    ])
+    ]),
+    _c(
+      "button",
+      {
+        staticClass: "w3-button w3-margin-right w3-text-white primary",
+        on: {
+          click: function($event) {
+            _vm.facebookLogin()
+          }
+        }
+      },
+      [_vm._v("Post to my page")]
+    ),
+    _c(
+      "button",
+      {
+        staticClass: "w3-button w3-margin-left w3-text-white primary",
+        on: {
+          click: function($event) {
+            _vm.$router.push({ name: "Create" })
+          }
+        }
+      },
+      [_vm._v("Create a new page")]
+    )
   ])
 }
 var staticRenderFns = []
@@ -18570,15 +18561,15 @@ if (false) {
 }
 
 /***/ }),
-/* 300 */
+/* 294 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(301)
+var __vue_script__ = __webpack_require__(295)
 /* template */
-var __vue_template__ = __webpack_require__(305)
+var __vue_template__ = __webpack_require__(299)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -18618,14 +18609,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 301 */
+/* 295 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Image__ = __webpack_require__(302);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Image__ = __webpack_require__(296);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Image___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Image__);
-//
 //
 //
 //
@@ -18720,15 +18710,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 302 */
+/* 296 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(303)
+var __vue_script__ = __webpack_require__(297)
 /* template */
-var __vue_template__ = __webpack_require__(304)
+var __vue_template__ = __webpack_require__(298)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -18768,7 +18758,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 303 */
+/* 297 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -18803,7 +18793,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 304 */
+/* 298 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -18856,114 +18846,112 @@ if (false) {
 }
 
 /***/ }),
-/* 305 */
+/* 299 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c(
-      "div",
-      { staticClass: "w3-padding w3-card form" },
-      [
-        _c("h3", [_vm._v("Corporate Page Preferences")]),
-        _c("h5", [
-          _vm._v(
-            "Please select your preferences for your corporate Facebook page."
-          )
-        ]),
-        _c("Field", {
-          attrs: {
-            label: "Preferred Page Name",
-            value: _vm.name,
-            valid: _vm.nameValid
-          },
+  return _c(
+    "div",
+    { staticClass: "w3-padding w3-card form" },
+    [
+      _c("h3", [_vm._v("Corporate Page Preferences")]),
+      _c("h5", [
+        _vm._v(
+          "Please select your preferences for your corporate Facebook page."
+        )
+      ]),
+      _c("Field", {
+        attrs: {
+          label: "Preferred Page Name",
+          value: _vm.name,
+          valid: _vm.nameValid
+        },
+        on: {
+          setValue: function(value) {
+            return _vm.$store.commit("setName", value)
+          }
+        }
+      }),
+      _c("p", [
+        _vm._v(
+          "Note: Your desired Page name may not be available. InsuranceSocial.Media will strive to get a Page name as close to your desired name as possible."
+        )
+      ]),
+      _c("h5", [
+        _vm._v(
+          "Please select an image to use as your Facebook background and profile picture. Note, you will be able to change this later."
+        )
+      ]),
+      _vm._l(_vm.images, function(image, index) {
+        return _c("ImageOption", {
+          key: index,
+          attrs: { image: image, selected: _vm.selected == image.name },
           on: {
             setValue: function(value) {
-              return _vm.$store.commit("setName", value)
+              return _vm.$store.commit("setImage", value)
             }
           }
-        }),
-        _c("p", [
-          _vm._v(
-            "Note: Your desired Page name may not be available. InsuranceSocial.Media will strive to get a Page name as close to your desired name as possible."
-          )
-        ]),
-        _c("h5", [
-          _vm._v(
-            "Please select an image to use as your Facebook background and profile picture. Note, you will be able to change this later."
-          )
-        ]),
-        _vm._l(_vm.images, function(image, index) {
-          return _c("ImageOption", {
-            key: index,
-            attrs: { image: image, selected: _vm.selected == image.name },
-            on: {
-              setValue: function(value) {
-                return _vm.$store.commit("setImage", value)
-              }
+        })
+      }),
+      _c("h5", [
+        _vm._v(
+          "I need InsuranceSocial.Media to create a new Facebook page for me. I approve the $25 Facebook page creation fee.  You will receive an email within 24 hours with further instructions. Please follow these instructions to complete the set-up of your business Facebook Page."
+        )
+      ]),
+      _vm.errors.length
+        ? _c("Errors", { attrs: { errors: _vm.errors } })
+        : _vm._e(),
+      _c(
+        "button",
+        {
+          staticClass: "w3-button w3-margin-right w3-text-white primary",
+          on: {
+            click: function($event) {
+              _vm.update("Twitter")
             }
-          })
-        }),
-        _c("h5", [
-          _vm._v(
-            "I need InsuranceSocial.Media to create a new Facebook page for me. I approve the $25 Facebook page creation fee.  You will receive an email within 24 hours with further instructions. Please follow these instructions to complete the set-up of your business Facebook Page."
-          )
-        ]),
-        _vm.errors.length
-          ? _c("Errors", { attrs: { errors: _vm.errors } })
-          : _vm._e(),
-        _c(
-          "button",
-          {
-            staticClass: "w3-button w3-margin-right w3-text-white primary",
-            on: {
-              click: function($event) {
-                _vm.update("Twitter")
-              }
+          }
+        },
+        [_vm._v("Continue")]
+      ),
+      _c(
+        "button",
+        {
+          staticClass: "w3-button w3-margin-left w3-text-white primary",
+          on: {
+            click: function($event) {
+              _vm.warning = true
             }
-          },
-          [_vm._v("Continue")]
-        ),
-        _c(
-          "button",
-          {
-            staticClass: "w3-button w3-margin-left w3-text-white primary",
-            on: {
-              click: function($event) {
-                _vm.warning = true
-              }
-            }
-          },
-          [_vm._v("I don't want to post to Facebook.")]
-        ),
-        _vm.warning
-          ? _c("div", [
-              _c("h6", { staticClass: "w3-text-red" }, [
-                _vm._v(
-                  "One in five page views in the United States is on Facebook! Are you sure you don’t want to make Facebook part of your social media marketing?"
-                )
-              ]),
-              _c(
-                "button",
-                {
-                  staticClass: "w3-button w3-text-white primary",
-                  on: {
-                    click: function($event) {
-                      _vm.$router.push({ name: "Twitter" })
-                    }
-                  }
-                },
-                [_vm._v("Yes, I'm sure")]
+          }
+        },
+        [_vm._v("I don't want to post to Facebook.")]
+      ),
+      _vm.warning
+        ? _c("div", [
+            _c("h6", { staticClass: "w3-text-red" }, [
+              _vm._v(
+                "One in five page views in the United States is on Facebook! Are you sure you don’t want to make Facebook part of your social media marketing?"
               )
-            ])
-          : _vm._e()
-      ],
-      2
-    )
-  ])
+            ]),
+            _c(
+              "button",
+              {
+                staticClass: "w3-button w3-text-white primary",
+                on: {
+                  click: function($event) {
+                    _vm.$router.push({ name: "Twitter" })
+                  }
+                }
+              },
+              [_vm._v("Yes, I'm sure")]
+            )
+          ])
+        : _vm._e()
+    ],
+    2
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -18976,15 +18964,15 @@ if (false) {
 }
 
 /***/ }),
-/* 306 */
+/* 300 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(307)
+var __vue_script__ = __webpack_require__(301)
 /* template */
-var __vue_template__ = __webpack_require__(311)
+var __vue_template__ = __webpack_require__(305)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -19024,14 +19012,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 307 */
+/* 301 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Page__ = __webpack_require__(308);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Page__ = __webpack_require__(302);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Page___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Page__);
-//
 //
 //
 //
@@ -19105,15 +19092,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 308 */
+/* 302 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(309)
+var __vue_script__ = __webpack_require__(303)
 /* template */
-var __vue_template__ = __webpack_require__(310)
+var __vue_template__ = __webpack_require__(304)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -19153,7 +19140,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 309 */
+/* 303 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -19183,7 +19170,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 310 */
+/* 304 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -19219,80 +19206,76 @@ if (false) {
 }
 
 /***/ }),
-/* 311 */
+/* 305 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c(
-      "div",
-      { staticClass: "w3-padding w3-card form" },
-      [
-        _c("h3", [_vm._v("Select a Corporate Facebook Page")]),
-        _c("h5", [
-          _vm._v(
-            "This is the page Insurance Social Media will post content to."
-          )
-        ]),
-        _vm._l(_vm.$store.state.page.pages, function(page, index) {
-          return _c("Page", {
-            key: index,
-            attrs: { page: page, selected: _vm.selected == page.id },
-            on: {
-              setPage: function(value) {
-                return _vm.$store.commit("setPage", value)
-              }
+  return _c(
+    "div",
+    { staticClass: "w3-padding w3-card form" },
+    [
+      _c("h3", [_vm._v("Select a Corporate Facebook Page")]),
+      _c("h5", [
+        _vm._v("This is the page Insurance Social Media will post content to.")
+      ]),
+      _vm._l(_vm.$store.state.page.pages, function(page, index) {
+        return _c("Page", {
+          key: index,
+          attrs: { page: page, selected: _vm.selected == page.id },
+          on: {
+            setPage: function(value) {
+              return _vm.$store.commit("setPage", value)
             }
-          })
-        }),
-        _c("h5", [_vm._v("Chose an option to continue.")]),
-        _vm.errors.length
-          ? _c("Errors", { attrs: { errors: _vm.errors } })
-          : _vm._e(),
-        _c(
-          "button",
-          {
-            staticClass: "w3-button w3-text-white w3-margin-right primary",
-            on: {
-              click: function($event) {
-                _vm.update()
-              }
+          }
+        })
+      }),
+      _c("h5", [_vm._v("Chose an option to continue.")]),
+      _vm.errors.length
+        ? _c("Errors", { attrs: { errors: _vm.errors } })
+        : _vm._e(),
+      _c(
+        "button",
+        {
+          staticClass: "w3-button w3-text-white w3-margin-right primary",
+          on: {
+            click: function($event) {
+              _vm.update()
             }
-          },
-          [_vm._v("Continue")]
-        ),
-        _c(
-          "button",
-          {
-            staticClass:
-              "w3-button w3-text-white w3-margin-left w3-margin-right primary",
-            on: {
-              click: function($event) {
-                _vm.$router.push({ name: "Create" })
-              }
+          }
+        },
+        [_vm._v("Continue")]
+      ),
+      _c(
+        "button",
+        {
+          staticClass:
+            "w3-button w3-text-white w3-margin-left w3-margin-right primary",
+          on: {
+            click: function($event) {
+              _vm.$router.push({ name: "Create" })
             }
-          },
-          [_vm._v("Create New Page")]
-        ),
-        _c(
-          "button",
-          {
-            staticClass: "w3-button w3-text-white w3-margin-left primary",
-            on: {
-              click: function($event) {
-                _vm.$router.push({ name: "Twitter" })
-              }
+          }
+        },
+        [_vm._v("Create New Page")]
+      ),
+      _c(
+        "button",
+        {
+          staticClass: "w3-button w3-text-white w3-margin-left primary",
+          on: {
+            click: function($event) {
+              _vm.$router.push({ name: "Twitter" })
             }
-          },
-          [_vm._v("Skip")]
-        )
-      ],
-      2
-    )
-  ])
+          }
+        },
+        [_vm._v("Skip")]
+      )
+    ],
+    2
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -19305,15 +19288,15 @@ if (false) {
 }
 
 /***/ }),
-/* 312 */
+/* 306 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(313)
+var __vue_script__ = __webpack_require__(307)
 /* template */
-var __vue_template__ = __webpack_require__(314)
+var __vue_template__ = __webpack_require__(308)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -19353,12 +19336,11 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 313 */
+/* 307 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
 //
 //
 //
@@ -19405,67 +19387,65 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 314 */
+/* 308 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("div", { staticClass: "w3-card w3-padding form" }, [
-      _c("h3", [_vm._v("Link your Twitter Account")]),
-      _c("h6", [
-        _vm._v(
-          "Do you have a Twitter account? If so, please log in to Twitter in order to recieve our Twitter services."
-        )
-      ]),
-      _c("input", {
-        staticClass: "v-align",
-        attrs: { type: "radio", id: "yes" },
-        domProps: { checked: _vm.selected },
-        on: {
-          change: function($event) {
-            _vm.$store.commit("setTwitter", true)
-          }
-        }
-      }),
-      _vm._m(0),
-      _c("input", {
-        staticClass: "v-align",
-        attrs: { type: "radio", id: "no" },
-        domProps: { checked: !_vm.selected },
-        on: {
-          change: function($event) {
-            _vm.$store.commit("setTwitter", false)
-          }
-        }
-      }),
-      _vm._m(1),
-      !_vm.selected
-        ? _c("div", [
-            _c("p", [
-              _vm._v(
-                "Don’t have a Twitter account? Setting one up will take you about 30 seconds—and we can start posting to it right away."
-              )
-            ]),
-            _vm._m(2)
-          ])
-        : _vm._e(),
-      _vm.selected ? _c("div", [_vm._v("Almost done.")]) : _vm._e(),
-      _c(
-        "button",
-        {
-          staticClass: "w3-button w3-text-white primary",
-          on: {
-            click: function($event) {
-              _vm.update()
-            }
-          }
-        },
-        [_vm._v("Continue")]
+  return _c("div", { staticClass: "w3-card w3-padding form" }, [
+    _c("h3", [_vm._v("Link your Twitter Account")]),
+    _c("h6", [
+      _vm._v(
+        "Do you have a Twitter account? If so, please log in to Twitter in order to recieve our Twitter services."
       )
-    ])
+    ]),
+    _c("input", {
+      staticClass: "v-align",
+      attrs: { type: "radio", id: "yes" },
+      domProps: { checked: _vm.selected },
+      on: {
+        change: function($event) {
+          _vm.$store.commit("setTwitter", true)
+        }
+      }
+    }),
+    _vm._m(0),
+    _c("input", {
+      staticClass: "v-align",
+      attrs: { type: "radio", id: "no" },
+      domProps: { checked: !_vm.selected },
+      on: {
+        change: function($event) {
+          _vm.$store.commit("setTwitter", false)
+        }
+      }
+    }),
+    _vm._m(1),
+    !_vm.selected
+      ? _c("div", [
+          _c("p", [
+            _vm._v(
+              "Don’t have a Twitter account? Setting one up will take you about 30 seconds—and we can start posting to it right away."
+            )
+          ]),
+          _vm._m(2)
+        ])
+      : _vm._e(),
+    _vm.selected ? _c("div", [_vm._v("Almost done.")]) : _vm._e(),
+    _c(
+      "button",
+      {
+        staticClass: "w3-button w3-text-white primary",
+        on: {
+          click: function($event) {
+            _vm.update()
+          }
+        }
+      },
+      [_vm._v("Continue")]
+    )
   ])
 }
 var staticRenderFns = [
@@ -19508,15 +19488,15 @@ if (false) {
 }
 
 /***/ }),
-/* 315 */
+/* 309 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(316)
+var __vue_script__ = __webpack_require__(310)
 /* template */
-var __vue_template__ = __webpack_require__(317)
+var __vue_template__ = __webpack_require__(311)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -19556,12 +19536,11 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 316 */
+/* 310 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
 //
 //
 //
@@ -19609,67 +19588,65 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 317 */
+/* 311 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("div", { staticClass: "w3-card w3-padding form" }, [
-      _c("h3", [_vm._v("Link your LinkedIn Account")]),
-      _c("h6", [
-        _vm._v(
-          "Do you have a LinkedIn account? If so, please log in to LinkedIn in order to recieve our LinkedIn services."
-        )
-      ]),
-      _c("input", {
-        staticClass: "v-align",
-        attrs: { type: "radio", id: "yes" },
-        domProps: { checked: _vm.selected },
-        on: {
-          change: function($event) {
-            _vm.$store.commit("setLinkedIn", true)
-          }
-        }
-      }),
-      _vm._m(0),
-      _c("input", {
-        staticClass: "v-align",
-        attrs: { type: "radio", id: "no" },
-        domProps: { checked: !_vm.selected },
-        on: {
-          change: function($event) {
-            _vm.$store.commit("setLinkedIn", false)
-          }
-        }
-      }),
-      _vm._m(1),
-      !_vm.selected
-        ? _c("div", [
-            _c("p", [
-              _vm._v(
-                "Don’t have a LinkedIn account? Setting one up will take you about 30 seconds—and we can start posting to it right away."
-              )
-            ]),
-            _vm._m(2)
-          ])
-        : _vm._e(),
-      _vm.selected ? _c("div", [_vm._v("Almost done.")]) : _vm._e(),
-      _c(
-        "button",
-        {
-          staticClass: "w3-button w3-text-white primary",
-          on: {
-            click: function($event) {
-              _vm.update()
-            }
-          }
-        },
-        [_vm._v("Continue")]
+  return _c("div", { staticClass: "w3-card w3-padding form" }, [
+    _c("h3", [_vm._v("Link your LinkedIn Account")]),
+    _c("h6", [
+      _vm._v(
+        "Do you have a LinkedIn account? If so, please log in to LinkedIn in order to recieve our LinkedIn services."
       )
-    ])
+    ]),
+    _c("input", {
+      staticClass: "v-align",
+      attrs: { type: "radio", id: "yes" },
+      domProps: { checked: _vm.selected },
+      on: {
+        change: function($event) {
+          _vm.$store.commit("setLinkedIn", true)
+        }
+      }
+    }),
+    _vm._m(0),
+    _c("input", {
+      staticClass: "v-align",
+      attrs: { type: "radio", id: "no" },
+      domProps: { checked: !_vm.selected },
+      on: {
+        change: function($event) {
+          _vm.$store.commit("setLinkedIn", false)
+        }
+      }
+    }),
+    _vm._m(1),
+    !_vm.selected
+      ? _c("div", [
+          _c("p", [
+            _vm._v(
+              "Don’t have a LinkedIn account? Setting one up will take you about 30 seconds—and we can start posting to it right away."
+            )
+          ]),
+          _vm._m(2)
+        ])
+      : _vm._e(),
+    _vm.selected ? _c("div", [_vm._v("Almost done.")]) : _vm._e(),
+    _c(
+      "button",
+      {
+        staticClass: "w3-button w3-text-white primary",
+        on: {
+          click: function($event) {
+            _vm.update()
+          }
+        }
+      },
+      [_vm._v("Continue")]
+    )
   ])
 }
 var staticRenderFns = [
@@ -19712,15 +19689,15 @@ if (false) {
 }
 
 /***/ }),
-/* 318 */
+/* 312 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(319)
+var __vue_script__ = __webpack_require__(313)
 /* template */
-var __vue_template__ = __webpack_require__(323)
+var __vue_template__ = __webpack_require__(317)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -19760,14 +19737,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 319 */
+/* 313 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Company__ = __webpack_require__(320);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Company__ = __webpack_require__(314);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Company___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Company__);
-//
 //
 //
 //
@@ -19842,15 +19818,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 320 */
+/* 314 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(321)
+var __vue_script__ = __webpack_require__(315)
 /* template */
-var __vue_template__ = __webpack_require__(322)
+var __vue_template__ = __webpack_require__(316)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -19890,7 +19866,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 321 */
+/* 315 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -19920,7 +19896,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 322 */
+/* 316 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -19956,67 +19932,65 @@ if (false) {
 }
 
 /***/ }),
-/* 323 */
+/* 317 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c(
-      "div",
-      { staticClass: "w3-padding w3-card form" },
-      [
-        _c("h3", [_vm._v("Select a LinkedIn Company")]),
-        _c("h5", [
-          _vm._v(
-            "This is the company Insurance Social Media will post content to."
-          )
-        ]),
-        _vm._l(_vm.$store.state.company.companies, function(company, index) {
-          return _c("Company", {
-            key: index,
-            attrs: { company: company, selected: _vm.selected == company.id },
-            on: {
-              setCompany: function(value) {
-                return _vm.$store.commit("setCompany", value)
-              }
-            }
-          })
-        }),
-        _c("h5", [_vm._v("Chose an option to continue.")]),
-        _vm.errors.length
-          ? _c("Errors", { attrs: { errors: _vm.errors } })
-          : _vm._e(),
-        _c(
-          "button",
-          {
-            staticClass: "w3-button w3-text-white w3-margin-right primary",
-            on: {
-              click: function($event) {
-                _vm.update()
-              }
-            }
-          },
-          [_vm._v("Continue")]
-        ),
-        _c(
-          "button",
-          {
-            staticClass: "w3-button w3-text-white w3-margin-left primary",
-            on: {
-              click: function($event) {
-                _vm.$router.push({ name: "Twitter" })
-              }
-            }
-          },
-          [_vm._v("Skip")]
+  return _c(
+    "div",
+    { staticClass: "w3-padding w3-card form" },
+    [
+      _c("h3", [_vm._v("Select a LinkedIn Company")]),
+      _c("h5", [
+        _vm._v(
+          "This is the company Insurance Social Media will post content to."
         )
-      ],
-      2
-    )
-  ])
+      ]),
+      _vm._l(_vm.$store.state.company.companies, function(company, index) {
+        return _c("Company", {
+          key: index,
+          attrs: { company: company, selected: _vm.selected == company.id },
+          on: {
+            setCompany: function(value) {
+              return _vm.$store.commit("setCompany", value)
+            }
+          }
+        })
+      }),
+      _c("h5", [_vm._v("Chose an option to continue.")]),
+      _vm.errors.length
+        ? _c("Errors", { attrs: { errors: _vm.errors } })
+        : _vm._e(),
+      _c(
+        "button",
+        {
+          staticClass: "w3-button w3-text-white w3-margin-right primary",
+          on: {
+            click: function($event) {
+              _vm.update()
+            }
+          }
+        },
+        [_vm._v("Continue")]
+      ),
+      _c(
+        "button",
+        {
+          staticClass: "w3-button w3-text-white w3-margin-left primary",
+          on: {
+            click: function($event) {
+              _vm.$router.push({ name: "Twitter" })
+            }
+          }
+        },
+        [_vm._v("Skip")]
+      )
+    ],
+    2
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -20029,15 +20003,15 @@ if (false) {
 }
 
 /***/ }),
-/* 324 */
+/* 318 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(325)
+var __vue_script__ = __webpack_require__(319)
 /* template */
-var __vue_template__ = __webpack_require__(329)
+var __vue_template__ = __webpack_require__(323)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -20077,12 +20051,12 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 325 */
+/* 319 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Tips__ = __webpack_require__(326);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Tips__ = __webpack_require__(320);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Tips___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Tips__);
 //
 //
@@ -20152,15 +20126,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 326 */
+/* 320 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(327)
+var __vue_script__ = __webpack_require__(321)
 /* template */
-var __vue_template__ = __webpack_require__(328)
+var __vue_template__ = __webpack_require__(322)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -20200,7 +20174,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 327 */
+/* 321 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -20237,7 +20211,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 328 */
+/* 322 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -20347,7 +20321,7 @@ if (false) {
 }
 
 /***/ }),
-/* 329 */
+/* 323 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {

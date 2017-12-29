@@ -30,8 +30,9 @@ use App\Services\PaymentService;
 
 use App\Card;
 
-use Illuminate\Support\Facades\Log;
+use App\Referral;
 
+use Illuminate\Support\Facades\Mail;
 
 class DashboardController extends Controller
 {
@@ -1117,6 +1118,35 @@ class DashboardController extends Controller
             $user->cards()->save($card);
         }
 
+    }
+
+    /**
+     * Refer an agent
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function indexReferral(Request $request)
+    {
+        $user = Auth::user();
+        /**
+        * Create new referral
+        */
+        $referral = new Referral();
+        $referral->email = $user->email;
+        $referral->referral = $request->referral;
+
+        $referrals = [];
+        array_push($referrals, $referral);
+        $user->referrals()->saveMany($referrals);
+
+        Mail::send('emails.referral', [ 'referral' => $request->referral ], function ($message) use ($request) {
+           $message->to($request->referral);
+           $message->bcc([
+               'elisabethd@insurancesocial.media',
+               'davidb@insurancesocial.media'
+           ]);
+           $message->subject('You have been referred to InsuranceSocial.Media');
+       });
     }
 
     /**

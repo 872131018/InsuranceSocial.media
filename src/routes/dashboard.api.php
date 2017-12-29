@@ -40,3 +40,5 @@ use Illuminate\Http\Request;
  Route::post('/api/linkedin/post', 'DashboardController@indexLinkedInPost');
 
  Route::post('/api/payment', 'DashboardController@indexUpdatePayment');
+
+ Route::post('/api/referral', 'DashboardController@indexReferral');

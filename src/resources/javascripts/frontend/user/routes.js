@@ -14,6 +14,7 @@ import Location from './vue/profile/location/Index';
 import Coverages from './vue/profile/coverages/Index';
 import Outreach from './vue/profile/outreach/Index';
 import Payment from './vue/profile/payment/Index';
+import Referral from './vue/tools/referral/Index';
 
 
 const routes = [
@@ -91,6 +92,11 @@ const routes = [
         path: '/user/payment',
         name: 'Payment',
         component: Payment
+    },
+    {
+        path: '/user/referral',
+        name: 'Referral',
+        component: Referral
     }
 ];
 

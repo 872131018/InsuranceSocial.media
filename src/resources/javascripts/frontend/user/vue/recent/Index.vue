@@ -1,33 +1,32 @@
 <template lang="pug">
-    div
-        div(class="w3-card w3-padding dashboard")
-            div(class="w3-row")
-                div(class="w3-half w3-padding")
-                    div(class="w3-padding w3-text-white primary")
-                        b Welcome back {{ name }}
-                    p Your current ISM score is {{ score }}.
-                    p A score of at least 65 indicates social media success!
-                    p A score of 80 or higher is social media rock start status!
-                div(class="w3-half w3-padding")
-                    div(class="w3-padding w3-text-white primary")
-                        b Your ISM Score
-                    div(class="bar-chart")
-            div(class="w3-row")
-                div(class="w3-half w3-padding")
-                    div(class="w3-padding w3-text-white primary")
-                        i(class="fa fa-facebook-official" style="font-size:24px")
-                        | {{ facebookPage }}
-                    div(class="w3-center w3-padding")
-                        div(id="fb-root")
-                        div(class="fb-post" data-width="auto"
-                            v-for="post in facebookPosts"
-                            :data-href="post.permalink_url")
-                div(class="w3-half w3-padding")
-                    div(class="w3-padding w3-text-white primary")
-                        i(class="fa fa-twitter" style="font-size:24px")
-                        | @{{ twitterHandle }}
-                    div(class="w3-padding")
-                        a(id="twitter_timeline" class="twitter-timeline")
+    div(class="w3-card w3-padding dashboard")
+        div(class="w3-row")
+            div(class="w3-half w3-padding")
+                div(class="w3-padding w3-text-white primary")
+                    b Welcome back {{ name }}
+                p Your current ISM score is {{ score }}.
+                p A score of at least 65 indicates social media success!
+                p A score of 80 or higher is social media rock start status!
+            div(class="w3-half w3-padding")
+                div(class="w3-padding w3-text-white primary")
+                    b Your ISM Score
+                div(class="bar-chart")
+        div(class="w3-row")
+            div(class="w3-half w3-padding")
+                div(class="w3-padding w3-text-white primary")
+                    i(class="fa fa-facebook-official" style="font-size:24px")
+                    | {{ facebookPage }}
+                div(class="w3-center w3-padding")
+                    div(id="fb-root")
+                    div(class="fb-post" data-width="auto"
+                        v-for="post in facebookPosts"
+                        :data-href="post.permalink_url")
+            div(class="w3-half w3-padding")
+                div(class="w3-padding w3-text-white primary")
+                    i(class="fa fa-twitter" style="font-size:24px")
+                    | @{{ twitterHandle }}
+                div(class="w3-padding")
+                    a(id="twitter_timeline" class="twitter-timeline")
 </template>
 
 <script>

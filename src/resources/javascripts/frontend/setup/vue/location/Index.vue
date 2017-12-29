@@ -1,77 +1,76 @@
 <template lang="pug">
-    div
-        div(class="w3-card w3-padding form")
-            h3 Where are you?
-            h5 Please complete this information to receive content pertaining to your marketing areas.
-            Field(
-                :label="'Business Address 1'"
-                :value="address1"
-                :valid="address1Valid"
-                @setValue="(value) => $store.commit('setAddress1', value)")
-            Field(
-                :label="'Business Address 2'"
-                :value="address2"
-                :valid="address2Valid"
-                @setValue="(value) => $store.commit('setAddress2', value)")
-            Field(
-                :label="'City'"
-                :value="city"
-                :valid="cityValid"
-                @setValue="(value) => $store.commit('setCity', value)")
+    div(class="w3-card w3-padding form")
+        h3 Where are you?
+        h5 Please complete this information to receive content pertaining to your marketing areas.
+        Field(
+            :label="'Business Address 1'"
+            :value="address1"
+            :valid="address1Valid"
+            @setValue="(value) => $store.commit('setAddress1', value)")
+        Field(
+            :label="'Business Address 2'"
+            :value="address2"
+            :valid="address2Valid"
+            @setValue="(value) => $store.commit('setAddress2', value)")
+        Field(
+            :label="'City'"
+            :value="city"
+            :valid="cityValid"
+            @setValue="(value) => $store.commit('setCity', value)")
+        Dropdown(
+            :label="'State'"
+            :options="$store.state.options.states"
+            :selected="state"
+            @setValue="(value) => $store.commit('setState', value.code)")
+        Field(
+            :label="'Zip Code'"
+            :value="zip"
+            :valid="zipValid"
+            @setValue="(value) => $store.commit('setZip', value)")
+        Marketing(
+            :marketingRegion="marketingRegion"
+            :marketingState="marketingState"
+            @setMarketingRegion="(value) => { $store.commit('setMarketingRegionType', value); $store.commit('clearStates'); $store.commit('clearCounties') }"
+            @setMarketingState="(value) => { $store.commit('setMarketingStateType', value); $store.commit('clearRegions') }")
+        div(
+            v-if="marketingRegion")
+            List(
+                :label="'Selected Regions (click to remove)'"
+                :items="selectedRegions"
+                @clearValue="(value) => $store.commit('removeRegion', value)")
             Dropdown(
-                :label="'State'"
+                :label="'Marketing Regions (Select up to 5)'"
+                :options="$store.state.options.regions"
+                :selected="label"
+                @setValue="(value) => $store.commit('setRegion', value)")
+        div(
+            v-if="marketingState")
+            List(
+                :label="'Selected State (click to remove)'"
+                :items="selectedStates"
+                @clearValue="(value) => $store.commit('removeState', value)")
+            Dropdown(
+                :label="'Marketing States (Select up to 5)'"
                 :options="$store.state.options.states"
-                :selected="state"
-                @setValue="(value) => $store.commit('setState', value.code)")
-            Field(
-                :label="'Zip Code'"
-                :value="zip"
-                :valid="zipValid"
-                @setValue="(value) => $store.commit('setZip', value)")
-            Marketing(
-                :marketingRegion="marketingRegion"
-                :marketingState="marketingState"
-                @setMarketingRegion="(value) => { $store.commit('setMarketingRegionType', value); $store.commit('clearStates'); $store.commit('clearCounties') }"
-                @setMarketingState="(value) => { $store.commit('setMarketingStateType', value); $store.commit('clearRegions') }")
-            div(
-                v-if="marketingRegion")
-                List(
-                    :label="'Selected Regions (click to remove)'"
-                    :items="selectedRegions"
-                    @clearValue="(value) => $store.commit('removeRegion', value)")
-                Dropdown(
-                    :label="'Marketing Regions (Select up to 5)'"
-                    :options="$store.state.options.regions"
-                    :selected="label"
-                    @setValue="(value) => $store.commit('setRegion', value)")
-            div(
-                v-if="marketingState")
-                List(
-                    :label="'Selected State (click to remove)'"
-                    :items="selectedStates"
-                    @clearValue="(value) => $store.commit('removeState', value)")
-                Dropdown(
-                    :label="'Marketing States (Select up to 5)'"
-                    :options="$store.state.options.states"
-                    :selected="label"
-                    @setValue="(value) => $store.commit('setMarketingState', value)")
-                List(
-                    :label="'Selected Counties (click to remove)'"
-                    :items="selectedCounties"
-                    @clearValue="(value) => $store.commit('removeCounty', value)")
-                Dropdown(
-                    :label="'Marketing Counties (No selection is all counties)'"
-                    :options="counties"
-                    :selected="label"
-                    @setValue="(value) => $store.commit('setCounty', value)")
-            Errors(
-                v-if="errors.length"
-                :errors="errors")
-            h5 Click continue to select the coverages you wish to write.
-            button(class="w3-button w3-margin-right w3-text-white primary"
-                @click="$router.push({ name: 'Profile' })") Previous
-            button(class="w3-button w3-margin-left w3-text-white primary"
-                @click="update()") Continue
+                :selected="label"
+                @setValue="(value) => $store.commit('setMarketingState', value)")
+            List(
+                :label="'Selected Counties (click to remove)'"
+                :items="selectedCounties"
+                @clearValue="(value) => $store.commit('removeCounty', value)")
+            Dropdown(
+                :label="'Marketing Counties (No selection is all counties)'"
+                :options="counties"
+                :selected="label"
+                @setValue="(value) => $store.commit('setCounty', value)")
+        Errors(
+            v-if="errors.length"
+            :errors="errors")
+        h5 Click continue to select the coverages you wish to write.
+        button(class="w3-button w3-margin-right w3-text-white primary"
+            @click="$router.push({ name: 'Profile' })") Previous
+        button(class="w3-button w3-margin-left w3-text-white primary"
+            @click="update()") Continue
 </template>
 
 <script>

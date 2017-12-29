@@ -1,28 +1,27 @@
 <template lang="pug">
-    div
-        div(class="w3-card w3-content w3-padding dashboard")
-            div(class="w3-padding w3-text-white primary")
-                i(class="fa fa-facebook-official" style="font-size:24px")
-                | Create post for {{ twitterHandle }}
-            p You may tweet up to 256 characters, or a link (in the format of http://www.example.com) in the message section.
-            p If your link has the correct meta data, twitter will read it and display it in the tweet.
-            p If you want to post a picture, you must include a message for it to appear on twitter.
-            div(class="w3-row")
-                div(class="w3-half")
-                    Message(
-                        :label="'Post Content'"
-                        :value="message"
-                        :valid="messageValid"
-                        @setValue="(value) => $store.commit('setMessage', value)")
-                    File(
-                        :label="'Upload File'"
-                        :valid="fileValid"
-                        @setFile="(value) => $store.commit('setFile', value)")
-                    button(class="w3-button w3-text-white secondary"
-                        @click="post()") Post
-            Errors(
-                v-if="errors.length"
-                :errors="errors")
+    div(class="w3-card w3-content w3-padding dashboard")
+        div(class="w3-padding w3-text-white primary")
+            i(class="fa fa-facebook-official" style="font-size:24px")
+            | Create post for {{ twitterHandle }}
+        p You may tweet up to 256 characters, or a link (in the format of http://www.example.com) in the message section.
+        p If your link has the correct meta data, twitter will read it and display it in the tweet.
+        p If you want to post a picture, you must include a message for it to appear on twitter.
+        div(class="w3-row")
+            div(class="w3-half")
+                Message(
+                    :label="'Post Content'"
+                    :value="message"
+                    :valid="messageValid"
+                    @setValue="(value) => $store.commit('setMessage', value)")
+                File(
+                    :label="'Upload File'"
+                    :valid="fileValid"
+                    @setFile="(value) => $store.commit('setFile', value)")
+                button(class="w3-button w3-text-white secondary"
+                    @click="post()") Post
+        Errors(
+            v-if="errors.length"
+            :errors="errors")
 </template>
 
 <script>

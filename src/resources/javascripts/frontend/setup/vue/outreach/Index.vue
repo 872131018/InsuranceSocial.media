@@ -1,63 +1,62 @@
 <template lang="pug">
-    div
-        div(class="w3-padding w3-card form")
-            h3 How do we reach your customers?
-            h5 Please set your preferences for the type of outreach you would like.
-            div Desired engagement mix
-                Radio(
-                    v-for="(option, index) in $store.state.options.mixes"
-                    :key="index"
-                    :option="option"
-                    :selected="option.code == engagementMix"
-                    @setValue="(value) => $store.commit('setEngagementMix', value)")
-            div Desired engagement tone
-                Radio(
-                    v-for="(option, index) in $store.state.options.tones"
-                    :key="index"
-                    :option="option"
-                    :selected="option.code == engagementTone"
-                    @setValue="(value) => $store.commit('setEngagementTone', value)")
-            List(
-                :label="'Selected Topics (click to remove)'"
-                :items="specialTopics"
-                @clearValue="(value) => $store.commit('removeSpecialTopic', value)")
-            Dropdown(
-                :label="'Special Post Topics (Select all that apply)'"
-                :options="$store.state.options.topics"
-                :selected="label"
-                @setValue="(value) => $store.commit('setSpecialTopic', value)")
-            List(
-                :label="'Selected Causes (click to remove)'"
-                :items="causes"
-                @clearValue="(value) => $store.commit('removeCause', value)")
-            Dropdown(
-                :label="'Supported Causes (Select up to 5)'"
-                :options="$store.state.options.causes"
-                :selected="label"
-                @setValue="(value) => $store.commit('setCause', value)")
-            Days(
-                :label="'Selected Posting Days (click to remove)'"
-                :items="days"
-                @clearValue="(value) => $store.commit('removeDay', value)")
-            Dropdown(
-                :label="dayLabel"
-                :options="$store.state.options.days"
-                :selected="label"
-                @setValue="(value) => $store.commit('setDay', value)")
-            div Times to post (all times PST)
-                Radio(
-                    v-for="(option, index) in $store.state.options.times"
-                    :key="index"
-                    :option="option"
-                    :selected="option.code == timeCode"
-                    @setValue="(value) => $store.commit('setTimeCode', value)")
-            Errors(
-                v-if="errors.length"
-                :errors="errors")
-            button(class="w3-button w3-text-white w3-margin-right primary"
-                @click="$router.push({ name: 'Coverages' })") Previous
-            button(class="w3-button w3-text-white w3-margin-left primary"
-                @click="update()") Finish
+    div(class="w3-padding w3-card form")
+        h3 How do we reach your customers?
+        h5 Please set your preferences for the type of outreach you would like.
+        div Desired engagement mix
+            Radio(
+                v-for="(option, index) in $store.state.options.mixes"
+                :key="index"
+                :option="option"
+                :selected="option.code == engagementMix"
+                @setValue="(value) => $store.commit('setEngagementMix', value)")
+        div Desired engagement tone
+            Radio(
+                v-for="(option, index) in $store.state.options.tones"
+                :key="index"
+                :option="option"
+                :selected="option.code == engagementTone"
+                @setValue="(value) => $store.commit('setEngagementTone', value)")
+        List(
+            :label="'Selected Topics (click to remove)'"
+            :items="specialTopics"
+            @clearValue="(value) => $store.commit('removeSpecialTopic', value)")
+        Dropdown(
+            :label="'Special Post Topics (Select all that apply)'"
+            :options="$store.state.options.topics"
+            :selected="label"
+            @setValue="(value) => $store.commit('setSpecialTopic', value)")
+        List(
+            :label="'Selected Causes (click to remove)'"
+            :items="causes"
+            @clearValue="(value) => $store.commit('removeCause', value)")
+        Dropdown(
+            :label="'Supported Causes (Select up to 5)'"
+            :options="$store.state.options.causes"
+            :selected="label"
+            @setValue="(value) => $store.commit('setCause', value)")
+        Days(
+            :label="'Selected Posting Days (click to remove)'"
+            :items="days"
+            @clearValue="(value) => $store.commit('removeDay', value)")
+        Dropdown(
+            :label="dayLabel"
+            :options="$store.state.options.days"
+            :selected="label"
+            @setValue="(value) => $store.commit('setDay', value)")
+        div Times to post (all times PST)
+            Radio(
+                v-for="(option, index) in $store.state.options.times"
+                :key="index"
+                :option="option"
+                :selected="option.code == timeCode"
+                @setValue="(value) => $store.commit('setTimeCode', value)")
+        Errors(
+            v-if="errors.length"
+            :errors="errors")
+        button(class="w3-button w3-text-white w3-margin-right primary"
+            @click="$router.push({ name: 'Coverages' })") Previous
+        button(class="w3-button w3-text-white w3-margin-left primary"
+            @click="update()") Finish
 </template>
 
 <script>
