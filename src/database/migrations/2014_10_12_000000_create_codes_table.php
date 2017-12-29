@@ -21,6 +21,7 @@ class CreateCodesTable extends Migration
             $table->string('carrier')->nullable();
             $table->string('duration')->nullable();
             $table->string('expiration')->nullable();
+            $table->string('linkedin_discount')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
