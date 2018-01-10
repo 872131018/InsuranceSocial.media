@@ -37995,7 +37995,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     computed: {
@@ -38067,23 +38066,14 @@ var render = function() {
       )
     ]),
     _c("p", [
-      _vm._v("2. Enter your contact information and create a password.")
-    ]),
-    _c("p", [
       _vm._v(
-        "3. Connect your social media accounts to InsuranceSocial.Media. (If you already have a corporate Facebook page, you’ll enter your personal Facebook login info to allow us to connect to that page. If you don’t have a corporate Facebook page, we’ll set one up for you for a one-time fee of $25.)"
+        "2. Connect your social media accounts to InsuranceSocial.Media. (If you already have a corporate Facebook page, you’ll enter your personal Facebook login info to allow us to connect to that page. If you don’t have a corporate Facebook page, we’ll set one up for you for a one-time fee of $25.)"
       )
     ]),
+    _c("p", [_vm._v("3. Enter your credit card information.")]),
     _c("p", [
       _vm._v(
-        "4. Enter your credit card information and " +
-          _vm._s(_vm.company) +
-          " code."
-      )
-    ]),
-    _c("p", [
-      _vm._v(
-        "5. Answer a few questions that will enable us to customize your posts to your local market, personal interests and product lines."
+        "4. Answer a few questions that will enable us to customize your posts to your local market, personal interests and product lines."
       )
     ]),
     _c("p", [_vm._v("Activate your account today.")]),
