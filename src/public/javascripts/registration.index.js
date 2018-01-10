@@ -35621,7 +35621,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         next: function next() {
             this.validate();
             if (this.errors.length == 0) {
-                if (this.code == 'ISMFREETRIAL') {
+                if (this.code == 'ISMFREETRIAL' || this.code == 'FMH17' || this.code == 'IMTGEM17' || this.code == 'ROCK18') {
                     this.$router.push({ name: 'Payment' });
                 } else {
                     this.$router.push({ name: 'LinkedIn' });
@@ -36244,6 +36244,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 break;
             case 'IMTGEM17':
             case 'FMH17':
+            case 'ROCK18':
                 if (today.format('MM/DD/YYYY') == new __WEBPACK_IMPORTED_MODULE_0_moment___default.a().startOf('month').format('MM/DD/YYYY') || today.format('MM/DD/YYYY') == new __WEBPACK_IMPORTED_MODULE_0_moment___default.a().endOf('month').format('MM/DD/YYYY')) {
                     this.$store.commit('setAmount', parseFloat(this.plan.price) - 39.00);
                 } else {
@@ -36334,7 +36335,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                                 cvv: _this.cvv
                             }
                         };
-                        if (_this.code == 'ISMFREETRIAL' || _this.code == 'IMTGEM17' || _this.code == 'FMH17') {
+                        if (_this.code == 'ISMFREETRIAL' || _this.code == 'IMTGEM17' || _this.code == 'FMH17' || _this.code == 'ROCK18') {
                             data.transaction.discount = 39.00;
                         }
 

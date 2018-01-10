@@ -88,13 +88,13 @@
             dayLabel() {
                 let code = this.$store.state.plan.plan_code;
                 switch(code) {
-                    case 1:
+                    case '1':
                         return 'Days to Post (Select 3)';
                         break;
-                    case 2:
+                    case '2':
                         return 'Days to Post (Select 5)';
                         break;
-                    case 3:
+                    case '3':
                         return 'Days to Post (Select 7)';
                         break;
                     default:

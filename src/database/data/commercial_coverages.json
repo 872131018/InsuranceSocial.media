@@ -9,6 +9,22 @@
            "desc":"Boiler and Machinery Insurance"
         },
         {
+           "code":36753,
+           "desc":"Contract Bonds"
+       },
+       {
+          "code":36754,
+          "desc":"Commercial Bonds"
+        },
+        {
+          "code":36755,
+          "desc":"Notary Bonds"
+        },
+        {
+         "code":36756,
+            "desc":"Probate Bonds"
+        },
+        {
            "code":11009,
            "desc":"Builder's Risk Insurance"
         },
@@ -91,6 +107,6 @@
         {
            "code":11285,
            "desc":"Youth Sports Protection Insurance"
-        }
+       }
     ]
 }

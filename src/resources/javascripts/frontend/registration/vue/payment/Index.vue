@@ -119,6 +119,7 @@ parseFloat<template lang="pug">
                     break;
                 case 'IMTGEM17':
                 case 'FMH17':
+                case 'ROCK18':
                     if(today.format('MM/DD/YYYY') == new Moment().startOf('month').format('MM/DD/YYYY') ||
                         today.format('MM/DD/YYYY') == new Moment().endOf('month').format('MM/DD/YYYY')) {
                         this.$store.commit('setAmount', parseFloat(this.plan.price) - 39.00);
@@ -189,7 +190,8 @@ parseFloat<template lang="pug">
                             }
                             if(this.code == 'ISMFREETRIAL' ||
                                 this.code == 'IMTGEM17' ||
-                                this.code == 'FMH17') {
+                                this.code == 'FMH17' ||
+                                this.code == 'ROCK18') {
                                     data.transaction.discount = 39.00;
                             }
 
