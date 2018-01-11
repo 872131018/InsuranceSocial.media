@@ -4,9 +4,7 @@ const Module = {
         twitter_handle: '',
         facebook_posts: [],
         twitter_posts: [],
-        score: 0,
-        scoreLabels: ['Your ISM Score', 'ISM Average'],
-        scoreSeries: []
+        score: 0
     },
     mutations: {
         setRecent(state, value) {
@@ -17,9 +15,6 @@ const Module = {
         },
         setScore(state, value) {
             state.score = value;
-        },
-        pushScore(state, value) {
-            state.scoreSeries.push(value);
         }
     }
 }

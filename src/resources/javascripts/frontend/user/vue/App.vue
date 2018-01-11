@@ -1,5 +1,5 @@
 <template lang="pug">
-    div
+    div(class="dashboard-hero")
         Navigation
         div(class="w3-container w3-padding-32 bgimg2")
             router-view
@@ -70,8 +70,6 @@
                     score += response.data[key];
                 }
                 this.$store.commit('setScore', score);
-                this.$store.commit('pushScore', score);
-                this.$store.commit('pushScore', 50);
             });
             this.$store.commit('serviceLoading');
             axios.get('/api/payment').then(response => {

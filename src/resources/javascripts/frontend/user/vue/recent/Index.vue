@@ -1,37 +1,32 @@
 <template lang="pug">
-    div(class="w3-card w3-padding dashboard")
-        div(class="w3-row")
-            div(class="w3-half w3-padding")
-                div(class="w3-padding w3-text-white primary")
-                    b Welcome back {{ name }}
-                p Your current ISM score is {{ score }}.
-                p A score of at least 65 indicates social media success!
-                p A score of 80 or higher is social media rock start status!
-            div(class="w3-half w3-padding")
-                div(class="w3-padding w3-text-white primary")
-                    b Your ISM Score
-                div(class="bar-chart")
-        div(class="w3-row")
-            div(class="w3-half w3-padding")
-                div(class="w3-padding w3-text-white primary")
-                    i(class="fa fa-facebook-official" style="font-size:24px")
+    div(class="w3-card w3-content dashboard")
+        div(class="w3-light-grey w3-margin-right w3-left" style="overflow:scroll;height:500px;width:30%")
+            h3(class="w3-text-white w3-padding-large secondary" style="margin:0") Welcome, {{ name }}
+            div(class="w3-padding-large")
+                b Linked Accounts
+                div(class="w3-padding-16")
+                    i(class="fa fa-facebook-official w3-text-white w3-circle primary" style="font-size:24px;padding:8px")
                     | {{ facebookPage }}
-                div(class="w3-center w3-padding")
-                    div(id="fb-root")
-                    div(class="fb-post" data-width="auto"
-                        v-for="post in facebookPosts"
-                        :data-href="post.permalink_url")
-            div(class="w3-half w3-padding")
-                div(class="w3-padding w3-text-white primary")
-                    i(class="fa fa-twitter" style="font-size:24px")
+                div(class="w3-padding-16")
+                    i(class="fa fa-twitter w3-text-white w3-circle primary" style="font-size:24px;padding:8px")
                     | @{{ twitterHandle }}
-                div(class="w3-padding")
-                    a(id="twitter_timeline" class="twitter-timeline")
+            div(class="w3-padding-large")
+                b Your ISM Score
+                div(id="gauge-chart" class="200x160px")
+        div(class="w3-light-grey w3-margin-left w3-margin-right w3-left" style="overflow:scroll;height:500px;width:30%")
+            h5(class="w3-text-white w3-padding-large primary" style="margin:0") Current Facebook Feed
+            div(class="w3-center w3-padding")
+                div(id="fb-root")
+                div(class="fb-post" data-width="auto"
+                    v-for="post in facebookPosts"
+                    :data-href="post.permalink_url")
+        div(class="w3-light-grey w3-margin-left w3-left" style="overflow:scroll;height:500px;width:30%")
+            h5(class="w3-text-white w3-padding-large primary" style="margin:0") Current Twitter Feed
+            div(class="w3-padding")
+                a(id="twitter_timeline" class="twitter-timeline")
 </template>
 
 <script>
-    import Chartist from 'chartist';
-
     export default {
         computed: {
             name() {
@@ -52,11 +47,8 @@
             twitterPosts() {
                 return this.$store.state.recent.twitter_posts;
             },
-            scoreLabels() {
-                return this.$store.state.recent.scoreLabels;
-            },
-            scoreSeries() {
-                return this.$store.state.recent.scoreSeries;
+            score() {
+                return this.$store.state.recent.score;
             }
         },
         mounted() {
@@ -95,15 +87,16 @@
                         }
                     );
                 }
-                new Chartist.Bar('.bar-chart', {
-                    labels: this.scoreLabels,
-                    series: [
-                        this.scoreSeries
-                    ]
-                }, {
-                    low: 0,
-                    high: 100
-                });
+                if(this.facebookPage && this.twitterHandle) {
+                    let gauge = new JustGage({
+                        id: 'gauge-chart',
+                        value: 61,
+                        min: 0,
+                        max: 100,
+                        title: 'Visitors',
+                        label: 'Score'
+                    });
+                }
             }
         }
     }

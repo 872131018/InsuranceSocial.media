@@ -33,6 +33,8 @@
         <script type="text/javascript" src="https://js.authorize.net/v1/Accept.js" charset="utf-8"></script>
     @endif
     <script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.2.7/raphael.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/justgage/1.2.9/justgage.min.js"></script>
     <script type="text/javascript" src="{{ url('javascripts/user.index.js') }}"></script>
 </body>
 </html>

@@ -91,10 +91,10 @@
     background-image: url("../images/stock1.jpg");
 }
 .bgimg2 {
+    margin-top: 250px;
     background-position: center;
     background-size: cover;
-    //background-image: url("../images/stock2.jpg");
-    background-color: #6D6E70;
+    //background-color: #6D6E70;
     min-height: 900px;
 }
 .login-form {
@@ -144,9 +144,14 @@ img[alt="Authorize.Net Merchant - Click to Verify"] {
 }
 .dashboard {
     min-width: 400px;
-    background: rgba(250, 250, 250, 0.9);
-
 }
 .bold {
     font-weight: bold;
+}
+.dashboard-hero {
+
+    background-image: url("../images/dashboardhero.jpg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center -550px;
 }
