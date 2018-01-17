@@ -35,13 +35,10 @@
             next() {
                 this.validate();
                 if(this.errors.length == 0) {
-                    if(this.code == 'ISMFREETRIAL' ||
-                        this.code == 'FMH17' ||
-                        this.code == 'IMTGEM17' ||
-                        this.code == 'ROCK18') {
-                        this.$router.push({ name: 'Payment' });
-                    } else {
+                    if(this.code == 'MERCB18') {
                         this.$router.push({ name: 'LinkedIn' });
+                    } else {
+                        this.$router.push({ name: 'Payment' });
                     }
                 }
             },

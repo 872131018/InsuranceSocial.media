@@ -88,6 +88,7 @@
                         this.code == 'IMTGEM17' ||
                         this.code == 'FMH17' ||
                         this.code == 'ROCK18' ||
+                        this.code == 'MERCB18' ||
                         this.code == '';
             },
             errors() {
@@ -103,7 +104,8 @@
                         this.$store.commit('serviceFinished');
                         if(this.code == 'FMH17' ||
                             this.code == 'IMTGEM17' ||
-                            this.code == 'ROCK18') {
+                            this.code == 'ROCK18' ||
+                            this.code == 'MERCB18') {
                             this.$router.push({ name: 'Corporate' });
                         } else {
                             this.$router.push({ name: 'Plans' });

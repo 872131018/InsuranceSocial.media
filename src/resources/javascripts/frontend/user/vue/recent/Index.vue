@@ -11,14 +11,24 @@
                         | {{ facebookPage }}
                     div(class="w3-padding-16"
                         v-else)
+                        i(class="fa fa-facebook-official w3-text-white w3-circle primary" style="font-size:24px;padding:8px")
                         i(class="fa fa-times w3-text-white w3-circle w3-red" style="font-size:24px;padding:8px")
-                        | Facebook not connected
-                    div(class="w3-padding-16")
+                    div(class="w3-padding-16"
+                        v-if="twitterHandle")
                         i(class="fa fa-twitter w3-text-white w3-circle primary" style="font-size:24px;padding:8px")
                         | @{{ twitterHandle }}
-                    div(class="w3-padding-16")
+                    div(class="w3-padding-16"
+                        v-else)
+                        i(class="fa fa-twitter w3-text-white w3-circle primary" style="font-size:24px;padding:8px")
+                        i(class="fa fa-times w3-text-white w3-circle w3-red" style="font-size:24px;padding:8px")
+                    div(class="w3-padding-16"
+                        v-if="twitterHandle")
                         i(class="fa fa-linkedin w3-text-white w3-circle primary" style="font-size:24px;padding:8px")
                         | @{{ twitterHandle }}
+                    div(class="w3-padding-16"
+                        v-else)
+                        i(class="fa fa-linkedin w3-text-white w3-circle primary" style="font-size:24px;padding:8px")
+                        i(class="fa fa-times w3-text-white w3-circle w3-red" style="font-size:24px;padding:8px")
             div(class="w3-margin-left w3-margin-right w3-left" style="width:30%")
                 div(class="w3-padding-large")
                     b Your ISM Score

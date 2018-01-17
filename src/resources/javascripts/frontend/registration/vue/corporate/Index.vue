@@ -14,7 +14,7 @@
         p 3. Enter your credit card information.
         p 4. Answer a few questions that will enable us to customize your posts to your local market, personal interests and product lines.
         p Activate your account today.
-        p #[b *Note: this offer is valid only to new InsuranceSocial.Media subscribers.]
+        p #[b *Note: this offer is valid only to new InsuranceSocial.Media subscribers. ]
         div(class="w3-padding-16")
             button(class="w3-button w3-text-white primary"
                 @click="$router.push({ name: 'Plans' })") Continue

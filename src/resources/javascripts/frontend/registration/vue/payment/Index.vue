@@ -3,7 +3,8 @@ parseFloat<template lang="pug">
         h3 You have selected the following plan.
         Selected(
             v-if="plan.name && !expired"
-            :plan="plan")
+            :plan="plan"
+            :code="code")
         div(v-if="!expired")
             h3 Payment Method
             h6 Please enter a form of payment to complete registration.
@@ -120,6 +121,7 @@ parseFloat<template lang="pug">
                 case 'IMTGEM17':
                 case 'FMH17':
                 case 'ROCK18':
+                case 'MERCB18':
                     if(today.format('MM/DD/YYYY') == new Moment().startOf('month').format('MM/DD/YYYY') ||
                         today.format('MM/DD/YYYY') == new Moment().endOf('month').format('MM/DD/YYYY')) {
                         this.$store.commit('setAmount', parseFloat(this.plan.price) - 39.00);
@@ -146,7 +148,7 @@ parseFloat<template lang="pug">
                     }
                     break;
             }
-            if(this.plan.linkedIn) {
+            if(this.plan.linkedIn && this.code != 'MERCB18') {
                 let amount = (parseFloat(this.amount) + 19.00).toFixed(2);
                 this.$store.commit('setAmount', amount);
             }
@@ -191,7 +193,8 @@ parseFloat<template lang="pug">
                             if(this.code == 'ISMFREETRIAL' ||
                                 this.code == 'IMTGEM17' ||
                                 this.code == 'FMH17' ||
-                                this.code == 'ROCK18') {
+                                this.code == 'ROCK18' ||
+                                this.code == 'MERCB18') {
                                     data.transaction.discount = 39.00;
                             }
 

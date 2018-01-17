@@ -54,6 +54,11 @@ use App\Plan;
             $company = 'Plymouth Rock Assurance';
             $expiration = 'March 31, 2018';
             break;
+        case 'MERCB18':
+            $logo = asset('images/ROCK-logos.jpg');
+            $company = 'Merchant Bonding';
+            $expiration = 'March 31, 2018';
+            break;
     }
     $data = [
         'logo' => $logo,

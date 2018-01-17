@@ -4,11 +4,19 @@
         span(class="w3-large w3-right v-align") {{ plan.cost }}
         Features(:features="plan.features")
         div(
-            v-if="plan.linkedIn")
+            v-if="plan.linkedIn && code != 'MERCB18'")
             span(class="w3-large v-align"
                 v-if="plan.tier == 1") Additional $19 monthly for LinkedIn
             span(class="w3-large v-align"
                 v-if="plan.tier == 2") Additional $10 monthly for LinkedIn
+            span(class="w3-large v-align"
+                v-if="plan.tier == 3") No additional charge for LinkedIn
+        div(
+            v-if="plan.linkedIn && code == 'MERCB18'")
+            span(class="w3-large v-align"
+                v-if="plan.tier == 1") No additional charge for LinkedIn
+            span(class="w3-large v-align"
+                v-if="plan.tier == 2") No additional charge for LinkedIn
             span(class="w3-large v-align"
                 v-if="plan.tier == 3") No additional charge for LinkedIn
 </template>
@@ -18,6 +26,9 @@
         props: {
             plan: {
                 type: Object
+            },
+            code: {
+                type: String
             }
         }
     }
