@@ -2,6 +2,9 @@
     div
         div(class="w3-bar-item w3-button w3-hover-white header-logo") Insurance Social Media
         div(class="w3-bar-item w3-button w3-hover-white w3-right header-link"
+            :class="{ 'w3-white': selected == 'account' }"
+            @click="$emit('showMenu', 'account')") Manage Account
+        div(class="w3-bar-item w3-button w3-hover-white w3-right header-link"
             :class="{ 'w3-white': selected == 'profile' }"
             @click="$emit('showMenu', 'profile')") Profile
         div(class="w3-bar-item w3-button w3-hover-white w3-right header-link"

@@ -1,5 +1,5 @@
 <template lang="pug">
-    div
+    div(class="w3-border")
         div(class="w3-padding w3-text-white primary")
             b Interaction Trends
             span(class="w3-padding") {{ interaction.created_at.slice(0, 10) }}
@@ -7,24 +7,24 @@
                 @click="$emit('updateInteraction', range)")
         div(class="w3-blue")
             i(class="fa fa-facebook-official w3-padding")
-            span(class="w3-padding"
+            span(class="w3-padding w3-hover-white"
                 :style="{ textDecoration: range == 30 ? 'underline' :  'none' }"
                 @click="$emit('setRange', 30)") Last 30 Days
-            span(class="w3-padding"
+            span(class="w3-padding w3-hover-white"
                 :style="{ textDecoration: range == 60 ? 'underline' :  'none' }"
                 @click="$emit('setRange', 60)") Last 60 Days
-            span(class="w3-padding"
+            span(class="w3-padding w3-hover-white"
                 :style="{ textDecoration: range == 90 ? 'underline' :  'none' }"
                 @click="$emit('setRange', 90)") Last 90 Days
         div(class="line-chart")
         div(class="w3-center")
-            span(class="w3-padding w3-bottombar"
+            span(class="w3-padding w3-bottombar w3-hover-blue"
                 :class="{ 'w3-border-blue': graph == 'reach'}"
                 @click="$emit('setGraph', 'reach')") Reach
-            span(class="w3-padding w3-bottombar"
+            span(class="w3-padding w3-bottombar w3-hover-blue"
                 :class="{ 'w3-border-blue': graph == 'engagement'}"
                 @click="$emit('setGraph', 'engagement')") Engagement
-            span(class="w3-padding w3-bottombar"
+            span(class="w3-padding w3-bottombar w3-hover-blue"
                 :class="{ 'w3-border-blue': graph == 'ratio'}"
                 @click="$emit('setGraph', 'ratio')") Engagement Ratio
 </template>

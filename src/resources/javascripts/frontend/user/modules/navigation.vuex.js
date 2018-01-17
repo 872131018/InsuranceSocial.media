@@ -1,7 +1,8 @@
 const Module = {
     state: {
         menu: 'home',
-        subMenu: ''
+        subMenu: '',
+        route: ''
     },
     mutations: {
         setMenu(state, value) {
@@ -10,6 +11,9 @@ const Module = {
         },
         setSubMenu(state, value) {
             state.subMenu = value;
+        },
+        setRoute(state, value) {
+            state.route = value;
         }
     }
 }

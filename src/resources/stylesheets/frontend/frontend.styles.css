@@ -91,7 +91,7 @@
     background-image: url("../images/stock1.jpg");
 }
 .bgimg2 {
-    margin-top: 250px;
+    margin-top: 150px;
     background-position: center;
     background-size: cover;
     //background-color: #6D6E70;
@@ -153,5 +153,4 @@ img[alt="Authorize.Net Merchant - Click to Verify"] {
     background-image: url("../images/dashboardhero.jpg");
     background-repeat: no-repeat;
     background-size: contain;
-    background-position: center -550px;
 }

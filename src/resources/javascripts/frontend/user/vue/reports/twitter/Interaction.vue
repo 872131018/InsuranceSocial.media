@@ -1,5 +1,5 @@
 <template lang="pug">
-    div
+    div(class="w3-border")
         div(class="w3-padding w3-text-white primary")
             b Interaction Trends
             span(class="w3-padding") {{ interaction.created_at.slice(0, 10) }}
@@ -7,24 +7,24 @@
                 @click="$emit('updateInteraction', range)")
         div(class="w3-blue")
             i(class="fa fa-twitter w3-padding")
-            span(class="w3-padding"
+            span(class="w3-padding w3-hover-white"
                 :style="{ textDecoration: range == 20 ? 'underline' :  'none' }"
                 @click="$emit('setRange', 20)") Last 20 Tweets
-            span(class="w3-padding"
+            span(class="w3-padding w3-hover-white"
                 :style="{ textDecoration: range == 50 ? 'underline' :  'none' }"
                 @click="$emit('setRange', 50)") Last 50 Tweets
-            span(class="w3-padding"
+            span(class="w3-padding w3-hover-white"
                 :style="{ textDecoration: range == 100 ? 'underline' :  'none' }"
                 @click="$emit('setRange', 100)") Last 100 Tweets
         div(class="line-chart")
         div(class="w3-center")
-            span(class="w3-padding w3-bottombar"
+            span(class="w3-padding w3-bottombar w3-hover-blue"
                 :class="{ 'w3-border-blue': graph == 'retweets'}"
                 @click="$emit('setGraph', 'retweets')") Retweets
-            span(class="w3-padding w3-bottombar"
+            span(class="w3-padding w3-bottombar w3-hover-blue"
                 :class="{ 'w3-border-blue': graph == 'favorites'}"
                 @click="$emit('setGraph', 'favorites')") Favorites
-            span(class="w3-padding w3-bottombar"
+            span(class="w3-padding w3-bottombar w3-hover-blue"
                 :class="{ 'w3-border-blue': graph == 'mentions'}"
                 @click="$emit('setGraph', 'mentions')") Mentions
 </template>

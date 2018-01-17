@@ -7,20 +7,20 @@
                 @click="$emit('updatePerformance', range)")
         div(class="w3-blue")
             i(class="fa fa-facebook-official w3-padding")
-            span(class="w3-padding"
+            span(class="w3-padding w3-hover-white"
                 :style="{ textDecoration: range == 20 ? 'underline' :  'none' }"
                 @click="$emit('setRange', 20)") Last 20 Tweets
-            span(class="w3-padding"
+            span(class="w3-padding w3-hover-white"
                 :style="{ textDecoration: range == 50 ? 'underline' :  'none' }"
                 @click="$emit('setRange', 50)") Last 50 Tweets
-            span(class="w3-padding"
+            span(class="w3-padding w3-hover-white"
                 :style="{ textDecoration: range == 100 ? 'underline' :  'none' }"
                 @click="$emit('setRange', 100)") Last 100 Tweets
         table(class="w3-table-all w3-half")
             tr
-                td Followers
+                td Current Followers
                 td(class="bold") {{ performance.followers }}
-                td --
+                td
             tr
                 td Mentions
                 td(class="bold") {{ performance.mentions }}

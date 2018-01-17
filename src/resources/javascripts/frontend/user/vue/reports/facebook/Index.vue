@@ -1,5 +1,5 @@
 <template lang="pug">
-    div(class="w3-card w3-padding dashboard")
+    div(class="dashboard")
         div(class="w3-row")
             div(class="w3-half w3-padding")
                 Performance(
@@ -15,8 +15,8 @@
                     @setRange="(value) => $store.commit('setFacebookInteractionRange', value)"
                     @setGraph="(value) => $store.commit('setFacebookInteractionGraph', value)"
                     @updateInteraction="updateInteraction(interactionRange)")
-        div(class="w3-row")
-            div(class="w3-half w3-padding")
+        div(class="w3-row" style="margin-top:32px")
+            div(class="w3-half w3-padding w3-border")
                 div(class="w3-padding w3-text-white primary")
                     b Content Insights
                     span(class="w3-padding")

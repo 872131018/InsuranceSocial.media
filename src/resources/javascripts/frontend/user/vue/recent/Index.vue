@@ -1,37 +1,53 @@
 <template lang="pug">
     div(class="w3-card w3-content dashboard")
-        div(class="w3-light-grey w3-margin-right w3-left" style="overflow:scroll;height:500px;width:30%")
-            h3(class="w3-text-white w3-padding-large secondary" style="margin:0") Welcome, {{ name }}
-            div(class="w3-padding-large")
-                b Linked Accounts
-                div(class="w3-padding-16")
-                    i(class="fa fa-facebook-official w3-text-white w3-circle primary" style="font-size:24px;padding:8px")
-                    | {{ facebookPage }}
-                div(class="w3-padding-16")
-                    i(class="fa fa-twitter w3-text-white w3-circle primary" style="font-size:24px;padding:8px")
-                    | @{{ twitterHandle }}
-            div(class="w3-padding-large")
-                b Your ISM Score
-                div(id="gauge-chart" class="200x160px")
-        div(class="w3-light-grey w3-margin-left w3-margin-right w3-left" style="overflow:scroll;height:500px;width:30%")
-            h5(class="w3-text-white w3-padding-large primary" style="margin:0") Current Facebook Feed
-            div(class="w3-center w3-padding")
-                div(id="fb-root")
-                div(class="fb-post" data-width="auto"
-                    v-for="post in facebookPosts"
-                    :data-href="post.permalink_url")
-        div(class="w3-light-grey w3-margin-left w3-left" style="overflow:scroll;height:500px;width:30%")
-            h5(class="w3-text-white w3-padding-large primary" style="margin:0") Current Twitter Feed
-            div(class="w3-padding")
-                a(id="twitter_timeline" class="twitter-timeline")
+        div(class="w3-row w3-margin-bottom w3-light-grey")
+            h5(class="w3-text-white w3-padding-large secondary" style="margin:0") Your Success Score!
+            div(class="w3-margin-left w3-margin-right w3-left" style="width:30%")
+                div(class="w3-padding-large")
+                    b Linked Accounts
+                    div(class="w3-padding-16"
+                        v-if="facebookPage")
+                        i(class="fa fa-facebook-official w3-text-white w3-circle primary" style="font-size:24px;padding:8px")
+                        | {{ facebookPage }}
+                    div(class="w3-padding-16"
+                        v-else)
+                        i(class="fa fa-times w3-text-white w3-circle w3-red" style="font-size:24px;padding:8px")
+                        | Facebook not connected
+                    div(class="w3-padding-16")
+                        i(class="fa fa-twitter w3-text-white w3-circle primary" style="font-size:24px;padding:8px")
+                        | @{{ twitterHandle }}
+                    div(class="w3-padding-16")
+                        i(class="fa fa-linkedin w3-text-white w3-circle primary" style="font-size:24px;padding:8px")
+                        | @{{ twitterHandle }}
+            div(class="w3-margin-left w3-margin-right w3-left" style="width:30%")
+                div(class="w3-padding-large")
+                    b Your ISM Score
+                    div(id="gauge-chart" class="200x160px")
+            div(class="w3-margin-left w3-margin-right w3-left" style="width:30%")
+                div(style="position:relative;top:50px")
+                    p 55+ means your social media is a SUCCESS!
+                    p 80+ means youre a social media ROCKSTAR!
+        div(class="w3-row")
+            div(class="w3-light-grey w3-margin-left w3-margin-right w3-left" style="overflow:scroll;height:500px;width:30%")
+                h5(class="w3-text-white w3-padding-large primary" style="margin:0") Current Facebook Feed
+                div(class="w3-center w3-padding")
+                    div(id="fb-root")
+                    div(class="fb-post" data-width="auto"
+                        v-for="post in facebookPosts"
+                        :data-href="post.permalink_url")
+            div(class="w3-light-grey w3-margin-left w3-margin-right w3-left" style="overflow:scroll;height:500px;width:30%")
+                h5(class="w3-text-white w3-padding-large primary" style="margin:0") Current Twitter Feed
+                div(class="w3-padding")
+                    a(id="twitter_timeline" class="twitter-timeline")
+            div(class="w3-light-grey w3-margin-left w3-margin-right w3-left" style="overflow:scroll;height:500px;width:30%")
+                h5(class="w3-text-white w3-padding-large primary" style="margin:0") Current Linkedin Feed
+                div(class="w3-padding")
+                    a(id="twitter_timeline" class="twitter-timeline")
 </template>
 
 <script>
     export default {
         computed: {
-            name() {
-                return this.$store.state.user.name;
-            },
             score() {
                 return this.$store.state.recent.score;
             },

@@ -7,13 +7,13 @@
                 @click="$emit('updatePerformance', range)")
         div(class="w3-blue")
             i(class="fa fa-facebook-official w3-padding")
-            span(class="w3-padding"
+            span(class="w3-padding w3-hover-white"
                 :style="{ textDecoration: range == 30 ? 'underline' :  'none' }"
                 @click="$emit('setRange', 30)") Last 30 Days
-            span(class="w3-padding"
+            span(class="w3-padding w3-hover-white"
                 :style="{ textDecoration: range == 60 ? 'underline' :  'none' }"
                 @click="$emit('setRange', 60)") Last 60 Days
-            span(class="w3-padding"
+            span(class="w3-padding w3-hover-white"
                 :style="{ textDecoration: range == 90 ? 'underline' :  'none' }"
                 @click="$emit('setRange', 90)") Last 90 Days
         table(class="w3-table-all w3-half")

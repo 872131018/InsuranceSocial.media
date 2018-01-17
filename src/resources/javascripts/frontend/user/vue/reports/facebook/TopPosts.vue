@@ -7,9 +7,9 @@
                 @click="$emit('updatePosts')")
         table(class="w3-table-all")
             tr
-                td Post Date
-                td Post Content
-                td Total Reactions
+                td #[b Post Date ]
+                td #[b Post Content ]
+                td #[b Total Reactions ]
             tr(
                 v-for="post in posts.posts")
                 td {{ post.date.slice(0, 10) }}
