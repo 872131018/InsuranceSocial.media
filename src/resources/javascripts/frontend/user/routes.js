@@ -13,7 +13,8 @@ import Agency from './vue/profile/agency/Index';
 import Location from './vue/profile/location/Index';
 import Coverages from './vue/profile/coverages/Index';
 import Outreach from './vue/profile/outreach/Index';
-import Payment from './vue/profile/payment/Index';
+import Payment from './vue/payment/Index';
+import History from './vue/history/Index';
 import Referral from './vue/tools/referral/Index';
 
 
@@ -92,6 +93,11 @@ const routes = [
         path: '/user/payment',
         name: 'Payment',
         component: Payment
+    },
+    {
+        path: '/user/history',
+        name: 'History',
+        component: History
     },
     {
         path: '/user/referral',

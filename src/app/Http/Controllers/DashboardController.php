@@ -1154,6 +1154,38 @@ class DashboardController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function indexPaymentHistory(Request $request)
+    {
+        $user = Auth::user();
+
+        $url = '';
+        if(env('APP_ENV') == 'local') {
+            $url = 'http://www.staging.insurancesocial.media/api/ismv2/';
+        } else {
+            $url = 'http://www.ism.insurancesocial.media/api/ismv2/';
+        }
+
+        $client = new Client([
+            'base_uri' => $url
+        ]);
+
+        $response = $client->request('GET', '_ismv2_getPaymentHistory', [
+            'query' => [
+                'user' => $user->email,
+                'page' => 1,
+                'perpage' => 5
+            ]
+        ]);
+        $response = json_decode($response->getBody());
+
+        return response()->json($response);
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function create()
     {
         //

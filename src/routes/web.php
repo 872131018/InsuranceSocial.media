@@ -46,4 +46,6 @@ Route::get('/user/outreach', 'HomeController@index')->name('home');
 
 Route::get('/user/payment', 'HomeController@index')->name('home');
 
+Route::get('/user/history', 'HomeController@index')->name('home');
+
 Route::get('/user/referral', 'HomeController@index')->name('home');

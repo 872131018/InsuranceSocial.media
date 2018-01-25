@@ -76,6 +76,11 @@
                 this.$store.commit('serviceFinished');
                 this.$store.commit('setAuthorize', response.data);
             });
+            this.$store.commit('serviceLoading');
+            axios.get('/api/history').then(response => {
+                this.$store.commit('serviceFinished');
+                this.$store.commit('setHistory', response.data);
+            });
         }
     }
 </script>

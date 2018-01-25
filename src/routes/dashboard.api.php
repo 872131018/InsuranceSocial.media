@@ -31,6 +31,8 @@ use Illuminate\Http\Request;
 
  Route::get('/api/reports/twitter/posts', 'DashboardController@indexTwitterPosts');
 
+ Route::get('/api/history', 'DashboardController@indexPaymentHistory');
+
  Route::post('/api/facebook/post', 'DashboardController@indexFacebookPost');
 
  Route::post('/api/facebook/schedule', 'DashboardController@indexFacebookSchedule');

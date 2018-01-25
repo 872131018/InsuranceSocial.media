@@ -22,9 +22,9 @@
                         i(class="fa fa-twitter w3-text-white w3-circle primary" style="font-size:24px;padding:8px")
                         i(class="fa fa-times w3-text-white w3-circle w3-red" style="font-size:24px;padding:8px")
                     div(class="w3-padding-16"
-                        v-if="twitterHandle")
+                        v-if="linkedinEmail")
                         i(class="fa fa-linkedin w3-text-white w3-circle primary" style="font-size:24px;padding:8px")
-                        | @{{ twitterHandle }}
+                        | {{ linkedinEmail }}
                     div(class="w3-padding-16"
                         v-else)
                         i(class="fa fa-linkedin w3-text-white w3-circle primary" style="font-size:24px;padding:8px")
@@ -52,7 +52,13 @@
             div(class="w3-light-grey w3-margin-left w3-margin-right w3-left" style="overflow:scroll;height:500px;width:30%")
                 h5(class="w3-text-white w3-padding-large primary" style="margin:0") Current Linkedin Feed
                 div(class="w3-padding")
-                    a(id="twitter_timeline" class="twitter-timeline")
+                    div(class="w3-row w3-padding w3-margin w3-white"
+                        v-for="post in linkedinPosts")
+                        a(
+                            :href="post.link")
+                            img(class="w3-image"
+                                :src="post.image_path")
+                        div {{ post.content }}
 </template>
 
 <script>
@@ -67,6 +73,9 @@
             twitterHandle() {
                 return this.$store.state.recent.twitter_handle;
             },
+            linkedinEmail() {
+                return this.$store.state.recent.linkedin_email;
+            },
             facebookPosts() {
                 return this.$store.state.recent.facebook_posts;
             },
@@ -75,6 +84,9 @@
             },
             score() {
                 return this.$store.state.recent.score;
+            },
+            linkedinPosts() {
+                return this.$store.state.recent.linkedin_posts;
             }
         },
         mounted() {

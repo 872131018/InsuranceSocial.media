@@ -23850,6 +23850,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: {
@@ -23870,6 +23874,20 @@ var render = function() {
   return _c(
     "div",
     [
+      _c(
+        "router-link",
+        {
+          staticClass: "w3-bar-item w3-hover-white w3-right sub-header-link",
+          class: { "w3-white": _vm.selected == "history" },
+          attrs: { to: { name: "History" } },
+          nativeOn: {
+            click: function($event) {
+              _vm.$emit("setRoute", "history")
+            }
+          }
+        },
+        [_vm._v("Payment History")]
+      ),
       _c(
         "router-link",
         {
@@ -24908,13 +24926,15 @@ if (false) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__modules_twitterPerformance_vuex__ = __webpack_require__(438);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__modules_twitterInteraction_vuex__ = __webpack_require__(439);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__modules_twitterPosts_vuex__ = __webpack_require__(440);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__modules_post_vuex__ = __webpack_require__(441);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__modules_referral_vuex__ = __webpack_require__(442);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__modules_transient_vuex__ = __webpack_require__(443);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__modules_authorize_vuex__ = __webpack_require__(444);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__modules_options_vuex__ = __webpack_require__(445);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__modules_errors_vuex__ = __webpack_require__(446);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__modules_services_vuex__ = __webpack_require__(447);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__modules_history_vuex__ = __webpack_require__(593);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__modules_post_vuex__ = __webpack_require__(441);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__modules_referral_vuex__ = __webpack_require__(442);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__modules_transient_vuex__ = __webpack_require__(443);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__modules_authorize_vuex__ = __webpack_require__(444);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__modules_options_vuex__ = __webpack_require__(445);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__modules_errors_vuex__ = __webpack_require__(446);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__modules_services_vuex__ = __webpack_require__(447);
+
 
 
 
@@ -24953,13 +24973,14 @@ var store = new __WEBPACK_IMPORTED_MODULE_1_vuex__["a" /* default */].Store({
         twitterPerformance: __WEBPACK_IMPORTED_MODULE_11__modules_twitterPerformance_vuex__["a" /* default */],
         twitterInteraction: __WEBPACK_IMPORTED_MODULE_12__modules_twitterInteraction_vuex__["a" /* default */],
         twitterPosts: __WEBPACK_IMPORTED_MODULE_13__modules_twitterPosts_vuex__["a" /* default */],
-        post: __WEBPACK_IMPORTED_MODULE_14__modules_post_vuex__["a" /* default */],
-        referral: __WEBPACK_IMPORTED_MODULE_15__modules_referral_vuex__["a" /* default */],
-        transient: __WEBPACK_IMPORTED_MODULE_16__modules_transient_vuex__["a" /* default */],
-        authorize: __WEBPACK_IMPORTED_MODULE_17__modules_authorize_vuex__["a" /* default */],
-        options: __WEBPACK_IMPORTED_MODULE_18__modules_options_vuex__["a" /* default */],
-        errors: __WEBPACK_IMPORTED_MODULE_19__modules_errors_vuex__["a" /* default */],
-        services: __WEBPACK_IMPORTED_MODULE_20__modules_services_vuex__["a" /* default */]
+        history: __WEBPACK_IMPORTED_MODULE_14__modules_history_vuex__["a" /* default */],
+        post: __WEBPACK_IMPORTED_MODULE_15__modules_post_vuex__["a" /* default */],
+        referral: __WEBPACK_IMPORTED_MODULE_16__modules_referral_vuex__["a" /* default */],
+        transient: __WEBPACK_IMPORTED_MODULE_17__modules_transient_vuex__["a" /* default */],
+        authorize: __WEBPACK_IMPORTED_MODULE_18__modules_authorize_vuex__["a" /* default */],
+        options: __WEBPACK_IMPORTED_MODULE_19__modules_options_vuex__["a" /* default */],
+        errors: __WEBPACK_IMPORTED_MODULE_20__modules_errors_vuex__["a" /* default */],
+        services: __WEBPACK_IMPORTED_MODULE_21__modules_services_vuex__["a" /* default */]
     }
 });
 
@@ -25750,16 +25771,20 @@ var Module = {
     state: {
         facebook_page: '',
         twitter_handle: '',
+        linkedin_email: '',
         facebook_posts: [],
         twitter_posts: [],
-        score: 0
+        score: 0,
+        linkedin_posts: []
     },
     mutations: {
         setRecent: function setRecent(state, value) {
             state.facebook_page = value.facebook_page;
             state.twitter_handle = value.twitter_handle;
+            state.linkedin_email = value.linkedin_email;
             state.facebook_posts = value.facebook_posts;
             state.twitter_posts = value.twitter_posts;
+            state.linkedin_posts = value.linkedin_posts;
         },
         setScore: function setScore(state, value) {
             state.score = value;
@@ -26262,10 +26287,13 @@ var Module = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__vue_profile_coverages_Index___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_13__vue_profile_coverages_Index__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__vue_profile_outreach_Index__ = __webpack_require__(542);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__vue_profile_outreach_Index___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_14__vue_profile_outreach_Index__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__vue_profile_payment_Index__ = __webpack_require__(548);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__vue_profile_payment_Index___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_15__vue_profile_payment_Index__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__vue_tools_referral_Index__ = __webpack_require__(566);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__vue_tools_referral_Index___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_16__vue_tools_referral_Index__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__vue_payment_Index__ = __webpack_require__(572);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__vue_payment_Index___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_15__vue_payment_Index__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__vue_history_Index__ = __webpack_require__(590);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__vue_history_Index___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_16__vue_history_Index__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__vue_tools_referral_Index__ = __webpack_require__(566);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__vue_tools_referral_Index___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_17__vue_tools_referral_Index__);
+
 
 
 
@@ -26343,11 +26371,15 @@ var routes = [{
 }, {
     path: '/user/payment',
     name: 'Payment',
-    component: __WEBPACK_IMPORTED_MODULE_15__vue_profile_payment_Index___default.a
+    component: __WEBPACK_IMPORTED_MODULE_15__vue_payment_Index___default.a
+}, {
+    path: '/user/history',
+    name: 'History',
+    component: __WEBPACK_IMPORTED_MODULE_16__vue_history_Index___default.a
 }, {
     path: '/user/referral',
     name: 'Referral',
-    component: __WEBPACK_IMPORTED_MODULE_16__vue_tools_referral_Index___default.a
+    component: __WEBPACK_IMPORTED_MODULE_17__vue_tools_referral_Index___default.a
 }];
 
 /* harmony default export */ __webpack_exports__["a"] = (new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
@@ -26411,6 +26443,8 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+var _computed;
+
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 //
@@ -26470,9 +26504,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    computed: _defineProperty({
+    computed: (_computed = {
         score: function score() {
             return this.$store.state.recent.score;
         },
@@ -26482,15 +26522,20 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         twitterHandle: function twitterHandle() {
             return this.$store.state.recent.twitter_handle;
         },
+        linkedinEmail: function linkedinEmail() {
+            return this.$store.state.recent.linkedin_email;
+        },
         facebookPosts: function facebookPosts() {
             return this.$store.state.recent.facebook_posts;
         },
         twitterPosts: function twitterPosts() {
             return this.$store.state.recent.twitter_posts;
         }
-    }, 'score', function score() {
+    }, _defineProperty(_computed, 'score', function score() {
         return this.$store.state.recent.score;
-    }),
+    }), _defineProperty(_computed, 'linkedinPosts', function linkedinPosts() {
+        return this.$store.state.recent.linkedin_posts;
+    }), _computed),
     mounted: function mounted() {
         this.initialize();
     },
@@ -26610,14 +26655,14 @@ var render = function() {
                     staticStyle: { "font-size": "24px", padding: "8px" }
                   })
                 ]),
-            _vm.twitterHandle
+            _vm.linkedinEmail
               ? _c("div", { staticClass: "w3-padding-16" }, [
                   _c("i", {
                     staticClass:
                       "fa fa-linkedin w3-text-white w3-circle primary",
                     staticStyle: { "font-size": "24px", padding: "8px" }
                   }),
-                  _vm._v("@" + _vm._s(_vm.twitterHandle))
+                  _vm._v(_vm._s(_vm.linkedinEmail))
                 ])
               : _c("div", { staticClass: "w3-padding-16" }, [
                   _c("i", {
@@ -26672,7 +26717,42 @@ var render = function() {
         ]
       ),
       _vm._m(2),
-      _vm._m(3)
+      _c(
+        "div",
+        {
+          staticClass: "w3-light-grey w3-margin-left w3-margin-right w3-left",
+          staticStyle: { overflow: "scroll", height: "500px", width: "30%" }
+        },
+        [
+          _c(
+            "h5",
+            {
+              staticClass: "w3-text-white w3-padding-large primary",
+              staticStyle: { margin: "0" }
+            },
+            [_vm._v("Current Linkedin Feed")]
+          ),
+          _c(
+            "div",
+            { staticClass: "w3-padding" },
+            _vm._l(_vm.linkedinPosts, function(post) {
+              return _c(
+                "div",
+                { staticClass: "w3-row w3-padding w3-margin w3-white" },
+                [
+                  _c("a", { attrs: { href: post.link } }, [
+                    _c("img", {
+                      staticClass: "w3-image",
+                      attrs: { src: post.image_path }
+                    })
+                  ]),
+                  _c("div", [_vm._v(_vm._s(post.content))])
+                ]
+              )
+            })
+          )
+        ]
+      )
     ])
   ])
 }
@@ -26731,34 +26811,6 @@ var staticRenderFns = [
             staticStyle: { margin: "0" }
           },
           [_vm._v("Current Twitter Feed")]
-        ),
-        _c("div", { staticClass: "w3-padding" }, [
-          _c("a", {
-            staticClass: "twitter-timeline",
-            attrs: { id: "twitter_timeline" }
-          })
-        ])
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass: "w3-light-grey w3-margin-left w3-margin-right w3-left",
-        staticStyle: { overflow: "scroll", height: "500px", width: "30%" }
-      },
-      [
-        _c(
-          "h5",
-          {
-            staticClass: "w3-text-white w3-padding-large primary",
-            staticStyle: { margin: "0" }
-          },
-          [_vm._v("Current Linkedin Feed")]
         ),
         _c("div", { staticClass: "w3-padding" }, [
           _c("a", {
@@ -35018,990 +35070,24 @@ if (false) {
 }
 
 /***/ }),
-/* 548 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(0)
-/* script */
-var __vue_script__ = __webpack_require__(549)
-/* template */
-var __vue_template__ = __webpack_require__(565)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/javascripts/frontend/user/vue/profile/payment/Index.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-88c553bc", Component.options)
-  } else {
-    hotAPI.reload("data-v-88c553bc", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 549 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Card__ = __webpack_require__(550);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Card___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Card__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Month__ = __webpack_require__(553);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Month___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__Month__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Year__ = __webpack_require__(556);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Year___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__Year__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__CVV__ = __webpack_require__(559);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__CVV___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__CVV__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Name__ = __webpack_require__(562);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Name___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__Name__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-
-
-
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    computed: {
-        card: function card() {
-            return this.$store.state.payment.card;
-        },
-        month: function month() {
-            return this.$store.state.payment.month;
-        },
-        year: function year() {
-            return this.$store.state.payment.year;
-        },
-        cvv: function cvv() {
-            return this.$store.state.payment.cvv;
-        },
-        name: function name() {
-            return this.$store.state.payment.name;
-        },
-        payment: function payment() {
-            return this.$store.state.payment.payment;
-        },
-        errors: function errors() {
-            return this.$store.state.errors.errors;
-        }
-    },
-    methods: {
-        sendPaymentDataToAnet: function sendPaymentDataToAnet() {
-            var _this = this;
-
-            this.validate();
-            if (this.errors.length == 0) {
-                var secureData = {
-                    cardData: {
-                        cardNumber: this.card,
-                        month: this.month,
-                        year: this.year,
-                        cardcode: this.cvv
-                    },
-                    authData: this.$store.state.authorize
-                };
-                this.$store.commit('serviceLoading');
-                Accept.dispatchData(secureData, function (response) {
-                    if (response.messages.resultCode === "Error") {
-                        var _iteratorNormalCompletion = true;
-                        var _didIteratorError = false;
-                        var _iteratorError = undefined;
-
-                        try {
-                            for (var _iterator = response.messages.message[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-                                var error = _step.value;
-
-                                _this.$store.commit('setError', error.text);
-                            }
-                        } catch (err) {
-                            _didIteratorError = true;
-                            _iteratorError = err;
-                        } finally {
-                            try {
-                                if (!_iteratorNormalCompletion && _iterator.return) {
-                                    _iterator.return();
-                                }
-                            } finally {
-                                if (_didIteratorError) {
-                                    throw _iteratorError;
-                                }
-                            }
-                        }
-                    } else {
-                        var data = {
-                            registration: _this.$store.state.registration,
-                            transaction: {
-                                dataDescriptor: response.opaqueData.dataDescriptor,
-                                dataValue: response.opaqueData.dataValue
-                            },
-                            method: {
-                                name: _this.name,
-                                month: _this.month,
-                                year: _this.year,
-                                number: _this.card.substr(_this.card.length - 4),
-                                cvv: _this.cvv
-                            }
-                        };
-
-                        axios.post('/api/payment', data).then(function (response) {
-                            _this.$store.commit('serviceFinished');
-                            _this.$router.push({ name: 'Recent' });
-                        }).catch(function (error) {
-                            _this.$store.commit('serviceFinished');
-                            if (error.response.data) {
-                                _this.$store.commit('setError', 'There has been an error. See error message below.');
-                                _this.$store.commit('setError', response.data);
-                            }
-                        });
-                    }
-                });
-            }
-        },
-        validate: function validate() {
-            this.$store.commit('clearErrors');
-            if (this.card == '') {
-                this.$store.commit('setError', 'Please enter credit card number.');
-            }
-            if (this.month == '') {
-                this.$store.commit('setError', 'Please enter expiration month on credit card.');
-            }
-            if (this.year == '') {
-                this.$store.commit('setError', 'Please enter expiration year on credit card.');
-            }
-            if (this.cvv == '') {
-                this.$store.commit('setError', 'Please enter the security code on the back of the card.');
-            }
-            if (this.name == '') {
-                this.$store.commit('setError', 'Please enter name on credit card.');
-            }
-        },
-        navigate: function navigate() {
-            window.location = '/facebook';
-        }
-    },
-    components: {
-        Card: __WEBPACK_IMPORTED_MODULE_0__Card___default.a,
-        Month: __WEBPACK_IMPORTED_MODULE_1__Month___default.a,
-        Year: __WEBPACK_IMPORTED_MODULE_2__Year___default.a,
-        CVV: __WEBPACK_IMPORTED_MODULE_3__CVV___default.a,
-        Name: __WEBPACK_IMPORTED_MODULE_4__Name___default.a
-    }
-});
-
-/***/ }),
-/* 550 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(0)
-/* script */
-var __vue_script__ = __webpack_require__(551)
-/* template */
-var __vue_template__ = __webpack_require__(552)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/javascripts/frontend/user/vue/profile/payment/Card.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-d920ca20", Component.options)
-  } else {
-    hotAPI.reload("data-v-d920ca20", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 551 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    props: {
-        value: {
-            type: String
-        }
-    }
-});
-
-/***/ }),
-/* 552 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("img", {
-      staticClass: "w3-show-block",
-      attrs: { src: "/images/credit-card-icon-set.png" }
-    }),
-    _c("input", {
-      staticClass: "w3-input w3-show-inline-block",
-      attrs: { type: "text" },
-      domProps: { value: _vm.value },
-      on: {
-        keyup: function($event) {
-          _vm.$emit("setValue", $event.target.value)
-        }
-      }
-    }),
-    _c("label", { staticClass: "w3-show-block" }, [_vm._v("Card Number")]),
-    _c("span", { staticClass: "w3-small" }, [
-      _vm._v(
-        "Accepted payment forms are Visa, Mastercard, Discover, and American Express"
-      )
-    ])
-  ])
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-d920ca20", module.exports)
-  }
-}
-
-/***/ }),
-/* 553 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(0)
-/* script */
-var __vue_script__ = __webpack_require__(554)
-/* template */
-var __vue_template__ = __webpack_require__(555)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/javascripts/frontend/user/vue/profile/payment/Month.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-c3746e60", Component.options)
-  } else {
-    hotAPI.reload("data-v-c3746e60", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 554 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    props: {
-        value: {
-            type: String
-        }
-    },
-    data: function data() {
-        return {
-            months: [{
-                name: 'January',
-                value: '01'
-            }, {
-                name: 'February',
-                value: '02'
-            }, {
-                name: 'March',
-                value: '03'
-            }, {
-                name: 'April',
-                value: '04'
-            }, {
-                name: 'May',
-                value: '05'
-            }, {
-                name: 'June',
-                value: '06'
-            }, {
-                name: 'July',
-                value: '07'
-            }, {
-                name: 'August',
-                value: '08'
-            }, {
-                name: 'September',
-                value: '09'
-            }, {
-                name: 'October',
-                value: '10'
-            }, {
-                name: 'November',
-                value: '11'
-            }, {
-                name: 'December',
-                value: '12'
-            }],
-            selected: {
-                name: 'Month'
-            }
-        };
-    },
-    mounted: function mounted() {
-        if (this.value) {
-            var _iteratorNormalCompletion = true;
-            var _didIteratorError = false;
-            var _iteratorError = undefined;
-
-            try {
-                for (var _iterator = this.months[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-                    var month = _step.value;
-
-                    if (this.value == month.value) {
-                        this.selected = month;
-                    }
-                }
-            } catch (err) {
-                _didIteratorError = true;
-                _iteratorError = err;
-            } finally {
-                try {
-                    if (!_iteratorNormalCompletion && _iterator.return) {
-                        _iterator.return();
-                    }
-                } finally {
-                    if (_didIteratorError) {
-                        throw _iteratorError;
-                    }
-                }
-            }
-        }
-    },
-
-    methods: {
-        setMonth: function setMonth(month) {
-            this.selected = month;
-            this.$emit('setMonth', month);
-        }
-    }
-});
-
-/***/ }),
-/* 555 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "w3-third v-align" }, [
-    _c("div", { staticClass: "w3-dropdown-hover" }, [
-      _c("button", { staticClass: "w3-button" }, [
-        _vm._v(_vm._s(_vm.selected.name)),
-        _c("i", { staticClass: "fa fa-caret-down" })
-      ]),
-      _c(
-        "div",
-        { staticClass: "w3-dropdown-content w3-bar-block w3-border" },
-        _vm._l(_vm.months, function(month) {
-          return _c(
-            "div",
-            {
-              staticClass: "w3-bar-item w3-button",
-              on: {
-                click: function($event) {
-                  _vm.setMonth(month)
-                }
-              }
-            },
-            [_vm._v(_vm._s(month.name))]
-          )
-        })
-      )
-    ])
-  ])
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-c3746e60", module.exports)
-  }
-}
-
-/***/ }),
-/* 556 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(0)
-/* script */
-var __vue_script__ = __webpack_require__(557)
-/* template */
-var __vue_template__ = __webpack_require__(558)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/javascripts/frontend/user/vue/profile/payment/Year.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-3825499d", Component.options)
-  } else {
-    hotAPI.reload("data-v-3825499d", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 557 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    props: {
-        value: {
-            type: String
-        }
-    }
-});
-
-/***/ }),
-/* 558 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "w3-quarter w3-margin-right v-align" }, [
-    _c("input", {
-      staticClass: "w3-input",
-      attrs: { type: "text", placeholder: "Year" },
-      domProps: { value: _vm.value },
-      on: {
-        keyup: function($event) {
-          _vm.$emit("setValue", $event.target.value)
-        }
-      }
-    })
-  ])
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-3825499d", module.exports)
-  }
-}
-
-/***/ }),
-/* 559 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(0)
-/* script */
-var __vue_script__ = __webpack_require__(560)
-/* template */
-var __vue_template__ = __webpack_require__(561)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/javascripts/frontend/user/vue/profile/payment/CVV.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-4053ed9a", Component.options)
-  } else {
-    hotAPI.reload("data-v-4053ed9a", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 560 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    props: {
-        value: {
-            type: String
-        }
-    }
-});
-
-/***/ }),
-/* 561 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "w3-quarter v-align" }, [
-    _c("input", {
-      staticClass: "w3-input",
-      attrs: { type: "text", placeholder: "CVV" },
-      domProps: { value: _vm.value },
-      on: {
-        keyup: function($event) {
-          _vm.$emit("setValue", $event.target.value)
-        }
-      }
-    })
-  ])
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-4053ed9a", module.exports)
-  }
-}
-
-/***/ }),
-/* 562 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(0)
-/* script */
-var __vue_script__ = __webpack_require__(563)
-/* template */
-var __vue_template__ = __webpack_require__(564)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/javascripts/frontend/user/vue/profile/payment/Name.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-01a264eb", Component.options)
-  } else {
-    hotAPI.reload("data-v-01a264eb", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 563 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    props: {
-        value: {
-            type: String
-        }
-    }
-});
-
-/***/ }),
-/* 564 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("input", {
-      staticClass: "w3-input w3-show-inline-block",
-      attrs: { type: "text" },
-      domProps: { value: _vm.value },
-      on: {
-        keyup: function($event) {
-          _vm.$emit("setValue", $event.target.value)
-        }
-      }
-    }),
-    _c("label", { staticClass: "w3-show-block" }, [
-      _vm._v("Card Holder's Name")
-    ])
-  ])
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-01a264eb", module.exports)
-  }
-}
-
-/***/ }),
-/* 565 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "w3-card w3-padding form" },
-    [
-      _c("h3", [_vm._v("Payment Method")]),
-      _c("h6", [
-        _vm._v("You may enter a new card to update your payment information.")
-      ]),
-      _c("p", [_vm._v("Current card on file")]),
-      _c("p", [_vm._v("Name: " + _vm._s(_vm.payment.name))]),
-      _c("p", [
-        _vm._v(
-          "Expiration: " +
-            _vm._s(_vm.payment.month) +
-            " - " +
-            _vm._s(_vm.payment.year)
-        )
-      ]),
-      _c("p", [_vm._v("Last 4 digits: " + _vm._s(_vm.payment.number))]),
-      _c("Card", {
-        attrs: { value: _vm.card },
-        on: {
-          setValue: function(value) {
-            return _vm.$store.commit("setCard", value)
-          }
-        }
-      }),
-      _c("Month", {
-        attrs: { value: _vm.month },
-        on: {
-          setMonth: function(value) {
-            return _vm.$store.commit("setMonth", value.value)
-          }
-        }
-      }),
-      _c("Year", {
-        attrs: { value: _vm.year },
-        on: {
-          setValue: function(value) {
-            return _vm.$store.commit("setYear", value)
-          }
-        }
-      }),
-      _c("CVV", {
-        attrs: { value: _vm.cvv },
-        on: {
-          setValue: function(value) {
-            return _vm.$store.commit("setCVV", value)
-          }
-        }
-      }),
-      _vm._m(0),
-      _c("Name", {
-        attrs: { value: _vm.name },
-        on: {
-          setValue: function(value) {
-            return _vm.$store.commit("setCardName", value)
-          }
-        }
-      }),
-      _vm.errors.length
-        ? _c("Errors", { attrs: { errors: _vm.errors } })
-        : _vm._e(),
-      _c(
-        "button",
-        {
-          staticClass: "w3-button w3-text-white primary",
-          on: {
-            click: function($event) {
-              _vm.sendPaymentDataToAnet()
-            }
-          }
-        },
-        [_vm._v("Submit")]
-      ),
-      _vm._m(1)
-    ],
-    1
-  )
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticStyle: { clear: "both" } }, [
-      _vm._v("Expiration Month and Year(YYYY) with Security Code"),
-      _c("i", { staticClass: "fa fa-question-circle-o w3-tooltip" }, [
-        _c("img", {
-          staticClass: "w3-text",
-          staticStyle: { position: "absolute", bottom: "-20px" },
-          attrs: { src: "/images/creditcards_cvv.png" }
-        })
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "AuthorizeNetSeal", staticStyle: { display: "none" } },
-      [
-        _c(
-          "a",
-          {
-            attrs: {
-              href: "http://www.authorize.net/",
-              id: "AuthorizeNetText",
-              target: "_blank"
-            }
-          },
-          [_vm._v("Electronic Check Processing")]
-        )
-      ]
-    )
-  }
-]
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-88c553bc", module.exports)
-  }
-}
-
-/***/ }),
+/* 548 */,
+/* 549 */,
+/* 550 */,
+/* 551 */,
+/* 552 */,
+/* 553 */,
+/* 554 */,
+/* 555 */,
+/* 556 */,
+/* 557 */,
+/* 558 */,
+/* 559 */,
+/* 560 */,
+/* 561 */,
+/* 562 */,
+/* 563 */,
+/* 564 */,
+/* 565 */,
 /* 566 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -36313,6 +35399,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             _this.$store.commit('serviceFinished');
             _this.$store.commit('setAuthorize', response.data);
         });
+        this.$store.commit('serviceLoading');
+        axios.get('/api/history').then(function (response) {
+            _this.$store.commit('serviceFinished');
+            _this.$store.commit('setHistory', response.data);
+        });
     }
 });
 
@@ -36350,6 +35441,1125 @@ if (false) {
     require("vue-hot-reload-api")      .rerender("data-v-4ce8f140", module.exports)
   }
 }
+
+/***/ }),
+/* 572 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(573)
+/* template */
+var __vue_template__ = __webpack_require__(589)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/javascripts/frontend/user/vue/payment/Index.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-3b537808", Component.options)
+  } else {
+    hotAPI.reload("data-v-3b537808", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 573 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Card__ = __webpack_require__(574);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Card___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Card__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Month__ = __webpack_require__(577);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Month___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__Month__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Year__ = __webpack_require__(580);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Year___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__Year__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__CVV__ = __webpack_require__(583);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__CVV___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__CVV__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Name__ = __webpack_require__(586);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Name___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__Name__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    computed: {
+        card: function card() {
+            return this.$store.state.payment.card;
+        },
+        month: function month() {
+            return this.$store.state.payment.month;
+        },
+        year: function year() {
+            return this.$store.state.payment.year;
+        },
+        cvv: function cvv() {
+            return this.$store.state.payment.cvv;
+        },
+        name: function name() {
+            return this.$store.state.payment.name;
+        },
+        payment: function payment() {
+            return this.$store.state.payment.payment;
+        },
+        errors: function errors() {
+            return this.$store.state.errors.errors;
+        }
+    },
+    methods: {
+        sendPaymentDataToAnet: function sendPaymentDataToAnet() {
+            var _this = this;
+
+            this.validate();
+            if (this.errors.length == 0) {
+                var secureData = {
+                    cardData: {
+                        cardNumber: this.card,
+                        month: this.month,
+                        year: this.year,
+                        cardcode: this.cvv
+                    },
+                    authData: this.$store.state.authorize
+                };
+                this.$store.commit('serviceLoading');
+                Accept.dispatchData(secureData, function (response) {
+                    if (response.messages.resultCode === "Error") {
+                        var _iteratorNormalCompletion = true;
+                        var _didIteratorError = false;
+                        var _iteratorError = undefined;
+
+                        try {
+                            for (var _iterator = response.messages.message[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                                var error = _step.value;
+
+                                _this.$store.commit('setError', error.text);
+                            }
+                        } catch (err) {
+                            _didIteratorError = true;
+                            _iteratorError = err;
+                        } finally {
+                            try {
+                                if (!_iteratorNormalCompletion && _iterator.return) {
+                                    _iterator.return();
+                                }
+                            } finally {
+                                if (_didIteratorError) {
+                                    throw _iteratorError;
+                                }
+                            }
+                        }
+                    } else {
+                        var data = {
+                            registration: _this.$store.state.registration,
+                            transaction: {
+                                dataDescriptor: response.opaqueData.dataDescriptor,
+                                dataValue: response.opaqueData.dataValue
+                            },
+                            method: {
+                                name: _this.name,
+                                month: _this.month,
+                                year: _this.year,
+                                number: _this.card.substr(_this.card.length - 4),
+                                cvv: _this.cvv
+                            }
+                        };
+
+                        axios.post('/api/payment', data).then(function (response) {
+                            _this.$store.commit('serviceFinished');
+                            _this.$router.push({ name: 'Recent' });
+                        }).catch(function (error) {
+                            _this.$store.commit('serviceFinished');
+                            if (error.response.data) {
+                                _this.$store.commit('setError', 'There has been an error. See error message below.');
+                                _this.$store.commit('setError', response.data);
+                            }
+                        });
+                    }
+                });
+            }
+        },
+        validate: function validate() {
+            this.$store.commit('clearErrors');
+            if (this.card == '') {
+                this.$store.commit('setError', 'Please enter credit card number.');
+            }
+            if (this.month == '') {
+                this.$store.commit('setError', 'Please enter expiration month on credit card.');
+            }
+            if (this.year == '') {
+                this.$store.commit('setError', 'Please enter expiration year on credit card.');
+            }
+            if (this.cvv == '') {
+                this.$store.commit('setError', 'Please enter the security code on the back of the card.');
+            }
+            if (this.name == '') {
+                this.$store.commit('setError', 'Please enter name on credit card.');
+            }
+        },
+        navigate: function navigate() {
+            window.location = '/facebook';
+        }
+    },
+    components: {
+        Card: __WEBPACK_IMPORTED_MODULE_0__Card___default.a,
+        Month: __WEBPACK_IMPORTED_MODULE_1__Month___default.a,
+        Year: __WEBPACK_IMPORTED_MODULE_2__Year___default.a,
+        CVV: __WEBPACK_IMPORTED_MODULE_3__CVV___default.a,
+        Name: __WEBPACK_IMPORTED_MODULE_4__Name___default.a
+    }
+});
+
+/***/ }),
+/* 574 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(575)
+/* template */
+var __vue_template__ = __webpack_require__(576)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/javascripts/frontend/user/vue/payment/Card.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-6dcab76c", Component.options)
+  } else {
+    hotAPI.reload("data-v-6dcab76c", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 575 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: {
+        value: {
+            type: String
+        }
+    }
+});
+
+/***/ }),
+/* 576 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("img", {
+      staticClass: "w3-show-block",
+      attrs: { src: "/images/credit-card-icon-set.png" }
+    }),
+    _c("input", {
+      staticClass: "w3-input w3-show-inline-block",
+      attrs: { type: "text" },
+      domProps: { value: _vm.value },
+      on: {
+        keyup: function($event) {
+          _vm.$emit("setValue", $event.target.value)
+        }
+      }
+    }),
+    _c("label", { staticClass: "w3-show-block" }, [_vm._v("Card Number")]),
+    _c("span", { staticClass: "w3-small" }, [
+      _vm._v(
+        "Accepted payment forms are Visa, Mastercard, Discover, and American Express"
+      )
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-6dcab76c", module.exports)
+  }
+}
+
+/***/ }),
+/* 577 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(578)
+/* template */
+var __vue_template__ = __webpack_require__(579)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/javascripts/frontend/user/vue/payment/Month.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-1dfbeab6", Component.options)
+  } else {
+    hotAPI.reload("data-v-1dfbeab6", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 578 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: {
+        value: {
+            type: String
+        }
+    },
+    data: function data() {
+        return {
+            months: [{
+                name: 'January',
+                value: '01'
+            }, {
+                name: 'February',
+                value: '02'
+            }, {
+                name: 'March',
+                value: '03'
+            }, {
+                name: 'April',
+                value: '04'
+            }, {
+                name: 'May',
+                value: '05'
+            }, {
+                name: 'June',
+                value: '06'
+            }, {
+                name: 'July',
+                value: '07'
+            }, {
+                name: 'August',
+                value: '08'
+            }, {
+                name: 'September',
+                value: '09'
+            }, {
+                name: 'October',
+                value: '10'
+            }, {
+                name: 'November',
+                value: '11'
+            }, {
+                name: 'December',
+                value: '12'
+            }],
+            selected: {
+                name: 'Month'
+            }
+        };
+    },
+    mounted: function mounted() {
+        if (this.value) {
+            var _iteratorNormalCompletion = true;
+            var _didIteratorError = false;
+            var _iteratorError = undefined;
+
+            try {
+                for (var _iterator = this.months[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                    var month = _step.value;
+
+                    if (this.value == month.value) {
+                        this.selected = month;
+                    }
+                }
+            } catch (err) {
+                _didIteratorError = true;
+                _iteratorError = err;
+            } finally {
+                try {
+                    if (!_iteratorNormalCompletion && _iterator.return) {
+                        _iterator.return();
+                    }
+                } finally {
+                    if (_didIteratorError) {
+                        throw _iteratorError;
+                    }
+                }
+            }
+        }
+    },
+
+    methods: {
+        setMonth: function setMonth(month) {
+            this.selected = month;
+            this.$emit('setMonth', month);
+        }
+    }
+});
+
+/***/ }),
+/* 579 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "w3-third v-align" }, [
+    _c("div", { staticClass: "w3-dropdown-hover" }, [
+      _c("button", { staticClass: "w3-button" }, [
+        _vm._v(_vm._s(_vm.selected.name)),
+        _c("i", { staticClass: "fa fa-caret-down" })
+      ]),
+      _c(
+        "div",
+        { staticClass: "w3-dropdown-content w3-bar-block w3-border" },
+        _vm._l(_vm.months, function(month) {
+          return _c(
+            "div",
+            {
+              staticClass: "w3-bar-item w3-button",
+              on: {
+                click: function($event) {
+                  _vm.setMonth(month)
+                }
+              }
+            },
+            [_vm._v(_vm._s(month.name))]
+          )
+        })
+      )
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-1dfbeab6", module.exports)
+  }
+}
+
+/***/ }),
+/* 580 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(581)
+/* template */
+var __vue_template__ = __webpack_require__(582)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/javascripts/frontend/user/vue/payment/Year.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-6dd052f7", Component.options)
+  } else {
+    hotAPI.reload("data-v-6dd052f7", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 581 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: {
+        value: {
+            type: String
+        }
+    }
+});
+
+/***/ }),
+/* 582 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "w3-quarter w3-margin-right v-align" }, [
+    _c("input", {
+      staticClass: "w3-input",
+      attrs: { type: "text", placeholder: "Year" },
+      domProps: { value: _vm.value },
+      on: {
+        keyup: function($event) {
+          _vm.$emit("setValue", $event.target.value)
+        }
+      }
+    })
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-6dd052f7", module.exports)
+  }
+}
+
+/***/ }),
+/* 583 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(584)
+/* template */
+var __vue_template__ = __webpack_require__(585)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/javascripts/frontend/user/vue/payment/CVV.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-0b5126ce", Component.options)
+  } else {
+    hotAPI.reload("data-v-0b5126ce", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 584 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: {
+        value: {
+            type: String
+        }
+    }
+});
+
+/***/ }),
+/* 585 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "w3-quarter v-align" }, [
+    _c("input", {
+      staticClass: "w3-input",
+      attrs: { type: "text", placeholder: "CVV" },
+      domProps: { value: _vm.value },
+      on: {
+        keyup: function($event) {
+          _vm.$emit("setValue", $event.target.value)
+        }
+      }
+    })
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-0b5126ce", module.exports)
+  }
+}
+
+/***/ }),
+/* 586 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(587)
+/* template */
+var __vue_template__ = __webpack_require__(588)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/javascripts/frontend/user/vue/payment/Name.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-374d6e45", Component.options)
+  } else {
+    hotAPI.reload("data-v-374d6e45", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 587 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: {
+        value: {
+            type: String
+        }
+    }
+});
+
+/***/ }),
+/* 588 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("input", {
+      staticClass: "w3-input w3-show-inline-block",
+      attrs: { type: "text" },
+      domProps: { value: _vm.value },
+      on: {
+        keyup: function($event) {
+          _vm.$emit("setValue", $event.target.value)
+        }
+      }
+    }),
+    _c("label", { staticClass: "w3-show-block" }, [
+      _vm._v("Card Holder's Name")
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-374d6e45", module.exports)
+  }
+}
+
+/***/ }),
+/* 589 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "w3-card w3-padding form" },
+    [
+      _c("h3", [_vm._v("Payment Method")]),
+      _c("h6", [
+        _vm._v("You may enter a new card to update your payment information.")
+      ]),
+      _c("p", [_vm._v("Current card on file")]),
+      _c("p", [_vm._v("Name: " + _vm._s(_vm.payment.name))]),
+      _c("p", [
+        _vm._v(
+          "Expiration: " +
+            _vm._s(_vm.payment.month) +
+            " - " +
+            _vm._s(_vm.payment.year)
+        )
+      ]),
+      _c("p", [_vm._v("Last 4 digits: " + _vm._s(_vm.payment.number))]),
+      _c("Card", {
+        attrs: { value: _vm.card },
+        on: {
+          setValue: function(value) {
+            return _vm.$store.commit("setCard", value)
+          }
+        }
+      }),
+      _c("Month", {
+        attrs: { value: _vm.month },
+        on: {
+          setMonth: function(value) {
+            return _vm.$store.commit("setMonth", value.value)
+          }
+        }
+      }),
+      _c("Year", {
+        attrs: { value: _vm.year },
+        on: {
+          setValue: function(value) {
+            return _vm.$store.commit("setYear", value)
+          }
+        }
+      }),
+      _c("CVV", {
+        attrs: { value: _vm.cvv },
+        on: {
+          setValue: function(value) {
+            return _vm.$store.commit("setCVV", value)
+          }
+        }
+      }),
+      _vm._m(0),
+      _c("Name", {
+        attrs: { value: _vm.name },
+        on: {
+          setValue: function(value) {
+            return _vm.$store.commit("setCardName", value)
+          }
+        }
+      }),
+      _vm.errors.length
+        ? _c("Errors", { attrs: { errors: _vm.errors } })
+        : _vm._e(),
+      _c(
+        "button",
+        {
+          staticClass: "w3-button w3-text-white primary",
+          on: {
+            click: function($event) {
+              _vm.sendPaymentDataToAnet()
+            }
+          }
+        },
+        [_vm._v("Submit")]
+      ),
+      _vm._m(1)
+    ],
+    1
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticStyle: { clear: "both" } }, [
+      _vm._v("Expiration Month and Year(YYYY) with Security Code"),
+      _c("i", { staticClass: "fa fa-question-circle-o w3-tooltip" }, [
+        _c("img", {
+          staticClass: "w3-text",
+          staticStyle: { position: "absolute", bottom: "-20px" },
+          attrs: { src: "/images/creditcards_cvv.png" }
+        })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "AuthorizeNetSeal", staticStyle: { display: "none" } },
+      [
+        _c(
+          "a",
+          {
+            attrs: {
+              href: "http://www.authorize.net/",
+              id: "AuthorizeNetText",
+              target: "_blank"
+            }
+          },
+          [_vm._v("Electronic Check Processing")]
+        )
+      ]
+    )
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-3b537808", module.exports)
+  }
+}
+
+/***/ }),
+/* 590 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(591)
+/* template */
+var __vue_template__ = __webpack_require__(592)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/javascripts/frontend/user/vue/history/Index.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-2cdbd116", Component.options)
+  } else {
+    hotAPI.reload("data-v-2cdbd116", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 591 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    computed: {
+        payments: function payments() {
+            return this.$store.state.history.history;
+        }
+    }
+});
+
+/***/ }),
+/* 592 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "w3-card w3-content w3-padding dashboard" }, [
+    _c("div", { staticClass: "w3-padding w3-text-white primary" }, [
+      _vm._v("Payments logged to account")
+    ]),
+    _c(
+      "div",
+      { staticClass: "w3-container" },
+      _vm._l(_vm.payments, function(payment) {
+        return _c("div", [
+          _c("div", { staticClass: "w3-third w3-padding" }, [
+            _vm._v("Date - " + _vm._s(payment.created))
+          ]),
+          _c("div", { staticClass: "w3-third w3-padding" }, [
+            _vm._v("Total - " + _vm._s(payment.total))
+          ]),
+          _c("div", { staticClass: "w3-third w3-padding" }, [
+            _vm._v("Transaction ID - " + _vm._s(payment.transId))
+          ])
+        ])
+      })
+    )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-2cdbd116", module.exports)
+  }
+}
+
+/***/ }),
+/* 593 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var Module = {
+    state: {
+        history: [],
+        remaining: '',
+        next: ''
+    },
+    mutations: {
+        setHistory: function setHistory(state, value) {
+            state.history = value.histories;
+            state.remaining = value.resremains, state.next = value.nextpage;
+        }
+    }
+};
+
+/* harmony default export */ __webpack_exports__["a"] = (Module);
 
 /***/ })
 /******/ ]);

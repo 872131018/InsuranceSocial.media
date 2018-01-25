@@ -1,6 +1,8 @@
 <?php
 use Illuminate\Http\Request;
 
+use GuzzleHttp\Client;
+
 use App\Region;
 
 use App\State;
@@ -138,8 +140,10 @@ use Illuminate\Support\Facades\Log;
      $data = [
          'facebook_page' => $user->facebook->page_name,
          'twitter_handle' => $user->twitter->screen_name,
+         'linkedin_email' => $user->linkedin->linkedin_email,
          'facebook_posts' => [],
-         'twitter_posts' => []
+         'twitter_posts' => [],
+         'linkedin_posts' => []
      ];
 
      try {
@@ -156,6 +160,27 @@ use Illuminate\Support\Facades\Log;
 
      $posts = json_decode($responses[0]->body);
      $data['facebook_posts'] = array_slice($posts->data, 0, 5);
+
+     $url = '';
+     if(env('APP_ENV') == 'local') {
+         $url = 'http://www.staging.insurancesocial.media/api/ismv2/';
+     } else {
+         $url = 'http://www.ism.insurancesocial.media/api/ismv2/';
+     }
+
+     $client = new Client([
+         'base_uri' => $url
+     ]);
+
+     $response = $client->request('GET', '_ismv2_getLinkedInPosts', [
+         'query' => [
+             'user' => $user->email,
+             'page' => 1,
+             'perpage' => 5
+         ]
+     ]);
+     $response = json_decode($response->getBody());
+     $data['linkedin_posts'] = $response->posts;
 
      return response()->json($data);
  });
